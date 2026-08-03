@@ -1,0 +1,845 @@
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turminha do Xexéu - Link Oficial & App</title>
+  
+  <!-- Favicon na Aba do Navegador -->
+  <link rel="icon" type="image/png" href="https://i.imgur.com/ANqcDjC.png">
+
+  <!-- Meta Tags para Pré-visualização Bonita no WhatsApp e Redes Sociais -->
+  <meta property="og:title" content="Turminha do Xexéu - App Oficial & Jogos">
+  <meta property="og:description" content="Historinhas, animações, canções e jogos educativos para as crianças se divertirem!">
+  <meta property="og:image" content="https://i.imgur.com/mvQQyMp.png">
+  <meta property="og:type" content="website">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3B82F6;
+      --primary-dark: #1D4ED8;
+      --secondary: #F59E0B;
+      --accent: #EF4444;
+      --purple: #8B5CF6;
+      --green: #10B981;
+      --pink: #EC4899;
+      --bg-gradient: linear-gradient(135deg, #E0F2FE 0%, #FAF5FF 50%, #FFF1F2 100%);
+      --card-bg: rgba(255, 255, 255, 0.96);
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 12px 28px -4px rgba(59, 130, 246, 0.15);
+      --shadow-lg: 0 20px 35px -5px rgba(0, 0, 0, 0.1);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 12px 12px 100px;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 850px;
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      border: none;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-bottom: 30px;
+    }
+
+    /* HEADER COM A LOGO COMPACTA */
+    header {
+      text-align: center;
+      padding: 12px 15px 6px;
+      background: #BAE6FD;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-img {
+      max-width: 100px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(59, 130, 246, 0.15));
+    }
+
+    /* CAPA PRINCIPAL */
+    .banner-container {
+      width: 100%;
+      padding: 0 20px;
+    }
+    .banner-img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      display: block;
+      object-fit: cover;
+    }
+
+    /* INTRODUÇÃO */
+    .intro-box {
+      margin: 0 20px;
+      background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
+      border: 2px solid #FCD34D;
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .intro-box h2 {
+      font-size: 19px;
+      font-weight: 800;
+      color: #92400E;
+      margin-bottom: 6px;
+    }
+    .intro-box p {
+      font-size: 13.5px;
+      color: #78350F;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    /* BOTÕES REDONDOS MINIMALISTAS LADO A LADO */
+    .social-round-section {
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .social-round-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .social-round-btn:hover {
+      transform: translateY(-5px) scale(1.08);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+    .social-round-btn img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+    }
+    .social-round-btn .emoji-icon {
+      font-size: 22px;
+    }
+
+    /* PERSONAGENS FLUTUANTES */
+    .characters-section {
+      padding: 0 20px;
+    }
+    .characters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 16px;
+      margin-top: 15px;
+    }
+
+    .char-card-playful {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 14px 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-md);
+      border: 3px solid #F1F5F9;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .char-card-playful:nth-child(1) { transform: rotate(-3deg); border-color: #3B82F6; }
+    .char-card-playful:nth-child(2) { transform: rotate(2deg); border-color: #F59E0B; }
+    .char-card-playful:nth-child(3) { transform: rotate(-2deg); border-color: #10B981; }
+    .char-card-playful:nth-child(4) { transform: rotate(3deg); border-color: #EC4899; }
+    .char-card-playful:nth-child(5) { transform: rotate(-3deg); border-color: #8B5CF6; }
+    .char-card-playful:nth-child(6) { transform: rotate(2deg); border-color: #EF4444; }
+    .char-card-playful:nth-child(7) { transform: rotate(-2deg); border-color: #F59E0B; }
+    .char-card-playful:nth-child(8) { transform: rotate(3deg); border-color: #3B82F6; }
+
+    .char-card-playful:hover {
+      transform: scale(1.08) rotate(0deg) translateY(-8px);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.12);
+      z-index: 10;
+    }
+    .char-card-playful.jump {
+      animation: bounce 0.5s ease;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-16px) scale(1.1); }
+    }
+
+    .char-card-playful img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08));
+    }
+    .char-card-playful span {
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--text-main);
+    }
+
+    /* CARD VÍDEO YOUTUBE */
+    .video-card {
+      margin: 0 20px;
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid #F1F5F9;
+      text-align: center;
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      margin-bottom: 10px;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* LOUSA MÁGICA & JOGOS */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 19px;
+      font-weight: 900;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-audio {
+      background: linear-gradient(135deg, #FBBF24, #F59E0B);
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      box-shadow: 0 6px 14px rgba(245, 158, 11, 0.35);
+    }
+
+    .interactive-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      border: 2px solid #E2E8F0;
+    }
+
+    .draw-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    #paintCanvas {
+      background: #FFFFFF;
+      border: 3px solid var(--primary);
+      border-radius: 24px;
+      touch-action: none;
+      cursor: crosshair;
+      width: 100%;
+      max-width: 600px;
+      height: 260px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .palette {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .color-dot {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 3px solid #FFF;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+    }
+    .btn-clear-canvas {
+      background: #FEE2E2;
+      color: var(--accent);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 0 20px;
+    }
+
+    @media (min-width: 700px) {
+      .games-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .quiz-img-holder {
+      width: 150px;
+      height: 150px;
+      margin: 10px auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, #F0F9FF 0%, #FFFFFF 70%);
+      border-radius: 50%;
+      border: 3px solid #E0F2FE;
+    }
+    .quiz-img {
+      max-width: 120px;
+      max-height: 120px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.12));
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .btn-option {
+      background: #F8FAFC;
+      border: 2px solid #CBD5E1;
+      color: var(--text-main);
+      padding: 14px 16px;
+      border-radius: 18px;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .letter-grid {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .btn-letter-choice {
+      background: linear-gradient(135deg, var(--purple) 0%, #7C3AED 100%);
+      color: #FFFFFF;
+      border: none;
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      font-weight: 900;
+      border-radius: 18px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(139, 92, 246, 0.3);
+    }
+
+    /* CAIXA DE AGRADECIMENTO NO FINAL */
+    .thankyou-box {
+      margin: 10px 20px 0;
+      background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 100%);
+      border: 2px solid #BAE6FD;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .thankyou-box h3 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #0369A1;
+      margin-bottom: 6px;
+    }
+    .thankyou-box p {
+      font-size: 13.5px;
+      color: #0C4A6E;
+      line-height: 1.5;
+      font-weight: 600;
+    }
+
+    .bottom-bar {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 450px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 10px;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      z-index: 1000;
+    }
+    .bar-item {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 11px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+    .bar-item.active, .bar-item:hover { color: var(--primary); }
+    .bar-icon { font-size: 20px; }
+
+    /* RODAPÉ ASSINADO PELA EVE.DESIGN */
+    footer {
+      text-align: center;
+      padding: 20px 20px 0;
+      border-top: 1px solid #F1F5F9;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+    .creator-link {
+      color: var(--purple);
+      text-decoration: none;
+      font-weight: 800;
+      background: #F3E8FF;
+      padding: 8px 16px;
+      border-radius: 14px;
+      transition: transform 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .creator-link:hover {
+      transform: scale(1.05);
+      background: #E9D5FF;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- 1. HEADER COM A LOGO COMPACTA -->
+    <header>
+      <img src="https://i.imgur.com/ANqcDjC.png" alt="Logo Turminha do Xexéu" class="logo-img">
+    </header>
+
+    <!-- 2. CAPA PRINCIPAL -->
+    <div class="banner-container">
+      <img src="https://i.imgur.com/mvQQyMp.png" alt="Capa Turminha do Xexéu" class="banner-img">
+    </div>
+
+    <!-- 3. INTRODUÇÃO -->
+    <div class="intro-box">
+      <h2>✨ Bem-vindo à Turminha do Xexéu!</h2>
+      <p>Nosso canal traz historinhas, animações e jogos educativos para ensinar valores, amizade e aprendizado para as crianças!</p>
+    </div>
+
+    <!-- 4. BOTÕES REDONDOS E MINIMALISTAS DAS REDES SOCIAIS -->
+    <div class="social-round-section">
+      <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube">
+        <span class="emoji-icon">▶️</span>
+      </a>
+      <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram">
+        <span class="emoji-icon">📷</span>
+      </a>
+      <a href="https://www.tiktok.com/@turminhaxe_xeu?is_from_webapp=1&sender_device=pc" target="_blank" class="social-round-btn" title="TikTok">
+        <span class="emoji-icon">🎵</span>
+      </a>
+      <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6?si=Bg0CBhifTWWy5vNDPLnsfQ" target="_blank" class="social-round-btn" title="Spotify">
+        <span class="emoji-icon">🎧</span>
+      </a>
+      <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw?si=wxcCNhp7uM8M9Uqv" target="_blank" class="social-round-btn" title="YouTube Music">
+        <span class="emoji-icon">🎶</span>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook">
+        <span class="emoji-icon">👍</span>
+      </a>
+      <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads">
+        <img src="https://i.imgur.com/7cE4xVg.png" alt="Threads">
+      </a>
+    </div>
+
+    <!-- 5. APRESENTANDO OS PERSONAGENS -->
+    <div class="characters-section" id="personagens-sec">
+      <div class="section-header">
+        <span class="section-title">🌟 Conheça os Personagens</span>
+        <button class="btn-audio" onclick="lerTexto('Clique em um personagem para ouvir a apresentação dele!')">🔊</button>
+      </div>
+
+      <div class="characters-grid">
+        <div class="char-card-playful" onclick="falarPersonagem('Xexéu', 'O mascote alegre da Turminha de boina amarela!', this)">
+          <img src="https://i.imgur.com/yApuLed.png" alt="Xexéu">
+          <span>Xexéu</span>
+        </div>
+        <div class="char-card-playful" onclick="falarPersonagem('Capilé', 'O cachorrinho esperto de coleira azul!', this)">
+          <img src="https://i.imgur.com/ETC0paX.png" alt="Capilé">
+          <span>Capilé</span>
+        </div>
+        <div class="char-card-playful" onclick="falarPersonagem('Léo', 'Um amiguinho muito curioso e divertido!', this)">
+          <img src="https://i.imgur.com/vunKLqO.png" alt="Léo">
+          <span>Léo</span>
+        </div>
+        <div class="char-card-playful" onclick="falarPersonagem('Joca', 'O menino criativo de camiseta verde!', this)">
+          <img src="https://i.imgur.com/VoHSsw9.png" alt="Joca">
+          <span>Joca</span>
+        </div>
+        <div class="char-card-playful" onclick="falarPersonagem('Iza', 'A menina adorável de vestido rosa!', this)">
+          <img src="https://i.imgur.com/IX3LrtJ.png" alt="Iza">
+          <span>Iza</span>
+        </div>
+        <div class="char-card-playful" onclick="falarPersonagem('Nina', 'A menina de cabelos cacheados super carinhosa!', this)">
+          <img src="https://i.imgur.com/cBOKp6k.jpeg" alt="Nina">
+          <span>Nina</span>
+        </div>
+        <div class="char-card-playful" onclick="falarPersonagem('Hilda', 'A vovó carinhosa de óculos redondos!', this)">
+          <img src="https://i.imgur.com/qcJyZb5.png" alt="Hilda">
+          <span>Hilda</span>
+        </div>
+        <div class="char-card-playful" onclick="falarPersonagem('Beto', 'O vovô atencioso de óculos quadrados!', this)">
+          <img src="https://i.imgur.com/lzOHT4F.png" alt="Beto">
+          <span>Beto</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. PLAYLIST DO YOUTUBE -->
+    <div class="video-card" id="videos-sec">
+      <div class="section-header" style="margin-bottom: 8px;">
+        <span class="section-title">🎬 Playlist de Vídeos</span>
+        <button class="btn-audio" onclick="lerTexto('Assista à playlist oficial de vídeos da Turminha!')">🔊</button>
+      </div>
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoHEebyBhhc9TlfUaRML6zVx" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- 7. LOUSA MÁGICA -->
+    <section id="desenho-sec" style="padding: 0 20px;">
+      <div class="section-header">
+        <span class="section-title">🎨 Lousa Mágica</span>
+        <button class="btn-audio" onclick="lerTexto('Lousa Mágica! Solte a imaginação e desenhe!')">🔊</button>
+      </div>
+      <div class="interactive-card draw-box">
+        <canvas id="paintCanvas"></canvas>
+        <div class="palette">
+          <div class="color-dot" style="background: #3B82F6;" onclick="mudarCor('#3B82F6')"></div>
+          <div class="color-dot" style="background: #EF4444;" onclick="mudarCor('#EF4444')"></div>
+          <div class="color-dot" style="background: #10B981;" onclick="mudarCor('#10B981')"></div>
+          <div class="color-dot" style="background: #F59E0B;" onclick="mudarCor('#F59E0B')"></div>
+          <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
+          <div class="color-dot" style="background: #0F172A;" onclick="mudarCor('#0F172A')"></div>
+          <button class="btn-clear-canvas" onclick="limparCanvas()">Limpar 🗑️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. JOGOS -->
+    <div class="games-grid" id="jogos-sec">
+      <section id="quiz-sec" style="padding:0;">
+        <div class="section-header">
+          <span class="section-title">❓ Quiz da Turminha</span>
+          <button class="btn-audio" onclick="lerTextoQuiz()">🔊</button>
+        </div>
+        <div class="interactive-card">
+          <p style="font-weight: 800; color: var(--text-muted); font-size: 15px;">Quem é este personagem?</p>
+          <div class="quiz-img-holder">
+            <img id="quiz-imagem" class="quiz-img" src="" alt="Quiz Personagem">
+          </div>
+          <div id="quiz-opcoes" class="quiz-options"></div>
+        </div>
+      </section>
+
+      <section id="letra-sec" style="padding:0;">
+        <div class="section-header">
+          <span class="section-title">🔤 Qual é a minha letra?</span>
+          <button class="btn-audio" onclick="lerTextoLetra()">🔊</button>
+        </div>
+        <div class="interactive-card">
+          <p style="font-weight: 800; font-size: 15px;">Primeira letra do nome de <strong id="nome-personagem-letra" style="color: var(--purple);">Hilda</strong>:</p>
+          <div class="quiz-img-holder">
+            <img id="img-personagem-letra" class="quiz-img" src="" alt="Letra Personagem">
+          </div>
+          <div id="opcoes-letras" class="letter-grid"></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 9. CAIXA DE AGRADECIMENTO E CHAMADA -->
+    <div class="thankyou-box">
+      <h3>💖 Obrigado pelo carinho!</h3>
+      <p>Siga a Turminha do Xexéu em nossas redes sociais para não perder nenhuma novidade, novos episódios e musiquinhas!</p>
+    </div>
+
+    <!-- RODAPÉ ASSINADO PELA EVE.DESIGN -->
+    <footer>
+      <span>© Turminha do Xexéu - Todos os direitos reservados</span>
+      <a href="https://evedesignceci.github.io/eve-design-orcamentos/" target="_blank" class="creator-link">
+        🎨 Desenvolvido por <strong>eve.design</strong>
+      </a>
+    </footer>
+
+  </div>
+
+  <nav class="bottom-bar">
+    <a href="#" class="bar-item active"><span class="bar-icon">🏠</span>Início</a>
+    <a href="#personagens-sec" class="bar-item"><span class="bar-icon">🌟</span>Turminha</a>
+    <a href="#videos-sec" class="bar-item"><span class="bar-icon">🎬</span>Vídeos</a>
+    <a href="#desenho-sec" class="bar-item"><span class="bar-icon">🎨</span>Desenho</a>
+    <a href="#jogos-sec" class="bar-item"><span class="bar-icon">❓</span>Quiz</a>
+  </nav>
+
+  <script>
+    let vozesDisponiveis = [];
+
+    function carregarVozes() {
+      if ('speechSynthesis' in window) {
+        vozesDisponiveis = window.speechSynthesis.getVoices();
+      }
+    }
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = carregarVozes;
+      carregarVozes();
+    }
+
+    function lerTexto(texto) {
+      if (!('speechSynthesis' in window)) return;
+
+      window.speechSynthesis.cancel();
+
+      const utterance = new SpeechSynthesisUtterance(texto);
+      utterance.lang = 'pt-BR';
+      utterance.rate = 0.95;
+      utterance.pitch = 1.1;
+
+      if (vozesDisponiveis.length === 0) {
+        vozesDisponiveis = window.speechSynthesis.getVoices();
+      }
+
+      const vozPt = vozesDisponiveis.find(v => v.lang.includes('pt-BR') || v.lang.includes('pt'));
+      if (vozPt) {
+        utterance.voice = vozPt;
+      }
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    document.body.addEventListener('touchstart', function() {
+      if ('speechSynthesis' in window && window.speechSynthesis.speaking === false) {
+        carregarVozes();
+      }
+    }, { once: true });
+
+    function falarPersonagem(nome, desc, elemento) {
+      lerTexto("Este é " + nome + ". " + desc);
+      elemento.classList.add('jump');
+      setTimeout(() => {
+        elemento.classList.remove('jump');
+      }, 500);
+    }
+
+    const perguntasQuiz = [
+      { img: 'https://i.imgur.com/yApuLed.png', correta: 'Xexéu', opcoes: ['Xexéu', 'Joca', 'Léo'] },
+      { img: 'https://i.imgur.com/ETC0paX.png', correta: 'Capilé', opcoes: ['Nina', 'Capilé', 'Beto'] },
+      { img: 'https://i.imgur.com/vunKLqO.png', correta: 'Léo', opcoes: ['Léo', 'Xexéu', 'Joca'] },
+      { img: 'https://i.imgur.com/VoHSsw9.png', correta: 'Joca', opcoes: ['Joca', 'Capilé', 'Iza'] },
+      { img: 'https://i.imgur.com/IX3LrtJ.png', correta: 'Iza', opcoes: ['Hilda', 'Iza', 'Nina'] },
+      { img: 'https://i.imgur.com/cBOKp6k.jpeg', correta: 'Nina', opcoes: ['Nina', 'Iza', 'Léo'] },
+      { img: 'https://i.imgur.com/qcJyZb5.png', correta: 'Hilda', opcoes: ['Hilda', 'Iza', 'Nina'] },
+      { img: 'https://i.imgur.com/lzOHT4F.png', correta: 'Beto', opcoes: ['Joca', 'Beto', 'Capilé'] }
+    ];
+    let quizAtual = 0;
+
+    function carregarQuiz() {
+      const q = perguntasQuiz[quizAtual];
+      document.getElementById('quiz-imagem').src = q.img;
+      const container = document.getElementById('quiz-opcoes');
+      container.innerHTML = '';
+      
+      q.opcoes.forEach(opcao => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-option';
+        btn.innerHTML = `<span>${opcao}</span> ➔`;
+        btn.onclick = () => responderQuiz(opcao, q.correta);
+        container.appendChild(btn);
+      });
+    }
+
+    function responderQuiz(opcao, correta) {
+      if (opcao === correta) {
+        lerTexto("Parabéns! Você acertou!");
+        quizAtual = (quizAtual + 1) % perguntasQuiz.length;
+        carregarQuiz();
+      } else {
+        lerTexto("Tente novamente!");
+      }
+    }
+
+    function lerTextoQuiz() {
+      const q = perguntasQuiz[quizAtual];
+      lerTexto("Quem é este personagem? Escolha entre " + q.opcoes.join(', '));
+    }
+
+    const etapasLetra = [
+      { nome: 'Hilda', img: 'https://i.imgur.com/qcJyZb5.png', correta: 'H', opcoes: ['H', 'B', 'J'] },
+      { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', correta: 'B', opcoes: ['B', 'H', 'N'] },
+      { nome: 'Léo', img: 'https://i.imgur.com/vunKLqO.png', correta: 'L', opcoes: ['L', 'J', 'X'] },
+      { nome: 'Joca', img: 'https://i.imgur.com/VoHSsw9.png', correta: 'J', opcoes: ['J', 'I', 'X'] },
+      { nome: 'Iza', img: 'https://i.imgur.com/IX3LrtJ.png', correta: 'I', opcoes: ['I', 'N', 'B'] },
+      { nome: 'Nina', img: 'https://i.imgur.com/cBOKp6k.jpeg', correta: 'N', opcoes: ['N', 'L', 'I'] }
+    ];
+    let etapaLetraAtual = 0;
+
+    function carregarJogoLetra() {
+      const e = etapasLetra[etapaLetraAtual];
+      document.getElementById('nome-personagem-letra').innerText = e.nome;
+      document.getElementById('img-personagem-letra').src = e.img;
+
+      const container = document.getElementById('opcoes-letras');
+      container.innerHTML = '';
+
+      e.opcoes.forEach(letra => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-letter-choice';
+        btn.innerText = letra;
+        btn.onclick = () => responderLetra(letra, e.correta);
+        container.appendChild(btn);
+      });
+    }
+
+    function responderLetra(letra, correta) {
+      if (letra === correta) {
+        lerTexto("Muito bem! Você acertou!");
+        etapaLetraAtual = (etapaLetraAtual + 1) % etapasLetra.length;
+        carregarJogoLetra();
+      } else {
+        lerTexto("Tente novamente!");
+      }
+    }
+
+    function lerTextoLetra() {
+      const e = etapasLetra[etapaLetraAtual];
+      lerTexto("Qual é a primeira letra do nome de " + e.nome + "?");
+    }
+
+    const canvas = document.getElementById('paintCanvas');
+    const ctx = canvas.getContext('2d');
+    let desenhando = false;
+    let corAtual = '#3B82F6';
+
+    function redimensionarCanvas() {
+      canvas.width = canvas.parentElement.clientWidth - 40;
+      canvas.height = 260;
+    }
+    window.addEventListener('resize', redimensionarCanvas);
+    redimensionarCanvas();
+
+    function mudarCor(cor) { corAtual = cor; }
+    function limparCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return { x: clientX - rect.left, y: clientY - rect.top };
+    }
+
+    function iniciarDesenho(e) {
+      desenhando = true;
+      const pos = getPos(e);
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+      ctx.strokeStyle = corAtual;
+      ctx.lineWidth = 5;
+      ctx.lineCap = 'round';
+    }
+
+    function desenhar(e) {
+      if (!desenhando) return;
+      const pos = getPos(e);
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    }
+
+    function pararDesenho() { desenhando = false; }
+
+    canvas.addEventListener('mousedown', iniciarDesenho);
+    canvas.addEventListener('mousemove', desenhar);
+    canvas.addEventListener('mouseup', pararDesenho);
+    canvas.addEventListener('touchstart', (e) => { iniciarDesenho(e); e.preventDefault(); });
+    canvas.addEventListener('touchmove', (e) => { desenhar(e); e.preventDefault(); });
+    canvas.addEventListener('touchend', pararDesenho);
+
+    carregarQuiz();
+    carregarJogoLetra();
+  </script>
+</body>
+</html># Turminha-do-Xex-u-Oficial
