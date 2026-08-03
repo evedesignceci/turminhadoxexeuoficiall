@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -44,6 +45,10 @@
       padding: 0;
       font-family: 'Poppins', system-ui, -apple-system, sans-serif;
       -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -486,7 +491,7 @@
     }
   </style>
 </head>
-<body>
+<body id="top">
 
   <div class="app-container">
 
@@ -653,7 +658,7 @@
   </div>
 
   <nav class="bottom-bar">
-    <a href="#" class="bar-item active"><span class="bar-icon">🏠</span>Início</a>
+    <a href="#top" class="bar-item active"><span class="bar-icon">🏠</span>Início</a>
     <a href="#personagens-sec" class="bar-item"><span class="bar-icon">🌟</span>Turminha</a>
     <a href="#videos-sec" class="bar-item"><span class="bar-icon">🎬</span>Vídeos</a>
     <a href="#desenho-sec" class="bar-item"><span class="bar-icon">🎨</span>Desenho</a>
@@ -662,12 +667,26 @@
 
   <script>
     let vozesDisponiveis = [];
+    let sintetizadorInicializado = false;
 
     function carregarVozes() {
       if ('speechSynthesis' in window) {
         vozesDisponiveis = window.speechSynthesis.getVoices();
       }
     }
+
+    // Inicialização da API no celular após o primeiro toque
+    function ativarVozNoCelular() {
+      if (sintetizadorInicializado || !('speechSynthesis' in window)) return;
+      carregarVozes();
+      const u = new SpeechSynthesisUtterance('');
+      u.volume = 0;
+      window.speechSynthesis.speak(u);
+      sintetizadorInicializado = true;
+    }
+
+    window.addEventListener('touchstart', ativarVozNoCelular, { once: true });
+    window.addEventListener('click', ativarVozNoCelular, { once: true });
 
     if ('speechSynthesis' in window) {
       window.speechSynthesis.onvoiceschanged = carregarVozes;
@@ -695,12 +714,6 @@
 
       window.speechSynthesis.speak(utterance);
     }
-
-    document.body.addEventListener('touchstart', function() {
-      if ('speechSynthesis' in window && window.speechSynthesis.speaking === false) {
-        carregarVozes();
-      }
-    }, { once: true });
 
     function falarPersonagem(nome, desc, elemento) {
       lerTexto("Este é " + nome + ". " + desc);
