@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -13,7 +14,11 @@
   <meta property="og:image" content="https://i.imgur.com/mvQQyMp.png">
   <meta property="og:type" content="website">
 
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --primary: #3B82F6;
@@ -504,25 +509,25 @@
 
     <!-- 4. BOTÕES REDONDOS E MINIMALISTAS DAS REDES SOCIAIS -->
     <div class="social-round-section">
-      <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube">
+      <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" rel="noopener noreferrer" class="social-round-btn" title="YouTube">
         <span class="emoji-icon">▶️</span>
       </a>
-      <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram">
+      <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" rel="noopener noreferrer" class="social-round-btn" title="Instagram">
         <span class="emoji-icon">📷</span>
       </a>
-      <a href="https://www.tiktok.com/@turminhaxe_xeu?is_from_webapp=1&sender_device=pc" target="_blank" class="social-round-btn" title="TikTok">
+      <a href="https://www.tiktok.com/@turminhaxe_xeu?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" class="social-round-btn" title="TikTok">
         <span class="emoji-icon">🎵</span>
       </a>
-      <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6?si=Bg0CBhifTWWy5vNDPLnsfQ" target="_blank" class="social-round-btn" title="Spotify">
+      <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6?si=Bg0CBhifTWWy5vNDPLnsfQ" target="_blank" rel="noopener noreferrer" class="social-round-btn" title="Spotify">
         <span class="emoji-icon">🎧</span>
       </a>
-      <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw?si=wxcCNhp7uM8M9Uqv" target="_blank" class="social-round-btn" title="YouTube Music">
+      <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw?si=wxcCNhp7uM8M9Uqv" target="_blank" rel="noopener noreferrer" class="social-round-btn" title="YouTube Music">
         <span class="emoji-icon">🎶</span>
       </a>
-      <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook">
+      <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" rel="noopener noreferrer" class="social-round-btn" title="Facebook">
         <span class="emoji-icon">👍</span>
       </a>
-      <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads">
+      <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" rel="noopener noreferrer" class="social-round-btn" title="Threads">
         <img src="https://i.imgur.com/7cE4xVg.png" alt="Threads">
       </a>
     </div>
@@ -641,7 +646,7 @@
     <!-- RODAPÉ ASSINADO PELA EVE.DESIGN -->
     <footer>
       <span>© Turminha do Xexéu - Todos os direitos reservados</span>
-      <a href="https://evedesignceci.github.io/eve-design-orcamentos/" target="_blank" class="creator-link">
+      <a href="https://evedesignceci.github.io/eve-design-orcamentos/" target="_blank" rel="noopener noreferrer" class="creator-link">
         🎨 Desenvolvido por <strong>eve.design</strong>
       </a>
     </footer>
@@ -842,4 +847,4 @@
     carregarJogoLetra();
   </script>
 </body>
-</html># Turminha-do-Xex-u-Oficial
+</html>
