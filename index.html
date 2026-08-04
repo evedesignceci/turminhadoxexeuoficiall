@@ -18,6 +18,7 @@
       --accent: #EF4444;
       --purple: #8B5CF6;
       --green: #10B981;
+      --vip-gold: #D97706;
       --bg-gradient: linear-gradient(135deg, #E0F2FE 0%, #FAF5FF 50%, #FFF1F2 100%);
       --card-bg: rgba(255, 255, 255, 0.98);
       --text-main: #0F172A;
@@ -60,7 +61,7 @@
     .page-nav {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       background: #E0F2FE;
       padding: 10px;
       border-radius: var(--radius-lg);
@@ -69,13 +70,13 @@
     }
     .nav-tab-btn {
       flex: 1;
-      min-width: 120px;
-      max-width: 220px;
-      padding: 12px 16px;
+      min-width: 100px;
+      max-width: 180px;
+      padding: 12px 14px;
       border: none;
       border-radius: 16px;
       font-weight: 800;
-      font-size: 15px;
+      font-size: 14px;
       cursor: pointer;
       background: transparent;
       color: var(--text-muted);
@@ -83,15 +84,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
     }
     .nav-tab-btn.active {
       background: var(--primary);
       color: #FFFFFF;
       box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
+    /* BOTÃO VIP ESPECIAL NA NAV */
+    .nav-tab-btn.vip-tab {
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+      color: #FFF;
+    }
+    .nav-tab-btn.vip-tab.active {
+      background: #B45309;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.4);
+    }
 
-    /* SUB-ABAS PARA OS JOGOS NO CELULAR */
+    /* SUB-ABAS DE JOGOS */
     .games-subnav {
       display: flex;
       justify-content: center;
@@ -119,12 +129,8 @@
       box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
     }
 
-    .game-tab-content {
-      display: none;
-    }
-    .game-tab-content.active-game-tab {
-      display: block;
-    }
+    .game-tab-content { display: none; }
+    .game-tab-content.active-game-tab { display: block; }
 
     /* PÁGINAS COM ALTERNÂNCIA */
     .page-content {
@@ -133,9 +139,7 @@
       gap: 24px;
       animation: fadeIn 0.3s ease;
     }
-    .page-content.active-page {
-      display: flex;
-    }
+    .page-content.active-page { display: flex; }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
@@ -151,10 +155,7 @@
       border-radius: var(--radius-lg);
       margin: 10px 10px 0;
     }
-    .logo-img {
-      max-width: 120px;
-      height: auto;
-    }
+    .logo-img { max-width: 120px; height: auto; }
 
     .audio-toggle-btn {
       background: #FFFFFF;
@@ -182,7 +183,6 @@
       gap: 16px;
       padding: 0 20px;
     }
-
     .banner-container { width: 100%; }
     .banner-img {
       width: 100%;
@@ -206,7 +206,6 @@
       justify-content: center;
       box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
     }
-
     .intro-box-header {
       display: flex;
       align-items: center;
@@ -215,19 +214,8 @@
       width: 100%;
       margin-bottom: 8px;
     }
-
-    .intro-box h2 {
-      font-size: 20px;
-      font-weight: 800;
-      color: #92400E;
-    }
-
-    .intro-box p {
-      font-size: 15px;
-      color: #78350F;
-      line-height: 1.6;
-      font-weight: 600;
-    }
+    .intro-box h2 { font-size: 20px; font-weight: 800; color: #92400E; }
+    .intro-box p { font-size: 15px; color: #78350F; line-height: 1.6; font-weight: 600; }
 
     .btn-audio-mini {
       background: linear-gradient(135deg, #FBBF24, #F59E0B);
@@ -292,18 +280,15 @@
       align-items: center;
       justify-content: space-between;
     }
-    
     .characters-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
       padding: 0 20px;
     }
-    
     @media (min-width: 480px) {
       .characters-grid { grid-template-columns: repeat(4, 1fr); }
     }
-
     .char-card {
       background: #FFF;
       border-radius: var(--radius-lg);
@@ -318,17 +303,8 @@
       box-shadow: 0 6px 16px rgba(0,0,0,0.04);
       transition: all 0.25s ease;
     }
-    .char-card img {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
-    }
-    .char-card span {
-      font-weight: 800;
-      font-size: 15px;
-      color: var(--text-main);
-    }
+    .char-card img { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08)); }
+    .char-card span { font-weight: 800; font-size: 15px; color: var(--text-main); }
 
     .char-details-box {
       margin: 0 20px;
@@ -356,14 +332,7 @@
       justify-content: space-between;
       margin-bottom: 12px;
     }
-    .video-header h3 {
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--primary-dark);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .video-header h3 { font-size: 18px; font-weight: 900; color: var(--primary-dark); display: flex; align-items: center; gap: 8px; }
     .video-wrapper {
       position: relative;
       padding-bottom: 56.25%;
@@ -372,16 +341,48 @@
       border-radius: 18px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.1);
     }
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-    /* JOGOS */
+    /* ESTILOS DA ÁREA VIP */
+    .vip-lock-container {
+      background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 3px dashed #F59E0B;
+      border-radius: var(--radius-lg);
+      padding: 30px 20px;
+      text-align: center;
+      margin: 0 20px;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
+    }
+    .vip-lock-container h3 { font-size: 24px; font-weight: 900; color: #B45309; margin-bottom: 10px; }
+    .vip-lock-container p { font-size: 14px; color: #78350F; font-weight: 600; line-height: 1.6; margin-bottom: 20px; }
+    
+    .btn-vip-checkout {
+      display: inline-block;
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+      color: #FFF;
+      font-weight: 800;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 16px;
+      text-decoration: none;
+      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.35);
+      transition: transform 0.2s;
+    }
+    .btn-vip-checkout:hover { transform: scale(1.05); }
+
+    .vip-content-unlocked { display: none; padding: 0 20px; flex-direction: column; gap: 20px; }
+    .vip-content-unlocked.active-vip { display: flex; }
+
+    .vip-card-box {
+      background: #FFF;
+      border: 2px solid #F59E0B;
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+    }
+    .vip-card-box h4 { font-size: 18px; font-weight: 900; color: #B45309; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+
+    /* JOGOS & LOUSA */
     .age-group-section {
       margin: 0 20px;
       background: #FFFFFF;
@@ -389,13 +390,7 @@
       padding: 18px;
       border: 2px solid #E2E8F0;
     }
-    .age-title {
-      font-size: 18px;
-      font-weight: 900;
-      color: var(--primary-dark);
-      margin-bottom: 12px;
-    }
-
+    .age-title { font-size: 18px; font-weight: 900; color: var(--primary-dark); margin-bottom: 12px; }
     .interactive-card {
       background: #F8FAFC;
       border-radius: 16px;
@@ -404,15 +399,7 @@
       border: 1px solid #E2E8F0;
       margin-bottom: 14px;
     }
-
-    /* SELETOR DE MODO DA LOUSA MÁGICA */
-    .lousa-mode-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
+    .lousa-mode-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
     .btn-mode {
       padding: 8px 14px;
       border-radius: 12px;
@@ -422,24 +409,10 @@
       font-weight: 800;
       font-size: 13px;
       cursor: pointer;
-      transition: all 0.2s;
     }
-    .btn-mode.active {
-      background: var(--primary);
-      color: #FFF;
-    }
-
-    /* SELEÇÃO DE DESENHOS */
-    .coloring-select-grid {
-      display: none;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-    .coloring-select-grid.active {
-      display: flex;
-    }
+    .btn-mode.active { background: var(--primary); color: #FFF; }
+    .coloring-select-grid { display: none; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .coloring-select-grid.active { display: flex; }
     .btn-color-draw {
       background: #FFF;
       border: 2px solid #CBD5E1;
@@ -451,127 +424,25 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      transition: all 0.2s ease;
     }
-    .btn-color-draw.selected {
-      border-color: var(--primary);
-      background: #E0F2FE;
-    }
-    .btn-color-draw img {
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-    }
-
-    .lousa-controls-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: #E0F2FE;
-      padding: 8px 14px;
-      border-radius: 14px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-    .lousa-controls-bar label {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--primary-dark);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .lousa-container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    #paintCanvas {
-      background: #FFF;
-      border: 3px solid var(--primary);
-      border-radius: 20px;
-      width: 100%;
-      min-height: 380px;
-      touch-action: none;
-      cursor: crosshair;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
-    }
-    .palette {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      align-items: center;
-      margin-top: 12px;
-      flex-wrap: wrap;
-    }
-    .color-dot {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 2px solid #FFF;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      cursor: pointer;
-    }
-
-    .game-btn-grid {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-    .btn-choice {
-      background: var(--purple);
-      color: #FFF;
-      border: none;
-      padding: 10px 18px;
-      font-weight: 800;
-      font-size: 16px;
-      border-radius: 14px;
-      cursor: pointer;
-    }
-
-    /* MEMÓRIA */
-    .memory-board {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-top: 10px;
-      max-width: 360px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .memory-card {
-      aspect-ratio: 1;
-      background: var(--primary);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFF;
-      font-weight: 900;
-      font-size: 20px;
-      cursor: pointer;
-    }
+    .btn-color-draw.selected { border-color: var(--primary); background: #E0F2FE; }
+    .btn-color-draw img { width: 22px; height: 22px; object-fit: contain; }
+    .lousa-controls-bar { display: flex; align-items: center; justify-content: center; gap: 12px; background: #E0F2FE; padding: 8px 14px; border-radius: 14px; margin-bottom: 12px; flex-wrap: wrap; }
+    .lousa-controls-bar label { font-size: 12px; font-weight: 800; color: var(--primary-dark); display: flex; align-items: center; gap: 6px; }
+    .lousa-container { width: 100%; display: flex; flex-direction: column; align-items: center; }
+    #paintCanvas { background: #FFF; border: 3px solid var(--primary); border-radius: 20px; width: 100%; min-height: 380px; touch-action: none; cursor: crosshair; }
+    .palette { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+    .color-dot { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #FFF; box-shadow: 0 2px 6px rgba(0,0,0,0.15); cursor: pointer; }
+    .game-btn-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .btn-choice { background: var(--purple); color: #FFF; border: none; padding: 10px 18px; font-weight: 800; font-size: 16px; border-radius: 14px; cursor: pointer; }
+    .memory-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; max-width: 360px; margin-left: auto; margin-right: auto; }
+    .memory-card { aspect-ratio: 1; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 900; font-size: 20px; cursor: pointer; }
     .memory-card.flipped { background: #FFF; border: 2px solid var(--primary); }
     .memory-card img { width: 80%; height: 80%; object-fit: contain; }
 
     /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 15px 20px 0;
-      border-top: 1px solid #E2E8F0;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-    .creator-link {
-      color: var(--purple);
-      font-weight: 800;
-      text-decoration: none;
-    }
+    footer { text-align: center; padding: 15px 20px 0; border-top: 1px solid #E2E8F0; font-size: 13px; color: var(--text-muted); }
+    .creator-link { color: var(--purple); font-weight: 800; text-decoration: none; }
 
     @media (min-width: 900px) {
       .app-container { max-width: 1200px; padding: 20px 30px; }
@@ -598,11 +469,12 @@
       </button>
     </header>
 
-    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <!-- NAVEGAÇÃO PRINCIPAL (COM ABAS + ÁREA VIP) -->
     <div class="page-nav">
       <button id="btn-tab-inicio" class="nav-tab-btn active" onclick="mudarPagina('inicio')">🏠 Início</button>
       <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">🎬 Vídeos</button>
       <button id="btn-tab-jogos" class="nav-tab-btn" onclick="mudarPagina('jogos')">🎮 Jogos</button>
+      <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
     </div>
 
     <!-- PÁGINA 1: INÍCIO -->
@@ -616,12 +488,10 @@
         <div class="intro-box">
           <div class="intro-box-header">
             <h2>✨ Bem-vindo à Turminha do Xexéu!</h2>
-            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Turminha do Xexéu! Nosso canal traz historinhas, animações e jogos educativos para ensinar valores e amizade!')" title="Ouvir Boas-Vindas">🔊</button>
+            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Turminha do Xexéu! Nosso canal traz historinhas e jogos educativos!')" title="Ouvir">🔊</button>
           </div>
           <p>Nosso canal traz historinhas, animações e jogos educativos para ensinar valores, amizade e aprendizado para todas as crianças!</p>
-          <div class="audio-notice-info">
-            💡 Dica: Ative ou desative a leitura por voz no botão do topo.
-          </div>
+          <div class="audio-notice-info">💡 Dica: Ative ou desative a leitura por voz no topo.</div>
         </div>
       </div>
 
@@ -633,9 +503,7 @@
         <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify">🎧</a>
         <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music">🎶</a>
         <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook">👍</a>
-        <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads">
-          <img src="https://i.imgur.com/7cE4xVg.png" alt="Threads">
-        </a>
+        <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/7cE4xVg.png"></a>
       </div>
 
       <!-- PERSONAGENS -->
@@ -645,38 +513,14 @@
       </div>
       
       <div class="characters-grid">
-        <div class="char-card" onclick="exibirEFalar('Xexéu', 'O mascote alegre da Turminha de boina amarela!', 'm')">
-          <img src="https://i.imgur.com/yApuLed.png" alt="Xexéu">
-          <span>Xexéu</span>
-        </div>
-        <div class="char-card" onclick="exibirEFalar('Capilé', 'O cachorrinho esperto de coleira azul!', 'm')">
-          <img src="https://i.imgur.com/ETC0paX.png" alt="Capilé">
-          <span>Capilé</span>
-        </div>
-        <div class="char-card" onclick="exibirEFalar('Léo', 'Um amiguinho curioso de jaqueta azul!', 'm')">
-          <img src="https://i.imgur.com/vunKLqO.png" alt="Léo">
-          <span>Léo</span>
-        </div>
-        <div class="char-card" onclick="exibirEFalar('Joca', 'O menino criativo de camiseta verde!', 'm')">
-          <img src="https://i.imgur.com/VoHSsw9.png" alt="Joca">
-          <span>Joca</span>
-        </div>
-        <div class="char-card" onclick="exibirEFalar('Iza', 'A menina adorável de vestido rosa!', 'f')">
-          <img src="https://i.imgur.com/IX3LrtJ.png" alt="Iza">
-          <span>Iza</span>
-        </div>
-        <div class="char-card" onclick="exibirEFalar('Nina', 'A menina de cabelos cacheados e vestido rosa escuro!', 'f')">
-          <img src="https://i.imgur.com/cBOKp6k.jpeg" alt="Nina">
-          <span>Nina</span>
-        </div>
-        <div class="char-card" onclick="exibirEFalar('Hilda', 'A vovó carinhosa de óculos redondos!', 'f')">
-          <img src="https://i.imgur.com/qcJyZb5.png" alt="Hilda">
-          <span>Hilda</span>
-        </div>
-        <div class="char-card" onclick="exibirEFalar('Beto', 'O vovô atencioso de óculos azuis!', 'm')">
-          <img src="https://i.imgur.com/lzOHT4F.png" alt="Beto">
-          <span>Beto</span>
-        </div>
+        <div class="char-card" onclick="exibirEFalar('Xexéu', 'O mascote alegre da Turminha de boina amarela!', 'm')"><img src="https://i.imgur.com/yApuLed.png"><span>Xexéu</span></div>
+        <div class="char-card" onclick="exibirEFalar('Capilé', 'O cachorrinho esperto de coleira azul!', 'm')"><img src="https://i.imgur.com/ETC0paX.png"><span>Capilé</span></div>
+        <div class="char-card" onclick="exibirEFalar('Léo', 'Um amiguinho curioso de jaqueta azul!', 'm')"><img src="https://i.imgur.com/vunKLqO.png"><span>Léo</span></div>
+        <div class="char-card" onclick="exibirEFalar('Joca', 'O menino criativo de camiseta verde!', 'm')"><img src="https://i.imgur.com/VoHSsw9.png"><span>Joca</span></div>
+        <div class="char-card" onclick="exibirEFalar('Iza', 'A menina adorável de vestido rosa!', 'f')"><img src="https://i.imgur.com/IX3LrtJ.png"><span>Iza</span></div>
+        <div class="char-card" onclick="exibirEFalar('Nina', 'A menina de cabelos cacheados e vestido rosa escuro!', 'f')"><img src="https://i.imgur.com/cBOKp6k.jpeg"><span>Nina</span></div>
+        <div class="char-card" onclick="exibirEFalar('Hilda', 'A vovó carinhosa de óculos redondos!', 'f')"><img src="https://i.imgur.com/qcJyZb5.png"><span>Hilda</span></div>
+        <div class="char-card" onclick="exibirEFalar('Beto', 'O vovô atencioso de óculos azuis!', 'm')"><img src="https://i.imgur.com/lzOHT4F.png"><span>Beto</span></div>
       </div>
 
       <div class="char-details-box" id="detalhes-personagem">
@@ -691,7 +535,7 @@
             <button class="btn-audio-mini" onclick="lerTexto('Assista à playlist oficial de vídeos e músicas da Turminha do Xexéu!')" title="Ouvir">🔊</button>
           </div>
           <div class="video-wrapper">
-            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -706,18 +550,16 @@
             <button class="btn-audio-mini" onclick="lerTexto('Esta é a playlist oficial da Turminha do Xexéu no YouTube!')" title="Ouvir">🔊</button>
           </div>
           <div class="video-wrapper">
-            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- PÁGINA 3: JOGOS (COM SUB-ABAS PARA NÃO EMPILHAR NO CELULAR) -->
+    <!-- PÁGINA 3: JOGOS -->
     <div id="pagina-jogos" class="page-content">
       <div class="age-group-section">
         <div class="age-title">🎮 Área de Jogos da Turminha</div>
-        
-        <!-- SUB-ABAS DE JOGOS -->
         <div class="games-subnav">
           <button id="subtab-lousa" class="subnav-btn active" onclick="mudarSubJogo('lousa')">🎨 Lousa Mágica</button>
           <button id="subtab-contar" class="subnav-btn" onclick="mudarSubJogo('contar')">🔢 Contar</button>
@@ -726,14 +568,13 @@
           <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
         </div>
 
-        <!-- 1. ABA LOUSA MÁGICA -->
+        <!-- LOUSA MÁGICA -->
         <div id="game-lousa" class="game-tab-content active-game-tab interactive-card lousa-container">
           <h4 style="font-weight: 800; margin-bottom: 8px;">🎨 Lousa Mágica & Desenhos</h4>
           <div class="lousa-mode-tabs">
             <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Desenho Livre</button>
             <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Pintar Personagens</button>
           </div>
-
           <div id="coloringSelectGrid" class="coloring-select-grid">
             <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/gXjRjnR.png', 'Xexéu', this)"><img src="https://i.imgur.com/gXjRjnR.png"> Xexéu</button>
             <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/GVVoxPy.png', 'Léo', this)"><img src="https://i.imgur.com/GVVoxPy.png"> Léo</button>
@@ -744,14 +585,11 @@
             <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/CMVveed.png', 'Hilda', this)"><img src="https://i.imgur.com/CMVveed.png"> Hilda</button>
             <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/dwpdeww.png', 'Beto', this)"><img src="https://i.imgur.com/dwpdeww.png"> Beto</button>
           </div>
-
           <div class="lousa-controls-bar">
             <label>🖌️ Pincel: <input type="range" id="brushSizeInput" min="2" max="24" value="6" onchange="mudarTamanhoPincel(this.value)"></label>
             <label>🔍 Zoom Guia: <input type="range" id="zoomScaleInput" min="50" max="100" value="85" onchange="mudarZoomGuia(this.value)"></label>
           </div>
-
           <canvas id="paintCanvas"></canvas>
-          
           <div class="palette">
             <div class="color-dot" style="background: #3B82F6;" onclick="mudarCor('#3B82F6')"></div>
             <div class="color-dot" style="background: #EF4444;" onclick="mudarCor('#EF4444')"></div>
@@ -765,7 +603,7 @@
           </div>
         </div>
 
-        <!-- 2. ABA CONTAR -->
+        <!-- CONTAR -->
         <div id="game-contar" class="game-tab-content interactive-card">
           <h4 style="font-weight: 800;">🔢 Vamos Contar?</h4>
           <p style="font-size: 13px; color: var(--text-muted);">Quantos bonequinhos aparecem abaixo?</p>
@@ -773,7 +611,7 @@
           <div id="countOptions" class="game-btn-grid"></div>
         </div>
 
-        <!-- 3. ABA LETRAS -->
+        <!-- LETRAS -->
         <div id="game-letras" class="game-tab-content interactive-card">
           <h4 style="font-weight: 800;">🔤 Qual é a Primeira Letra?</h4>
           <p style="font-size: 14px; font-weight: 700; margin-top: 8px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple);">Xexéu</strong></p>
@@ -781,14 +619,14 @@
           <div id="opcoes-letras" class="game-btn-grid"></div>
         </div>
 
-        <!-- 4. ABA MEMÓRIA -->
+        <!-- MEMÓRIA -->
         <div id="game-memoria" class="game-tab-content interactive-card">
           <h4 style="font-weight: 800;">🧠 Jogo da Memória</h4>
           <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Encontre os 4 pares dos amigos!</p>
           <div id="memoryBoard" class="memory-board"></div>
         </div>
 
-        <!-- 5. ABA QUIZ & CORES -->
+        <!-- QUIZ & CORES -->
         <div id="game-quiz" class="game-tab-content interactive-card">
           <h4 style="font-weight: 800; margin-bottom: 10px;">❓ Desafios da Turminha</h4>
           <div style="display: flex; flex-direction: column; gap: 20px;">
@@ -803,6 +641,61 @@
               <div id="cor-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
             </div>
           </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PÁGINA 4: ÁREA VIP (COM BLOQUEIO DE PAGAMENTO E ERROS DE GRAVAÇÃO) -->
+    <div id="pagina-vip" class="page-content">
+      <div class="age-group-section">
+        <div class="age-title" style="color: #D97706;">⭐ Cantinho Exclusivo da Área VIP</div>
+
+        <!-- TELA DE BLOQUEIO / PAGAMENTO -->
+        <div id="vip-locked-view" class="vip-lock-container">
+          <h3>🔒 Conteúdo Exclusivo para Apoiadores</h3>
+          <p>Desbloqueie episódios secretos, erros de gravação hilários, desenhos em PDF para colorir, wallpapers e bastidores de animação 3D da Evelyn por apenas um valor super especial! O acesso fica salvo permanentemente no seu dispositivo.</p>
+          
+          <a href="https://www.mercadopago.com.br" target="_blank" class="btn-vip-checkout" onclick="ativarVipTeste()">
+            ⭐ Quero Acesso VIP (Mercado Pago)
+          </a>
+          <br><br>
+          <button onclick="liberarVipManual()" style="background:transparent; border:none; color:#B45309; font-size:12px; font-weight:700; cursor:pointer; text-decoration:underline;">
+            (Modo Teste: Clique aqui para simular acesso liberado)
+          </button>
+        </div>
+
+        <!-- CONTEÚDO VIP LIBERADO (INCLUINDO ERROS DE GRAVAÇÃO FINGIDOS) -->
+        <div id="vip-unlocked-view" class="vip-content-unlocked">
+          
+          <!-- ERROS DE GRAVAÇÃO EXCLUSIVOS -->
+          <div class="vip-card-box">
+            <h4>🎬 Erros de Gravação & Bastidores Engraçados</h4>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
+              Confira os micos, falhas de animação fingidas e tropeços mais engraçados da Turminha que não foram para o canal principal! 😂
+            </p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="vip-card-box">
+            <h4>🎥 Episódios & Músicas Secretas</h4>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Conteúdos antecipados direto do estúdio da Turminha!</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="vip-card-box">
+            <h4>🎨 Cantinho dos Downloads & Bastidores 3D</h4>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Baixe wallpapers exclusivos para o seu celular e veja os bastidores em 3D (Blender) criados pela Eve Design!</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <a href="https://i.imgur.com/mvQQyMp.png" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none;">📥 Wallpaper Celular</a>
+              <a href="https://i.imgur.com/ANqcDjC.png" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none; background: var(--green);">📥 Pack de Desenhos PDF</a>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -832,15 +725,43 @@
       { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', letra: 'B', genero: 'm', corPergunta: "Qual a cor dos óculos do Vovô Beto?", corCorreta: "Azul", corOpcoes: ["Azul", "Amarelo", "Preto"] }
     ];
 
-    /* GERENCIAMENTO DE PÁGINAS PRINCIPAIS */
+    /* CHECAGEM DO ACESSO VIP SALVO NO DISPOSITIVO */
+    function verificarStatusVip() {
+      const isVip = localStorage.getItem('turminha_xexeu_vip');
+      const lockedView = document.getElementById('vip-locked-view');
+      const unlockedView = document.getElementById('vip-unlocked-view');
+
+      if (isVip === 'true') {
+        lockedView.style.display = 'none';
+        unlockedView.classList.add('active-vip');
+      } else {
+        lockedView.style.display = 'block';
+        unlockedView.classList.remove('active-vip');
+      }
+    }
+
+    /* LIBERAÇÃO MANUAL PARA TESTAR NO NAVEGADOR */
+    function liberarVipManual() {
+      localStorage.setItem('turminha_xexeu_vip', 'true');
+      verificarStatusVip();
+      lerTexto("Acesso VIP liberado com sucesso neste dispositivo!");
+    }
+
+    function ativarVipTeste() {
+      localStorage.setItem('turminha_xexeu_vip', 'true');
+    }
+
+    /* GERENCIAMENTO DE PÁGINAS */
     function mudarPagina(pagina) {
       document.getElementById('pagina-inicio').classList.remove('active-page');
       document.getElementById('pagina-videos').classList.remove('active-page');
       document.getElementById('pagina-jogos').classList.remove('active-page');
+      document.getElementById('pagina-vip').classList.remove('active-page');
       
       document.getElementById('btn-tab-inicio').classList.remove('active');
       document.getElementById('btn-tab-videos').classList.remove('active');
       document.getElementById('btn-tab-jogos').classList.remove('active');
+      document.getElementById('btn-tab-vip').classList.remove('active');
 
       if (pagina === 'inicio') {
         document.getElementById('pagina-inicio').classList.add('active-page');
@@ -848,14 +769,17 @@
       } else if (pagina === 'videos') {
         document.getElementById('pagina-videos').classList.add('active-page');
         document.getElementById('btn-tab-videos').classList.add('active');
-      } else {
+      } else if (pagina === 'jogos') {
         document.getElementById('pagina-jogos').classList.add('active-page');
         document.getElementById('btn-tab-jogos').classList.add('active');
         setTimeout(redimensionarCanvas, 100);
+      } else if (pagina === 'vip') {
+        document.getElementById('pagina-vip').classList.add('active-page');
+        document.getElementById('btn-tab-vip').classList.add('active');
+        verificarStatusVip();
       }
     }
 
-    /* GERENCIAMENTO DAS SUB-ABAS DE JOGOS */
     function mudarSubJogo(sub) {
       const subs = ['lousa', 'contar', 'letras', 'memoria', 'quiz'];
       subs.forEach(s => {
@@ -867,12 +791,10 @@
       if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
     }
 
-    /* CONTROLE DE ÁUDIO SEGURO PARA CELULAR */
     function alternarAudioGlobal() {
       audioAtivo = !audioAtivo;
       const btn = document.getElementById('toggleAudioBtn');
       if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-
       if (audioAtivo) {
         btn.classList.remove('muted');
         document.getElementById('audioIcon').innerText = '🔊';
@@ -892,9 +814,7 @@
         utterance.lang = 'pt-BR';
         utterance.rate = 0.95;
         window.speechSynthesis.speak(utterance);
-      } catch (e) {
-        console.log("Áudio ignorado pelo navegador");
-      }
+      } catch (e) {}
     }
 
     function exibirEFalar(nome, desc, genero = 'm') {
@@ -904,107 +824,77 @@
       lerTexto(artigo + nome + ". " + desc);
     }
 
-    /* 1. JOGO DE CONTAR */
+    /* FUNÇÕES DOS JOGOS */
     let qContar = 0;
     function carregarJogoContar() {
       qContar = Math.floor(Math.random() * 9) + 1;
       const charSorteado = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      
       const display = document.getElementById('countDisplay');
       display.innerHTML = '';
       for (let i = 0; i < qContar; i++) {
         const img = document.createElement('img');
         img.src = charSorteado.img;
-        img.style.width = '42px';
-        img.style.height = '42px';
-        img.style.objectFit = 'contain';
+        img.style.width = '42px'; img.style.height = '42px'; img.style.objectFit = 'contain';
         display.appendChild(img);
       }
-
       const opts = document.getElementById('countOptions');
       opts.innerHTML = '';
-      
       for (let n = 1; n <= 9; n++) {
         const btn = document.createElement('button');
         btn.className = 'btn-choice';
         btn.style.padding = '10px 16px';
         btn.innerText = n;
         btn.onclick = () => {
-          if (n === qContar) { 
-            lerTexto("Parabéns! Você contou certinho!"); 
-            setTimeout(carregarJogoContar, 600); 
-          } else { 
-            lerTexto("Tente novamente!"); 
-          }
+          if (n === qContar) { lerTexto("Parabéns! Contou certinho!"); setTimeout(carregarJogoContar, 600); }
+          else { lerTexto("Tente novamente!"); }
         };
         opts.appendChild(btn);
       }
     }
 
-    /* 2. JOGO DA PRIMEIRA LETRA */
     let pLetraAtual = null;
     function carregarJogoLetra() {
       pLetraAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
       document.getElementById('nome-letra-personagem').innerText = pLetraAtual.nome;
       document.getElementById('img-letra-personagem').src = pLetraAtual.img;
-      
       const container = document.getElementById('opcoes-letras');
       container.innerHTML = '';
-      
       const alfabeto = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Z'];
       let opcoes = [pLetraAtual.letra];
       while (opcoes.length < 3) {
         let lAleatoria = alfabeto[Math.floor(Math.random() * alfabeto.length)];
         if (!opcoes.includes(lAleatoria)) opcoes.push(lAleatoria);
       }
-      
       opcoes.sort(() => Math.random() - 0.5).forEach(l => {
         const btn = document.createElement('button');
-        btn.className = 'btn-choice';
-        btn.innerText = l;
+        btn.className = 'btn-choice'; btn.innerText = l;
         btn.onclick = () => {
-          if (l === pLetraAtual.letra) {
-            lerTexto("Muito bem! Letra " + pLetraAtual.letra);
-            setTimeout(carregarJogoLetra, 600);
-          } else { 
-            lerTexto("Tente de novo!"); 
-          }
+          if (l === pLetraAtual.letra) { lerTexto("Muito bem! Letra " + pLetraAtual.letra); setTimeout(carregarJogoLetra, 600); }
+          else { lerTexto("Tente de novo!"); }
         };
         container.appendChild(btn);
       });
     }
 
-    /* 3. JOGO DA MEMÓRIA */
     let cMem = [], pCarta = null, travaMem = false, acertosMem = 0;
     function iniciarMemoria() {
       acertosMem = 0;
       const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 4);
       const imgsMem = sorteados.map(p => p.img);
-      
       cMem = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
       const board = document.getElementById('memoryBoard');
       board.innerHTML = '';
-      
       cMem.forEach(src => {
         const card = document.createElement('div');
-        card.className = 'memory-card';
-        card.dataset.img = src;
-        card.innerText = '❓';
+        card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
         card.onclick = () => {
           if (travaMem || card.classList.contains('flipped')) return;
-          card.classList.add('flipped');
-          card.innerHTML = `<img src="${src}">`;
-          if (!pCarta) { 
-            pCarta = card; 
-          } else {
-            if (pCarta.dataset.img === src) { 
-              acertosMem++;
-              lerTexto("Par! Acertou!"); 
-              pCarta = null; 
-              if (acertosMem === 4) {
-                lerTexto("Incrível! Encontrou todos os pares!");
-                setTimeout(iniciarMemoria, 1800);
-              }
+          card.classList.add('flipped'); card.innerHTML = `<img src="${src}">`;
+          if (!pCarta) { pCarta = card; }
+          else {
+            if (pCarta.dataset.img === src) {
+              acertosMem++; lerTexto("Par! Acertou!"); pCarta = null;
+              if (acertosMem === 4) { lerTexto("Incrível! Encontrou todos os pares!"); setTimeout(iniciarMemoria, 1800); }
             } else {
               travaMem = true;
               setTimeout(() => {
@@ -1019,81 +909,59 @@
       });
     }
 
-    /* 4. QUIZ */
     let pQuizAtual = null;
     function carregarQuiz() {
       pQuizAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
       document.getElementById('quiz-img').src = pQuizAtual.img;
-      
       const container = document.getElementById('quiz-options');
       container.innerHTML = '';
-      
       let opcoes = [pQuizAtual.nome];
       while (opcoes.length < 3) {
         let outro = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome;
         if (!opcoes.includes(outro)) opcoes.push(outro);
       }
-      
       opcoes.sort(() => Math.random() - 0.5).forEach(o => {
         const btn = document.createElement('button');
         btn.style.cssText = "padding:8px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
         btn.innerText = o;
         btn.onclick = () => {
-          if (o === pQuizAtual.nome) { 
-            lerTexto("Parabéns! É o " + pQuizAtual.nome); 
-            setTimeout(carregarQuiz, 600); 
-          } else { 
-            lerTexto("Tente novamente!"); 
-          }
+          if (o === pQuizAtual.nome) { lerTexto("Parabéns! É o " + pQuizAtual.nome); setTimeout(carregarQuiz, 600); }
+          else { lerTexto("Tente novamente!"); }
         };
         container.appendChild(btn);
       });
     }
 
-    /* 5. COR DA ROUPA */
     let pCorAtual = null;
     function carregarJogoCor() {
       pCorAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
       document.getElementById('cor-pergunta-txt').innerText = pCorAtual.corPergunta;
       document.getElementById('cor-img').src = pCorAtual.img;
-      
       const container = document.getElementById('cor-options');
       container.innerHTML = '';
-      
       pCorAtual.corOpcoes.sort(() => Math.random() - 0.5).forEach(o => {
         const btn = document.createElement('button');
         btn.style.cssText = "padding:8px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
         btn.innerText = o;
         btn.onclick = () => {
-          if (o === pCorAtual.corCorreta) { 
-            lerTexto("Acertou! Cor correta!"); 
-            setTimeout(carregarJogoCor, 600); 
-          } else { 
-            lerTexto("Tente de novo!"); 
-          }
+          if (o === pCorAtual.corCorreta) { lerTexto("Acertou! Cor correta!"); setTimeout(carregarJogoCor, 600); }
+          else { lerTexto("Tente de novo!"); }
         };
         container.appendChild(btn);
       });
     }
 
-    /* LOUSA CANVAS */
+    /* LOUSA */
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas.getContext('2d');
     let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free';
-    let imagemPintarCarregada = null;
-    let tamanhoPincel = 6;
-    let escalaZoomGuia = 0.85;
+    let imagemPintarCarregada = null, tamanhoPincel = 6, escalaZoomGuia = 0.85;
 
     function redimensionarCanvas() {
       if (!canvas.parentElement) return;
       canvas.width = canvas.parentElement.clientWidth - 20;
-      let altura = 360;
-      if (window.innerWidth >= 900) altura = 420;
-      canvas.height = altura;
-      
-      if (modoLousa === 'color' && imagemPintarCarregada) {
-        desenharContornoNoCanvas(imagemPintarCarregada);
-      }
+      canvas.height = window.innerWidth >= 900 ? 420 : 360;
+      if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada);
     }
 
     function setLousaMode(modo) {
@@ -1101,9 +969,7 @@
       document.getElementById('btn-mode-free').classList.remove('active');
       document.getElementById('btn-mode-color').classList.remove('active');
       document.getElementById('coloringSelectGrid').classList.remove('active');
-
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       if (modo === 'free') {
         document.getElementById('btn-mode-free').classList.add('active');
         imagemPintarCarregada = null;
@@ -1117,27 +983,19 @@
     }
 
     function carregarContornoPintar(urlImg, nome, btnElemento) {
-      const todosBotoes = document.querySelectorAll('.btn-color-draw');
-      todosBotoes.forEach(b => b.classList.remove('selected'));
+      document.querySelectorAll('.btn-color-draw').forEach(b => b.classList.remove('selected'));
       if (btnElemento) btnElemento.classList.add('selected');
-
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
       const img = new Image();
       img.crossOrigin = "Anonymous";
       img.src = urlImg;
-      img.onload = () => {
-        imagemPintarCarregada = img;
-        desenharContornoNoCanvas(img);
-        lerTexto("Vamos pintar o " + nome + "!");
-      };
+      img.onload = () => { imagemPintarCarregada = img; desenharContornoNoCanvas(img); lerTexto("Vamos pintar o " + nome + "!"); };
     }
 
     function desenharContornoNoCanvas(img) {
       const escala = Math.min(canvas.width / img.width, canvas.height / img.height) * escalaZoomGuia;
       const x = (canvas.width / 2) - (img.width * escala / 2);
       const y = (canvas.height / 2) - (img.height * escala / 2);
-      
       ctx.globalAlpha = 0.35;
       ctx.drawImage(img, x, y, img.width * escala, img.height * escala);
       ctx.globalAlpha = 1.0;
@@ -1153,23 +1011,17 @@
       }
     }
 
-    function limparCanvas() { 
-      ctx.clearRect(0, 0, canvas.width, canvas.height); 
-      if (modoLousa === 'color' && imagemPintarCarregada) {
-        desenharContornoNoCanvas(imagemPintarCarregada);
-      }
+    function limparCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada);
     }
 
     function salvarFotoDesenho() {
       const tempCanvas = document.createElement('canvas');
-      tempCanvas.width = canvas.width;
-      tempCanvas.height = canvas.height;
+      tempCanvas.width = canvas.width; tempCanvas.height = canvas.height;
       const tempCtx = tempCanvas.getContext('2d');
-
-      tempCtx.fillStyle = '#FFFFFF';
-      tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+      tempCtx.fillStyle = '#FFFFFF'; tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
       tempCtx.drawImage(canvas, 0, 0);
-
       const link = document.createElement('a');
       link.download = 'Meu-Desenho-Turminha-do-Xexeu.png';
       link.href = tempCanvas.toDataURL('image/png');
@@ -1190,7 +1042,6 @@
     canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; e.preventDefault(); });
     canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
     canvas.addEventListener('touchend', () => desenhando = false);
-
     window.addEventListener('resize', redimensionarCanvas);
 
     // INICIALIZAÇÕES
@@ -1199,6 +1050,7 @@
     iniciarMemoria();
     carregarQuiz();
     carregarJogoCor();
+    verificarStatusVip();
   </script>
 </body>
 </html>
