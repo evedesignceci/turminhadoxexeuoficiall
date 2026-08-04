@@ -393,7 +393,6 @@
 
     /* FOOTER */
     footer { text-align: center; padding: 15px 20px 0; border-top: 1px solid #E2E8F0; font-size: 13px; color: var(--text-muted); }
-    .creator-link { color: var(--purple); font-weight: 800; text-decoration: none; }
 
     @media (min-width: 900px) {
       .app-container { max-width: 1200px; padding: 20px 30px; }
@@ -441,7 +440,7 @@
             <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Turminha do Xexéu! Nosso canal traz historinhas e jogos educativos!')" title="Ouvir">🔊</button>
           </div>
           <p>Nosso canal traz historinhas, animações e jogos educativos para ensinar valores, amizade e aprendizado para todas as crianças!</p>
-          <div class="audio-notice-info">💡 Dica: Ative ou desative a leitura por voz no topo.</div>
+          <div class="audio-notice-info">💡 Dica: Toque nos personagens ou botões para ouvir!</div>
         </div>
       </div>
 
@@ -475,7 +474,7 @@
 
       <div class="char-details-box" id="detalhes-personagem">
         <h3 id="detalhe-nome" style="color: var(--primary-dark); font-weight: 900;">Clique em um personagem acima!</h3>
-        <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 4px;">A descrição e áudio aparecerão aqui!</p>
+        <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 4px;">A descrição aparecerá aqui!</p>
       </div>
 
       <div class="video-section">
@@ -609,6 +608,7 @@
     const TODOS_PERSONAGENS = [
       { nome: 'Xexéu', img: 'https://i.imgur.com/yApuLed.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
       { nome: 'Capilé', img: 'https://i.imgur.com/ETC0paX.png', letra: 'C', genero: 'm', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
+      { nome: 'Léo', img: '###', letra: 'L', genero: 'm', corPergunta: "Qual a cor da jaqueta do Léo?", corCorreta: "Azul", corOpcoes: ["Amarela", "Verde", "Azul"] }, // URL corrigida abaixo no array real
       { nome: 'Léo', img: 'https://i.imgur.com/vunKLqO.png', letra: 'L', genero: 'm', corPergunta: "Qual a cor da jaqueta do Léo?", corCorreta: "Azul", corOpcoes: ["Amarela", "Verde", "Azul"] },
       { nome: 'Joca', img: 'https://i.imgur.com/VoHSsw9.png', letra: 'J', genero: 'm', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
       { nome: 'Iza', img: 'https://i.imgur.com/IX3LrtJ.png', letra: 'I', genero: 'f', corPergunta: "Qual a cor do vestido da Iza?", corCorreta: "Rosa", corOpcoes: ["Rosa", "Azul", "Amarelo"] },
@@ -617,11 +617,12 @@
       { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', letra: 'B', genero: 'm', corPergunta: "Qual a cor dos óculos do Vovô Beto?", corCorreta: "Azul", corOpcoes: ["Azul", "Amarelo", "Preto"] }
     ];
 
-    /* CORREÇÃO ROBUSTA PARA O SOM / LEITURA DE VOZ FUNCIONAR NO CELULAR */
+    // CORREÇÃO DEFINITIVA PARA DESTRAVAR O ÁUDIO NO CELULAR AO TOCAR NA TELA
     function destravarAudioMobile() {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
         const dummy = new SpeechSynthesisUtterance("");
+        dummy.volume = 0;
         window.speechSynthesis.speak(dummy);
       }
     }
@@ -635,7 +636,7 @@
         utterance.rate = 0.95;
         window.speechSynthesis.speak(utterance);
       } catch (e) {
-        console.log("Áudio bloqueado pelo navegador");
+        console.log("Áudio indisponível neste navegador");
       }
     }
 
@@ -655,7 +656,11 @@
       }
     }
 
-    // Destrava o áudio no primeiro toque na tela do celular
+    // Ouve o primeiro toque em qualquer lugar da página para liberar o som no celular
+    document.addEventListener('touchstart', () => {
+      destravarAudioMobile();
+    }, { once: true });
+
     document.addEventListener('click', () => {
       destravarAudioMobile();
     }, { once: true });
