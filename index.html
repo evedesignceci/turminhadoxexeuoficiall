@@ -8,7 +8,7 @@
   <!-- Favicon na Aba do Navegador -->
   <link rel="icon" type="image/png" href="https://i.imgur.com/ANqcDjC.png">
 
-  <!-- Meta Tags para Pré-visualização Bonita no WhatsApp e Redes Sociais -->
+  <!-- Meta Tags para Pré-visualização no WhatsApp e Redes Sociais -->
   <meta property="og:title" content="Turminha do Xexéu - App Oficial & Jogos">
   <meta property="og:description" content="Historinhas, animações, canções e jogos educativos para as crianças se divertirem!">
   <meta property="og:image" content="https://i.imgur.com/mvQQyMp.png">
@@ -130,7 +130,7 @@
       }
     }
 
-    /* HEADER COM A LOGO COMPACTA */
+    /* HEADER COM A LOGO CLICÁVEL */
     header {
       text-align: center;
       padding: 12px 15px 6px;
@@ -142,6 +142,14 @@
       margin: 10px 10px 0;
     }
 
+    .logo-link {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+    .logo-link:hover {
+      transform: scale(1.08);
+    }
+
     .logo-img {
       max-width: 120px;
       width: 100%;
@@ -150,10 +158,19 @@
       filter: drop-shadow(0 2px 6px rgba(59, 130, 246, 0.15));
     }
 
-    /* CAPA PRINCIPAL */
+    /* CAPA PRINCIPAL CLICÁVEL */
     .banner-container {
       width: 100%;
       padding: 0 20px;
+    }
+    .banner-link {
+      display: block;
+      width: 100%;
+      text-decoration: none;
+      transition: transform 0.25s ease;
+    }
+    .banner-link:hover {
+      transform: scale(1.02);
     }
     .banner-img {
       width: 100%;
@@ -376,14 +393,14 @@
     }
     .palette {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
     }
     .color-dot {
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       border: 3px solid #FFF;
       box-shadow: var(--shadow-sm);
@@ -393,17 +410,41 @@
     .color-dot:hover {
       transform: scale(1.15);
     }
+
+    /* ROLETA / SELETOR DE CORES */
+    .color-wheel-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red);
+      padding: 3px;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+    }
+    .color-wheel-input {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
     .btn-clear-canvas {
       background: #FEE2E2;
       color: var(--accent);
       border: none;
-      padding: 10px 20px;
+      padding: 10px 18px;
       border-radius: 16px;
       font-weight: 800;
-      font-size: 14px;
+      font-size: 13px;
       cursor: pointer;
     }
 
+    /* GRADE DE JOGOS (4 JOGOS) */
     .games-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -418,8 +459,8 @@
     }
 
     .quiz-img-holder {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       margin: 10px auto 16px;
       display: flex;
       align-items: center;
@@ -429,8 +470,8 @@
       border: 3px solid #E0F2FE;
     }
     .quiz-img {
-      max-width: 120px;
-      max-height: 120px;
+      max-width: 110px;
+      max-height: 110px;
       object-fit: contain;
       filter: drop-shadow(0 8px 16px rgba(0,0,0,0.12));
     }
@@ -444,10 +485,10 @@
       background: #F8FAFC;
       border: 2px solid #CBD5E1;
       color: var(--text-main);
-      padding: 14px 16px;
+      padding: 12px 16px;
       border-radius: 18px;
       font-weight: 800;
-      font-size: 15px;
+      font-size: 14px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -469,9 +510,9 @@
       background: linear-gradient(135deg, var(--purple) 0%, #7C3AED 100%);
       color: #FFFFFF;
       border: none;
-      width: 60px;
-      height: 60px;
-      font-size: 28px;
+      width: 55px;
+      height: 55px;
+      font-size: 26px;
       font-weight: 900;
       border-radius: 18px;
       cursor: pointer;
@@ -480,6 +521,53 @@
     }
     .btn-letter-choice:hover {
       transform: scale(1.1);
+    }
+
+    /* JOGO DA MEMÓRIA */
+    .memory-board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .memory-card {
+      aspect-ratio: 1;
+      background: #3B82F6;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+      font-weight: 900;
+      transition: transform 0.3s;
+      user-select: none;
+    }
+    .memory-card.flipped {
+      background: #FFFFFF;
+      border: 2px solid #3B82F6;
+    }
+    .memory-card img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+    }
+
+    /* JOGO DE CONTAR */
+    .count-display {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 15px 0;
+      min-height: 80px;
+      align-items: center;
+    }
+    .count-item {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
     }
 
     /* CAIXA DE AGRADECIMENTO NO FINAL */
@@ -570,15 +658,19 @@
 
   <div class="app-container">
 
-    <!-- 1. HEADER COM A LOGO COMPACTA -->
+    <!-- 1. HEADER COM A LOGO CLICÁVEL -->
     <header>
-      <img src="https://i.imgur.com/ANqcDjC.png" alt="Logo Turminha do Xexéu" class="logo-img">
+      <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" rel="noopener noreferrer" class="logo-link" title="Abrir canal no YouTube">
+        <img src="https://i.imgur.com/ANqcDjC.png" alt="Logo Turminha do Xexéu" class="logo-img">
+      </a>
     </header>
 
-    <!-- 2 & 3. BANNER E INTRODUÇÃO (LADO A LADO NO PC) -->
+    <!-- 2 & 3. BANNER CLICÁVEL E INTRODUÇÃO (LADO A LADO NO PC) -->
     <div class="banner-intro-grid">
       <div class="banner-container">
-        <img src="https://i.imgur.com/mvQQyMp.png" alt="Capa Turminha do Xexéu" class="banner-img">
+        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" rel="noopener noreferrer" class="banner-link" title="Ir para o canal do YouTube">
+          <img src="https://i.imgur.com/mvQQyMp.png" alt="Capa Turminha do Xexéu" class="banner-img">
+        </a>
       </div>
 
       <div class="intro-box">
@@ -587,7 +679,7 @@
       </div>
     </div>
 
-    <!-- 4. BOTÕES REDONDOS E MINIMALISTAS DAS REDES SOCIAIS -->
+    <!-- 4. BOTÕES REDONDOS DAS REDES SOCIAIS -->
     <div class="social-round-section">
       <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" rel="noopener noreferrer" class="social-round-btn" title="YouTube">
         <span class="emoji-icon">▶️</span>
@@ -620,35 +712,35 @@
       </div>
 
       <div class="characters-grid">
-        <div class="char-card-playful" onclick="falarPersonagem('Xexéu', 'O mascote alegre da Turminha de boina amarela!', this)">
+        <div class="char-card-playful" onclick="falarPersonagem('Xexéu', 'O mascote alegre da Turminha de boina amarela!', this, 'm')">
           <img src="https://i.imgur.com/yApuLed.png" alt="Xexéu">
           <span>Xexéu</span>
         </div>
-        <div class="char-card-playful" onclick="falarPersonagem('Capilé', 'O cachorrinho esperto de coleira azul!', this)">
+        <div class="char-card-playful" onclick="falarPersonagem('Capilé', 'O cachorrinho esperto de coleira azul!', this, 'm')">
           <img src="https://i.imgur.com/ETC0paX.png" alt="Capilé">
           <span>Capilé</span>
         </div>
-        <div class="char-card-playful" onclick="falarPersonagem('Léo', 'Um amiguinho muito curioso e divertido!', this)">
+        <div class="char-card-playful" onclick="falarPersonagem('Léo', 'Um amiguinho muito curioso e divertido!', this, 'm')">
           <img src="https://i.imgur.com/vunKLqO.png" alt="Léo">
           <span>Léo</span>
         </div>
-        <div class="char-card-playful" onclick="falarPersonagem('Joca', 'O menino criativo de camiseta verde!', this)">
+        <div class="char-card-playful" onclick="falarPersonagem('Joca', 'O menino criativo de camiseta verde!', this, 'm')">
           <img src="https://i.imgur.com/VoHSsw9.png" alt="Joca">
           <span>Joca</span>
         </div>
-        <div class="char-card-playful" onclick="falarPersonagem('Iza', 'A menina adorável de vestido rosa!', this)">
+        <div class="char-card-playful" onclick="falarPersonagem('Iza', 'A menina adorável de vestido rosa!', this, 'f')">
           <img src="https://i.imgur.com/IX3LrtJ.png" alt="Iza">
           <span>Iza</span>
         </div>
-        <div class="char-card-playful" onclick="falarPersonagem('Nina', 'A menina de cabelos cacheados super carinhosa!', this)">
+        <div class="char-card-playful" onclick="falarPersonagem('Nina', 'A menina de cabelos cacheados super carinhosa!', this, 'f')">
           <img src="https://i.imgur.com/cBOKp6k.jpeg" alt="Nina">
           <span>Nina</span>
         </div>
-        <div class="char-card-playful" onclick="falarPersonagem('Hilda', 'A vovó carinhosa de óculos redondos!', this)">
+        <div class="char-card-playful" onclick="falarPersonagem('Hilda', 'A vovó carinhosa de óculos redondos!', this, 'f')">
           <img src="https://i.imgur.com/qcJyZb5.png" alt="Hilda">
           <span>Hilda</span>
         </div>
-        <div class="char-card-playful" onclick="falarPersonagem('Beto', 'O vovô atencioso de óculos quadrados!', this)">
+        <div class="char-card-playful" onclick="falarPersonagem('Beto', 'O vovô atencioso de óculos quadrados!', this, 'm')">
           <img src="https://i.imgur.com/lzOHT4F.png" alt="Beto">
           <span>Beto</span>
         </div>
@@ -668,11 +760,11 @@
         </div>
       </div>
 
-      <!-- 7. LOUSA MÁGICA -->
+      <!-- 7. LOUSA MÁGICA COM ROLETA DE CORES -->
       <section id="desenho-sec" class="lousa-sec" style="padding: 0 20px;">
         <div class="section-header">
           <span class="section-title">🎨 Lousa Mágica</span>
-          <button class="btn-audio" onclick="lerTexto('Lousa Mágica! Solte a imaginação e desenhe!')">🔊</button>
+          <button class="btn-audio" onclick="lerTexto('Lousa Mágica! Escolha a sua cor favorita ou use a roleta de cores para desenhar!')">🔊</button>
         </div>
         <div class="interactive-card draw-box">
           <canvas id="paintCanvas"></canvas>
@@ -683,21 +775,29 @@
             <div class="color-dot" style="background: #F59E0B;" onclick="mudarCor('#F59E0B')"></div>
             <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
             <div class="color-dot" style="background: #0F172A;" onclick="mudarCor('#0F172A')"></div>
+            
+            <!-- ROLETA DE CORES PERSONALIZADA -->
+            <div class="color-wheel-wrapper" title="Escolha qualquer cor na roleta!">
+              <input type="color" id="colorPicker" class="color-wheel-input" value="#3B82F6" onchange="mudarCor(this.value)">
+            </div>
+
             <button class="btn-clear-canvas" onclick="limparCanvas()">Limpar 🗑️</button>
           </div>
         </div>
       </section>
     </div>
 
-    <!-- 8. JOGOS -->
+    <!-- 8. JOGOS EDUCATIVOS (EXPANDIDOS) -->
     <div class="games-grid" id="jogos-sec">
+      
+      <!-- JOGO 1: QUIZ DA TURMINHA -->
       <section id="quiz-sec" style="padding:0;">
         <div class="section-header">
           <span class="section-title">❓ Quiz da Turminha</span>
           <button class="btn-audio" onclick="lerTextoQuiz()">🔊</button>
         </div>
         <div class="interactive-card">
-          <p style="font-weight: 800; color: var(--text-muted); font-size: 15px;">Quem é este personagem?</p>
+          <p style="font-weight: 800; color: var(--text-muted); font-size: 14px;">Quem é este personagem?</p>
           <div class="quiz-img-holder">
             <img id="quiz-imagem" class="quiz-img" src="" alt="Quiz Personagem">
           </div>
@@ -705,22 +805,49 @@
         </div>
       </section>
 
+      <!-- JOGO 2: QUAL É A MINHA LETRA (COM TODOS OS PERSONAGENS E OPÇÕES EMBARALHADAS) -->
       <section id="letra-sec" style="padding:0;">
         <div class="section-header">
-          <span class="section-title">🔤 Qual é a minha letra?</span>
+          <span class="section-title">🔤 Primeira Letra</span>
           <button class="btn-audio" onclick="lerTextoLetra()">🔊</button>
         </div>
         <div class="interactive-card">
-          <p style="font-weight: 800; font-size: 15px;">Primeira letra do nome de <strong id="nome-personagem-letra" style="color: var(--purple);">Hilda</strong>:</p>
+          <p style="font-weight: 800; font-size: 14px;">Primeira letra do nome de <strong id="nome-personagem-letra" style="color: var(--purple);">Xexéu</strong>:</p>
           <div class="quiz-img-holder">
             <img id="img-personagem-letra" class="quiz-img" src="" alt="Letra Personagem">
           </div>
           <div id="opcoes-letras" class="letter-grid"></div>
         </div>
       </section>
+
+      <!-- JOGO 3: JOGO DA MEMÓRIA DA TURMINHA -->
+      <section id="memoria-sec" style="padding:0;">
+        <div class="section-header">
+          <span class="section-title">🧠 Jogo da Memória</span>
+          <button class="btn-audio" onclick="lerTexto('Jogo da memória! Encontre os pares dos personagens!')">🔊</button>
+        </div>
+        <div class="interactive-card">
+          <p style="font-weight: 800; color: var(--text-muted); font-size: 14px;">Encontre os pares das fotos!</p>
+          <div id="memoryBoard" class="memory-board"></div>
+        </div>
+      </section>
+
+      <!-- JOGO 4: CONTAR OS PERSONAGENS -->
+      <section id="contar-sec" style="padding:0;">
+        <div class="section-header">
+          <span class="section-title">🔢 Vamos Contar?</span>
+          <button class="btn-audio" onclick="lerTextoContar()">🔊</button>
+        </div>
+        <div class="interactive-card">
+          <p style="font-weight: 800; color: var(--text-muted); font-size: 14px;">Quantos personagens aparecem abaixo?</p>
+          <div id="countDisplay" class="count-display"></div>
+          <div id="countOptions" class="letter-grid"></div>
+        </div>
+      </section>
+
     </div>
 
-    <!-- 9. CAIXA DE AGRADECIMENTO E CHAMADA -->
+    <!-- 9. CAIXA DE AGRADECIMENTO -->
     <div class="thankyou-box">
       <h3>💖 Obrigado pelo carinho!</h3>
       <p>Siga a Turminha do Xexéu em nossas redes sociais para não perder nenhuma novidade, novos episódios e musiquinhas!</p>
@@ -729,7 +856,7 @@
     <!-- RODAPÉ ASSINADO PELA EVE.DESIGN -->
     <footer>
       <span>© Turminha do Xexéu - Todos os direitos reservados</span>
-      <a href="https://evedesignceci.github.io/eve-design-orcamentos/" target="_blank" rel="noopener noreferrer" class="creator-link">
+      <a href="https://evececidesignoficial.vercel.app/" target="_blank" rel="noopener noreferrer" class="creator-link">
         🎨 Desenvolvido por <strong>eve.design</strong>
       </a>
     </footer>
@@ -741,7 +868,7 @@
     <a href="#personagens-sec" class="bar-item"><span class="bar-icon">🌟</span>Turminha</a>
     <a href="#videos-sec" class="bar-item"><span class="bar-icon">🎬</span>Vídeos</a>
     <a href="#desenho-sec" class="bar-item"><span class="bar-icon">🎨</span>Desenho</a>
-    <a href="#jogos-sec" class="bar-item"><span class="bar-icon">❓</span>Quiz</a>
+    <a href="#jogos-sec" class="bar-item"><span class="bar-icon">❓</span>Jogos</a>
   </nav>
 
   <script>
@@ -754,7 +881,6 @@
       }
     }
 
-    // Inicialização e desbloqueio da voz em navegadores móveis e desktop
     function ativarVozNoNavegador() {
       if (sintetizadorInicializado || !('speechSynthesis' in window)) return;
       carregarVozes();
@@ -794,14 +920,19 @@
       window.speechSynthesis.speak(utterance);
     }
 
-    function falarPersonagem(nome, desc, elemento) {
-      lerTexto("Este é " + nome + ". " + desc);
+    function falarPersonagem(nome, desc, elemento, genero = 'm') {
+      let artigo = (genero === 'f') ? "Esta é a " : "Este é o ";
+      if (nome.toLowerCase().includes('vovó') || nome === 'Hilda') {
+        artigo = "Esta é a ";
+      }
+      lerTexto(artigo + nome + ". " + desc);
       elemento.classList.add('jump');
       setTimeout(() => {
         elemento.classList.remove('jump');
       }, 500);
     }
 
+    /* 1. QUIZ */
     const perguntasQuiz = [
       { img: 'https://i.imgur.com/yApuLed.png', correta: 'Xexéu', opcoes: ['Xexéu', 'Joca', 'Léo'] },
       { img: 'https://i.imgur.com/ETC0paX.png', correta: 'Capilé', opcoes: ['Nina', 'Capilé', 'Beto'] },
@@ -844,13 +975,16 @@
       lerTexto("Quem é este personagem? Escolha entre " + q.opcoes.join(', '));
     }
 
+    /* 2. JOGO DA PRIMEIRA LETRA (TODOS OS PERSONAGENS E POSIÇÕES ALEATÓRIAS) */
     const etapasLetra = [
-      { nome: 'Hilda', img: 'https://i.imgur.com/qcJyZb5.png', correta: 'H', opcoes: ['H', 'B', 'J'] },
-      { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', correta: 'B', opcoes: ['B', 'H', 'N'] },
+      { nome: 'Xexéu', img: 'https://i.imgur.com/yApuLed.png', correta: 'X', opcoes: ['X', 'J', 'L'] },
+      { nome: 'Capilé', img: 'https://i.imgur.com/ETC0paX.png', correta: 'C', opcoes: ['C', 'B', 'N'] },
       { nome: 'Léo', img: 'https://i.imgur.com/vunKLqO.png', correta: 'L', opcoes: ['L', 'J', 'X'] },
       { nome: 'Joca', img: 'https://i.imgur.com/VoHSsw9.png', correta: 'J', opcoes: ['J', 'I', 'X'] },
       { nome: 'Iza', img: 'https://i.imgur.com/IX3LrtJ.png', correta: 'I', opcoes: ['I', 'N', 'B'] },
-      { nome: 'Nina', img: 'https://i.imgur.com/cBOKp6k.jpeg', correta: 'N', opcoes: ['N', 'L', 'I'] }
+      { nome: 'Nina', img: 'https://i.imgur.com/cBOKp6k.jpeg', correta: 'N', opcoes: ['N', 'L', 'I'] },
+      { nome: 'Hilda', img: 'https://i.imgur.com/qcJyZb5.png', correta: 'H', opcoes: ['H', 'B', 'J'] },
+      { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', correta: 'B', opcoes: ['B', 'H', 'N'] }
     ];
     let etapaLetraAtual = 0;
 
@@ -862,7 +996,10 @@
       const container = document.getElementById('opcoes-letras');
       container.innerHTML = '';
 
-      e.opcoes.forEach(letra => {
+      // EMBARALHAR AS LETRAS
+      const opcoesEmbaralhadas = [...e.opcoes].sort(() => Math.random() - 0.5);
+
+      opcoesEmbaralhadas.forEach(letra => {
         const btn = document.createElement('button');
         btn.className = 'btn-letter-choice';
         btn.innerText = letra;
@@ -886,6 +1023,99 @@
       lerTexto("Qual é a primeira letra do nome de " + e.nome + "?");
     }
 
+    /* 3. JOGO DA MEMÓRIA */
+    const imgsMemoria = [
+      'https://i.imgur.com/yApuLed.png',
+      'https://i.imgur.com/ETC0paX.png',
+      'https://i.imgur.com/vunKLqO.png',
+      'https://i.imgur.com/VoHSsw9.png'
+    ];
+    let cartasMemoria = [];
+    let primeiraCarta = null;
+    let travaMemoria = false;
+
+    function iniciarMemoria() {
+      cartasMemoria = [...imgsMemoria, ...imgsMemoria].sort(() => Math.random() - 0.5);
+      const board = document.getElementById('memoryBoard');
+      board.innerHTML = '';
+
+      cartasMemoria.forEach((imgSrc, index) => {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        card.dataset.img = imgSrc;
+        card.dataset.index = index;
+        card.innerText = '❓';
+        card.onclick = () => virarCarta(card);
+        board.appendChild(card);
+      });
+    }
+
+    function virarCarta(card) {
+      if (travaMemoria || card.classList.contains('flipped')) return;
+
+      card.classList.add('flipped');
+      card.innerHTML = `<img src="${card.dataset.img}" alt="Personagem">`;
+
+      if (!primeiraCarta) {
+        primeiraCarta = card;
+      } else {
+        if (primeiraCarta.dataset.img === card.dataset.img) {
+          lerTexto("Muito bem!");
+          primeiraCarta = null;
+        } else {
+          travaMemoria = true;
+          setTimeout(() => {
+            primeiraCarta.classList.remove('flipped');
+            primeiraCarta.innerText = '❓';
+            card.classList.remove('flipped');
+            card.innerText = '❓';
+            primeiraCarta = null;
+            travaMemoria = false;
+          }, 1000);
+        }
+      }
+    }
+
+    /* 4. JOGO DE CONTAR */
+    let quantContar = 0;
+    const imgContar = 'https://i.imgur.com/yApuLed.png';
+
+    function carregarJogoContar() {
+      quantContar = Math.floor(Math.random() * 4) + 1; // 1 a 4
+      const display = document.getElementById('countDisplay');
+      display.innerHTML = '';
+
+      for (let i = 0; i < quantContar; i++) {
+        const img = document.createElement('img');
+        img.src = imgContar;
+        img.className = 'count-item';
+        display.appendChild(img);
+      }
+
+      const options = document.getElementById('countOptions');
+      options.innerHTML = '';
+
+      [1, 2, 3, 4].forEach(num => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-letter-choice';
+        btn.innerText = num;
+        btn.onclick = () => {
+          if (num === quantContar) {
+            lerTexto("Parabéns! Você contou certinho!");
+            carregarJogoContar();
+          } else {
+            lerTexto("Tente novamente!");
+          }
+        };
+        options.appendChild(btn);
+      });
+    }
+
+    function lerTextoContar() {
+      lerTexto("Quantos personagens aparecem na tela?");
+    }
+
+    /* LOUSA MÁGICA & CANVAS */
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas.getContext('2d');
     let desenhando = false;
@@ -937,6 +1167,8 @@
 
     carregarQuiz();
     carregarJogoLetra();
+    iniciarMemoria();
+    carregarJogoContar();
   </script>
 </body>
 </html>
