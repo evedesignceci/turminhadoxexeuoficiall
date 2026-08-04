@@ -54,10 +54,9 @@
       flex-direction: column;
       gap: 24px;
       padding-bottom: 24px;
-      transition: all 0.3s ease;
     }
 
-    /* BARRA DE NAVEGAÇÃO ENTRE PÁGINAS */
+    /* BARRA DE NAVEGAÇÃO PRINCIPAL */
     .page-nav {
       display: flex;
       justify-content: center;
@@ -70,7 +69,7 @@
     }
     .nav-tab-btn {
       flex: 1;
-      min-width: 130px;
+      min-width: 120px;
       max-width: 220px;
       padding: 12px 16px;
       border: none;
@@ -90,6 +89,41 @@
       background: var(--primary);
       color: #FFFFFF;
       box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
+    /* SUB-ABAS PARA OS JOGOS NO CELULAR */
+    .games-subnav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      background: #FEF3C7;
+      padding: 8px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .subnav-btn {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      background: #FFFBEB;
+      color: #92400E;
+      transition: all 0.2s;
+    }
+    .subnav-btn.active {
+      background: #F59E0B;
+      color: #FFF;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+    }
+
+    .game-tab-content {
+      display: none;
+    }
+    .game-tab-content.active-game-tab {
+      display: block;
     }
 
     /* PÁGINAS COM ALTERNÂNCIA */
@@ -246,11 +280,6 @@
       box-shadow: 0 6px 14px rgba(0,0,0,0.06);
       transition: all 0.25s ease;
     }
-    .social-round-btn:hover {
-      transform: scale(1.15) translateY(-3px);
-      border-color: var(--primary);
-      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
-    }
     .social-round-btn img { width: 30px; height: 30px; object-fit: contain; }
 
     /* PERSONAGENS */
@@ -288,11 +317,6 @@
       gap: 8px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.04);
       transition: all 0.25s ease;
-    }
-    .char-card:hover {
-      transform: scale(1.08) translateY(-4px);
-      border-color: var(--primary);
-      box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
     }
     .char-card img {
       width: 100px;
@@ -405,7 +429,7 @@
       color: #FFF;
     }
 
-    /* SELEÇÃO DE DESENHOS PARA PINTAR COM ARTES 2D */
+    /* SELEÇÃO DE DESENHOS */
     .coloring-select-grid {
       display: none;
       justify-content: center;
@@ -429,7 +453,7 @@
       gap: 4px;
       transition: all 0.2s ease;
     }
-    .btn-color-draw:hover, .btn-color-draw.selected {
+    .btn-color-draw.selected {
       border-color: var(--primary);
       background: #E0F2FE;
     }
@@ -439,7 +463,6 @@
       object-fit: contain;
     }
 
-    /* FERRAMENTAS DE ZOOM E TAMANHO DE PINCEL */
     .lousa-controls-bar {
       display: flex;
       align-items: center;
@@ -509,7 +532,6 @@
       font-size: 16px;
       border-radius: 14px;
       cursor: pointer;
-      transition: transform 0.15s ease;
     }
 
     /* MEMÓRIA */
@@ -518,6 +540,9 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 8px;
       margin-top: 10px;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .memory-card {
       aspect-ratio: 1;
@@ -548,7 +573,6 @@
       text-decoration: none;
     }
 
-    /* MEDIA QUERIES PARA COMPUTADORES, TABLETS E TVS */
     @media (min-width: 900px) {
       .app-container { max-width: 1200px; padding: 20px 30px; }
       .banner-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
@@ -556,18 +580,6 @@
       .characters-grid { grid-template-columns: repeat(8, 1fr); }
       .char-card img { width: 110px; height: 110px; }
       .social-round-btn { width: 62px; height: 62px; font-size: 28px; }
-      .games-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-      #paintCanvas { min-height: 440px; }
-    }
-
-    @media (min-width: 1400px) {
-      .app-container { max-width: 1500px; }
-      body { font-size: 18px; }
-      .nav-tab-btn { font-size: 20px; padding: 16px 28px; }
-      .char-card img { width: 130px; height: 130px; }
-      .char-card span { font-size: 17px; }
-      .btn-choice { font-size: 22px; padding: 14px 28px; }
-      #paintCanvas { min-height: 500px; }
     }
   </style>
 </head>
@@ -575,7 +587,7 @@
 
   <div class="app-container">
 
-    <!-- HEADER DA PÁGINA -->
+    <!-- HEADER -->
     <header>
       <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" title="YouTube da Turminha">
         <img src="https://i.imgur.com/ANqcDjC.png" alt="Logo Turminha do Xexéu" class="logo-img">
@@ -586,48 +598,39 @@
       </button>
     </header>
 
-    <!-- NAVEGAÇÃO DE PÁGINAS -->
+    <!-- NAVEGAÇÃO PRINCIPAL -->
     <div class="page-nav">
-      <button id="btn-tab-inicio" class="nav-tab-btn active" onclick="mudarPagina('inicio')">
-        🏠 Início
-      </button>
-      <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">
-        🎬 Vídeos
-      </button>
-      <button id="btn-tab-jogos" class="nav-tab-btn" onclick="mudarPagina('jogos')">
-        🎮 Jogos
-      </button>
+      <button id="btn-tab-inicio" class="nav-tab-btn active" onclick="mudarPagina('inicio')">🏠 Início</button>
+      <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">🎬 Vídeos</button>
+      <button id="btn-tab-jogos" class="nav-tab-btn" onclick="mudarPagina('jogos')">🎮 Jogos</button>
     </div>
 
-    <!-- ==================== PÁGINA 1: INÍCIO ==================== -->
+    <!-- PÁGINA 1: INÍCIO -->
     <div id="pagina-inicio" class="page-content active-page">
-      
       <div class="banner-intro-grid">
         <div class="banner-container">
           <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank">
             <img src="https://i.imgur.com/mvQQyMp.png" alt="Capa da Turminha" class="banner-img">
           </a>
         </div>
-
         <div class="intro-box">
           <div class="intro-box-header">
             <h2>✨ Bem-vindo à Turminha do Xexéu!</h2>
-            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Turminha do Xexéu! Nosso canal traz historinhas, animações e jogos educativos para ensinar valores, amizade e aprendizado para todas as crianças!')" title="Ouvir Boas-Vindas">🔊</button>
+            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Turminha do Xexéu! Nosso canal traz historinhas, animações e jogos educativos para ensinar valores e amizade!')" title="Ouvir Boas-Vindas">🔊</button>
           </div>
           <p>Nosso canal traz historinhas, animações e jogos educativos para ensinar valores, amizade e aprendizado para todas as crianças!</p>
-          
           <div class="audio-notice-info">
-            💡 Dica: Você pode ativar ou desativar a leitura por voz no botão "Voz Ligada" no topo da página.
+            💡 Dica: Ative ou desative a leitura por voz no botão do topo.
           </div>
         </div>
       </div>
 
       <!-- REDES SOCIAIS -->
       <div class="social-round-section">
-        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube da Turminha">▶️</a>
-        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram da Turminha">📷</a>
-        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok da Turminha">🎵</a>
-        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify da Turminha">🎧</a>
+        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube">▶️</a>
+        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram">📷</a>
+        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok">🎵</a>
+        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify">🎧</a>
         <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music">🎶</a>
         <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook">👍</a>
         <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads">
@@ -638,7 +641,7 @@
       <!-- PERSONAGENS -->
       <div class="characters-section-title">
         <span>🌟 Conheça os Personagens</span>
-        <span style="font-size: 13px; font-weight: 600; color: var(--text-muted);">(Clique para ouvir e ler!)</span>
+        <span style="font-size: 13px; font-weight: 600; color: var(--text-muted);">(Clique!)</span>
       </div>
       
       <div class="characters-grid">
@@ -650,7 +653,7 @@
           <img src="https://i.imgur.com/ETC0paX.png" alt="Capilé">
           <span>Capilé</span>
         </div>
-        <div class="char-card" onclick="exibirEFalar('Léo', 'Um amiguinho muito curioso e divertido de jaqueta azul!', 'm')">
+        <div class="char-card" onclick="exibirEFalar('Léo', 'Um amiguinho curioso de jaqueta azul!', 'm')">
           <img src="https://i.imgur.com/vunKLqO.png" alt="Léo">
           <span>Léo</span>
         </div>
@@ -676,28 +679,25 @@
         </div>
       </div>
 
-      <!-- PAINEL DO PERSONAGEM SELECIONADO -->
       <div class="char-details-box" id="detalhes-personagem">
         <h3 id="detalhe-nome" style="color: var(--primary-dark); font-weight: 900;">Clique em um personagem acima!</h3>
-        <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 4px;">A descrição escrita e a leitura de áudio aparecerão aqui!</p>
+        <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 4px;">A descrição e áudio aparecerão aqui!</p>
       </div>
 
-      <!-- PLAYLIST DE VÍDEOS NA PÁGINA INICIAL -->
       <div class="video-section">
         <div class="video-card">
           <div class="video-header">
-            <h3>🎬 Assista aos Episódios da Turminha</h3>
-            <button class="btn-audio-mini" onclick="lerTexto('Assista à playlist oficial de vídeos e músicas da Turminha do Xexéu!')" title="Ouvir instruções">🔊</button>
+            <h3>🎬 Assista aos Episódios</h3>
+            <button class="btn-audio-mini" onclick="lerTexto('Assista à playlist oficial de vídeos e músicas da Turminha do Xexéu!')" title="Ouvir">🔊</button>
           </div>
           <div class="video-wrapper">
             <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
       </div>
-
     </div>
 
-    <!-- ==================== PÁGINA 2: VÍDEOS ==================== -->
+    <!-- PÁGINA 2: VÍDEOS -->
     <div id="pagina-videos" class="page-content">
       <div class="video-section">
         <div class="video-card">
@@ -712,138 +712,100 @@
       </div>
     </div>
 
-    <!-- ==================== PÁGINA 3: JOGOS INFINITOS ==================== -->
+    <!-- PÁGINA 3: JOGOS (COM SUB-ABAS PARA NÃO EMPILHAR NO CELULAR) -->
     <div id="pagina-jogos" class="page-content">
-
-      <!-- FAIXA ETÁRIA: 3 A 4 ANOS -->
       <div class="age-group-section">
-        <div class="age-title">👶 Jogos para 3 a 4 Anos (Iniciação & Cores)</div>
+        <div class="age-title">🎮 Área de Jogos da Turminha</div>
         
-        <div class="games-two-col">
-          <!-- LOUSA MÁGICA COM 2 MODOS (SEM SOBREPOSIÇÃO E COM FERRAMENTA DE ZOOM/TAMANHO + FOTO) -->
-          <div class="interactive-card lousa-container">
-            <h4 style="font-weight: 800; margin-bottom: 8px;">🎨 Lousa Mágica</h4>
-            
-            <!-- BOTÕES PARA MUDAR DE MODO -->
-            <div class="lousa-mode-tabs">
-              <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Desenho Livre</button>
-              <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Desenhos para Pintar</button>
-            </div>
+        <!-- SUB-ABAS DE JOGOS -->
+        <div class="games-subnav">
+          <button id="subtab-lousa" class="subnav-btn active" onclick="mudarSubJogo('lousa')">🎨 Lousa Mágica</button>
+          <button id="subtab-contar" class="subnav-btn" onclick="mudarSubJogo('contar')">🔢 Contar</button>
+          <button id="subtab-letras" class="subnav-btn" onclick="mudarSubJogo('letras')">🔤 Primeiras Letras</button>
+          <button id="subtab-memoria" class="subnav-btn" onclick="mudarSubJogo('memoria')">🧠 Memória</button>
+          <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
+        </div>
 
-            <!-- SELEÇÃO DE DESENHOS PARA PINTAR COM ARTES 2D OFICIAIS -->
-            <div id="coloringSelectGrid" class="coloring-select-grid">
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/gXjRjnR.png', 'Xexéu', this)">
-                <img src="https://i.imgur.com/gXjRjnR.png"> Xexéu
-              </button>
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/GVVoxPy.png', 'Léo', this)">
-                <img src="https://i.imgur.com/GVVoxPy.png"> Léo
-              </button>
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/2bS7slp.png', 'Iza', this)">
-                <img src="https://i.imgur.com/2bS7slp.png"> Iza
-              </button>
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/BLH2iTr.png', 'Nina', this)">
-                <img src="https://i.imgur.com/BLH2iTr.png"> Nina
-              </button>
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/YhKkKft.png', 'Joca', this)">
-                <img src="https://i.imgur.com/YhKkKft.png"> Joca
-              </button>
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/1ZeNUBw.png', 'Capilé', this)">
-                <img src="https://i.imgur.com/1ZeNUBw.png"> Capilé
-              </button>
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/CMVveed.png', 'Hilda', this)">
-                <img src="https://i.imgur.com/CMVveed.png"> Hilda
-              </button>
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/dwpdeww.png', 'Beto', this)">
-                <img src="https://i.imgur.com/dwpdeww.png"> Beto
-              </button>
-            </div>
-
-            <!-- BARRA DE CONTROLE DE PINCEL, ZOOM E FOTO -->
-            <div class="lousa-controls-bar">
-              <label>
-                🖌️ Tamanho do Pincel:
-                <input type="range" id="brushSizeInput" min="2" max="24" value="6" onchange="mudarTamanhoPincel(this.value)">
-              </label>
-              
-              <label>
-                🔍 Zoom / Tamanho do Guia:
-                <input type="range" id="zoomScaleInput" min="50" max="100" value="85" onchange="mudarZoomGuia(this.value)">
-              </label>
-            </div>
-
-            <canvas id="paintCanvas"></canvas>
-            
-            <div class="palette">
-              <div class="color-dot" style="background: #3B82F6;" onclick="mudarCor('#3B82F6')"></div>
-              <div class="color-dot" style="background: #EF4444;" onclick="mudarCor('#EF4444')"></div>
-              <div class="color-dot" style="background: #10B981;" onclick="mudarCor('#10B981')"></div>
-              <div class="color-dot" style="background: #F59E0B;" onclick="mudarCor('#F59E0B')"></div>
-              <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
-              <div class="color-dot" style="background: #000000;" onclick="mudarCor('#000000')"></div>
-              <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 36px; height: 36px; border:none; cursor:pointer;">
-              
-              <button onclick="limparCanvas()" style="padding: 6px 14px; font-weight: 800; border-radius: 12px; border: none; background: #FEE2E2; color: red; cursor: pointer;">Limpar 🗑️</button>
-              
-              <!-- BOTÃO DE SALVAR A FOTO -->
-              <button onclick="salvarFotoDesenho()" style="padding: 6px 14px; font-weight: 800; border-radius: 12px; border: none; background: #D1FAE5; color: #065F46; cursor: pointer;">📸 Salvar Desenho</button>
-            </div>
+        <!-- 1. ABA LOUSA MÁGICA -->
+        <div id="game-lousa" class="game-tab-content active-game-tab interactive-card lousa-container">
+          <h4 style="font-weight: 800; margin-bottom: 8px;">🎨 Lousa Mágica & Desenhos</h4>
+          <div class="lousa-mode-tabs">
+            <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Desenho Livre</button>
+            <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Pintar Personagens</button>
           </div>
 
-          <!-- CONTAR DE 1 A 9 -->
-          <div class="interactive-card">
-            <h4 style="font-weight: 800;">🔢 Vamos Contar? (Infinito)</h4>
-            <p style="font-size: 12px; color: var(--text-muted);">Quantos bonecos aparecem abaixo?</p>
-            <div id="countDisplay" style="display: flex; justify-content: center; align-items: center; gap: 6px; margin: 12px 0; min-height: 60px; flex-wrap: wrap;"></div>
-            <div id="countOptions" class="game-btn-grid"></div>
+          <div id="coloringSelectGrid" class="coloring-select-grid">
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/gXjRjnR.png', 'Xexéu', this)"><img src="https://i.imgur.com/gXjRjnR.png"> Xexéu</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/GVVoxPy.png', 'Léo', this)"><img src="https://i.imgur.com/GVVoxPy.png"> Léo</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/2bS7slp.png', 'Iza', this)"><img src="https://i.imgur.com/2bS7slp.png"> Iza</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/BLH2iTr.png', 'Nina', this)"><img src="https://i.imgur.com/BLH2iTr.png"> Nina</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/YhKkKft.png', 'Joca', this)"><img src="https://i.imgur.com/YhKkKft.png"> Joca</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/1ZeNUBw.png', 'Capilé', this)"><img src="https://i.imgur.com/1ZeNUBw.png"> Capilé</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/CMVveed.png', 'Hilda', this)"><img src="https://i.imgur.com/CMVveed.png"> Hilda</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/dwpdeww.png', 'Beto', this)"><img src="https://i.imgur.com/dwpdeww.png"> Beto</button>
+          </div>
+
+          <div class="lousa-controls-bar">
+            <label>🖌️ Pincel: <input type="range" id="brushSizeInput" min="2" max="24" value="6" onchange="mudarTamanhoPincel(this.value)"></label>
+            <label>🔍 Zoom Guia: <input type="range" id="zoomScaleInput" min="50" max="100" value="85" onchange="mudarZoomGuia(this.value)"></label>
+          </div>
+
+          <canvas id="paintCanvas"></canvas>
+          
+          <div class="palette">
+            <div class="color-dot" style="background: #3B82F6;" onclick="mudarCor('#3B82F6')"></div>
+            <div class="color-dot" style="background: #EF4444;" onclick="mudarCor('#EF4444')"></div>
+            <div class="color-dot" style="background: #10B981;" onclick="mudarCor('#10B981')"></div>
+            <div class="color-dot" style="background: #F59E0B;" onclick="mudarCor('#F59E0B')"></div>
+            <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
+            <div class="color-dot" style="background: #000000;" onclick="mudarCor('#000000')"></div>
+            <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 36px; height: 36px; border:none; cursor:pointer;">
+            <button onclick="limparCanvas()" style="padding: 6px 14px; font-weight: 800; border-radius: 12px; border: none; background: #FEE2E2; color: red; cursor: pointer;">Limpar 🗑️</button>
+            <button onclick="salvarFotoDesenho()" style="padding: 6px 14px; font-weight: 800; border-radius: 12px; border: none; background: #D1FAE5; color: #065F46; cursor: pointer;">📸 Salvar</button>
           </div>
         </div>
-      </div>
 
-      <!-- FAIXA ETÁRIA: 5 A 6 ANOS -->
-      <div class="age-group-section">
-        <div class="age-title">👦 Jogos para 5 a 6 Anos (Letras & Memória)</div>
-        
-        <div class="games-two-col">
-          <!-- PRIMEIRA LETRA -->
-          <div class="interactive-card">
-            <h4 style="font-weight: 800;">🔤 Qual é a Primeira Letra?</h4>
-            <p style="font-size: 13px; font-weight: 700; margin-top: 6px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple);">Xexéu</strong></p>
-            <img id="img-letra-personagem" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 8px 0;">
-            <div id="opcoes-letras" class="game-btn-grid"></div>
-          </div>
+        <!-- 2. ABA CONTAR -->
+        <div id="game-contar" class="game-tab-content interactive-card">
+          <h4 style="font-weight: 800;">🔢 Vamos Contar?</h4>
+          <p style="font-size: 13px; color: var(--text-muted);">Quantos bonequinhos aparecem abaixo?</p>
+          <div id="countDisplay" style="display: flex; justify-content: center; align-items: center; gap: 6px; margin: 16px 0; min-height: 70px; flex-wrap: wrap;"></div>
+          <div id="countOptions" class="game-btn-grid"></div>
+        </div>
 
-          <!-- JOGO DA MEMÓRIA -->
-          <div class="interactive-card">
-            <h4 style="font-weight: 800;">🧠 Jogo da Memória (Infinito)</h4>
-            <p style="font-size: 11px; color: var(--text-muted);">Encontre os 4 pares dos amigos!</p>
-            <div id="memoryBoard" class="memory-board"></div>
+        <!-- 3. ABA LETRAS -->
+        <div id="game-letras" class="game-tab-content interactive-card">
+          <h4 style="font-weight: 800;">🔤 Qual é a Primeira Letra?</h4>
+          <p style="font-size: 14px; font-weight: 700; margin-top: 8px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple);">Xexéu</strong></p>
+          <img id="img-letra-personagem" src="" style="width: 100px; height: 100px; object-fit: contain; margin: 10px 0;">
+          <div id="opcoes-letras" class="game-btn-grid"></div>
+        </div>
+
+        <!-- 4. ABA MEMÓRIA -->
+        <div id="game-memoria" class="game-tab-content interactive-card">
+          <h4 style="font-weight: 800;">🧠 Jogo da Memória</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Encontre os 4 pares dos amigos!</p>
+          <div id="memoryBoard" class="memory-board"></div>
+        </div>
+
+        <!-- 5. ABA QUIZ & CORES -->
+        <div id="game-quiz" class="game-tab-content interactive-card">
+          <h4 style="font-weight: 800; margin-bottom: 10px;">❓ Desafios da Turminha</h4>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 1px solid #E2E8F0;">
+              <p style="font-size: 13px; font-weight: 700;">Quem é este personagem?</p>
+              <img id="quiz-img" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
+              <div id="quiz-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
+            </div>
+            <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 1px solid #E2E8F0;">
+              <p id="cor-pergunta-txt" style="font-size: 13px; font-weight: 700;"></p>
+              <img id="cor-img" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
+              <div id="cor-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
+            </div>
           </div>
         </div>
+
       </div>
-
-      <!-- FAIXA ETÁRIA: 7+ ANOS -->
-      <div class="age-group-section">
-        <div class="age-title">🧒 Jogos para 7+ Anos (Desafios & Quiz)</div>
-        
-        <div class="games-two-col">
-          <!-- QUIZ -->
-          <div class="interactive-card">
-            <h4 style="font-weight: 800;">❓ Quiz da Turminha</h4>
-            <p style="font-size: 12px; color: var(--text-muted);">Quem é este personagem?</p>
-            <img id="quiz-img" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 8px 0;">
-            <div id="quiz-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
-          </div>
-
-          <!-- COR DA ROUPA -->
-          <div class="interactive-card">
-            <h4 style="font-weight: 800;">🎨 Qual é a Cor da Roupa/Acessório?</h4>
-            <p id="cor-pergunta-txt" style="font-size: 13px; font-weight: 700; margin-top: 6px;"></p>
-            <img id="cor-img" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 8px 0;">
-            <div id="cor-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <!-- RODAPÉ -->
@@ -858,9 +820,7 @@
 
   <script>
     let audioAtivo = true;
-    let vozesDisponiveis = [];
 
-    /* BASE DE DADOS COMPLETA DE TODOS OS 8 PERSONAGENS DA TURMINHA */
     const TODOS_PERSONAGENS = [
       { nome: 'Xexéu', img: 'https://i.imgur.com/yApuLed.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
       { nome: 'Capilé', img: 'https://i.imgur.com/ETC0paX.png', letra: 'C', genero: 'm', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
@@ -872,7 +832,7 @@
       { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', letra: 'B', genero: 'm', corPergunta: "Qual a cor dos óculos do Vovô Beto?", corCorreta: "Azul", corOpcoes: ["Azul", "Amarelo", "Preto"] }
     ];
 
-    /* GERENCIAMENTO DE PÁGINAS */
+    /* GERENCIAMENTO DE PÁGINAS PRINCIPAIS */
     function mudarPagina(pagina) {
       document.getElementById('pagina-inicio').classList.remove('active-page');
       document.getElementById('pagina-videos').classList.remove('active-page');
@@ -895,12 +855,23 @@
       }
     }
 
-    /* CONTROLE DE ÁUDIO GLOBAL */
+    /* GERENCIAMENTO DAS SUB-ABAS DE JOGOS */
+    function mudarSubJogo(sub) {
+      const subs = ['lousa', 'contar', 'letras', 'memoria', 'quiz'];
+      subs.forEach(s => {
+        document.getElementById('game-' + s).classList.remove('active-game-tab');
+        document.getElementById('subtab-' + s).classList.remove('active');
+      });
+      document.getElementById('game-' + sub).classList.add('active-game-tab');
+      document.getElementById('subtab-' + sub).classList.add('active');
+      if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
+    }
+
+    /* CONTROLE DE ÁUDIO SEGURO PARA CELULAR */
     function alternarAudioGlobal() {
       audioAtivo = !audioAtivo;
       const btn = document.getElementById('toggleAudioBtn');
-      if (!('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
 
       if (audioAtivo) {
         btn.classList.remove('muted');
@@ -915,15 +886,15 @@
 
     function lerTexto(texto) {
       if (!audioAtivo || !('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(texto);
-      utterance.lang = 'pt-BR';
-      utterance.rate = 0.95;
-
-      if (vozesDisponiveis.length === 0) vozesDisponiveis = window.speechSynthesis.getVoices();
-      const vozPt = vozesDisponiveis.find(v => v.lang.includes('pt-BR') || v.lang.includes('pt'));
-      if (vozPt) utterance.voice = vozPt;
-      window.speechSynthesis.speak(utterance);
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(texto);
+        utterance.lang = 'pt-BR';
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+      } catch (e) {
+        console.log("Áudio ignorado pelo navegador");
+      }
     }
 
     function exibirEFalar(nome, desc, genero = 'm') {
@@ -944,8 +915,8 @@
       for (let i = 0; i < qContar; i++) {
         const img = document.createElement('img');
         img.src = charSorteado.img;
-        img.style.width = '38px';
-        img.style.height = '38px';
+        img.style.width = '42px';
+        img.style.height = '42px';
         img.style.objectFit = 'contain';
         display.appendChild(img);
       }
@@ -956,12 +927,12 @@
       for (let n = 1; n <= 9; n++) {
         const btn = document.createElement('button');
         btn.className = 'btn-choice';
-        btn.style.padding = '8px 14px';
+        btn.style.padding = '10px 16px';
         btn.innerText = n;
         btn.onclick = () => {
           if (n === qContar) { 
             lerTexto("Parabéns! Você contou certinho!"); 
-            setTimeout(carregarJogoContar, 400); 
+            setTimeout(carregarJogoContar, 600); 
           } else { 
             lerTexto("Tente novamente!"); 
           }
@@ -994,7 +965,7 @@
         btn.onclick = () => {
           if (l === pLetraAtual.letra) {
             lerTexto("Muito bem! Letra " + pLetraAtual.letra);
-            setTimeout(carregarJogoLetra, 400);
+            setTimeout(carregarJogoLetra, 600);
           } else { 
             lerTexto("Tente de novo!"); 
           }
@@ -1028,10 +999,10 @@
           } else {
             if (pCarta.dataset.img === src) { 
               acertosMem++;
-              lerTexto("Acertou o par!"); 
+              lerTexto("Par! Acertou!"); 
               pCarta = null; 
               if (acertosMem === 4) {
-                lerTexto("Incrível! Você encontrou todos os pares! Vamos jogar de novo!");
+                lerTexto("Incrível! Encontrou todos os pares!");
                 setTimeout(iniciarMemoria, 1800);
               }
             } else {
@@ -1065,12 +1036,12 @@
       
       opcoes.sort(() => Math.random() - 0.5).forEach(o => {
         const btn = document.createElement('button');
-        btn.style.cssText = "padding:10px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
+        btn.style.cssText = "padding:8px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
         btn.innerText = o;
         btn.onclick = () => {
           if (o === pQuizAtual.nome) { 
             lerTexto("Parabéns! É o " + pQuizAtual.nome); 
-            setTimeout(carregarQuiz, 400); 
+            setTimeout(carregarQuiz, 600); 
           } else { 
             lerTexto("Tente novamente!"); 
           }
@@ -1091,12 +1062,12 @@
       
       pCorAtual.corOpcoes.sort(() => Math.random() - 0.5).forEach(o => {
         const btn = document.createElement('button');
-        btn.style.cssText = "padding:10px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
+        btn.style.cssText = "padding:8px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
         btn.innerText = o;
         btn.onclick = () => {
           if (o === pCorAtual.corCorreta) { 
-            lerTexto("Acertou! A cor é " + pCorAtual.corCorreta); 
-            setTimeout(carregarJogoCor, 400); 
+            lerTexto("Acertou! Cor correta!"); 
+            setTimeout(carregarJogoCor, 600); 
           } else { 
             lerTexto("Tente de novo!"); 
           }
@@ -1105,7 +1076,7 @@
       });
     }
 
-    /* LOUSA CANVAS, TROCA LIMPA, ZOOM E SALVAMENTO DE FOTO */
+    /* LOUSA CANVAS */
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas.getContext('2d');
     let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free';
@@ -1116,9 +1087,8 @@
     function redimensionarCanvas() {
       if (!canvas.parentElement) return;
       canvas.width = canvas.parentElement.clientWidth - 20;
-      let altura = 380;
-      if (window.innerWidth >= 900) altura = 440;
-      if (window.innerWidth >= 1400) altura = 500;
+      let altura = 360;
+      if (window.innerWidth >= 900) altura = 420;
       canvas.height = altura;
       
       if (modoLousa === 'color' && imagemPintarCarregada) {
@@ -1146,13 +1116,11 @@
       }
     }
 
-    /* CARREGA O PERSONAGEM E LIMPA O CANVAS ANTES DE DESENHAR */
     function carregarContornoPintar(urlImg, nome, btnElemento) {
       const todosBotoes = document.querySelectorAll('.btn-color-draw');
       todosBotoes.forEach(b => b.classList.remove('selected'));
       if (btnElemento) btnElemento.classList.add('selected');
 
-      // Limpa totalmente a tela antes do próximo personagem
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       const img = new Image();
@@ -1176,9 +1144,7 @@
     }
 
     function mudarCor(c) { corAtual = c; }
-    
     function mudarTamanhoPincel(tam) { tamanhoPincel = tam; }
-    
     function mudarZoomGuia(val) {
       escalaZoomGuia = val / 100;
       if (modoLousa === 'color' && imagemPintarCarregada) {
@@ -1194,9 +1160,7 @@
       }
     }
 
-    /* FUNÇÃO PARA TIRAR FOTO E SALVAR O DESENHO */
     function salvarFotoDesenho() {
-      // Cria um canvas temporário com fundo branco
       const tempCanvas = document.createElement('canvas');
       tempCanvas.width = canvas.width;
       tempCanvas.height = canvas.height;
@@ -1210,7 +1174,6 @@
       link.download = 'Meu-Desenho-Turminha-do-Xexeu.png';
       link.href = tempCanvas.toDataURL('image/png');
       link.click();
-
       lerTexto("Desenho salvo com sucesso!");
     }
 
