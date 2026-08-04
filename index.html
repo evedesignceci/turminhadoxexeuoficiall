@@ -381,12 +381,13 @@
       margin-bottom: 14px;
     }
 
-    /* SELETOR DE MODO DA LOUSA MÁGICA (NOVO!) */
+    /* SELETOR DE MODO DA LOUSA MÁGICA */
     .lousa-mode-tabs {
       display: flex;
       justify-content: center;
       gap: 8px;
       margin-bottom: 12px;
+      flex-wrap: wrap;
     }
     .btn-mode {
       padding: 8px 14px;
@@ -404,11 +405,11 @@
       color: #FFF;
     }
 
-    /* SELEÇÃO DE DESENHOS PARA PINTAR */
+    /* SELEÇÃO DE DESENHOS PARA PINTAR COM ARTES 2D */
     .coloring-select-grid {
       display: none;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 12px;
       flex-wrap: wrap;
     }
@@ -426,11 +427,37 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      transition: all 0.2s ease;
+    }
+    .btn-color-draw:hover, .btn-color-draw.selected {
+      border-color: var(--primary);
+      background: #E0F2FE;
     }
     .btn-color-draw img {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       object-fit: contain;
+    }
+
+    /* FERRAMENTAS DE ZOOM E TAMANHO DE PINCEL */
+    .lousa-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #E0F2FE;
+      padding: 8px 14px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .lousa-controls-bar label {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .lousa-container {
@@ -693,7 +720,7 @@
         <div class="age-title">👶 Jogos para 3 a 4 Anos (Iniciação & Cores)</div>
         
         <div class="games-two-col">
-          <!-- LOUSA MÁGICA COM 2 MODOS (NOVO!) -->
+          <!-- LOUSA MÁGICA COM 2 MODOS (SEM SOBREPOSIÇÃO E COM FERRAMENTA DE ZOOM/TAMANHO + FOTO) -->
           <div class="interactive-card lousa-container">
             <h4 style="font-weight: 800; margin-bottom: 8px;">🎨 Lousa Mágica</h4>
             
@@ -703,20 +730,45 @@
               <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Desenhos para Pintar</button>
             </div>
 
-            <!-- BOTÕES DE ESCOLHA DE DESENHO (APARECE SÓ NO MODO PINTAR) -->
+            <!-- SELEÇÃO DE DESENHOS PARA PINTAR COM ARTES 2D OFICIAIS -->
             <div id="coloringSelectGrid" class="coloring-select-grid">
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/yApuLed.png', 'Xexéu')">
-                <img src="https://i.imgur.com/yApuLed.png"> Xexéu
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/gXjRjnR.png', 'Xexéu', this)">
+                <img src="https://i.imgur.com/gXjRjnR.png"> Xexéu
               </button>
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/ETC0paX.png', 'Capilé')">
-                <img src="https://i.imgur.com/ETC0paX.png"> Capilé
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/GVVoxPy.png', 'Léo', this)">
+                <img src="https://i.imgur.com/GVVoxPy.png"> Léo
               </button>
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/VoHSsw9.png', 'Joca')">
-                <img src="https://i.imgur.com/VoHSsw9.png"> Joca
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/2bS7slp.png', 'Iza', this)">
+                <img src="https://i.imgur.com/2bS7slp.png"> Iza
               </button>
-              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/IX3LrtJ.png', 'Iza')">
-                <img src="https://i.imgur.com/IX3LrtJ.png"> Iza
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/BLH2iTr.png', 'Nina', this)">
+                <img src="https://i.imgur.com/BLH2iTr.png"> Nina
               </button>
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/YhKkKft.png', 'Joca', this)">
+                <img src="https://i.imgur.com/YhKkKft.png"> Joca
+              </button>
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/1ZeNUBw.png', 'Capilé', this)">
+                <img src="https://i.imgur.com/1ZeNUBw.png"> Capilé
+              </button>
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/CMVveed.png', 'Hilda', this)">
+                <img src="https://i.imgur.com/CMVveed.png"> Hilda
+              </button>
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/dwpdeww.png', 'Beto', this)">
+                <img src="https://i.imgur.com/dwpdeww.png"> Beto
+              </button>
+            </div>
+
+            <!-- BARRA DE CONTROLE DE PINCEL, ZOOM E FOTO -->
+            <div class="lousa-controls-bar">
+              <label>
+                🖌️ Tamanho do Pincel:
+                <input type="range" id="brushSizeInput" min="2" max="24" value="6" onchange="mudarTamanhoPincel(this.value)">
+              </label>
+              
+              <label>
+                🔍 Zoom / Tamanho do Guia:
+                <input type="range" id="zoomScaleInput" min="50" max="100" value="85" onchange="mudarZoomGuia(this.value)">
+              </label>
             </div>
 
             <canvas id="paintCanvas"></canvas>
@@ -727,8 +779,13 @@
               <div class="color-dot" style="background: #10B981;" onclick="mudarCor('#10B981')"></div>
               <div class="color-dot" style="background: #F59E0B;" onclick="mudarCor('#F59E0B')"></div>
               <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
+              <div class="color-dot" style="background: #000000;" onclick="mudarCor('#000000')"></div>
               <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 36px; height: 36px; border:none; cursor:pointer;">
+              
               <button onclick="limparCanvas()" style="padding: 6px 14px; font-weight: 800; border-radius: 12px; border: none; background: #FEE2E2; color: red; cursor: pointer;">Limpar 🗑️</button>
+              
+              <!-- BOTÃO DE SALVAR A FOTO -->
+              <button onclick="salvarFotoDesenho()" style="padding: 6px 14px; font-weight: 800; border-radius: 12px; border: none; background: #D1FAE5; color: #065F46; cursor: pointer;">📸 Salvar Desenho</button>
             </div>
           </div>
 
@@ -1048,11 +1105,13 @@
       });
     }
 
-    /* LOUSA CANVAS E MODOS DEDICADOS (DESENHO LIVRE vs PINTAR) */
+    /* LOUSA CANVAS, TROCA LIMPA, ZOOM E SALVAMENTO DE FOTO */
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas.getContext('2d');
     let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free';
     let imagemPintarCarregada = null;
+    let tamanhoPincel = 6;
+    let escalaZoomGuia = 0.85;
 
     function redimensionarCanvas() {
       if (!canvas.parentElement) return;
@@ -1073,7 +1132,7 @@
       document.getElementById('btn-mode-color').classList.remove('active');
       document.getElementById('coloringSelectGrid').classList.remove('active');
 
-      limparCanvas();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       if (modo === 'free') {
         document.getElementById('btn-mode-free').classList.add('active');
@@ -1083,12 +1142,19 @@
         document.getElementById('btn-mode-color').classList.add('active');
         document.getElementById('coloringSelectGrid').classList.add('active');
         lerTexto("Escolha um personagem para pintar!");
-        carregarContornoPintar('https://i.imgur.com/yApuLed.png', 'Xexéu');
+        carregarContornoPintar('https://i.imgur.com/gXjRjnR.png', 'Xexéu', null);
       }
     }
 
-    function carregarContornoPintar(urlImg, nome) {
-      limparCanvas();
+    /* CARREGA O PERSONAGEM E LIMPA O CANVAS ANTES DE DESENHAR */
+    function carregarContornoPintar(urlImg, nome, btnElemento) {
+      const todosBotoes = document.querySelectorAll('.btn-color-draw');
+      todosBotoes.forEach(b => b.classList.remove('selected'));
+      if (btnElemento) btnElemento.classList.add('selected');
+
+      // Limpa totalmente a tela antes do próximo personagem
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
       const img = new Image();
       img.crossOrigin = "Anonymous";
       img.src = urlImg;
@@ -1100,22 +1166,52 @@
     }
 
     function desenharContornoNoCanvas(img) {
-      const escala = Math.min(canvas.width / img.width, canvas.height / img.height) * 0.85;
+      const escala = Math.min(canvas.width / img.width, canvas.height / img.height) * escalaZoomGuia;
       const x = (canvas.width / 2) - (img.width * escala / 2);
       const y = (canvas.height / 2) - (img.height * escala / 2);
       
-      // Desenha com opacidade suave para servir de guia de pintura
       ctx.globalAlpha = 0.35;
       ctx.drawImage(img, x, y, img.width * escala, img.height * escala);
       ctx.globalAlpha = 1.0;
     }
 
     function mudarCor(c) { corAtual = c; }
+    
+    function mudarTamanhoPincel(tam) { tamanhoPincel = tam; }
+    
+    function mudarZoomGuia(val) {
+      escalaZoomGuia = val / 100;
+      if (modoLousa === 'color' && imagemPintarCarregada) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        desenharContornoNoCanvas(imagemPintarCarregada);
+      }
+    }
+
     function limparCanvas() { 
       ctx.clearRect(0, 0, canvas.width, canvas.height); 
       if (modoLousa === 'color' && imagemPintarCarregada) {
         desenharContornoNoCanvas(imagemPintarCarregada);
       }
+    }
+
+    /* FUNÇÃO PARA TIRAR FOTO E SALVAR O DESENHO */
+    function salvarFotoDesenho() {
+      // Cria um canvas temporário com fundo branco
+      const tempCanvas = document.createElement('canvas');
+      tempCanvas.width = canvas.width;
+      tempCanvas.height = canvas.height;
+      const tempCtx = tempCanvas.getContext('2d');
+
+      tempCtx.fillStyle = '#FFFFFF';
+      tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+      tempCtx.drawImage(canvas, 0, 0);
+
+      const link = document.createElement('a');
+      link.download = 'Meu-Desenho-Turminha-do-Xexeu.png';
+      link.href = tempCanvas.toDataURL('image/png');
+      link.click();
+
+      lerTexto("Desenho salvo com sucesso!");
     }
 
     function getPos(e) {
@@ -1125,10 +1221,10 @@
       return { x: clientX - rect.left, y: clientY - rect.top };
     }
 
-    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 6; ctx.lineCap = 'round'; });
+    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; });
     canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
     canvas.addEventListener('mouseup', () => desenhando = false);
-    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 6; ctx.lineCap = 'round'; e.preventDefault(); });
+    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; e.preventDefault(); });
     canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
     canvas.addEventListener('touchend', () => desenhando = false);
 
