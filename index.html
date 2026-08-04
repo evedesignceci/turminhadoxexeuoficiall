@@ -52,8 +52,8 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      padding-bottom: 20px;
+      gap: 24px;
+      padding-bottom: 24px;
       transition: all 0.3s ease;
     }
 
@@ -96,7 +96,7 @@
     .page-content {
       display: none;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
       animation: fadeIn 0.3s ease;
     }
     .page-content.active-page {
@@ -118,7 +118,7 @@
       margin: 10px 10px 0;
     }
     .logo-img {
-      max-width: 110px;
+      max-width: 120px;
       height: auto;
     }
 
@@ -183,13 +183,13 @@
     }
 
     .intro-box h2 {
-      font-size: 19px;
+      font-size: 20px;
       font-weight: 800;
       color: #92400E;
     }
 
     .intro-box p {
-      font-size: 14px;
+      font-size: 15px;
       color: #78350F;
       line-height: 1.6;
       font-weight: 600;
@@ -199,10 +199,10 @@
       background: linear-gradient(135deg, #FBBF24, #F59E0B);
       border: none;
       border-radius: 50%;
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -212,16 +212,108 @@
     }
 
     .audio-notice-info {
-      font-size: 11px;
+      font-size: 12px;
       color: #B45309;
       background: rgba(253, 230, 138, 0.5);
       border-radius: 12px;
-      padding: 4px 12px;
+      padding: 6px 14px;
       margin-top: 10px;
       font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+    }
+
+    /* REDES SOCIAIS EXPANDIDAS E DESTACADAS */
+    .social-round-section {
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .social-round-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #FFF;
+      border: 3px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 24px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+      transition: all 0.25s ease;
+    }
+    .social-round-btn:hover {
+      transform: scale(1.15) translateY(-3px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+    }
+    .social-round-btn img { width: 30px; height: 30px; object-fit: contain; }
+
+    /* PERSONAGENS EXPANDIDOS E GRANDES */
+    .characters-section-title {
+      padding: 0 20px;
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .characters-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      padding: 0 20px;
+    }
+    
+    @media (min-width: 480px) {
+      .characters-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .char-card {
+      background: #FFF;
+      border-radius: var(--radius-lg);
+      padding: 16px 10px;
+      text-align: center;
+      border: 3px solid #E2E8F0;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+      transition: all 0.25s ease;
+    }
+    .char-card:hover {
+      transform: scale(1.08) translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 12px 24px rgba(59, 130, 246, 0.15);
+    }
+    .char-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08));
+    }
+    .char-card span {
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text-main);
+    }
+
+    .char-details-box {
+      margin: 0 20px;
+      background: #FFFFFF;
+      border: 3px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
     }
 
     /* SEÇÃO DE VÍDEOS / PLAYLIST */
@@ -252,7 +344,7 @@
     }
     .video-wrapper {
       position: relative;
-      padding-bottom: 56.25%; /* Proporção 16:9 */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 18px;
@@ -265,65 +357,6 @@
       width: 100%;
       height: 100%;
       border: 0;
-    }
-
-    /* REDES SOCIAIS */
-    .social-round-section {
-      padding: 0 20px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .social-round-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #FFF;
-      border: 2px solid #E2E8F0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-      transition: transform 0.2s;
-    }
-    .social-round-btn:hover { transform: scale(1.1); border-color: var(--primary); }
-    .social-round-btn img { width: 24px; height: 24px; object-fit: contain; }
-
-    /* PERSONAGENS */
-    .characters-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 12px;
-      padding: 0 20px;
-    }
-    .char-card {
-      background: #FFF;
-      border-radius: var(--radius-lg);
-      padding: 12px 8px;
-      text-align: center;
-      border: 3px solid #F1F5F9;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      transition: transform 0.2s;
-    }
-    .char-card:hover { transform: scale(1.05); }
-    .char-card img { width: 75px; height: 75px; object-fit: contain; }
-    .char-card span { font-weight: 800; font-size: 13px; }
-
-    .char-details-box {
-      margin: 0 20px;
-      background: #FFFFFF;
-      border: 2px solid var(--primary);
-      border-radius: var(--radius-lg);
-      padding: 18px;
-      text-align: center;
-      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.1);
     }
 
     /* SEÇÕES DE JOGOS POR IDADE */
@@ -400,6 +433,10 @@
       font-size: 16px;
       border-radius: 14px;
       cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    .btn-choice:active {
+      transform: scale(0.95);
     }
 
     /* MEMÓRIA */
@@ -429,7 +466,7 @@
       text-align: center;
       padding: 15px 20px 0;
       border-top: 1px solid #E2E8F0;
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-muted);
     }
     .creator-link {
@@ -444,6 +481,8 @@
       .banner-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
       .intro-box { height: 100%; }
       .characters-grid { grid-template-columns: repeat(8, 1fr); }
+      .char-card img { width: 110px; height: 110px; }
+      .social-round-btn { width: 62px; height: 62px; font-size: 28px; }
       .games-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
       #paintCanvas { min-height: 440px; }
     }
@@ -452,7 +491,8 @@
       .app-container { max-width: 1500px; }
       body { font-size: 18px; }
       .nav-tab-btn { font-size: 20px; padding: 16px 28px; }
-      .char-card img { width: 100px; height: 100px; }
+      .char-card img { width: 130px; height: 130px; }
+      .char-card span { font-size: 17px; }
       .btn-choice { font-size: 22px; padding: 14px 28px; }
       #paintCanvas { min-height: 500px; }
     }
@@ -496,7 +536,6 @@
           </a>
         </div>
 
-        <!-- SEÇÃO DE BOAS-VINDAS PERFEITAMENTE ALINHADA -->
         <div class="intro-box">
           <div class="intro-box-header">
             <h2>✨ Bem-vindo à Turminha do Xexéu!</h2>
@@ -510,25 +549,12 @@
         </div>
       </div>
 
-      <!-- PLAYLIST DE VÍDEOS NA PÁGINA INICIAL -->
-      <div class="video-section">
-        <div class="video-card">
-          <div class="video-header">
-            <h3>🎬 Assista aos Episódios da Turminha</h3>
-            <button class="btn-audio-mini" onclick="lerTexto('Assista à playlist oficial de vídeos e músicas da Turminha do Xexéu!')" title="Ouvir instruções">🔊</button>
-          </div>
-          <div class="video-wrapper">
-            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-
-      <!-- TODAS AS REDES SOCIAIS -->
+      <!-- REDES SOCIAIS EXPANDIDAS COM LINKS E ÍCONES GRANDES -->
       <div class="social-round-section">
-        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube">▶️</a>
-        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram">📷</a>
-        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok">🎵</a>
-        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify">🎧</a>
+        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube da Turminha">▶️</a>
+        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram da Turminha">📷</a>
+        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok da Turminha">🎵</a>
+        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify da Turminha">🎧</a>
         <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music">🎶</a>
         <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook">👍</a>
         <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads">
@@ -536,9 +562,10 @@
         </a>
       </div>
 
-      <!-- PERSONAGENS -->
-      <div style="padding: 0 20px;">
-        <h3 style="font-weight: 900; margin-bottom: 10px;">🌟 Conheça os Personagens (Clique para ouvir e ler!)</h3>
+      <!-- PERSONAGENS DESTACADOS -->
+      <div class="characters-section-title">
+        <span>🌟 Conheça os Personagens</span>
+        <span style="font-size: 13px; font-weight: 600; color: var(--text-muted);">(Clique para ouvir e ler!)</span>
       </div>
       
       <div class="characters-grid">
@@ -582,6 +609,19 @@
         <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 4px;">A descrição escrita e a leitura de áudio aparecerão aqui!</p>
       </div>
 
+      <!-- PLAYLIST DE VÍDEOS NA PÁGINA INICIAL -->
+      <div class="video-section">
+        <div class="video-card">
+          <div class="video-header">
+            <h3>🎬 Assista aos Episódios da Turminha</h3>
+            <button class="btn-audio-mini" onclick="lerTexto('Assista à playlist oficial de vídeos e músicas da Turminha do Xexéu!')" title="Ouvir instruções">🔊</button>
+          </div>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- ==================== PÁGINA 2: VÍDEOS ==================== -->
@@ -599,7 +639,7 @@
       </div>
     </div>
 
-    <!-- ==================== PÁGINA 3: JOGOS POR IDADE ==================== -->
+    <!-- ==================== PÁGINA 3: JOGOS INFINITOS ==================== -->
     <div id="pagina-jogos" class="page-content">
 
       <!-- FAIXA ETÁRIA: 3 A 4 ANOS -->
@@ -607,7 +647,7 @@
         <div class="age-title">👶 Jogos para 3 a 4 Anos (Iniciação & Cores)</div>
         
         <div class="games-two-col">
-          <!-- LOUSA MÁGICA GIGANTE -->
+          <!-- LOUSA MÁGICA -->
           <div class="interactive-card lousa-container">
             <h4 style="font-weight: 800; margin-bottom: 4px;">🎨 Lousa Mágica Espaçosa</h4>
             <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Desenhe com bastante espaço em qualquer tela!</p>
@@ -623,11 +663,11 @@
             </div>
           </div>
 
-          <!-- CONTAR DE 1 A 3 -->
+          <!-- CONTAR DE 1 A 9 -->
           <div class="interactive-card">
-            <h4 style="font-weight: 800;">🔢 Vamos Contar? (Fácil)</h4>
-            <p style="font-size: 12px; color: var(--text-muted);">Quantos bonecos do Xexéu aparecem?</p>
-            <div id="countDisplay" style="display: flex; justify-content: center; gap: 6px; margin: 10px 0; min-height: 50px;"></div>
+            <h4 style="font-weight: 800;">🔢 Vamos Contar? (Infinito)</h4>
+            <p style="font-size: 12px; color: var(--text-muted);">Quantos bonecos aparecem abaixo?</p>
+            <div id="countDisplay" style="display: flex; justify-content: center; align-items: center; gap: 6px; margin: 12px 0; min-height: 60px; flex-wrap: wrap;"></div>
             <div id="countOptions" class="game-btn-grid"></div>
           </div>
         </div>
@@ -642,13 +682,14 @@
           <div class="interactive-card">
             <h4 style="font-weight: 800;">🔤 Qual é a Primeira Letra?</h4>
             <p style="font-size: 13px; font-weight: 700; margin-top: 6px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple);">Xexéu</strong></p>
-            <img id="img-letra-personagem" src="" style="width: 80px; height: 80px; object-fit: contain; margin: 8px 0;">
+            <img id="img-letra-personagem" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 8px 0;">
             <div id="opcoes-letras" class="game-btn-grid"></div>
           </div>
 
           <!-- JOGO DA MEMÓRIA -->
           <div class="interactive-card">
-            <h4 style="font-weight: 800;">🧠 Jogo da Memória (4 Pares)</h4>
+            <h4 style="font-weight: 800;">🧠 Jogo da Memória (Infinito)</h4>
+            <p style="font-size: 11px; color: var(--text-muted);">Encontre os 4 pares dos amigos!</p>
             <div id="memoryBoard" class="memory-board"></div>
           </div>
         </div>
@@ -663,16 +704,16 @@
           <div class="interactive-card">
             <h4 style="font-weight: 800;">❓ Quiz da Turminha</h4>
             <p style="font-size: 12px; color: var(--text-muted);">Quem é este personagem?</p>
-            <img id="quiz-img" src="" style="width: 80px; height: 80px; object-fit: contain; margin: 8px 0;">
-            <div id="quiz-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
+            <img id="quiz-img" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 8px 0;">
+            <div id="quiz-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
           </div>
 
           <!-- COR DA ROUPA -->
           <div class="interactive-card">
             <h4 style="font-weight: 800;">🎨 Qual é a Cor da Roupa/Acessório?</h4>
             <p id="cor-pergunta-txt" style="font-size: 13px; font-weight: 700; margin-top: 6px;"></p>
-            <img id="cor-img" src="" style="width: 80px; height: 80px; object-fit: contain; margin: 8px 0;">
-            <div id="cor-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
+            <img id="cor-img" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 8px 0;">
+            <div id="cor-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
           </div>
         </div>
       </div>
@@ -692,6 +733,18 @@
   <script>
     let audioAtivo = true;
     let vozesDisponiveis = [];
+
+    /* BASE DE DADOS COMPLETA DE TODOS OS 8 PERSONAGENS DA TURMINHA */
+    const TODOS_PERSONAGENS = [
+      { nome: 'Xexéu', img: 'https://i.imgur.com/yApuLed.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
+      { nome: 'Capilé', img: 'https://i.imgur.com/ETC0paX.png', letra: 'C', genero: 'm', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
+      { nome: 'Léo', img: 'https://i.imgur.com/vunKLqO.png', letra: 'L', genero: 'm', corPergunta: "Qual a cor da jaqueta do Léo?", corCorreta: "Azul", corOpcoes: ["Amarela", "Verde", "Azul"] },
+      { nome: 'Joca', img: 'https://i.imgur.com/VoHSsw9.png', letra: 'J', genero: 'm', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
+      { nome: 'Iza', img: 'https://i.imgur.com/IX3LrtJ.png', letra: 'I', genero: 'f', corPergunta: "Qual a cor do vestido da Iza?", corCorreta: "Rosa", corOpcoes: ["Rosa", "Azul", "Amarelo"] },
+      { nome: 'Nina', img: 'https://i.imgur.com/cBOKp6k.jpeg', letra: 'N', genero: 'f', corPergunta: "Qual a cor do vestido da Nina?", corCorreta: "Rosa Escuro", corOpcoes: ["Rosa Escuro", "Verde", "Branco"] },
+      { nome: 'Hilda', img: 'https://i.imgur.com/qcJyZb5.png', letra: 'H', genero: 'f', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] },
+      { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', letra: 'B', genero: 'm', corPergunta: "Qual a cor dos óculos do Vovô Beto?", corCorreta: "Azul", corOpcoes: ["Azul", "Amarelo", "Preto"] }
+    ];
 
     /* GERENCIAMENTO DE PÁGINAS */
     function mudarPagina(pagina) {
@@ -757,67 +810,84 @@
     /* 1. JOGO DE CONTAR */
     let qContar = 0;
     function carregarJogoContar() {
-      qContar = Math.floor(Math.random() * 3) + 1;
+      qContar = Math.floor(Math.random() * 9) + 1;
+      const charSorteado = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      
       const display = document.getElementById('countDisplay');
       display.innerHTML = '';
       for (let i = 0; i < qContar; i++) {
         const img = document.createElement('img');
-        img.src = 'https://i.imgur.com/yApuLed.png';
-        img.style.width = '40px';
+        img.src = charSorteado.img;
+        img.style.width = '38px';
+        img.style.height = '38px';
+        img.style.objectFit = 'contain';
         display.appendChild(img);
       }
 
       const opts = document.getElementById('countOptions');
       opts.innerHTML = '';
-      [1, 2, 3].forEach(n => {
+      
+      for (let n = 1; n <= 9; n++) {
         const btn = document.createElement('button');
         btn.className = 'btn-choice';
+        btn.style.padding = '8px 14px';
         btn.innerText = n;
         btn.onclick = () => {
-          if (n === qContar) { lerTexto("Parabéns! Você acertou!"); carregarJogoContar(); }
-          else { lerTexto("Tente novamente!"); }
+          if (n === qContar) { 
+            lerTexto("Parabéns! Você contou certinho!"); 
+            setTimeout(carregarJogoContar, 400); 
+          } else { 
+            lerTexto("Tente novamente!"); 
+          }
         };
         opts.appendChild(btn);
-      });
+      }
     }
 
     /* 2. JOGO DA PRIMEIRA LETRA */
-    const listaLetras = [
-      { nome: 'Xexéu', img: 'https://i.imgur.com/yApuLed.png', c: 'X', opts: ['X', 'J', 'L'] },
-      { nome: 'Capilé', img: 'https://i.imgur.com/ETC0paX.png', c: 'C', opts: ['C', 'B', 'N'] },
-      { nome: 'Joca', img: 'https://i.imgur.com/VoHSsw9.png', c: 'J', opts: ['J', 'I', 'X'] },
-      { nome: 'Iza', img: 'https://i.imgur.com/IX3LrtJ.png', c: 'I', opts: ['I', 'N', 'B'] }
-    ];
-    let idxLetra = 0;
+    let pLetraAtual = null;
     function carregarJogoLetra() {
-      const item = listaLetras[idxLetra];
-      document.getElementById('nome-letra-personagem').innerText = item.nome;
-      document.getElementById('img-letra-personagem').src = item.img;
+      pLetraAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('nome-letra-personagem').innerText = pLetraAtual.nome;
+      document.getElementById('img-letra-personagem').src = pLetraAtual.img;
+      
       const container = document.getElementById('opcoes-letras');
       container.innerHTML = '';
       
-      item.opts.sort(() => Math.random() - 0.5).forEach(l => {
+      const alfabeto = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Z'];
+      let opcoes = [pLetraAtual.letra];
+      while (opcoes.length < 3) {
+        let lAleatoria = alfabeto[Math.floor(Math.random() * alfabeto.length)];
+        if (!opcoes.includes(lAleatoria)) opcoes.push(lAleatoria);
+      }
+      
+      opcoes.sort(() => Math.random() - 0.5).forEach(l => {
         const btn = document.createElement('button');
         btn.className = 'btn-choice';
         btn.innerText = l;
         btn.onclick = () => {
-          if (l === item.c) {
-            lerTexto("Muito bem!");
-            idxLetra = (idxLetra + 1) % listaLetras.length;
-            carregarJogoLetra();
-          } else { lerTexto("Tente de novo!"); }
+          if (l === pLetraAtual.letra) {
+            lerTexto("Muito bem! Letra " + pLetraAtual.letra);
+            setTimeout(carregarJogoLetra, 400);
+          } else { 
+            lerTexto("Tente de novo!"); 
+          }
         };
         container.appendChild(btn);
       });
     }
 
     /* 3. JOGO DA MEMÓRIA */
-    const imgsMemoria = ['https://i.imgur.com/yApuLed.png', 'https://i.imgur.com/ETC0paX.png', 'https://i.imgur.com/vunKLqO.png', 'https://i.imgur.com/VoHSsw9.png'];
-    let cMem = [], pCarta = null, travaMem = false;
+    let cMem = [], pCarta = null, travaMem = false, acertosMem = 0;
     function iniciarMemoria() {
-      cMem = [...imgsMemoria, ...imgsMemoria].sort(() => Math.random() - 0.5);
+      acertosMem = 0;
+      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 4);
+      const imgsMem = sorteados.map(p => p.img);
+      
+      cMem = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
       const board = document.getElementById('memoryBoard');
       board.innerHTML = '';
+      
       cMem.forEach(src => {
         const card = document.createElement('div');
         card.className = 'memory-card';
@@ -827,10 +897,18 @@
           if (travaMem || card.classList.contains('flipped')) return;
           card.classList.add('flipped');
           card.innerHTML = `<img src="${src}">`;
-          if (!pCarta) { pCarta = card; }
-          else {
-            if (pCarta.dataset.img === src) { lerTexto("Acertou!"); pCarta = null; }
-            else {
+          if (!pCarta) { 
+            pCarta = card; 
+          } else {
+            if (pCarta.dataset.img === src) { 
+              acertosMem++;
+              lerTexto("Acertou o par!"); 
+              pCarta = null; 
+              if (acertosMem === 4) {
+                lerTexto("Incrível! Você encontrou todos os pares! Vamos jogar de novo!");
+                setTimeout(iniciarMemoria, 1800);
+              }
+            } else {
               travaMem = true;
               setTimeout(() => {
                 pCarta.classList.remove('flipped'); pCarta.innerText = '❓';
@@ -845,50 +923,57 @@
     }
 
     /* 4. QUIZ */
-    const quizData = [
-      { img: 'https://i.imgur.com/yApuLed.png', c: 'Xexéu', opts: ['Xexéu', 'Joca', 'Léo'] },
-      { img: 'https://i.imgur.com/ETC0paX.png', c: 'Capilé', opts: ['Nina', 'Capilé', 'Beto'] },
-      { img: 'https://i.imgur.com/IX3LrtJ.png', c: 'Iza', opts: ['Hilda', 'Iza', 'Nina'] }
-    ];
-    let idxQuiz = 0;
+    let pQuizAtual = null;
     function carregarQuiz() {
-      const q = quizData[idxQuiz];
-      document.getElementById('quiz-img').src = q.img;
+      pQuizAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('quiz-img').src = pQuizAtual.img;
+      
       const container = document.getElementById('quiz-options');
       container.innerHTML = '';
-      q.opts.forEach(o => {
+      
+      let opcoes = [pQuizAtual.nome];
+      while (opcoes.length < 3) {
+        let outro = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome;
+        if (!opcoes.includes(outro)) opcoes.push(outro);
+      }
+      
+      opcoes.sort(() => Math.random() - 0.5).forEach(o => {
         const btn = document.createElement('button');
-        btn.style.cssText = "padding:8px; border-radius:10px; border:1px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
+        btn.style.cssText = "padding:10px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
         btn.innerText = o;
         btn.onclick = () => {
-          if (o === q.c) { lerTexto("Parabéns!"); idxQuiz = (idxQuiz + 1) % quizData.length; carregarQuiz(); }
-          else { lerTexto("Tente novamente!"); }
+          if (o === pQuizAtual.nome) { 
+            lerTexto("Parabéns! É o " + pQuizAtual.nome); 
+            setTimeout(carregarQuiz, 400); 
+          } else { 
+            lerTexto("Tente novamente!"); 
+          }
         };
         container.appendChild(btn);
       });
     }
 
     /* 5. COR DA ROUPA */
-    const corData = [
-      { p: "Qual a cor do vestido da Iza?", img: "https://i.imgur.com/IX3LrtJ.png", c: "Rosa", opts: ["Rosa", "Azul", "Amarelo"] },
-      { p: "Qual a cor da boina do Xexéu?", img: "https://i.imgur.com/yApuLed.png", c: "Amarela", opts: ["Verde", "Amarela", "Rosa"] },
-      { p: "Qual a cor da coleira do Capilé?", img: "https://i.imgur.com/ETC0paX.png", c: "Azul", opts: ["Azul", "Vermelha", "Roxa"] },
-      { p: "Qual a cor da camiseta do Joca?", img: "https://i.imgur.com/VoHSsw9.png", c: "Verde", opts: ["Amarela", "Verde", "Azul"] }
-    ];
-    let idxCor = 0;
+    let pCorAtual = null;
     function carregarJogoCor() {
-      const item = corData[idxCor];
-      document.getElementById('cor-pergunta-txt').innerText = item.p;
-      document.getElementById('cor-img').src = item.img;
+      pCorAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('cor-pergunta-txt').innerText = pCorAtual.corPergunta;
+      document.getElementById('cor-img').src = pCorAtual.img;
+      
       const container = document.getElementById('cor-options');
       container.innerHTML = '';
-      item.opts.forEach(o => {
+      
+      pCorAtual.corOpcoes.sort(() => Math.random() - 0.5).forEach(o => {
         const btn = document.createElement('button');
-        btn.style.cssText = "padding:8px; border-radius:10px; border:1px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
+        btn.style.cssText = "padding:10px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
         btn.innerText = o;
         btn.onclick = () => {
-          if (o === item.c) { lerTexto("Acertou a cor!"); idxCor = (idxCor + 1) % corData.length; carregarJogoCor(); }
-          else { lerTexto("Tente de novo!"); }
+          if (o === pCorAtual.corCorreta) { 
+            lerTexto("Acertou! A cor é " + pCorAtual.corCorreta); 
+            setTimeout(carregarJogoCor, 400); 
+          } else { 
+            lerTexto("Tente de novo!"); 
+          }
         };
         container.appendChild(btn);
       });
