@@ -91,7 +91,6 @@
       color: #FFFFFF;
       box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     }
-    /* BOTÃO VIP ESPECIAL NA NAV */
     .nav-tab-btn.vip-tab {
       background: linear-gradient(135deg, #F59E0B, #D97706);
       color: #FFF;
@@ -127,6 +126,14 @@
       background: #F59E0B;
       color: #FFF;
       box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+    }
+    .subnav-btn.vip-sub {
+      background: #FEF3C7;
+      border: 1.5px solid #F59E0B;
+    }
+    .subnav-btn.vip-sub.active {
+      background: #D97706;
+      color: #FFF;
     }
 
     .game-tab-content { display: none; }
@@ -343,44 +350,44 @@
     }
     .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-    /* ESTILOS DA ÁREA VIP */
+    /* ESTILOS DA ÁREA VIP (DESIGN DISCRETO E PROFISSIONAL) */
     .vip-lock-container {
-      background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
-      border: 3px dashed #F59E0B;
+      background: #FFF;
+      border: 2px solid #E2E8F0;
       border-radius: var(--radius-lg);
       padding: 30px 20px;
       text-align: center;
       margin: 0 20px;
-      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
     }
-    .vip-lock-container h3 { font-size: 24px; font-weight: 900; color: #B45309; margin-bottom: 10px; }
-    .vip-lock-container p { font-size: 14px; color: #78350F; font-weight: 600; line-height: 1.6; margin-bottom: 20px; }
+    .vip-lock-container h3 { font-size: 20px; font-weight: 800; color: #1E293B; margin-bottom: 8px; }
+    .vip-lock-container p { font-size: 13px; color: var(--text-muted); font-weight: 500; line-height: 1.6; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto; }
     
     .btn-vip-checkout {
       display: inline-block;
-      background: linear-gradient(135deg, #F59E0B, #D97706);
+      background: #0F172A;
       color: #FFF;
-      font-weight: 800;
-      font-size: 16px;
-      padding: 14px 28px;
-      border-radius: 16px;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 24px;
+      border-radius: 12px;
       text-decoration: none;
-      box-shadow: 0 6px 16px rgba(217, 119, 6, 0.35);
-      transition: transform 0.2s;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+      transition: background 0.2s;
     }
-    .btn-vip-checkout:hover { transform: scale(1.05); }
+    .btn-vip-checkout:hover { background: #334155; }
 
     .vip-content-unlocked { display: none; padding: 0 20px; flex-direction: column; gap: 20px; }
     .vip-content-unlocked.active-vip { display: flex; }
 
     .vip-card-box {
       background: #FFF;
-      border: 2px solid #F59E0B;
+      border: 2px solid #E2E8F0;
       border-radius: var(--radius-lg);
       padding: 20px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.05);
     }
-    .vip-card-box h4 { font-size: 18px; font-weight: 900; color: #B45309; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+    .vip-card-box h4 { font-size: 18px; font-weight: 900; color: #1E293B; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
 
     /* JOGOS & LOUSA */
     .age-group-section {
@@ -469,7 +476,7 @@
       </button>
     </header>
 
-    <!-- NAVEGAÇÃO PRINCIPAL (COM ABAS + ÁREA VIP) -->
+    <!-- NAVEGAÇÃO PRINCIPAL -->
     <div class="page-nav">
       <button id="btn-tab-inicio" class="nav-tab-btn active" onclick="mudarPagina('inicio')">🏠 Início</button>
       <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">🎬 Vídeos</button>
@@ -566,6 +573,7 @@
           <button id="subtab-letras" class="subnav-btn" onclick="mudarSubJogo('letras')">🔤 Primeiras Letras</button>
           <button id="subtab-memoria" class="subnav-btn" onclick="mudarSubJogo('memoria')">🧠 Memória</button>
           <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
+          <button id="subtab-quizvip" class="subnav-btn vip-sub" onclick="mudarSubJogo('quizvip')">⭐ Quiz VIP</button>
         </div>
 
         <!-- LOUSA MÁGICA -->
@@ -643,36 +651,60 @@
           </div>
         </div>
 
+        <!-- QUIZ VIP -->
+        <div id="game-quizvip" class="game-tab-content interactive-card" style="border: 2px solid #CBD5E1; background: #FFF;">
+          <h4 style="font-weight: 800; margin-bottom: 6px; color: #1E293B;">⭐ Super Quiz VIP Exclusivo</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">Desafio avançado exclusivo para membros VIP.</p>
+          
+          <div id="vip-game-lock" style="padding: 20px; text-align: center;">
+            <p style="font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">Conteúdo exclusivo disponível apenas para membros VIP.</p>
+            <button onclick="mudarPagina('vip')" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px;">Acessar Área VIP ➔</button>
+          </div>
+
+          <div id="vip-game-body" style="display: none; background: #F8FAFC; padding: 14px; border-radius: 12px; border: 1px solid #E2E8F0;">
+            <p id="quizvip-pergunta" style="font-size: 14px; font-weight: 700; color: #1E293B; margin-bottom: 8px;"></p>
+            <img id="quizvip-img" src="" style="width: 90px; height: 90px; object-fit: contain; margin: 6px 0;">
+            <div id="quizvip-options" style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;"></div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- PÁGINA 4: ÁREA VIP (COM BLOQUEIO DE PAGAMENTO E ERROS DE GRAVAÇÃO) -->
+    <!-- PÁGINA 4: ÁREA VIP -->
     <div id="pagina-vip" class="page-content">
       <div class="age-group-section">
-        <div class="age-title" style="color: #D97706;">⭐ Cantinho Exclusivo da Área VIP</div>
+        <div class="age-title" style="color: #1E293B;">⭐ Área VIP</div>
 
-        <!-- TELA DE BLOQUEIO / PAGAMENTO -->
+        <!-- TELA DE BLOQUEIO -->
         <div id="vip-locked-view" class="vip-lock-container">
-          <h3>🔒 Conteúdo Exclusivo para Apoiadores</h3>
-          <p>Desbloqueie episódios secretos, erros de gravação hilários, desenhos em PDF para colorir, wallpapers e bastidores de animação 3D da Evelyn por apenas um valor super especial! O acesso fica salvo permanentemente no seu dispositivo.</p>
+          <h3>Área Restrita a Membros</h3>
+          <p>Desbloqueie episódios secretos, erros de gravação hilários, desenhos em PDF para colorir, wallpapers e jogos exclusivos. O acesso é liberado permanentemente neste dispositivo.</p>
           
           <a href="https://www.mercadopago.com.br" target="_blank" class="btn-vip-checkout" onclick="ativarVipTeste()">
-            ⭐ Quero Acesso VIP (Mercado Pago)
+            Quero Acesso VIP
           </a>
           <br><br>
-          <button onclick="liberarVipManual()" style="background:transparent; border:none; color:#B45309; font-size:12px; font-weight:700; cursor:pointer; text-decoration:underline;">
-            (Modo Teste: Clique aqui para simular acesso liberado)
+          <button onclick="liberarVipManual()" style="background:transparent; border:none; color:var(--text-muted); font-size:11px; font-weight:600; cursor:pointer; text-decoration:underline;">
+            (Modo Teste: Simular acesso liberado)
           </button>
         </div>
 
-        <!-- CONTEÚDO VIP LIBERADO (INCLUINDO ERROS DE GRAVAÇÃO FINGIDOS) -->
+        <!-- CONTEÚDO VIP LIBERADO -->
         <div id="vip-unlocked-view" class="vip-content-unlocked">
           
-          <!-- ERROS DE GRAVAÇÃO EXCLUSIVOS -->
+          <div class="vip-card-box">
+            <h4>🔒 Episódios Secretos</h4>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Assista aos episódios secretos e conteúdos antecipados.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
+            </div>
+          </div>
+
           <div class="vip-card-box">
             <h4>🎬 Erros de Gravação & Bastidores Engraçados</h4>
             <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
-              Confira os micos, falhas de animação fingidas e tropeços mais engraçados da Turminha que não foram para o canal principal! 😂
+              Confira os micos, falhas de animação fingidas e tropeços mais engraçados da Turminha.
             </p>
             <div class="video-wrapper">
               <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
@@ -680,20 +712,18 @@
           </div>
 
           <div class="vip-card-box">
-            <h4>🎥 Episódios & Músicas Secretas</h4>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Conteúdos antecipados direto do estúdio da Turminha!</p>
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
-            </div>
-          </div>
-
-          <div class="vip-card-box">
-            <h4>🎨 Cantinho dos Downloads & Bastidores 3D</h4>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Baixe wallpapers exclusivos para o seu celular e veja os bastidores em 3D (Blender) criados pela Eve Design!</p>
+            <h4>🎨 Cantinho dos Downloads</h4>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Baixe wallpapers exclusivos para o seu celular e packs de desenhos em PDF para colorir.</p>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
               <a href="https://i.imgur.com/mvQQyMp.png" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none;">📥 Wallpaper Celular</a>
               <a href="https://i.imgur.com/ANqcDjC.png" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none; background: var(--green);">📥 Pack de Desenhos PDF</a>
             </div>
+          </div>
+
+          <div class="vip-card-box" style="background: #F8FAFC; border-color: #CBD5E1;">
+            <h4>⭐ Jogos Exclusivos Desbloqueados</h4>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">O seu Super Quiz VIP já está liberado na aba de Jogos.</p>
+            <button onclick="mudarPagina('jogos'); mudarSubJogo('quizvip');" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px;">Jogar Super Quiz VIP ➔</button>
           </div>
 
         </div>
@@ -703,10 +733,7 @@
 
     <!-- RODAPÉ -->
     <footer>
-      <span>© Turminha do Xexéu - Todos os direitos reservados</span><br>
-      <a href="https://evececidesignoficial.vercel.app/" target="_blank" class="creator-link">
-        🎨 Desenvolvido por <strong>eve.design</strong>
-      </a>
+      <span>© Turminha do Xexéu - Todos os direitos reservados</span>
     </footer>
 
   </div>
@@ -725,22 +752,71 @@
       { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', letra: 'B', genero: 'm', corPergunta: "Qual a cor dos óculos do Vovô Beto?", corCorreta: "Azul", corOpcoes: ["Azul", "Amarelo", "Preto"] }
     ];
 
+    /* CORREÇÃO ROBUSTA PARA O SOM / LEITURA DE VOZ FUNCIONAR NO CELULAR */
+    function destravarAudioMobile() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const dummy = new SpeechSynthesisUtterance("");
+        window.speechSynthesis.speak(dummy);
+      }
+    }
+
+    function lerTexto(texto) {
+      if (!audioAtivo || !('speechSynthesis' in window)) return;
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(texto);
+        utterance.lang = 'pt-BR';
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+      } catch (e) {
+        console.log("Áudio bloqueado pelo navegador");
+      }
+    }
+
+    function alternarAudioGlobal() {
+      audioAtivo = !audioAtivo;
+      const btn = document.getElementById('toggleAudioBtn');
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      if (audioAtivo) {
+        btn.classList.remove('muted');
+        document.getElementById('audioIcon').innerText = '🔊';
+        document.getElementById('audioText').innerText = 'Voz Ligada';
+        lerTexto("Voz ligada!");
+      } else {
+        btn.classList.add('muted');
+        document.getElementById('audioIcon').innerText = '🔇';
+        document.getElementById('audioText').innerText = 'Voz Desligada';
+      }
+    }
+
+    // Destrava o áudio no primeiro toque na tela do celular
+    document.addEventListener('click', () => {
+      destravarAudioMobile();
+    }, { once: true });
+
     /* CHECAGEM DO ACESSO VIP SALVO NO DISPOSITIVO */
     function verificarStatusVip() {
       const isVip = localStorage.getItem('turminha_xexeu_vip');
       const lockedView = document.getElementById('vip-locked-view');
       const unlockedView = document.getElementById('vip-unlocked-view');
+      const gameLock = document.getElementById('vip-game-lock');
+      const gameBody = document.getElementById('vip-game-body');
 
       if (isVip === 'true') {
-        lockedView.style.display = 'none';
-        unlockedView.classList.add('active-vip');
+        if(lockedView) lockedView.style.display = 'none';
+        if(unlockedView) unlockedView.classList.add('active-vip');
+        if(gameLock) gameLock.style.display = 'none';
+        if(gameBody) gameBody.style.display = 'block';
+        carregarQuizVip();
       } else {
-        lockedView.style.display = 'block';
-        unlockedView.classList.remove('active-vip');
+        if(lockedView) lockedView.style.display = 'block';
+        if(unlockedView) unlockedView.classList.remove('active-vip');
+        if(gameLock) gameLock.style.display = 'block';
+        if(gameBody) gameBody.style.display = 'none';
       }
     }
 
-    /* LIBERAÇÃO MANUAL PARA TESTAR NO NAVEGADOR */
     function liberarVipManual() {
       localStorage.setItem('turminha_xexeu_vip', 'true');
       verificarStatusVip();
@@ -781,40 +857,19 @@
     }
 
     function mudarSubJogo(sub) {
-      const subs = ['lousa', 'contar', 'letras', 'memoria', 'quiz'];
+      const subs = ['lousa', 'contar', 'letras', 'memoria', 'quiz', 'quizvip'];
       subs.forEach(s => {
-        document.getElementById('game-' + s).classList.remove('active-game-tab');
-        document.getElementById('subtab-' + s).classList.remove('active');
+        const el = document.getElementById('game-' + s);
+        const subBtn = document.getElementById('subtab-' + s);
+        if(el) el.classList.remove('active-game-tab');
+        if(subBtn) subBtn.classList.remove('active');
       });
-      document.getElementById('game-' + sub).classList.add('active-game-tab');
-      document.getElementById('subtab-' + sub).classList.add('active');
+      const targetEl = document.getElementById('game-' + sub);
+      const targetBtn = document.getElementById('subtab-' + sub);
+      if(targetEl) targetEl.classList.add('active-game-tab');
+      if(targetBtn) targetBtn.classList.add('active');
       if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
-    }
-
-    function alternarAudioGlobal() {
-      audioAtivo = !audioAtivo;
-      const btn = document.getElementById('toggleAudioBtn');
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-      if (audioAtivo) {
-        btn.classList.remove('muted');
-        document.getElementById('audioIcon').innerText = '🔊';
-        document.getElementById('audioText').innerText = 'Voz Ligada';
-      } else {
-        btn.classList.add('muted');
-        document.getElementById('audioIcon').innerText = '🔇';
-        document.getElementById('audioText').innerText = 'Voz Desligada';
-      }
-    }
-
-    function lerTexto(texto) {
-      if (!audioAtivo || !('speechSynthesis' in window)) return;
-      try {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(texto);
-        utterance.lang = 'pt-BR';
-        utterance.rate = 0.95;
-        window.speechSynthesis.speak(utterance);
-      } catch (e) {}
+      if(sub === 'quizvip') verificarStatusVip();
     }
 
     function exibirEFalar(nome, desc, genero = 'm') {
@@ -824,7 +879,7 @@
       lerTexto(artigo + nome + ". " + desc);
     }
 
-    /* FUNÇÕES DOS JOGOS */
+    /* JOGOS DOS PERSONAGENS */
     let qContar = 0;
     function carregarJogoContar() {
       qContar = Math.floor(Math.random() * 9) + 1;
@@ -946,6 +1001,31 @@
         btn.onclick = () => {
           if (o === pCorAtual.corCorreta) { lerTexto("Acertou! Cor correta!"); setTimeout(carregarJogoCor, 600); }
           else { lerTexto("Tente de novo!"); }
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    /* QUIZ VIP */
+    let pQuizVipAtual = null;
+    function carregarQuizVip() {
+      pQuizVipAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('quizvip-pergunta').innerText = "Desafio VIP: De quem é este detalhe/personagem?";
+      document.getElementById('quizvip-img').src = pQuizVipAtual.img;
+      const container = document.getElementById('quizvip-options');
+      container.innerHTML = '';
+      let opcoes = [pQuizVipAtual.nome];
+      while (opcoes.length < 3) {
+        let outro = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome;
+        if (!opcoes.includes(outro)) opcoes.push(outro);
+      }
+      opcoes.sort(() => Math.random() - 0.5).forEach(o => {
+        const btn = document.createElement('button');
+        btn.style.cssText = "padding:10px; border-radius:12px; border:2px solid #CBD5E1; background:#F8FAFC; font-weight:800; color:#1E293B; cursor:pointer;";
+        btn.innerText = o;
+        btn.onclick = () => {
+          if (o === pQuizVipAtual.nome) { lerTexto("Excelente! Acertou o desafio VIP!"); setTimeout(carregarQuizVip, 600); }
+          else { lerTexto("Quase lá! Tente de novo."); }
         };
         container.appendChild(btn);
       });
