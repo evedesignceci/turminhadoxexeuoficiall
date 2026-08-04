@@ -224,7 +224,7 @@
       gap: 6px;
     }
 
-    /* REDES SOCIAIS EXPANDIDAS E DESTACADAS */
+    /* REDES SOCIAIS */
     .social-round-section {
       padding: 0 20px;
       display: flex;
@@ -253,7 +253,7 @@
     }
     .social-round-btn img { width: 30px; height: 30px; object-fit: contain; }
 
-    /* PERSONAGENS EXPANDIDOS E GRANDES */
+    /* PERSONAGENS */
     .characters-section-title {
       padding: 0 20px;
       font-size: 20px;
@@ -316,10 +316,8 @@
       box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
     }
 
-    /* SEÇÃO DE VÍDEOS / PLAYLIST */
-    .video-section {
-      padding: 0 20px;
-    }
+    /* VÍDEOS */
+    .video-section { padding: 0 20px; }
     .video-card {
       background: #FFFFFF;
       border-radius: var(--radius-lg);
@@ -359,7 +357,7 @@
       border: 0;
     }
 
-    /* SEÇÕES DE JOGOS POR IDADE */
+    /* JOGOS */
     .age-group-section {
       margin: 0 20px;
       background: #FFFFFF;
@@ -383,7 +381,58 @@
       margin-bottom: 14px;
     }
 
-    /* LOUSA MÁGICA GIGANTE EXPANDIDA */
+    /* SELETOR DE MODO DA LOUSA MÁGICA (NOVO!) */
+    .lousa-mode-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .btn-mode {
+      padding: 8px 14px;
+      border-radius: 12px;
+      border: 2px solid var(--primary);
+      background: #FFF;
+      color: var(--primary-dark);
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-mode.active {
+      background: var(--primary);
+      color: #FFF;
+    }
+
+    /* SELEÇÃO DE DESENHOS PARA PINTAR */
+    .coloring-select-grid {
+      display: none;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .coloring-select-grid.active {
+      display: flex;
+    }
+    .btn-color-draw {
+      background: #FFF;
+      border: 2px solid #CBD5E1;
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-color-draw img {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
     .lousa-container {
       width: 100%;
       display: flex;
@@ -434,9 +483,6 @@
       border-radius: 14px;
       cursor: pointer;
       transition: transform 0.15s ease;
-    }
-    .btn-choice:active {
-      transform: scale(0.95);
     }
 
     /* MEMÓRIA */
@@ -549,7 +595,7 @@
         </div>
       </div>
 
-      <!-- REDES SOCIAIS EXPANDIDAS COM LINKS E ÍCONES GRANDES -->
+      <!-- REDES SOCIAIS -->
       <div class="social-round-section">
         <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube da Turminha">▶️</a>
         <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram da Turminha">📷</a>
@@ -562,7 +608,7 @@
         </a>
       </div>
 
-      <!-- PERSONAGENS DESTACADOS -->
+      <!-- PERSONAGENS -->
       <div class="characters-section-title">
         <span>🌟 Conheça os Personagens</span>
         <span style="font-size: 13px; font-weight: 600; color: var(--text-muted);">(Clique para ouvir e ler!)</span>
@@ -647,11 +693,34 @@
         <div class="age-title">👶 Jogos para 3 a 4 Anos (Iniciação & Cores)</div>
         
         <div class="games-two-col">
-          <!-- LOUSA MÁGICA -->
+          <!-- LOUSA MÁGICA COM 2 MODOS (NOVO!) -->
           <div class="interactive-card lousa-container">
-            <h4 style="font-weight: 800; margin-bottom: 4px;">🎨 Lousa Mágica Espaçosa</h4>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Desenhe com bastante espaço em qualquer tela!</p>
+            <h4 style="font-weight: 800; margin-bottom: 8px;">🎨 Lousa Mágica</h4>
+            
+            <!-- BOTÕES PARA MUDAR DE MODO -->
+            <div class="lousa-mode-tabs">
+              <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Desenho Livre</button>
+              <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Desenhos para Pintar</button>
+            </div>
+
+            <!-- BOTÕES DE ESCOLHA DE DESENHO (APARECE SÓ NO MODO PINTAR) -->
+            <div id="coloringSelectGrid" class="coloring-select-grid">
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/yApuLed.png', 'Xexéu')">
+                <img src="https://i.imgur.com/yApuLed.png"> Xexéu
+              </button>
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/ETC0paX.png', 'Capilé')">
+                <img src="https://i.imgur.com/ETC0paX.png"> Capilé
+              </button>
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/VoHSsw9.png', 'Joca')">
+                <img src="https://i.imgur.com/VoHSsw9.png"> Joca
+              </button>
+              <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/IX3LrtJ.png', 'Iza')">
+                <img src="https://i.imgur.com/IX3LrtJ.png"> Iza
+              </button>
+            </div>
+
             <canvas id="paintCanvas"></canvas>
+            
             <div class="palette">
               <div class="color-dot" style="background: #3B82F6;" onclick="mudarCor('#3B82F6')"></div>
               <div class="color-dot" style="background: #EF4444;" onclick="mudarCor('#EF4444')"></div>
@@ -979,10 +1048,11 @@
       });
     }
 
-    /* LOUSA CANVAS AMPLIADA */
+    /* LOUSA CANVAS E MODOS DEDICADOS (DESENHO LIVRE vs PINTAR) */
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas.getContext('2d');
-    let desenhando = false, corAtual = '#3B82F6';
+    let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free';
+    let imagemPintarCarregada = null;
 
     function redimensionarCanvas() {
       if (!canvas.parentElement) return;
@@ -991,10 +1061,62 @@
       if (window.innerWidth >= 900) altura = 440;
       if (window.innerWidth >= 1400) altura = 500;
       canvas.height = altura;
+      
+      if (modoLousa === 'color' && imagemPintarCarregada) {
+        desenharContornoNoCanvas(imagemPintarCarregada);
+      }
+    }
+
+    function setLousaMode(modo) {
+      modoLousa = modo;
+      document.getElementById('btn-mode-free').classList.remove('active');
+      document.getElementById('btn-mode-color').classList.remove('active');
+      document.getElementById('coloringSelectGrid').classList.remove('active');
+
+      limparCanvas();
+
+      if (modo === 'free') {
+        document.getElementById('btn-mode-free').classList.add('active');
+        imagemPintarCarregada = null;
+        lerTexto("Modo Desenho Livre ativado!");
+      } else {
+        document.getElementById('btn-mode-color').classList.add('active');
+        document.getElementById('coloringSelectGrid').classList.add('active');
+        lerTexto("Escolha um personagem para pintar!");
+        carregarContornoPintar('https://i.imgur.com/yApuLed.png', 'Xexéu');
+      }
+    }
+
+    function carregarContornoPintar(urlImg, nome) {
+      limparCanvas();
+      const img = new Image();
+      img.crossOrigin = "Anonymous";
+      img.src = urlImg;
+      img.onload = () => {
+        imagemPintarCarregada = img;
+        desenharContornoNoCanvas(img);
+        lerTexto("Vamos pintar o " + nome + "!");
+      };
+    }
+
+    function desenharContornoNoCanvas(img) {
+      const escala = Math.min(canvas.width / img.width, canvas.height / img.height) * 0.85;
+      const x = (canvas.width / 2) - (img.width * escala / 2);
+      const y = (canvas.height / 2) - (img.height * escala / 2);
+      
+      // Desenha com opacidade suave para servir de guia de pintura
+      ctx.globalAlpha = 0.35;
+      ctx.drawImage(img, x, y, img.width * escala, img.height * escala);
+      ctx.globalAlpha = 1.0;
     }
 
     function mudarCor(c) { corAtual = c; }
-    function limparCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+    function limparCanvas() { 
+      ctx.clearRect(0, 0, canvas.width, canvas.height); 
+      if (modoLousa === 'color' && imagemPintarCarregada) {
+        desenharContornoNoCanvas(imagemPintarCarregada);
+      }
+    }
 
     function getPos(e) {
       const rect = canvas.getBoundingClientRect();
@@ -1003,10 +1125,10 @@
       return { x: clientX - rect.left, y: clientY - rect.top };
     }
 
-    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 5; ctx.lineCap = 'round'; });
+    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 6; ctx.lineCap = 'round'; });
     canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
     canvas.addEventListener('mouseup', () => desenhando = false);
-    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 5; ctx.lineCap = 'round'; e.preventDefault(); });
+    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 6; ctx.lineCap = 'round'; e.preventDefault(); });
     canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
     canvas.addEventListener('touchend', () => desenhando = false);
 
