@@ -61,15 +61,17 @@
     .page-nav {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       background: #E0F2FE;
       padding: 10px;
       border-radius: var(--radius-lg);
       margin: 10px 15px 0;
+      flex-wrap: wrap;
     }
     .nav-tab-btn {
       flex: 1;
-      max-width: 200px;
+      min-width: 130px;
+      max-width: 220px;
       padding: 12px 16px;
       border: none;
       border-radius: 16px;
@@ -107,13 +109,13 @@
 
     /* HEADER */
     header {
-      padding: 10px 20px;
+      padding: 12px 20px;
       background: #BAE6FD;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-radius: var(--radius-lg);
-      margin: 10px 15px 0;
+      margin: 10px 10px 0;
     }
     .logo-img {
       max-width: 110px;
@@ -139,20 +141,130 @@
       color: #991B1B;
     }
 
-    /* INTRODUÇÃO E BANNER */
-    .banner-container { padding: 0 20px; }
+    /* BANNER E BOAS-VINDAS */
+    .banner-intro-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 0 20px;
+    }
+
+    .banner-container { width: 100%; }
     .banner-img {
       width: 100%;
+      height: auto;
       border-radius: var(--radius-lg);
       box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      display: block;
+      object-fit: cover;
     }
+
     .intro-box {
-      margin: 0 20px;
+      width: 100%;
       background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
       border: 2px solid #FCD34D;
       border-radius: var(--radius-lg);
-      padding: 16px;
+      padding: 20px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
+    }
+
+    .intro-box-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+
+    .intro-box h2 {
+      font-size: 19px;
+      font-weight: 800;
+      color: #92400E;
+    }
+
+    .intro-box p {
+      font-size: 14px;
+      color: #78350F;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    .btn-audio-mini {
+      background: linear-gradient(135deg, #FBBF24, #F59E0B);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+      flex-shrink: 0;
+    }
+
+    .audio-notice-info {
+      font-size: 11px;
+      color: #B45309;
+      background: rgba(253, 230, 138, 0.5);
+      border-radius: 12px;
+      padding: 4px 12px;
+      margin-top: 10px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* SEÇÃO DE VÍDEOS / PLAYLIST */
+    .video-section {
+      padding: 0 20px;
+    }
+    .video-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      border: 2px solid #E2E8F0;
+      text-align: center;
+    }
+    .video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .video-header h3 {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* Proporção 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     /* REDES SOCIAIS */
@@ -160,12 +272,12 @@
       padding: 0 20px;
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
     .social-round-btn {
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: #FFF;
       border: 2px solid #E2E8F0;
@@ -173,11 +285,14 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      font-size: 22px;
+      font-size: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      transition: transform 0.2s;
     }
+    .social-round-btn:hover { transform: scale(1.1); border-color: var(--primary); }
+    .social-round-btn img { width: 24px; height: 24px; object-fit: contain; }
 
-    /* PERSONAGENS E PAINEL ESCRITO/FALADO */
+    /* PERSONAGENS */
     .characters-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -201,7 +316,6 @@
     .char-card img { width: 75px; height: 75px; object-fit: contain; }
     .char-card span { font-weight: 800; font-size: 13px; }
 
-    /* CARD DE DETALHES ESCRITO/FALADO */
     .char-details-box {
       margin: 0 20px;
       background: #FFFFFF;
@@ -225,9 +339,6 @@
       font-weight: 900;
       color: var(--primary-dark);
       margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .interactive-card {
@@ -239,31 +350,40 @@
       margin-bottom: 14px;
     }
 
-    /* LOUSA CANVAS */
+    /* LOUSA MÁGICA GIGANTE EXPANDIDA */
+    .lousa-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
     #paintCanvas {
       background: #FFF;
-      border: 2px solid var(--primary);
-      border-radius: 16px;
+      border: 3px solid var(--primary);
+      border-radius: 20px;
       width: 100%;
-      height: 220px;
+      min-height: 380px;
       touch-action: none;
+      cursor: crosshair;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
     }
     .palette {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: center;
-      margin-top: 10px;
+      align-items: center;
+      margin-top: 12px;
       flex-wrap: wrap;
     }
     .color-dot {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       border: 2px solid #FFF;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
       cursor: pointer;
     }
 
-    /* BOTÕES DOS JOGOS */
     .game-btn-grid {
       display: flex;
       justify-content: center;
@@ -321,18 +441,20 @@
     /* MEDIA QUERIES PARA COMPUTADORES, TABLETS E TVS */
     @media (min-width: 900px) {
       .app-container { max-width: 1200px; padding: 20px 30px; }
-      .banner-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 20px; }
+      .banner-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
+      .intro-box { height: 100%; }
       .characters-grid { grid-template-columns: repeat(8, 1fr); }
       .games-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      #paintCanvas { min-height: 440px; }
     }
 
-    /* MEDIA QUERY ESPECIAL PARA SMART TVS / MONITORES GIGANTES */
     @media (min-width: 1400px) {
       .app-container { max-width: 1500px; }
       body { font-size: 18px; }
       .nav-tab-btn { font-size: 20px; padding: 16px 28px; }
       .char-card img { width: 100px; height: 100px; }
       .btn-choice { font-size: 22px; padding: 14px 28px; }
+      #paintCanvas { min-height: 500px; }
     }
   </style>
 </head>
@@ -351,13 +473,16 @@
       </button>
     </header>
 
-    <!-- NAVEGAÇÃO DE PÁGINAS (INÍCIO vs JOGOS) -->
+    <!-- NAVEGAÇÃO DE PÁGINAS -->
     <div class="page-nav">
       <button id="btn-tab-inicio" class="nav-tab-btn active" onclick="mudarPagina('inicio')">
         🏠 Início
       </button>
+      <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">
+        🎬 Vídeos
+      </button>
       <button id="btn-tab-jogos" class="nav-tab-btn" onclick="mudarPagina('jogos')">
-        🎮 Jogos Educativos
+        🎮 Jogos
       </button>
     </div>
 
@@ -370,18 +495,45 @@
             <img src="https://i.imgur.com/mvQQyMp.png" alt="Capa da Turminha" class="banner-img">
           </a>
         </div>
+
+        <!-- SEÇÃO DE BOAS-VINDAS PERFEITAMENTE ALINHADA -->
         <div class="intro-box">
-          <h2>✨ Bem-vindo à Turminha do Xexéu!</h2>
+          <div class="intro-box-header">
+            <h2>✨ Bem-vindo à Turminha do Xexéu!</h2>
+            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Turminha do Xexéu! Nosso canal traz historinhas, animações e jogos educativos para ensinar valores, amizade e aprendizado para todas as crianças!')" title="Ouvir Boas-Vindas">🔊</button>
+          </div>
           <p>Nosso canal traz historinhas, animações e jogos educativos para ensinar valores, amizade e aprendizado para todas as crianças!</p>
+          
+          <div class="audio-notice-info">
+            💡 Dica: Você pode ativar ou desativar a leitura por voz no botão "Voz Ligada" no topo da página.
+          </div>
         </div>
       </div>
 
-      <!-- REDES SOCIAIS -->
+      <!-- PLAYLIST DE VÍDEOS NA PÁGINA INICIAL -->
+      <div class="video-section">
+        <div class="video-card">
+          <div class="video-header">
+            <h3>🎬 Assista aos Episódios da Turminha</h3>
+            <button class="btn-audio-mini" onclick="lerTexto('Assista à playlist oficial de vídeos e músicas da Turminha do Xexéu!')" title="Ouvir instruções">🔊</button>
+          </div>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- TODAS AS REDES SOCIAIS -->
       <div class="social-round-section">
-        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn">▶️</a>
-        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn">📷</a>
-        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn">🎵</a>
-        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn">🎧</a>
+        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube">▶️</a>
+        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram">📷</a>
+        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok">🎵</a>
+        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify">🎧</a>
+        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music">🎶</a>
+        <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook">👍</a>
+        <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads">
+          <img src="https://i.imgur.com/7cE4xVg.png" alt="Threads">
+        </a>
       </div>
 
       <!-- PERSONAGENS -->
@@ -424,7 +576,7 @@
         </div>
       </div>
 
-      <!-- SEÇÃO ESCRITA E FALADA DO PERSONAGEM SELECIONADO -->
+      <!-- PAINEL DO PERSONAGEM SELECIONADO -->
       <div class="char-details-box" id="detalhes-personagem">
         <h3 id="detalhe-nome" style="color: var(--primary-dark); font-weight: 900;">Clique em um personagem acima!</h3>
         <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 4px;">A descrição escrita e a leitura de áudio aparecerão aqui!</p>
@@ -432,7 +584,22 @@
 
     </div>
 
-    <!-- ==================== PÁGINA 2: JOGOS POR IDADE ==================== -->
+    <!-- ==================== PÁGINA 2: VÍDEOS ==================== -->
+    <div id="pagina-videos" class="page-content">
+      <div class="video-section">
+        <div class="video-card">
+          <div class="video-header">
+            <h3>🎬 Canal Oficial - Playlist Completa</h3>
+            <button class="btn-audio-mini" onclick="lerTexto('Esta é a playlist oficial da Turminha do Xexéu no YouTube!')" title="Ouvir">🔊</button>
+          </div>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== PÁGINA 3: JOGOS POR IDADE ==================== -->
     <div id="pagina-jogos" class="page-content">
 
       <!-- FAIXA ETÁRIA: 3 A 4 ANOS -->
@@ -440,18 +607,19 @@
         <div class="age-title">👶 Jogos para 3 a 4 Anos (Iniciação & Cores)</div>
         
         <div class="games-two-col">
-          <!-- LOUSA MÁGICA -->
-          <div class="interactive-card">
-            <h4 style="font-weight: 800;">🎨 Lousa Mágica</h4>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Desenhe e solte a imaginação!</p>
+          <!-- LOUSA MÁGICA GIGANTE -->
+          <div class="interactive-card lousa-container">
+            <h4 style="font-weight: 800; margin-bottom: 4px;">🎨 Lousa Mágica Espaçosa</h4>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Desenhe com bastante espaço em qualquer tela!</p>
             <canvas id="paintCanvas"></canvas>
             <div class="palette">
               <div class="color-dot" style="background: #3B82F6;" onclick="mudarCor('#3B82F6')"></div>
               <div class="color-dot" style="background: #EF4444;" onclick="mudarCor('#EF4444')"></div>
               <div class="color-dot" style="background: #10B981;" onclick="mudarCor('#10B981')"></div>
               <div class="color-dot" style="background: #F59E0B;" onclick="mudarCor('#F59E0B')"></div>
-              <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 32px; height: 32px; border:none; cursor:pointer;">
-              <button onclick="limparCanvas()" style="padding: 4px 10px; font-weight: 800; border-radius: 10px; border: none; background: #FEE2E2; color: red; cursor: pointer;">Limpar</button>
+              <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
+              <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 36px; height: 36px; border:none; cursor:pointer;">
+              <button onclick="limparCanvas()" style="padding: 6px 14px; font-weight: 800; border-radius: 12px; border: none; background: #FEE2E2; color: red; cursor: pointer;">Limpar 🗑️</button>
             </div>
           </div>
 
@@ -528,17 +696,23 @@
     /* GERENCIAMENTO DE PÁGINAS */
     function mudarPagina(pagina) {
       document.getElementById('pagina-inicio').classList.remove('active-page');
+      document.getElementById('pagina-videos').classList.remove('active-page');
       document.getElementById('pagina-jogos').classList.remove('active-page');
+      
       document.getElementById('btn-tab-inicio').classList.remove('active');
+      document.getElementById('btn-tab-videos').classList.remove('active');
       document.getElementById('btn-tab-jogos').classList.remove('active');
 
       if (pagina === 'inicio') {
         document.getElementById('pagina-inicio').classList.add('active-page');
         document.getElementById('btn-tab-inicio').classList.add('active');
+      } else if (pagina === 'videos') {
+        document.getElementById('pagina-videos').classList.add('active-page');
+        document.getElementById('btn-tab-videos').classList.add('active');
       } else {
         document.getElementById('pagina-jogos').classList.add('active-page');
         document.getElementById('btn-tab-jogos').classList.add('active');
-        redimensionarCanvas();
+        setTimeout(redimensionarCanvas, 100);
       }
     }
 
@@ -580,10 +754,10 @@
       lerTexto(artigo + nome + ". " + desc);
     }
 
-    /* 1. JOGO DE CONTAR (3 A 4 ANOS) */
+    /* 1. JOGO DE CONTAR */
     let qContar = 0;
     function carregarJogoContar() {
-      qContar = Math.floor(Math.random() * 3) + 1; // 1 a 3
+      qContar = Math.floor(Math.random() * 3) + 1;
       const display = document.getElementById('countDisplay');
       display.innerHTML = '';
       for (let i = 0; i < qContar; i++) {
@@ -607,7 +781,7 @@
       });
     }
 
-    /* 2. JOGO DA PRIMEIRA LETRA (5 A 6 ANOS) */
+    /* 2. JOGO DA PRIMEIRA LETRA */
     const listaLetras = [
       { nome: 'Xexéu', img: 'https://i.imgur.com/yApuLed.png', c: 'X', opts: ['X', 'J', 'L'] },
       { nome: 'Capilé', img: 'https://i.imgur.com/ETC0paX.png', c: 'C', opts: ['C', 'B', 'N'] },
@@ -637,7 +811,7 @@
       });
     }
 
-    /* 3. JOGO DA MEMÓRIA (5 A 6 ANOS) */
+    /* 3. JOGO DA MEMÓRIA */
     const imgsMemoria = ['https://i.imgur.com/yApuLed.png', 'https://i.imgur.com/ETC0paX.png', 'https://i.imgur.com/vunKLqO.png', 'https://i.imgur.com/VoHSsw9.png'];
     let cMem = [], pCarta = null, travaMem = false;
     function iniciarMemoria() {
@@ -670,7 +844,7 @@
       });
     }
 
-    /* 4. QUIZ (7+ ANOS) */
+    /* 4. QUIZ */
     const quizData = [
       { img: 'https://i.imgur.com/yApuLed.png', c: 'Xexéu', opts: ['Xexéu', 'Joca', 'Léo'] },
       { img: 'https://i.imgur.com/ETC0paX.png', c: 'Capilé', opts: ['Nina', 'Capilé', 'Beto'] },
@@ -694,7 +868,7 @@
       });
     }
 
-    /* 5. COR DA ROUPA (7+ ANOS) */
+    /* 5. COR DA ROUPA */
     const corData = [
       { p: "Qual a cor do vestido da Iza?", img: "https://i.imgur.com/IX3LrtJ.png", c: "Rosa", opts: ["Rosa", "Azul", "Amarelo"] },
       { p: "Qual a cor da boina do Xexéu?", img: "https://i.imgur.com/yApuLed.png", c: "Amarela", opts: ["Verde", "Amarela", "Rosa"] },
@@ -720,16 +894,20 @@
       });
     }
 
-    /* LOUSA CANVAS */
+    /* LOUSA CANVAS AMPLIADA */
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas.getContext('2d');
     let desenhando = false, corAtual = '#3B82F6';
 
     function redimensionarCanvas() {
       if (!canvas.parentElement) return;
-      canvas.width = canvas.parentElement.clientWidth - 30;
-      canvas.height = 200;
+      canvas.width = canvas.parentElement.clientWidth - 20;
+      let altura = 380;
+      if (window.innerWidth >= 900) altura = 440;
+      if (window.innerWidth >= 1400) altura = 500;
+      canvas.height = altura;
     }
+
     function mudarCor(c) { corAtual = c; }
     function limparCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
 
@@ -740,12 +918,14 @@
       return { x: clientX - rect.left, y: clientY - rect.top };
     }
 
-    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 4; ctx.lineCap = 'round'; });
+    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 5; ctx.lineCap = 'round'; });
     canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
     canvas.addEventListener('mouseup', () => desenhando = false);
-    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 4; ctx.lineCap = 'round'; e.preventDefault(); });
+    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 5; ctx.lineCap = 'round'; e.preventDefault(); });
     canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
     canvas.addEventListener('touchend', () => desenhando = false);
+
+    window.addEventListener('resize', redimensionarCanvas);
 
     // INICIALIZAÇÕES
     carregarJogoContar();
