@@ -102,7 +102,7 @@
       border-color: transparent;
     }
 
-    /* SUB-ABAS DE JOGOS PADRÃO (SEPARADAS) */
+    /* SUB-ABAS DE JOGOS PADRÃO */
     .games-subnav {
       display: flex;
       justify-content: center;
@@ -152,7 +152,7 @@
       color: #92400E;
       transition: all 0.2s;
     }
-    .vip-sub-btn.active { background: #92400E; color: #FFF; }
+    .vip-sub-btn.active { background: #D97706; color: #FFF; }
     .vip-game-panel { display: none; }
     .vip-game-panel.active-vip-panel { display: block; }
 
@@ -533,15 +533,15 @@
     .puzzle-selector {
       display: flex;
       justify-content: center;
-      gap: 4px;
-      margin-bottom: 10px;
+      gap: 6px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
     }
     .puzzle-thumb-btn {
-      width: 45px;
-      height: 28px;
+      width: 60px;
+      height: 40px;
       border: 2px solid #CBD5E1;
-      border-radius: 6px;
+      border-radius: 8px;
       background-size: cover;
       background-position: center;
       cursor: pointer;
@@ -551,6 +551,7 @@
       border-color: #F59E0B;
       transform: scale(1.1);
       opacity: 1;
+      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.4);
     }
 
     .puzzle-grid {
@@ -558,8 +559,8 @@
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(3, 1fr);
       gap: 3px;
-      width: 280px;
-      height: 210px;
+      width: 300px;
+      height: 225px;
       margin: 10px auto;
       background: #FDE68A;
       padding: 4px;
@@ -567,8 +568,8 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     }
     .puzzle-piece {
-      width: 66px;
-      height: 66px;
+      width: 71px;
+      height: 71px;
       background: #FFF;
       border: 1px solid #F59E0B;
       border-radius: 4px;
@@ -582,9 +583,9 @@
       color: #92400E;
     }
     .puzzle-piece img {
-      width: 264px;
-      height: 198px;
-      object-fit: none;
+      width: 284px;
+      height: 213px;
+      object-fit: cover;
     }
 
     footer { text-align: center; padding: 12px 16px 0; border-top: 1px solid #E2E8F0; font-size: 12px; color: var(--text-muted); }
@@ -686,26 +687,17 @@
       </div>
     </div>
 
-    <!-- PÁGINA 2: VÍDEOS & TIKTOK -->
+    <!-- PÁGINA 2: VÍDEOS -->
     <div id="pagina-videos" class="page-content">
       <div class="video-section">
         <div class="video-card">
           <div class="video-header">
-            <h3>🎬 Canal Oficial - Playlist Completa (YouTube)</h3>
+            <h3>🎬 Canal Oficial - Playlist Completa</h3>
             <button class="btn-audio-mini" onclick="lerTexto('Esta é a playlist oficial da Turminha do Xexéu no YouTube!')" title="Ouvir">🔊</button>
           </div>
           <div class="video-wrapper">
             <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
           </div>
-        </div>
-
-        <div class="video-card">
-          <div class="video-header">
-            <h3>🎵 Curtinhas e Vídeos (TikTok)</h3>
-            <button class="btn-audio-mini" onclick="lerTexto('Acompanhe nossos vídeos curtos no TikTok!')" title="Ouvir">🔊</button>
-          </div>
-          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Acesse diretamente nosso perfil oficial no TikTok para ver as novidades:</p>
-          <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="btn-choice" style="display: inline-block; background: #000; text-decoration: none; padding: 10px 20px; border-radius: 12px; font-weight: 800; font-size: 13px;">Abrir TikTok da Turminha 🎵</a>
         </div>
       </div>
     </div>
@@ -901,7 +893,7 @@
 
             <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
               <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧩 Quebra-Cabeça de Capas</h5>
-              <p style="font-size: 11px; color: #666; margin-bottom: 6px;">Escolha a capa de vídeo abaixo e monte o quebra-cabeça 3x4!</p>
+              <p style="font-size: 11px; color: #666; margin-bottom: 6px;">Escolha a capa de vídeo abaixo e monte o quebra-cabeça 3x4 perfeitamente alinhado!</p>
               <div id="puzzleSelector" class="puzzle-selector"></div>
               <div id="puzzleContainer" class="puzzle-grid"></div>
               <button onclick="embaralharPuzzle()" style="margin-top: 8px; padding: 6px 12px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 11px; cursor: pointer;">Embaralhar Peças 🔄</button>
@@ -1224,7 +1216,7 @@
       });
     }
 
-    // QUEBRA-CABEÇA RETANGULAR PERFEITO (3x4)
+    // QUEBRA-CABEÇA RETANGULAR PERFEITO (3x4) CORRIGIDO
     let puzzlePecas = [];
     const imagensBannersCapas = [
       'https://i.imgur.com/0eJgoOG.png',
@@ -1298,7 +1290,7 @@
         } else {
           let row = Math.floor(posicaoOriginal / 4);
           let col = posicaoOriginal % 4;
-          peca.innerHTML = `<img src="${imgAlvoPuzzle}" style="object-position: -${col * 66}px -${row * 66}px;">`;
+          peca.innerHTML = `<img src="${imgAlvoPuzzle}" style="object-position: -${col * 71}px -${row * 71}px;">`;
         }
         peca.onclick = () => {
           let vazioIdx = puzzlePecas.indexOf(11);
