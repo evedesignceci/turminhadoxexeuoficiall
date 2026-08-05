@@ -11,6 +11,7 @@
             margin: 0;
             padding: 20px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -23,6 +24,7 @@
             width: 100%;
             max-width: 400px;
             text-align: center;
+            margin-bottom: 20px;
         }
         h2 {
             color: #ff6b6b;
@@ -68,10 +70,22 @@
         .link-login:hover {
             text-decoration: underline;
         }
+        
+        /* CORREÇÃO DO QUEBRA-CABEÇA: Garante que a imagem apareça inteira e sem cortes */
+        .quebra-cabeca-img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
 
+    <!-- TELA DE CADASTRO -->
     <div class="container" id="tela-cadastro">
         <h2>🧸 Clube Turminha do Xexéu</h2>
         <p>Crie seu e-mail e senha para acessar a Área VIP após a confirmação do pagamento!</p>
@@ -84,6 +98,7 @@
         <a href="#" class="link-login" onclick="mostrarLogin()">Já sou assinante / Entrar</a>
     </div>
 
+    <!-- TELA DE LOGIN -->
     <div class="container" id="tela-login" style="display: none;">
         <h2>🔑 Entrar na Área VIP</h2>
         <p>Digite seus dados para acessar o conteúdo exclusivo.</p>
@@ -96,10 +111,17 @@
         <a href="#" class="link-login" onclick="mostrarCadastro()">Quero me cadastrar</a>
     </div>
 
+    <!-- TELA DA ÁREA VIP / CONTEÚDO -->
     <div class="container" id="tela-vip" style="display: none;">
         <h2>🎉 Bem-vindo(a) à Área VIP!</h2>
-        <p>Seu acesso está liberado. Aproveite todos os vídeos e jogos!</p>
-        <!-- Conteúdo exclusivo da Área VIP aqui -->
+        <p>Seu acesso está liberado. Aproveite os vídeos e quebra-cabeças!</p>
+        
+        <!-- Exemplo de como usar a imagem corrigida do quebra-cabeça -->
+        <div style="margin-bottom: 20px;">
+            <h3>Quebra-Cabeça da Turminha</h3>
+            <img src="URL_DA_SUA_IMAGEM_AQUI.jpg" alt="Quebra-Cabeça" class="quebra-cabeca-img">
+        </div>
+
         <button style="background-color: #e74c3c;" onclick="sair()">Sair</button>
     </div>
 
@@ -117,7 +139,6 @@
                 return;
             }
 
-            // Envia os dados para a planilha como "Pendente" antes de ir para a Kiwify
             const dados = {
                 email: email,
                 senha: senha,
@@ -131,10 +152,8 @@
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(dados)
             }).then(() => {
-                // Redireciona para o pagamento da Kiwify
                 window.location.href = LINK_KIWIFY;
             }).catch(() => {
-                // Redireciona mesmo se houver falha de rede invisível
                 window.location.href = LINK_KIWIFY;
             });
         }
@@ -148,7 +167,7 @@
                 return;
             }
 
-            // Senha mestra da criadora (caso precise testar)
+            // Senha mestra da criadora
             if (senha === "65628467") {
                 alert("Acesso Mestre liberado!");
                 document.getElementById('tela-login').style.display = 'none';
@@ -156,7 +175,6 @@
                 return;
             }
 
-            // Consulta a planilha para ver se o pagamento foi aprovado
             fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
                 .then(response => response.json())
                 .then(data => {
