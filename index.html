@@ -550,7 +550,7 @@
     .memory-card.flipped { background: #FFF; border: 2px solid var(--primary); }
     .memory-card img { width: 75%; height: 75%; object-fit: contain; }
 
-    /* ESTILOS DO QUEBRA-CABEÇA RETANGULAR PERFEITO (FORMATO DE CAPA DE VÍDEO 3x4) */
+    /* ESTILOS DO QUEBRA-CABEÇA RETANGULAR PERFEITO (3x4) */
     .puzzle-selector {
       display: flex;
       justify-content: center;
@@ -679,7 +679,7 @@
       </div>
       
       <div class="characters-grid">
-        <div class="char-card" onclick="exibirEFalar('Xexéu', 'O mascote alegre da Turminha de boina amarela!', 'm')"><img src="https://i.imgur.com/GZS9T2l.png"><span>Xexéu</span></div>
+        <div class="char-card" onclick="exibirEFalar('Xexéu', 'O mascote alegre da Turminha de boina amarela!', 'm')"><img src="https://i.imgur.com/3vwHupo.png"><span>Xexéu</span></div>
         <div class="char-card" onclick="exibirEFalar('Capilé', 'O cachorrinho esperto de coleira azul!', 'm')"><img src="https://i.imgur.com/LPemrEZ.png"><span>Capilé</span></div>
         <div class="char-card" onclick="exibirEFalar('Léo', 'Um amiguinho curioso de jaqueta azul!', 'm')"><img src="https://i.imgur.com/hqYW0P8.png"><span>Léo</span></div>
         <div class="char-card" onclick="exibirEFalar('Joca', 'O menino criativo de camiseta verde!', 'm')"><img src="https://i.imgur.com/q1JyglG.png"><span>Joca</span></div>
@@ -743,7 +743,7 @@
             <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Pintar Personagens</button>
           </div>
           <div id="coloringSelectGrid" class="coloring-select-grid">
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/GZS9T2l.png', 'Xexéu', this)"><img src="https://i.imgur.com/GZS9T2l.png"> Xexéu</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/3vwHupo.png', 'Xexéu', this)"><img src="https://i.imgur.com/3vwHupo.png"> Xexéu</button>
             <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/hqYW0P8.png', 'Léo', this)"><img src="https://i.imgur.com/hqYW0P8.png"> Léo</button>
             <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/TDuRsa3.png', 'Iza', this)"><img src="https://i.imgur.com/TDuRsa3.png"> Iza</button>
             <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/iqEzuQ2.png', 'Nina', this)"><img src="https://i.imgur.com/iqEzuQ2.png"> Nina</button>
@@ -971,7 +971,7 @@
     const SENHA_MESTRA_CRIADORA = "65628467";
 
     const TODOS_PERSONAGENS = [
-      { nome: 'Xexéu', img: 'https://i.imgur.com/GZS9T2l.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
+      { nome: 'Xexéu', img: 'https://i.imgur.com/3vwHupo.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
       { nome: 'Capilé', img: 'https://i.imgur.com/LPemrEZ.png', letra: 'C', genero: 'm', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
       { nome: 'Léo', img: 'https://i.imgur.com/hqYW0P8.png', letra: 'L', genero: 'm', corPergunta: "Qual a cor da jaqueta do Léo?", corCorreta: "Azul", corOpcoes: ["Amarela", "Verde", "Azul"] },
       { nome: 'Joca', img: 'https://i.imgur.com/q1JyglG.png', letra: 'J', genero: 'm', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
@@ -1215,7 +1215,7 @@
       });
     }
 
-    // QUEBRA-CABEÇA RETANGULAR COM TODAS AS CAPAS QUE VOCÊ ENVIOU E OPÇÃO DE ESCOLHER
+    // QUEBRA-CABEÇA RETANGULAR COM SELETOR DE CAPAS
     let puzzlePecas = [];
     const imagensBannersCapas = [
       'https://i.imgur.com/0eJgoOG.png',
@@ -1237,7 +1237,7 @@
 
     function criarSeletorCapas() {
       const selector = document.getElementById('puzzleSelector');
-      if (selector.children.length > 0) return; // Já criado
+      if (selector.children.length > 0) return;
       selector.innerHTML = '';
       imagensBannersCapas.forEach((urlImg, idx) => {
         const thumb = document.createElement('div');
@@ -1256,7 +1256,6 @@
 
     function selecionarCapaPuzzle(url) {
       imgAlvoPuzzle = url;
-      // Grid 3x4 (12 peças, sendo a última o espaço vazio)
       puzzlePecas = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
       embaralharPuzzle();
     }
@@ -1501,7 +1500,7 @@
         document.getElementById('btn-mode-color').classList.add('active');
         document.getElementById('coloringSelectGrid').classList.add('active');
         lerTexto("Escolha um personagem para pintar!");
-        carregarContornoPintar('https://i.imgur.com/GZS9T2l.png', 'Xexéu', null);
+        carregarContornoPintar('https://i.imgur.com/3vwHupo.png', 'Xexéu', null);
       }
     }
 
