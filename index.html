@@ -69,13 +69,13 @@
     }
     .nav-tab-btn {
       flex: 1;
-      min-width: 80px;
-      max-width: 150px;
-      padding: 10px 8px;
+      min-width: 70px;
+      max-width: 130px;
+      padding: 10px 6px;
       border: none;
       border-radius: 14px;
       font-weight: 800;
-      font-size: 13px;
+      font-size: 12px;
       cursor: pointer;
       background: transparent;
       color: var(--text-muted);
@@ -102,7 +102,7 @@
       border-color: transparent;
     }
 
-    /* SUB-ABAS DE JOGOS PADRÃO */
+    /* SUB-ABAS DE JOGOS GERAIS (CADA JOGO EM SUA PRÓPRIA PÁGINA) */
     .games-subnav {
       display: flex;
       justify-content: center;
@@ -130,7 +130,7 @@
       box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
     }
 
-    /* SUB-ABAS DA SALA VIP */
+    /* SUB-ABAS DA SALA VIP DE JOGOS (CADA JOGO EM SUA PRÓPRIA PÁGINA) */
     .vip-games-subnav {
       display: flex;
       justify-content: center;
@@ -529,29 +529,57 @@
     .memory-card.flipped { background: #FFF; border: 2px solid var(--primary); }
     .memory-card img { width: 75%; height: 75%; object-fit: contain; }
 
-    /* ESTILOS DO QUEBRA-CABEÇA RETANGULAR PERFEITO (3x4) */
+    /* ESTILOS DO QUEBRA-CABEÇA COM ARRASTAR PEÇAS (DRAG & DROP) */
     .puzzle-selector {
       display: flex;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
       margin-bottom: 12px;
       flex-wrap: wrap;
     }
     .puzzle-thumb-btn {
-      width: 60px;
-      height: 40px;
+      width: 70px;
+      height: 48px;
       border: 2px solid #CBD5E1;
       border-radius: 8px;
       background-size: cover;
       background-position: center;
       cursor: pointer;
       opacity: 0.6;
+      transition: all 0.2s;
     }
     .puzzle-thumb-btn.active {
       border-color: #F59E0B;
-      transform: scale(1.1);
+      transform: scale(1.08);
       opacity: 1;
       box-shadow: 0 4px 10px rgba(245, 158, 11, 0.4);
+    }
+
+    .puzzle-full-preview {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .puzzle-full-preview img {
+      width: 140px;
+      height: 105px;
+      border-radius: 8px;
+      border: 2px solid #F59E0B;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .puzzle-workspace {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    @media (min-width: 600px) {
+      .puzzle-workspace {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+      }
     }
 
     .puzzle-grid {
@@ -559,33 +587,60 @@
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(3, 1fr);
       gap: 3px;
-      width: 300px;
-      height: 225px;
-      margin: 10px auto;
+      width: 280px;
+      height: 210px;
       background: #FDE68A;
       padding: 4px;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.06);
     }
-    .puzzle-piece {
-      width: 71px;
-      height: 71px;
+    .puzzle-dropzone {
+      width: 66px;
+      height: 66px;
       background: #FFF;
-      border: 1px solid #F59E0B;
-      border-radius: 4px;
+      border: 2px dashed #F59E0B;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      overflow: hidden;
-      font-weight: 800;
-      font-size: 12px;
-      color: #92400E;
+      position: relative;
     }
-    .puzzle-piece img {
-      width: 284px;
-      height: 213px;
+    .puzzle-dropzone.drag-over {
+      background: #FEF3C7;
+      border-color: #D97706;
+    }
+
+    .puzzle-pieces-tray {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      max-width: 280px;
+      background: #F8FAFC;
+      padding: 8px;
+      border-radius: 12px;
+      border: 2px solid #CBD5E1;
+      justify-content: center;
+      min-height: 150px;
+      align-items: center;
+    }
+    .draggable-piece {
+      width: 62px;
+      height: 62px;
+      border-radius: 6px;
+      cursor: grab;
+      overflow: hidden;
+      border: 2px solid #3B82F6;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      touch-action: none;
+    }
+    .draggable-piece:active {
+      cursor: grabbing;
+    }
+    .draggable-piece img {
+      width: 248px;
+      height: 186px;
       object-fit: cover;
+      pointer-events: none;
     }
 
     footer { text-align: center; padding: 12px 16px 0; border-top: 1px solid #E2E8F0; font-size: 12px; color: var(--text-muted); }
@@ -702,7 +757,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 3: JOGOS PADRÃO -->
+    <!-- PÁGINA 3: JOGOS GERAIS (CADA JOGO EM SUA PRÓPRIA PÁGINA) -->
     <div id="pagina-jogos" class="page-content">
       <div class="age-group-section">
         <div class="age-title">🎮 Área de Jogos da Turminha</div>
@@ -792,7 +847,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 4: ÁREA VIP (COM SALA DE JOGOS VIP ISOLADA E RECLAMAÇÕES) -->
+    <!-- PÁGINA 4: ÁREA VIP (COM SALA DE JOGOS VIP ISOLADA EM PÁGINAS SEPARADAS E RECLAMAÇÕES) -->
     <div id="pagina-vip" class="page-content">
       <div class="age-group-section">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -863,7 +918,7 @@
             </div>
           </div>
 
-          <!-- SALA DE JOGOS VIP EXCLUSIVA (TOTALMENTE ISOLADA) -->
+          <!-- SALA DE JOGOS VIP EXCLUSIVA (CADA JOGO EM SUA PRÓPRIA PÁGINA) -->
           <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <h4 style="color: #92400E; margin: 0; font-size: 15px;">⭐ Sala de Jogos VIP Exclusiva</h4>
@@ -892,11 +947,22 @@
             </div>
 
             <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
-              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧩 Quebra-Cabeça de Capas</h5>
-              <p style="font-size: 11px; color: #666; margin-bottom: 6px;">Escolha a capa de vídeo abaixo e monte o quebra-cabeça 3x4 perfeitamente alinhado!</p>
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧩 Quebra-Cabeça</h5>
+              <p style="font-size: 11px; color: #666; margin-bottom: 6px;">Escolha a imagem e arraste as peças para montar o quebra-cabeça.</p>
+              
               <div id="puzzleSelector" class="puzzle-selector"></div>
-              <div id="puzzleContainer" class="puzzle-grid"></div>
-              <button onclick="embaralharPuzzle()" style="margin-top: 8px; padding: 6px 12px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 11px; cursor: pointer;">Embaralhar Peças 🔄</button>
+              
+              <div class="puzzle-full-preview">
+                <p style="font-size: 11px; font-weight: 700; color: #92400E; margin-bottom: 4px;">Imagem Completa:</p>
+                <img id="puzzleFullPreviewImg" src="" alt="Imagem Completa">
+              </div>
+
+              <div class="puzzle-workspace">
+                <div id="puzzleContainer" class="puzzle-grid"></div>
+                <div id="puzzlePiecesTray" class="puzzle-pieces-tray"></div>
+              </div>
+
+              <button onclick="reiniciarPuzzle()" style="margin-top: 12px; padding: 8px 16px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer;">Reiniciar Jogo 🔄</button>
             </div>
 
             <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
@@ -1216,8 +1282,7 @@
       });
     }
 
-    // QUEBRA-CABEÇA RETANGULAR PERFEITO (3x4) CORRIGIDO
-    let puzzlePecas = [];
+    // QUEBRA-CABEÇA COM ARRASTAR PEÇAS (DRAG & DROP REAL PARA COMPUTADOR E CELULAR)
     const imagensBannersCapas = [
       'https://i.imgur.com/0eJgoOG.png',
       'https://i.imgur.com/0eteSlf.png',
@@ -1230,6 +1295,7 @@
       'https://i.imgur.com/LuBOpYX.png'
     ];
     let imgAlvoPuzzle = imagensBannersCapas[0];
+    let estadoTabuleiro = new Array(12).fill(null); // Armazena qual peça está em cada slot (0 a 11)
 
     function iniciarPuzzleVip() {
       criarSeletorCapas();
@@ -1244,12 +1310,12 @@
         const thumb = document.createElement('div');
         thumb.className = 'puzzle-thumb-btn' + (urlImg === imgAlvoPuzzle ? ' active' : '');
         thumb.style.backgroundImage = `url(${urlImg})`;
-        thumb.title = `Capa ${idx + 1}`;
+        thumb.title = `Imagem ${idx + 1}`;
         thumb.onclick = () => {
           document.querySelectorAll('.puzzle-thumb-btn').forEach(t => t.classList.remove('active'));
           thumb.classList.add('active');
           selecionarCapaPuzzle(urlImg);
-          lerTexto("Capa selecionada!");
+          lerTexto("Imagem selecionada!");
         };
         selector.appendChild(thumb);
       });
@@ -1257,62 +1323,95 @@
 
     function selecionarCapaPuzzle(url) {
       imgAlvoPuzzle = url;
-      puzzlePecas = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-      embaralharPuzzle();
+      document.getElementById('puzzleFullPreviewImg').src = url;
+      reiniciarPuzzle();
     }
 
-    function embaralharPuzzle() {
-      for (let i = 0; i < 60; i++) {
-        let vazioIdx = puzzlePecas.indexOf(11);
-        let vizinhos = [];
-        let r = Math.floor(vazioIdx / 4), c = vazioIdx % 4;
-        if (r > 0) vizinhos.push(vazioIdx - 4);
-        if (r < 2) vizinhos.push(vazioIdx + 4);
-        if (c > 0) vizinhos.push(vazioIdx - 1);
-        if (c < 2) vizinhos.push(vazioIdx + 1);
-        let escolhido = vizinhos[Math.floor(Math.random() * vizinhos.length)];
-        let temp = puzzlePecas[vazioIdx];
-        puzzlePecas[vazioIdx] = puzzlePecas[escolhido];
-        puzzlePecas[escolhido] = temp;
-      }
-      renderizarPuzzle();
+    function reiniciarPuzzle() {
+      estadoTabuleiro = new Array(12).fill(null);
+      renderizarTabuleiroPuzzle();
+      renderizarPecasEmbaralhadas();
     }
 
-    function renderizarPuzzle() {
+    function renderizarTabuleiroPuzzle() {
       const container = document.getElementById('puzzleContainer');
       container.innerHTML = '';
-      puzzlePecas.forEach((posicaoOriginal, indexAtual) => {
-        const peca = document.createElement('div');
-        peca.className = 'puzzle-piece';
-        if (posicaoOriginal === 11) {
-          peca.style.background = '#FEF3C7';
-          peca.innerText = '⭐';
-        } else {
-          let row = Math.floor(posicaoOriginal / 4);
-          let col = posicaoOriginal % 4;
-          peca.innerHTML = `<img src="${imgAlvoPuzzle}" style="object-position: -${col * 71}px -${row * 71}px;">`;
-        }
-        peca.onclick = () => {
-          let vazioIdx = puzzlePecas.indexOf(11);
-          let r1 = Math.floor(indexAtual / 4), c1 = indexAtual % 4;
-          let r2 = Math.floor(vazioIdx / 4), c2 = vazioIdx % 4;
-          if (Math.abs(r1 - r2) + Math.abs(c1 - c2) === 1) {
-            let temp = puzzlePecas[vazioIdx];
-            puzzlePecas[vazioIdx] = puzzlePecas[indexAtual];
-            puzzlePecas[indexAtual] = temp;
-            renderizarPuzzle();
-            verificarVitoriaPuzzle();
-          }
+      for (let i = 0; i < 12; i++) {
+        const dropzone = document.createElement('div');
+        dropzone.className = 'puzzle-dropzone';
+        dropzone.dataset.slotIndex = i;
+
+        // Eventos de arrastar e soltar (Drag and Drop)
+        dropzone.ondragover = (e) => { e.preventDefault(); dropzone.classList.add('drag-over'); };
+        dropzone.ondragleave = () => { dropzone.classList.remove('drag-over'); };
+        dropzone.ondrop = (e) => {
+          e.preventDefault();
+          dropzone.classList.remove('drag-over');
+          const pecaIndex = parseInt(e.dataTransfer.getData('text/plain'));
+          colocarPecaNoSlot(pecaIndex, i);
         };
-        container.appendChild(peca);
+
+        if (estadoTabuleiro[i] !== null) {
+          const pecaOriginal = estadoTabuleiro[i];
+          const pieceEl = criarElementoPeca(pecaOriginal);
+          dropzone.appendChild(pieceEl);
+        }
+        container.appendChild(dropzone);
+      }
+    }
+
+    function renderizarPecasEmbaralhadas() {
+      const tray = document.getElementById('puzzlePiecesTray');
+      tray.innerHTML = '';
+      // Cria array de 0 a 11 e embaralha
+      let indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+      indices.sort(() => Math.random() - 0.5);
+
+      indices.forEach(originalIndex => {
+        // Se a peça já estiver no tabuleiro, não coloca na bandeja
+        if (!estadoTabuleiro.includes(originalIndex)) {
+          const pieceEl = criarElementoPeca(originalIndex);
+          tray.appendChild(pieceEl);
+        }
       });
     }
 
+    function criarElementoPeca(originalIndex) {
+      const div = document.createElement('div');
+      div.className = 'draggable-piece';
+      div.draggable = true;
+      div.dataset.pieceIndex = originalIndex;
+
+      let row = Math.floor(originalIndex / 4);
+      let col = originalIndex % 4;
+      div.innerHTML = `<img src="${imgAlvoPuzzle}" style="object-position: -${col * 62}px -${row * 62}px;">`;
+
+      div.ondragstart = (e) => {
+        e.dataTransfer.setData('text/plain', originalIndex);
+      };
+
+      return div;
+    }
+
+    function colocarPecaNoSlot(pecaIndex, slotIndex) {
+      // Se o slot já tiver uma peça, removemos ela de lá
+      // Remove a peça de qualquer outro slot ou bandeja onde estava
+      for (let i = 0; i < 12; i++) {
+        if (estadoTabuleiro[i] === pecaIndex) {
+          estadoTabuleiro[i] = null;
+        }
+      }
+      estadoTabuleiro[slotIndex] = pecaIndex;
+
+      renderizarTabuleiroPuzzle();
+      renderizarPecasEmbaralhadas();
+      verificarVitoriaPuzzle();
+    }
+
     function verificarVitoriaPuzzle() {
-      let organizado = puzzlePecas.every((val, i) => val === i);
-      if (organizado) {
-        lerTexto("Parabéns! Você montou o quebra-cabeça de capas!");
-        setTimeout(() => selecionarCapaPuzzle(imgAlvoPuzzle), 2000);
+      let completo = estadoTabuleiro.every((val, i) => val === i);
+      if (completo) {
+        lerTexto("Parabéns! Você montou o quebra-cabeça perfeitamente!");
       }
     }
 
