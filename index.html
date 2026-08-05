@@ -350,7 +350,7 @@
     }
     .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-    /* ESTILOS DA ÁREA VIP (DISCRETO E PROFISSIONAL) */
+    /* ESTILOS DA ÁREA VIP */
     .vip-lock-container {
       background: #FFF;
       border: 2px solid #E2E8F0;
@@ -361,7 +361,7 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.04);
     }
     .vip-lock-container h3 { font-size: 20px; font-weight: 800; color: #1E293B; margin-bottom: 8px; }
-    .vip-lock-container p { font-size: 13px; color: var(--text-muted); font-weight: 500; line-height: 1.6; margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .vip-lock-container p { font-size: 13px; color: var(--text-muted); font-weight: 500; line-height: 1.6; margin-bottom: 16px; max-width: 500px; margin-left: auto; margin-right: auto; }
     
     .btn-vip-checkout {
       display: inline-block;
@@ -374,8 +374,31 @@
       text-decoration: none;
       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
       transition: background 0.2s;
+      cursor: pointer;
+      border: none;
     }
     .btn-vip-checkout:hover { background: #334155; }
+
+    .vip-password-box {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #E2E8F0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .vip-input {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 2px solid #CBD5E1;
+      font-size: 14px;
+      text-align: center;
+      font-weight: 700;
+      width: 220px;
+      letter-spacing: 2px;
+    }
+    .vip-input:focus { outline: none; border-color: var(--primary); }
 
     .vip-content-unlocked { display: none; padding: 0 20px; flex-direction: column; gap: 20px; }
     .vip-content-unlocked.active-vip { display: flex; }
@@ -678,16 +701,20 @@
         <!-- TELA DE BLOQUEIO -->
         <div id="vip-locked-view" class="vip-lock-container">
           <h3>Área Restrita a Membros</h3>
-          <p>Desbloqueie episódios secretos, erros de gravação hilários, desenhos em PDF para colorir, wallpapers e jogos exclusivos. O acesso é liberado permanentemente neste dispositivo.</p>
+          <p>Desbloqueie episódios secretos, erros de gravação, desenhos em PDF para colorir, wallpapers e jogos exclusivos.</p>
           
-          <!-- SEU LINK REAL DO MERCADO PAGO APLICADO AQUI -->
           <a href="https://mpago.la/1o4iU8M" target="_blank" class="btn-vip-checkout" onclick="ativarVipTeste()">
-            Quero Acesso VIP
+            Quero Acesso VIP (Mercado Pago)
           </a>
-          <br><br>
-          <button onclick="liberarVipManual()" style="background:transparent; border:none; color:var(--text-muted); font-size:11px; font-weight:600; cursor:pointer; text-decoration:underline;">
-            (Modo Teste: Simular acesso liberado)
-          </button>
+
+          <!-- CAIXINHA DE SENHA GERAL -->
+          <div class="vip-password-box">
+            <p style="font-size: 12px; font-weight: 700; color: #1E293B; margin-bottom: 2px;">Já tem a senha de acesso geral?</p>
+            <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
+              <input type="password" id="senhaVipInput" class="vip-input" placeholder="Digite a senha">
+              <button onclick="verificarSenhaGeral()" class="btn-vip-checkout" style="padding: 10px 16px; font-size: 13px;">Entrar</button>
+            </div>
+          </div>
         </div>
 
         <!-- CONTEÚDO VIP LIBERADO -->
@@ -715,8 +742,8 @@
             <h4>🎨 Cantinho dos Downloads</h4>
             <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Baixe wallpapers exclusivos para o seu celular e packs de desenhos em PDF para colorir.</p>
             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a href="https://i.imgur.com/mvQQyMp.png" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none;">📥 Wallpaper Celular</a>
-              <a href="https://i.imgur.com/ANqcDjC.png" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none; background: var(--green);">📥 Pack de Desenhos PDF</a>
+              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=sharing" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none;">📥 Wallpapers Celular</a>
+              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=sharing" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none; background: var(--green);">📥 Pack de Desenhos PDF</a>
             </div>
           </div>
 
@@ -740,6 +767,7 @@
 
   <script>
     let audioAtivo = true;
+    const SENHA_MESTRA = "65628467";
 
     const TODOS_PERSONAGENS = [
       { nome: 'Xexéu', img: 'https://i.imgur.com/yApuLed.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
@@ -812,10 +840,16 @@
       }
     }
 
-    function liberarVipManual() {
-      localStorage.setItem('turminha_xexeu_vip', 'true');
-      verificarStatusVip();
-      lerTexto("Acesso VIP liberado com sucesso neste dispositivo!");
+    function verificarSenhaGeral() {
+      const digitada = document.getElementById('senhaVipInput').value.trim();
+      if (digitada === SENHA_MESTRA) {
+        localStorage.setItem('turminha_xexeu_vip', 'true');
+        verificarStatusVip();
+        lerTexto("Acesso VIP liberado com sucesso!");
+      } else {
+        alert("Senha incorreta!");
+        lerTexto("Senha incorreta.");
+      }
     }
 
     function ativarVipTeste() {
@@ -1111,6 +1145,7 @@
     canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
     canvas.addEventListener('mouseup', () => desenhando = false);
     canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; e.preventDefault(); });
+    canvas.addEventListener('touch_move', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
     canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
     canvas.addEventListener('touchend', () => desenhando = false);
     window.addEventListener('resize', redimensionarCanvas);
