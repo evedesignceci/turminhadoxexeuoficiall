@@ -550,7 +550,7 @@
     .memory-card.flipped { background: #FFF; border: 2px solid var(--primary); }
     .memory-card img { width: 75%; height: 75%; object-fit: contain; }
 
-    /* ESTILOS DO QUEBRA-CABEÇA CORRIGIDO (LIMPO E ORGANIZADO) */
+    /* ESTILOS DO QUEBRA-CABEÇA COM OS BANNERS DE CAPA */
     .puzzle-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -603,7 +603,7 @@
     <!-- HEADER -->
     <header>
       <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" title="YouTube da Turminha">
-        <img src="https://i.imgur.com/ANqcDjC.png" alt="Logo Turminha do Xexéu" class="logo-img">
+        <img src="https://i.imgur.com/3lM9igy.png" alt="Logo Turminha do Xexéu" class="logo-img">
       </a>
       <button id="toggleAudioBtn" class="audio-toggle-btn" onclick="alternarAudioGlobal()">
         <span id="audioIcon">🔊</span>
@@ -648,21 +648,21 @@
         <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/7cE4xVg.png"></a>
       </div>
 
-      <!-- PERSONAGENS -->
+      <!-- PERSONAGENS (USANDO AS NOVAS ARTES SEM FUNDO) -->
       <div class="characters-section-title">
         <span>🌟 Conheça os Personagens</span>
         <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">(Clique!)</span>
       </div>
       
       <div class="characters-grid">
-        <div class="char-card" onclick="exibirEFalar('Xexéu', 'O mascote alegre da Turminha de boina amarela!', 'm')"><img src="https://i.imgur.com/yApuLed.png"><span>Xexéu</span></div>
-        <div class="char-card" onclick="exibirEFalar('Capilé', 'O cachorrinho esperto de coleira azul!', 'm')"><img src="https://i.imgur.com/ETC0paX.png"><span>Capilé</span></div>
-        <div class="char-card" onclick="exibirEFalar('Léo', 'Um amiguinho curioso de jaqueta azul!', 'm')"><img src="https://i.imgur.com/vunKLqO.png"><span>Léo</span></div>
-        <div class="char-card" onclick="exibirEFalar('Joca', 'O menino criativo de camiseta verde!', 'm')"><img src="https://i.imgur.com/VoHSsw9.png"><span>Joca</span></div>
-        <div class="char-card" onclick="exibirEFalar('Iza', 'A menina adorável de vestido rosa!', 'f')"><img src="https://i.imgur.com/IX3LrtJ.png"><span>Iza</span></div>
-        <div class="char-card" onclick="exibirEFalar('Nina', 'A menina de cabelos cacheados e vestido rosa escuro!', 'f')"><img src="https://i.imgur.com/Wb2CFoH.png"><span>Nina</span></div>
-        <div class="char-card" onclick="exibirEFalar('Hilda', 'A vovó carinhosa de óculos redondos!', 'f')"><img src="https://i.imgur.com/qcJyZb5.png"><span>Hilda</span></div>
-        <div class="char-card" onclick="exibirEFalar('Beto', 'O vovô atencioso de óculos azuis!', 'm')"><img src="https://i.imgur.com/lzOHT4F.png"><span>Beto</span></div>
+        <div class="char-card" onclick="exibirEFalar('Xexéu', 'O mascote alegre da Turminha de boina amarela!', 'm')"><img src="https://i.imgur.com/GZS9T2l.png"><span>Xexéu</span></div>
+        <div class="char-card" onclick="exibirEFalar('Capilé', 'O cachorrinho esperto de coleira azul!', 'm')"><img src="https://i.imgur.com/LPemrEZ.png"><span>Capilé</span></div>
+        <div class="char-card" onclick="exibirEFalar('Léo', 'Um amiguinho curioso de jaqueta azul!', 'm')"><img src="https://i.imgur.com/hqYW0P8.png"><span>Léo</span></div>
+        <div class="char-card" onclick="exibirEFalar('Joca', 'O menino criativo de camiseta verde!', 'm')"><img src="https://i.imgur.com/q1JyglG.png"><span>Joca</span></div>
+        <div class="char-card" onclick="exibirEFalar('Iza', 'A menina adorável de vestido rosa!', 'f')"><img src="https://i.imgur.com/TDuRsa3.png"><span>Iza</span></div>
+        <div class="char-card" onclick="exibirEFalar('Nina', 'A menina de cabelos cacheados e vestido rosa escuro!', 'f')"><img src="https://i.imgur.com/iqEzuQ2.png"><span>Nina</span></div>
+        <div class="char-card" onclick="exibirEFalar('Hilda', 'A vovó carinhosa de óculos redondos!', 'f')"><img src="https://i.imgur.com/VtUm8dV.png"><span>Hilda</span></div>
+        <div class="char-card" onclick="exibirEFalar('Beto', 'O vovô atencioso de óculos azuis!', 'm')"><img src="https://i.imgur.com/NEti1QT.png"><span>Beto</span></div>
       </div>
 
       <div class="char-details-box" id="detalhes-personagem">
@@ -719,14 +719,14 @@
             <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Pintar Personagens</button>
           </div>
           <div id="coloringSelectGrid" class="coloring-select-grid">
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/gXjRjnR.png', 'Xexéu', this)"><img src="https://i.imgur.com/gXjRjnR.png"> Xexéu</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/GVVoxPy.png', 'Léo', this)"><img src="https://i.imgur.com/GVVoxPy.png"> Léo</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/2bS7slp.png', 'Iza', this)"><img src="https://i.imgur.com/2bS7slp.png"> Iza</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/Wb2CFoH.png', 'Nina', this)"><img src="https://i.imgur.com/Wb2CFoH.png"> Nina</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/YhKkKft.png', 'Joca', this)"><img src="https://i.imgur.com/YhKkKft.png"> Joca</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/1ZeNUBw.png', 'Capilé', this)"><img src="https://i.imgur.com/1ZeNUBw.png"> Capilé</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/CMVveed.png', 'Hilda', this)"><img src="https://i.imgur.com/CMVveed.png"> Hilda</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/dwpdeww.png', 'Beto', this)"><img src="https://i.imgur.com/dwpdeww.png"> Beto</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/GZS9T2l.png', 'Xexéu', this)"><img src="https://i.imgur.com/GZS9T2l.png"> Xexéu</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/hqYW0P8.png', 'Léo', this)"><img src="https://i.imgur.com/hqYW0P8.png"> Léo</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/TDuRsa3.png', 'Iza', this)"><img src="https://i.imgur.com/TDuRsa3.png"> Iza</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/iqEzuQ2.png', 'Nina', this)"><img src="https://i.imgur.com/iqEzuQ2.png"> Nina</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/q1JyglG.png', 'Joca', this)"><img src="https://i.imgur.com/q1JyglG.png"> Joca</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/LPemrEZ.png', 'Capilé', this)"><img src="https://i.imgur.com/LPemrEZ.png"> Capilé</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/VtUm8dV.png', 'Hilda', this)"><img src="https://i.imgur.com/VtUm8dV.png"> Hilda</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/NEti1QT.png', 'Beto', this)"><img src="https://i.imgur.com/NEti1QT.png"> Beto</button>
           </div>
           <div class="lousa-controls-bar">
             <label>🖌️ Pincel: <input type="range" id="brushSizeInput" min="2" max="24" value="6" onchange="mudarTamanhoPincel(this.value)"></label>
@@ -786,7 +786,7 @@
           </div>
         </div>
 
-        <!-- SALA DE JOGOS VIP (COM QUEBRA-CABEÇA CORRIGIDO) -->
+        <!-- SALA DE JOGOS VIP (COM O QUEBRA-CABEÇA USANDO OS BANNERS DE CAPA) -->
         <div id="game-quizvip" class="game-tab-content interactive-card" style="border: 2px solid #FCD34D; background: #FFFBEB;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
             <h4 style="font-weight: 900; color: #92400E; margin: 0; font-size: 15px;">⭐ Sala de Jogos VIP Exclusivos</h4>
@@ -819,10 +819,10 @@
               <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 6px; flex-wrap: wrap;"></div>
             </div>
 
-            <!-- QUEBRA-CABEÇA VIP CORRIGIDO -->
+            <!-- QUEBRA-CABEÇA VIP COM AS CAPAS DE VÍDEO -->
             <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
-              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧩 Quebra-Cabeça VIP</h5>
-              <p style="font-size: 11px; color: #666; margin-bottom: 6px;">Toque nas peças adjacentes ao espaço em branco para alinhar a imagem!</p>
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧩 Quebra-Cabeça de Capas</h5>
+              <p style="font-size: 11px; color: #666; margin-bottom: 6px;">Toque nas peças para alinhar o banner de capa da Turminha!</p>
               <div id="puzzleContainer" class="puzzle-grid"></div>
               <button onclick="embaralharPuzzle()" style="margin-top: 8px; padding: 6px 12px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 11px; cursor: pointer;">Embaralhar Peças 🔄</button>
             </div>
@@ -846,7 +846,6 @@
           <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo ao Clube VIP! Aqui você encontra episódios secretos, bastidores, downloads e quatro jogos exclusivos!')" title="Ouvir">🔊</button>
         </div>
 
-        <!-- TELA DE BLOQUEIO SEGURA (EXIGE PAGAMENTO / SENHA DA CRIADORA) -->
         <div id="vip-locked-view" class="vip-lock-container">
           <h3>🧸 Clube VIP Exclusivo</h3>
           <div class="vip-price-tag">Assinatura Mensal: R$ 6,00 / mês</div>
@@ -856,7 +855,6 @@
             ✨ Assinar Clube VIP na Kiwify (R$ 6,00)
           </a>
 
-          <!-- ACESSO RESTRITO POR SENHA SEGURA -->
           <div class="creator-access-area">
             <span class="creator-label">Já possui senha de acesso ou é a criadora?</span>
             <div class="creator-input-group">
@@ -866,7 +864,6 @@
           </div>
         </div>
 
-        <!-- CONTEÚDO VIP LIBERADO -->
         <div id="vip-unlocked-view" class="vip-content-unlocked">
           
           <div style="background: #D1FAE5; border: 2px solid #10B981; padding: 12px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
@@ -922,7 +919,6 @@
             <button onclick="mudarPagina('jogos'); mudarSubJogo('quizvip');" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px; background: #F59E0B; margin-bottom: 0;">Jogar na Sala VIP ➔</button>
           </div>
 
-          <!-- SUPORTE E RECLAMAÇÕES -->
           <div class="support-form-box">
             <h5>📬 Precisa de Ajuda ou quer enviar uma Reclamação?</h5>
             <p>Escreva para nós! A mensagem será enviada direto para o e-mail oficial <strong>turminhaxexeu@gmail.com</strong>.</p>
@@ -936,7 +932,6 @@
       </div>
     </div>
 
-    <!-- RODAPÉ -->
     <footer>
       <span>© Turminha do Xexéu - Todos os direitos reservados</span>
     </footer>
@@ -948,14 +943,14 @@
     const SENHA_MESTRA_CRIADORA = "65628467";
 
     const TODOS_PERSONAGENS = [
-      { nome: 'Xexéu', img: 'https://i.imgur.com/yApuLed.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
-      { nome: 'Capilé', img: 'https://i.imgur.com/ETC0paX.png', letra: 'C', genero: 'm', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
-      { nome: 'Léo', img: 'https://i.imgur.com/vunKLqO.png', letra: 'L', genero: 'm', corPergunta: "Qual a cor da jaqueta do Léo?", corCorreta: "Azul", corOpcoes: ["Amarela", "Verde", "Azul"] },
-      { nome: 'Joca', img: 'https://i.imgur.com/VoHSsw9.png', letra: 'J', genero: 'm', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
-      { nome: 'Iza', img: 'https://i.imgur.com/IX3LrtJ.png', letra: 'I', genero: 'f', corPergunta: "Qual a cor do vestido da Iza?", corCorreta: "Rosa", corOpcoes: ["Rosa", "Azul", "Amarelo"] },
-      { nome: 'Nina', img: 'https://i.imgur.com/Wb2CFoH.png', letra: 'N', genero: 'f', corPergunta: "Qual a cor do vestido da Nina?", corCorreta: "Rosa Escuro", corOpcoes: ["Rosa Escuro", "Verde", "Branco"] },
-      { nome: 'Hilda', img: 'https://i.imgur.com/qcJyZb5.png', letra: 'H', genero: 'f', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] },
-      { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', letra: 'B', genero: 'm', corPergunta: "Qual a cor dos óculos do Vovô Beto?", corCorreta: "Azul", corOpcoes: ["Azul", "Amarelo", "Preto"] }
+      { nome: 'Xexéu', img: 'https://i.imgur.com/GZS9T2l.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
+      { nome: 'Capilé', img: 'https://i.imgur.com/LPemrEZ.png', letra: 'C', genero: 'm', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
+      { nome: 'Léo', img: 'https://i.imgur.com/hqYW0P8.png', letra: 'L', genero: 'm', corPergunta: "Qual a cor da jaqueta do Léo?", corCorreta: "Azul", corOpcoes: ["Amarela", "Verde", "Azul"] },
+      { nome: 'Joca', img: 'https://i.imgur.com/q1JyglG.png', letra: 'J', genero: 'm', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
+      { nome: 'Iza', img: 'https://i.imgur.com/TDuRsa3.png', letra: 'I', genero: 'f', corPergunta: "Qual a cor do vestido da Iza?", corCorreta: "Rosa", corOpcoes: ["Rosa", "Azul", "Amarelo"] },
+      { nome: 'Nina', img: 'https://i.imgur.com/iqEzuQ2.png', letra: 'N', genero: 'f', corPergunta: "Qual a cor do vestido da Nina?", corCorreta: "Rosa Escuro", corOpcoes: ["Rosa Escuro", "Verde", "Branco"] },
+      { nome: 'Hilda', img: 'https://i.imgur.com/VtUm8dV.png', letra: 'H', genero: 'f', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] },
+      { nome: 'Beto', img: 'https://i.imgur.com/NEti1QT.png', letra: 'B', genero: 'm', corPergunta: "Qual a cor dos óculos do Vovô Beto?", corCorreta: "Azul", corOpcoes: ["Azul", "Amarelo", "Preto"] }
     ];
 
     const PERGUNTAS_HISTORIAS_VIP = [
@@ -1006,7 +1001,6 @@
       destravarAudioMobile();
     }, { once: true });
 
-    // ENVIAR SUPORTE / RECLAMAÇÃO PARA turminhaxexeu@gmail.com
     function enviarSuporteReclamacao() {
       const email = document.getElementById('suporteEmail').value.trim();
       const mensagem = document.getElementById('suporteMensagem').value.trim();
@@ -1144,7 +1138,6 @@
       lerTexto(artigo + nome + ". " + desc);
     }
 
-    // JOGO VIP 1: HISTÓRIAS
     function carregarDesafioHistoriaVip() {
       const itemSorteado = PERGUNTAS_HISTORIAS_VIP[Math.floor(Math.random() * PERGUNTAS_HISTORIAS_VIP.length)];
       document.getElementById('vip-historia-txt').innerText = itemSorteado.pergunta;
@@ -1169,7 +1162,6 @@
       });
     }
 
-    // JOGO VIP 2: CORES
     function carregarJogoCorVip() {
       const pCor = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
       document.getElementById('vip-cor-txt').innerText = pCor.corPergunta;
@@ -1195,23 +1187,24 @@
       });
     }
 
-    // JOGO VIP 3: QUEBRA-CABEÇA CORRIGIDO (USANDO AS IMAGENS OFICIAIS DA TURMINHA)
+    // QUEBRA-CABEÇA UTILIZANDO OS BANNERS DE CAPA DE VÍDEO
     let puzzlePecas = [];
-    const imagensPuzzle = [
-      'https://i.imgur.com/yApuLed.png', // Xexéu
-      'https://i.imgur.com/ETC0paX.png', // Capilé
-      'https://i.imgur.com/IX3LrtJ.png'  // Iza
+    const imagensBannersCapas = [
+      'https://i.imgur.com/0eJgoOG.png',
+      'https://i.imgur.com/0eteSlf.png',
+      'https://i.imgur.com/eKxsqu8.png',
+      'https://i.imgur.com/kR23lSN.png',
+      'https://i.imgur.com/z0ueVPB.png'
     ];
     let imgAlvoPuzzle = '';
 
     function iniciarPuzzleVip() {
-      imgAlvoPuzzle = imagensPuzzle[Math.floor(Math.random() * imagensPuzzle.length)];
+      imgAlvoPuzzle = imagensBannersCapas[Math.floor(Math.random() * imagensBannersCapas.length)];
       puzzlePecas = [0, 1, 2, 3, 4, 5, 6, 7, 8];
       embaralharPuzzle();
     }
 
     function embaralharPuzzle() {
-      // Embaralha de forma jogável
       for (let i = 0; i < 50; i++) {
         let vazioIdx = puzzlePecas.indexOf(8);
         let vizinhos = [];
@@ -1261,12 +1254,11 @@
     function verificarVitoriaPuzzle() {
       let organizado = puzzlePecas.every((val, i) => val === i);
       if (organizado) {
-        lerTexto("Parabéns! Você montou o quebra-cabeça da Turminha!");
+        lerTexto("Parabéns! Você montou o quebra-cabeça de capas!");
         setTimeout(iniciarPuzzleVip, 2000);
       }
     }
 
-    // JOGO VIP 4: MEMÓRIA
     let cMemVip = [], pCartaVip = null, travaMemVip = false, acertosMemVip = 0;
     function iniciarMemoriaVip() {
       acertosMemVip = 0;
@@ -1452,7 +1444,7 @@
         document.getElementById('btn-mode-color').classList.add('active');
         document.getElementById('coloringSelectGrid').classList.add('active');
         lerTexto("Escolha um personagem para pintar!");
-        carregarContornoPintar('https://i.imgur.com/gXjRjnR.png', 'Xexéu', null);
+        carregarContornoPintar('https://i.imgur.com/GZS9T2l.png', 'Xexéu', null);
       }
     }
 
