@@ -1,1161 +1,174 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Turminha do Xexéu - Portal Oficial</title>
-  
-  <link rel="icon" type="image/png" href="https://i.imgur.com/ANqcDjC.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary: #3B82F6;
-      --primary-dark: #1D4ED8;
-      --secondary: #F59E0B;
-      --accent: #EF4444;
-      --purple: #8B5CF6;
-      --green: #10B981;
-      --bg-gradient: linear-gradient(135deg, #E0F2FE 0%, #FAF5FF 50%, #FFF1F2 100%);
-      --card-bg: rgba(255, 255, 255, 0.98);
-      --text-main: #0F172A;
-      --text-muted: #64748B;
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', system-ui, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    body {
-      background: var(--bg-gradient);
-      color: var(--text-main);
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 10px 10px 90px;
-    }
-
-    .app-container {
-      width: 100%;
-      max-width: 850px;
-      background: var(--card-bg);
-      border-radius: var(--radius-xl);
-      box-shadow: 0 16px 36px rgba(0,0,0,0.08);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      padding-bottom: 24px;
-    }
-
-    /* BARRA DE NAVEGAÇÃO PRINCIPAL */
-    .page-nav {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      background: #E0F2FE;
-      padding: 10px;
-      border-radius: var(--radius-lg);
-      margin: 10px 15px 0;
-      flex-wrap: wrap;
-    }
-    .nav-tab-btn {
-      flex: 1;
-      min-width: 90px;
-      max-width: 160px;
-      padding: 12px 10px;
-      border: none;
-      border-radius: 16px;
-      font-weight: 800;
-      font-size: 14px;
-      cursor: pointer;
-      background: transparent;
-      color: var(--text-muted);
-      transition: all 0.25s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-    .nav-tab-btn.active {
-      background: var(--primary);
-      color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-    }
-    .nav-tab-btn.vip-tab {
-      background: #0F172A;
-      color: #FFF;
-    }
-    .nav-tab-btn.vip-tab.active {
-      background: #334155;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);
-    }
-
-    /* SUB-ABAS DE JOGOS */
-    .games-subnav {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      background: #FEF3C7;
-      padding: 8px;
-      border-radius: 14px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
-    .subnav-btn {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 12px;
-      cursor: pointer;
-      background: #FFFBEB;
-      color: #92400E;
-      transition: all 0.2s;
-    }
-    .subnav-btn.active {
-      background: #F59E0B;
-      color: #FFF;
-      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
-    }
-    .subnav-btn.vip-sub {
-      background: #F8FAFC;
-      border: 1.5px solid #CBD5E1;
-      color: #1E293B;
-    }
-    .subnav-btn.vip-sub.active {
-      background: #0F172A;
-      color: #FFF;
-    }
-
-    .game-tab-content { display: none; }
-    .game-tab-content.active-game-tab { display: block; }
-
-    /* PÁGINAS COM ALTERNÂNCIA */
-    .page-content {
-      display: none;
-      flex-direction: column;
-      gap: 24px;
-      animation: fadeIn 0.3s ease;
-    }
-    .page-content.active-page { display: flex; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* HEADER */
-    header {
-      padding: 12px 20px;
-      background: #BAE6FD;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-radius: var(--radius-lg);
-      margin: 10px 10px 0;
-    }
-    .logo-img { max-width: 120px; height: auto; }
-
-    .audio-toggle-btn {
-      background: #FFFFFF;
-      border: 2px solid var(--primary);
-      color: var(--primary-dark);
-      font-weight: 800;
-      font-size: 13px;
-      padding: 8px 14px;
-      border-radius: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .audio-toggle-btn.muted {
-      background: #FEE2E2;
-      border-color: #EF4444;
-      color: #991B1B;
-    }
-
-    /* BANNER E BOAS-VINDAS */
-    .banner-intro-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding: 0 20px;
-    }
-    .banner-container { width: 100%; }
-    .banner-img {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius-lg);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-      display: block;
-      object-fit: cover;
-    }
-
-    .intro-box {
-      width: 100%;
-      background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
-      border: 2px solid #FCD34D;
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
-    }
-    .intro-box-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      margin-bottom: 8px;
-    }
-    .intro-box h2 { font-size: 20px; font-weight: 800; color: #92400E; }
-    .intro-box p { font-size: 15px; color: #78350F; line-height: 1.6; font-weight: 600; }
-
-    .btn-audio-mini {
-      background: linear-gradient(135deg, #FBBF24, #F59E0B);
-      border: none;
-      border-radius: 50%;
-      width: 38px;
-      height: 38px;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFF;
-      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
-      flex-shrink: 0;
-    }
-
-    .audio-notice-info {
-      font-size: 12px;
-      color: #B45309;
-      background: rgba(253, 230, 138, 0.5);
-      border-radius: 12px;
-      padding: 6px 14px;
-      margin-top: 10px;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* REDES SOCIAIS */
-    .social-round-section {
-      padding: 0 20px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .social-round-btn {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #FFF;
-      border: 3px solid #E2E8F0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      font-size: 24px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-      transition: all 0.25s ease;
-    }
-    .social-round-btn img { width: 30px; height: 30px; object-fit: contain; }
-
-    /* PERSONAGENS */
-    .characters-section-title {
-      padding: 0 20px;
-      font-size: 20px;
-      font-weight: 900;
-      color: var(--primary-dark);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .characters-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      padding: 0 20px;
-    }
-    @media (min-width: 480px) {
-      .characters-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    .char-card {
-      background: #FFF;
-      border-radius: var(--radius-lg);
-      padding: 16px 10px;
-      text-align: center;
-      border: 3px solid #E2E8F0;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
-      transition: all 0.25s ease;
-    }
-    .char-card img { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.08)); }
-    .char-card span { font-weight: 800; font-size: 15px; color: var(--text-main); }
-
-    .char-details-box {
-      margin: 0 20px;
-      background: #FFFFFF;
-      border: 3px solid var(--primary);
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.12);
-    }
-
-    /* VÍDEOS */
-    .video-section { padding: 0 20px; }
-    .video-card {
-      background: #FFFFFF;
-      border-radius: var(--radius-lg);
-      padding: 18px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-      border: 2px solid #E2E8F0;
-      text-align: center;
-    }
-    .video-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-    .video-header h3 { font-size: 18px; font-weight: 900; color: var(--primary-dark); display: flex; align-items: center; gap: 8px; }
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 18px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-    }
-    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-    /* ESTILOS DA ÁREA VIP */
-    .vip-lock-container {
-      background: #FFF;
-      border: 2px solid #E2E8F0;
-      border-radius: var(--radius-lg);
-      padding: 30px 20px;
-      text-align: center;
-      margin: 0 20px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-    }
-    .vip-lock-container h3 { font-size: 20px; font-weight: 800; color: #1E293B; margin-bottom: 8px; }
-    .vip-lock-container p { font-size: 13px; color: var(--text-muted); font-weight: 500; line-height: 1.6; margin-bottom: 16px; max-width: 500px; margin-left: auto; margin-right: auto; }
-    
-    .btn-vip-checkout {
-      display: inline-block;
-      background: #0F172A;
-      color: #FFF;
-      font-weight: 700;
-      font-size: 14px;
-      padding: 12px 24px;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-      transition: background 0.2s;
-      cursor: pointer;
-      border: none;
-    }
-    .btn-vip-checkout:hover { background: #334155; }
-
-    .vip-password-box {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid #E2E8F0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-    .vip-input {
-      padding: 10px 14px;
-      border-radius: 10px;
-      border: 2px solid #CBD5E1;
-      font-size: 14px;
-      text-align: center;
-      font-weight: 700;
-      width: 220px;
-      letter-spacing: 2px;
-    }
-    .vip-input:focus { outline: none; border-color: var(--primary); }
-
-    .vip-content-unlocked { display: none; padding: 0 20px; flex-direction: column; gap: 20px; }
-    .vip-content-unlocked.active-vip { display: flex; }
-
-    .vip-card-box {
-      background: #FFF;
-      border: 2px solid #E2E8F0;
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-    }
-    .vip-card-box h4 { font-size: 18px; font-weight: 900; color: #1E293B; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-
-    /* JOGOS & LOUSA */
-    .age-group-section {
-      margin: 0 20px;
-      background: #FFFFFF;
-      border-radius: var(--radius-lg);
-      padding: 18px;
-      border: 2px solid #E2E8F0;
-    }
-    .age-title { font-size: 18px; font-weight: 900; color: var(--primary-dark); margin-bottom: 12px; }
-    .interactive-card {
-      background: #F8FAFC;
-      border-radius: 16px;
-      padding: 16px;
-      text-align: center;
-      border: 1px solid #E2E8F0;
-      margin-bottom: 14px;
-    }
-    .lousa-mode-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-    .btn-mode {
-      padding: 8px 14px;
-      border-radius: 12px;
-      border: 2px solid var(--primary);
-      background: #FFF;
-      color: var(--primary-dark);
-      font-weight: 800;
-      font-size: 13px;
-      cursor: pointer;
-    }
-    .btn-mode.active { background: var(--primary); color: #FFF; }
-    .coloring-select-grid { display: none; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-    .coloring-select-grid.active { display: flex; }
-    .btn-color-draw {
-      background: #FFF;
-      border: 2px solid #CBD5E1;
-      padding: 6px 10px;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 12px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .btn-color-draw.selected { border-color: var(--primary); background: #E0F2FE; }
-    .btn-color-draw img { width: 22px; height: 22px; object-fit: contain; }
-    .lousa-controls-bar { display: flex; align-items: center; justify-content: center; gap: 12px; background: #E0F2FE; padding: 8px 14px; border-radius: 14px; margin-bottom: 12px; flex-wrap: wrap; }
-    .lousa-controls-bar label { font-size: 12px; font-weight: 800; color: var(--primary-dark); display: flex; align-items: center; gap: 6px; }
-    .lousa-container { width: 100%; display: flex; flex-direction: column; align-items: center; }
-    #paintCanvas { background: #FFF; border: 3px solid var(--primary); border-radius: 20px; width: 100%; min-height: 380px; touch-action: none; cursor: crosshair; }
-    .palette { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap; }
-    .color-dot { width: 36px; height: 36px; border-radius: 50%; border: 2px solid #FFF; box-shadow: 0 2px 6px rgba(0,0,0,0.15); cursor: pointer; }
-    .game-btn-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-    .btn-choice { background: var(--purple); color: #FFF; border: none; padding: 10px 18px; font-weight: 800; font-size: 16px; border-radius: 14px; cursor: pointer; }
-    .memory-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; max-width: 360px; margin-left: auto; margin-right: auto; }
-    .memory-card { aspect-ratio: 1; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 900; font-size: 20px; cursor: pointer; }
-    .memory-card.flipped { background: #FFF; border: 2px solid var(--primary); }
-    .memory-card img { width: 80%; height: 80%; object-fit: contain; }
-
-    /* FOOTER */
-    footer { text-align: center; padding: 15px 20px 0; border-top: 1px solid #E2E8F0; font-size: 13px; color: var(--text-muted); }
-
-    @media (min-width: 900px) {
-      .app-container { max-width: 1200px; padding: 20px 30px; }
-      .banner-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
-      .intro-box { height: 100%; }
-      .characters-grid { grid-template-columns: repeat(8, 1fr); }
-      .char-card img { width: 110px; height: 110px; }
-      .social-round-btn { width: 62px; height: 62px; font-size: 28px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área VIP - Turminha do Xexéu</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f0f8ff;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .btn {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background-color: #27ae60;
+        }
+        .login-area {
+            margin-top: 20px;
+            border-top: 2px dashed #eee;
+            padding-top: 20px;
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .btn-login {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-login:hover {
+            background-color: #2980b9;
+        }
+        #conteudo-vip {
+            display: none;
+        }
+        .welcome-vip {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            color: #856404;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="app-container">
+    <!-- TELA DE BLOQUEIO / PAGAMENTO -->
+    <div class="container" id="tela-bloqueio">
+        <h1>🧸 Área VIP - Turminha do Xexéu</h1>
+        <p>Conteúdo exclusivo, episódios secretos, desenhos para colorir e muito mais! Assine o nosso clube mensal por apenas <strong>R$ 6,00/mês</strong>.</p>
+        
+        <!-- Botão oficial da Kiwify -->
+        <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn">✨ Assinar Clube VIP (R$ 6,00)</a>
 
-    <!-- HEADER -->
-    <header>
-      <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" title="YouTube da Turminha">
-        <img src="https://i.imgur.com/ANqcDjC.png" alt="Logo Turminha do Xexéu" class="logo-img">
-      </a>
-      <button id="toggleAudioBtn" class="audio-toggle-btn" onclick="alternarAudioGlobal()">
-        <span id="audioIcon">🔊</span>
-        <span id="audioText">Voz Ligada</span>
-      </button>
-    </header>
-
-    <!-- NAVEGAÇÃO PRINCIPAL -->
-    <div class="page-nav">
-      <button id="btn-tab-inicio" class="nav-tab-btn active" onclick="mudarPagina('inicio')">🏠 Início</button>
-      <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">🎬 Vídeos</button>
-      <button id="btn-tab-jogos" class="nav-tab-btn" onclick="mudarPagina('jogos')">🎮 Jogos</button>
-      <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
+        <!-- Área de login para quem já pagou ou para você -->
+        <div class="login-area">
+            <p style="font-size: 13px; margin-bottom: 8px;">Já é membro ou tem a senha de acesso?</p>
+            <input type="password" id="senha-input" placeholder="Digite sua senha de acesso">
+            <button class="btn-login" onclick="verificarSenha()">Entrar na Área VIP</button>
+        </div>
     </div>
 
-    <!-- PÁGINA 1: INÍCIO -->
-    <div id="pagina-inicio" class="page-content active-page">
-      <div class="banner-intro-grid">
-        <div class="banner-container">
-          <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank">
-            <img src="https://i.imgur.com/mvQQyMp.png" alt="Capa da Turminha" class="banner-img">
-          </a>
+    <!-- CONTEÚDO VIP (Só aparece liberado) -->
+    <div class="container" id="conteudo-vip">
+        <h1>🎉 Bem-vindo(a) à Área VIP!</h1>
+        <div class="welcome-vip">
+            <p style="margin: 0; color: #856404;">Acesso liberado com sucesso! Aproveite todo o conteúdo exclusivo da Turminha do Xexéu. 🧸🎨</p>
         </div>
-        <div class="intro-box">
-          <div class="intro-box-header">
-            <h2>✨ Bem-vindo à Turminha do Xexéu!</h2>
-            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Turminha do Xexéu! Nosso canal traz historinhas e jogos educativos!')" title="Ouvir">🔊</button>
-          </div>
-          <p>Nosso canal traz historinhas, animações e jogos educativos para ensinar valores, amizade e aprendizado para todas as crianças!</p>
-          <div class="audio-notice-info">💡 Dica: Toque nos personagens ou botões para ouvir!</div>
+        
+        <p>Aqui ficam os vídeos secretos, downloads em PDF e os jogos exclusivos!</p>
+        
+        <!-- Coloque os links dos seus vídeos ou conteúdos aqui no futuro -->
+        <div style="background: #e8f4fd; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+            <h3 style="color: #2980b9; margin-bottom: 5px;">🎬 Episódio Secreto #01</h3>
+            <p style="font-size: 13px; margin: 0;">Disponível exclusivamente para membros do Clube.</p>
         </div>
-      </div>
 
-      <!-- REDES SOCIAIS -->
-      <div class="social-round-section">
-        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube">▶️</a>
-        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram">📷</a>
-        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok">🎵</a>
-        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify">🎧</a>
-        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music">🎶</a>
-        <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook">👍</a>
-        <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/7cE4xVg.png"></a>
-      </div>
-
-      <!-- PERSONAGENS -->
-      <div class="characters-section-title">
-        <span>🌟 Conheça os Personagens</span>
-        <span style="font-size: 13px; font-weight: 600; color: var(--text-muted);">(Clique!)</span>
-      </div>
-      
-      <div class="characters-grid">
-        <div class="char-card" onclick="exibirEFalar('Xexéu', 'O mascote alegre da Turminha de boina amarela!', 'm')"><img src="https://i.imgur.com/yApuLed.png"><span>Xexéu</span></div>
-        <div class="char-card" onclick="exibirEFalar('Capilé', 'O cachorrinho esperto de coleira azul!', 'm')"><img src="https://i.imgur.com/ETC0paX.png"><span>Capilé</span></div>
-        <div class="char-card" onclick="exibirEFalar('Léo', 'Um amiguinho curioso de jaqueta azul!', 'm')"><img src="https://i.imgur.com/vunKLqO.png"><span>Léo</span></div>
-        <div class="char-card" onclick="exibirEFalar('Joca', 'O menino criativo de camiseta verde!', 'm')"><img src="https://i.imgur.com/VoHSsw9.png"><span>Joca</span></div>
-        <div class="char-card" onclick="exibirEFalar('Iza', 'A menina adorável de vestido rosa!', 'f')"><img src="https://i.imgur.com/IX3LrtJ.png"><span>Iza</span></div>
-        <div class="char-card" onclick="exibirEFalar('Nina', 'A menina de cabelos cacheados e vestido rosa escuro!', 'f')"><img src="https://i.imgur.com/Wb2CFoH.png"><span>Nina</span></div>
-        <div class="char-card" onclick="exibirEFalar('Hilda', 'A vovó carinhosa de óculos redondos!', 'f')"><img src="https://i.imgur.com/qcJyZb5.png"><span>Hilda</span></div>
-        <div class="char-card" onclick="exibirEFalar('Beto', 'O vovô atencioso de óculos azuis!', 'm')"><img src="https://i.imgur.com/lzOHT4F.png"><span>Beto</span></div>
-      </div>
-
-      <div class="char-details-box" id="detalhes-personagem">
-        <h3 id="detalhe-nome" style="color: var(--primary-dark); font-weight: 900;">Clique em um personagem acima!</h3>
-        <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 4px;">A descrição aparecerá aqui!</p>
-      </div>
-
-      <div class="video-section">
-        <div class="video-card">
-          <div class="video-header">
-            <h3>🎬 Assista aos Episódios</h3>
-            <button class="btn-audio-mini" onclick="lerTexto('Assista à playlist oficial de vídeos e músicas da Turminha do Xexéu!')" title="Ouvir">🔊</button>
-          </div>
-          <div class="video-wrapper">
-            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
+        <button class="btn" style="background-color: #e74c3c;" onclick="sairVIP()">Sair / Bloquear Aparelho</button>
     </div>
 
-    <!-- PÁGINA 2: VÍDEOS -->
-    <div id="pagina-videos" class="page-content">
-      <div class="video-section">
-        <div class="video-card">
-          <div class="video-header">
-            <h3>🎬 Canal Oficial - Playlist Completa</h3>
-            <button class="btn-audio-mini" onclick="lerTexto('Esta é a playlist oficial da Turminha do Xexéu no YouTube!')" title="Ouvir">🔊</button>
-          </div>
-          <div class="video-wrapper">
-            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
+    <script>
+        // Senha mestra da criadora
+        const SENHA_MESTRA = "65628467";
 
-    <!-- PÁGINA 3: JOGOS -->
-    <div id="pagina-jogos" class="page-content">
-      <div class="age-group-section">
-        <div class="age-title">🎮 Área de Jogos da Turminha</div>
-        <div class="games-subnav">
-          <button id="subtab-lousa" class="subnav-btn active" onclick="mudarSubJogo('lousa')">🎨 Lousa Mágica</button>
-          <button id="subtab-contar" class="subnav-btn" onclick="mudarSubJogo('contar')">🔢 Contar</button>
-          <button id="subtab-letras" class="subnav-btn" onclick="mudarSubJogo('letras')">🔤 Primeiras Letras</button>
-          <button id="subtab-memoria" class="subnav-btn" onclick="mudarSubJogo('memoria')">🧠 Memória</button>
-          <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
-          <button id="subtab-quizvip" class="subnav-btn vip-sub" onclick="mudarSubJogo('quizvip')">⭐ Quiz VIP</button>
-        </div>
-
-        <!-- LOUSA MÁGICA -->
-        <div id="game-lousa" class="game-tab-content active-game-tab interactive-card lousa-container">
-          <h4 style="font-weight: 800; margin-bottom: 8px;">🎨 Lousa Mágica & Desenhos</h4>
-          <div class="lousa-mode-tabs">
-            <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Desenho Livre</button>
-            <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Pintar Personagens</button>
-          </div>
-          <div id="coloringSelectGrid" class="coloring-select-grid">
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/gXjRjnR.png', 'Xexéu', this)"><img src="https://i.imgur.com/gXjRjnR.png"> Xexéu</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/GVVoxPy.png', 'Léo', this)"><img src="https://i.imgur.com/GVVoxPy.png"> Léo</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/2bS7slp.png', 'Iza', this)"><img src="https://i.imgur.com/2bS7slp.png"> Iza</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/Wb2CFoH.png', 'Nina', this)"><img src="https://i.imgur.com/Wb2CFoH.png"> Nina</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/YhKkKft.png', 'Joca', this)"><img src="https://i.imgur.com/YhKkKft.png"> Joca</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/1ZeNUBw.png', 'Capilé', this)"><img src="https://i.imgur.com/1ZeNUBw.png"> Capilé</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/CMVveed.png', 'Hilda', this)"><img src="https://i.imgur.com/CMVveed.png"> Hilda</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/dwpdeww.png', 'Beto', this)"><img src="https://i.imgur.com/dwpdeww.png"> Beto</button>
-          </div>
-          <div class="lousa-controls-bar">
-            <label>🖌️ Pincel: <input type="range" id="brushSizeInput" min="2" max="24" value="6" onchange="mudarTamanhoPincel(this.value)"></label>
-            <label>🔍 Zoom Guia: <input type="range" id="zoomScaleInput" min="50" max="100" value="85" onchange="mudarZoomGuia(this.value)"></label>
-          </div>
-          <canvas id="paintCanvas"></canvas>
-          <div class="palette">
-            <div class="color-dot" style="background: #3B82F6;" onclick="mudarCor('#3B82F6')"></div>
-            <div class="color-dot" style="background: #EF4444;" onclick="mudarCor('#EF4444')"></div>
-            <div class="color-dot" style="background: #10B981;" onclick="mudarCor('#10B981')"></div>
-            <div class="color-dot" style="background: #F59E0B;" onclick="mudarCor('#F59E0B')"></div>
-            <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
-            <div class="color-dot" style="background: #000000;" onclick="mudarCor('#000000')"></div>
-            <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 36px; height: 36px; border:none; cursor:pointer;">
-            <button onclick="limparCanvas()" style="padding: 6px 14px; font-weight: 800; border-radius: 12px; border: none; background: #FEE2E2; color: red; cursor: pointer;">Limpar 🗑️</button>
-            <button onclick="salvarFotoDesenho()" style="padding: 6px 14px; font-weight: 800; border-radius: 12px; border: none; background: #D1FAE5; color: #065F46; cursor: pointer;">📸 Salvar</button>
-          </div>
-        </div>
-
-        <!-- CONTAR -->
-        <div id="game-contar" class="game-tab-content interactive-card">
-          <h4 style="font-weight: 800;">🔢 Vamos Contar?</h4>
-          <p style="font-size: 13px; color: var(--text-muted);">Quantos bonequinhos aparecem abaixo?</p>
-          <div id="countDisplay" style="display: flex; justify-content: center; align-items: center; gap: 6px; margin: 16px 0; min-height: 70px; flex-wrap: wrap;"></div>
-          <div id="countOptions" class="game-btn-grid"></div>
-        </div>
-
-        <!-- LETRAS -->
-        <div id="game-letras" class="game-tab-content interactive-card">
-          <h4 style="font-weight: 800;">🔤 Qual é a Primeira Letra?</h4>
-          <p style="font-size: 14px; font-weight: 700; margin-top: 8px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple);">Xexéu</strong></p>
-          <img id="img-letra-personagem" src="" style="width: 100px; height: 100px; object-fit: contain; margin: 10px 0;">
-          <div id="opcoes-letras" class="game-btn-grid"></div>
-        </div>
-
-        <!-- MEMÓRIA -->
-        <div id="game-memoria" class="game-tab-content interactive-card">
-          <h4 style="font-weight: 800;">🧠 Jogo da Memória</h4>
-          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Encontre os 4 pares dos amigos!</p>
-          <div id="memoryBoard" class="memory-board"></div>
-        </div>
-
-        <!-- QUIZ & CORES -->
-        <div id="game-quiz" class="game-tab-content interactive-card">
-          <h4 style="font-weight: 800; margin-bottom: 10px;">❓ Desafios da Turminha</h4>
-          <div style="display: flex; flex-direction: column; gap: 20px;">
-            <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 1px solid #E2E8F0;">
-              <p style="font-size: 13px; font-weight: 700;">Quem é este personagem?</p>
-              <img id="quiz-img" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
-              <div id="quiz-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
-            </div>
-            <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 1px solid #E2E8F0;">
-              <p id="cor-pergunta-txt" style="font-size: 13px; font-weight: 700;"></p>
-              <img id="cor-img" src="" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
-              <div id="cor-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- QUIZ VIP -->
-        <div id="game-quizvip" class="game-tab-content interactive-card" style="border: 2px solid #CBD5E1; background: #FFF;">
-          <h4 style="font-weight: 800; margin-bottom: 6px; color: #1E293B;">⭐ Super Quiz VIP Exclusivo</h4>
-          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">Desafio avançado exclusivo para membros VIP.</p>
-          
-          <div id="vip-game-lock" style="padding: 20px; text-align: center;">
-            <p style="font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">Conteúdo exclusivo disponível apenas para membros VIP.</p>
-            <button onclick="mudarPagina('vip')" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px;">Acessar Área VIP ➔</button>
-          </div>
-
-          <div id="vip-game-body" style="display: none; background: #F8FAFC; padding: 14px; border-radius: 12px; border: 1px solid #E2E8F0;">
-            <p id="quizvip-pergunta" style="font-size: 14px; font-weight: 700; color: #1E293B; margin-bottom: 8px;"></p>
-            <img id="quizvip-img" src="" style="width: 90px; height: 90px; object-fit: contain; margin: 6px 0;">
-            <div id="quizvip-options" style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;"></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- PÁGINA 4: ÁREA VIP -->
-    <div id="pagina-vip" class="page-content">
-      <div class="age-group-section">
-        <div class="age-title" style="color: #1E293B;">⭐ Área VIP</div>
-
-        <!-- TELA DE BLOQUEIO -->
-        <div id="vip-locked-view" class="vip-lock-container">
-          <h3>Área Restrita a Membros</h3>
-          <p>Desbloqueie episódios secretos, erros de gravação, desenhos em PDF para colorir, wallpapers e jogos exclusivos.</p>
-          
-          <a href="https://mpago.la/1o4iU8M" target="_blank" class="btn-vip-checkout" onclick="ativarVipTeste()">
-            Quero Acesso VIP (Mercado Pago)
-          </a>
-
-          <!-- CAIXINHA DE SENHA GERAL -->
-          <div class="vip-password-box">
-            <p style="font-size: 12px; font-weight: 700; color: #1E293B; margin-bottom: 2px;">Já tem a senha de acesso geral?</p>
-            <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
-              <input type="password" id="senhaVipInput" class="vip-input" placeholder="Digite a senha">
-              <button onclick="verificarSenhaGeral()" class="btn-vip-checkout" style="padding: 10px 16px; font-size: 13px;">Entrar</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CONTEÚDO VIP LIBERADO -->
-        <div id="vip-unlocked-view" class="vip-content-unlocked">
-          
-          <div class="vip-card-box">
-            <h4>🔒 Episódios Secretos</h4>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Assista aos episódios secretos e conteúdos antecipados.</p>
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
-            </div>
-          </div>
-
-          <div class="vip-card-box">
-            <h4>🎬 Erros de Gravação & Bastidores Engraçados</h4>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">
-              Confira os micos, falhas de animação fingidas e tropeços mais engraçados da Turminha.
-            </p>
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
-            </div>
-          </div>
-
-          <div class="vip-card-box">
-            <h4>🎨 Cantinho dos Downloads</h4>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Baixe wallpapers exclusivos para o seu celular e packs de desenhos em PDF para colorir.</p>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=sharing" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none;">📥 Wallpapers Celular</a>
-              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=sharing" target="_blank" class="btn-choice" style="font-size: 13px; padding: 10px 14px; text-decoration: none; background: var(--green);">📥 Pack de Desenhos PDF</a>
-            </div>
-          </div>
-
-          <div class="vip-card-box" style="background: #F8FAFC; border-color: #CBD5E1;">
-            <h4>⭐ Jogos Exclusivos Desbloqueados</h4>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">O seu Super Quiz VIP já está liberado na aba de Jogos.</p>
-            <button onclick="mudarPagina('jogos'); mudarSubJogo('quizvip');" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px;">Jogar Super Quiz VIP ➔</button>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-    <!-- RODAPÉ -->
-    <footer>
-      <span>© Turminha do Xexéu - Todos os direitos reservados</span>
-    </footer>
-
-  </div>
-
-  <script>
-    let audioAtivo = true;
-    const SENHA_MESTRA = "65628467";
-
-    const TODOS_PERSONAGENS = [
-      { nome: 'Xexéu', img: 'https://i.imgur.com/yApuLed.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
-      { nome: 'Capilé', img: 'https://i.imgur.com/ETC0paX.png', letra: 'C', genero: 'm', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
-      { nome: 'Léo', img: 'https://i.imgur.com/vunKLqO.png', letra: 'L', genero: 'm', corPergunta: "Qual a cor da jaqueta do Léo?", corCorreta: "Azul", corOpcoes: ["Amarela", "Verde", "Azul"] },
-      { nome: 'Joca', img: 'https://i.imgur.com/VoHSsw9.png', letra: 'J', genero: 'm', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
-      { nome: 'Iza', img: 'https://i.imgur.com/IX3LrtJ.png', letra: 'I', genero: 'f', corPergunta: "Qual a cor do vestido da Iza?", corCorreta: "Rosa", corOpcoes: ["Rosa", "Azul", "Amarelo"] },
-      { nome: 'Nina', img: 'https://i.imgur.com/Wb2CFoH.png', letra: 'N', genero: 'f', corPergunta: "Qual a cor do vestido da Nina?", corCorreta: "Rosa Escuro", corOpcoes: ["Rosa Escuro", "Verde", "Branco"] },
-      { nome: 'Hilda', img: 'https://i.imgur.com/qcJyZb5.png', letra: 'H', genero: 'f', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] },
-      { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', letra: 'B', genero: 'm', corPergunta: "Qual a cor dos óculos do Vovô Beto?", corCorreta: "Azul", corOpcoes: ["Azul", "Amarelo", "Preto"] }
-    ];
-
-    function destravarAudioMobile() {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const dummy = new SpeechSynthesisUtterance("");
-        window.speechSynthesis.speak(dummy);
-      }
-    }
-
-    function lerTexto(texto) {
-      if (!audioAtivo || !('speechSynthesis' in window)) return;
-      try {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(texto);
-        utterance.lang = 'pt-BR';
-        utterance.rate = 0.95;
-        window.speechSynthesis.speak(utterance);
-      } catch (e) {}
-    }
-
-    function alternarAudioGlobal() {
-      audioAtivo = !audioAtivo;
-      const btn = document.getElementById('toggleAudioBtn');
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-      if (audioAtivo) {
-        btn.classList.remove('muted');
-        document.getElementById('audioIcon').innerText = '🔊';
-        document.getElementById('audioText').innerText = 'Voz Ligada';
-        lerTexto("Voz ligada!");
-      } else {
-        btn.classList.add('muted');
-        document.getElementById('audioIcon').innerText = '🔇';
-        document.getElementById('audioText').innerText = 'Voz Desligada';
-      }
-    }
-
-    document.addEventListener('click', () => {
-      destravarAudioMobile();
-    }, { once: true });
-
-    function verificarStatusVip() {
-      const isVip = localStorage.getItem('turminha_xexeu_vip');
-      const lockedView = document.getElementById('vip-locked-view');
-      const unlockedView = document.getElementById('vip-unlocked-view');
-      const gameLock = document.getElementById('vip-game-lock');
-      const gameBody = document.getElementById('vip-game-body');
-
-      if (isVip === 'true') {
-        if(lockedView) lockedView.style.display = 'none';
-        if(unlockedView) unlockedView.classList.add('active-vip');
-        if(gameLock) gameLock.style.display = 'none';
-        if(gameBody) gameBody.style.display = 'block';
-        carregarQuizVip();
-      } else {
-        if(lockedView) lockedView.style.display = 'block';
-        if(unlockedView) unlockedView.classList.remove('active-vip');
-        if(gameLock) gameLock.style.display = 'block';
-        if(gameBody) gameBody.style.display = 'none';
-      }
-    }
-
-    function verificarSenhaGeral() {
-      const digitada = document.getElementById('senhaVipInput').value.trim();
-      if (digitada === SENHA_MESTRA) {
-        localStorage.setItem('turminha_xexeu_vip', 'true');
-        verificarStatusVip();
-        lerTexto("Acesso VIP liberado com sucesso!");
-      } else {
-        alert("Senha incorreta!");
-        lerTexto("Senha incorreta.");
-      }
-    }
-
-    function ativarVipTeste() {
-      localStorage.setItem('turminha_xexeu_vip', 'true');
-    }
-
-    function mudarPagina(pagina) {
-      document.getElementById('pagina-inicio').classList.remove('active-page');
-      document.getElementById('pagina-videos').classList.remove('active-page');
-      document.getElementById('pagina-jogos').classList.remove('active-page');
-      document.getElementById('pagina-vip').classList.remove('active-page');
-      
-      document.getElementById('btn-tab-inicio').classList.remove('active');
-      document.getElementById('btn-tab-videos').classList.remove('active');
-      document.getElementById('btn-tab-jogos').classList.remove('active');
-      document.getElementById('btn-tab-vip').classList.remove('active');
-
-      if (pagina === 'inicio') {
-        document.getElementById('pagina-inicio').classList.add('active-page');
-        document.getElementById('btn-tab-inicio').classList.add('active');
-      } else if (pagina === 'videos') {
-        document.getElementById('pagina-videos').classList.add('active-page');
-        document.getElementById('btn-tab-videos').classList.add('active');
-      } else if (pagina === 'jogos') {
-        document.getElementById('pagina-jogos').classList.add('active-page');
-        document.getElementById('btn-tab-jogos').classList.add('active');
-        setTimeout(redimensionarCanvas, 100);
-      } else if (pagina === 'vip') {
-        document.getElementById('pagina-vip').classList.add('active-page');
-        document.getElementById('btn-tab-vip').classList.add('active');
-        verificarStatusVip();
-      }
-    }
-
-    function mudarSubJogo(sub) {
-      const subs = ['lousa', 'contar', 'letras', 'memoria', 'quiz', 'quizvip'];
-      subs.forEach(s => {
-        const el = document.getElementById('game-' + s);
-        const subBtn = document.getElementById('subtab-' + s);
-        if(el) el.classList.remove('active-game-tab');
-        if(subBtn) subBtn.classList.remove('active');
-      });
-      const targetEl = document.getElementById('game-' + sub);
-      const targetBtn = document.getElementById('subtab-' + sub);
-      if(targetEl) targetEl.classList.add('active-game-tab');
-      if(targetBtn) targetBtn.classList.add('active');
-      if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
-      if(sub === 'quizvip') verificarStatusVip();
-    }
-
-    function exibirEFalar(nome, desc, genero = 'm') {
-      const artigo = (genero === 'f') ? "Esta é a " : "Este é o ";
-      document.getElementById('detalhe-nome').innerText = nome;
-      document.getElementById('detalhe-texto').innerText = desc;
-      lerTexto(artigo + nome + ". " + desc);
-    }
-
-    let qContar = 0;
-    function carregarJogoContar() {
-      qContar = Math.floor(Math.random() * 9) + 1;
-      const charSorteado = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      const display = document.getElementById('countDisplay');
-      display.innerHTML = '';
-      for (let i = 0; i < qContar; i++) {
-        const img = document.createElement('img');
-        img.src = charSorteado.img;
-        img.style.width = '42px'; img.style.height = '42px'; img.style.objectFit = 'contain';
-        display.appendChild(img);
-      }
-      const opts = document.getElementById('countOptions');
-      opts.innerHTML = '';
-      for (let n = 1; n <= 9; n++) {
-        const btn = document.createElement('button');
-        btn.className = 'btn-choice';
-        btn.style.padding = '10px 16px';
-        btn.innerText = n;
-        btn.onclick = () => {
-          if (n === qContar) { lerTexto("Parabéns! Contou certinho!"); setTimeout(carregarJogoContar, 600); }
-          else { lerTexto("Tente novamente!"); }
-        };
-        opts.appendChild(btn);
-      }
-    }
-
-    let pLetraAtual = null;
-    function carregarJogoLetra() {
-      pLetraAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('nome-letra-personagem').innerText = pLetraAtual.nome;
-      document.getElementById('img-letra-personagem').src = pLetraAtual.img;
-      const container = document.getElementById('opcoes-letras');
-      container.innerHTML = '';
-      const alfabeto = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Z'];
-      let opcoes = [pLetraAtual.letra];
-      while (opcoes.length < 3) {
-        let lAleatoria = alfabeto[Math.floor(Math.random() * alfabeto.length)];
-        if (!opcoes.includes(lAleatoria)) opcoes.push(lAleatoria);
-      }
-      opcoes.sort(() => Math.random() - 0.5).forEach(l => {
-        const btn = document.createElement('button');
-        btn.className = 'btn-choice'; btn.innerText = l;
-        btn.onclick = () => {
-          if (l === pLetraAtual.letra) { lerTexto("Muito bem! Letra " + pLetraAtual.letra); setTimeout(carregarJogoLetra, 600); }
-          else { lerTexto("Tente de novo!"); }
-        };
-        container.appendChild(btn);
-      });
-    }
-
-    let cMem = [], pCarta = null, travaMem = false, acertosMem = 0;
-    function iniciarMemoria() {
-      acertosMem = 0;
-      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 4);
-      const imgsMem = sorteados.map(p => p.img);
-      cMem = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
-      const board = document.getElementById('memoryBoard');
-      board.innerHTML = '';
-      cMem.forEach(src => {
-        const card = document.createElement('div');
-        card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
-        card.onclick = () => {
-          if (travaMem || card.classList.contains('flipped')) return;
-          card.classList.add('flipped'); card.innerHTML = `<img src="${src}">`;
-          if (!pCarta) { pCarta = card; }
-          else {
-            if (pCarta.dataset.img === src) {
-              acertosMem++; lerTexto("Par! Acertou!"); pCarta = null;
-              if (acertosMem === 4) { lerTexto("Incrível! Encontrou todos os pares!"); setTimeout(iniciarMemoria, 1800); }
-            } else {
-              travaMem = true;
-              setTimeout(() => {
-                pCarta.classList.remove('flipped'); pCarta.innerText = '❓';
-                card.classList.remove('flipped'); card.innerText = '❓';
-                pCarta = null; travaMem = false;
-              }, 1000);
+        // Verifica ao carregar a página se o celular já tem o acesso salvo
+        window.onload = function() {
+            if (localStorage.getItem("turminha_vip_liberado") === "true") {
+                mostrarConteudoVIP();
             }
-          }
         };
-        board.appendChild(card);
-      });
-    }
 
-    let pQuizAtual = null;
-    function carregarQuiz() {
-      pQuizAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('quiz-img').src = pQuizAtual.img;
-      const container = document.getElementById('quiz-options');
-      container.innerHTML = '';
-      let opcoes = [pQuizAtual.nome];
-      while (opcoes.length < 3) {
-        let outro = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome;
-        if (!opcoes.includes(outro)) opcoes.push(outro);
-      }
-      opcoes.sort(() => Math.random() - 0.5).forEach(o => {
-        const btn = document.createElement('button');
-        btn.style.cssText = "padding:8px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
-        btn.innerText = o;
-        btn.onclick = () => {
-          if (o === pQuizAtual.nome) { lerTexto("Parabéns! É o " + pQuizAtual.nome); setTimeout(carregarQuiz, 600); }
-          else { lerTexto("Tente novamente!"); }
-        };
-        container.appendChild(btn);
-      });
-    }
+        function verificarSenha() {
+            const digitada = document.getElementById("senha-input").value;
+            if (digitada === SENHA_MESTRA) {
+                // Salva permanentemente no celular do usuário
+                localStorage.setItem("turminha_vip_liberado", "true");
+                mostrarConteudoVIP();
+            } else {
+                alert("Senha incorreta! Verifique os números ou assine o clube.");
+            }
+        }
 
-    let pCorAtual = null;
-    function carregarJogoCor() {
-      pCorAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('cor-pergunta-txt').innerText = pCorAtual.corPergunta;
-      document.getElementById('cor-img').src = pCorAtual.img;
-      const container = document.getElementById('cor-options');
-      container.innerHTML = '';
-      pCorAtual.corOpcoes.sort(() => Math.random() - 0.5).forEach(o => {
-        const btn = document.createElement('button');
-        btn.style.cssText = "padding:8px; border-radius:12px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;";
-        btn.innerText = o;
-        btn.onclick = () => {
-          if (o === pCorAtual.corCorreta) { lerTexto("Acertou! Cor correta!"); setTimeout(carregarJogoCor, 600); }
-          else { lerTexto("Tente de novo!"); }
-        };
-        container.appendChild(btn);
-      });
-    }
+        function mostrarConteudoVIP() {
+            document.getElementById("tela-bloqueio").style.display = "none";
+            document.getElementById("conteudo-vip").style.display = "block";
+        }
 
-    let pQuizVipAtual = null;
-    function carregarQuizVip() {
-      pQuizVipAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('quizvip-pergunta').innerText = "Desafio VIP: De quem é este detalhe/personagem?";
-      document.getElementById('quizvip-img').src = pQuizVipAtual.img;
-      const container = document.getElementById('quizvip-options');
-      container.innerHTML = '';
-      let opcoes = [pQuizVipAtual.nome];
-      while (opcoes.length < 3) {
-        let outro = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome;
-        if (!opcoes.includes(outro)) opcoes.push(outro);
-      }
-      opcoes.sort(() => Math.random() - 0.5).forEach(o => {
-        const btn = document.createElement('button');
-        btn.style.cssText = "padding:10px; border-radius:12px; border:2px solid #CBD5E1; background:#F8FAFC; font-weight:800; color:#1E293B; cursor:pointer;";
-        btn.innerText = o;
-        btn.onclick = () => {
-          if (o === pQuizVipAtual.nome) { lerTexto("Excelente! Acertou o desafio VIP!"); setTimeout(carregarQuizVip, 600); }
-          else { lerTexto("Quase lá! Tente de novo."); }
-        };
-        container.appendChild(btn);
-      });
-    }
+        function sairVIP() {
+            // Remove o acesso salvo (caso queira testar o bloqueio de novo)
+            localStorage.removeItem("turminha_vip_liberado");
+            location.reload();
+        }
+    </script>
 
-    const canvas = document.getElementById('paintCanvas');
-    const ctx = canvas.getContext('2d');
-    let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free';
-    let imagemPintarCarregada = null, tamanhoPincel = 6, escalaZoomGuia = 0.85;
-
-    function redimensionarCanvas() {
-      if (!canvas.parentElement) return;
-      canvas.width = canvas.parentElement.clientWidth - 20;
-      canvas.height = window.innerWidth >= 900 ? 420 : 360;
-      if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada);
-    }
-
-    function setLousaMode(modo) {
-      modoLousa = modo;
-      document.getElementById('btn-mode-free').classList.remove('active');
-      document.getElementById('btn-mode-color').classList.remove('active');
-      document.getElementById('coloringSelectGrid').classList.remove('active');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (modo === 'free') {
-        document.getElementById('btn-mode-free').classList.add('active');
-        imagemPintarCarregada = null;
-        lerTexto("Modo Desenho Livre ativado!");
-      } else {
-        document.getElementById('btn-mode-color').classList.add('active');
-        document.getElementById('coloringSelectGrid').classList.add('active');
-        lerTexto("Escolha um personagem para pintar!");
-        carregarContornoPintar('https://i.imgur.com/gXjRjnR.png', 'Xexéu', null);
-      }
-    }
-
-    function carregarContornoPintar(urlImg, nome, btnElemento) {
-      document.querySelectorAll('.btn-color-draw').forEach(b => b.classList.remove('selected'));
-      if (btnElemento) btnElemento.classList.add('selected');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const img = new Image();
-      img.crossOrigin = "Anonymous";
-      img.src = urlImg;
-      img.onload = () => { imagemPintarCarregada = img; desenharContornoNoCanvas(img); lerTexto("Vamos pintar o " + nome + "!"); };
-    }
-
-    function desenharContornoNoCanvas(img) {
-      const escala = Math.min(canvas.width / img.width, canvas.height / img.height) * escalaZoomGuia;
-      const x = (canvas.width / 2) - (img.width * escala / 2);
-      const y = (canvas.height / 2) - (img.height * escala / 2);
-      ctx.globalAlpha = 0.35;
-      ctx.drawImage(img, x, y, img.width * escala, img.height * escala);
-      ctx.globalAlpha = 1.0;
-    }
-
-    function mudarCor(c) { corAtual = c; }
-    function mudarTamanhoPincel(tam) { tamanhoPincel = tam; }
-    function mudarZoomGuia(val) {
-      escalaZoomGuia = val / 100;
-      if (modoLousa === 'color' && imagemPintarCarregada) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        desenharContornoNoCanvas(imagemPintarCarregada);
-      }
-    }
-
-    function limparCanvas() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada);
-    }
-
-    function salvarFotoDesenho() {
-      const tempCanvas = document.createElement('canvas');
-      tempCanvas.width = canvas.width; tempCanvas.height = canvas.height;
-      const tempCtx = tempCanvas.getContext('2d');
-      tempCtx.fillStyle = '#FFFFFF'; tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
-      tempCtx.drawImage(canvas, 0, 0);
-      const link = document.createElement('a');
-      link.download = 'Meu-Desenho-Turminha-do-Xexeu.png';
-      link.href = tempCanvas.toDataURL('image/png');
-      link.click();
-      lerTexto("Desenho salvo com sucesso!");
-    }
-
-    function getPos(e) {
-      const rect = canvas.getBoundingClientRect();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-      return { x: clientX - rect.left, y: clientY - rect.top };
-    }
-
-    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; });
-    canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
-    canvas.addEventListener('mouseup', () => desenhando = false);
-    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; e.preventDefault(); });
-    canvas.addEventListener('touch_move', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
-    canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
-    canvas.addEventListener('touchend', () => desenhando = false);
-    window.addEventListener('resize', redimensionarCanvas);
-
-    carregarJogoContar();
-    carregarJogoLetra();
-    iniciarMemoria();
-    carregarQuiz();
-    carregarJogoCor();
-    verificarStatusVip();
-  </script>
 </body>
 </html>
