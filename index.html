@@ -1,209 +1,1632 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turminha do Xexéu - Área VIP</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f8ff;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        h2 {
-            color: #ff6b6b;
-            margin-bottom: 10px;
-        }
-        p {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-        button {
-            background-color: #4cd137;
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background-color: #44bd32;
-        }
-        .link-login {
-            margin-top: 15px;
-            display: block;
-            color: #0097e6;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        .link-login:hover {
-            text-decoration: underline;
-        }
-        
-        /* CORREÇÃO DO QUEBRA-CABEÇA: Garante que a imagem apareça inteira e sem cortes */
-        .quebra-cabeca-img {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto;
-            border-radius: 8px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turminha do Xexéu - Portal Oficial</title>
+  
+  <link rel="icon" type="image/png" href="https://i.imgur.com/ANqcDjC.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #3B82F6;
+      --primary-dark: #1D4ED8;
+      --secondary: #F59E0B;
+      --accent: #EF4444;
+      --purple: #8B5CF6;
+      --green: #10B981;
+      --bg-gradient: linear-gradient(135deg, #E0F2FE 0%, #FAF5FF 50%, #FFF1F2 100%);
+      --card-bg: rgba(255, 255, 255, 0.98);
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', system-ui, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 8px 8px 80px;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 850px;
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding-bottom: 20px;
+    }
+
+    /* BARRA DE NAVEGAÇÃO PRINCIPAL */
+    .page-nav {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      background: #E0F2FE;
+      padding: 8px;
+      border-radius: var(--radius-lg);
+      margin: 10px 12px 0;
+      flex-wrap: wrap;
+    }
+    .nav-tab-btn {
+      flex: 1;
+      min-width: 80px;
+      max-width: 150px;
+      padding: 10px 8px;
+      border: none;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .nav-tab-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    .nav-tab-btn.vip-tab {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1.5px solid #FCD34D;
+    }
+    .nav-tab-btn.vip-tab.active {
+      background: #F59E0B;
+      color: #FFF;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+      border-color: transparent;
+    }
+
+    /* SUB-ABAS DE JOGOS */
+    .games-subnav {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      background: #FEF3C7;
+      padding: 8px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .subnav-btn {
+      padding: 7px 10px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 11px;
+      cursor: pointer;
+      background: #FFFBEB;
+      color: #92400E;
+      transition: all 0.2s;
+    }
+    .subnav-btn.active {
+      background: #F59E0B;
+      color: #FFF;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+    }
+    .subnav-btn.vip-sub {
+      background: #F8FAFC;
+      border: 1.5px solid #CBD5E1;
+      color: #1E293B;
+    }
+    .subnav-btn.vip-sub.active {
+      background: #0F172A;
+      color: #FFF;
+    }
+
+    .vip-games-subnav {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      background: #FEF3C7;
+      padding: 6px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .vip-sub-btn {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 11px;
+      cursor: pointer;
+      background: #FFF;
+      color: #92400E;
+      transition: all 0.2s;
+    }
+    .vip-sub-btn.active { background: #92400E; color: #FFF; }
+    .vip-game-panel { display: none; }
+    .vip-game-panel.active-vip-panel { display: block; }
+
+    .game-tab-content { display: none; }
+    .game-tab-content.active-game-tab { display: block; }
+
+    .page-content {
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+    .page-content.active-page { display: flex; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      padding: 10px 16px;
+      background: #BAE6FD;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: var(--radius-lg);
+      margin: 10px 10px 0;
+    }
+    .logo-img { max-width: 110px; height: auto; }
+
+    .audio-toggle-btn {
+      background: #FFFFFF;
+      border: 2px solid var(--primary);
+      color: var(--primary-dark);
+      font-weight: 800;
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .audio-toggle-btn.muted {
+      background: #FEE2E2;
+      border-color: #EF4444;
+      color: #991B1B;
+    }
+
+    .banner-intro-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 0 16px;
+    }
+    .banner-container { width: 100%; }
+    .banner-img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      display: block;
+      object-fit: cover;
+    }
+
+    .intro-box {
+      width: 100%;
+      background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
+      border: 2px solid #FCD34D;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
+    }
+    .intro-box-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      margin-bottom: 6px;
+    }
+    .intro-box h2 { font-size: 18px; font-weight: 800; color: #92400E; }
+    .intro-box p { font-size: 14px; color: #78350F; line-height: 1.5; font-weight: 600; }
+
+    .btn-audio-mini {
+      background: linear-gradient(135deg, #FBBF24, #F59E0B);
+      border: none;
+      border-radius: 50%;
+      width: 34px;
+      height: 34px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+      flex-shrink: 0;
+    }
+
+    .audio-notice-info {
+      font-size: 11px;
+      color: #B45309;
+      background: rgba(253, 230, 138, 0.5);
+      border-radius: 10px;
+      padding: 5px 12px;
+      margin-top: 8px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .social-round-section {
+      padding: 0 16px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .social-round-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #FFF;
+      border: 3px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 22px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      transition: all 0.25s ease;
+    }
+    .social-round-btn img { width: 26px; height: 26px; object-fit: contain; }
+
+    .characters-section-title {
+      padding: 0 16px;
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .characters-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 0 16px;
+    }
+    @media (min-width: 480px) {
+      .characters-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .char-card {
+      background: #FFF;
+      border-radius: var(--radius-lg);
+      padding: 14px 8px;
+      text-align: center;
+      border: 3px solid #E2E8F0;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transition: all 0.25s ease;
+    }
+    .char-card img { width: 90px; height: 90px; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08)); }
+    .char-card span { font-weight: 800; font-size: 14px; color: var(--text-main); }
+
+    .char-details-box {
+      margin: 0 16px;
+      background: #FFFFFF;
+      border: 3px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.1);
+    }
+
+    .video-section { padding: 0 16px; }
+    .video-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      border: 2px solid #E2E8F0;
+      text-align: center;
+    }
+    .video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .video-header h3 { font-size: 16px; font-weight: 900; color: var(--primary-dark); display: flex; align-items: center; gap: 6px; }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+    /* ESTILOS DA ÁREA VIP COM E-MAIL E SENHA */
+    .vip-lock-container {
+      background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 2px solid #FCD34D;
+      border-radius: var(--radius-lg);
+      padding: 24px 16px;
+      text-align: center;
+      margin: 0 16px;
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.1);
+    }
+    .vip-lock-container h3 { font-size: 20px; font-weight: 900; color: #92400E; margin-bottom: 6px; }
+    .vip-lock-container p { font-size: 13px; color: #78350F; font-weight: 600; line-height: 1.6; margin-bottom: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    
+    .vip-price-tag {
+      display: inline-block;
+      background: #F59E0B;
+      color: #FFF;
+      font-weight: 900;
+      font-size: 13px;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-vip-checkout {
+      display: inline-block;
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: #FFF;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 16px;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4);
+      transition: all 0.2s ease;
+      border: 2px solid #FDE68A;
+      margin-bottom: 15px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-vip-checkout:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(245, 158, 11, 0.5);
+    }
+
+    .vip-form-box {
+      background: #FFF;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1.5px solid #FCD34D;
+      max-width: 340px;
+      margin: 0 auto 15px;
+      text-align: left;
+    }
+    .vip-form-box label { font-size: 12px; font-weight: 800; color: #92400E; display: block; margin-bottom: 4px; }
+    .vip-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 13px;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .vip-content-unlocked { display: none; padding: 0 16px; flex-direction: column; gap: 16px; }
+    .vip-content-unlocked.active-vip { display: flex; }
+
+    .vip-card-box {
+      background: #FFF;
+      border: 2px solid #E2E8F0;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    }
+    .vip-card-box h4 { font-size: 16px; font-weight: 900; color: #1E293B; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+
+    /* SUPORTE E RECLAMAÇÕES */
+    .support-form-box {
+      background: #FFFBEB;
+      border: 2px solid #FCD34D;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-top: 10px;
+    }
+    .support-form-box h5 { color: #92400E; font-size: 15px; font-weight: 900; margin-bottom: 6px; }
+    .support-form-box p { font-size: 12px; color: #78350F; margin-bottom: 12px; font-weight: 600; }
+    .support-input, .support-textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1.5px solid #FCD34D;
+      border-radius: 8px;
+      font-size: 12px;
+      margin-bottom: 8px;
+      background: #FFF;
+    }
+    .support-textarea { resize: vertical; min-height: 70px; }
+    .support-btn {
+      background: #D97706;
+      color: #FFF;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 12px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    /* JOGOS & LOUSA */
+    .age-group-section {
+      margin: 0 16px;
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      border: 2px solid #E2E8F0;
+    }
+    .age-title { font-size: 16px; font-weight: 900; color: var(--primary-dark); margin-bottom: 10px; }
+    .interactive-card {
+      background: #F8FAFC;
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      border: 1px solid #E2E8F0;
+      margin-bottom: 12px;
+    }
+    .lousa-mode-tabs { display: flex; justify-content: center; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+    .btn-mode {
+      padding: 7px 12px;
+      border-radius: 10px;
+      border: 2px solid var(--primary);
+      background: #FFF;
+      color: var(--primary-dark);
+      font-weight: 800;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .btn-mode.active { background: var(--primary); color: #FFF; }
+    .coloring-select-grid { display: none; justify-content: center; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+    .coloring-select-grid.active { display: flex; }
+    .btn-color-draw {
+      background: #FFF;
+      border: 2px solid #CBD5E1;
+      padding: 5px 8px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 11px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-color-draw.selected { border-color: var(--primary); background: #E0F2FE; }
+    .btn-color-draw img { width: 20px; height: 20px; object-fit: contain; }
+    .lousa-controls-bar { display: flex; align-items: center; justify-content: center; gap: 10px; background: #E0F2FE; padding: 6px 12px; border-radius: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+    .lousa-controls-bar label { font-size: 11px; font-weight: 800; color: var(--primary-dark); display: flex; align-items: center; gap: 4px; }
+    .lousa-container { width: 100%; display: flex; flex-direction: column; align-items: center; }
+    #paintCanvas { background: #FFF; border: 3px solid var(--primary); border-radius: 16px; width: 100%; min-height: 340px; touch-action: none; cursor: crosshair; }
+    .palette { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+    .color-dot { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #FFF; box-shadow: 0 2px 5px rgba(0,0,0,0.15); cursor: pointer; }
+    .game-btn-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .btn-choice { background: var(--purple); color: #FFF; border: none; padding: 8px 14px; font-weight: 800; font-size: 14px; border-radius: 12px; cursor: pointer; }
+    .memory-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 8px; max-width: 340px; margin-left: auto; margin-right: auto; }
+    .memory-card { aspect-ratio: 1; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 900; font-size: 18px; cursor: pointer; }
+    .memory-card.flipped { background: #FFF; border: 2px solid var(--primary); }
+    .memory-card img { width: 75%; height: 75%; object-fit: contain; }
+
+    /* ESTILOS DO QUEBRA-CABEÇA RETANGULAR PERFEITO (3x4) */
+    .puzzle-selector {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .puzzle-thumb-btn {
+      width: 45px;
+      height: 28px;
+      border: 2px solid #CBD5E1;
+      border-radius: 6px;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+    .puzzle-thumb-btn.active {
+      border-color: #F59E0B;
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    .puzzle-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 3px;
+      width: 280px;
+      height: 210px;
+      margin: 10px auto;
+      background: #FDE68A;
+      padding: 4px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+    .puzzle-piece {
+      width: 66px;
+      height: 66px;
+      background: #FFF;
+      border: 1px solid #F59E0B;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+      font-weight: 800;
+      font-size: 12px;
+      color: #92400E;
+    }
+    .puzzle-piece img {
+      width: 264px;
+      height: 198px;
+      object-fit: none;
+    }
+
+    footer { text-align: center; padding: 12px 16px 0; border-top: 1px solid #E2E8F0; font-size: 12px; color: var(--text-muted); }
+
+    @media (min-width: 900px) {
+      .app-container { max-width: 1100px; padding: 20px 24px; }
+      .banner-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: center; }
+      .intro-box { height: 100%; }
+      .characters-grid { grid-template-columns: repeat(8, 1fr); }
+      .char-card img { width: 100px; height: 100px; }
+      .social-round-btn { width: 56px; height: 56px; font-size: 26px; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- TELA DE CADASTRO -->
-    <div class="container" id="tela-cadastro">
-        <h2>🧸 Clube Turminha do Xexéu</h2>
-        <p>Crie seu e-mail e senha para acessar a Área VIP após a confirmação do pagamento!</p>
-        
-        <input type="email" id="cad-email" placeholder="Seu melhor e-mail" required>
-        <input type="password" id="cad-senha" placeholder="Crie uma senha de acesso" required>
-        
-        <button onclick="salvarECadastrar()">Assinar por R$ 6,00 / mês</button>
-        
-        <a href="#" class="link-login" onclick="mostrarLogin()">Já sou assinante / Entrar</a>
+  <div class="app-container">
+
+    <!-- HEADER -->
+    <header>
+      <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" title="YouTube da Turminha">
+        <img src="https://i.imgur.com/3lM9igy.png" alt="Logo Turminha do Xexéu" class="logo-img">
+      </a>
+      <button id="toggleAudioBtn" class="audio-toggle-btn" onclick="alternarAudioGlobal()">
+        <span id="audioIcon">🔊</span>
+        <span id="audioText">Voz Ligada</span>
+      </button>
+    </header>
+
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <div class="page-nav">
+      <button id="btn-tab-inicio" class="nav-tab-btn active" onclick="mudarPagina('inicio')">🏠 Início</button>
+      <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">🎬 Vídeos</button>
+      <button id="btn-tab-jogos" class="nav-tab-btn" onclick="mudarPagina('jogos')">🎮 Jogos</button>
+      <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
     </div>
 
-    <!-- TELA DE LOGIN -->
-    <div class="container" id="tela-login" style="display: none;">
-        <h2>🔑 Entrar na Área VIP</h2>
-        <p>Digite seus dados para acessar o conteúdo exclusivo.</p>
-        
-        <input type="email" id="log-email" placeholder="Seu e-mail cadastrado">
-        <input type="password" id="log-senha" placeholder="Sua senha">
-        
-        <button onclick="fazerLogin()">Entrar</button>
-        
-        <a href="#" class="link-login" onclick="mostrarCadastro()">Quero me cadastrar</a>
+    <!-- PÁGINA 1: INÍCIO -->
+    <div id="pagina-inicio" class="page-content active-page">
+      <div class="banner-intro-grid">
+        <div class="banner-container">
+          <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank">
+            <img src="https://i.imgur.com/mvQQyMp.png" alt="Capa da Turminha" class="banner-img">
+          </a>
+        </div>
+        <div class="intro-box">
+          <div class="intro-box-header">
+            <h2>✨ Bem-vindo à Turminha do Xexéu!</h2>
+            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Turminha do Xexéu! Nosso canal traz historinhas e jogos educativos!')" title="Ouvir">🔊</button>
+          </div>
+          <p>Nosso canal traz historinhas, animações e jogos educativos para ensinar valores, amizade e aprendizado para todas as crianças!</p>
+          <div class="audio-notice-info">💡 Dica: Toque nos personagens ou botões para ouvir!</div>
+        </div>
+      </div>
+
+      <!-- REDES SOCIAIS -->
+      <div class="social-round-section">
+        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube">▶️</a>
+        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram">📷</a>
+        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok">🎵</a>
+        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify">🎧</a>
+        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music">🎶</a>
+        <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook">👍</a>
+        <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/7cE4xVg.png"></a>
+      </div>
+
+      <!-- PERSONAGENS -->
+      <div class="characters-section-title">
+        <span>🌟 Conheça os Personagens</span>
+        <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">(Clique!)</span>
+      </div>
+      
+      <div class="characters-grid">
+        <div class="char-card" onclick="exibirEFalar('Xexéu', 'O mascote alegre da Turminha de boina amarela!', 'm')"><img src="https://i.imgur.com/3vwHupo.png"><span>Xexéu</span></div>
+        <div class="char-card" onclick="exibirEFalar('Capilé', 'O cachorrinho esperto de coleira azul!', 'm')"><img src="https://i.imgur.com/LPemrEZ.png"><span>Capilé</span></div>
+        <div class="char-card" onclick="exibirEFalar('Léo', 'Um amiguinho curioso de jaqueta azul!', 'm')"><img src="https://i.imgur.com/hqYW0P8.png"><span>Léo</span></div>
+        <div class="char-card" onclick="exibirEFalar('Joca', 'O menino criativo de camiseta verde!', 'm')"><img src="https://i.imgur.com/q1JyglG.png"><span>Joca</span></div>
+        <div class="char-card" onclick="exibirEFalar('Iza', 'A menina adorável de vestido rosa!', 'f')"><img src="https://i.imgur.com/TDuRsa3.png"><span>Iza</span></div>
+        <div class="char-card" onclick="exibirEFalar('Nina', 'A menina de cabelos cacheados e vestido rosa escuro!', 'f')"><img src="https://i.imgur.com/iqEzuQ2.png"><span>Nina</span></div>
+        <div class="char-card" onclick="exibirEFalar('Hilda', 'A vovó carinhosa de óculos redondos!', 'f')"><img src="https://i.imgur.com/VtUm8dV.png"><span>Hilda</span></div>
+        <div class="char-card" onclick="exibirEFalar('Beto', 'O vovô atencioso de óculos azuis!', 'm')"><img src="https://i.imgur.com/NEti1QT.png"><span>Beto</span></div>
+      </div>
+
+      <div class="char-details-box" id="detalhes-personagem">
+        <h3 id="detalhe-nome" style="color: var(--primary-dark); font-weight: 900; font-size: 16px;">Clique em um personagem acima!</h3>
+        <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 4px; font-size: 13px;">A descrição aparecerá aqui!</p>
+      </div>
+
+      <div class="video-section">
+        <div class="video-card">
+          <div class="video-header">
+            <h3>🎬 Assista aos Episódios</h3>
+            <button class="btn-audio-mini" onclick="lerTexto('Assista à playlist oficial de vídeos e músicas da Turminha do Xexéu!')" title="Ouvir">🔊</button>
+          </div>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- TELA DA ÁREA VIP / CONTEÚDO -->
-    <div class="container" id="tela-vip" style="display: none;">
-        <h2>🎉 Bem-vindo(a) à Área VIP!</h2>
-        <p>Seu acesso está liberado. Aproveite os vídeos e quebra-cabeças!</p>
-        
-        <!-- Exemplo de como usar a imagem corrigida do quebra-cabeça -->
-        <div style="margin-bottom: 20px;">
-            <h3>Quebra-Cabeça da Turminha</h3>
-            <img src="URL_DA_SUA_IMAGEM_AQUI.jpg" alt="Quebra-Cabeça" class="quebra-cabeca-img">
+    <!-- PÁGINA 2: VÍDEOS -->
+    <div id="pagina-videos" class="page-content">
+      <div class="video-section">
+        <div class="video-card">
+          <div class="video-header">
+            <h3>🎬 Canal Oficial - Playlist Completa</h3>
+            <button class="btn-audio-mini" onclick="lerTexto('Esta é a playlist oficial da Turminha do Xexéu no YouTube!')" title="Ouvir">🔊</button>
+          </div>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PÁGINA 3: JOGOS -->
+    <div id="pagina-jogos" class="page-content">
+      <div class="age-group-section">
+        <div class="age-title">🎮 Área de Jogos da Turminha</div>
+        <div class="games-subnav">
+          <button id="subtab-lousa" class="subnav-btn active" onclick="mudarSubJogo('lousa')">🎨 Lousa Mágica</button>
+          <button id="subtab-contar" class="subnav-btn" onclick="mudarSubJogo('contar')">🔢 Contar</button>
+          <button id="subtab-letras" class="subnav-btn" onclick="mudarSubJogo('letras')">🔤 Primeiras Letras</button>
+          <button id="subtab-memoria" class="subnav-btn" onclick="mudarSubJogo('memoria')">🧠 Memória</button>
+          <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
+          <button id="subtab-quizvip" class="subnav-btn vip-sub" onclick="mudarSubJogo('quizvip')">⭐ Sala VIP (4 Jogos)</button>
         </div>
 
-        <button style="background-color: #e74c3c;" onclick="sair()">Sair</button>
+        <!-- LOUSA MÁGICA -->
+        <div id="game-lousa" class="game-tab-content active-game-tab interactive-card lousa-container">
+          <h4 style="font-weight: 800; margin-bottom: 8px; font-size: 15px;">🎨 Lousa Mágica & Desenhos</h4>
+          <div class="lousa-mode-tabs">
+            <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Desenho Livre</button>
+            <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Pintar Personagens</button>
+          </div>
+          <div id="coloringSelectGrid" class="coloring-select-grid">
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/3vwHupo.png', 'Xexéu', this)"><img src="https://i.imgur.com/3vwHupo.png"> Xexéu</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/hqYW0P8.png', 'Léo', this)"><img src="https://i.imgur.com/hqYW0P8.png"> Léo</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/TDuRsa3.png', 'Iza', this)"><img src="https://i.imgur.com/TDuRsa3.png"> Iza</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/iqEzuQ2.png', 'Nina', this)"><img src="https://i.imgur.com/iqEzuQ2.png"> Nina</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/q1JyglG.png', 'Joca', this)"><img src="https://i.imgur.com/q1JyglG.png"> Joca</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/LPemrEZ.png', 'Capilé', this)"><img src="https://i.imgur.com/LPemrEZ.png"> Capilé</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/VtUm8dV.png', 'Hilda', this)"><img src="https://i.imgur.com/VtUm8dV.png"> Hilda</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/NEti1QT.png', 'Beto', this)"><img src="https://i.imgur.com/NEti1QT.png"> Beto</button>
+          </div>
+          <div class="lousa-controls-bar">
+            <label>🖌️ Pincel: <input type="range" id="brushSizeInput" min="2" max="24" value="6" onchange="mudarTamanhoPincel(this.value)"></label>
+            <label>🔍 Zoom Guia: <input type="range" id="zoomScaleInput" min="50" max="100" value="85" onchange="mudarZoomGuia(this.value)"></label>
+          </div>
+          <canvas id="paintCanvas"></canvas>
+          <div class="palette">
+            <div class="color-dot" style="background: #3B82F6;" onclick="mudarCor('#3B82F6')"></div>
+            <div class="color-dot" style="background: #EF4444;" onclick="mudarCor('#EF4444')"></div>
+            <div class="color-dot" style="background: #10B981;" onclick="mudarCor('#10B981')"></div>
+            <div class="color-dot" style="background: #F59E0B;" onclick="mudarCor('#F59E0B')"></div>
+            <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
+            <div class="color-dot" style="background: #000000;" onclick="mudarCor('#000000')"></div>
+            <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 32px; height: 32px; border:none; cursor:pointer;">
+            <button onclick="limparCanvas()" style="padding: 6px 12px; font-weight: 800; border-radius: 10px; border: none; background: #FEE2E2; color: red; cursor: pointer; font-size: 12px;">Limpar 🗑️</button>
+            <button onclick="salvarFotoDesenho()" style="padding: 6px 12px; font-weight: 800; border-radius: 10px; border: none; background: #D1FAE5; color: #065F46; cursor: pointer; font-size: 12px;">📸 Salvar</button>
+          </div>
+        </div>
+
+        <!-- CONTAR -->
+        <div id="game-contar" class="game-tab-content interactive-card">
+          <h4 style="font-weight: 800; font-size: 15px;">🔢 Vamos Contar?</h4>
+          <p style="font-size: 13px; color: var(--text-muted);">Quantos bonequinhos aparecem abaixo?</p>
+          <div id="countDisplay" style="display: flex; justify-content: center; align-items: center; gap: 6px; margin: 14px 0; min-height: 60px; flex-wrap: wrap;"></div>
+          <div id="countOptions" class="game-btn-grid"></div>
+        </div>
+
+        <!-- LETRAS -->
+        <div id="game-letras" class="game-tab-content interactive-card">
+          <h4 style="font-weight: 800; font-size: 15px;">🔤 Qual é a Primeira Letra?</h4>
+          <p style="font-size: 13px; font-weight: 700; margin-top: 6px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple);">Xexéu</strong></p>
+          <img id="img-letra-personagem" src="" style="width: 90px; height: 90px; object-fit: contain; margin: 8px 0;">
+          <div id="opcoes-letras" class="game-btn-grid"></div>
+        </div>
+
+        <!-- MEMÓRIA -->
+        <div id="game-memoria" class="game-tab-content interactive-card">
+          <h4 style="font-weight: 800; font-size: 15px;">🧠 Jogo da Memória</h4>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Encontre os 4 pares dos amigos!</p>
+          <div id="memoryBoard" class="memory-board"></div>
+        </div>
+
+        <!-- QUIZ & CORES -->
+        <div id="game-quiz" class="game-tab-content interactive-card">
+          <h4 style="font-weight: 800; margin-bottom: 8px; font-size: 15px;">❓ Desafios da Turminha</h4>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="background: #FFF; padding: 12px; border-radius: 10px; border: 1px solid #E2E8F0;">
+              <p style="font-size: 12px; font-weight: 700;">Quem é este personagem?</p>
+              <img id="quiz-img" src="" style="width: 75px; height: 75px; object-fit: contain; margin: 4px 0;">
+              <div id="quiz-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
+            </div>
+            <div style="background: #FFF; padding: 12px; border-radius: 10px; border: 1px solid #E2E8F0;">
+              <p id="cor-pergunta-txt" style="font-size: 12px; font-weight: 700;"></p>
+              <img id="cor-img" src="" style="width: 75px; height: 75px; object-fit: contain; margin: 4px 0;">
+              <div id="cor-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SALA DE JOGOS VIP -->
+        <div id="game-quizvip" class="game-tab-content interactive-card" style="border: 2px solid #FCD34D; background: #FFFBEB;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <h4 style="font-weight: 900; color: #92400E; margin: 0; font-size: 15px;">⭐ Sala de Jogos VIP Exclusivos</h4>
+            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Sala de Jogos VIP! Escolha um minijogo nas abas abaixo.')" title="Ouvir">🔊</button>
+          </div>
+          
+          <div id="vip-game-lock" style="padding: 20px; text-align: center;">
+            <p style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 10px;">🔒 Conteúdo exclusivo disponível apenas para membros VIP ou criadora.</p>
+            <button onclick="mudarPagina('vip')" class="btn-vip-checkout" style="font-size: 12px; padding: 8px 16px; width: auto;">Ir para a Área VIP ➔</button>
+          </div>
+
+          <div id="vip-game-body" style="display: none;">
+            <div class="vip-games-subnav">
+              <button id="btn-vipanel-1" class="vip-sub-btn active" onclick="mudarPanelVip(1)">📖 Histórias</button>
+              <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores</button>
+              <button id="btn-vipanel-3" class="vip-sub-btn" onclick="mudarPanelVip(3)">🧩 Quebra-Cabeça</button>
+              <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória</button>
+            </div>
+
+            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 6px;">📖 Desafio das Histórias</h5>
+              <p id="vip-historia-txt" style="font-size: 13px; font-weight: 800; color: #78350F; margin-bottom: 10px;"></p>
+              <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
+            </div>
+
+            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 6px;">🎨 Cores Secretas</h5>
+              <p id="vip-cor-txt" style="font-size: 13px; font-weight: 800; color: #78350F; margin-bottom: 8px;"></p>
+              <img id="vip-cor-img" src="" style="width: 65px; height: 65px; object-fit: contain; margin-bottom: 8px;">
+              <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 6px; flex-wrap: wrap;"></div>
+            </div>
+
+            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧩 Quebra-Cabeça de Capas</h5>
+              <p style="font-size: 11px; color: #666; margin-bottom: 6px;">Escolha a capa de vídeo abaixo e monte o quebra-cabeça!</p>
+              
+              <div id="puzzleSelector" class="puzzle-selector"></div>
+
+              <div id="puzzleContainer" class="puzzle-grid"></div>
+              <button onclick="embaralharPuzzle()" style="margin-top: 8px; padding: 6px 12px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 11px; cursor: pointer;">Embaralhar Peças 🔄</button>
+            </div>
+
+            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧠 Memória Relâmpago</h5>
+              <p style="font-size: 11px; color: #666; margin-bottom: 8px;">Encontre os 6 pares para vencer!</p>
+              <div id="memoryBoardVip" class="memory-board" style="max-width: 340px; grid-template-columns: repeat(4, 1fr);"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <script>
-        // Link do seu Google Apps Script (Planilha)
-        const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbzoNDfZoMZB-n02HCb0B24ouJ5IkB82pTjxf3x2VOH8eG21hPw-q-EivtbFDIyxPM73GQ/exec";
-        const LINK_KIWIFY = "https://pay.kiwify.com.br/avOqrEg"; // Seu link de pagamento da Kiwify
+    <!-- PÁGINA 4: ÁREA VIP COM CADASTRO E LOGIN INTEGRADOS -->
+    <div id="pagina-vip" class="page-content">
+      <div class="age-group-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <div class="age-title" style="color: #1E293B; margin: 0;">⭐ Clube VIP - Turminha do Xexéu</div>
+          <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo ao Clube VIP! Aqui você encontra episódios secretos, bastidores, downloads e quatro jogos exclusivos!')" title="Ouvir">🔊</button>
+        </div>
 
-        function salvarECadastrar() {
-            const email = document.getElementById('cad-email').value;
-            const senha = document.getElementById('cad-senha').value;
+        <!-- TELA BLOQUEADA / CADASTRO E PAGAMENTO -->
+        <div id="vip-locked-view" class="vip-lock-container">
+          <h3>🧸 Clube VIP Exclusivo</h3>
+          <div class="vip-price-tag">Assinatura Mensal: R$ 6,00 / mês</div>
+          <p>Crie seu e-mail e senha abaixo, salve na planilha e vá direto para o pagamento na Kiwify para desbloquear todo o conteúdo exclusivo!</p>
+          
+          <div class="vip-form-box">
+            <label>Seu E-mail:</label>
+            <input type="email" id="cad-email" class="vip-input" placeholder="seu@email.com">
+            <label>Crie uma Senha:</label>
+            <input type="password" id="cad-senha" class="vip-input" placeholder="Sua senha secreta">
+            
+            <button onclick="salvarECadastrar()" class="btn-vip-checkout">
+              ✨ Assinar por R$ 6,00 / mês
+            </button>
+          </div>
 
-            if (!email || !senha) {
-                alert("Por favor, preencha o e-mail e a senha.");
-                return;
+          <!-- ÁREA DE LOGIN JOGADORES / CRIADORA -->
+          <div class="creator-access-area" style="margin-top: 10px;">
+            <span class="creator-label">Já é assinante ou criadora? Faça seu login:</span>
+            <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 260px; margin: 0 auto;">
+              <input type="email" id="log-email" class="vip-input" placeholder="E-mail cadastrado" style="margin-bottom:0;">
+              <input type="password" id="log-senha" class="vip-input" placeholder="Sua senha" style="margin-bottom:0;">
+              <button onclick="fazerLogin()" class="creator-btn" style="width:100%; padding: 10px;">Entrar na Área VIP 🔑</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TELA DESBLOQUEADA -->
+        <div id="vip-unlocked-view" class="vip-content-unlocked">
+          
+          <div style="background: #D1FAE5; border: 2px solid #10B981; padding: 12px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <h4 style="color: #065F46; font-size: 15px; font-weight: 900; margin-bottom: 2px;">🎉 Acesso VIP Ativo neste Aparelho!</h4>
+              <p style="font-size: 11px; color: #047857; margin: 0;">Aproveite todos os conteúdos e minijogos exclusivos.</p>
+            </div>
+            <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer;">🔒 Sair / Bloquear</button>
+          </div>
+
+          <div class="vip-card-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="margin: 0; font-size: 15px;">🔒 Turminha do Xexéu - Episódios Secretos e Prévias</h4>
+              <button class="btn-audio-mini" onclick="lerTexto('Episódios secretos e prévias exclusivas da Turminha do Xexéu.')" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
+            </div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Assista aos episódios secretos e conteúdos antecipados.</p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLFR1LwoD9sys" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="vip-card-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="margin: 0; font-size: 15px;">🎬 Bastidores e Erros de Gravação</h4>
+              <button class="btn-audio-mini" onclick="lerTexto('Confira os bastidores, micos e erros de gravação mais engraçados.')" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
+            </div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">
+              Confira os micos, falhas de animação fingidas e tropeços mais engraçados da Turminha.
+            </p>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLInD9YI8ADrk" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="vip-card-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="margin: 0; font-size: 15px;">🎨 Cantinho dos Downloads</h4>
+              <button class="btn-audio-mini" onclick="lerTexto('Baixe wallpapers exclusivos para celular e pacotes de desenhos em PDF para colorir.')" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
+            </div>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Baixe wallpapers exclusivos para o seu celular e packs de desenhos em PDF para colorir.</p>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=sharing" target="_blank" class="btn-choice" style="font-size: 12px; padding: 8px 12px; text-decoration: none;">📥 Wallpapers Celular</a>
+              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=sharing" target="_blank" class="btn-choice" style="font-size: 12px; padding: 8px 12px; text-decoration: none; background: var(--green);">📥 Pack Desenhos PDF</a>
+            </div>
+          </div>
+
+          <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <h4 style="color: #92400E; margin: 0; font-size: 15px;">⭐ Sala de Jogos VIP Liberada!</h4>
+              <button class="btn-audio-mini" onclick="lerTexto('A sala de jogos VIP com quatro minijogos exclusivos está aberta.')" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
+            </div>
+            <p style="font-size: 12px; color: #92400E; margin-bottom: 8px;">Os quatro minijogos exclusivos já estão prontos para testar.</p>
+            <button onclick="mudarPagina('jogos'); mudarSubJogo('quizvip');" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px; background: #F59E0B; margin-bottom: 0; width: auto;">Jogar na Sala VIP ➔</button>
+          </div>
+
+          <div class="support-form-box">
+            <h5>📬 Precisa de Ajuda ou quer enviar uma Reclamação?</h5>
+            <p>Escreva para nós! A mensagem será enviada direto para o e-mail oficial <strong>turminhaxexeu@gmail.com</strong>.</p>
+            <input type="email" id="suporteEmail" class="support-input" placeholder="Seu e-mail para contato">
+            <textarea id="suporteMensagem" class="support-textarea" placeholder="Digite sua dúvida, problema ou reclamação aqui..."></textarea>
+            <button onclick="enviarSuporteReclamacao()" class="support-btn">Enviar Mensagem ✉️</button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      <span>© Turminha do Xexéu - Todos os direitos reservados</span>
+    </footer>
+
+  </div>
+
+  <script>
+    let audioAtivo = true;
+    const SENHA_MESTRA_CRIADORA = "65628467";
+    
+    // Link do seu Google Apps Script (Planilha) e Kiwify
+    const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbzoNDfZoMZB-n02HCb0B24ouJ5IkB82pTjxf3x2VOH8eG21hPw-q-EivtbFDIyxPM73GQ/exec";
+    const LINK_KIWIFY = "https://pay.kiwify.com.br/avOqrEg";
+
+    const TODOS_PERSONAGENS = [
+      { nome: 'Xexéu', img: 'https://i.imgur.com/3vwHupo.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
+      { nome: 'Capilé', img: 'https://i.imgur.com/LPemrEZ.png', letra: 'C', genero: 'm', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
+      { nome: 'Léo', img: 'https://i.imgur.com/hqYW0P8.png', letra: 'L', genero: 'm', corPergunta: "Qual a cor da jaqueta do Léo?", corCorreta: "Azul", corOpcoes: ["Amarela", "Verde", "Azul"] },
+      { nome: 'Joca', img: 'https://i.imgur.com/q1JyglG.png', letra: 'J', genero: 'm', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
+      { nome: 'Iza', img: 'https://i.imgur.com/TDuRsa3.png', letra: 'I', genero: 'f', corPergunta: "Qual a cor do vestido da Iza?", corCorreta: "Rosa", corOpcoes: ["Rosa", "Azul", "Amarelo"] },
+      { nome: 'Nina', img: 'https://i.imgur.com/iqEzuQ2.png', letra: 'N', genero: 'f', corPergunta: "Qual a cor do vestido da Nina?", corCorreta: "Rosa Escuro", corOpcoes: ["Rosa Escuro", "Verde", "Branco"] },
+      { nome: 'Hilda', img: 'https://i.imgur.com/VtUm8dV.png', letra: 'H', genero: 'f', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] },
+      { nome: 'Beto', img: 'https://i.imgur.com/NEti1QT.png', letra: 'B', genero: 'm', corPergunta: "Qual a cor dos óculos do Vovô Beto?", corCorreta: "Azul", corOpcoes: ["Azul", "Amarelo", "Preto"] }
+    ];
+
+    const PERGUNTAS_HISTORIAS_VIP = [
+      { pergunta: "Quem é o mascote alegre da Turminha que usa uma boina amarela com uma folha fixada?", resposta: "Xexéu", opcoes: ["Xexéu", "Capilé", "Joca"] },
+      { pergunta: "Qual é o nome do cachorrinho esperto que usa coleira azul celeste e um pingente de osso dourado?", resposta: "Capilé", opcoes: ["Capilé", "Léo", "Beto"] },
+      { pergunta: "Quem é a vovó carinhosa da Turminha que usa óculos redondos?", resposta: "Hilda", opcoes: ["Hilda", "Nina", "Iza"] },
+      { pergunta: "Qual amiguinho criativo da Turminha adora usar camiseta verde nas historinhas?", resposta: "Joca", opcoes: ["Joca", "Léo", "Xexéu"] },
+      { pergunta: "Quem é o vovô atencioso da Turminha que usa óculos?", resposta: "Beto", opcoes: ["Beto", "Capilé", "Xexéu"] },
+      { pergunta: "Qual menininha adorável usa sempre um vestido rosa nos episódios?", resposta: "Iza", opcoes: ["Iza", "Nina", "Hilda"] }
+    ];
+
+    function destravarAudioMobile() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const dummy = new SpeechSynthesisUtterance("");
+        window.speechSynthesis.speak(dummy);
+      }
+    }
+
+    function lerTexto(texto) {
+      if (!audioAtivo || !('speechSynthesis' in window)) return;
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(texto);
+        utterance.lang = 'pt-BR';
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+      } catch (e) {}
+    }
+
+    function alternarAudioGlobal() {
+      audioAtivo = !audioAtivo;
+      const btn = document.getElementById('toggleAudioBtn');
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      if (audioAtivo) {
+        btn.classList.remove('muted');
+        document.getElementById('audioIcon').innerText = '🔊';
+        document.getElementById('audioText').innerText = 'Voz Ligada';
+        lerTexto("Voz ligada!");
+      } else {
+        btn.classList.add('muted');
+        document.getElementById('audioIcon').innerText = '🔇';
+        document.getElementById('audioText').innerText = 'Voz Desligada';
+      }
+    }
+
+    document.addEventListener('click', () => {
+      destravarAudioMobile();
+    }, { once: true });
+
+    function enviarSuporteReclamacao() {
+      const email = document.getElementById('suporteEmail').value.trim();
+      const mensagem = document.getElementById('suporteMensagem').value.trim();
+
+      if (!email || !mensagem) {
+        alert("Por favor, preencha o seu e-mail e a mensagem!");
+        return;
+      }
+
+      const dadosSuporte = {
+        data: new Date().toLocaleString('pt-BR'),
+        email: email,
+        tipo: 'SUPORTE / RECLAMAÇÃO DO CLIENTE',
+        dispositivo: mensagem
+      };
+
+      const urlPlanilhaGoogle = URL_SCRIPT;
+
+      fetch(urlPlanilhaGoogle, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dadosSuporte)
+      }).then(() => {
+        alert("Sua mensagem foi enviada com sucesso para turminhaxexeu@gmail.com!");
+        document.getElementById('suporteEmail').value = '';
+        document.getElementById('suporteMensagem').value = '';
+        lerTexto("Mensagem de suporte enviada com sucesso!");
+      }).catch(() => {
+        alert("Erro ao enviar mensagem. Tente novamente mais tarde.");
+      });
+    }
+
+    // FUNÇÕES DE CADASTRO E LOGIN VIP COM PLANILHA
+    function salvarECadastrar() {
+      const email = document.getElementById('cad-email').value.trim();
+      const senha = document.getElementById('cad-senha').value.trim();
+
+      if (!email || !senha) {
+        alert("Por favor, preencha o seu e-mail e crie uma senha.");
+        return;
+      }
+
+      const dados = {
+        email: email,
+        senha: senha,
+        status: "Pendente",
+        tipo: "NOVO_CLIENTE"
+      };
+
+      fetch(URL_SCRIPT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados)
+      }).then(() => {
+        window.location.href = LINK_KIWIFY;
+      }).catch(() => {
+        window.location.href = LINK_KIWIFY;
+      });
+    }
+
+    function fazerLogin() {
+      const email = document.getElementById('log-email').value.trim();
+      const senha = document.getElementById('log-senha').value.trim();
+
+      if (!email || !senha) {
+        alert("Preencha o e-mail e a senha cadastrados.");
+        return;
+      }
+
+      // Senha mestra da criadora
+      if (senha === SENHA_MESTRA_CRIADORA) {
+        localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
+        verificarStatusVip();
+        lerTexto("Acesso Mestre liberado com sucesso!");
+        return;
+      }
+
+      // Consulta a planilha para verificar se o pagamento foi aprovado
+      fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.liberado) {
+            localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
+            verificarStatusVip();
+            lerTexto("Bem-vindo à Área VIP!");
+          } else {
+            alert(data.msg || "Pagamento ainda não confirmado ou dados incorretos.");
+          }
+        })
+        .catch(() => {
+          alert("Erro ao verificar o acesso. Tente novamente em instantes.");
+        });
+    }
+
+    function verificarStatusVip() {
+      const isVip = localStorage.getItem('turminha_xexeu_vip_ativo');
+      const lockedView = document.getElementById('vip-locked-view');
+      const unlockedView = document.getElementById('vip-unlocked-view');
+      const gameLock = document.getElementById('vip-game-lock');
+      const gameBody = document.getElementById('vip-game-body');
+
+      if (isVip === 'true') {
+        if(lockedView) lockedView.style.display = 'none';
+        if(unlockedView) unlockedView.classList.add('active-vip');
+        if(gameLock) gameLock.style.display = 'none';
+        if(gameBody) {
+          gameBody.style.display = 'block';
+          carregarDesafioHistoriaVip();
+          carregarJogoCorVip();
+          iniciarPuzzleVip();
+          iniciarMemoriaVip();
+        }
+      } else {
+        if(lockedView) lockedView.style.display = 'block';
+        if(unlockedView) unlockedView.classList.remove('active-vip');
+        if(gameLock) gameLock.style.display = 'block';
+        if(gameBody) gameBody.style.display = 'none';
+      }
+    }
+
+    function sairVIP() {
+      localStorage.removeItem('turminha_xexeu_vip_ativo');
+      lerTexto("Área VIP bloqueada neste aparelho.");
+      verificarStatusVip();
+      location.reload();
+    }
+
+    function mudarPagina(pagina) {
+      document.getElementById('pagina-inicio').classList.remove('active-page');
+      document.getElementById('pagina-videos').classList.remove('active-page');
+      document.getElementById('pagina-jogos').classList.remove('active-page');
+      document.getElementById('pagina-vip').classList.remove('active-page');
+      
+      document.getElementById('btn-tab-inicio').classList.remove('active');
+      document.getElementById('btn-tab-videos').classList.remove('active');
+      document.getElementById('btn-tab-jogos').classList.remove('active');
+      document.getElementById('btn-tab-vip').classList.remove('active');
+
+      if (pagina === 'inicio') {
+        document.getElementById('pagina-inicio').classList.add('active-page');
+        document.getElementById('btn-tab-inicio').classList.add('active');
+      } else if (pagina === 'videos') {
+        document.getElementById('pagina-videos').classList.add('active-page');
+        document.getElementById('btn-tab-videos').classList.add('active');
+      } else if (pagina === 'jogos') {
+        document.getElementById('pagina-jogos').classList.add('active-page');
+        document.getElementById('btn-tab-jogos').classList.add('active');
+        setTimeout(redimensionarCanvas, 100);
+      } else if (pagina === 'vip') {
+        document.getElementById('pagina-vip').classList.add('active-page');
+        document.getElementById('btn-tab-vip').classList.add('active');
+        verificarStatusVip();
+      }
+    }
+
+    function mudarSubJogo(sub) {
+      const subs = ['lousa', 'contar', 'letras', 'memoria', 'quiz', 'quizvip'];
+      subs.forEach(s => {
+        const el = document.getElementById('game-' + s);
+        const subBtn = document.getElementById('subtab-' + s);
+        if(el) el.classList.remove('active-game-tab');
+        if(subBtn) subBtn.classList.remove('active');
+      });
+      const targetEl = document.getElementById('game-' + sub);
+      const targetBtn = document.getElementById('subtab-' + sub);
+      if(targetEl) targetEl.classList.add('active-game-tab');
+      if(targetBtn) targetBtn.classList.add('active');
+      if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
+      if(sub === 'quizvip') verificarStatusVip();
+    }
+
+    function mudarPanelVip(num) {
+      for(let i=1; i<=4; i++) {
+        document.getElementById('panel-vip-' + i).classList.remove('active-vip-panel');
+        document.getElementById('btn-vipanel-' + i).classList.remove('active');
+      }
+      document.getElementById('panel-vip-' + num).classList.add('active-vip-panel');
+      document.getElementById('btn-vipanel-' + num).classList.add('active');
+    }
+
+    function exibirEFalar(nome, desc, genero = 'm') {
+      const artigo = (genero === 'f') ? "Esta é a " : "Este é o ";
+      document.getElementById('detalhe-nome').innerText = nome;
+      document.getElementById('detalhe-texto').innerText = desc;
+      lerTexto(artigo + nome + ". " + desc);
+    }
+
+    function carregarDesafioHistoriaVip() {
+      const itemSorteado = PERGUNTAS_HISTORIAS_VIP[Math.floor(Math.random() * PERGUNTAS_HISTORIAS_VIP.length)];
+      document.getElementById('vip-historia-txt').innerText = itemSorteado.pergunta;
+      
+      const containerOpcoes = document.getElementById('vip-historia-options');
+      containerOpcoes.innerHTML = '';
+
+      itemSorteado.opcoes.sort(() => Math.random() - 0.5).forEach(opcaoNome => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-choice';
+        btn.style.cssText = "padding:8px; font-size:13px; background:#F59E0B; border-radius:10px; border:none; color:white; font-weight:800; cursor:pointer; width:100%;";
+        btn.innerText = opcaoNome;
+        btn.onclick = () => {
+          if (opcaoNome === itemSorteado.resposta) {
+            lerTexto("Parabéns! Resposta correta!");
+            setTimeout(carregarDesafioHistoriaVip, 800);
+          } else {
+            lerTexto("Ops! Tente outra resposta.");
+          }
+        };
+        containerOpcoes.appendChild(btn);
+      });
+    }
+
+    function carregarJogoCorVip() {
+      const pCor = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('vip-cor-txt').innerText = pCor.corPergunta;
+      document.getElementById('vip-cor-img').src = pCor.img;
+      
+      const containerCor = document.getElementById('vip-cor-options');
+      containerCor.innerHTML = '';
+      
+      pCor.corOpcoes.sort(() => Math.random() - 0.5).forEach(corOp => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-choice';
+        btn.style.cssText = "padding:7px 12px; font-size:12px; background:#8B5CF6;";
+        btn.innerText = corOp;
+        btn.onclick = () => {
+          if (corOp === pCor.corCorreta) {
+            lerTexto("Acertou a cor secreta!");
+            setTimeout(carregarJogoCorVip, 800);
+          } else {
+            lerTexto("Tente de novo!");
+          }
+        };
+        containerCor.appendChild(btn);
+      });
+    }
+
+    // QUEBRA-CABEÇA RETANGULAR COM SELETOR DE CAPAS
+    let puzzlePecas = [];
+    const imagensBannersCapas = [
+      'https://i.imgur.com/0eJgoOG.png',
+      'https://i.imgur.com/0eteSlf.png',
+      'https://i.imgur.com/eKxsqu8.png',
+      'https://i.imgur.com/kR23lSN.png',
+      'https://i.imgur.com/z0ueVPB.png',
+      'https://i.imgur.com/UjMVo5s.png',
+      'https://i.imgur.com/AGz8ZZq.png',
+      'https://i.imgur.com/YnZSqpB.png',
+      'https://i.imgur.com/LuBOpYX.png'
+    ];
+    let imgAlvoPuzzle = imagensBannersCapas[0];
+
+    function iniciarPuzzleVip() {
+      criarSeletorCapas();
+      selecionarCapaPuzzle(imgAlvoPuzzle);
+    }
+
+    function criarSeletorCapas() {
+      const selector = document.getElementById('puzzleSelector');
+      if (selector.children.length > 0) return;
+      selector.innerHTML = '';
+      imagensBannersCapas.forEach((urlImg, idx) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'puzzle-thumb-btn' + (urlImg === imgAlvoPuzzle ? ' active' : '');
+        thumb.style.backgroundImage = `url(${urlImg})`;
+        thumb.title = `Capa ${idx + 1}`;
+        thumb.onclick = () => {
+          document.querySelectorAll('.puzzle-thumb-btn').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
+          selecionarCapaPuzzle(urlImg);
+          lerTexto("Capa selecionada!");
+        };
+        selector.appendChild(thumb);
+      });
+    }
+
+    function selecionarCapaPuzzle(url) {
+      imgAlvoPuzzle = url;
+      puzzlePecas = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+      embaralharPuzzle();
+    }
+
+    function embaralharPuzzle() {
+      for (let i = 0; i < 60; i++) {
+        let vazioIdx = puzzlePecas.indexOf(11);
+        let vizinhos = [];
+        let r = Math.floor(vazioIdx / 4), c = vazioIdx % 4;
+        if (r > 0) vizinhos.push(vazioIdx - 4);
+        if (r < 2) vizinhos.push(vazioIdx + 4);
+        if (c > 0) vizinhos.push(vazioIdx - 1);
+        if (c < 2) vizinhos.push(vazioIdx + 1);
+        let escolhido = vizinhos[Math.floor(Math.random() * vizinhos.length)];
+        let temp = puzzlePecas[vazioIdx];
+        puzzlePecas[vazioIdx] = puzzlePecas[escolhido];
+        puzzlePecas[escolhido] = temp;
+      }
+      renderizarPuzzle();
+    }
+
+    function renderizarPuzzle() {
+      const container = document.getElementById('puzzleContainer');
+      container.innerHTML = '';
+      puzzlePecas.forEach((posicaoOriginal, indexAtual) => {
+        const peca = document.createElement('div');
+        peca.className = 'puzzle-piece';
+        if (posicaoOriginal === 11) {
+          peca.style.background = '#FEF3C7';
+          peca.innerText = '⭐';
+        } else {
+          let row = Math.floor(posicaoOriginal / 4);
+          let col = posicaoOriginal % 4;
+          peca.innerHTML = `<img src="${imgAlvoPuzzle}" style="object-position: -${col * 66}px -${row * 66}px;">`;
+        }
+        peca.onclick = () => {
+          let vazioIdx = puzzlePecas.indexOf(11);
+          let r1 = Math.floor(indexAtual / 4), c1 = indexAtual % 4;
+          let r2 = Math.floor(vazioIdx / 4), c2 = vazioIdx % 4;
+          if (Math.abs(r1 - r2) + Math.abs(c1 - c2) === 1) {
+            let temp = puzzlePecas[vazioIdx];
+            puzzlePecas[vazioIdx] = puzzlePecas[indexAtual];
+            puzzlePecas[indexAtual] = temp;
+            renderizarPuzzle();
+            verificarVitoriaPuzzle();
+          }
+        };
+        container.appendChild(peca);
+      });
+    }
+
+    function verificarVitoriaPuzzle() {
+      let organizado = puzzlePecas.every((val, i) => val === i);
+      if (organizado) {
+        lerTexto("Parabéns! Você montou o quebra-cabeça de capas!");
+        setTimeout(() => selecionarCapaPuzzle(imgAlvoPuzzle), 2000);
+      }
+    }
+
+    let cMemVip = [], pCartaVip = null, travaMemVip = false, acertosMemVip = 0;
+    function iniciarMemoriaVip() {
+      acertosMemVip = 0;
+      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 6);
+      const imgsMem = sorteados.map(p => p.img);
+      cMemVip = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
+      const board = document.getElementById('memoryBoardVip');
+      board.innerHTML = '';
+      cMemVip.forEach(src => {
+        const card = document.createElement('div');
+        card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
+        card.onclick = () => {
+          if (travaMemVip || card.classList.contains('flipped')) return;
+          card.classList.add('flipped'); card.innerHTML = `<img src="${src}">`;
+          if (!pCartaVip) { pCartaVip = card; }
+          else {
+            if (pCartaVip.dataset.img === src) {
+              acertosMemVip++; lerTexto("Par! Acertou!"); pCartaVip = null;
+              if (acertosMemVip === 6) { lerTexto("Incrível! Venceu o jogo da memória VIP!"); setTimeout(iniciarMemoriaVip, 1800); }
+            } else {
+              travaMemVip = true;
+              setTimeout(() => {
+                pCartaVip.classList.remove('flipped'); pCartaVip.innerText = '❓';
+                card.classList.remove('flipped'); card.innerText = '❓';
+                pCartaVip = null; travaMemVip = false;
+              }, 900);
             }
+          }
+        };
+        board.appendChild(card);
+      });
+    }
 
-            const dados = {
-                email: email,
-                senha: senha,
-                status: "Pendente",
-                tipo: "NOVO_CLIENTE"
-            };
+    let qContar = 0;
+    function carregarJogoContar() {
+      qContar = Math.floor(Math.random() * 9) + 1;
+      const charSorteado = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      const display = document.getElementById('countDisplay');
+      display.innerHTML = '';
+      for (let i = 0; i < qContar; i++) {
+        const img = document.createElement('img');
+        img.src = charSorteado.img;
+        img.style.width = '38px'; img.style.height = '38px'; img.style.objectFit = 'contain';
+        display.appendChild(img);
+      }
+      const opts = document.getElementById('countOptions');
+      opts.innerHTML = '';
+      for (let n = 1; n <= 9; n++) {
+        const btn = document.createElement('button');
+        btn.className = 'btn-choice';
+        btn.style.padding = '8px 14px';
+        btn.innerText = n;
+        btn.onclick = () => {
+          if (n === qContar) { lerTexto("Parabéns! Contou certinho!"); setTimeout(carregarJogoContar, 600); }
+          else { lerTexto("Tente novamente!"); }
+        };
+        opts.appendChild(btn);
+      }
+    }
 
-            fetch(URL_SCRIPT, {
-                method: "POST",
-                mode: "no-cors",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(dados)
-            }).then(() => {
-                window.location.href = LINK_KIWIFY;
-            }).catch(() => {
-                window.location.href = LINK_KIWIFY;
-            });
-        }
+    let pLetraAtual = null;
+    function carregarJogoLetra() {
+      pLetraAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('nome-letra-personagem').innerText = pLetraAtual.nome;
+      document.getElementById('img-letra-personagem').src = pLetraAtual.img;
+      const container = document.getElementById('opcoes-letras');
+      container.innerHTML = '';
+      const alfabeto = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Z'];
+      let opcoes = [pLetraAtual.letra];
+      while (opcoes.length < 3) {
+        let lAleatoria = alfabeto[Math.floor(Math.random() * alfabeto.length)];
+        if (!opcoes.includes(lAleatoria)) opcoes.push(lAleatoria);
+      }
+      opcoes.sort(() => Math.random() - 0.5).forEach(l => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-choice'; btn.innerText = l;
+        btn.onclick = () => {
+          if (l === pLetraAtual.letra) { lerTexto("Muito bem! Letra " + pLetraAtual.letra); setTimeout(carregarJogoLetra, 600); }
+          else { lerTexto("Tente de novo!"); }
+        };
+        container.appendChild(btn);
+      });
+    }
 
-        function fazerLogin() {
-            const email = document.getElementById('log-email').value;
-            const senha = document.getElementById('log-senha').value;
-
-            if (!email || !senha) {
-                alert("Preencha o e-mail e a senha.");
-                return;
+    let cMem = [], pCarta = null, travaMem = false, acertosMem = 0;
+    function iniciarMemoria() {
+      acertosMem = 0;
+      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 4);
+      const imgsMem = sorteados.map(p => p.img);
+      cMem = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
+      const board = document.getElementById('memoryBoard');
+      board.innerHTML = '';
+      cMem.forEach(src => {
+        const card = document.createElement('div');
+        card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
+        card.onclick = () => {
+          if (travaMem || card.classList.contains('flipped')) return;
+          card.classList.add('flipped'); card.innerHTML = `<img src="${src}">`;
+          if (!pCarta) { pCarta = card; }
+          else {
+            if (pCarta.dataset.img === src) {
+              acertosMem++; lerTexto("Par! Acertou!"); pCarta = null;
+              if (acertosMem === 4) { lerTexto("Incrível! Encontrou todos os pares!"); setTimeout(iniciarMemoria, 1800); }
+            } else {
+              travaMem = true;
+              setTimeout(() => {
+                pCarta.classList.remove('flipped'); pCarta.innerText = '❓';
+                card.classList.remove('flipped'); card.innerText = '❓';
+                pCarta = null; travaMem = false;
+              }, 1000);
             }
+          }
+        };
+        board.appendChild(card);
+      });
+    }
 
-            // Senha mestra da criadora
-            if (senha === "65628467") {
-                alert("Acesso Mestre liberado!");
-                document.getElementById('tela-login').style.display = 'none';
-                document.getElementById('tela-vip').style.display = 'block';
-                return;
-            }
+    let pQuizAtual = null;
+    function carregarQuiz() {
+      pQuizAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('quiz-img').src = pQuizAtual.img;
+      const container = document.getElementById('quiz-options');
+      container.innerHTML = '';
+      let opcoes = [pQuizAtual.nome];
+      while (opcoes.length < 3) {
+        let outro = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome;
+        if (!opcoes.includes(outro)) opcoes.push(outro);
+      }
+      opcoes.sort(() => Math.random() - 0.5).forEach(o => {
+        const btn = document.createElement('button');
+        btn.style.cssText = "padding:7px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:12px;";
+        btn.innerText = o;
+        btn.onclick = () => {
+          if (o === pQuizAtual.nome) { lerTexto("Parabéns! É o " + pQuizAtual.nome); setTimeout(carregarQuiz, 600); }
+          else { lerTexto("Tente novamente!"); }
+        };
+        container.appendChild(btn);
+      });
+    }
 
-            fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.liberado) {
-                        document.getElementById('tela-login').style.display = 'none';
-                        document.getElementById('tela-vip').style.display = 'block';
-                    } else {
-                        alert(data.msg || "Pagamento ainda não confirmado ou dados incorretos.");
-                    }
-                })
-                .catch(() => {
-                    alert("Erro ao verificar o acesso. Tente novamente em instantes.");
-                });
-        }
+    let pCorAtual = null;
+    function carregarJogoCor() {
+      pCorAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('cor-pergunta-txt').innerText = pCorAtual.corPergunta;
+      document.getElementById('cor-img').src = pCorAtual.img;
+      const container = document.getElementById('cor-options');
+      container.innerHTML = '';
+      pCorAtual.corOpcoes.sort(() => Math.random() - 0.5).forEach(o => {
+        const btn = document.createElement('button');
+        btn.style.cssText = "padding:7px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:12px;";
+        btn.innerText = o;
+        btn.onclick = () => {
+          if (o === pCorAtual.corCorreta) { lerTexto("Acertou! Cor correta!"); setTimeout(carregarJogoCor, 600); }
+          else { lerTexto("Tente de novo!"); }
+        };
+        container.appendChild(btn);
+      });
+    }
 
-        function mostrarLogin() {
-            document.getElementById('tela-cadastro').style.display = 'none';
-            document.getElementById('tela-login').style.display = 'block';
-        }
+    const canvas = document.getElementById('paintCanvas');
+    const ctx = canvas.getContext('2d');
+    let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free';
+    let imagemPintarCarregada = null, tamanhoPincel = 6, escalaZoomGuia = 0.85;
 
-        function mostrarCadastro() {
-            document.getElementById('tela-login').style.display = 'none';
-            document.getElementById('tela-cadastro').style.display = 'block';
-        }
+    function redimensionarCanvas() {
+      if (!canvas.parentElement) return;
+      canvas.width = canvas.parentElement.clientWidth - 20;
+      canvas.height = window.innerWidth >= 900 ? 400 : 330;
+      if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada);
+    }
 
-        function sair() {
-            document.getElementById('tela-vip').style.display = 'none';
-            document.getElementById('tela-cadastro').style.display = 'block';
-        }
-    </script>
+    function setLousaMode(modo) {
+      modoLousa = modo;
+      document.getElementById('btn-mode-free').classList.remove('active');
+      document.getElementById('btn-mode-color').classList.remove('active');
+      document.getElementById('coloringSelectGrid').classList.remove('active');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (modo === 'free') {
+        document.getElementById('btn-mode-free').classList.add('active');
+        imagemPintarCarregada = null;
+        lerTexto("Modo Desenho Livre ativado!");
+      } else {
+        document.getElementById('btn-mode-color').classList.add('active');
+        document.getElementById('coloringSelectGrid').classList.add('active');
+        lerTexto("Escolha um personagem para pintar!");
+        carregarContornoPintar('https://i.imgur.com/3vwHupo.png', 'Xexéu', null);
+      }
+    }
+
+    function carregarContornoPintar(urlImg, nome, btnElemento) {
+      document.querySelectorAll('.btn-color-draw').forEach(b => b.classList.remove('selected'));
+      if (btnElemento) btnElemento.classList.add('selected');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const img = new Image();
+      img.crossOrigin = "Anonymous";
+      img.src = urlImg;
+      img.onload = () => { imagemPintarCarregada = img; desenharContornoNoCanvas(img); lerTexto("Vamos pintar o " + nome + "!"); };
+    }
+
+    function desenharContornoNoCanvas(img) {
+      const escala = Math.min(canvas.width / img.width, canvas.height / img.height) * escalaZoomGuia;
+      const x = (canvas.width / 2) - (img.width * escala / 2);
+      const y = (canvas.height / 2) - (img.height * escala / 2);
+      ctx.globalAlpha = 0.35;
+      ctx.drawImage(img, x, y, img.width * escala, img.height * escala);
+      ctx.globalAlpha = 1.0;
+    }
+
+    function mudarCor(c) { corAtual = c; }
+    function mudarTamanhoPincel(tam) { tamanhoPincel = tam; }
+    function mudarZoomGuia(val) {
+      escalaZoomGuia = val / 100;
+      if (modoLousa === 'color' && imagemPintarCarregada) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        desenharContornoNoCanvas(imagemPintarCarregada);
+      }
+    }
+
+    function limparCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada);
+    }
+
+    function salvarFotoDesenho() {
+      const tempCanvas = document.createElement('canvas');
+      tempCanvas.width = canvas.width; tempCanvas.height = canvas.height;
+      const tempCtx = tempCanvas.getContext('2d');
+      tempCtx.fillStyle = '#FFFFFF'; tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+      tempCtx.drawImage(canvas, 0, 0);
+      const link = document.createElement('a');
+      link.download = 'Meu-Desenho-Turminha-do-Xexeu.png';
+      link.href = tempCanvas.toDataURL('image/png');
+      link.click();
+      lerTexto("Desenho salvo com sucesso!");
+    }
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return { x: clientX - rect.left, y: clientY - rect.top };
+    }
+
+    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; });
+    canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
+    canvas.addEventListener('mouseup', () => desenhando = false);
+    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; e.preventDefault(); });
+    canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
+    canvas.addEventListener('touchend', () => desenhando = false);
+    window.addEventListener('resize', redimensionarCanvas);
+
+    carregarJogoContar();
+    carregarJogoLetra();
+    iniciarMemoria();
+    carregarQuiz();
+    carregarJogoCor();
+    verificarStatusVip();
+  </script>
 </body>
 </html>
