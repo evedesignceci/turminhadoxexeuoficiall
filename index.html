@@ -102,12 +102,12 @@
       border-color: transparent;
     }
 
-    /* SUB-ABAS DE JOGOS */
+    /* SUB-ABAS DE JOGOS PADRÃO (SEPARADAS) */
     .games-subnav {
       display: flex;
       justify-content: center;
       gap: 6px;
-      background: #FEF3C7;
+      background: #E0F2FE;
       padding: 8px;
       border-radius: 12px;
       margin-bottom: 14px;
@@ -120,25 +120,17 @@
       font-weight: 700;
       font-size: 11px;
       cursor: pointer;
-      background: #FFFBEB;
-      color: #92400E;
+      background: #FFF;
+      color: var(--primary-dark);
       transition: all 0.2s;
     }
     .subnav-btn.active {
-      background: #F59E0B;
+      background: var(--primary);
       color: #FFF;
-      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
-    }
-    .subnav-btn.vip-sub {
-      background: #F8FAFC;
-      border: 1.5px solid #CBD5E1;
-      color: #1E293B;
-    }
-    .subnav-btn.vip-sub.active {
-      background: #0F172A;
-      color: #FFF;
+      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
     }
 
+    /* SUB-ABAS DA SALA VIP */
     .vip-games-subnav {
       display: flex;
       justify-content: center;
@@ -180,7 +172,7 @@
     }
 
     header {
-      padding: 10px 16px;
+      padding: 12px 20px;
       background: #BAE6FD;
       display: flex;
       align-items: center;
@@ -188,7 +180,7 @@
       border-radius: var(--radius-lg);
       margin: 10px 10px 0;
     }
-    .logo-img { max-width: 110px; height: auto; }
+    .logo-img { max-width: 150px; height: auto; }
 
     .audio-toggle-btn {
       background: #FFFFFF;
@@ -354,6 +346,7 @@
       box-shadow: 0 4px 14px rgba(0,0,0,0.06);
       border: 2px solid #E2E8F0;
       text-align: center;
+      margin-bottom: 14px;
     }
     .video-header {
       display: flex;
@@ -372,7 +365,7 @@
     }
     .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-    /* ESTILOS DA ÁREA VIP COM E-MAIL E SENHA */
+    /* ESTILOS DA ÁREA VIP */
     .vip-lock-container {
       background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
       border: 2px solid #FCD34D;
@@ -413,10 +406,6 @@
       cursor: pointer;
       width: 100%;
     }
-    .btn-vip-checkout:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(245, 158, 11, 0.5);
-    }
 
     .vip-form-box {
       background: #FFF;
@@ -450,13 +439,13 @@
     }
     .vip-card-box h4 { font-size: 16px; font-weight: 900; color: #1E293B; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
 
-    /* SUPORTE E RECLAMAÇÕES */
+    /* SUPORTE E RECLAMAÇÕES (GLOBAL) */
     .support-form-box {
       background: #FFFBEB;
       border: 2px solid #FCD34D;
       border-radius: var(--radius-lg);
       padding: 16px;
-      margin-top: 10px;
+      margin: 10px 16px 0;
     }
     .support-form-box h5 { color: #92400E; font-size: 15px; font-weight: 900; margin-bottom: 6px; }
     .support-form-box p { font-size: 12px; color: #78350F; margin-bottom: 12px; font-weight: 600; }
@@ -697,22 +686,31 @@
       </div>
     </div>
 
-    <!-- PÁGINA 2: VÍDEOS -->
+    <!-- PÁGINA 2: VÍDEOS & TIKTOK -->
     <div id="pagina-videos" class="page-content">
       <div class="video-section">
         <div class="video-card">
           <div class="video-header">
-            <h3>🎬 Canal Oficial - Playlist Completa</h3>
+            <h3>🎬 Canal Oficial - Playlist Completa (YouTube)</h3>
             <button class="btn-audio-mini" onclick="lerTexto('Esta é a playlist oficial da Turminha do Xexéu no YouTube!')" title="Ouvir">🔊</button>
           </div>
           <div class="video-wrapper">
             <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
           </div>
         </div>
+
+        <div class="video-card">
+          <div class="video-header">
+            <h3>🎵 Curtinhas e Vídeos (TikTok)</h3>
+            <button class="btn-audio-mini" onclick="lerTexto('Acompanhe nossos vídeos curtos no TikTok!')" title="Ouvir">🔊</button>
+          </div>
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Acesse diretamente nosso perfil oficial no TikTok para ver as novidades:</p>
+          <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="btn-choice" style="display: inline-block; background: #000; text-decoration: none; padding: 10px 20px; border-radius: 12px; font-weight: 800; font-size: 13px;">Abrir TikTok da Turminha 🎵</a>
+        </div>
       </div>
     </div>
 
-    <!-- PÁGINA 3: JOGOS -->
+    <!-- PÁGINA 3: JOGOS PADRÃO -->
     <div id="pagina-jogos" class="page-content">
       <div class="age-group-section">
         <div class="age-title">🎮 Área de Jogos da Turminha</div>
@@ -722,7 +720,6 @@
           <button id="subtab-letras" class="subnav-btn" onclick="mudarSubJogo('letras')">🔤 Primeiras Letras</button>
           <button id="subtab-memoria" class="subnav-btn" onclick="mudarSubJogo('memoria')">🧠 Memória</button>
           <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
-          <button id="subtab-quizvip" class="subnav-btn vip-sub" onclick="mudarSubJogo('quizvip')">⭐ Sala VIP (4 Jogos)</button>
         </div>
 
         <!-- LOUSA MÁGICA -->
@@ -800,61 +797,10 @@
           </div>
         </div>
 
-        <!-- SALA DE JOGOS VIP -->
-        <div id="game-quizvip" class="game-tab-content interactive-card" style="border: 2px solid #FCD34D; background: #FFFBEB;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-            <h4 style="font-weight: 900; color: #92400E; margin: 0; font-size: 15px;">⭐ Sala de Jogos VIP Exclusivos</h4>
-            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Sala de Jogos VIP! Escolha um minijogo nas abas abaixo.')" title="Ouvir">🔊</button>
-          </div>
-          
-          <div id="vip-game-lock" style="padding: 20px; text-align: center;">
-            <p style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 10px;">🔒 Conteúdo exclusivo disponível apenas para membros VIP ou criadora.</p>
-            <button onclick="mudarPagina('vip')" class="btn-vip-checkout" style="font-size: 12px; padding: 8px 16px; width: auto;">Ir para a Área VIP ➔</button>
-          </div>
-
-          <div id="vip-game-body" style="display: none;">
-            <div class="vip-games-subnav">
-              <button id="btn-vipanel-1" class="vip-sub-btn active" onclick="mudarPanelVip(1)">📖 Histórias</button>
-              <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores</button>
-              <button id="btn-vipanel-3" class="vip-sub-btn" onclick="mudarPanelVip(3)">🧩 Quebra-Cabeça</button>
-              <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória</button>
-            </div>
-
-            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
-              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 6px;">📖 Desafio das Histórias</h5>
-              <p id="vip-historia-txt" style="font-size: 13px; font-weight: 800; color: #78350F; margin-bottom: 10px;"></p>
-              <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
-            </div>
-
-            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
-              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 6px;">🎨 Cores Secretas</h5>
-              <p id="vip-cor-txt" style="font-size: 13px; font-weight: 800; color: #78350F; margin-bottom: 8px;"></p>
-              <img id="vip-cor-img" src="" style="width: 65px; height: 65px; object-fit: contain; margin-bottom: 8px;">
-              <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 6px; flex-wrap: wrap;"></div>
-            </div>
-
-            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
-              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧩 Quebra-Cabeça de Capas</h5>
-              <p style="font-size: 11px; color: #666; margin-bottom: 6px;">Escolha a capa de vídeo abaixo e monte o quebra-cabeça!</p>
-              
-              <div id="puzzleSelector" class="puzzle-selector"></div>
-
-              <div id="puzzleContainer" class="puzzle-grid"></div>
-              <button onclick="embaralharPuzzle()" style="margin-top: 8px; padding: 6px 12px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 11px; cursor: pointer;">Embaralhar Peças 🔄</button>
-            </div>
-
-            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
-              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧠 Memória Relâmpago</h5>
-              <p style="font-size: 11px; color: #666; margin-bottom: 8px;">Encontre os 6 pares para vencer!</p>
-              <div id="memoryBoardVip" class="memory-board" style="max-width: 340px; grid-template-columns: repeat(4, 1fr);"></div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
 
-    <!-- PÁGINA 4: ÁREA VIP COM CADASTRO E LOGIN INTEGRADOS -->
+    <!-- PÁGINA 4: ÁREA VIP (COM SALA DE JOGOS VIP ISOLADA E RECLAMAÇÕES) -->
     <div id="pagina-vip" class="page-content">
       <div class="age-group-section">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -879,13 +825,13 @@
             </button>
           </div>
 
-          <!-- ÁREA DE LOGIN JOGADORES / CRIADORA -->
+          <!-- LOGIN -->
           <div class="creator-access-area" style="margin-top: 10px;">
-            <span class="creator-label">Já é assinante ou criadora? Faça seu login:</span>
+            <span class="creator-label" style="font-size: 12px; font-weight: 700; color: #78350F; display: block; margin-bottom: 6px;">Já é assinante ou criadora? Faça seu login:</span>
             <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 260px; margin: 0 auto;">
               <input type="email" id="log-email" class="vip-input" placeholder="E-mail cadastrado" style="margin-bottom:0;">
               <input type="password" id="log-senha" class="vip-input" placeholder="Sua senha" style="margin-bottom:0;">
-              <button onclick="fazerLogin()" class="creator-btn" style="width:100%; padding: 10px;">Entrar na Área VIP 🔑</button>
+              <button onclick="fazerLogin()" class="creator-btn" style="width:100%; padding: 10px; background: #D97706; color: #FFF; border: none; border-radius: 8px; font-weight: 800; cursor: pointer;">Entrar na Área VIP 🔑</button>
             </div>
           </div>
         </div>
@@ -925,38 +871,61 @@
             </div>
           </div>
 
-          <div class="vip-card-box">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <h4 style="margin: 0; font-size: 15px;">🎨 Cantinho dos Downloads</h4>
-              <button class="btn-audio-mini" onclick="lerTexto('Baixe wallpapers exclusivos para celular e pacotes de desenhos em PDF para colorir.')" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
-            </div>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Baixe wallpapers exclusivos para o seu celular e packs de desenhos em PDF para colorir.</p>
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=sharing" target="_blank" class="btn-choice" style="font-size: 12px; padding: 8px 12px; text-decoration: none;">📥 Wallpapers Celular</a>
-              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=sharing" target="_blank" class="btn-choice" style="font-size: 12px; padding: 8px 12px; text-decoration: none; background: var(--green);">📥 Pack Desenhos PDF</a>
-            </div>
-          </div>
-
+          <!-- SALA DE JOGOS VIP EXCLUSIVA (TOTALMENTE ISOLADA) -->
           <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <h4 style="color: #92400E; margin: 0; font-size: 15px;">⭐ Sala de Jogos VIP Liberada!</h4>
-              <button class="btn-audio-mini" onclick="lerTexto('A sala de jogos VIP com quatro minijogos exclusivos está aberta.')" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <h4 style="color: #92400E; margin: 0; font-size: 15px;">⭐ Sala de Jogos VIP Exclusiva</h4>
+              <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Sala de Jogos VIP! Escolha um minijogo nas abas abaixo.')" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
             </div>
-            <p style="font-size: 12px; color: #92400E; margin-bottom: 8px;">Os quatro minijogos exclusivos já estão prontos para testar.</p>
-            <button onclick="mudarPagina('jogos'); mudarSubJogo('quizvip');" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px; background: #F59E0B; margin-bottom: 0; width: auto;">Jogar na Sala VIP ➔</button>
-          </div>
+            <p style="font-size: 12px; color: #92400E; margin-bottom: 12px;">Quatro minijogos exclusivos para membros!</p>
 
-          <div class="support-form-box">
-            <h5>📬 Precisa de Ajuda ou quer enviar uma Reclamação?</h5>
-            <p>Escreva para nós! A mensagem será enviada direto para o e-mail oficial <strong>turminhaxexeu@gmail.com</strong>.</p>
-            <input type="email" id="suporteEmail" class="support-input" placeholder="Seu e-mail para contato">
-            <textarea id="suporteMensagem" class="support-textarea" placeholder="Digite sua dúvida, problema ou reclamação aqui..."></textarea>
-            <button onclick="enviarSuporteReclamacao()" class="support-btn">Enviar Mensagem ✉️</button>
+            <div class="vip-games-subnav">
+              <button id="btn-vipanel-1" class="vip-sub-btn active" onclick="mudarPanelVip(1)">📖 Histórias</button>
+              <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores</button>
+              <button id="btn-vipanel-3" class="vip-sub-btn" onclick="mudarPanelVip(3)">🧩 Quebra-Cabeça</button>
+              <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória</button>
+            </div>
+
+            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 6px;">📖 Desafio das Histórias</h5>
+              <p id="vip-historia-txt" style="font-size: 13px; font-weight: 800; color: #78350F; margin-bottom: 10px;"></p>
+              <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
+            </div>
+
+            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 6px;">🎨 Cores Secretas</h5>
+              <p id="vip-cor-txt" style="font-size: 13px; font-weight: 800; color: #78350F; margin-bottom: 8px;"></p>
+              <img id="vip-cor-img" src="" style="width: 65px; height: 65px; object-fit: contain; margin-bottom: 8px;">
+              <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 6px; flex-wrap: wrap;"></div>
+            </div>
+
+            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧩 Quebra-Cabeça de Capas</h5>
+              <p style="font-size: 11px; color: #666; margin-bottom: 6px;">Escolha a capa de vídeo abaixo e monte o quebra-cabeça 3x4!</p>
+              <div id="puzzleSelector" class="puzzle-selector"></div>
+              <div id="puzzleContainer" class="puzzle-grid"></div>
+              <button onclick="embaralharPuzzle()" style="margin-top: 8px; padding: 6px 12px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 11px; cursor: pointer;">Embaralhar Peças 🔄</button>
+            </div>
+
+            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧠 Memória Relâmpago</h5>
+              <p style="font-size: 11px; color: #666; margin-bottom: 8px;">Encontre os 6 pares para vencer!</p>
+              <div id="memoryBoardVip" class="memory-board" style="max-width: 340px; grid-template-columns: repeat(4, 1fr);"></div>
+            </div>
           </div>
 
         </div>
 
       </div>
+    </div>
+
+    <!-- SEÇÃO DE SUPORTE E RECLAMAÇÕES (GLOBAL - VISÍVEL PARA TODOS) -->
+    <div class="support-form-box">
+      <h5>📬 Precisa de Ajuda ou quer enviar uma Reclamação?</h5>
+      <p>Escreva para nós! A mensagem será enviada direto para o e-mail oficial <strong>turminhaxexeu@gmail.com</strong>.</p>
+      <input type="email" id="suporteEmail" class="support-input" placeholder="Seu e-mail para contato">
+      <textarea id="suporteMensagem" class="support-textarea" placeholder="Digite sua dúvida, problema ou reclamação aqui..."></textarea>
+      <button onclick="enviarSuporteReclamacao()" class="support-btn">Enviar Mensagem ✉️</button>
     </div>
 
     <footer>
@@ -969,7 +938,6 @@
     let audioAtivo = true;
     const SENHA_MESTRA_CRIADORA = "65628467";
     
-    // Link do seu Google Apps Script (Planilha) e Kiwify
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbzoNDfZoMZB-n02HCb0B24ouJ5IkB82pTjxf3x2VOH8eG21hPw-q-EivtbFDIyxPM73GQ/exec";
     const LINK_KIWIFY = "https://pay.kiwify.com.br/avOqrEg";
 
@@ -1048,9 +1016,7 @@
         dispositivo: mensagem
       };
 
-      const urlPlanilhaGoogle = URL_SCRIPT;
-
-      fetch(urlPlanilhaGoogle, {
+      fetch(URL_SCRIPT, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
@@ -1065,7 +1031,6 @@
       });
     }
 
-    // FUNÇÕES DE CADASTRO E LOGIN VIP COM PLANILHA
     function salvarECadastrar() {
       const email = document.getElementById('cad-email').value.trim();
       const senha = document.getElementById('cad-senha').value.trim();
@@ -1103,7 +1068,6 @@
         return;
       }
 
-      // Senha mestra da criadora
       if (senha === SENHA_MESTRA_CRIADORA) {
         localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
         verificarStatusVip();
@@ -1111,7 +1075,6 @@
         return;
       }
 
-      // Consulta a planilha para verificar se o pagamento foi aprovado
       fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
         .then(response => response.json())
         .then(data => {
@@ -1132,25 +1095,17 @@
       const isVip = localStorage.getItem('turminha_xexeu_vip_ativo');
       const lockedView = document.getElementById('vip-locked-view');
       const unlockedView = document.getElementById('vip-unlocked-view');
-      const gameLock = document.getElementById('vip-game-lock');
-      const gameBody = document.getElementById('vip-game-body');
 
       if (isVip === 'true') {
         if(lockedView) lockedView.style.display = 'none';
         if(unlockedView) unlockedView.classList.add('active-vip');
-        if(gameLock) gameLock.style.display = 'none';
-        if(gameBody) {
-          gameBody.style.display = 'block';
-          carregarDesafioHistoriaVip();
-          carregarJogoCorVip();
-          iniciarPuzzleVip();
-          iniciarMemoriaVip();
-        }
+        carregarDesafioHistoriaVip();
+        carregarJogoCorVip();
+        iniciarPuzzleVip();
+        iniciarMemoriaVip();
       } else {
         if(lockedView) lockedView.style.display = 'block';
         if(unlockedView) unlockedView.classList.remove('active-vip');
-        if(gameLock) gameLock.style.display = 'block';
-        if(gameBody) gameBody.style.display = 'none';
       }
     }
 
@@ -1190,7 +1145,7 @@
     }
 
     function mudarSubJogo(sub) {
-      const subs = ['lousa', 'contar', 'letras', 'memoria', 'quiz', 'quizvip'];
+      const subs = ['lousa', 'contar', 'letras', 'memoria', 'quiz'];
       subs.forEach(s => {
         const el = document.getElementById('game-' + s);
         const subBtn = document.getElementById('subtab-' + s);
@@ -1202,7 +1157,6 @@
       if(targetEl) targetEl.classList.add('active-game-tab');
       if(targetBtn) targetBtn.classList.add('active');
       if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
-      if(sub === 'quizvip') verificarStatusVip();
     }
 
     function mudarPanelVip(num) {
@@ -1270,7 +1224,7 @@
       });
     }
 
-    // QUEBRA-CABEÇA RETANGULAR COM SELETOR DE CAPAS
+    // QUEBRA-CABEÇA RETANGULAR PERFEITO (3x4)
     let puzzlePecas = [];
     const imagensBannersCapas = [
       'https://i.imgur.com/0eJgoOG.png',
