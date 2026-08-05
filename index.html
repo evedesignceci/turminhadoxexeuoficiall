@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Área VIP - Turminha do Xexéu</title>
+    <title>Turminha do Xexéu</title>
     <style>
         * {
             box-sizing: border-box;
@@ -14,32 +14,35 @@
         body {
             background-color: #f0f8ff;
             color: #333;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
         }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            max-width: 450px;
-            width: 100%;
+        header {
             text-align: center;
+            margin-bottom: 40px;
+            max-width: 600px;
         }
         h1 {
             color: #ff6b6b;
             margin-bottom: 10px;
-            font-size: 24px;
+            font-size: 28px;
         }
         p {
             color: #666;
-            margin-bottom: 20px;
-            font-size: 15px;
+            font-size: 16px;
             line-height: 1.5;
+        }
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            margin-bottom: 20px;
+            text-align: center;
         }
         .btn {
             background-color: #2ecc71;
@@ -51,7 +54,7 @@
             border-radius: 10px;
             cursor: pointer;
             width: 100%;
-            margin-bottom: 15px;
+            margin-top: 15px;
             transition: 0.3s;
             text-decoration: none;
             display: inline-block;
@@ -60,9 +63,10 @@
             background-color: #27ae60;
         }
         .login-area {
-            margin-top: 20px;
+            margin-top: 15px;
             border-top: 2px dashed #eee;
-            padding-top: 20px;
+            padding-top: 15px;
+            text-align: left;
         }
         input[type="password"] {
             width: 100%;
@@ -95,52 +99,63 @@
             border: 1px solid #ffeeba;
             padding: 15px;
             border-radius: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #856404;
         }
     </style>
 </head>
 <body>
 
-    <!-- TELA DE BLOQUEIO / PAGAMENTO -->
-    <div class="container" id="tela-bloqueio">
-        <h1>🧸 Área VIP - Turminha do Xexéu</h1>
-        <p>Conteúdo exclusivo, episódios secretos, desenhos para colorir e muito mais! Assine o nosso clube mensal por apenas <strong>R$ 6,00/mês</strong>.</p>
+    <!-- CABEÇALHO DO SITE (Visível para todo mundo) -->
+    <header>
+        <h1>🧸 Turminha do Xexéu</h1>
+        <p>Bem-vindo ao site oficial da nossa turminha! Conheça os personagens, divirta-se com os conteúdos públicos e venha fazer parte do nosso clube.</p>
+    </header>
+
+    <!-- SEÇÃO PÚBLICA DO SITE (Exemplo: Apresentação ou Joguinhos livres) -->
+    <div class="section">
+        <h2 style="color: #34495e; margin-bottom: 10px;">👋 Conheça a Turminha!</h2>
+        <p>Aqui ficam as informações públicas, desenhos abertos e novidades para todas as crianças.</p>
+    </div>
+
+    <!-- SEÇÃO DA ÁREA VIP (Bloqueada até o usuário desbloquear) -->
+    <div class="section" id="bloco-vip">
+        <h2 style="color: #e67e22; margin-bottom: 10px;">⭐ Clube VIP (R$ 6,00/mês)</h2>
+        <p>Episódios secretos, bastidores, downloads de desenhos em PDF e conteúdos exclusivos!</p>
         
         <!-- Botão oficial da Kiwify -->
-        <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn">✨ Assinar Clube VIP (R$ 6,00)</a>
+        <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn">✨ Assinar Clube VIP</a>
 
-        <!-- Área de login para quem já pagou ou para você -->
+        <!-- Área de login discreta -->
         <div class="login-area">
-            <p style="font-size: 13px; margin-bottom: 8px;">Já é membro ou tem a senha de acesso?</p>
-            <input type="password" id="senha-input" placeholder="Digite sua senha de acesso">
-            <button class="btn-login" onclick="verificarSenha()">Entrar na Área VIP</button>
+            <p style="font-size: 13px; margin-bottom: 8px; color: #666; text-align: center;">Já é membro ou tem a senha de acesso?</p>
+            <input type="password" id="senha-input" placeholder="Digite sua senha">
+            <button class="btn-login" onclick="verificarSenha()">Liberar Área VIP</button>
         </div>
     </div>
 
-    <!-- CONTEÚDO VIP (Só aparece liberado) -->
-    <div class="container" id="conteudo-vip">
-        <h1>🎉 Bem-vindo(a) à Área VIP!</h1>
+    <!-- CONTEÚDO VIP EXCLUSIVO (Só aparece liberado aqui dentro) -->
+    <div class="section" id="conteudo-vip">
+        <h2 style="color: #27ae60; margin-bottom: 10px;">🎉 Área VIP Liberada!</h2>
         <div class="welcome-vip">
-            <p style="margin: 0; color: #856404;">Acesso liberado com sucesso! Aproveite todo o conteúdo exclusivo da Turminha do Xexéu. 🧸🎨</p>
+            <p style="margin: 0; font-size: 14px;">Você está com o acesso ativado neste aparelho. Aproveite os conteúdos exclusivos! 🧸🎨</p>
         </div>
         
-        <p>Aqui ficam os vídeos secretos, downloads em PDF e os jogos exclusivos!</p>
+        <p style="margin-bottom: 15px;">Aqui estão os vídeos secretos e materiais para download:</p>
         
-        <!-- Coloque os links dos seus vídeos ou conteúdos aqui no futuro -->
-        <div style="background: #e8f4fd; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
-            <h3 style="color: #2980b9; margin-bottom: 5px;">🎬 Episódio Secreto #01</h3>
-            <p style="font-size: 13px; margin: 0;">Disponível exclusivamente para membros do Clube.</p>
+        <div style="background: #e8f4fd; padding: 12px; border-radius: 8px; margin-bottom: 15px; text-align: left;">
+            <strong style="color: #2980b9;">🎬 Episódio Secreto #01</strong>
+            <p style="font-size: 13px; margin: 5px 0 0 0; color: #555;">Disponível apenas para membros assinantes.</p>
         </div>
 
-        <button class="btn" style="background-color: #e74c3c;" onclick="sairVIP()">Sair / Bloquear Aparelho</button>
+        <button class="btn" style="background-color: #e74c3c; padding: 8px 15px; font-size: 14px;" onclick="sairVIP()">Bloquear novamente este aparelho</button>
     </div>
 
     <script>
         // Senha mestra da criadora
         const SENHA_MESTRA = "65628467";
 
-        // Verifica ao carregar a página se o celular já tem o acesso salvo
+        // Verifica ao carregar a página se o celular já tem o acesso VIP salvo
         window.onload = function() {
             if (localStorage.getItem("turminha_vip_liberado") === "true") {
                 mostrarConteudoVIP();
@@ -159,7 +174,8 @@
         }
 
         function mostrarConteudoVIP() {
-            document.getElementById("tela-bloqueio").style.display = "none";
+            // Esconde apenas o card de venda/login e mostra o conteúdo secreto
+            document.getElementById("bloco-vip").style.display = "none";
             document.getElementById("conteudo-vip").style.display = "block";
         }
 
