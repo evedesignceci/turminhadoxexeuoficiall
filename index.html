@@ -153,11 +153,12 @@
       transition: all 0.2s;
     }
     .vip-sub-btn.active { background: #D97706; color: #FFF; }
+    
+    .game-section-page { display: none; }
+    .game-section-page.active-game-page { display: block; }
+
     .vip-game-panel { display: none; }
     .vip-game-panel.active-vip-panel { display: block; }
-
-    .game-tab-content { display: none; }
-    .game-tab-content.active-game-tab { display: block; }
 
     .page-content {
       display: none;
@@ -757,7 +758,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 3: JOGOS GERAIS (CADA JOGO EM SUA PRÓPRIA PÁGINA) -->
+    <!-- PÁGINA 3: JOGOS GERAIS (CADA JOGO EM SUA PRÓPRIA PÁGINA ISOLADA) -->
     <div id="pagina-jogos" class="page-content">
       <div class="age-group-section">
         <div class="age-title">🎮 Área de Jogos da Turminha</div>
@@ -770,7 +771,7 @@
         </div>
 
         <!-- LOUSA MÁGICA -->
-        <div id="game-lousa" class="game-tab-content active-game-tab interactive-card lousa-container">
+        <div id="game-lousa" class="game-section-page active-game-page interactive-card lousa-container">
           <h4 style="font-weight: 800; margin-bottom: 8px; font-size: 15px;">🎨 Lousa Mágica & Desenhos</h4>
           <div class="lousa-mode-tabs">
             <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Desenho Livre</button>
@@ -805,7 +806,7 @@
         </div>
 
         <!-- CONTAR -->
-        <div id="game-contar" class="game-tab-content interactive-card">
+        <div id="game-contar" class="game-section-page interactive-card">
           <h4 style="font-weight: 800; font-size: 15px;">🔢 Vamos Contar?</h4>
           <p style="font-size: 13px; color: var(--text-muted);">Quantos bonequinhos aparecem abaixo?</p>
           <div id="countDisplay" style="display: flex; justify-content: center; align-items: center; gap: 6px; margin: 14px 0; min-height: 60px; flex-wrap: wrap;"></div>
@@ -813,7 +814,7 @@
         </div>
 
         <!-- LETRAS -->
-        <div id="game-letras" class="game-tab-content interactive-card">
+        <div id="game-letras" class="game-section-page interactive-card">
           <h4 style="font-weight: 800; font-size: 15px;">🔤 Qual é a Primeira Letra?</h4>
           <p style="font-size: 13px; font-weight: 700; margin-top: 6px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple);">Xexéu</strong></p>
           <img id="img-letra-personagem" src="" style="width: 90px; height: 90px; object-fit: contain; margin: 8px 0;">
@@ -821,14 +822,14 @@
         </div>
 
         <!-- MEMÓRIA -->
-        <div id="game-memoria" class="game-tab-content interactive-card">
+        <div id="game-memoria" class="game-section-page interactive-card">
           <h4 style="font-weight: 800; font-size: 15px;">🧠 Jogo da Memória</h4>
           <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">Encontre os 4 pares dos amigos!</p>
           <div id="memoryBoard" class="memory-board"></div>
         </div>
 
         <!-- QUIZ & CORES -->
-        <div id="game-quiz" class="game-tab-content interactive-card">
+        <div id="game-quiz" class="game-section-page interactive-card">
           <h4 style="font-weight: 800; margin-bottom: 8px; font-size: 15px;">❓ Desafios da Turminha</h4>
           <div style="display: flex; flex-direction: column; gap: 14px;">
             <div style="background: #FFF; padding: 12px; border-radius: 10px; border: 1px solid #E2E8F0;">
@@ -918,7 +919,7 @@
             </div>
           </div>
 
-          <!-- SALA DE JOGOS VIP EXCLUSIVA (CADA JOGO EM SUA PRÓPRIA PÁGINA) -->
+          <!-- SALA DE JOGOS VIP EXCLUSIVA (CADA JOGO EM SUA PRÓPRIA PÁGINA ISOLADA) -->
           <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <h4 style="color: #92400E; margin: 0; font-size: 15px;">⭐ Sala de Jogos VIP Exclusiva</h4>
@@ -1207,12 +1208,12 @@
       subs.forEach(s => {
         const el = document.getElementById('game-' + s);
         const subBtn = document.getElementById('subtab-' + s);
-        if(el) el.classList.remove('active-game-tab');
+        if(el) el.classList.remove('active-game-page');
         if(subBtn) subBtn.classList.remove('active');
       });
       const targetEl = document.getElementById('game-' + sub);
       const targetBtn = document.getElementById('subtab-' + sub);
-      if(targetEl) targetEl.classList.add('active-game-tab');
+      if(targetEl) targetEl.classList.add('active-game-page');
       if(targetBtn) targetBtn.classList.add('active');
       if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
     }
@@ -1295,7 +1296,7 @@
       'https://i.imgur.com/LuBOpYX.png'
     ];
     let imgAlvoPuzzle = imagensBannersCapas[0];
-    let estadoTabuleiro = new Array(12).fill(null); // Armazena qual peça está em cada slot (0 a 11)
+    let estadoTabuleiro = new Array(12).fill(null);
 
     function iniciarPuzzleVip() {
       criarSeletorCapas();
@@ -1341,7 +1342,6 @@
         dropzone.className = 'puzzle-dropzone';
         dropzone.dataset.slotIndex = i;
 
-        // Eventos de arrastar e soltar (Drag and Drop)
         dropzone.ondragover = (e) => { e.preventDefault(); dropzone.classList.add('drag-over'); };
         dropzone.ondragleave = () => { dropzone.classList.remove('drag-over'); };
         dropzone.ondrop = (e) => {
@@ -1363,12 +1363,10 @@
     function renderizarPecasEmbaralhadas() {
       const tray = document.getElementById('puzzlePiecesTray');
       tray.innerHTML = '';
-      // Cria array de 0 a 11 e embaralha
       let indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
       indices.sort(() => Math.random() - 0.5);
 
       indices.forEach(originalIndex => {
-        // Se a peça já estiver no tabuleiro, não coloca na bandeja
         if (!estadoTabuleiro.includes(originalIndex)) {
           const pieceEl = criarElementoPeca(originalIndex);
           tray.appendChild(pieceEl);
@@ -1394,8 +1392,6 @@
     }
 
     function colocarPecaNoSlot(pecaIndex, slotIndex) {
-      // Se o slot já tiver uma peça, removemos ela de lá
-      // Remove a peça de qualquer outro slot ou bandeja onde estava
       for (let i = 0; i < 12; i++) {
         if (estadoTabuleiro[i] === pecaIndex) {
           estadoTabuleiro[i] = null;
