@@ -139,6 +139,31 @@
       color: #FFF;
     }
 
+    .vip-games-subnav {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      background: #FEF3C7;
+      padding: 6px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .vip-sub-btn {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 11px;
+      cursor: pointer;
+      background: #FFF;
+      color: #92400E;
+      transition: all 0.2s;
+    }
+    .vip-sub-btn.active { background: #92400E; color: #FFF; }
+    .vip-game-panel { display: none; }
+    .vip-game-panel.active-vip-panel { display: block; }
+
     .game-tab-content { display: none; }
     .game-tab-content.active-game-tab { display: block; }
 
@@ -154,7 +179,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* HEADER */
     header {
       padding: 10px 16px;
       background: #BAE6FD;
@@ -185,7 +209,6 @@
       color: #991B1B;
     }
 
-    /* BANNER E BOAS-VINDAS */
     .banner-intro-grid {
       display: flex;
       flex-direction: column;
@@ -255,7 +278,6 @@
       gap: 4px;
     }
 
-    /* REDES SOCIAIS */
     .social-round-section {
       padding: 0 16px;
       display: flex;
@@ -279,7 +301,6 @@
     }
     .social-round-btn img { width: 26px; height: 26px; object-fit: contain; }
 
-    /* PERSONAGENS */
     .characters-section-title {
       padding: 0 16px;
       font-size: 18px;
@@ -325,7 +346,6 @@
       box-shadow: 0 6px 16px rgba(59, 130, 246, 0.1);
     }
 
-    /* VÍDEOS */
     .video-section { padding: 0 16px; }
     .video-card {
       background: #FFFFFF;
@@ -354,70 +374,74 @@
 
     /* ESTILOS DA ÁREA VIP */
     .vip-lock-container {
-      background: #FFF;
-      border: 2px solid #E2E8F0;
+      background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 2px solid #FCD34D;
       border-radius: var(--radius-lg);
       padding: 24px 16px;
       text-align: center;
       margin: 0 16px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.1);
     }
-    .vip-lock-container h3 { font-size: 18px; font-weight: 800; color: #1E293B; margin-bottom: 6px; }
-    .vip-lock-container p { font-size: 13px; color: var(--text-muted); font-weight: 500; line-height: 1.5; margin-bottom: 14px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .vip-lock-container h3 { font-size: 20px; font-weight: 900; color: #92400E; margin-bottom: 6px; }
+    .vip-lock-container p { font-size: 13px; color: #78350F; font-weight: 600; line-height: 1.6; margin-bottom: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
     
     .vip-price-tag {
       display: inline-block;
-      background: #FEF3C7;
-      color: #92400E;
-      font-weight: 800;
+      background: #F59E0B;
+      color: #FFF;
+      font-weight: 900;
       font-size: 13px;
-      padding: 5px 14px;
+      padding: 6px 16px;
       border-radius: 20px;
       margin-bottom: 14px;
-      border: 1.5px solid #FCD34D;
+      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
     }
 
     .btn-vip-checkout {
       display: inline-block;
-      background: #0F172A;
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
       color: #FFF;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 10px 20px;
-      border-radius: 12px;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 14px 28px;
+      border-radius: 16px;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-      transition: background 0.2s;
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4);
+      transition: all 0.2s ease;
+      border: 2px solid #FDE68A;
     }
-    .btn-vip-checkout:hover { background: #334155; }
+    .btn-vip-checkout:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(245, 158, 11, 0.5);
+    }
 
-    /* ACESSO DISCRETO DA CRIADORA */
     .creator-access-area {
       margin-top: 20px;
-      padding-top: 12px;
-      border-top: 1px dashed #CBD5E1;
+      padding-top: 14px;
+      border-top: 1px dashed #FCD34D;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
-    .creator-label { font-size: 11px; color: #94A3B8; font-weight: 600; }
-    .creator-input-row { display: flex; gap: 6px; justify-content: center; }
+    .creator-label { font-size: 12px; color: #B45309; font-weight: 700; }
+    .creator-input-group { display: flex; flex-direction: column; gap: 6px; width: 100%; max-width: 260px; }
     .creator-input {
-      padding: 6px 10px;
+      padding: 8px 12px;
       font-size: 12px;
-      border: 1.5px solid #CBD5E1;
+      border: 1.5px solid #FCD34D;
       border-radius: 8px;
       text-align: center;
-      width: 120px;
       font-weight: 700;
+      background: #FFF;
+      width: 100%;
     }
     .creator-btn {
-      padding: 6px 12px;
-      font-size: 12px;
-      font-weight: 700;
-      background: #E2E8F0;
-      color: #475569;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      background: #F59E0B;
+      color: #FFF;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -434,6 +458,38 @@
       box-shadow: 0 4px 14px rgba(0,0,0,0.05);
     }
     .vip-card-box h4 { font-size: 16px; font-weight: 900; color: #1E293B; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+
+    /* ESTILOS DE SUPORTE E RECLAMAÇÕES */
+    .support-form-box {
+      background: #FFFBEB;
+      border: 2px solid #FCD34D;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-top: 10px;
+    }
+    .support-form-box h5 { color: #92400E; font-size: 15px; font-weight: 900; margin-bottom: 6px; }
+    .support-form-box p { font-size: 12px; color: #78350F; margin-bottom: 12px; font-weight: 600; }
+    .support-input, .support-textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1.5px solid #FCD34D;
+      border-radius: 8px;
+      font-size: 12px;
+      margin-bottom: 8px;
+      background: #FFF;
+    }
+    .support-textarea { resize: vertical; min-height: 70px; }
+    .support-btn {
+      background: #D97706;
+      color: #FFF;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 12px;
+      cursor: pointer;
+      width: 100%;
+    }
 
     /* JOGOS & LOUSA */
     .age-group-section {
@@ -493,12 +549,11 @@
     .memory-card.flipped { background: #FFF; border: 2px solid var(--primary); }
     .memory-card img { width: 75%; height: 75%; object-fit: contain; }
 
-    /* ESTILOS DO QUEBRA-CABEÇA VIP */
     .puzzle-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 6px;
-      max-width: 280px;
+      max-width: 260px;
       margin: 10px auto;
     }
     .puzzle-piece {
@@ -513,11 +568,9 @@
       font-weight: 800;
       font-size: 16px;
       color: #92400E;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
     .puzzle-piece img { width: 85%; height: 85%; object-fit: contain; }
 
-    /* FOOTER */
     footer { text-align: center; padding: 12px 16px 0; border-top: 1px solid #E2E8F0; font-size: 12px; color: var(--text-muted); }
 
     @media (min-width: 900px) {
@@ -720,63 +773,51 @@
           </div>
         </div>
 
-        <!-- SALA DE JOGOS VIP (4 JOGOS EXCLUSIVOS COM LEITURA DE VOZ) -->
+        <!-- SALA DE JOGOS VIP -->
         <div id="game-quizvip" class="game-tab-content interactive-card" style="border: 2px solid #FCD34D; background: #FFFBEB;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
             <h4 style="font-weight: 900; color: #92400E; margin: 0; font-size: 15px;">⭐ Sala de Jogos VIP Exclusivos</h4>
-            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Sala de Jogos VIP! Divirta-se com os quatro desafios exclusivos!')" title="Ouvir">🔊</button>
+            <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo à Sala de Jogos VIP! Escolha um minijogo nas abas abaixo.')" title="Ouvir">🔊</button>
           </div>
-          <p style="font-size: 11px; color: #B45309; margin-bottom: 12px;">Quatro minijogos avançados liberados para membros do Clube.</p>
           
           <div id="vip-game-lock" style="padding: 20px; text-align: center;">
             <p style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 10px;">🔒 Conteúdo exclusivo disponível apenas para membros VIP ou criadora.</p>
-            <button onclick="mudarPagina('vip')" class="btn-vip-checkout" style="font-size: 11px; padding: 8px 16px;">Ir para a Área VIP ➔</button>
+            <button onclick="mudarPagina('vip')" class="btn-vip-checkout" style="font-size: 12px; padding: 8px 16px;">Ir para a Área VIP ➔</button>
           </div>
 
-          <div id="vip-game-body" style="display: none; display: flex; flex-direction: column; gap: 14px;">
-            
-            <!-- JOGO VIP 1: HISTÓRIAS E PERGUNTAS -->
-            <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin: 0;">📖 Jogo 1: Desafio das Histórias</h5>
-                <button class="btn-audio-mini" onclick="lerTexto(document.getElementById('vip-historia-txt').innerText)" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
-              </div>
-              <p id="vip-historia-txt" style="font-size: 13px; font-weight: 800; color: #78350F; margin-bottom: 10px; line-height: 1.4;"></p>
+          <div id="vip-game-body" style="display: none;">
+            <div class="vip-games-subnav">
+              <button id="btn-vipanel-1" class="vip-sub-btn active" onclick="mudarPanelVip(1)">📖 Histórias</button>
+              <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores</button>
+              <button id="btn-vipanel-3" class="vip-sub-btn" onclick="mudarPanelVip(3)">🧩 Quebra-Cabeça</button>
+              <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória</button>
+            </div>
+
+            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 6px;">📖 Desafio das Histórias</h5>
+              <p id="vip-historia-txt" style="font-size: 13px; font-weight: 800; color: #78350F; margin-bottom: 10px;"></p>
               <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
             </div>
 
-            <!-- JOGO VIP 2: CORES SECRETAS -->
-            <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin: 0;">🎨 Jogo 2: Cores Secretas</h5>
-                <button class="btn-audio-mini" onclick="lerTexto(document.getElementById('vip-cor-txt').innerText)" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
-              </div>
+            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 6px;">🎨 Cores Secretas</h5>
               <p id="vip-cor-txt" style="font-size: 13px; font-weight: 800; color: #78350F; margin-bottom: 8px;"></p>
               <img id="vip-cor-img" src="" style="width: 65px; height: 65px; object-fit: contain; margin-bottom: 8px;">
               <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 6px; flex-wrap: wrap;"></div>
             </div>
 
-            <!-- JOGO VIP 3: QUEBRA-CABEÇA DAS IMAGENS DA TURMINHA -->
-            <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin: 0;">🧩 Jogo 3: Quebra-Cabeça VIP</h5>
-                <button class="btn-audio-mini" onclick="lerTexto('Monte o quebra-cabeça clicando nas peças para alinhar a imagem da Turminha!')" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
-              </div>
-              <p style="font-size: 11px; color: #666; margin-bottom: 6px;">Toque nas peças para reorganizar e formar o personagem!</p>
+            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧩 Quebra-Cabeça VIP</h5>
+              <p style="font-size: 11px; color: #666; margin-bottom: 6px;">Toque nas peças para alinhar a imagem da Turminha!</p>
               <div id="puzzleContainer" class="puzzle-grid"></div>
               <button onclick="embaralharPuzzle()" style="margin-top: 8px; padding: 6px 12px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 11px; cursor: pointer;">Embaralhar Peças 🔄</button>
             </div>
 
-            <!-- JOGO VIP 4: MEMÓRIA RELÂMPAGO (6 PARES) -->
-            <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin: 0;">🧠 Jogo 4: Memória Relâmpago</h5>
-                <button class="btn-audio-mini" onclick="lerTexto('Encontre os seis pares dos amigos no jogo da memória VIP!')" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
-              </div>
-              <p style="font-size: 11px; color: #666; margin-bottom: 8px;">Encontre os 6 pares para vencer o desafio avançado!</p>
-              <div id="memoryBoardVip" class="memory-board" style="max-width: 380px; grid-template-columns: repeat(4, 1fr);"></div>
+            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center;">
+              <h5 style="color: #92400E; font-size: 14px; font-weight: 800; margin-bottom: 4px;">🧠 Memória Relâmpago</h5>
+              <p style="font-size: 11px; color: #666; margin-bottom: 8px;">Encontre os 6 pares para vencer!</p>
+              <div id="memoryBoardVip" class="memory-board" style="max-width: 340px; grid-template-columns: repeat(4, 1fr);"></div>
             </div>
-
           </div>
         </div>
 
@@ -791,28 +832,28 @@
           <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo ao Clube VIP! Aqui você encontra episódios secretos, bastidores, downloads e quatro jogos exclusivos!')" title="Ouvir">🔊</button>
         </div>
 
-        <!-- TELA DE BLOQUEIO -->
+        <!-- TELA DE BLOQUEIO COM CAPTURA DE E-MAIL -->
         <div id="vip-locked-view" class="vip-lock-container">
-          <h3>Área Restrita a Membros</h3>
-          <div class="vip-price-tag">Clube Mensal por apenas R$ 6,00/mês</div>
-          <p>Desbloqueie episódios secretos, bastidores, erros de gravação, desenhos em PDF para colorir, wallpapers e a **Sala de Jogos VIP com Quebra-Cabeça**!</p>
+          <h3>🧸 Clube VIP Exclusivo</h3>
+          <div class="vip-price-tag">Assinatura Mensal: R$ 6,00 / mês</div>
+          <p>Faça parte do nosso clube e desbloqueie **episódios secretos**, bastidores, erros de gravação, desenhos em PDF para colorir, wallpapers e a incrível **Sala de Jogos VIP com Quebra-Cabeça**!</p>
           
-          <!-- Botão oficial da Kiwify -->
           <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-vip-checkout" onclick="iniciarCheckoutVip()">
-            ✨ Assinar Clube VIP (R$ 6,00)
+            ✨ Assinar Clube VIP Agora!
           </a>
 
-          <!-- CAMPO DISCRETO DE SENHA PARA A CRIADORA -->
+          <!-- CAMPO DE SENHA E VALIDAÇÃO DE E-MAIL -->
           <div class="creator-access-area">
-            <span class="creator-label">Área da Família / Criadora</span>
-            <div class="creator-input-row">
-              <input type="password" id="creatorPassInput" class="creator-input" placeholder="Código de acesso">
-              <button onclick="tentarEntrarSenha()" class="creator-btn">Entrar</button>
+            <span class="creator-label">Já é assinante ou criadora? Digite seu E-mail e Senha:</span>
+            <div class="creator-input-group">
+              <input type="email" id="clienteEmailInput" class="creator-input" placeholder="Seu e-mail cadastrado">
+              <input type="password" id="creatorPassInput" class="creator-input" placeholder="Sua senha de acesso">
+              <button onclick="tentarEntrarSenha()" class="creator-btn">Entrar na Área VIP</button>
             </div>
           </div>
         </div>
 
-        <!-- CONTEÚDO VIP LIBERADO (COM BOTÃO DE DESCONECTAR) -->
+        <!-- CONTEÚDO VIP LIBERADO + SUPORTE / RECLAMAÇÕES -->
         <div id="vip-unlocked-view" class="vip-content-unlocked">
           
           <div style="background: #D1FAE5; border: 2px solid #10B981; padding: 12px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
@@ -864,8 +905,17 @@
               <h4 style="color: #92400E; margin: 0; font-size: 15px;">⭐ Sala de Jogos VIP Liberada!</h4>
               <button class="btn-audio-mini" onclick="lerTexto('A sala de jogos VIP com quatro minijogos exclusivos está aberta.')" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
             </div>
-            <p style="font-size: 12px; color: #92400E; margin-bottom: 8px;">Os quatro minijogos exclusivos (incluindo o Quebra-Cabeça) já estão prontos.</p>
-            <button onclick="mudarPagina('jogos'); mudarSubJogo('quizvip');" class="btn-vip-checkout" style="font-size: 11px; padding: 8px 16px; background: #F59E0B;">Jogar na Sala VIP ➔</button>
+            <p style="font-size: 12px; color: #92400E; margin-bottom: 8px;">Os quatro minijogos exclusivos já estão prontos para testar.</p>
+            <button onclick="mudarPagina('jogos'); mudarSubJogo('quizvip');" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px; background: #F59E0B;">Jogar na Sala VIP ➔</button>
+          </div>
+
+          <!-- 📬 CANAL DE SUPORTE E RECLAMAÇÕES (DIRETO PARA turminhaxexeu@gmail.com) -->
+          <div class="support-form-box">
+            <h5>📬 Precisa de Ajuda ou quer enviar uma Reclamação?</h5>
+            <p>Escreva para nós! A mensagem será enviada direto para o e-mail oficial <strong>turminhaxexeu@gmail.com</strong>.</p>
+            <input type="email" id="suporteEmail" class="support-input" placeholder="Seu e-mail para contato">
+            <textarea id="suporteMensagem" class="support-textarea" placeholder="Digite sua dúvida, problema ou reclamação aqui..."></textarea>
+            <button onclick="enviarSuporteReclamacao()" class="support-btn">Enviar Mensagem ✉️</button>
           </div>
 
         </div>
@@ -882,7 +932,7 @@
 
   <script>
     let audioAtivo = true;
-    const SENHA_MESTRA = "65628467";
+    const SENHA_MESTRA_CRIADORA = "65628467";
 
     const TODOS_PERSONAGENS = [
       { nome: 'Xexéu', img: 'https://i.imgur.com/yApuLed.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
@@ -943,10 +993,11 @@
       destravarAudioMobile();
     }, { once: true });
 
-    // REGISTRAR ACESSO VIP NA PLANILHA E ENVIAR E-MAIL
-    function registrarAcessoVipNoServidor() {
+    // REGISTRAR ACESSO VIP E CAPTURAR E-MAIL NA PLANILHA
+    function registrarAcessoVipNoServidor(emailCliente = "Não informado") {
       const dadosAcesso = {
         data: new Date().toLocaleString('pt-BR'),
+        email: emailCliente,
         tipo: 'Acesso / Login Área VIP Liberado',
         dispositivo: navigator.userAgent
       };
@@ -959,6 +1010,40 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dadosAcesso)
       }).catch(erro => console.log('Erro ao salvar na planilha:', erro));
+    }
+
+    // ENVIAR MENSAGEM DE SUPORTE / RECLAMAÇÃO PARA turminhaxexeu@gmail.com
+    function enviarSuporteReclamacao() {
+      const email = document.getElementById('suporteEmail').value.trim();
+      const mensagem = document.getElementById('suporteMensagem').value.trim();
+
+      if (!email || !mensagem) {
+        alert("Por favor, preencha o seu e-mail e a mensagem!");
+        return;
+      }
+
+      const dadosSuporte = {
+        data: new Date().toLocaleString('pt-BR'),
+        email: email,
+        tipo: 'SUPORTE / RECLAMAÇÃO DO CLIENTE',
+        dispositivo: mensagem
+      };
+
+      const urlPlanilhaGoogle = 'https://script.google.com/macros/s/AKfycby4JRxDj0S__XDgVL4_prwGJO55tUTmZzR06c-fEOSK44_9cfTX7IqNI42dMLqg-iPJSw/exec';
+
+      fetch(urlPlanilhaGoogle, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dadosSuporte)
+      }).then(() => {
+        alert("Sua mensagem foi enviada com sucesso para turminhaxexeu@gmail.com! Responderemos em breve.");
+        document.getElementById('suporteEmail').value = '';
+        document.getElementById('suporteMensagem').value = '';
+        lerTexto("Mensagem de suporte enviada com sucesso!");
+      }).catch(() => {
+        alert("Erro ao enviar mensagem. Tente novamente mais tarde.");
+      });
     }
 
     function verificarStatusVip() {
@@ -988,20 +1073,32 @@
     }
 
     function tentarEntrarSenha() {
-      const digitada = document.getElementById('creatorPassInput').value.trim();
-      if (digitada === SENHA_MESTRA) {
+      const emailDigitado = document.getElementById('clienteEmailInput').value.trim();
+      const senhaDigitada = document.getElementById('creatorPassInput').value.trim();
+      const senhaClienteSalva = localStorage.getItem('turminha_senha_cliente');
+
+      if (!emailDigitado) {
+        alert("Por favor, digite o seu e-mail!");
+        return;
+      }
+
+      if (senhaDigitada === SENHA_MESTRA_CRIADORA || (senhaClienteSalva && senhaDigitada === senhaClienteSalva)) {
         localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
-        registrarAcessoVipNoServidor();
+        registrarAcessoVipNoServidor(emailDigitado);
         verificarStatusVip();
         lerTexto("Acesso liberado com sucesso!");
       } else {
-        alert("Código incorreto!");
+        alert("Senha incorreta ou e-mail inválido!");
       }
     }
 
     function iniciarCheckoutVip() {
-      localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
-      registrarAcessoVipNoServidor();
+      const emailCliente = prompt("Digite o seu melhor e-mail para receber a senha de acesso e os conteúdos VIP:");
+      if (emailCliente) {
+        localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
+        registrarAcessoVipNoServidor(emailCliente);
+        alert("Redirecionando para o pagamento na Kiwify. Seu acesso foi liberado neste aparelho!");
+      }
     }
 
     function sairVIP() {
@@ -1055,6 +1152,15 @@
       if(sub === 'quizvip') verificarStatusVip();
     }
 
+    function mudarPanelVip(num) {
+      for(let i=1; i<=4; i++) {
+        document.getElementById('panel-vip-' + i).classList.remove('active-vip-panel');
+        document.getElementById('btn-vipanel-' + i).classList.remove('active');
+      }
+      document.getElementById('panel-vip-' + num).classList.add('active-vip-panel');
+      document.getElementById('btn-vipanel-' + num).classList.add('active');
+    }
+
     function exibirEFalar(nome, desc, genero = 'm') {
       const artigo = (genero === 'f') ? "Esta é a " : "Este é o ";
       document.getElementById('detalhe-nome').innerText = nome;
@@ -1087,7 +1193,7 @@
       });
     }
 
-    // JOGO VIP 2: CORES SECRETAS
+    // JOGO VIP 2: CORES
     function carregarJogoCorVip() {
       const pCor = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
       document.getElementById('vip-cor-txt').innerText = pCor.corPergunta;
@@ -1113,18 +1219,17 @@
       });
     }
 
-    // JOGO VIP 3: QUEBRA-CABEÇA COM IMAGENS DA TURMINHA
+    // JOGO VIP 3: QUEBRA-CABEÇA
     let puzzlePecas = [];
     const imagensPuzzle = [
-      'https://i.imgur.com/yApuLed.png', // Xexéu
-      'https://i.imgur.com/ETC0paX.png', // Capilé
-      'https://i.imgur.com/IX3LrtJ.png'  // Iza
+      'https://i.imgur.com/yApuLed.png',
+      'https://i.imgur.com/ETC0paX.png',
+      'https://i.imgur.com/IX3LrtJ.png'
     ];
     let imgAlvoPuzzle = '';
 
     function iniciarPuzzleVip() {
       imgAlvoPuzzle = imagensPuzzle[Math.floor(Math.random() * imagensPuzzle.length)];
-      // Cria 8 pedaços de miniatura e 1 espaço vazio (ou 9 blocos com partes)
       puzzlePecas = [0, 1, 2, 3, 4, 5, 6, 7, 8];
       embaralharPuzzle();
     }
@@ -1144,10 +1249,9 @@
           peca.style.background = '#FEF3C7';
           peca.innerText = '⭐';
         } else {
-          peca.innerHTML = `<img src="${imgAlvoPuzzle}" style="clip-path: polygon(${ (posicaoOriginal%3)*33.3 }% ${ Math.floor(posicaoOriginal/3)*33.3 }%, ${ (posicaoOriginal%3+1)*33.3 }% ${ Math.floor(posicaoOriginal/3)*33.3 }%, ${ (posicaoOriginal%3+1)*33.3 }% ${ (Math.floor(posicaoOriginal/3)+1)*33.3 }%, ${ (posicaoOriginal%3)*33.3 }% ${ (Math.floor(posicaoOriginal/3)+1)*33.3 }%); width:300%; height:300%; object-fit:none; object-position: -${(posicaoOriginal%3)*85}px -${Math.floor(posicaoOriginal/3)*85}px;">`;
+          peca.innerHTML = `<img src="${imgAlvoPuzzle}" style="clip-path: polygon(${ (posicaoOriginal%3)*33.3 }% ${ Math.floor(posicaoOriginal/3)*33.3 }%, ${ (posicaoOriginal%3+1)*33.3 }% ${ Math.floor(posicaoOriginal/3)*33.3 }%, ${ (posicaoOriginal%3+1)*33.3 }% ${ (Math.floor(posicaoOriginal/3)+1)*33.3 }%, ${ (posicaoOriginal%3)*33.3 }% ${ (Math.floor(posicaoOriginal/3)+1)*33.3 }%); width:300%; height:300%; object-fit:none; object-position: -${(posicaoOriginal%3)*75}px -${Math.floor(posicaoOriginal/3)*75}px;">`;
         }
         peca.onclick = () => {
-          // Troca simples para interatividade tátil
           let vazioIdx = puzzlePecas.indexOf(8);
           if (Math.abs(indexAtual - vazioIdx) === 1 || Math.abs(indexAtual - vazioIdx) === 3) {
             let temp = puzzlePecas[vazioIdx];
@@ -1169,7 +1273,7 @@
       }
     }
 
-    // JOGO VIP 4: MEMÓRIA RELÂMPAGO
+    // JOGO VIP 4: MEMÓRIA
     let cMemVip = [], pCartaVip = null, travaMemVip = false, acertosMemVip = 0;
     function iniciarMemoriaVip() {
       acertosMemVip = 0;
