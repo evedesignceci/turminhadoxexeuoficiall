@@ -628,7 +628,7 @@
           <button id="subtab-letras" class="subnav-btn" onclick="mudarSubJogo('letras')">🔤 Primeiras Letras</button>
           <button id="subtab-memoria" class="subnav-btn" onclick="mudarSubJogo('memoria')">🧠 Memória</button>
           <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
-          <button id="subtab-quizvip" class="subnav-btn vip-sub" onclick="mudarSubJogo('quizvip')">⭐ Quiz VIP</button>
+          <button id="subtab-quizvip" class="subnav-btn vip-sub" onclick="mudarSubJogo('quizvip')">⭐ Desafios VIP</button>
         </div>
 
         <!-- LOUSA MÁGICA -->
@@ -706,20 +706,19 @@
           </div>
         </div>
 
-        <!-- QUIZ VIP -->
-        <div id="game-quizvip" class="game-tab-content interactive-card" style="border: 2px solid #CBD5E1; background: #FFF;">
-          <h4 style="font-weight: 800; margin-bottom: 6px; color: #1E293B;">⭐ Super Quiz VIP Exclusivo</h4>
-          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">Desafio avançado exclusivo para membros VIP.</p>
+        <!-- JOGOS VIP (NOVO: DESAFIOS DAS HISTÓRIAS) -->
+        <div id="game-quizvip" class="game-tab-content interactive-card" style="border: 2px solid #FCD34D; background: #FFFBEB;">
+          <h4 style="font-weight: 900; margin-bottom: 6px; color: #92400E;">⭐ Sala de Desafios & Histórias VIP</h4>
+          <p style="font-size: 12px; color: #B45309; margin-bottom: 14px;">Perguntas interativas sobre as aventuras exclusivas da Turminha.</p>
           
           <div id="vip-game-lock" style="padding: 20px; text-align: center;">
-            <p style="font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">Conteúdo exclusivo disponível apenas para membros VIP.</p>
-            <button onclick="mudarPagina('vip')" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px;">Acessar Área VIP ➔</button>
+            <p style="font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">🔒 Conteúdo exclusivo disponível apenas para membros VIP ou criadora.</p>
+            <button onclick="mudarPagina('vip')" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px;">Ir para a Área VIP ➔</button>
           </div>
 
-          <div id="vip-game-body" style="display: none; background: #F8FAFC; padding: 14px; border-radius: 12px; border: 1px solid #E2E8F0;">
-            <p id="quizvip-pergunta" style="font-size: 14px; font-weight: 700; color: #1E293B; margin-bottom: 8px;"></p>
-            <img id="quizvip-img" src="" style="width: 90px; height: 90px; object-fit: contain; margin: 6px 0;">
-            <div id="quizvip-options" style="display: flex; flex-direction: column; gap: 8px; margin-top: 8px;"></div>
+          <div id="vip-game-body" style="display: none; background: #FFF; padding: 18px; border-radius: 14px; border: 2px solid #FCD34D; text-align: center;">
+            <p id="vip-historia-txt" style="font-size: 15px; font-weight: 800; color: #78350F; margin-bottom: 16px; line-height: 1.5;"></p>
+            <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
           </div>
         </div>
 
@@ -735,7 +734,7 @@
         <div id="vip-locked-view" class="vip-lock-container">
           <h3>Área Restrita a Membros</h3>
           <div class="vip-price-tag">Clube Mensal por apenas R$ 6,00/mês</div>
-          <p>Desbloqueie episódios secretos, bastidores, erros de gravação, desenhos em PDF para colorir, wallpapers e jogos exclusivos.</p>
+          <p>Desbloqueie episódios secretos, bastidores, erros de gravação, desenhos em PDF para colorir, wallpapers e a **Sala de Desafios & Histórias VIP**!</p>
           
           <!-- Botão oficial da Kiwify -->
           <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-vip-checkout" onclick="iniciarCheckoutVip()">
@@ -782,10 +781,10 @@
             </div>
           </div>
 
-          <div class="vip-card-box" style="background: #F8FAFC; border-color: #CBD5E1;">
-            <h4>⭐ Jogos Exclusivos Desbloqueados</h4>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">O seu Super Quiz VIP já está liberado na aba de Jogos.</p>
-            <button onclick="mudarPagina('jogos'); mudarSubJogo('quizvip');" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px;">Jogar Super Quiz VIP ➔</button>
+          <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
+            <h4>⭐ Sala de Desafios VIP Liberada!</h4>
+            <p style="font-size: 13px; color: #92400E; margin-bottom: 10px;">O novo jogo de historinhas e perguntas da Turminha já está pronto para testar.</p>
+            <button onclick="mudarPagina('jogos'); mudarSubJogo('quizvip');" class="btn-vip-checkout" style="font-size: 12px; padding: 10px 18px; background: #F59E0B;">Jogar Desafios VIP ➔</button>
           </div>
 
         </div>
@@ -813,6 +812,16 @@
       { nome: 'Nina', img: 'https://i.imgur.com/Wb2CFoH.png', letra: 'N', genero: 'f', corPergunta: "Qual a cor do vestido da Nina?", corCorreta: "Rosa Escuro", corOpcoes: ["Rosa Escuro", "Verde", "Branco"] },
       { nome: 'Hilda', img: 'https://i.imgur.com/qcJyZb5.png', letra: 'H', genero: 'f', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] },
       { nome: 'Beto', img: 'https://i.imgur.com/lzOHT4F.png', letra: 'B', genero: 'm', corPergunta: "Qual a cor dos óculos do Vovô Beto?", corCorreta: "Azul", corOpcoes: ["Azul", "Amarelo", "Preto"] }
+    ];
+
+    // Perguntas de histórias e curiosidades da Turminha para o Quiz VIP
+    const PERGUNTAS_HISTORIAS_VIP = [
+      { pergunta: "Quem é o mascote alegre da Turminha que usa uma boina amarela com uma folha fixada?", resposta: "Xexéu", opcoes: ["Xexéu", "Capilé", "Joca"] },
+      { pergunta: "Qual é o nome do cachorrinho esperto que usa coleira azul celeste e um pingente de osso dourado?", resposta: "Capilé", opcoes: ["Capilé", "Léo", "Beto"] },
+      { pergunta: "Quem é a vovó carinhosa da Turminha que usa óculos redondos?", resposta: "Hilda", opcoes: ["Hilda", "Nina", "Iza"] },
+      { pergunta: "Qual amiguinho criativo da Turminha adora usar camiseta verde nas historinhas?", resposta: "Joca", opcoes: ["Joca", "Léo", "Xexéu"] },
+      { pergunta: "Quem é o vovô atencioso da Turminha que usa óculos?", resposta: "Beto", opcoes: ["Beto", "Capilé", "Xexéu"] },
+      { pergunta: "Qual menininha adorável usa sempre um vestido rosa nos episódios?", resposta: "Iza", opcoes: ["Iza", "Nina", "Hilda"] }
     ];
 
     function destravarAudioMobile() {
@@ -855,7 +864,6 @@
     }, { once: true });
 
     function verificarStatusVip() {
-      // Uso de localStorage para salvar permanentemente no aparelho
       const isVip = localStorage.getItem('turminha_xexeu_vip_ativo');
       const lockedView = document.getElementById('vip-locked-view');
       const unlockedView = document.getElementById('vip-unlocked-view');
@@ -866,8 +874,10 @@
         if(lockedView) lockedView.style.display = 'none';
         if(unlockedView) unlockedView.classList.add('active-vip');
         if(gameLock) gameLock.style.display = 'none';
-        if(gameBody) gameBody.style.display = 'block';
-        carregarQuizVip();
+        if(gameBody) {
+          gameBody.style.display = 'block';
+          carregarDesafioHistoriaVip();
+        }
       } else {
         if(lockedView) lockedView.style.display = 'block';
         if(unlockedView) unlockedView.classList.remove('active-vip');
@@ -888,7 +898,6 @@
     }
 
     function iniciarCheckoutVip() {
-      // Caso queira que ao clicar no botão da Kiwify libere o acesso de teste também
       localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
     }
 
@@ -941,6 +950,31 @@
       document.getElementById('detalhe-nome').innerText = nome;
       document.getElementById('detalhe-texto').innerText = desc;
       lerTexto(artigo + nome + ". " + desc);
+    }
+
+    // CARREGAR JOGO VIP DE HISTÓRIAS E PERGUNTAS
+    function carregarDesafioHistoriaVip() {
+      const itemSorteado = PERGUNTAS_HISTORIAS_VIP[Math.floor(Math.random() * PERGUNTAS_HISTORIAS_VIP.length)];
+      document.getElementById('vip-historia-txt').innerText = itemSorteado.pergunta;
+      
+      const containerOpcoes = document.getElementById('vip-historia-options');
+      containerOpcoes.innerHTML = '';
+
+      itemSorteado.opcoes.sort(() => Math.random() - 0.5).forEach(opcaoNome => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-choice';
+        btn.style.cssText = "padding:12px; font-size:14px; background:#F59E0B; border-radius:12px; border:none; color:white; font-weight:800; cursor:pointer; width:100%;";
+        btn.innerText = opcaoNome;
+        btn.onclick = () => {
+          if (opcaoNome === itemSorteado.resposta) {
+            lerTexto("Parabéns! Resposta correta!");
+            setTimeout(carregarDesafioHistoriaVip, 800);
+          } else {
+            lerTexto("Ops! Tente outra resposta.");
+          }
+        };
+        containerOpcoes.appendChild(btn);
+      });
     }
 
     let qContar = 0;
@@ -1064,30 +1098,6 @@
         btn.onclick = () => {
           if (o === pCorAtual.corCorreta) { lerTexto("Acertou! Cor correta!"); setTimeout(carregarJogoCor, 600); }
           else { lerTexto("Tente de novo!"); }
-        };
-        container.appendChild(btn);
-      });
-    }
-
-    let pQuizVipAtual = null;
-    function carregarQuizVip() {
-      pQuizVipAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('quizvip-pergunta').innerText = "Desafio VIP: De quem é este detalhe/personagem?";
-      document.getElementById('quizvip-img').src = pQuizVipAtual.img;
-      const container = document.getElementById('quizvip-options');
-      container.innerHTML = '';
-      let opcoes = [pQuizVipAtual.nome];
-      while (opcoes.length < 3) {
-        let outro = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome;
-        if (!opcoes.includes(outro)) opcoes.push(outro);
-      }
-      opcoes.sort(() => Math.random() - 0.5).forEach(o => {
-        const btn = document.createElement('button');
-        btn.style.cssText = "padding:10px; border-radius:12px; border:2px solid #CBD5E1; background:#F8FAFC; font-weight:800; color:#1E293B; cursor:pointer;";
-        btn.innerText = o;
-        btn.onclick = () => {
-          if (o === pQuizVipAtual.nome) { lerTexto("Excelente! Acertou o desafio VIP!"); setTimeout(carregarQuizVip, 600); }
-          else { lerTexto("Quase lá! Tente de novo."); }
         };
         container.appendChild(btn);
       });
