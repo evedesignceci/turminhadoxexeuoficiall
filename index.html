@@ -40,42 +40,43 @@
       display: flex;
       justify-content: center;
       min-height: 100vh;
-      padding: 8px 8px 80px;
+      padding: 12px 12px 80px;
     }
 
+    /* CONTAINER AMPLIADO PARA DESKTOP */
     .app-container {
       width: 100%;
-      max-width: 900px;
+      max-width: 1100px;
       background: var(--card-bg);
       border-radius: var(--radius-xl);
       box-shadow: 0 12px 32px rgba(0,0,0,0.08);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      padding-bottom: 20px;
+      gap: 24px;
+      padding-bottom: 24px;
     }
 
     /* BARRA DE NAVEGAÇÃO PRINCIPAL */
     .page-nav {
       display: flex;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
       background: #E0F2FE;
-      padding: 8px;
+      padding: 10px;
       border-radius: var(--radius-lg);
-      margin: 10px 12px 0;
+      margin: 12px 16px 0;
       flex-wrap: wrap;
     }
     .nav-tab-btn {
       flex: 1;
-      min-width: 70px;
-      max-width: 130px;
-      padding: 10px 6px;
+      min-width: 100px;
+      max-width: 180px;
+      padding: 12px 8px;
       border: none;
       border-radius: 14px;
       font-weight: 800;
-      font-size: 12px;
+      font-size: 13px;
       cursor: pointer;
       background: transparent;
       color: var(--text-muted);
@@ -83,7 +84,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 4px;
+      gap: 6px;
     }
     .nav-tab-btn.active {
       background: var(--primary);
@@ -105,7 +106,7 @@
     .page-content {
       display: none;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
       animation: fadeIn 0.3s ease;
     }
     .page-content.active-page { display: flex; }
@@ -115,23 +116,23 @@
     }
 
     header {
-      padding: 12px 20px;
+      padding: 16px 24px;
       background: #BAE6FD;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-radius: var(--radius-lg);
-      margin: 10px 10px 0;
+      margin: 12px 16px 0;
     }
-    .logo-img { max-width: 150px; height: auto; }
+    .logo-img { max-width: 180px; height: auto; }
 
     .audio-toggle-btn {
       background: #FFFFFF;
       border: 2px solid var(--primary);
       color: var(--primary-dark);
       font-weight: 800;
-      font-size: 12px;
-      padding: 6px 12px;
+      font-size: 13px;
+      padding: 8px 16px;
       border-radius: 20px;
       cursor: pointer;
       display: flex;
@@ -147,9 +148,17 @@
     .banner-intro-grid {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      padding: 0 16px;
+      gap: 16px;
+      padding: 0 20px;
     }
+    @media (min-width: 850px) {
+      .banner-intro-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+      }
+    }
+    
     .banner-container { width: 100%; }
     .banner-img {
       width: 100%;
@@ -162,10 +171,11 @@
 
     .intro-box {
       width: 100%;
+      height: 100%;
       background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
       border: 2px solid #FCD34D;
       border-radius: var(--radius-lg);
-      padding: 16px;
+      padding: 20px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -179,17 +189,17 @@
       justify-content: center;
       gap: 8px;
       width: 100%;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
-    .intro-box h2 { font-size: 18px; font-weight: 800; color: #92400E; }
-    .intro-box p { font-size: 14px; color: #78350F; line-height: 1.5; font-weight: 600; }
+    .intro-box h2 { font-size: 20px; font-weight: 800; color: #92400E; }
+    .intro-box p { font-size: 14px; color: #78350F; line-height: 1.6; font-weight: 600; }
 
     .btn-audio-mini {
       background: linear-gradient(135deg, #FBBF24, #F59E0B);
       border: none;
       border-radius: 50%;
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       cursor: pointer;
       font-size: 16px;
       display: flex;
@@ -202,17 +212,17 @@
 
     /* REDES SOCIAIS */
     .social-round-section {
-      padding: 0 16px;
+      padding: 0 20px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
       width: 100%;
     }
     .social-round-btn {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: #FFF;
       border: 2px solid #E2E8F0;
@@ -220,27 +230,29 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      font-size: 20px;
+      font-size: 22px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       transition: transform 0.2s ease;
       flex-shrink: 0;
     }
+    .social-round-btn:hover { transform: scale(1.1); }
+    .social-round-btn img { width: 24px; height: 24px; object-fit: contain; }
 
     /* ------------------------------------------------------------- */
-    /* 🌟 CARDS FLUTUANTES REDONDOS E SOLTOS */
+    /* 🌟 SEÇÃO DE FAMÍLIAS (RESPONSIVA E EXPANDIDA PARA DESKTOP)    */
     /* ------------------------------------------------------------- */
     .section-family-container {
-      padding: 0 16px;
+      padding: 0 20px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
     }
 
     .family-group-title {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 900;
       color: var(--primary-dark);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -248,21 +260,27 @@
 
     .floating-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    @media (min-width: 900px) {
+      .floating-cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
 
     .floating-char-card {
       background: #FFFFFF;
-      border-radius: 30px;
-      padding: 16px;
+      border-radius: 28px;
+      padding: 20px 16px;
       text-align: center;
       border: 3px solid #E2E8F0;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       cursor: pointer;
       position: relative;
       transition: all 0.3s ease;
@@ -279,23 +297,23 @@
     }
 
     .floating-char-card:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1);
       z-index: 10;
     }
 
     .floating-char-img {
-      width: 95px;
-      height: 95px;
+      width: 100px;
+      height: 100px;
       object-fit: contain;
       filter: drop-shadow(0 6px 8px rgba(0,0,0,0.1));
       border-radius: 50%;
       background: #F8FAFC;
-      padding: 4px;
+      padding: 6px;
     }
 
     .floating-char-name {
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 900;
       color: var(--text-main);
     }
@@ -303,7 +321,7 @@
     .floating-char-tag {
       font-size: 10px;
       font-weight: 800;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border-radius: 20px;
       text-transform: uppercase;
     }
@@ -312,7 +330,7 @@
       font-size: 12px;
       font-weight: 600;
       color: var(--text-muted);
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .card-f1 { border-color: #F472B6; }
@@ -328,21 +346,21 @@
     .card-especial .floating-char-tag { background: #EDE9FE; color: #7C3AED; }
 
     .char-details-box {
-      margin: 10px 16px 0;
+      margin: 10px 20px 0;
       background: #FFFFFF;
       border: 3px solid var(--primary);
       border-radius: var(--radius-lg);
-      padding: 16px;
+      padding: 20px;
       text-align: center;
       box-shadow: 0 6px 16px rgba(59, 130, 246, 0.1);
     }
 
     /* VÍDEOS */
-    .video-section { padding: 0 16px; }
+    .video-section { padding: 0 20px; }
     .video-card {
       background: #FFFFFF;
       border-radius: var(--radius-lg);
-      padding: 16px;
+      padding: 20px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.06);
       border: 2px solid #E2E8F0;
       text-align: center;
@@ -352,9 +370,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
-    .video-header h3 { font-size: 16px; font-weight: 900; color: var(--primary-dark); }
+    .video-header h3 { font-size: 18px; font-weight: 900; color: var(--primary-dark); }
     .video-wrapper {
       position: relative;
       padding-bottom: 56.25%;
@@ -369,34 +387,34 @@
       background: #FFFBEB;
       border: 2px solid #FCD34D;
       border-radius: var(--radius-lg);
-      padding: 16px;
-      margin: 10px 16px 0;
+      padding: 20px;
+      margin: 10px 20px 0;
     }
-    .support-form-box h5 { color: #92400E; font-size: 15px; font-weight: 900; margin-bottom: 6px; }
-    .support-form-box p { font-size: 12px; color: #78350F; margin-bottom: 12px; font-weight: 600; }
+    .support-form-box h5 { color: #92400E; font-size: 16px; font-weight: 900; margin-bottom: 6px; }
+    .support-form-box p { font-size: 13px; color: #78350F; margin-bottom: 12px; font-weight: 600; }
     .support-input, .support-textarea {
       width: 100%;
-      padding: 8px 12px;
+      padding: 10px 14px;
       border: 1.5px solid #FCD34D;
       border-radius: 8px;
-      font-size: 12px;
-      margin-bottom: 8px;
+      font-size: 13px;
+      margin-bottom: 10px;
       background: #FFF;
     }
-    .support-textarea { resize: vertical; min-height: 70px; }
+    .support-textarea { resize: vertical; min-height: 80px; }
     .support-btn {
       background: #D97706;
       color: #FFF;
       border: none;
-      padding: 10px 16px;
+      padding: 12px 18px;
       border-radius: 8px;
       font-weight: 800;
-      font-size: 13px;
+      font-size: 14px;
       cursor: pointer;
       width: 100%;
     }
 
-    footer { text-align: center; padding: 12px 16px 0; border-top: 1px solid #E2E8F0; font-size: 12px; color: var(--text-muted); }
+    footer { text-align: center; padding: 16px 20px 0; border-top: 1px solid #E2E8F0; font-size: 12px; color: var(--text-muted); }
   </style>
 </head>
 <body>
@@ -440,7 +458,7 @@
         </div>
       </div>
 
-      <!-- REDES SOCIAIS -->
+      <!-- REDES SOCIAIS (LINK DO THREADS CORRIGIDO) -->
       <div class="social-round-section">
         <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube">▶️</a>
         <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram">📷</a>
@@ -448,12 +466,10 @@
         <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify">🎧</a>
         <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music">🎶</a>
         <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook">👍</a>
-        <a href="https://www.threads.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/7cE4xVg.png" alt="Threads"></a>
+        <a href="https://www.threads.net/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/7cE4xVg.png" alt="Threads"></a>
       </div>
 
-      <!-- ----------------------------------------------------------------- -->
-      <!-- 🌟 SEÇÃO DE FAMÍLIAS COM FOTOS ATUALIZADAS E TEXTO COMPLETO -->
-      <!-- ----------------------------------------------------------------- -->
+      <!-- SEÇÃO DE FAMÍLIAS COM LAYOUT ADAPTADO PARA DESKTOP -->
       <div class="section-family-container">
         
         <!-- OS ANIMAIS / MASCOTES -->
@@ -618,7 +634,7 @@
 
     <!-- SUPORTE -->
     <div class="support-form-box">
-      ##### 📬 Precisa de Ajuda ou quer enviar uma Reclamação?
+      <h5>📬 Precisa de Ajuda ou quer enviar uma Reclamação?</h5>
       <p>Escreva para nós! A mensagem será enviada direto para o e-mail oficial <strong>turminhaxexeu@gmail.com</strong>.</p>
       <input type="email" id="suporteEmail" class="support-input" placeholder="Seu e-mail para contato">
       <textarea id="suporteMensagem" class="support-textarea" placeholder="Digite sua dúvida, problema ou reclamação aqui..."></textarea>
@@ -639,62 +655,50 @@
     const INFO_PERSONAGENS = {
       'Xexéu': {
         nome: "Xexéu",
-        genero: "m",
         desc: "O Xexéu é o mascote azul de boina amarela com folha fixada e é a cara da Turminha! Ele mistura uma vibe de professora legal com um lado super animado!"
       },
       'Capilé': {
         nome: "Capilé",
-        genero: "m",
         desc: "O Capilé é o cachorrinho de orelhas grandes e coleira azul-celeste com pingente de osso dourado da Turminha! Ele é extremamente fofo, doidinho e carismático."
       },
       'Maya': {
         nome: "Maya",
-        genero: "f",
         desc: "Esta é a Maya, a mãe da Iza e da Nina, e irmã do Sam! Ela é muito organizada, atenciosa, tem uma vibe de professora legal e é o ponto de apoio das meninas."
       },
       'Theo': {
         nome: "Theo",
-        genero: "m",
         desc: "Este é o Theo, o pai da Iza e da Nina! Ele é calmo, observador, tem um humor inteligente e é o porto seguro da casa, sempre pronto para resolver as confusões."
       },
       'Nina': {
         nome: "Nina",
-        genero: "f",
         desc: "Esta é a Nina, a irmã da Iza e prima do Joca e do Leo! Ela é divertida, fofa, bastante vaidosa e adora organizar as brincadeiras da Turminha!"
       },
       'Iza': {
         nome: "Iza",
-        genero: "f",
         desc: "Esta é a Iza, a irmã caçula da Nina e prima do Joca e do Leo! Ela tem cabelos ondulados e vestido rosa, sendo super doce, calma e meiga."
       },
       'Sam': {
         nome: "Sam",
-        genero: "m",
         desc: "Este é o Sam, o pai ruivo do Joca e do Leo, e irmão da Maya! Ele é descontraído, brincalhão e um pai mão na massa super de boas!"
       },
       'Lia': {
         nome: "Lia",
-        genero: "f",
         desc: "Esta é a Lia, a mãe do Joca e do Leo! Ela é estilosa, alegre e cheia de atitude, trazendo muita energia e diversão para toda a família."
       },
       'Joca': {
         nome: "Joca",
-        genero: "m",
         desc: "Este é o Joca, o menino de camiseta verde! Ele é irmão do Leo e primo da Iza e da Nina! Doidinho, fofo, engraçado e super companheiro."
       },
       'Leo': {
         nome: "Leo",
-        genero: "m",
         desc: "Este é o Leo, o irmão do Joca e primo da Iza e da Nina! Ele é super engraçado, enérgico, agitado e movido a grandes aventuras!"
       },
       'Beto': {
         nome: "Vovô Beto",
-        genero: "m",
         desc: "Este é o Vovô Beto, pai da Maya e do Sam! Ele usa óculos quadrado, é calmão, super engraçado e adorado por todos os netos primos!"
       },
       'Hilda': {
         nome: "Vovó Hilda",
-        genero: "f",
         desc: "Esta é a Vovó Hilda, mãe da Maya e do Sam! Ela usa óculos redondo, é doce, fofa, uma cozinheira fantástica e o ímã que une toda a família!"
       }
     };
