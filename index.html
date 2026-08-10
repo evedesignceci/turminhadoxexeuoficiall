@@ -271,16 +271,19 @@
       gap: 4px;
     }
 
+    /* REDES SOCIAIS RESPONSIVAS */
     .social-round-section {
       padding: 0 16px;
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+      justify-items: center;
       gap: 10px;
-      flex-wrap: wrap;
+      max-width: 500px;
+      margin: 0 auto;
     }
     .social-round-btn {
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: #FFF;
       border: 3px solid #E2E8F0;
@@ -288,11 +291,11 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      font-size: 22px;
+      font-size: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       transition: all 0.25s ease;
     }
-    .social-round-btn img { width: 26px; height: 26px; object-fit: contain; }
+    .social-round-btn img { width: 24px; height: 24px; object-fit: contain; }
 
     .characters-section-title {
       padding: 0 16px;
@@ -545,7 +548,26 @@
     .btn-color-draw img { width: 20px; height: 20px; object-fit: contain; }
     .lousa-controls-bar { display: flex; align-items: center; justify-content: center; gap: 10px; background: #E0F2FE; padding: 6px 12px; border-radius: 12px; margin-bottom: 10px; flex-wrap: wrap; }
     .lousa-controls-bar label { font-size: 11px; font-weight: 800; color: var(--primary-dark); display: flex; align-items: center; gap: 4px; }
-    .lousa-container { width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .lousa-container { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
+    
+    /* MODO TELA CHEIA PARA LOUSA MÁGICA */
+    .lousa-container.fullscreen-active {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100vw !important;
+      height: 100vh !important;
+      z-index: 99999;
+      background: #FFF;
+      padding: 10px;
+      margin: 0;
+      border-radius: 0;
+      overflow-y: auto;
+    }
+    .lousa-container.fullscreen-active #paintCanvas {
+      min-height: calc(100vh - 180px) !important;
+    }
+
     #paintCanvas { background: #FFF; border: 3px solid var(--primary); border-radius: 16px; width: 100%; min-height: 340px; touch-action: none; cursor: crosshair; }
     .palette { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 10px; flex-wrap: wrap; }
     .color-dot { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #FFF; box-shadow: 0 2px 5px rgba(0,0,0,0.15); cursor: pointer; }
@@ -678,7 +700,6 @@
       .intro-box { height: 100%; }
       .characters-grid { grid-template-columns: repeat(8, 1fr); }
       .char-card img { width: 100px; height: 100px; }
-      .social-round-btn { width: 56px; height: 56px; font-size: 26px; }
     }
   </style>
 </head>
@@ -723,7 +744,7 @@
         </div>
       </div>
 
-      <!-- REDES SOCIAIS -->
+      <!-- REDES SOCIAIS (ORGANIZADAS EM GRID RESPONSIVO) -->
       <div class="social-round-section">
         <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube">▶️</a>
         <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram">📷</a>
@@ -796,12 +817,13 @@
           <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
         </div>
 
-        <!-- LOUSA MÁGICA -->
+        <!-- LOUSA MÁGICA COM SUPORTE A TELA CHEIA -->
         <div id="game-lousa" class="game-section-page active-game-page interactive-card lousa-container">
           <h4 style="font-weight: 800; margin-bottom: 8px; font-size: 15px;">🎨 Lousa Mágica & Desenhos</h4>
           <div class="lousa-mode-tabs">
             <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Desenho Livre</button>
             <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Pintar Personagens</button>
+            <button class="btn-mode" style="background: #8B5CF6; color: #FFF; border-color: #7C3AED;" onclick="toggleTelaCheiaLousa()">🖥️ Tela Cheia</button>
           </div>
           <div id="coloringSelectGrid" class="coloring-select-grid">
             <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/3vwHupo.png', 'Xexéu', this)"><img src="https://i.imgur.com/3vwHupo.png"> Xexéu</button>
@@ -1033,8 +1055,10 @@
 
   <script>
     let audioAtivo = true;
+    let synth = window.speechSynthesis;
+    let vozPtBR = null;
+
     const SENHA_MESTRA_CRIADORA = "65628467";
-    
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbzoNDfZoMZB-n02HCb0B24ouJ5IkB82pTjxf3x2VOH8eG21hPw-q-EivtbFDIyxPM73GQ/exec";
     const LINK_KIWIFY = "https://pay.kiwify.com.br/avOqrEg";
 
@@ -1058,29 +1082,42 @@
       { pergunta: "Qual menininha adorável usa sempre um vestido rosa nos episódios?", resposta: "Iza", opcoes: ["Iza", "Nina", "Hilda"] }
     ];
 
+    // INICIALIZAÇÃO DE ÁUDIO COMPATÍVEL COM CELULARES
+    function carregarVozes() {
+      if ('speechSynthesis' in window) {
+        let vozes = synth.getVoices();
+        vozPtBR = vozes.find(v => v.lang.includes('pt-BR') || v.lang.includes('pt_BR'));
+      }
+    }
+    if ('speechSynthesis' in window) {
+      carregarVozes();
+      window.speechSynthesis.onvoiceschanged = carregarVozes;
+    }
+
     function destravarAudioMobile() {
       if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
+        synth.cancel();
         const dummy = new SpeechSynthesisUtterance("");
-        window.speechSynthesis.speak(dummy);
+        synth.speak(dummy);
       }
     }
 
     function lerTexto(texto) {
       if (!audioAtivo || !('speechSynthesis' in window)) return;
       try {
-        window.speechSynthesis.cancel();
+        synth.cancel();
         const utterance = new SpeechSynthesisUtterance(texto);
         utterance.lang = 'pt-BR';
         utterance.rate = 0.95;
-        window.speechSynthesis.speak(utterance);
+        if (vozPtBR) utterance.voice = vozPtBR;
+        synth.speak(utterance);
       } catch (e) {}
     }
 
     function alternarAudioGlobal() {
       audioAtivo = !audioAtivo;
       const btn = document.getElementById('toggleAudioBtn');
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      if ('speechSynthesis' in window) synth.cancel();
       if (audioAtivo) {
         btn.classList.remove('muted');
         document.getElementById('audioIcon').innerText = '🔊';
@@ -1093,9 +1130,39 @@
       }
     }
 
-    document.addEventListener('click', () => {
-      destravarAudioMobile();
-    }, { once: true });
+    document.addEventListener('touchstart', destravarAudioMobile, { once: true });
+    document.addEventListener('click', destravarAudioMobile, { once: true });
+
+    // TELA CHEIA NA LOUSA MÁGICA
+    function toggleTelaCheiaLousa() {
+      const elem = document.getElementById('game-lousa');
+      
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen().catch(() => elem.classList.add('fullscreen-active'));
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else {
+          elem.classList.add('fullscreen-active');
+        }
+        lerTexto("Modo tela cheia ativado!");
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+        elem.classList.remove('fullscreen-active');
+      }
+      setTimeout(redimensionarCanvas, 150);
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+        document.getElementById('game-lousa').classList.remove('fullscreen-active');
+        setTimeout(redimensionarCanvas, 100);
+      }
+    });
 
     function enviarSuporteReclamacao() {
       const email = document.getElementById('suporteEmail').value.trim();
