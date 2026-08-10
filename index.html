@@ -102,7 +102,7 @@
       border-color: transparent;
     }
 
-    /* SUB-ABAS DE JOGOS GERAIS (CADA JOGO EM SUA PRÓPRIA PÁGINA) */
+    /* SUB-ABAS DE JOGOS GERAIS */
     .games-subnav {
       display: flex;
       justify-content: center;
@@ -130,7 +130,7 @@
       box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
     }
 
-    /* SUB-ABAS DA SALA VIP DE JOGOS (CADA JOGO EM SUA PRÓPRIA PÁGINA) */
+    /* SUB-ABAS DA SALA VIP DE JOGOS */
     .vip-games-subnav {
       display: flex;
       justify-content: center;
@@ -440,6 +440,32 @@
     }
     .vip-card-box h4 { font-size: 16px; font-weight: 900; color: #1E293B; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
 
+    .drive-download-box {
+      background: linear-gradient(135deg, #EFF6FF 0%, #E0F2FE 100%);
+      border: 2px solid #93C5FD;
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.1);
+    }
+    .drive-download-box h4 { color: #1E3A8A; font-size: 16px; font-weight: 900; margin-bottom: 6px; }
+    .drive-download-box p { font-size: 12px; color: #1E40AF; font-weight: 600; margin-bottom: 12px; line-height: 1.5; }
+    .btn-drive-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+      color: #FFF;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      transition: all 0.2s ease;
+    }
+
     /* SUPORTE E RECLAMAÇÕES (GLOBAL) */
     .support-form-box {
       background: #FFFBEB;
@@ -530,7 +556,7 @@
     .memory-card.flipped { background: #FFF; border: 2px solid var(--primary); }
     .memory-card img { width: 75%; height: 75%; object-fit: contain; }
 
-    /* ESTILOS DO QUEBRA-CABEÇA COM ARRASTAR PEÇAS (DRAG & DROP) */
+    /* ESTILOS DO QUEBRA-CABEÇA COM ARRASTAR PEÇAS */
     .puzzle-selector {
       display: flex;
       justify-content: center;
@@ -758,7 +784,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 3: JOGOS GERAIS (CADA JOGO EM SUA PRÓPRIA PÁGINA ISOLADA) -->
+    <!-- PÁGINA 3: JOGOS GERAIS -->
     <div id="pagina-jogos" class="page-content">
       <div class="age-group-section">
         <div class="age-title">🎮 Área de Jogos da Turminha</div>
@@ -848,12 +874,12 @@
       </div>
     </div>
 
-    <!-- PÁGINA 4: ÁREA VIP (COM SALA DE JOGOS VIP ISOLADA EM PÁGINAS SEPARADAS E RECLAMAÇÕES) -->
+    <!-- PÁGINA 4: ÁREA VIP -->
     <div id="pagina-vip" class="page-content">
       <div class="age-group-section">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
           <div class="age-title" style="color: #1E293B; margin: 0;">⭐ Clube VIP - Turminha do Xexéu</div>
-          <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo ao Clube VIP! Aqui você encontra episódios secretos, bastidores, downloads e quatro jogos exclusivos!')" title="Ouvir">🔊</button>
+          <button class="btn-audio-mini" onclick="lerTexto('Bem-vindo ao Clube VIP! Aqui você encontra episódios secretos, bastidores, downloads e minijogos exclusivos!')" title="Ouvir">🔊</button>
         </div>
 
         <!-- TELA BLOQUEADA / CADASTRO E PAGAMENTO -->
@@ -890,9 +916,21 @@
           <div style="background: #D1FAE5; border: 2px solid #10B981; padding: 12px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
             <div>
               <h4 style="color: #065F46; font-size: 15px; font-weight: 900; margin-bottom: 2px;">🎉 Acesso VIP Ativo neste Aparelho!</h4>
-              <p style="font-size: 11px; color: #047857; margin: 0;">Aproveite todos os conteúdos e minijogos exclusivos.</p>
+              <p style="font-size: 11px; color: #047857; margin: 0;">Aproveite todos os conteúdos, downloads e minijogos exclusivos.</p>
             </div>
             <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer;">🔒 Sair / Bloquear</button>
+          </div>
+
+          <!-- NOVO BLOCO: DRIVE DE DOWNLOADS EXCLUSIVOS VIP -->
+          <div class="drive-download-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <h4>📂 Central de Downloads VIP (Google Drive)</h4>
+              <button class="btn-audio-mini" onclick="lerTexto('Acesse o Google Drive exclusivo com papéis de parede para celular e computador, e desenhos para imprimir e pintar!')" style="width: 28px; height: 28px; font-size: 12px;">🔊</button>
+            </div>
+            <p>Baixe papéis de parede para celular e computador, e desenhos exclusivos da Turminha do Xexéu para imprimir e pintar em casa!</p>
+            <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-drive-download">
+              📁 Acessar Google Drive VIP ➔
+            </a>
           </div>
 
           <div class="vip-card-box">
@@ -919,7 +957,7 @@
             </div>
           </div>
 
-          <!-- SALA DE JOGOS VIP EXCLUSIVA (CADA JOGO EM SUA PRÓPRIA PÁGINA ISOLADA) -->
+          <!-- SALA DE JOGOS VIP EXCLUSIVA -->
           <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <h4 style="color: #92400E; margin: 0; font-size: 15px;">⭐ Sala de Jogos VIP Exclusiva</h4>
@@ -978,7 +1016,7 @@
       </div>
     </div>
 
-    <!-- SEÇÃO DE SUPORTE E RECLAMAÇÕES (GLOBAL - VISÍVEL PARA TODOS) -->
+    <!-- SEÇÃO DE SUPORTE E RECLAMAÇÕES (GLOBAL) -->
     <div class="support-form-box">
       <h5>📬 Precisa de Ajuda ou quer enviar uma Reclamação?</h5>
       <p>Escreva para nós! A mensagem será enviada direto para o e-mail oficial <strong>turminhaxexeu@gmail.com</strong>.</p>
@@ -1283,7 +1321,7 @@
       });
     }
 
-    // QUEBRA-CABEÇA COM ARRASTAR PEÇAS (DRAG & DROP REAL PARA COMPUTADOR E CELULAR)
+    /* QUEBRA-CABEÇA COM ARRASTAR PEÇAS */
     const imagensBannersCapas = [
       'https://i.imgur.com/0eJgoOG.png',
       'https://i.imgur.com/0eteSlf.png',
