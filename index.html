@@ -782,7 +782,7 @@
     footer { text-align: center; padding: 20px 20px 0; border-top: 1px solid #E2E8F0; font-size: 13px; color: var(--text-muted); font-weight: 600; }
   </style>
 </head>
-<body>
+<body onclick="desbloquearAudioMobileOnce()">
 
   <div id="visualToast">Aviso do sistema</div>
 
@@ -849,13 +849,13 @@
       <section class="section-family-container">
         
         <div>
-          <h3 class="family-group-title">🐾 Os Animais da Turminha</h3>
+          <h3 class="family-group-title">✨ O Símbolo e Mascote (Homenagem ao Bisavô)</h3>
           <div class="floating-cards-grid">
             <div class="floating-char-card card-especial" onclick="tocarVozETexto('Xexéu')">
               <img src="https://i.imgur.com/jBeihpo.png" class="floating-char-img" alt="Xexéu">
               <span class="floating-char-name">Xexéu</span>
-              <span class="floating-char-tag">Mascote</span>
-              <p class="floating-char-desc">O pássaro azul de boina amarela! Inspirado no nome de Mariano Xexéu e Pedro Mariano, cheio de curiosidade e alegria.</p>
+              <span class="floating-char-tag">Mascote Oficial</span>
+              <p class="floating-char-desc">Inspirado no pássaro xexéu e no nome do bisavô Mariano Xexéu. É o espírito alegre e o guardião da nossa história!</p>
             </div>
 
             <div class="floating-char-card card-especial" onclick="tocarVozETexto('Capilé')">
@@ -1081,7 +1081,6 @@
           <button class="btn-audio-mini" onclick="lerTexto('Faça parte do Clube VIP e tenha acesso a todo o material exclusivo!')" title="Ouvir">🔊</button>
         </div>
 
-        <!-- MENSAGEM COM SENSAÇÃO DE NECESSIDADE E VALOR INCRÍVEL -->
         <div id="vip-locked-view" class="vip-lock-container">
           <div class="vip-lock-header-clickable" onclick="focarFormularioCadastro()" title="Clique para assinar">
             <h3>🧸 Tudo o que a Criança Precisa em um Só Lugar</h3>
@@ -1249,13 +1248,13 @@
     }
 
     const INFO_PERSONAGENS = {
-      'Xexéu': { nome: "Xexéu", desc: "O pássaro azul de boina amarela! Inspirado no nome de Mariano Xexéu e Pedro Mariano, cheio de curiosidade e alegria." },
+      'Xexéu': { nome: "Xexéu", desc: "O pássaro azul de boina amarela! Inspirado no pássaro xexéu e no nome do bisavô Mariano Xexéu, cheio de alegria e amizade." },
       'Capilé': { nome: "Capilé", desc: "O Capilé é o cachorrinho de orelhas grandes e coleira azul-celeste com pingente de osso dourado! Um amigão leal." },
       'Maya': { nome: "Maya", desc: "A Maya é a mãe dedicada da Iza e da Nina. Extremamente organizada e atenciosa com as meninas." },
       'Theo': { nome: "Theo", desc: "O Theo é o pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar a família." },
       'Nina': { nome: "Nina", desc: "A Nina é super esperta e adora aprender coisas novas com seus cabelos cacheados!" },
       'Iza': { nome: "Iza", desc: "A Iza é a vaidosa da Turminha! De vestidinho rosa e cabelos ondulados, espalha doçura por onde passa." },
-      'Sam': { nome: "Sam", desc: "O Sam é o paizão ruivo do Joca e do Leo. Descontraído, adora construir brinquedos." },
+      'Sam': { nome: "Sam", desc: "O Sam é o paizão ruivo do Joca e do Leo. Descontraído, adora inventar brinquedos." },
       'Lia': { nome: "Lia", desc: "A Lia é a mãe do Joca e do Leo. Estilosa e alegre, traz energia contagiante para o dia a dia." },
       'Joca': { nome: "Joca", desc: "O Joca é o menino de camiseta verde! Doidinho e engraçado, transforma tudo em diversão." },
       'Leo': { nome: "Leo", desc: "O Leo é irmão do Joca. Enérgico, agitado e movido por muita imaginação." },
