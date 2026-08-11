@@ -62,7 +62,6 @@
       border: 3px solid #FFFFFF;
     }
 
-    /* HEADER */
     header {
       padding: 16px 24px;
       background: linear-gradient(135deg, #BAE6FD 0%, #E0F2FE 100%);
@@ -97,7 +96,6 @@
       color: #991B1B;
     }
 
-    /* NAVEGAÇÃO PRINCIPAL */
     .page-nav {
       display: flex;
       justify-content: center;
@@ -145,7 +143,6 @@
       border-color: transparent;
     }
 
-    /* PÁGINAS */
     .page-content {
       display: none;
       flex-direction: column;
@@ -158,7 +155,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* BANNER & APRESENTACAO DAS HOMENAGENS */
     .banner-intro-grid {
       display: flex;
       flex-direction: column;
@@ -218,7 +214,6 @@
       flex-shrink: 0;
     }
 
-    /* REDES SOCIAIS */
     .social-round-section {
       padding: 0 20px;
       display: flex;
@@ -244,7 +239,6 @@
     .social-round-btn:hover { transform: translateY(-3px); border-color: var(--primary); }
     .social-round-btn img { width: 24px; height: 24px; object-fit: contain; }
 
-    /* CARDS DE PERSONAGENS */
     .section-family-container {
       padding: 0 20px;
       display: flex;
@@ -330,7 +324,6 @@
       box-shadow: var(--shadow-sm);
     }
 
-    /* JOGOS & SUBNAV */
     .games-subnav, .vip-games-subnav {
       display: flex;
       justify-content: center;
@@ -486,7 +479,6 @@
     .memory-card.flipped { background: #FFF; border: 3px solid var(--primary); }
     .memory-card img { width: 80%; height: 80%; object-fit: contain; }
 
-    /* ÁREA VIP */
     .vip-lock-container {
       background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
       border: 3px solid #FCD34D;
@@ -595,7 +587,6 @@
       box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
     }
 
-    /* QUEBRA-CABEÇA VIP PROPORCIONAL */
     .puzzle-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
     .puzzle-thumb-btn {
       width: 75px;
@@ -659,7 +650,6 @@
     }
     .draggable-piece img { width: 268px; height: 201px; object-fit: cover; pointer-events: none; }
 
-    /* VÍDEOS & SUPORTE */
     .video-section { padding: 0 20px; }
     .video-card {
       background: #FFFFFF;
@@ -708,7 +698,6 @@
       width: 100%;
     }
 
-    /* TOAST DE AVISO VISUAL */
     #visualToast {
       position: fixed;
       bottom: 20px;
@@ -736,7 +725,6 @@
 
   <div class="app-container">
 
-    <!-- HEADER -->
     <header>
       <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" title="YouTube da Turminha">
         <img src="https://i.imgur.com/3lM9igy.png" alt="Logo Turminha do Xexéu" class="logo-img">
@@ -747,7 +735,6 @@
       </button>
     </header>
 
-    <!-- NAVEGAÇÃO PRINCIPAL -->
     <nav class="page-nav">
       <button id="btn-tab-inicio" class="nav-tab-btn active" onclick="mudarPagina('inicio')">🏠 Início</button>
       <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">🎬 Vídeos</button>
@@ -755,7 +742,6 @@
       <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
     </nav>
 
-    <!-- PÁGINA 1: INÍCIO -->
     <main id="pagina-inicio" class="page-content active-page">
       
       <section class="banner-intro-grid">
@@ -775,7 +761,6 @@
         </div>
       </section>
 
-      <!-- REDES SOCIAIS -->
       <section class="social-round-section">
         <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube">▶️</a>
         <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram">📷</a>
@@ -786,10 +771,8 @@
         <a href="https://www.threads.net/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/7cE4xVg.png" alt="Threads"></a>
       </section>
 
-      <!-- SEÇÃO DE FAMÍLIAS -->
       <section class="section-family-container">
         
-        <!-- OS ANIMAIS -->
         <div>
           <h3 class="family-group-title">🐾 Os Animais da Turminha</h3>
           <div class="floating-cards-grid">
@@ -809,7 +792,6 @@
           </div>
         </div>
 
-        <!-- A CASA DA MAYA E DO THEO -->
         <div>
           <h3 class="family-group-title">💖 A Casa da Maya e do Theo</h3>
           <div class="floating-cards-grid">
@@ -843,7 +825,6 @@
           </div>
         </div>
 
-        <!-- A CASA DO SAM E DA LIA -->
         <div>
           <h3 class="family-group-title">⚡ A Casa do Sam e da Lia</h3>
           <div class="floating-cards-grid">
@@ -877,7 +858,6 @@
           </div>
         </div>
 
-        <!-- OS AVÓS -->
         <div>
           <h3 class="family-group-title">👵👴 Os Avós</h3>
           <div class="floating-cards-grid">
@@ -899,7 +879,6 @@
 
       </section>
 
-      <!-- DETALHES DINÂMICOS -->
       <section class="char-details-box" id="detalhes-personagem">
         <h3 id="detalhe-nome" style="color: var(--primary-dark); font-weight: 900; font-size: 17px;">Clique em um personagem acima para ouvir!</h3>
         <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 6px; font-size: 14px;">A narração apresentará os amigos da Turminha para você!</p>
@@ -919,7 +898,6 @@
 
     </main>
 
-    <!-- PÁGINA 2: VÍDEOS -->
     <main id="pagina-videos" class="page-content">
       <section class="video-section">
         <div class="video-card">
@@ -933,7 +911,6 @@
       </section>
     </main>
 
-    <!-- PÁGINA 3: JOGOS -->
     <main id="pagina-jogos" class="page-content">
       <div class="age-group-section">
         <h3 class="age-title">🎮 Área de Jogos da Turminha</h3>
@@ -945,7 +922,6 @@
           <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
         </nav>
 
-        <!-- LOUSA MÁGICA -->
         <div id="game-lousa" class="game-section-page active-game-page interactive-card lousa-container">
           <h4 style="font-weight: 800; margin-bottom: 10px; font-size: 16px;">🎨 Lousa Mágica & Desenhos</h4>
           <div class="lousa-mode-tabs">
@@ -978,7 +954,6 @@
           </div>
         </div>
 
-        <!-- CONTAR -->
         <div id="game-contar" class="game-section-page interactive-card">
           <h4 style="font-weight: 800; font-size: 16px;">🔢 Vamos Contar?</h4>
           <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Quantos amiguinhos aparecem abaixo?</p>
@@ -986,7 +961,6 @@
           <div id="countOptions" class="game-btn-grid"></div>
         </div>
 
-        <!-- LETRAS -->
         <div id="game-letras" class="game-section-page interactive-card">
           <h4 style="font-weight: 800; font-size: 16px;">🔤 Qual é a Primeira Letra?</h4>
           <p style="font-size: 14px; font-weight: 700; margin-top: 8px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple);">Xexéu</strong></p>
@@ -994,14 +968,12 @@
           <div id="opcoes-letras" class="game-btn-grid"></div>
         </div>
 
-        <!-- MEMÓRIA -->
         <div id="game-memoria" class="game-section-page interactive-card">
           <h4 style="font-weight: 800; font-size: 16px;">🧠 Jogo da Memória</h4>
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Encontre os 4 pares dos amigos!</p>
           <div id="memoryBoard" class="memory-board"></div>
         </div>
 
-        <!-- QUIZ & CORES -->
         <div id="game-quiz" class="game-section-page interactive-card">
           <h4 style="font-weight: 800; margin-bottom: 12px; font-size: 16px;">❓ Desafios da Turminha</h4>
           <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -1021,7 +993,6 @@
       </div>
     </main>
 
-    <!-- PÁGINA 4: ÁREA VIP -->
     <main id="pagina-vip" class="page-content">
       <div class="age-group-section">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
@@ -1040,7 +1011,6 @@
           </div>
           
           <div class="vip-grid-forms">
-            <!-- CADASTRO -->
             <div class="vip-form-box">
               <h4>✨ Quero Fazer Parte do Clube</h4>
               <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Seu E-mail:</label>
@@ -1052,7 +1022,6 @@
               <button onclick="salvarECadastrar()" class="btn-vip-checkout">Assinar no Kiwify por R$ 6,00 💳</button>
             </div>
 
-            <!-- LOGIN -->
             <div class="vip-form-box" style="border-color: #CBD5E1;">
               <h4 style="color: #1E293B;">🔑 Já sou Assinante</h4>
               <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">E-mail Cadastrado:</label>
@@ -1066,7 +1035,6 @@
           </div>
         </div>
 
-        <!-- ÁREA DESBLOQUEADA -->
         <div id="vip-unlocked-view" class="vip-content-unlocked">
           <div style="background: #D1FAE5; border: 2px solid #10B981; padding: 14px 18px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
             <div>
@@ -1076,14 +1044,12 @@
             <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 800; font-size: 12px; cursor: pointer;">🔒 Sair</button>
           </div>
 
-          <!-- DRIVE VIP EXCLUSIVO -->
           <div class="drive-banner-box">
             <h4 style="color: #1E3A8A; font-size: 18px; font-weight: 900;">📁 Drive Exclusivo da Turminha</h4>
             <p style="font-size: 13px; color: #1E40AF; margin-top: 4px; font-weight: 600;">Baixe Wallpapers de alta qualidade, Desenhos para Imprimir e Colorir, e em breve Livros e Atividades Didáticas completas!</p>
             <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-drive">Acessar Pasta do Google Drive 📥</a>
           </div>
 
-          <!-- VÍDEOS E PLAYLISTS BLOQUEADAS -->
           <div class="video-card">
             <div class="video-header">
               <h3>🎬 Episódios Secretos e Prévias VIP</h3>
@@ -1102,7 +1068,6 @@
             </div>
           </div>
 
-          <!-- MINIJOGOS VIP DE TAMANHO PRÓPRIO E NÍVEL ALTO -->
           <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
             <h4 style="color: #92400E; margin-bottom: 12px; font-size: 16px; font-weight: 900;">⭐ Minijogos VIP</h4>
             <nav class="vip-games-subnav">
@@ -1146,7 +1111,6 @@
       </div>
     </main>
 
-    <!-- SUPORTE -->
     <section class="support-form-box">
       <h5>📬 Precisa de Ajuda ou quer enviar uma Sugestão?</h5>
       <p>Escreva para nós! Sua mensagem será enviada diretamente para <strong>turminhaxexeu@gmail.com</strong>.</p>
@@ -1164,7 +1128,7 @@
   <script>
     let audioAtivo = true;
     const SENHA_MESTRA_CRIADORA = "65628467";
-    const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwStZpYB7QSYdK8vBEUfh5LuYQ_B7A044jR8pUYGuVls4xaodCAGJS8QE5atPz8czhp-g/exec";
+    const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxkMvHbuXfZWEfd1tzLDvk4YzIW66alJyp2J9VGm-8nQV1iotNqaDLDieEeVblb6RcTMA/exec";
     const LINK_KIWIFY = "https://pay.kiwify.com.br/avOqrEg";
 
     function exibirAvisoVisual(texto) {
@@ -1332,7 +1296,6 @@
       document.getElementById('btn-vipanel-' + num).classList.add('active');
     }
 
-    /* LOUSA MÁGICA */
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas.getContext('2d');
     let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free';
@@ -1415,7 +1378,6 @@
     canvas.addEventListener('touchend', () => desenhando = false);
     window.addEventListener('resize', redimensionarCanvas);
 
-    /* JOGO DE CONTAR */
     let qContar = 0;
     function carregarJogoContar() {
       qContar = Math.floor(Math.random() * 9) + 1;
@@ -1441,7 +1403,6 @@
       }
     }
 
-    /* JOGO DAS LETRAS */
     let pLetraAtual = null;
     function carregarJogoLetra() {
       pLetraAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
@@ -1466,7 +1427,6 @@
       });
     }
 
-    /* JOGO DA MEMÓRIA */
     let cMem = [], pCarta = null, travaMem = false, acertosMem = 0;
     function iniciarMemoria() {
       acertosMem = 0;
@@ -1500,7 +1460,6 @@
       });
     }
 
-    /* QUIZ E CORES */
     let pQuizAtual = null;
     function carregarQuiz() {
       pQuizAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
@@ -1543,7 +1502,6 @@
       });
     }
 
-    /* ÁREA VIP & SISTEMA DE AUTENTICAÇÃO */
     function salvarECadastrar() {
       const email = document.getElementById('cad-email').value.trim();
       const senha = document.getElementById('cad-senha').value.trim();
@@ -1602,7 +1560,6 @@
       location.reload();
     }
 
-    /* QUEBRA-CABEÇA VIP PROPORCIONAL */
     const imagensBannersCapas = ['https://i.imgur.com/0eJgoOG.png', 'https://i.imgur.com/0eteSlf.png', 'https://i.imgur.com/eKxsqu8.png', 'https://i.imgur.com/kR23lSN.png'];
     let imgAlvoPuzzle = imagensBannersCapas[0];
     let estadoTabuleiro = new Array(12).fill(null);
@@ -1651,7 +1608,6 @@
       if (estadoTabuleiro.every((val, i) => val === i)) lerTexto("Parabéns! Quebra-cabeça montado!");
     }
 
-    /* MEMÓRIA VIP - 12 CARTAS (6 PARES) */
     let cMemVip = [], pCartaVip = null, travaMemVip = false, acertosMemVip = 0;
     function iniciarMemoriaVip() {
       acertosMemVip = 0;
@@ -1702,7 +1658,6 @@
       });
     }
 
-    /* INICIALIZADORES */
     carregarJogoContar();
     carregarJogoLetra();
     iniciarMemoria();
