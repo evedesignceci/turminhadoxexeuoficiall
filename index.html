@@ -782,7 +782,7 @@
     footer { text-align: center; padding: 20px 20px 0; border-top: 1px solid #E2E8F0; font-size: 13px; color: var(--text-muted); font-weight: 600; }
   </style>
 </head>
-<body>
+<body onclick="desbloquearAudioMobileOnce()">
 
   <div id="visualToast">Aviso do sistema</div>
 
@@ -835,7 +835,7 @@
         </div>
       </section>
 
-      <!-- REDES SOCIAIS APENAS DA TURMINHA (COM OS TAMANHOS QUE VOCÊ DEFINIU) -->
+      <!-- REDES SOCIAIS (APENAS AS DA TURMINHA COM OS TAMANHOS CORRETOS) -->
       <section class="social-round-section">
         <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube"><img src="https://i.imgur.com/rFW5M6l.png" alt="YouTube"></a>
         <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram"><img src="https://i.imgur.com/yIbaMKH.png" alt="Instagram"></a>
@@ -1220,6 +1220,16 @@
         toast.innerText = texto;
         toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 3000);
+      }
+    }
+
+    // DESBLOQUEIA A VOZ NO CELULAR NO PRIMEIRO CLIQUE DO USUÁRIO
+    function desbloquearAudioMobileOnce() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const silentUtter = new SpeechSynthesisUtterance('');
+        silentUtter.volume = 0;
+        window.speechSynthesis.speak(silentUtter);
       }
     }
 
