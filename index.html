@@ -6,49 +6,802 @@
   <title>Turminha do Xexéu - Portal Oficial</title>
   
   <link rel="icon" type="image/png" href="https://i.imgur.com/ANqcDjC.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800;900&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --primary: #3B82F6; --primary-dark: #1D4ED8; --secondary: #F59E0B; --purple: #8B5CF6;
+      --primary: #3B82F6;
+      --primary-dark: #1D4ED8;
+      --secondary: #F59E0B;
+      --accent: #EF4444;
+      --purple: #8B5CF6;
+      --green: #10B981;
       --bg-gradient: linear-gradient(180deg, #E0F2FE 0%, #FAF5FF 60%, #FFF1F2 100%);
-      --text-main: #0F172A; --text-muted: #475569; --radius-xl: 32px; --radius-lg: 20px; --radius-md: 14px;
-      --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.05); --shadow-lg: 0 18px 36px rgba(59, 130, 246, 0.15);
+      --card-bg: #FFFFFF;
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --radius-xl: 32px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 10px 25px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 18px 36px rgba(59, 130, 246, 0.15);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-    body { background: var(--bg-gradient); color: var(--text-main); display: flex; justify-content: center; min-height: 100vh; padding: 12px 12px 60px; }
-    .app-container { width: 100%; max-width: 1120px; background: rgba(255, 255, 255, 0.96); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: flex; flex-direction: column; gap: 24px; padding-bottom: 32px; border: 3px solid #FFFFFF; }
-    header { padding: 16px 24px; background: linear-gradient(135deg, #BAE6FD 0%, #E0F2FE 100%); display: flex; align-items: center; justify-content: space-between; border-radius: var(--radius-lg); margin: 16px 16px 0; }
-    .logo-img { max-width: 170px; height: auto; }
-    
-    /* Redes Sociais apenas da Turminha */
-    .social-round-section { padding: 0 20px; display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .social-round-btn { width: 50px; height: 50px; border-radius: 50%; border: 2.5px solid #E2E8F0; display: flex; align-items: center; justify-content: center; transition: 0.2s; box-shadow: var(--shadow-sm); }
-    .social-round-btn:hover { transform: translateY(-3px); border-color: var(--primary); }
-    .social-round-btn img { width: 30px; height: 30px; object-fit: contain; }
 
-    /* Estilos dos outros elementos permanecem conforme sua estrutura anterior... */
-    .page-nav { display: flex; justify-content: center; gap: 10px; background: #F0F9FF; padding: 8px; border-radius: var(--radius-lg); margin: 0 16px; border: 2px solid #BAE6FD; flex-wrap: wrap; }
-    .nav-tab-btn { flex: 1; min-width: 110px; max-width: 200px; padding: 14px 10px; border: none; border-radius: var(--radius-md); font-weight: 800; cursor: pointer; background: transparent; color: var(--text-muted); }
-    .nav-tab-btn.active { background: var(--primary); color: #FFF; }
-    .page-content { display: none; flex-direction: column; gap: 28px; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 12px 12px 60px;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 1120px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-bottom: 32px;
+      border: 3px solid #FFFFFF;
+    }
+
+    header {
+      padding: 16px 24px;
+      background: linear-gradient(135deg, #BAE6FD 0%, #E0F2FE 100%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: var(--radius-lg);
+      margin: 16px 16px 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .logo-img { max-width: 170px; height: auto; transition: transform 0.2s ease; }
+    .logo-img:hover { transform: scale(1.03); }
+
+    .audio-toggle-btn {
+      background: #FFFFFF;
+      border: 2.5px solid var(--primary);
+      color: var(--primary-dark);
+      font-weight: 800;
+      font-size: 14px;
+      padding: 10px 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+    .audio-toggle-btn.muted {
+      background: #FEE2E2;
+      border-color: #EF4444;
+      color: #991B1B;
+    }
+
+    .page-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      background: #F0F9FF;
+      padding: 8px;
+      border-radius: var(--radius-lg);
+      margin: 0 16px;
+      border: 2px solid #BAE6FD;
+      flex-wrap: wrap;
+    }
+    .nav-tab-btn {
+      flex: 1;
+      min-width: 110px;
+      max-width: 200px;
+      padding: 14px 10px;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .nav-tab-btn:hover { background: rgba(59, 130, 246, 0.1); color: var(--primary-dark); }
+    .nav-tab-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
+    }
+    .nav-tab-btn.vip-tab {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 2px solid #FCD34D;
+    }
+    .nav-tab-btn.vip-tab.active {
+      background: linear-gradient(135deg, #F59E0B, #D97706);
+      color: #FFF;
+      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
+      border-color: transparent;
+    }
+
+    .top-vip-announcement {
+      margin: 0 16px -12px;
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      border: 2px dashed #F59E0B;
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      text-align: center;
+      color: #92400E;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.2s ease;
+    }
+    .top-vip-announcement:hover { transform: scale(1.01); }
+
+    .page-content {
+      display: none;
+      flex-direction: column;
+      gap: 28px;
+      animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
     .page-content.active-page { display: flex; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .banner-intro-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 0 20px;
+    }
+    @media (min-width: 850px) {
+      .banner-intro-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        align-items: stretch;
+      }
+    }
+    .banner-container { width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+    .banner-img {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .intro-box {
+      width: 100%;
+      background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
+      border: 2.5px solid #FCD34D;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .intro-box-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .intro-box h2 { font-size: 20px; font-weight: 900; color: #92400E; }
+    .intro-box p { font-size: 13.5px; color: #78350F; line-height: 1.65; font-weight: 600; margin-bottom: 10px; }
+
+    .btn-audio-mini {
+      background: linear-gradient(135deg, #FBBF24, #F59E0B);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+      flex-shrink: 0;
+    }
+
+    .social-round-section {
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .social-round-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #FFF;
+      border: 2.5px solid #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 22px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+    .social-round-btn:hover { transform: translateY(-3px); border-color: var(--primary); }
+    .social-round-btn img { width: 26px; height: 26px; object-fit: contain; }
+
+    .section-family-container {
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .family-group-title {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .floating-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    @media (min-width: 900px) {
+      .floating-cards-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .floating-char-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 22px 18px;
+      text-align: center;
+      border: 3px solid #E2E8F0;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .floating-char-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+    .floating-char-img {
+      width: 105px;
+      height: 105px;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+      border-radius: 50%;
+      background: #F8FAFC;
+      padding: 6px;
+    }
+
+    .floating-char-name { font-size: 18px; font-weight: 900; color: var(--text-main); }
+    .floating-char-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .floating-char-desc { font-size: 13px; font-weight: 600; color: var(--text-muted); line-height: 1.5; }
+
+    .card-f1 { border-color: #F472B6; }
+    .card-f1 .floating-char-tag { background: #FCE7F3; color: #DB2777; }
     
-    /* Botão VIP e Anúncios */
-    .top-vip-announcement { margin: 0 16px -12px; background: #FEF3C7; border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 10px; text-align: center; color: #92400E; font-weight: 800; cursor: pointer; }
-    .floating-vip-badge { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; padding: 12px 20px; border-radius: 50px; font-weight: 800; box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4); cursor: pointer; z-index: 9999; }
+    .card-f2 { border-color: #60A5FA; }
+    .card-f2 .floating-char-tag { background: #DBEAFE; color: #2563EB; }
+
+    .card-avos { border-color: #FBBF24; }
+    .card-avos .floating-char-tag { background: #FEF3C7; color: #D97706; }
+
+    .card-especial { border-color: #A78BFA; }
+    .card-especial .floating-char-tag { background: #EDE9FE; color: #7C3AED; }
+
+    .char-details-box {
+      margin: 0 20px;
+      background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
+      border: 3px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .games-subnav, .vip-games-subnav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      background: #E0F2FE;
+      padding: 8px;
+      border-radius: var(--radius-md);
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .subnav-btn, .vip-sub-btn {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+      background: #FFF;
+      color: var(--primary-dark);
+      transition: all 0.2s ease;
+      min-height: 44px;
+    }
+    .subnav-btn.active { background: var(--primary); color: #FFF; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+
+    .vip-games-subnav { background: #FEF3C7; }
+    .vip-sub-btn { color: #92400E; }
+    .vip-sub-btn.active { background: #D97706; color: #FFF; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3); }
+
+    .game-section-page { display: none; }
+    .game-section-page.active-game-page { display: block; }
+
+    .vip-game-panel { display: none; }
+    .vip-game-panel.active-vip-panel { display: block; }
+
+    .age-group-section {
+      margin: 0 20px;
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 2px solid #E2E8F0;
+      box-shadow: var(--shadow-sm);
+    }
+    .age-title { font-size: 20px; font-weight: 900; color: var(--primary-dark); margin-bottom: 16px; }
     
-    /* Layout Jogos e VIP mantidos... */
+    .interactive-card {
+      background: #F8FAFC;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+      border: 2px solid #E2E8F0;
+    }
+
+    .lousa-mode-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+    .btn-mode {
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: 2.5px solid var(--primary);
+      background: #FFF;
+      color: var(--primary-dark);
+      font-weight: 800;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .btn-mode.active { background: var(--primary); color: #FFF; }
+    
+    .coloring-select-grid { display: none; justify-content: center; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+    .coloring-select-grid.active { display: flex; }
+    .btn-color-draw {
+      background: #FFF;
+      border: 2px solid #CBD5E1;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-color-draw.selected { border-color: var(--primary); background: #E0F2FE; }
+    .btn-color-draw img { width: 26px; height: 26px; object-fit: contain; }
+
+    .lousa-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      background: #E0F2FE;
+      padding: 10px 16px;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .lousa-controls-bar label { font-size: 13px; font-weight: 800; color: var(--primary-dark); display: flex; align-items: center; gap: 8px; }
+
+    .lousa-container { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
+    #paintCanvas {
+      background: #FFF;
+      border: 3.5px solid var(--primary);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      min-height: 380px;
+      touch-action: none;
+      cursor: crosshair;
+    }
+    
+    .palette { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 14px; flex-wrap: wrap; }
+    .color-dot {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 3px solid #FFF;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+
+    .game-btn-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .btn-choice {
+      background: var(--purple);
+      color: #FFF;
+      border: none;
+      padding: 12px 20px;
+      font-weight: 800;
+      font-size: 15px;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+      min-width: 60px;
+    }
+
+    .memory-board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .memory-card {
+      aspect-ratio: 1;
+      background: var(--primary);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      font-weight: 900;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+    }
+    .memory-card.flipped { background: #FFF; border: 3px solid var(--primary); }
+    .memory-card img { width: 80%; height: 80%; object-fit: contain; }
+
+    .vip-lock-container {
+      background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 3px solid #FCD34D;
+      border-radius: var(--radius-lg);
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .vip-lock-header-clickable {
+      cursor: pointer;
+      user-select: none;
+      border-radius: var(--radius-md);
+      padding: 10px;
+      transition: background 0.2s ease;
+    }
+    .vip-lock-header-clickable:hover {
+      background: rgba(245, 158, 11, 0.08);
+    }
+
+    .vip-price-tag {
+      display: inline-block;
+      background: #F59E0B;
+      color: #FFF;
+      font-weight: 900;
+      font-size: 15px;
+      padding: 10px 24px;
+      border-radius: 30px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+      cursor: pointer;
+    }
+    
+    .vip-heart-msg {
+      background: #FFFFFF;
+      border: 2px dashed #F59E0B;
+      border-radius: var(--radius-md);
+      padding: 18px;
+      margin: 16px auto;
+      max-width: 750px;
+      color: #78350F;
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    .vip-grid-forms {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 750px;
+      margin: 20px auto 0;
+    }
+    @media (min-width: 650px) {
+      .vip-grid-forms { grid-template-columns: 1fr 1fr; }
+    }
+
+    .vip-form-box {
+      background: #FFF;
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 2px solid #FCD34D;
+      text-align: left;
+      box-shadow: var(--shadow-sm);
+    }
+    .vip-form-box h4 { font-size: 16px; color: #92400E; margin-bottom: 12px; font-weight: 900; }
+    .vip-input {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      border: 2px solid #E2E8F0;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      outline: none;
+    }
+
+    .btn-vip-checkout {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: #FFF;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 14px 20px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+      transition: transform 0.2s;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+    }
+    .btn-vip-checkout:hover { transform: translateY(-2px); }
+
+    .vip-content-unlocked { display: none; flex-direction: column; gap: 20px; }
+    .vip-content-unlocked.active-vip { display: flex; }
+    .vip-card-box {
+      background: #FFF;
+      border: 2px solid #E2E8F0;
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .drive-banner-box {
+      background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 100%);
+      border: 2.5px solid #3B82F6;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .btn-drive {
+      display: inline-block;
+      background: #2563EB;
+      color: #FFF;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      margin-top: 10px;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .puzzle-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+    .puzzle-thumb-btn {
+      width: 75px;
+      height: 52px;
+      border: 3px solid #CBD5E1;
+      border-radius: 10px;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+    .puzzle-thumb-btn.active { border-color: #F59E0B; transform: scale(1.08); opacity: 1; }
+    .puzzle-full-preview { text-align: center; margin-bottom: 12px; }
+    .puzzle-full-preview img { width: 160px; height: 120px; border-radius: 10px; border: 2.5px solid #F59E0B; object-fit: cover; }
+    
+    .puzzle-workspace { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    @media (min-width: 600px) { .puzzle-workspace { flex-direction: row; justify-content: center; align-items: flex-start; } }
+    
+    .puzzle-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 3px;
+      width: 300px;
+      height: 225px;
+      background: #FDE68A;
+      padding: 4px;
+      border-radius: 14px;
+    }
+    .puzzle-dropzone {
+      width: 71px;
+      height: 71px;
+      background: #FFF;
+      border: 2px dashed #F59E0B;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .puzzle-pieces-tray {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-width: 300px;
+      background: #F8FAFC;
+      padding: 12px;
+      border-radius: 14px;
+      border: 2px solid #CBD5E1;
+      justify-content: center;
+      min-height: 160px;
+      align-items: center;
+    }
+    .draggable-piece {
+      width: 67px;
+      height: 67px;
+      border-radius: 6px;
+      cursor: grab;
+      overflow: hidden;
+      border: 2px solid #3B82F6;
+      touch-action: none;
+    }
+    .draggable-piece img { width: 268px; height: 201px; object-fit: cover; pointer-events: none; }
+
+    .video-section { padding: 0 20px; }
+    .video-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      border: 2px solid #E2E8F0;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .video-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .video-header h3 { font-size: 19px; font-weight: 900; color: var(--primary-dark); }
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-md); }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+    .support-form-box {
+      background: #FFFBEB;
+      border: 2px solid #FCD34D;
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      margin: 0 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .support-form-box h5 { color: #92400E; font-size: 17px; font-weight: 900; margin-bottom: 6px; }
+    .support-form-box p { font-size: 13px; color: #78350F; margin-bottom: 14px; font-weight: 600; }
+    .support-input, .support-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #FCD34D;
+      border-radius: 10px;
+      font-size: 13px;
+      margin-bottom: 12px;
+      background: #FFF;
+      outline: none;
+    }
+    .support-textarea { resize: vertical; min-height: 90px; }
+    .support-btn {
+      background: #D97706;
+      color: #FFF;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    #visualToast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0F172A;
+      color: #FFF;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      z-index: 99999;
+      pointer-events: none;
+    }
+    #visualToast.show { transform: translateX(-50%) translateY(0); }
+
+    .floating-vip-badge {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: #FFF;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border: 2px solid #FDE68A;
+      z-index: 9999;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .floating-vip-badge:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 28px rgba(245, 158, 11, 0.5);
+    }
+
+    footer { text-align: center; padding: 20px 20px 0; border-top: 1px solid #E2E8F0; font-size: 13px; color: var(--text-muted); font-weight: 600; }
   </style>
 </head>
 <body>
 
-  <div class="floating-vip-badge" onclick="mudarPagina('vip')">⭐ Clube VIP (R$ 6,00)</div>
+  <div id="visualToast">Aviso do sistema</div>
+
+  <!-- BALÃO FLUTUANTE VIP EM TODAS AS PÁGINAS -->
+  <div class="floating-vip-badge" onclick="mudarPagina('vip')">
+    <span>⭐</span>
+    <span>Seja VIP (R$ 6,00)</span>
+  </div>
 
   <div class="app-container">
+
     <header>
-      <img src="https://i.imgur.com/3lM9igy.png" alt="Logo Turminha do Xexéu" class="logo-img">
-      <button id="toggleAudioBtn" class="audio-toggle-btn" onclick="alternarAudioGlobal()">🔊 Voz Ligada</button>
+      <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" title="YouTube da Turminha">
+        <img src="https://i.imgur.com/3lM9igy.png" alt="Logo Turminha do Xexéu" class="logo-img">
+      </a>
+      <button id="toggleAudioBtn" class="audio-toggle-btn" onclick="alternarAudioGlobal()">
+        <span id="audioIcon">🔊</span>
+        <span id="audioText">Voz Ligada</span>
+      </button>
     </header>
 
     <nav class="page-nav">
@@ -58,29 +811,984 @@
       <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
     </nav>
 
+    <!-- FAIXA SUPERIOR DE ANÚNCIO VIP -->
     <div class="top-vip-announcement" onclick="mudarPagina('vip')">
-      ⭐ Faça parte do Clube VIP da Turminha por apenas R$ 6,00/mês! 💖
+      <span>⭐ Faça parte do Clube VIP da Turminha por apenas R$ 6,00/mês e ajude nosso canal a crescer! 💖</span>
     </div>
 
-    <!-- Redes Sociais Filtradas -->
-    <section class="social-round-section">
-      <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn"><img src="https://i.imgur.com/rFW5M6l.png" alt="YouTube"></a>
-      <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn"><img src="https://i.imgur.com/yIbaMKH.png" alt="Instagram"></a>
-      <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn"><img src="https://i.imgur.com/iwSYwA7.png" alt="TikTok"></a>
-      <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn"><img src="https://i.imgur.com/9c2BiJo.png" alt="Spotify"></a>
-      <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn"><img src="https://i.imgur.com/mkgDBjM.png" alt="YouTube Music"></a>
-      <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn"><img src="https://i.imgur.com/viKEETj.png" alt="Facebook"></a>
-      <a href="https://www.threads.net/@turminhaxe_xeu" target="_blank" class="social-round-btn"><img src="https://i.imgur.com/3qJ8rYd.png" alt="Threads"></a>
-      <a href="https://br.pinterest.com/turminhaxexeu/" target="_blank" class="social-round-btn"><img src="https://i.imgur.com/JkJ5AKT.png" alt="Pinterest"></a>
+    <main id="pagina-inicio" class="page-content active-page">
+      
+      <section class="banner-intro-grid">
+        <div class="banner-container">
+          <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank">
+            <img src="https://i.imgur.com/mvQQyMp.png" alt="Capa da Turminha do Xexéu" class="banner-img">
+          </a>
+        </div>
+        <div class="intro-box">
+          <div class="intro-box-header">
+            <h2>✨ Educando com Alegria e Amor</h2>
+            <button class="btn-audio-mini" onclick="lerTexto('Mais do que um nome divertido, a Turminha do Xexéu é o nosso jeito de honrar as raízes e a história da nossa família.')" title="Ouvir">🔊</button>
+          </div>
+          <p>Mais do que um nome divertido, a <strong>Turminha do Xexéu</strong> é o nosso jeito de honrar as raízes e a história da nossa família.</p>
+          <p>O nome <strong>Xexéu</strong> é uma homenagem que atravessa gerações. Ele vem para honrar a memória de <em>Mariano Xexéu</em> e celebrar a vida de seu filho, <em>Pedro Mariano</em>, que é a grande inspiração para o nosso querido <strong>Vovô Beto</strong>. Escolhemos esse nome para transformar uma identidade familiar em um símbolo de união, alegria e aprendizado.</p>
+          <p>A <strong>Vovó Hilda</strong> é muito mais que uma personagem; ela é a nossa forma de eternizar quem sempre trouxe alegria. Inspirada na memória de <em>Astrogilda Grispym</em>, ela representa o amor que não conhece o tempo. O <strong>Vovô Beto</strong> traz para a Turminha aquela energia contagiante e o prazer pelas coisas simples, mostrando que cada momento em família é uma oportunidade para criar memórias inesquecíveis.</p>
+        </div>
+      </section>
+
+      <!-- REDES SOCIAIS APENAS DA TURMINHA (COM OS TAMANHOS QUE VOCÊ DEFINIU) -->
+      <section class="social-round-section">
+        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube"><img src="https://i.imgur.com/rFW5M6l.png" alt="YouTube"></a>
+        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram"><img src="https://i.imgur.com/yIbaMKH.png" alt="Instagram"></a>
+        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok"><img src="https://i.imgur.com/iwSYwA7.png" alt="TikTok"></a>
+        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify"><img src="https://i.imgur.com/9c2BiJo.png" alt="Spotify"></a>
+        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music"><img src="https://i.imgur.com/mkgDBjM.png" alt="YouTube Music"></a>
+        <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook"><img src="https://i.imgur.com/viKEETj.png" alt="Facebook"></a>
+        <a href="https://www.threads.net/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/3qJ8rYd.png" alt="Threads"></a>
+      </section>
+
+      <section class="section-family-container">
+        
+        <div>
+          <h3 class="family-group-title">🐾 Os Animais da Turminha</h3>
+          <div class="floating-cards-grid">
+            <div class="floating-char-card card-especial" onclick="tocarVozETexto('Xexéu')">
+              <img src="https://i.imgur.com/jBeihpo.png" class="floating-char-img" alt="Xexéu">
+              <span class="floating-char-name">Xexéu</span>
+              <span class="floating-char-tag">Mascote</span>
+              <p class="floating-char-desc">O pássaro azul de boina amarela! Inspirado no nome de Mariano Xexéu e Pedro Mariano, cheio de curiosidade e alegria.</p>
+            </div>
+
+            <div class="floating-char-card card-especial" onclick="tocarVozETexto('Capilé')">
+              <img src="https://i.imgur.com/BBmAqLC.png" class="floating-char-img" alt="Capilé">
+              <span class="floating-char-name">Capilé</span>
+              <span class="floating-char-tag">Cachorrinho</span>
+              <p class="floating-char-desc">Cachorrinho de orelhas grandes e coleira azul-celeste com pingente de osso dourado!</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="family-group-title">💖 A Casa da Maya e do Theo</h3>
+          <div class="floating-cards-grid">
+            <div class="floating-char-card card-f1" onclick="tocarVozETexto('Maya')">
+              <img src="https://i.imgur.com/8TrWSb1.png" class="floating-char-img" alt="Maya">
+              <span class="floating-char-name">Maya</span>
+              <span class="floating-char-tag">Mãe Carinhosa</span>
+              <p class="floating-char-desc">Mãe dedicada da Iza e da Nina. Extremamente organizada, atenciosa e porto seguro da família.</p>
+            </div>
+
+            <div class="floating-char-card card-f1" onclick="tocarVozETexto('Theo')">
+              <img src="https://i.imgur.com/Hbf9i8C.png" class="floating-char-img" alt="Theo">
+              <span class="floating-char-name">Theo</span>
+              <span class="floating-char-tag">Pai Tranquilo</span>
+              <p class="floating-char-desc">Pai da Iza e da Nina. Calmo, observador e sempre pronto para apoiar as meninas.</p>
+            </div>
+
+            <div class="floating-char-card card-f1" onclick="tocarVozETexto('Nina')">
+              <img src="https://i.imgur.com/dfuGmNA.png" class="floating-char-img" alt="Nina">
+              <span class="floating-char-name">Nina</span>
+              <span class="floating-char-tag">Super Esperta</span>
+              <p class="floating-char-desc">Super esperta, tem cabelos cacheados e adora aprender coisas novas com os amigos!</p>
+            </div>
+
+            <div class="floating-char-card card-f1" onclick="tocarVozETexto('Iza')">
+              <img src="https://i.imgur.com/TsKlbEX.png" class="floating-char-img" alt="Iza">
+              <span class="floating-char-name">Iza</span>
+              <span class="floating-char-tag">A Vaidosa</span>
+              <p class="floating-char-desc">Vestidinho rosa, cabelos ondulados e um jeitinho charmoso e doce por onde passa.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="family-group-title">⚡ A Casa do Sam e da Lia</h3>
+          <div class="floating-cards-grid">
+            <div class="floating-char-card card-f2" onclick="tocarVozETexto('Sam')">
+              <img src="https://i.imgur.com/jPz7Qxh.png" class="floating-char-img" alt="Sam">
+              <span class="floating-char-name">Sam</span>
+              <span class="floating-char-tag">Pai Divertido</span>
+              <p class="floating-char-desc">Paizão ruivo do Joca e do Leo. Descontraído, adora construir brinquedos e invenções.</p>
+            </div>
+
+            <div class="floating-char-card card-f2" onclick="tocarVozETexto('Lia')">
+              <img src="https://i.imgur.com/2PVG33C.png" class="floating-char-img" alt="Lia">
+              <span class="floating-char-name">Lia</span>
+              <span class="floating-char-tag">Mãe Alegria</span>
+              <p class="floating-char-desc">Mãe do Joca e do Leo. Estilosa e alegre, traz energia contagiante para o dia a dia.</p>
+            </div>
+
+            <div class="floating-char-card card-f2" onclick="tocarVozETexto('Joca')">
+              <img src="https://i.imgur.com/yQX0ZOy.png" class="floating-char-img" alt="Joca">
+              <span class="floating-char-name">Joca</span>
+              <span class="floating-char-tag">O Divertido</span>
+              <p class="floating-char-desc">Menino de camiseta verde! Engraçado e super companheiro em qualquer brincadeira.</p>
+            </div>
+
+            <div class="floating-char-card card-f2" onclick="tocarVozETexto('Leo')">
+              <img src="https://i.imgur.com/PZPpO14.png" class="floating-char-img" alt="Leo">
+              <span class="floating-char-name">Leo</span>
+              <span class="floating-char-tag">O Aventureiro</span>
+              <p class="floating-char-desc">Irmão do Joca. Agitado, enérgico e movido por muita imaginação.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="family-group-title">👵👴 Os Avós</h3>
+          <div class="floating-cards-grid">
+            <div class="floating-char-card card-avos" onclick="tocarVozETexto('Beto')">
+              <img src="https://i.imgur.com/2E6Dvfz.png" class="floating-char-img" alt="Vovô Beto">
+              <span class="floating-char-name">Vovô Beto</span>
+              <span class="floating-char-tag">Vovô Coruja</span>
+              <p class="floating-char-desc">Usa óculos quadrados. Inspirado no querido Pedro Mariano, traz paciência, bom humor e energia contagiante.</p>
+            </div>
+
+            <div class="floating-char-card card-avos" onclick="tocarVozETexto('Hilda')">
+              <img src="https://i.imgur.com/VZOGaEO.png" class="floating-char-img" alt="Vovó Hilda">
+              <span class="floating-char-name">Vovó Hilda</span>
+              <span class="floating-char-tag">Vovó Carinho</span>
+              <p class="floating-char-desc">Usa óculos redondos. Inspirada na inesquecível Astrogilda Grispym, guardando doçura, abraços e valores preciosos.</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="char-details-box" id="detalhes-personagem">
+        <h3 id="detalhe-nome" style="color: var(--primary-dark); font-weight: 900; font-size: 17px;">Clique em um personagem acima para ouvir!</h3>
+        <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 6px; font-size: 14px;">A narração apresentará os amigos da Turminha para você!</p>
+      </section>
+
+      <section class="video-section">
+        <div class="video-card">
+          <div class="video-header">
+            <h3>🎬 Episódios em Destaque</h3>
+            <button class="btn-audio-mini" onclick="lerTexto('Assista aos episódios da Turminha do Xexéu!')" title="Ouvir">🔊</button>
+          </div>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <main id="pagina-videos" class="page-content">
+      <section class="video-section">
+        <div class="video-card">
+          <div class="video-header">
+            <h3>🎬 Canal Oficial - Playlist Completa</h3>
+          </div>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <main id="pagina-jogos" class="page-content">
+      <div class="age-group-section">
+        <h3 class="age-title">🎮 Área de Jogos da Turminha</h3>
+        <nav class="games-subnav">
+          <button id="subtab-lousa" class="subnav-btn active" onclick="mudarSubJogo('lousa')">🎨 Lousa Mágica</button>
+          <button id="subtab-contar" class="subnav-btn" onclick="mudarSubJogo('contar')">🔢 Contar</button>
+          <button id="subtab-letras" class="subnav-btn" onclick="mudarSubJogo('letras')">🔤 Primeiras Letras</button>
+          <button id="subtab-memoria" class="subnav-btn" onclick="mudarSubJogo('memoria')">🧠 Memória</button>
+          <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
+        </nav>
+
+        <div id="game-lousa" class="game-section-page active-game-page interactive-card lousa-container">
+          <h4 style="font-weight: 800; margin-bottom: 10px; font-size: 16px;">🎨 Lousa Mágica & Desenhos</h4>
+          <div class="lousa-mode-tabs">
+            <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Desenho Livre</button>
+            <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Pintar Personagens</button>
+          </div>
+          <div id="coloringSelectGrid" class="coloring-select-grid">
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/jBeihpo.png', 'Xexéu', this)"><img src="https://i.imgur.com/jBeihpo.png" alt="Xexéu"> Xexéu</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/BBmAqLC.png', 'Capilé', this)"><img src="https://i.imgur.com/BBmAqLC.png" alt="Capilé"> Capilé</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/8TrWSb1.png', 'Maya', this)"><img src="https://i.imgur.com/8TrWSb1.png" alt="Maya"> Maya</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/Hbf9i8C.png', 'Theo', this)"><img src="https://i.imgur.com/Hbf9i8C.png" alt="Theo"> Theo</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/dfuGmNA.png', 'Nina', this)"><img src="https://i.imgur.com/dfuGmNA.png" alt="Nina"> Nina</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/TsKlbEX.png', 'Iza', this)"><img src="https://i.imgur.com/TsKlbEX.png" alt="Iza"> Iza</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/jPz7Qxh.png', 'Sam', this)"><img src="https://i.imgur.com/jPz7Qxh.png" alt="Sam"> Sam</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/2PVG33C.png', 'Lia', this)"><img src="https://i.imgur.com/2PVG33C.png" alt="Lia"> Lia</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/yQX0ZOy.png', 'Joca', this)"><img src="https://i.imgur.com/yQX0ZOy.png" alt="Joca"> Joca</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/PZPpO14.png', 'Leo', this)"><img src="https://i.imgur.com/PZPpO14.png" alt="Leo"> Leo</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/2E6Dvfz.png', 'Beto', this)"><img src="https://i.imgur.com/2E6Dvfz.png" alt="Beto"> Vovô Beto</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/VZOGaEO.png', 'Hilda', this)"><img src="https://i.imgur.com/VZOGaEO.png" alt="Hilda"> Vovó Hilda</button>
+          </div>
+          <div class="lousa-controls-bar">
+            <label>🖌️ Pincel: <input type="range" id="brushSizeInput" min="2" max="24" value="6" onchange="mudarTamanhoPincel(this.value)"></label>
+            <label>🔍 Zoom Guia: <input type="range" id="zoomScaleInput" min="50" max="100" value="85" onchange="mudarZoomGuia(this.value)"></label>
+          </div>
+          <canvas id="paintCanvas"></canvas>
+          <div class="palette">
+            <div class="color-dot" style="background: #3B82F6;" onclick="mudarCor('#3B82F6')"></div>
+            <div class="color-dot" style="background: #EF4444;" onclick="mudarCor('#EF4444')"></div>
+            <div class="color-dot" style="background: #10B981;" onclick="mudarCor('#10B981')"></div>
+            <div class="color-dot" style="background: #F59E0B;" onclick="mudarCor('#F59E0B')"></div>
+            <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
+            <div class="color-dot" style="background: #000000;" onclick="mudarCor('#000000')"></div>
+            <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 38px; height: 38px; border:none; cursor:pointer; background:none;">
+            <button onclick="limparCanvas()" style="padding: 8px 14px; font-weight: 800; border-radius: 10px; border: none; background: #FEE2E2; color: #DC2626; cursor: pointer; font-size: 13px;">Limpar 🗑️</button>
+            <button onclick="salvarFotoDesenho()" style="padding: 8px 14px; font-weight: 800; border-radius: 10px; border: none; background: #D1FAE5; color: #065F46; cursor: pointer; font-size: 13px;">📸 Salvar</button>
+          </div>
+        </div>
+
+        <div id="game-contar" class="game-section-page interactive-card">
+          <h4 style="font-weight: 800; font-size: 16px;">🔢 Vamos Contar?</h4>
+          <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Quantos amiguinhos aparecem abaixo?</p>
+          <div id="countDisplay" style="display: flex; justify-content: center; align-items: center; gap: 8px; margin: 18px 0; min-height: 70px; flex-wrap: wrap;"></div>
+          <div id="countOptions" class="game-btn-grid"></div>
+        </div>
+
+        <div id="game-letras" class="game-section-page interactive-card">
+          <h4 style="font-weight: 800; font-size: 16px;">🔤 Qual é a Primeira Letra?</h4>
+          <p style="font-size: 14px; font-weight: 700; margin-top: 8px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple);">Xexéu</strong></p>
+          <img id="img-letra-personagem" src="" alt="Personagem" style="width: 100px; height: 100px; object-fit: contain; margin: 10px 0;">
+          <div id="opcoes-letras" class="game-btn-grid"></div>
+        </div>
+
+        <div id="game-memoria" class="game-section-page interactive-card">
+          <h4 style="font-weight: 800; font-size: 16px;">🧠 Jogo da Memória</h4>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Encontre os 4 pares dos amigos!</p>
+          <div id="memoryBoard" class="memory-board"></div>
+        </div>
+
+        <div id="game-quiz" class="game-section-page interactive-card">
+          <h4 style="font-weight: 800; margin-bottom: 12px; font-size: 16px;">❓ Desafios da Turminha</h4>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="background: #FFF; padding: 16px; border-radius: 12px; border: 1.5px solid #E2E8F0;">
+              <p style="font-size: 13px; font-weight: 700;">Quem é este personagem?</p>
+              <img id="quiz-img" src="" alt="Quiz" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
+              <div id="quiz-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
+            </div>
+            <div style="background: #FFF; padding: 16px; border-radius: 12px; border: 1.5px solid #E2E8F0;">
+              <p id="cor-pergunta-txt" style="font-size: 13px; font-weight: 700;"></p>
+              <img id="cor-img" src="" alt="Cor" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
+              <div id="cor-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <main id="pagina-vip" class="page-content">
+      <div class="age-group-section">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+          <h3 class="age-title" style="color: #1E293B; margin: 0;">⭐ Clube VIP - Turminha do Xexéu</h3>
+          <button class="btn-audio-mini" onclick="lerTexto('Faça parte do Clube VIP e ajude a Turminha a crescer!')" title="Ouvir">🔊</button>
+        </div>
+
+        <div id="vip-locked-view" class="vip-lock-container">
+          <div class="vip-lock-header-clickable" onclick="focarFormularioCadastro()" title="Clique para assinar">
+            <h3>🧸 Um Pequeno Gesto com um Grande Coração</h3>
+            <div class="vip-price-tag" style="margin-top: 12px;">Assinatura Mensal: Apenas R$ 6,00 / mês</div>
+          </div>
+          
+          <div class="vip-heart-msg">
+            <p style="margin-bottom: 8px;">💖 <strong>R$ 6,00 por mês pode parecer pouco, mas para a Turminha do Xexéu significa TUDO!</strong></p>
+            <p>Esse investimento apoia o crescimento deste canal educativo para levar novos cenários, historinhas encantadoras e atividades educativas para o <strong>Xexéu</strong>, o <strong>Capilé</strong>, o <strong>Joca</strong>, o <strong>Leo</strong>, a <strong>Iza</strong>, a <strong>Nina</strong>, a <strong>Maya</strong>, o <strong>Theo</strong>, o <strong>Sam</strong>, a <strong>Lia</strong>, a <strong>Vovó Hilda</strong> e o <strong>Vovô Beto</strong>!</p>
+            <p style="margin-top: 8px; font-weight: 800; color: #D97706;">Ao assinar, você desbloqueia o Drive de Atividades, episódios antes de todo mundo, bastidores e jogos exclusivos!</p>
+          </div>
+          
+          <div class="vip-grid-forms">
+            <div class="vip-form-box" id="caixa-cadastro-vip">
+              <h4>✨ Quero Fazer Parte do Clube</h4>
+              <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Seu E-mail:</label>
+              <input type="email" id="cad-email" class="vip-input" placeholder="seu@email.com">
+              
+              <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Crie uma Senha:</label>
+              <input type="password" id="cad-senha" class="vip-input" placeholder="Sua senha secreta">
+              
+              <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-vip-checkout" onclick="salvarECadastrar()">Assinar no Kiwify por R$ 6,00 💳</a>
+            </div>
+
+            <div class="vip-form-box" style="border-color: #CBD5E1;">
+              <h4 style="color: #1E293B;">🔑 Já sou Assinante</h4>
+              <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">E-mail Cadastrado:</label>
+              <input type="email" id="log-email" class="vip-input" placeholder="seu@email.com">
+              
+              <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Sua Senha:</label>
+              <input type="password" id="log-senha" class="vip-input" placeholder="Sua senha">
+              
+              <button type="button" onclick="fazerLogin()" style="width:100%; padding: 12px; background: #3B82F6; color: #FFF; border: none; border-radius: 10px; font-weight: 800; cursor: pointer;">Entrar no Clube VIP</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="vip-unlocked-view" class="vip-content-unlocked">
+          <div style="background: #D1FAE5; border: 2px solid #10B981; padding: 14px 18px; border-radius: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <h4 style="color: #065F46; font-size: 16px; font-weight: 900; margin-bottom: 2px;">🎉 Bem-vindo ao Clube VIP!</h4>
+              <p style="font-size: 12px; color: #047857; margin: 0; font-weight: 600;">Seu apoio transforma este projeto todos os dias!</p>
+            </div>
+            <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 800; font-size: 12px; cursor: pointer;">🔒 Sair</button>
+          </div>
+
+          <div class="drive-banner-box">
+            <h4 style="color: #1E3A8A; font-size: 18px; font-weight: 900;">📁 Drive Exclusivo da Turminha</h4>
+            <p style="font-size: 13px; color: #1E40AF; margin-top: 4px; font-weight: 600;">Baixe Wallpapers de alta qualidade, Desenhos para Imprimir e Colorir, e em breve Livros e Atividades Didáticas completas!</p>
+            <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-drive">Acessar Pasta do Google Drive 📥</a>
+          </div>
+
+          <div class="video-card">
+            <div class="video-header">
+              <h3>🎬 Episódios Secretos e Prévias VIP</h3>
+            </div>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLFR1LwoD9sys" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-header">
+              <h3>😂 Erros de Gravação Exclusivos</h3>
+            </div>
+            <div class="video-wrapper">
+              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLInD9YI8ADrk" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
+            <h4 style="color: #92400E; margin-bottom: 12px; font-size: 16px; font-weight: 900;">⭐ Minijogos VIP</h4>
+            <nav class="vip-games-subnav">
+              <button id="btn-vipanel-1" class="vip-sub-btn active" onclick="mudarPanelVip(1)">📖 Histórias</button>
+              <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores</button>
+              <button id="btn-vipanel-3" class="vip-sub-btn" onclick="mudarPanelVip(3)">🧩 Quebra-Cabeça</button>
+              <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória 12 Cartas</button>
+            </nav>
+
+            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
+              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">📖 Desafio das Histórias</h5>
+              <p id="vip-historia-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 12px;"></p>
+              <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
+            </div>
+
+            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
+              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🎨 Cores Secretas</h5>
+              <p id="vip-cor-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 10px;"></p>
+              <img id="vip-cor-img" src="" alt="Cor VIP" style="width: 75px; height: 75px; object-fit: contain; margin-bottom: 10px;">
+              <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;"></div>
+            </div>
+
+            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
+              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🧩 Quebra-Cabeça Proporcional</h5>
+              <div id="puzzleSelector" class="puzzle-selector"></div>
+              <div class="puzzle-full-preview"><img id="puzzleFullPreviewImg" src="" alt="Preview"></div>
+              <div class="puzzle-workspace">
+                <div id="puzzleContainer" class="puzzle-grid"></div>
+                <div id="puzzlePiecesTray" class="puzzle-pieces-tray"></div>
+              </div>
+              <button onclick="reiniciarPuzzle()" style="margin-top: 14px; padding: 10px 18px; background: #F59E0B; color: #FFF; border: none; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer;">Reiniciar Jogo 🔄</button>
+            </div>
+
+            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
+              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🧠 Memória Relâmpago (6 Pares / 12 Cartas)</h5>
+              <div id="memoryBoardVip" class="memory-board" style="max-width: 380px;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <section class="support-form-box">
+      <h5>📬 Precisa de Ajuda ou quer enviar uma Sugestão?</h5>
+      <p>Escreva para nós! Sua mensagem será enviada diretamente para <strong>turminhaxexeu@gmail.com</strong>.</p>
+      <input type="email" id="suporteEmail" class="support-input" placeholder="Seu e-mail para contato">
+      <textarea id="suporteMensagem" class="support-textarea" placeholder="Digite sua mensagem aqui..."></textarea>
+      <button onclick="enviarSuporteReclamacao()" class="support-btn" id="btnEnviarSuporte">Enviar Mensagem ✉️</button>
     </section>
 
-    <!-- ... (restante do conteúdo: Pagina Inicio, Jogos, VIP, Scripts permanecem conforme a lógica anterior) ... -->
-    
+    <footer>
+      <span>© Turminha do Xexéu - Todos os direitos reservados</span>
+    </footer>
+
   </div>
 
   <script>
-    // Seus scripts de lógica VIP e Jogos aqui...
-    // Mantenha as funções carregarQuiz(), carregarJogoCor() etc, garantindo que elas usem a const TODOS_PERSONAGENS com os 12 membros.
+    let audioAtivo = true;
+    const SENHA_MESTRA_CRIADORA = "65628467";
+    const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxkMvHbuXfZWEfd1tzLDvk4YzIW66alJyp2J9VGm-8nQV1iotNqaDLDieEeVblb6RcTMA/exec";
+    const LINK_KIWIFY = "https://pay.kiwify.com.br/avOqrEg";
+
+    function exibirAvisoVisual(texto) {
+      const toast = document.getElementById('visualToast');
+      if (toast) {
+        toast.innerText = texto;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+      }
+    }
+
+    function focarFormularioCadastro() {
+      mudarPagina('vip');
+      const campoEmail = document.getElementById('cad-email');
+      if (campoEmail) {
+        campoEmail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => campoEmail.focus(), 400);
+      }
+    }
+
+    const INFO_PERSONAGENS = {
+      'Xexéu': { nome: "Xexéu", desc: "O pássaro azul de boina amarela! Inspirado no nome de Mariano Xexéu e Pedro Mariano, cheio de curiosidade e alegria." },
+      'Capilé': { nome: "Capilé", desc: "O Capilé é o cachorrinho de orelhas grandes e coleira azul-celeste com pingente de osso dourado! Um amigão leal." },
+      'Maya': { nome: "Maya", desc: "A Maya é a mãe dedicada da Iza e da Nina. Extremamente organizada e atenciosa com as meninas." },
+      'Theo': { nome: "Theo", desc: "O Theo é o pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar a família." },
+      'Nina': { nome: "Nina", desc: "A Nina é super esperta e adora aprender coisas novas com seus cabelos cacheados!" },
+      'Iza': { nome: "Iza", desc: "A Iza é a vaidosa da Turminha! De vestidinho rosa e cabelos ondulados, espalha doçura por onde passa." },
+      'Sam': { nome: "Sam", desc: "O Sam é o paizão ruivo do Joca e do Leo. Descontraído, adora inventar brinquedos." },
+      'Lia': { nome: "Lia", desc: "A Lia é a mãe do Joca e do Leo. Estilosa e alegre, traz energia contagiante para o dia a dia." },
+      'Joca': { nome: "Joca", desc: "O Joca é o menino de camiseta verde! Doidinho e engraçado, transforma tudo em diversão." },
+      'Leo': { nome: "Leo", desc: "O Leo é irmão do Joca. Enérgico, agitado e movido por muita imaginação." },
+      'Beto': { nome: "Vovô Beto", desc: "O Vovô Beto usa óculos quadrados. Inspirado no querido Pedro Mariano, traz paciência, bom humor e energia contagiante." },
+      'Hilda': { nome: "Vovó Hilda", desc: "A Vovó Hilda usa óculos redondos. Inspirada na inesquecível Astrogilda Grispym, guardando doçura, abraços e valores preciosos." }
+    };
+
+    const TODOS_PERSONAGENS = [
+      { nome: 'Xexéu', img: 'https://i.imgur.com/jBeihpo.png', letra: 'X', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
+      { nome: 'Capilé', img: 'https://i.imgur.com/BBmAqLC.png', letra: 'C', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
+      { nome: 'Maya', img: 'https://i.imgur.com/8TrWSb1.png', letra: 'M', corPergunta: "De quem a Maya é mãe carinhosa?", corCorreta: "Iza e Nina", corOpcoes: ["Iza e Nina", "Joca e Leo", "Capilé"] },
+      { nome: 'Theo', img: 'https://i.imgur.com/Hbf9i8C.png', letra: 'T', corPergunta: "Quem é o pai calmo da Iza e da Nina?", corCorreta: "Theo", corOpcoes: ["Theo", "Sam", "Beto"] },
+      { nome: 'Nina', img: 'https://i.imgur.com/dfuGmNA.png', letra: 'N', corPergunta: "Como é o cabelo da esperta Nina?", corCorreta: "Cacheados", corOpcoes: ["Cacheados", "Lisos", "Ondulados"] },
+      { nome: 'Iza', img: 'https://i.imgur.com/TsKlbEX.png', letra: 'I', corPergunta: "Qual a cor do vestido da vaidosa Iza?", corCorreta: "Rosa", corOpcoes: ["Rosa", "Azul", "Amarelo"] },
+      { nome: 'Sam', img: 'https://i.imgur.com/jPz7Qxh.png', letra: 'S', corPergunta: "Qual a cor do cabelo do paizão Sam?", corCorreta: "Ruivo", corOpcoes: ["Ruivo", "Preto", "Loiro"] },
+      { nome: 'Lia', img: 'https://i.imgur.com/2PVG33C.png', letra: 'L', corPergunta: "Quem é a mãe alegre do Joca e do Leo?", corCorreta: "Lia", corOpcoes: ["Lia", "Maya", "Hilda"] },
+      { nome: 'Joca', img: 'https://i.imgur.com/yQX0ZOy.png', letra: 'J', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
+      { nome: 'Leo', img: 'https://i.imgur.com/PZPpO14.png', letra: 'L', corPergunta: "Quem é o irmão enérgico do Joca?", corCorreta: "Leo", corOpcoes: ["Leo", "Theo", "Sam"] },
+      { nome: 'Beto', img: 'https://i.imgur.com/2E6Dvfz.png', letra: 'B', corPergunta: "Qual o formato dos óculos do Vovô Beto?", corCorreta: "Quadrados", corOpcoes: ["Quadrados", "Redondos", "Sem óculos"] },
+      { nome: 'Hilda', img: 'https://i.imgur.com/VZOGaEO.png', letra: 'H', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] }
+    ];
+
+    const PERGUNTAS_HISTORIAS_VIP = [
+      { pergunta: "Quem são as irmãs da Família 1 que têm como mãe a Maya e pai o Theo?", resposta: "Iza e Nina", opcoes: ["Iza e Nina", "Joca e Leo", "Maya e Lia"] },
+      { pergunta: "Qual pai ruivo é irmão da Maya e pai dos meninos Joca e Leo?", resposta: "Sam", opcoes: ["Sam", "Theo", "Beto"] },
+      { pergunta: "Quem é a vovó carinhosa inspirada na Vovó Astrogilda Grispym?", resposta: "Hilda", opcoes: ["Hilda", "Lia", "Maya"] },
+      { pergunta: "Qual amiguinho de camiseta verde é o irmão do Leo na Família 2?", resposta: "Joca", opcoes: ["Joca", "Xexéu", "Capilé"] },
+      { pergunta: "Quem é o cachorrinho doidinho de coleira azul-celeste com pingente de osso dourado?", resposta: "Capilé", opcoes: ["Capilé", "Leo", "Beto"] },
+      { pergunta: "Qual é o nome do vovô de óculos quadrados inspirado no querido Pedro Mariano?", resposta: "Vovô Beto", opcoes: ["Vovô Beto", "Sam", "Theo"] }
+    ];
+
+    function lerTexto(texto) {
+      exibirAvisoVisual(texto);
+      if (!audioAtivo) return;
+      if ('speechSynthesis' in window) {
+        try {
+          window.speechSynthesis.cancel();
+          const utterance = new SpeechSynthesisUtterance(texto);
+          utterance.lang = 'pt-BR';
+          utterance.rate = 0.95;
+          window.speechSynthesis.speak(utterance);
+        } catch (e) { console.log(e); }
+      }
+    }
+
+    function tocarVozETexto(chave) {
+      const p = INFO_PERSONAGENS[chave];
+      if (!p) return;
+      document.getElementById('detalhe-nome').innerText = p.nome;
+      document.getElementById('detalhe-texto').innerText = p.desc;
+      lerTexto(p.desc);
+    }
+
+    function alternarAudioGlobal() {
+      audioAtivo = !audioAtivo;
+      const btn = document.getElementById('toggleAudioBtn');
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      if (audioAtivo) {
+        btn.classList.remove('muted');
+        document.getElementById('audioIcon').innerText = '🔊';
+        document.getElementById('audioText').innerText = 'Voz Ligada';
+        lerTexto("Voz ligada!");
+      } else {
+        btn.classList.add('muted');
+        document.getElementById('audioIcon').innerText = '🔇';
+        document.getElementById('audioText').innerText = 'Voz Desligada';
+        exibirAvisoVisual("Voz desligada!");
+      }
+    }
+
+    function enviarSuporteReclamacao() {
+      const emailInput = document.getElementById('suporteEmail');
+      const mensagemInput = document.getElementById('suporteMensagem');
+      const btnEnviar = document.getElementById('btnEnviarSuporte');
+
+      const email = emailInput ? emailInput.value.trim() : "";
+      const mensagem = mensagemInput ? mensagemInput.value.trim() : "";
+
+      if (!email || !mensagem) {
+        alert("Por favor, preencha o seu e-mail e a mensagem!");
+        return;
+      }
+
+      if (btnEnviar) {
+        btnEnviar.innerText = "Enviando... ⏳";
+        btnEnviar.disabled = true;
+      }
+
+      const payload = {
+        email: email,
+        mensagem: mensagem,
+        assunto: "Reclamação/Suporte pelo Site",
+        tipo: 'SUPORTE_TURMINHA',
+        data: new Date().toLocaleString('pt-BR')
+      };
+
+      fetch(URL_SCRIPT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(() => {
+        alert("Sua mensagem foi enviada com sucesso!");
+        if (emailInput) emailInput.value = '';
+        if (mensagemInput) mensagemInput.value = '';
+        if (btnEnviar) {
+          btnEnviar.innerText = "Enviar Mensagem ✉️";
+          btnEnviar.disabled = false;
+        }
+        lerTexto("Mensagem enviada com sucesso!");
+      }).catch(() => {
+        alert("Mensagem enviada!");
+        if (btnEnviar) {
+          btnEnviar.innerText = "Enviar Mensagem ✉️";
+          btnEnviar.disabled = false;
+        }
+      });
+    }
+
+    function mudarPagina(pagina) {
+      ['inicio', 'videos', 'jogos', 'vip'].forEach(p => {
+        document.getElementById('pagina-' + p).classList.remove('active-page');
+        document.getElementById('btn-tab-' + p).classList.remove('active');
+      });
+
+      document.getElementById('pagina-' + pagina).classList.add('active-page');
+      document.getElementById('btn-tab-' + pagina).classList.add('active');
+
+      if (pagina === 'jogos') setTimeout(redimensionarCanvas, 100);
+      if (pagina === 'vip') verificarStatusVip();
+    }
+
+    function mudarSubJogo(sub) {
+      ['lousa', 'contar', 'letras', 'memoria', 'quiz'].forEach(s => {
+        const el = document.getElementById('game-' + s);
+        const subBtn = document.getElementById('subtab-' + s);
+        if(el) el.classList.remove('active-game-page');
+        if(subBtn) subBtn.classList.remove('active');
+      });
+      document.getElementById('game-' + sub).classList.add('active-game-page');
+      document.getElementById('subtab-' + sub).classList.add('active');
+      if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
+    }
+
+    function mudarPanelVip(num) {
+      for(let i=1; i<=4; i++) {
+        document.getElementById('panel-vip-' + i).classList.remove('active-vip-panel');
+        document.getElementById('btn-vipanel-' + i).classList.remove('active');
+      }
+      document.getElementById('panel-vip-' + num).classList.add('active-vip-panel');
+      document.getElementById('btn-vipanel-' + num).classList.add('active');
+    }
+
+    const canvas = document.getElementById('paintCanvas');
+    const ctx = canvas.getContext('2d');
+    let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free';
+    let imagemPintarCarregada = null, tamanhoPincel = 6, escalaZoomGuia = 0.85;
+
+    function redimensionarCanvas() {
+      if (!canvas.parentElement) return;
+      canvas.width = canvas.parentElement.clientWidth - 20;
+      canvas.height = window.innerWidth >= 900 ? 400 : 330;
+      if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada);
+    }
+
+    function setLousaMode(modo) {
+      modoLousa = modo;
+      document.getElementById('btn-mode-free').classList.remove('active');
+      document.getElementById('btn-mode-color').classList.remove('active');
+      document.getElementById('coloringSelectGrid').classList.remove('active');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (modo === 'free') {
+        document.getElementById('btn-mode-free').classList.add('active');
+        imagemPintarCarregada = null;
+        lerTexto("Modo Desenho Livre!");
+      } else {
+        document.getElementById('btn-mode-color').classList.add('active');
+        document.getElementById('coloringSelectGrid').classList.add('active');
+        lerTexto("Escolha um personagem para pintar!");
+        carregarContornoPintar('https://i.imgur.com/jBeihpo.png', 'Xexéu', null);
+      }
+    }
+
+    function carregarContornoPintar(urlImg, nome, btnElemento) {
+      document.querySelectorAll('.btn-color-draw').forEach(b => b.classList.remove('selected'));
+      if (btnElemento) btnElemento.classList.add('selected');
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const img = new Image();
+      img.crossOrigin = "Anonymous";
+      img.src = urlImg;
+      img.onload = () => { imagemPintarCarregada = img; desenharContornoNoCanvas(img); lerTexto("Vamos pintar!"); };
+    }
+
+    function desenharContornoNoCanvas(img) {
+      const escala = Math.min(canvas.width / img.width, canvas.height / img.height) * escalaZoomGuia;
+      const x = (canvas.width / 2) - (img.width * escala / 2);
+      const y = (canvas.height / 2) - (img.height * escala / 2);
+      ctx.globalAlpha = 0.35;
+      ctx.drawImage(img, x, y, img.width * escala, img.height * escala);
+      ctx.globalAlpha = 1.0;
+    }
+
+    function mudarCor(c) { corAtual = c; }
+    function mudarTamanhoPincel(tam) { tamanhoPincel = tam; }
+    function mudarZoomGuia(val) { escalaZoomGuia = val / 100; if (modoLousa === 'color' && imagemPintarCarregada) { ctx.clearRect(0, 0, canvas.width, canvas.height); desenharContornoNoCanvas(imagemPintarCarregada); } }
+    function limparCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada); }
+    
+    function salvarFotoDesenho() {
+      const tempCanvas = document.createElement('canvas');
+      tempCanvas.width = canvas.width; tempCanvas.height = canvas.height;
+      const tempCtx = tempCanvas.getContext('2d');
+      tempCtx.fillStyle = '#FFFFFF'; tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+      tempCtx.drawImage(canvas, 0, 0);
+      const link = document.createElement('a');
+      link.download = 'Meu-Desenho-Turminha-do-Xexeu.png';
+      link.href = tempCanvas.toDataURL('image/png');
+      link.click();
+      lerTexto("Desenho salvo com sucesso!");
+    }
+
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      return { x: clientX - rect.left, y: clientY - rect.top };
+    }
+
+    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; });
+    canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
+    canvas.addEventListener('mouseup', () => desenhando = false);
+    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; e.preventDefault(); });
+    canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
+    canvas.addEventListener('touchend', () => desenhando = false);
+    window.addEventListener('resize', redimensionarCanvas);
+
+    let qContar = 0;
+    function carregarJogoContar() {
+      qContar = Math.floor(Math.random() * 9) + 1;
+      const charSorteado = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      const display = document.getElementById('countDisplay');
+      display.innerHTML = '';
+      for (let i = 0; i < qContar; i++) {
+        const img = document.createElement('img');
+        img.src = charSorteado.img;
+        img.style.cssText = 'width:48px; height:48px; object-fit:contain;';
+        display.appendChild(img);
+      }
+      const opts = document.getElementById('countOptions');
+      opts.innerHTML = '';
+      for (let n = 1; n <= 9; n++) {
+        const btn = document.createElement('button');
+        btn.className = 'btn-choice'; btn.innerText = n;
+        btn.onclick = () => {
+          if (n === qContar) { lerTexto("Muito bem! Acertou!"); setTimeout(carregarJogoContar, 700); }
+          else lerTexto("Tente de novo!");
+        };
+        opts.appendChild(btn);
+      }
+    }
+
+    let pLetraAtual = null;
+    function carregarJogoLetra() {
+      pLetraAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('nome-letra-personagem').innerText = pLetraAtual.nome;
+      document.getElementById('img-letra-personagem').src = pLetraAtual.img;
+      const container = document.getElementById('opcoes-letras');
+      container.innerHTML = '';
+      const alfabeto = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Z'];
+      let opcoes = [pLetraAtual.letra];
+      while (opcoes.length < 3) {
+        let lAleatoria = alfabeto[Math.floor(Math.random() * alfabeto.length)];
+        if (!opcoes.includes(lAleatoria)) opcoes.push(lAleatoria);
+      }
+      opcoes.sort(() => Math.random() - 0.5).forEach(l => {
+        const btn = document.createElement('button');
+        btn.className = 'btn-choice'; btn.innerText = l;
+        btn.onclick = () => {
+          if (l === pLetraAtual.letra) { lerTexto("Parabéns! Letra correta!"); setTimeout(carregarJogoLetra, 700); }
+          else lerTexto("Tente de novo!");
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    let cMem = [], pCarta = null, travaMem = false, acertosMem = 0;
+    function iniciarMemoria() {
+      acertosMem = 0;
+      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 4);
+      const imgsMem = sorteados.map(p => p.img);
+      cMem = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
+      const board = document.getElementById('memoryBoard');
+      board.innerHTML = '';
+      cMem.forEach(src => {
+        const card = document.createElement('div');
+        card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
+        card.onclick = () => {
+          if (travaMem || card.classList.contains('flipped')) return;
+          card.classList.add('flipped'); card.innerHTML = `<img src="${src}" alt="Carta">`;
+          if (!pCarta) pCarta = card;
+          else {
+            if (pCarta.dataset.img === src) {
+              acertosMem++; lerTexto("Encontrou o par!"); pCarta = null;
+              if (acertosMem === 4) setTimeout(iniciarMemoria, 1800);
+            } else {
+              travaMem = true;
+              setTimeout(() => {
+                pCarta.classList.remove('flipped'); pCarta.innerText = '❓';
+                card.classList.remove('flipped'); card.innerText = '❓';
+                pCarta = null; travaMem = false;
+              }, 1000);
+            }
+          }
+        };
+        board.appendChild(card);
+      });
+    }
+
+    let pQuizAtual = null;
+    function carregarQuiz() {
+      pQuizAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('quiz-img').src = pQuizAtual.img;
+      const container = document.getElementById('quiz-options');
+      container.innerHTML = '';
+      let opcoes = [pQuizAtual.nome];
+      while (opcoes.length < 3) {
+        let outro = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome;
+        if (!opcoes.includes(outro)) opcoes.push(outro);
+      }
+      opcoes.sort(() => Math.random() - 0.5).forEach(o => {
+        const btn = document.createElement('button');
+        btn.style.cssText = "padding:10px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:13px;";
+        btn.innerText = o;
+        btn.onclick = () => {
+          if (o === pQuizAtual.nome) { lerTexto("Muito bem!"); setTimeout(carregarQuiz, 700); }
+          else lerTexto("Tente novamente!");
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    let pCorAtual = null;
+    function carregarJogoCor() {
+      pCorAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('cor-pergunta-txt').innerText = pCorAtual.corPergunta;
+      document.getElementById('cor-img').src = pCorAtual.img;
+      const container = document.getElementById('cor-options');
+      container.innerHTML = '';
+      pCorAtual.corOpcoes.sort(() => Math.random() - 0.5).forEach(o => {
+        const btn = document.createElement('button');
+        btn.style.cssText = "padding:10px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:13px;";
+        btn.innerText = o;
+        btn.onclick = () => {
+          if (o === pCorAtual.corCorreta) { lerTexto("Acertou a cor!"); setTimeout(carregarJogoCor, 700); }
+          else lerTexto("Tente de novo!");
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function salvarECadastrar() {
+      const emailInput = document.getElementById('cad-email');
+      const senhaInput = document.getElementById('cad-senha');
+
+      const email = emailInput ? emailInput.value.trim() : "";
+      const senha = senhaInput ? senhaInput.value.trim() : "";
+
+      if (!email || !senha) {
+        alert("Por favor, preencha o seu e-mail e crie uma senha.");
+        return;
+      }
+
+      const dados = {
+        email: email,
+        senha: senha,
+        status: "Pendente",
+        tipo: "NOVO_CLIENTE",
+        assunto: "Cadastro Iniciado VIP"
+      };
+
+      try {
+        fetch(URL_SCRIPT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dados)
+        });
+      } catch(e) { console.log(e); }
+
+      window.location.href = LINK_KIWIFY;
+    }
+
+    function fazerLogin() {
+      const emailInput = document.getElementById('log-email');
+      const senhaInput = document.getElementById('log-senha');
+
+      const email = emailInput ? emailInput.value.trim() : "";
+      const senha = senhaInput ? senhaInput.value.trim() : "";
+
+      if (!email || !senha) {
+        alert("Preencha o e-mail e a senha cadastrados.");
+        return;
+      }
+
+      if (senha === SENHA_MESTRA_CRIADORA) {
+        localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
+        verificarStatusVip();
+        lerTexto("Acesso Mestre liberado!");
+        return;
+      }
+
+      fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.liberado) {
+            localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
+            verificarStatusVip();
+            lerTexto("Bem-vindo à Área VIP!");
+          } else { alert(data.msg || "Acesso pendente de liberação."); }
+        })
+        .catch(() => { alert("Verificando acesso..."); });
+    }
+
+    function verificarStatusVip() {
+      const isVip = localStorage.getItem('turminha_xexeu_vip_ativo');
+      const lockedView = document.getElementById('vip-locked-view');
+      const unlockedView = document.getElementById('vip-unlocked-view');
+      if (isVip === 'true') {
+        if(lockedView) lockedView.style.display = 'none';
+        if(unlockedView) unlockedView.classList.add('active-vip');
+        carregarDesafioHistoriaVip();
+        carregarJogoCorVip();
+        iniciarPuzzleVip();
+        iniciarMemoriaVip();
+      } else {
+        if(lockedView) lockedView.style.display = 'block';
+        if(unlockedView) unlockedView.classList.remove('active-vip');
+      }
+    }
+
+    function sairVIP() {
+      localStorage.removeItem('turminha_xexeu_vip_ativo');
+      verificarStatusVip();
+      location.reload();
+    }
+
+    const imagensBannersCapas = ['https://i.imgur.com/0eJgoOG.png', 'https://i.imgur.com/0eteSlf.png', 'https://i.imgur.com/eKxsqu8.png', 'https://i.imgur.com/kR23lSN.png'];
+    let imgAlvoPuzzle = imagensBannersCapas[0];
+    let estadoTabuleiro = new Array(12).fill(null);
+
+    function iniciarPuzzleVip() { criarSeletorCapas(); selecionarCapaPuzzle(imgAlvoPuzzle); }
+    function criarSeletorCapas() {
+      const selector = document.getElementById('puzzleSelector');
+      if (selector.children.length > 0) return;
+      selector.innerHTML = '';
+      imagensBannersCapas.forEach((urlImg) => {
+        const thumb = document.createElement('div');
+        thumb.className = 'puzzle-thumb-btn' + (urlImg === imgAlvoPuzzle ? ' active' : '');
+        thumb.style.backgroundImage = `url(${urlImg})`;
+        thumb.onclick = () => { document.querySelectorAll('.puzzle-thumb-btn').forEach(t => t.classList.remove('active')); thumb.classList.add('active'); selecionarCapaPuzzle(urlImg); };
+        selector.appendChild(thumb);
+      });
+    }
+    function selecionarCapaPuzzle(url) { imgAlvoPuzzle = url; document.getElementById('puzzleFullPreviewImg').src = url; reiniciarPuzzle(); }
+    function reiniciarPuzzle() { estadoTabuleiro = new Array(12).fill(null); renderizarTabuleiroPuzzle(); renderizarPecasEmbaralhadas(); }
+    function renderizarTabuleiroPuzzle() {
+      const container = document.getElementById('puzzleContainer'); container.innerHTML = '';
+      for (let i = 0; i < 12; i++) {
+        const dropzone = document.createElement('div'); dropzone.className = 'puzzle-dropzone'; dropzone.dataset.slotIndex = i;
+        dropzone.ondragover = (e) => { e.preventDefault(); };
+        dropzone.ondrop = (e) => { e.preventDefault(); const pecaIndex = parseInt(e.dataTransfer.getData('text/plain')); colocarPecaNoSlot(pecaIndex, i); };
+        if (estadoTabuleiro[i] !== null) dropzone.appendChild(criarElementoPeca(estadoTabuleiro[i]));
+        container.appendChild(dropzone);
+      }
+    }
+    function renderizarPecasEmbaralhadas() {
+      const tray = document.getElementById('puzzlePiecesTray'); tray.innerHTML = '';
+      let indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].sort(() => Math.random() - 0.5);
+      indices.forEach(originalIndex => { if (!estadoTabuleiro.includes(originalIndex)) tray.appendChild(criarElementoPeca(originalIndex)); });
+    }
+    function criarElementoPeca(originalIndex) {
+      const div = document.createElement('div'); div.className = 'draggable-piece'; div.draggable = true; div.dataset.pieceIndex = originalIndex;
+      let row = Math.floor(originalIndex / 4); let col = originalIndex % 4;
+      div.innerHTML = `<img src="${imgAlvoPuzzle}" style="object-position: -${col * 67}px -${row * 67}px;">`;
+      div.ondragstart = (e) => { e.dataTransfer.setData('text/plain', originalIndex); };
+      return div;
+    }
+    function colocarPecaNoSlot(pecaIndex, slotIndex) {
+      for (let i = 0; i < 12; i++) if (estadoTabuleiro[i] === pecaIndex) estadoTabuleiro[i] = null;
+      estadoTabuleiro[slotIndex] = pecaIndex;
+      renderizarTabuleiroPuzzle(); renderizarPecasEmbaralhadas();
+      if (estadoTabuleiro.every((val, i) => val === i)) lerTexto("Parabéns! Quebra-cabeça montado!");
+    }
+
+    let cMemVip = [], pCartaVip = null, travaMemVip = false, acertosMemVip = 0;
+    function iniciarMemoriaVip() {
+      acertosMemVip = 0;
+      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 6);
+      const imgsMem = sorteados.map(p => p.img);
+      cMemVip = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
+      const board = document.getElementById('memoryBoardVip'); board.innerHTML = '';
+      cMemVip.forEach(src => {
+        const card = document.createElement('div'); card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
+        card.onclick = () => {
+          if (travaMemVip || card.classList.contains('flipped')) return;
+          card.classList.add('flipped'); card.innerHTML = `<img src="${src}" alt="Carta VIP">`;
+          if (!pCartaVip) pCartaVip = card;
+          else {
+            if (pCartaVip.dataset.img === src) { acertosMemVip++; lerTexto("Par VIP!"); pCartaVip = null; if (acertosMemVip === 6) setTimeout(iniciarMemoriaVip, 1800); }
+            else {
+              travaMemVip = true;
+              setTimeout(() => { pCartaVip.classList.remove('flipped'); pCartaVip.innerText = '❓'; card.classList.remove('flipped'); card.innerText = '❓'; pCartaVip = null; travaMemVip = false; }, 900);
+            }
+          }
+        };
+        board.appendChild(card);
+      });
+    }
+
+    function carregarDesafioHistoriaVip() {
+      const itemSorteado = PERGUNTAS_HISTORIAS_VIP[Math.floor(Math.random() * PERGUNTAS_HISTORIAS_VIP.length)];
+      document.getElementById('vip-historia-txt').innerText = itemSorteado.pergunta;
+      const containerOpcoes = document.getElementById('vip-historia-options'); containerOpcoes.innerHTML = '';
+      itemSorteado.opcoes.sort(() => Math.random() - 0.5).forEach(opcaoNome => {
+        const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:10px; font-size:14px; background:#F59E0B; border-radius:10px; border:none; color:white; font-weight:800; cursor:pointer; width:100%;";
+        btn.innerText = opcaoNome;
+        btn.onclick = () => { if (opcaoNome === itemSorteado.resposta) { lerTexto("Parabéns! Resposta correta!"); setTimeout(carregarDesafioHistoriaVip, 800); } else lerTexto("Ops! Tente outra resposta."); };
+        containerOpcoes.appendChild(btn);
+      });
+    }
+
+    function carregarJogoCorVip() {
+      const pCor = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('vip-cor-txt').innerText = pCor.corPergunta;
+      document.getElementById('vip-cor-img').src = pCor.img;
+      const containerCor = document.getElementById('vip-cor-options'); containerCor.innerHTML = '';
+      pCor.corOpcoes.sort(() => Math.random() - 0.5).forEach(corOp => {
+        const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:8px 14px; font-size:13px; background:#8B5CF6;";
+        btn.innerText = corOp;
+        btn.onclick = () => { if (corOp === pCor.corCorreta) { lerTexto("Acertou a cor secreta!"); setTimeout(carregarJogoCorVip, 800); } else lerTexto("Tente de novo!"); };
+        containerCor.appendChild(btn);
+      });
+    }
+
+    carregarJogoContar();
+    carregarJogoLetra();
+    iniciarMemoria();
+    carregarQuiz();
+    carregarJogoCor();
+    verificarStatusVip();
   </script>
 </body>
 </html>
