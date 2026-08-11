@@ -811,9 +811,9 @@
       <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
     </nav>
 
-    <!-- FAIXA SUPERIOR DE ANÚNCIO VIP -->
+    <!-- FAIXA SUPERIOR DE ANÚNCIO VIP COM CHAMADA IRRESISTÍVEL -->
     <div class="top-vip-announcement" onclick="mudarPagina('vip')">
-      <span>⭐ Faça parte do Clube VIP da Turminha por apenas R$ 6,00/mês e ajude nosso canal a crescer! 💖</span>
+      <span>⭐ Desbloqueie todo o Drive de Atividades, Jogos Exclusivos e Vídeos Antecipados por Apenas R$ 6,00/mês! Clique Aqui! 💖</span>
     </div>
 
     <main id="pagina-inicio" class="page-content active-page">
@@ -835,7 +835,7 @@
         </div>
       </section>
 
-      <!-- REDES SOCIAIS (APENAS AS DA TURMINHA) -->
+      <!-- REDES SOCIAIS -->
       <section class="social-round-section">
         <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube"><img src="https://i.imgur.com/rFW5M6l.png" alt="YouTube"></a>
         <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram"><img src="https://i.imgur.com/yIbaMKH.png" alt="Instagram"></a>
@@ -994,7 +994,7 @@
           <button id="subtab-contar" class="subnav-btn" onclick="mudarSubJogo('contar')">🔢 Contar</button>
           <button id="subtab-letras" class="subnav-btn" onclick="mudarSubJogo('letras')">🔤 Primeiras Letras</button>
           <button id="subtab-memoria" class="subnav-btn" onclick="mudarSubJogo('memoria')">🧠 Memória</button>
-          <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Cores</button>
+          <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Detalhes</button>
         </nav>
 
         <div id="game-lousa" class="game-section-page active-game-page interactive-card lousa-container">
@@ -1065,7 +1065,7 @@
             </div>
             <div style="background: #FFF; padding: 16px; border-radius: 12px; border: 1.5px solid #E2E8F0;">
               <p id="cor-pergunta-txt" style="font-size: 13px; font-weight: 700;"></p>
-              <img id="cor-img" src="" alt="Cor" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
+              <img id="cor-img" src="" alt="Detalhe" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
               <div id="cor-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
             </div>
           </div>
@@ -1078,31 +1078,38 @@
       <div class="age-group-section">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
           <h3 class="age-title" style="color: #1E293B; margin: 0;">⭐ Clube VIP - Turminha do Xexéu</h3>
-          <button class="btn-audio-mini" onclick="lerTexto('Faça parte do Clube VIP e ajude a Turminha a crescer!')" title="Ouvir">🔊</button>
+          <button class="btn-audio-mini" onclick="lerTexto('Faça parte do Clube VIP e tenha acesso a todo o material exclusivo!')" title="Ouvir">🔊</button>
         </div>
 
+        <!-- MENSAGEM COM SENSAÇÃO DE NECESSIDADE E VALOR INCRÍVEL -->
         <div id="vip-locked-view" class="vip-lock-container">
           <div class="vip-lock-header-clickable" onclick="focarFormularioCadastro()" title="Clique para assinar">
-            <h3>🧸 Um Pequeno Gesto com um Grande Coração</h3>
-            <div class="vip-price-tag" style="margin-top: 12px;">Assinatura Mensal: Apenas R$ 6,00 / mês</div>
+            <h3>🧸 Tudo o que a Criança Precisa em um Só Lugar</h3>
+            <div class="vip-price-tag" style="margin-top: 12px;">Acesso Completo Ilimitado: Apenas R$ 6,00 / mês</div>
           </div>
           
           <div class="vip-heart-msg">
-            <p style="margin-bottom: 8px;">💖 <strong>R$ 6,00 por mês pode parecer pouco, mas para a Turminha do Xexéu significa TUDO!</strong></p>
-            <p>Esse investimento apoia o crescimento deste canal educativo para levar novos cenários, historinhas encantadoras e atividades educativas para o <strong>Xexéu</strong>, o <strong>Capilé</strong>, o <strong>Joca</strong>, o <strong>Leo</strong>, a <strong>Iza</strong>, a <strong>Nina</strong>, a <strong>Maya</strong>, o <strong>Theo</strong>, o <strong>Sam</strong>, a <strong>Lia</strong>, a <strong>Vovó Hilda</strong> e o <strong>Vovô Beto</strong>!</p>
-            <p style="margin-top: 8px; font-weight: 800; color: #D97706;">Ao assinar, você desbloqueia o Drive de Atividades, episódios antes de todo mundo, bastidores e jogos exclusivos!</p>
+            <p style="margin-bottom: 8px;">💖 <strong>Por que fazer parte do Clube VIP?</strong></p>
+            <p>Pais e educadores sabem o quanto é difícil encontrar conteúdo infantil que seja 100% seguro, educativo e que prenda a atenção dos pequenos com carinho. Ao assinar por <strong>apenas R$ 6,00 por mês</strong> (menos que o preço de um lanche), você garante acesso imediato a:</p>
+            <ul style="text-align: left; margin: 10px 0 10px 20px; font-weight: 600;">
+              <li>📁 <strong>Drive Completo de Atividades Pedagógicas</strong> prontas para imprimir e colorir.</li>
+              <li>🎬 <strong>Episódios inéditos</strong> lançados em primeira mão antes de irem para o YouTube.</li>
+              <li>🎮 <strong>Minijogos Exclusivos</strong> para treinar a mente, contar, pintar e aprender se divertindo.</li>
+              <li>✨ <strong>Bastidores secretos</strong> e muito mais carinho da família da Turminha do Xexéu!</li>
+            </ul>
+            <p style="margin-top: 8px; font-weight: 900; color: #D97706;">Dê o melhor estímulo para o aprendizado e ajude nosso canal a continuar crescendo! Assine agora e libere tudo na hora.</p>
           </div>
           
           <div class="vip-grid-forms">
             <div class="vip-form-box" id="caixa-cadastro-vip">
-              <h4>✨ Quero Fazer Parte do Clube</h4>
+              <h4>✨ Desbloquear Acesso VIP Agora</h4>
               <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Seu E-mail:</label>
               <input type="email" id="cad-email" class="vip-input" placeholder="seu@email.com">
               
               <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Crie uma Senha:</label>
               <input type="password" id="cad-senha" class="vip-input" placeholder="Sua senha secreta">
               
-              <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-vip-checkout" onclick="salvarECadastrar()">Assinar no Kiwify por R$ 6,00 💳</a>
+              <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-vip-checkout" onclick="salvarECadastrar()">Quero Ser VIP por R$ 6,00 💳</a>
             </div>
 
             <div class="vip-form-box" style="border-color: #CBD5E1;">
@@ -1155,7 +1162,7 @@
             <h4 style="color: #92400E; margin-bottom: 12px; font-size: 16px; font-weight: 900;">⭐ Minijogos VIP</h4>
             <nav class="vip-games-subnav">
               <button id="btn-vipanel-1" class="vip-sub-btn active" onclick="mudarPanelVip(1)">📖 Histórias</button>
-              <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores</button>
+              <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores & Detalhes</button>
               <button id="btn-vipanel-3" class="vip-sub-btn" onclick="mudarPanelVip(3)">🧩 Quebra-Cabeça</button>
               <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória 12 Cartas</button>
             </nav>
@@ -1167,9 +1174,9 @@
             </div>
 
             <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🎨 Cores Secretas</h5>
+              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🎨 Cores e Detalhes Secretos</h5>
               <p id="vip-cor-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 10px;"></p>
-              <img id="vip-cor-img" src="" alt="Cor VIP" style="width: 75px; height: 75px; object-fit: contain; margin-bottom: 10px;">
+              <img id="vip-cor-img" src="" alt="Detalhe VIP" style="width: 75px; height: 75px; object-fit: contain; margin-bottom: 10px;">
               <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;"></div>
             </div>
 
@@ -1601,7 +1608,7 @@
         btn.style.cssText = "padding:10px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:13px;";
         btn.innerText = o;
         btn.onclick = () => {
-          if (o === pCorAtual.corCorreta) { lerTexto("Acertou a cor!"); setTimeout(carregarJogoCor, 700); }
+          if (o === pCorAtual.corCorreta) { lerTexto("Acertou em cheio!"); setTimeout(carregarJogoCor, 700); }
           else lerTexto("Tente de novo!");
         };
         container.appendChild(btn);
@@ -1787,7 +1794,7 @@
       pCor.corOpcoes.sort(() => Math.random() - 0.5).forEach(corOp => {
         const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:8px 14px; font-size:13px; background:#8B5CF6;";
         btn.innerText = corOp;
-        btn.onclick = () => { if (corOp === pCor.corCorreta) { lerTexto("Acertou a cor secreta!"); setTimeout(carregarJogoCorVip, 800); } else lerTexto("Tente de novo!"); };
+        btn.onclick = () => { if (corOp === pCor.corCorreta) { lerTexto("Acertou!"); setTimeout(carregarJogoCorVip, 800); } else lerTexto("Tente de novo!"); };
         containerCor.appendChild(btn);
       });
     }
