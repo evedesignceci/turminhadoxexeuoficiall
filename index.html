@@ -554,7 +554,9 @@
       cursor: pointer;
       width: 100%;
       box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+      transition: transform 0.2s;
     }
+    .btn-vip-checkout:hover { transform: translateY(-2px); }
 
     .vip-content-unlocked { display: none; flex-direction: column; gap: 20px; }
     .vip-content-unlocked.active-vip { display: flex; }
@@ -716,12 +718,41 @@
     }
     #visualToast.show { transform: translateX(-50%) translateY(0); }
 
+    .floating-vip-badge {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: #FFF;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border: 2px solid #FDE68A;
+      z-index: 9999;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .floating-vip-badge:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 28px rgba(245, 158, 11, 0.5);
+    }
+
     footer { text-align: center; padding: 20px 20px 0; border-top: 1px solid #E2E8F0; font-size: 13px; color: var(--text-muted); font-weight: 600; }
   </style>
 </head>
 <body>
 
   <div id="visualToast">Aviso do sistema</div>
+
+  <div class="floating-vip-badge" onclick="mudarPagina('vip')">
+    <span>⭐</span>
+    <span>Seja VIP (R$ 6,00)</span>
+  </div>
 
   <div class="app-container">
 
@@ -930,11 +961,17 @@
           </div>
           <div id="coloringSelectGrid" class="coloring-select-grid">
             <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/jBeihpo.png', 'Xexéu', this)"><img src="https://i.imgur.com/jBeihpo.png" alt="Xexéu"> Xexéu</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/PZPpO14.png', 'Leo', this)"><img src="https://i.imgur.com/PZPpO14.png" alt="Leo"> Leo</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/TsKlbEX.png', 'Iza', this)"><img src="https://i.imgur.com/TsKlbEX.png" alt="Iza"> Iza</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/dfuGmNA.png', 'Nina', this)"><img src="https://i.imgur.com/dfuGmNA.png" alt="Nina"> Nina</button>
-            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/yQX0ZOy.png', 'Joca', this)"><img src="https://i.imgur.com/yQX0ZOy.png" alt="Joca"> Joca</button>
             <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/BBmAqLC.png', 'Capilé', this)"><img src="https://i.imgur.com/BBmAqLC.png" alt="Capilé"> Capilé</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/8TrWSb1.png', 'Maya', this)"><img src="https://i.imgur.com/8TrWSb1.png" alt="Maya"> Maya</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/Hbf9i8C.png', 'Theo', this)"><img src="https://i.imgur.com/Hbf9i8C.png" alt="Theo"> Theo</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/dfuGmNA.png', 'Nina', this)"><img src="https://i.imgur.com/dfuGmNA.png" alt="Nina"> Nina</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/TsKlbEX.png', 'Iza', this)"><img src="https://i.imgur.com/TsKlbEX.png" alt="Iza"> Iza</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/jPz7Qxh.png', 'Sam', this)"><img src="https://i.imgur.com/jPz7Qxh.png" alt="Sam"> Sam</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/2PVG33C.png', 'Lia', this)"><img src="https://i.imgur.com/2PVG33C.png" alt="Lia"> Lia</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/yQX0ZOy.png', 'Joca', this)"><img src="https://i.imgur.com/yQX0ZOy.png" alt="Joca"> Joca</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/PZPpO14.png', 'Leo', this)"><img src="https://i.imgur.com/PZPpO14.png" alt="Leo"> Leo</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/2E6Dvfz.png', 'Beto', this)"><img src="https://i.imgur.com/2E6Dvfz.png" alt="Beto"> Vovô Beto</button>
+            <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/VZOGaEO.png', 'Hilda', this)"><img src="https://i.imgur.com/VZOGaEO.png" alt="Hilda"> Vovó Hilda</button>
           </div>
           <div class="lousa-controls-bar">
             <label>🖌️ Pincel: <input type="range" id="brushSizeInput" min="2" max="24" value="6" onchange="mudarTamanhoPincel(this.value)"></label>
@@ -1019,7 +1056,7 @@
               <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Crie uma Senha:</label>
               <input type="password" id="cad-senha" class="vip-input" placeholder="Sua senha secreta">
               
-              <button onclick="salvarECadastrar()" class="btn-vip-checkout">Assinar no Kiwify por R$ 6,00 💳</button>
+              <button type="button" onclick="salvarECadastrar()" class="btn-vip-checkout">Assinar no Kiwify por R$ 6,00 💳</button>
             </div>
 
             <div class="vip-form-box" style="border-color: #CBD5E1;">
@@ -1030,7 +1067,7 @@
               <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Sua Senha:</label>
               <input type="password" id="log-senha" class="vip-input" placeholder="Sua senha">
               
-              <button onclick="fazerLogin()" style="width:100%; padding: 12px; background: #3B82F6; color: #FFF; border: none; border-radius: 10px; font-weight: 800; cursor: pointer;">Entrar no Clube VIP</button>
+              <button type="button" onclick="fazerLogin()" style="width:100%; padding: 12px; background: #3B82F6; color: #FFF; border: none; border-radius: 10px; font-weight: 800; cursor: pointer;">Entrar no Clube VIP</button>
             </div>
           </div>
         </div>
@@ -1155,15 +1192,20 @@
       'Hilda': { nome: "Vovó Hilda", desc: "A Vovó Hilda usa óculos redondos. Inspirada na inesquecível Astrogilda Grispym, guardando doçura, abraços e valores preciosos." }
     };
 
+    /* BANCO DE DADOS COMPLETO COM TODOS OS 12 PERSONAGENS */
     const TODOS_PERSONAGENS = [
-      { nome: 'Xexéu', img: 'https://i.imgur.com/jBeihpo.png', letra: 'X', genero: 'm', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
-      { nome: 'Capilé', img: 'https://i.imgur.com/BBmAqLC.png', letra: 'C', genero: 'm', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
-      { nome: 'Leo', img: 'https://i.imgur.com/PZPpO14.png', letra: 'L', genero: 'm', corPergunta: "Quem é o irmão enérgico do Joca?", corCorreta: "Leo", corOpcoes: ["Leo", "Theo", "Sam"] },
-      { nome: 'Joca', img: 'https://i.imgur.com/yQX0ZOy.png', letra: 'J', genero: 'm', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
-      { nome: 'Iza', img: 'https://i.imgur.com/TsKlbEX.png', letra: 'I', genero: 'f', corPergunta: "Qual a cor do vestido da Iza?", corCorreta: "Rosa", corOpcoes: ["Rosa", "Azul", "Amarelo"] },
-      { nome: 'Nina', img: 'https://i.imgur.com/dfuGmNA.png', letra: 'N', genero: 'f', corPergunta: "De quem a Nina é irmã?", corCorreta: "Iza", corOpcoes: ["Iza", "Joca", "Capilé"] },
-      { nome: 'Hilda', img: 'https://i.imgur.com/VZOGaEO.png', letra: 'H', genero: 'f', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] },
-      { nome: 'Beto', img: 'https://i.imgur.com/2E6Dvfz.png', letra: 'B', genero: 'm', corPergunta: "Qual o formato dos óculos do Vovô Beto?", corCorreta: "Quadrados", corOpcoes: ["Quadrados", "Redondos", "Sem óculos"] }
+      { nome: 'Xexéu', img: 'https://i.imgur.com/jBeihpo.png', letra: 'X', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
+      { nome: 'Capilé', img: 'https://i.imgur.com/BBmAqLC.png', letra: 'C', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
+      { nome: 'Maya', img: 'https://i.imgur.com/8TrWSb1.png', letra: 'M', corPergunta: "De quem a Maya é mãe carinhosa?", corCorreta: "Iza e Nina", corOpcoes: ["Iza e Nina", "Joca e Leo", "Capilé"] },
+      { nome: 'Theo', img: 'https://i.imgur.com/Hbf9i8C.png', letra: 'T', corPergunta: "Quem é o pai calmo da Iza e da Nina?", corCorreta: "Theo", corOpcoes: ["Theo", "Sam", "Beto"] },
+      { nome: 'Nina', img: 'https://i.imgur.com/dfuGmNA.png', letra: 'N', corPergunta: "Como é o cabelo da esperta Nina?", corCorreta: "Cheados", corOpcoes: ["Cacheados", "Lisos", "Ondulados"] },
+      { nome: 'Iza', img: 'https://i.imgur.com/TsKlbEX.png', letra: 'I', corPergunta: "Qual a cor do vestido da vaidosa Iza?", corCorreta: "Rosa", corOpcoes: ["Rosa", "Azul", "Amarelo"] },
+      { nome: 'Sam', img: 'https://i.imgur.com/jPz7Qxh.png', letra: 'S', corPergunta: "Qual a cor do cabelo do paizão Sam?", corCorreta: "Ruivo", corOpcoes: ["Ruivo", "Preto", "Liro"] },
+      { nome: 'Lia', img: 'https://i.imgur.com/2PVG33C.png', letra: 'L', corPergunta: "Quem é a mãe alegre do Joca e do Leo?", corCorreta: "Lia", corOpcoes: ["Lia", "Maya", "Hilda"] },
+      { nome: 'Joca', img: 'https://i.imgur.com/yQX0ZOy.png', letra: 'J', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
+      { nome: 'Leo', img: 'https://i.imgur.com/PZPpO14.png', letra: 'L', corPergunta: "Quem é o irmão enérgico do Joca?", corCorreta: "Leo", corOpcoes: ["Leo", "Theo", "Sam"] },
+      { nome: 'Beto', img: 'https://i.imgur.com/2E6Dvfz.png', letra: 'B', corPergunta: "Qual o formato dos óculos do Vovô Beto?", corCorreta: "Quadrados", corOpcoes: ["Quadrados", "Redondos", "Sem óculos"] },
+      { nome: 'Hilda', img: 'https://i.imgur.com/VZOGaEO.png', letra: 'H', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] }
     ];
 
     const PERGUNTAS_HISTORIAS_VIP = [
@@ -1171,7 +1213,8 @@
       { pergunta: "Qual pai ruivo é irmão da Maya e pai dos meninos Joca e Leo?", resposta: "Sam", opcoes: ["Sam", "Theo", "Beto"] },
       { pergunta: "Quem é a vovó carinhosa inspirada na Vovó Astrogilda Grispym?", resposta: "Hilda", opcoes: ["Hilda", "Lia", "Maya"] },
       { pergunta: "Qual amiguinho de camiseta verde é o irmão do Leo na Família 2?", resposta: "Joca", opcoes: ["Joca", "Xexéu", "Capilé"] },
-      { pergunta: "Quem é o cachorrinho doidinho de coleira azul-celeste com pingente de osso dourado?", resposta: "Capilé", opcoes: ["Capilé", "Leo", "Beto"] }
+      { pergunta: "Quem é o cachorrinho doidinho de coleira azul-celeste com pingente de osso dourado?", resposta: "Capilé", opcoes: ["Capilé", "Leo", "Beto"] },
+      { pergunta: "Qual é o nome do vovô de óculos quadrados inspirado no querido Pedro Mariano?", resposta: "Vovô Beto", opcoes: ["Vovô Beto", "Sam", "Theo"] }
     ];
 
     function lerTexto(texto) {
@@ -1503,28 +1546,56 @@
     }
 
     function salvarECadastrar() {
-      const email = document.getElementById('cad-email').value.trim();
-      const senha = document.getElementById('cad-senha').value.trim();
-      if (!email || !senha) { alert("Por favor, preencha o e-mail e a senha."); return; }
-      
-      const dados = { email: email, senha: senha, status: "Pendente", tipo: "NOVO_CLIENTE", assunto: "Cadastro Iniciado VIP" };
-      fetch(URL_SCRIPT, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify(dados) })
-      .then(() => { window.location.href = LINK_KIWIFY; })
-      .catch(() => { window.location.href = LINK_KIWIFY; });
+      const emailInput = document.getElementById('cad-email');
+      const senhaInput = document.getElementById('cad-senha');
+
+      const email = emailInput ? emailInput.value.trim() : "";
+      const senha = senhaInput ? senhaInput.value.trim() : "";
+
+      if (!email || !senha) {
+        alert("Por favor, preencha o seu e-mail e crie uma senha.");
+        return;
+      }
+
+      const dados = {
+        email: email,
+        senha: senha,
+        status: "Pendente",
+        tipo: "NOVO_CLIENTE",
+        assunto: "Cadastro Iniciado VIP"
+      };
+
+      try {
+        fetch(URL_SCRIPT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dados)
+        });
+      } catch(e) { console.log(e); }
+
+      window.location.href = LINK_KIWIFY;
     }
 
     function fazerLogin() {
-      const email = document.getElementById('log-email').value.trim();
-      const senha = document.getElementById('log-senha').value.trim();
-      if (!email || !senha) { alert("Preencha o e-mail e a senha cadastrados."); return; }
-      
+      const emailInput = document.getElementById('log-email');
+      const senhaInput = document.getElementById('log-senha');
+
+      const email = emailInput ? emailInput.value.trim() : "";
+      const senha = senhaInput ? senhaInput.value.trim() : "";
+
+      if (!email || !senha) {
+        alert("Preencha o e-mail e a senha cadastrados.");
+        return;
+      }
+
       if (senha === SENHA_MESTRA_CRIADORA) {
         localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
         verificarStatusVip();
         lerTexto("Acesso Mestre liberado!");
         return;
       }
-      
+
       fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
         .then(response => response.json())
         .then(data => {
