@@ -344,56 +344,78 @@
       box-shadow: var(--shadow-sm);
     }
 
+    /* ESTILO DAS ABAS DE JOGOS (PÁGINAS GRANDES) */
     .games-subnav, .vip-games-subnav {
       display: flex;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       background: #E0F2FE;
-      padding: 8px;
-      border-radius: var(--radius-md);
-      margin-bottom: 18px;
+      padding: 10px;
+      border-radius: var(--radius-lg);
+      margin-bottom: 22px;
       flex-wrap: wrap;
     }
     .subnav-btn, .vip-sub-btn {
-      padding: 10px 16px;
+      padding: 12px 18px;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-weight: 800;
-      font-size: 13px;
+      font-size: 13.5px;
       cursor: pointer;
       background: #FFF;
       color: var(--primary-dark);
       transition: all 0.2s ease;
-      min-height: 44px;
+      box-shadow: var(--shadow-sm);
     }
-    .subnav-btn.active { background: var(--primary); color: #FFF; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
+    .subnav-btn.active { background: var(--primary); color: #FFF; box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35); transform: translateY(-2px); }
 
     .vip-games-subnav { background: #FEF3C7; }
     .vip-sub-btn { color: #92400E; }
-    .vip-sub-btn.active { background: #D97706; color: #FFF; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3); }
+    .vip-sub-btn.active { background: #D97706; color: #FFF; box-shadow: 0 6px 16px rgba(217, 119, 6, 0.35); transform: translateY(-2px); }
 
     .game-section-page { display: none; }
-    .game-section-page.active-game-page { display: block; }
+    .game-section-page.active-game-page { display: block; animation: fadeIn 0.3s ease; }
 
     .vip-game-panel { display: none; }
-    .vip-game-panel.active-vip-panel { display: block; }
+    .vip-game-panel.active-vip-panel { display: block; animation: fadeIn 0.3s ease; }
 
     .age-group-section {
       margin: 0 20px;
       background: #FFFFFF;
       border-radius: var(--radius-lg);
-      padding: 24px;
+      padding: 28px;
       border: 2px solid #E2E8F0;
       box-shadow: var(--shadow-sm);
     }
-    .age-title { font-size: 20px; font-weight: 900; color: var(--primary-dark); margin-bottom: 16px; }
+    .age-title { font-size: 22px; font-weight: 900; color: var(--primary-dark); margin-bottom: 18px; }
     
     .interactive-card {
       background: #F8FAFC;
       border-radius: var(--radius-md);
-      padding: 20px;
+      padding: 28px;
       text-align: center;
       border: 2px solid #E2E8F0;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* PAINEL DE CONQUISTAS / MEDALHAS */
+    .conquistas-box {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
+      border: 2px solid #FCD34D;
+      border-radius: var(--radius-md);
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 800;
+      color: #92400E;
+      font-size: 14px;
+      box-shadow: var(--shadow-sm);
     }
 
     .lousa-mode-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
@@ -465,7 +487,7 @@
       background: var(--purple);
       color: #FFF;
       border: none;
-      padding: 12px 20px;
+      padding: 12px 22px;
       font-weight: 800;
       font-size: 15px;
       border-radius: 14px;
@@ -477,9 +499,9 @@
     .memory-board {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 14px;
-      max-width: 380px;
+      gap: 12px;
+      margin-top: 16px;
+      max-width: 400px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -492,13 +514,14 @@
       justify-content: center;
       color: #FFF;
       font-weight: 900;
-      font-size: 22px;
+      font-size: 24px;
       cursor: pointer;
       box-shadow: var(--shadow-sm);
     }
     .memory-card.flipped { background: #FFF; border: 3px solid var(--primary); }
     .memory-card img { width: 80%; height: 80%; object-fit: contain; }
 
+    /* ÁREA VIP */
     .vip-lock-container {
       background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
       border: 3px solid #FCD34D;
@@ -506,137 +529,32 @@
       padding: 28px 20px;
       text-align: center;
       box-shadow: var(--shadow-sm);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
-    .vip-lock-header-clickable {
-      cursor: pointer;
-      user-select: none;
-      border-radius: var(--radius-md);
-      padding: 10px;
-      transition: background 0.2s ease;
-    }
-    .vip-lock-header-clickable:hover {
-      background: rgba(245, 158, 11, 0.08);
-    }
-
-    .vip-price-tag {
-      display: inline-block;
-      background: #F59E0B;
-      color: #FFF;
-      font-weight: 900;
-      font-size: 15px;
-      padding: 10px 24px;
-      border-radius: 30px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-      cursor: pointer;
-    }
-    
-    .vip-heart-msg {
-      background: #FFFFFF;
-      border: 2px dashed #F59E0B;
-      border-radius: var(--radius-md);
-      padding: 18px;
-      margin: 16px auto;
-      max-width: 750px;
-      color: #78350F;
-      font-size: 14px;
-      line-height: 1.6;
-      font-weight: 600;
-    }
-
-    .vip-grid-forms {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      max-width: 750px;
-      margin: 20px auto 0;
-    }
-    @media (min-width: 650px) {
-      .vip-grid-forms { grid-template-columns: 1fr 1fr; }
-    }
-
-    .vip-form-box {
-      background: #FFF;
-      padding: 20px;
-      border-radius: var(--radius-md);
-      border: 2px solid #FCD34D;
-      text-align: left;
-      box-shadow: var(--shadow-sm);
-    }
+    .vip-lock-header-clickable { cursor: pointer; user-select: none; border-radius: var(--radius-md); padding: 10px; }
+    .vip-price-tag { display: inline-block; background: #F59E0B; color: #FFF; font-weight: 900; font-size: 15px; padding: 10px 24px; border-radius: 30px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
+    .vip-heart-msg { background: #FFFFFF; border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 18px; margin: 16px auto; max-width: 750px; color: #78350F; font-size: 14px; line-height: 1.6; font-weight: 600; }
+    .vip-grid-forms { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 750px; margin: 20px auto 0; }
+    @media (min-width: 650px) { .vip-grid-forms { grid-template-columns: 1fr 1fr; } }
+    .vip-form-box { background: #FFF; padding: 20px; border-radius: var(--radius-md); border: 2px solid #FCD34D; text-align: left; box-shadow: var(--shadow-sm); }
     .vip-form-box h4 { font-size: 16px; color: #92400E; margin-bottom: 12px; font-weight: 900; }
-    .vip-input {
-      width: 100%;
-      padding: 12px;
-      font-size: 14px;
-      border: 2px solid #E2E8F0;
-      border-radius: 10px;
-      margin-bottom: 12px;
-      font-weight: 600;
-      outline: none;
-    }
-
-    .btn-vip-checkout {
-      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-      color: #FFF;
-      font-weight: 800;
-      font-size: 15px;
-      padding: 14px 20px;
-      border-radius: 12px;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
-      transition: transform 0.2s;
-      text-decoration: none;
-      display: block;
-      text-align: center;
-    }
-    .btn-vip-checkout:hover { transform: translateY(-2px); }
+    .vip-input { width: 100%; padding: 12px; font-size: 14px; border: 2px solid #E2E8F0; border-radius: 10px; margin-bottom: 12px; font-weight: 600; outline: none; }
+    .btn-vip-checkout { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; font-weight: 800; font-size: 15px; padding: 14px 20px; border-radius: 12px; border: none; cursor: pointer; width: 100%; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4); text-decoration: none; display: block; text-align: center; }
 
     .vip-content-unlocked { display: none; flex-direction: column; gap: 20px; }
     .vip-content-unlocked.active-vip { display: flex; }
-    .vip-card-box {
-      background: #FFF;
-      border: 2px solid #E2E8F0;
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      box-shadow: var(--shadow-sm);
-    }
+    .vip-card-box { background: #FFF; border: 2px solid #E2E8F0; border-radius: var(--radius-lg); padding: 20px; box-shadow: var(--shadow-sm); }
 
-    .drive-banner-box {
-      background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 100%);
-      border: 2.5px solid #3B82F6;
-      border-radius: var(--radius-md);
-      padding: 20px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .btn-drive {
-      display: inline-block;
-      background: #2563EB;
-      color: #FFF;
-      font-weight: 800;
-      font-size: 14px;
-      padding: 12px 24px;
-      border-radius: 12px;
-      text-decoration: none;
-      margin-top: 10px;
-      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-    }
+    .drive-banner-box { background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 100%); border: 2.5px solid #3B82F6; border-radius: var(--radius-md); padding: 20px; text-align: center; margin-bottom: 20px; }
+    .btn-drive { display: inline-block; background: #2563EB; color: #FFF; font-weight: 800; font-size: 14px; padding: 12px 24px; border-radius: 12px; text-decoration: none; margin-top: 10px; }
+
+    /* SELETOR DE PERFIL NA ÁREA VIP */
+    .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 16px; margin-bottom: 20px; text-align: center; }
+    .avatar-escolha-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .avatar-escolha-btn { width: 50px; height: 50px; border-radius: 50%; border: 3px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 4px; transition: 0.2s; }
+    .avatar-escolha-btn.selecionado { border-color: #3B82F6; transform: scale(1.1); box-shadow: 0 4px 12px rgba(59,130,246,0.4); }
 
     .puzzle-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
-    .puzzle-thumb-btn {
-      width: 75px;
-      height: 52px;
-      border: 3px solid #CBD5E1;
-      border-radius: 10px;
-      background-size: cover;
-      background-position: center;
-      cursor: pointer;
-      opacity: 0.6;
-    }
+    .puzzle-thumb-btn { width: 75px; height: 52px; border: 3px solid #CBD5E1; border-radius: 10px; background-size: cover; background-position: center; cursor: pointer; opacity: 0.6; }
     .puzzle-thumb-btn.active { border-color: #F59E0B; transform: scale(1.08); opacity: 1; }
     .puzzle-full-preview { text-align: center; margin-bottom: 12px; }
     .puzzle-full-preview img { width: 160px; height: 120px; border-radius: 10px; border: 2.5px solid #F59E0B; object-fit: cover; }
@@ -644,140 +562,31 @@
     .puzzle-workspace { display: flex; flex-direction: column; align-items: center; gap: 16px; }
     @media (min-width: 600px) { .puzzle-workspace { flex-direction: row; justify-content: center; align-items: flex-start; } }
     
-    .puzzle-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap: 3px;
-      width: 300px;
-      height: 225px;
-      background: #FDE68A;
-      padding: 4px;
-      border-radius: 14px;
-    }
-    .puzzle-dropzone {
-      width: 71px;
-      height: 71px;
-      background: #FFF;
-      border: 2px dashed #F59E0B;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .puzzle-pieces-tray {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      max-width: 300px;
-      background: #F8FAFC;
-      padding: 12px;
-      border-radius: 14px;
-      border: 2px solid #CBD5E1;
-      justify-content: center;
-      min-height: 160px;
-      align-items: center;
-    }
-    .draggable-piece {
-      width: 67px;
-      height: 67px;
-      border-radius: 6px;
-      cursor: grab;
-      overflow: hidden;
-      border: 2px solid #3B82F6;
-      touch-action: none;
-    }
+    .puzzle-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); gap: 3px; width: 300px; height: 225px; background: #FDE68A; padding: 4px; border-radius: 14px; }
+    .puzzle-dropzone { width: 71px; height: 71px; background: #FFF; border: 2px dashed #F59E0B; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+    .puzzle-pieces-tray { display: flex; flex-wrap: wrap; gap: 8px; max-width: 300px; background: #F8FAFC; padding: 12px; border-radius: 14px; border: 2px solid #CBD5E1; justify-content: center; min-height: 160px; align-items: center; }
+    .draggable-piece { width: 67px; height: 67px; border-radius: 6px; cursor: grab; overflow: hidden; border: 2px solid #3B82F6; touch-action: none; }
     .draggable-piece img { width: 268px; height: 201px; object-fit: cover; pointer-events: none; }
 
     .video-section { padding: 0 20px; }
-    .video-card {
-      background: #FFFFFF;
-      border-radius: var(--radius-lg);
-      padding: 22px;
-      box-shadow: var(--shadow-sm);
-      border: 2px solid #E2E8F0;
-      text-align: center;
-      margin-bottom: 16px;
-    }
+    .video-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-sm); border: 2px solid #E2E8F0; text-align: center; margin-bottom: 16px; }
     .video-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
     .video-header h3 { font-size: 19px; font-weight: 900; color: var(--primary-dark); }
     .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-md); }
     .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-    .support-form-box {
-      background: #FFFBEB;
-      border: 2px solid #FCD34D;
-      border-radius: var(--radius-lg);
-      padding: 22px;
-      margin: 0 20px;
-      box-shadow: var(--shadow-sm);
-    }
+    .support-form-box { background: #FFFBEB; border: 2px solid #FCD34D; border-radius: var(--radius-lg); padding: 22px; margin: 0 20px; box-shadow: var(--shadow-sm); }
     .support-form-box h5 { color: #92400E; font-size: 17px; font-weight: 900; margin-bottom: 6px; }
     .support-form-box p { font-size: 13px; color: #78350F; margin-bottom: 14px; font-weight: 600; }
-    .support-input, .support-textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: 2px solid #FCD34D;
-      border-radius: 10px;
-      font-size: 13px;
-      margin-bottom: 12px;
-      background: #FFF;
-      outline: none;
-    }
+    .support-input, .support-textarea { width: 100%; padding: 12px 16px; border: 2px solid #FCD34D; border-radius: 10px; font-size: 13px; margin-bottom: 12px; background: #FFF; outline: none; }
     .support-textarea { resize: vertical; min-height: 90px; }
-    .support-btn {
-      background: #D97706;
-      color: #FFF;
-      border: none;
-      padding: 14px 20px;
-      border-radius: 10px;
-      font-weight: 800;
-      font-size: 15px;
-      cursor: pointer;
-      width: 100%;
-    }
+    .support-btn { background: #D97706; color: #FFF; border: none; padding: 14px 20px; border-radius: 10px; font-weight: 800; font-size: 15px; cursor: pointer; width: 100%; }
 
-    #visualToast {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: #0F172A;
-      color: #FFF;
-      padding: 12px 24px;
-      border-radius: 30px;
-      font-size: 13px;
-      font-weight: 700;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-      z-index: 99999;
-      pointer-events: none;
-    }
+    #visualToast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(100px); background: #0F172A; color: #FFF; padding: 12px 24px; border-radius: 30px; font-size: 13px; font-weight: 700; box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: transform 0.3s ease; z-index: 99999; pointer-events: none; }
     #visualToast.show { transform: translateX(-50%) translateY(0); }
 
-    .floating-vip-badge {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-      color: #FFF;
-      padding: 10px 18px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 800;
-      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      border: 2px solid #FDE68A;
-      z-index: 9999;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .floating-vip-badge:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 12px 28px rgba(245, 158, 11, 0.5);
-    }
+    .floating-vip-badge { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; padding: 10px 18px; border-radius: 50px; font-size: 13px; font-weight: 800; box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4); display: flex; align-items: center; gap: 8px; cursor: pointer; border: 2px solid #FDE68A; z-index: 9999; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .floating-vip-badge:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 28px rgba(245, 158, 11, 0.5); }
 
     footer { text-align: center; padding: 20px 20px 0; border-top: 1px solid #E2E8F0; font-size: 13px; color: var(--text-muted); font-weight: 600; }
   </style>
@@ -811,13 +620,13 @@
       <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
     </nav>
 
-    <!-- FAIXA SUPERIOR DE ANÚNCIO VIP COM CHAMADA IRRESISTÍVEL -->
+    <!-- FAIXA SUPERIOR DE ANÚNCIO VIP -->
     <div class="top-vip-announcement" onclick="mudarPagina('vip')">
       <span>⭐ Desbloqueie todo o Drive de Atividades, Jogos Exclusivos e Vídeos Antecipados por Apenas R$ 6,00/mês! Clique Aqui! 💖</span>
     </div>
 
+    <!-- PÁGINA INÍCIO -->
     <main id="pagina-inicio" class="page-content active-page">
-      
       <section class="banner-intro-grid">
         <div class="banner-container">
           <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank">
@@ -835,7 +644,6 @@
         </div>
       </section>
 
-      <!-- REDES SOCIAIS -->
       <section class="social-round-section">
         <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube"><img src="https://i.imgur.com/rFW5M6l.png" alt="YouTube"></a>
         <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram"><img src="https://i.imgur.com/yIbaMKH.png" alt="Instagram"></a>
@@ -847,7 +655,6 @@
       </section>
 
       <section class="section-family-container">
-        
         <div>
           <h3 class="family-group-title">✨ O Símbolo e Mascote</h3>
           <div class="floating-cards-grid">
@@ -857,7 +664,6 @@
               <span class="floating-char-tag">Mascote Oficial</span>
               <p class="floating-char-desc">Inspirado no pássaro xexéu e no nome do bisavô Mariano Xexéu. É o espírito alegre e o guardião da nossa história!</p>
             </div>
-
             <div class="floating-char-card card-especial" onclick="tocarVozETexto('Capilé')">
               <img src="https://i.imgur.com/BBmAqLC.png" class="floating-char-img" alt="Capilé">
               <span class="floating-char-name">Capilé</span>
@@ -876,21 +682,18 @@
               <span class="floating-char-tag">Mãe Carinhosa</span>
               <p class="floating-char-desc">Mãe dedicada da Iza e da Nina. Extremamente organizada, atenciosa e porto seguro da família.</p>
             </div>
-
             <div class="floating-char-card card-f1" onclick="tocarVozETexto('Theo')">
               <img src="https://i.imgur.com/Hbf9i8C.png" class="floating-char-img" alt="Theo">
               <span class="floating-char-name">Theo</span>
               <span class="floating-char-tag">Pai Tranquilo</span>
               <p class="floating-char-desc">Pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar a família.</p>
             </div>
-
             <div class="floating-char-card card-f1" onclick="tocarVozETexto('Nina')">
               <img src="https://i.imgur.com/dfuGmNA.png" class="floating-char-img" alt="Nina">
               <span class="floating-char-name">Nina</span>
               <span class="floating-char-tag">Super Esperta</span>
               <p class="floating-char-desc">Super esperta, tem cabelos cacheados e adora aprender coisas novas com os amigos!</p>
             </div>
-
             <div class="floating-char-card card-f1" onclick="tocarVozETexto('Iza')">
               <img src="https://i.imgur.com/TsKlbEX.png" class="floating-char-img" alt="Iza">
               <span class="floating-char-name">Iza</span>
@@ -909,21 +712,18 @@
               <span class="floating-char-tag">Pai Divertido</span>
               <p class="floating-char-desc">Paizão ruivo do Joca e do Leo. Descontraído, adora construir brinquedos e invenções.</p>
             </div>
-
             <div class="floating-char-card card-f2" onclick="tocarVozETexto('Lia')">
               <img src="https://i.imgur.com/2PVG33C.png" class="floating-char-img" alt="Lia">
               <span class="floating-char-name">Lia</span>
               <span class="floating-char-tag">Mãe Alegria</span>
               <p class="floating-char-desc">Mãe do Joca e do Leo. Estilosa e alegre, traz energia contagiante para o dia a dia.</p>
             </div>
-
             <div class="floating-char-card card-f2" onclick="tocarVozETexto('Joca')">
               <img src="https://i.imgur.com/yQX0ZOy.png" class="floating-char-img" alt="Joca">
               <span class="floating-char-name">Joca</span>
               <span class="floating-char-tag">O Divertido</span>
               <p class="floating-char-desc">Menino de camiseta verde! Engraçado e super companheiro em qualquer brincadeira.</p>
             </div>
-
             <div class="floating-char-card card-f2" onclick="tocarVozETexto('Leo')">
               <img src="https://i.imgur.com/PZPpO14.png" class="floating-char-img" alt="Leo">
               <span class="floating-char-name">Leo</span>
@@ -942,7 +742,6 @@
               <span class="floating-char-tag">Vovô Coruja</span>
               <p class="floating-char-desc">Usa óculos quadrados. Inspirado no querido Pedro Mariano, traz paciência, bom humor e energia contagiante.</p>
             </div>
-
             <div class="floating-char-card card-avos" onclick="tocarVozETexto('Hilda')">
               <img src="https://i.imgur.com/VZOGaEO.png" class="floating-char-img" alt="Vovó Hilda">
               <span class="floating-char-name">Vovó Hilda</span>
@@ -951,7 +750,6 @@
             </div>
           </div>
         </div>
-
       </section>
 
       <section class="char-details-box" id="detalhes-personagem">
@@ -970,9 +768,9 @@
           </div>
         </div>
       </section>
-
     </main>
 
+    <!-- PÁGINA VÍDEOS -->
     <main id="pagina-videos" class="page-content">
       <section class="video-section">
         <div class="video-card">
@@ -986,9 +784,16 @@
       </section>
     </main>
 
+    <!-- PÁGINA JOGOS (PÁGINAS GRANDES E SEPARADAS COM CONQUISTAS) -->
     <main id="pagina-jogos" class="page-content">
       <div class="age-group-section">
         <h3 class="age-title">🎮 Área de Jogos da Turminha</h3>
+        
+        <div class="conquistas-box">
+          <span>🏆 Suas Conquistas: <strong id="placar-pontos">0</strong> pontos</span>
+          <span id="medalha-status">⭐ Iniciante da Turminha</span>
+        </div>
+
         <nav class="games-subnav">
           <button id="subtab-lousa" class="subnav-btn active" onclick="mudarSubJogo('lousa')">🎨 Lousa Mágica</button>
           <button id="subtab-contar" class="subnav-btn" onclick="mudarSubJogo('contar')">🔢 Contar</button>
@@ -997,8 +802,9 @@
           <button id="subtab-quiz" class="subnav-btn" onclick="mudarSubJogo('quiz')">❓ Quiz & Detalhes</button>
         </nav>
 
+        <!-- 1. LOUSA MÁGICA -->
         <div id="game-lousa" class="game-section-page active-game-page interactive-card lousa-container">
-          <h4 style="font-weight: 800; margin-bottom: 10px; font-size: 16px;">🎨 Lousa Mágica & Desenhos</h4>
+          <h4 style="font-weight: 800; margin-bottom: 12px; font-size: 18px;">🎨 Lousa Mágica & Desenhos</h4>
           <div class="lousa-mode-tabs">
             <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Desenho Livre</button>
             <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Pintar Personagens</button>
@@ -1030,42 +836,46 @@
             <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
             <div class="color-dot" style="background: #000000;" onclick="mudarCor('#000000')"></div>
             <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 38px; height: 38px; border:none; cursor:pointer; background:none;">
-            <button onclick="limparCanvas()" style="padding: 8px 14px; font-weight: 800; border-radius: 10px; border: none; background: #FEE2E2; color: #DC2626; cursor: pointer; font-size: 13px;">Limpar 🗑️</button>
-            <button onclick="salvarFotoDesenho()" style="padding: 8px 14px; font-weight: 800; border-radius: 10px; border: none; background: #D1FAE5; color: #065F46; cursor: pointer; font-size: 13px;">📸 Salvar</button>
+            <button onclick="limparCanvas()" style="padding: 10px 16px; font-weight: 800; border-radius: 10px; border: none; background: #FEE2E2; color: #DC2626; cursor: pointer; font-size: 13px;">Limpar 🗑️</button>
+            <button onclick="salvarFotoDesenho()" style="padding: 10px 16px; font-weight: 800; border-radius: 10px; border: none; background: #D1FAE5; color: #065F46; cursor: pointer; font-size: 13px;">📸 Salvar</button>
           </div>
         </div>
 
+        <!-- 2. VAMOS CONTAR -->
         <div id="game-contar" class="game-section-page interactive-card">
-          <h4 style="font-weight: 800; font-size: 16px;">🔢 Vamos Contar?</h4>
-          <p style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">Quantos amiguinhos aparecem abaixo?</p>
-          <div id="countDisplay" style="display: flex; justify-content: center; align-items: center; gap: 8px; margin: 18px 0; min-height: 70px; flex-wrap: wrap;"></div>
+          <h4 style="font-weight: 800; font-size: 18px; margin-bottom: 6px;">🔢 Vamos Contar?</h4>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 14px;">Quantos amiguinhos aparecem abaixo?</p>
+          <div id="countDisplay" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin: 20px 0; min-height: 90px; flex-wrap: wrap;"></div>
           <div id="countOptions" class="game-btn-grid"></div>
         </div>
 
+        <!-- 3. PRIMEIRAS LETRAS -->
         <div id="game-letras" class="game-section-page interactive-card">
-          <h4 style="font-weight: 800; font-size: 16px;">🔤 Qual é a Primeira Letra?</h4>
-          <p style="font-size: 14px; font-weight: 700; margin-top: 8px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple);">Xexéu</strong></p>
-          <img id="img-letra-personagem" src="" alt="Personagem" style="width: 100px; height: 100px; object-fit: contain; margin: 10px 0;">
+          <h4 style="font-weight: 800; font-size: 18px; margin-bottom: 6px;">🔤 Qual é a Primeira Letra?</h4>
+          <p style="font-size: 14px; font-weight: 700; margin-top: 6px;">Nome do Amigo: <strong id="nome-letra-personagem" style="color: var(--purple); font-size: 18px;">Xexéu</strong></p>
+          <img id="img-letra-personagem" src="" alt="Personagem" style="width: 120px; height: 120px; object-fit: contain; margin: 16px 0;">
           <div id="opcoes-letras" class="game-btn-grid"></div>
         </div>
 
+        <!-- 4. JOGO DA MEMÓRIA -->
         <div id="game-memoria" class="game-section-page interactive-card">
-          <h4 style="font-weight: 800; font-size: 16px;">🧠 Jogo da Memória</h4>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Encontre os 4 pares dos amigos!</p>
+          <h4 style="font-weight: 800; font-size: 18px; margin-bottom: 6px;">🧠 Jogo da Memória</h4>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 14px;">Encontre os 4 pares dos amigos da Turminha!</p>
           <div id="memoryBoard" class="memory-board"></div>
         </div>
 
-        <div id="game-quiz" class="game-section-page interactive-card">
-          <h4 style="font-weight: 800; margin-bottom: 12px; font-size: 16px;">❓ Desafios da Turminha</h4>
-          <div style="display: flex; flex-direction: column; gap: 16px;">
-            <div style="background: #FFF; padding: 16px; border-radius: 12px; border: 1.5px solid #E2E8F0;">
-              <p style="font-size: 13px; font-weight: 700;">Quem é este personagem?</p>
-              <img id="quiz-img" src="" alt="Quiz" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
+        <!-- 5. QUIZ -->
+        <div id="game-quiz" class="game-section-page interactive-card" style="align-items: stretch;">
+          <h4 style="font-weight: 800; margin-bottom: 16px; font-size: 18px; text-align: center;">❓ Desafios da Turminha</h4>
+          <div style="display: flex; flex-direction: column; gap: 20px; max-width: 500px; margin: 0 auto; width: 100%;">
+            <div style="background: #FFF; padding: 18px; border-radius: 14px; border: 2px solid #E2E8F0; text-align: center;">
+              <p style="font-size: 14px; font-weight: 800; color: var(--primary-dark);">Quem é este personagem?</p>
+              <img id="quiz-img" src="" alt="Quiz" style="width: 90px; height: 90px; object-fit: contain; margin: 10px 0;">
               <div id="quiz-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
             </div>
-            <div style="background: #FFF; padding: 16px; border-radius: 12px; border: 1.5px solid #E2E8F0;">
-              <p id="cor-pergunta-txt" style="font-size: 13px; font-weight: 700;"></p>
-              <img id="cor-img" src="" alt="Detalhe" style="width: 85px; height: 85px; object-fit: contain; margin: 6px 0;">
+            <div style="background: #FFF; padding: 18px; border-radius: 14px; border: 2px solid #E2E8F0; text-align: center;">
+              <p id="cor-pergunta-txt" style="font-size: 14px; font-weight: 800; color: var(--primary-dark);"></p>
+              <img id="cor-img" src="" alt="Detalhe" style="width: 90px; height: 90px; object-fit: contain; margin: 10px 0;">
               <div id="cor-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
             </div>
           </div>
@@ -1074,6 +884,7 @@
       </div>
     </main>
 
+    <!-- PÁGINA ÁREA VIP (COM SELETOR DE PERFIL E JOGO MONTE O ROSTO) -->
     <main id="pagina-vip" class="page-content">
       <div class="age-group-section">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
@@ -1133,6 +944,13 @@
             <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 800; font-size: 12px; cursor: pointer;">🔒 Sair</button>
           </div>
 
+          <!-- SELEÇÃO DE PERFIL / PERSONAGEM FAVORITO -->
+          <div class="perfil-selector-box">
+            <h4 style="color: #1E293B; font-size: 15px; font-weight: 900; margin-bottom: 4px;">👤 Escolha seu Personagem de Perfil</h4>
+            <p style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Clique no seu amiguinho favorito da Turminha para personalizar seu espaço:</p>
+            <div id="avatarEscolhaGrid" class="avatar-escolha-grid"></div>
+          </div>
+
           <div class="drive-banner-box">
             <h4 style="color: #1E3A8A; font-size: 18px; font-weight: 900;">📁 Drive Exclusivo da Turminha</h4>
             <p style="font-size: 13px; color: #1E40AF; margin-top: 4px; font-weight: 600;">Baixe Wallpapers de alta qualidade, Desenhos para Imprimir e Colorir, e em breve Livros e Atividades Didáticas completas!</p>
@@ -1167,21 +985,21 @@
               <button id="btn-vipanel-5" class="vip-sub-btn" onclick="mudarPanelVip(5)">🧩 Monte o Rosto</button>
             </nav>
 
-            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">📖 Desafio das Histórias</h5>
-              <p id="vip-historia-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 12px;"></p>
-              <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
+            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 20px; border-radius: 12px; text-align: center; min-height: 360px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h5 style="color: #92400E; font-size: 16px; font-weight: 800; margin-bottom: 12px;">📖 Desafio das Histórias</h5>
+              <p id="vip-historia-txt" style="font-size: 15px; font-weight: 800; color: #78350F; margin-bottom: 16px;"></p>
+              <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 400px;"></div>
             </div>
 
-            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🎨 Cores e Detalhes Secretos</h5>
-              <p id="vip-cor-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 10px;"></p>
-              <img id="vip-cor-img" src="" alt="Detalhe VIP" style="width: 75px; height: 75px; object-fit: contain; margin-bottom: 10px;">
-              <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;"></div>
+            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 20px; border-radius: 12px; text-align: center; min-height: 360px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h5 style="color: #92400E; font-size: 16px; font-weight: 800; margin-bottom: 8px;">🎨 Cores e Detalhes Secretos</h5>
+              <p id="vip-cor-txt" style="font-size: 15px; font-weight: 800; color: #78350F; margin-bottom: 10px;"></p>
+              <img id="vip-cor-img" src="" alt="Detalhe VIP" style="width: 90px; height: 90px; object-fit: contain; margin-bottom: 12px;">
+              <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;"></div>
             </div>
 
-            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🧩 Quebra-Cabeça Proporcional</h5>
+            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 20px; border-radius: 12px; text-align: center; min-height: 360px;">
+              <h5 style="color: #92400E; font-size: 16px; font-weight: 800; margin-bottom: 12px;">🧩 Quebra-Cabeça Proporcional</h5>
               <div id="puzzleSelector" class="puzzle-selector"></div>
               <div class="puzzle-full-preview"><img id="puzzleFullPreviewImg" src="" alt="Preview"></div>
               <div class="puzzle-workspace">
@@ -1191,21 +1009,22 @@
               <button onclick="reiniciarPuzzle()" style="margin-top: 14px; padding: 10px 18px; background: #F59E0B; color: #FFF; border: none; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer;">Reiniciar Jogo 🔄</button>
             </div>
 
-            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🧠 Memória Relâmpago (6 Pares / 12 Cartas)</h5>
-              <div id="memoryBoardVip" class="memory-board" style="max-width: 380px;"></div>
+            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 20px; border-radius: 12px; text-align: center; min-height: 360px;">
+              <h5 style="color: #92400E; font-size: 16px; font-weight: 800; margin-bottom: 12px;">🧠 Memória Relâmpago (6 Pares / 12 Cartas)</h5>
+              <div id="memoryBoardVip" class="memory-board" style="max-width: 420px;"></div>
             </div>
 
-            <div id="panel-vip-5" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🧩 Monte o Rosto da Turminha</h5>
-              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Encontre a outra metade que completa o rostinho do personagem!</p>
+            <!-- JOGO EXCLUSIVO VIP: MONTE O ROSTO (CORRIGIDO PARA METADES EXATAS) -->
+            <div id="panel-vip-5" class="vip-game-panel" style="background: #FFF; padding: 20px; border-radius: 12px; text-align: center; min-height: 360px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h5 style="color: #92400E; font-size: 16px; font-weight: 800; margin-bottom: 6px;">🧩 Monte o Rosto da Turminha</h5>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Encontre a outra metade exata que completa o rostinho do personagem!</p>
               
-              <div style="display: flex; justify-content: center; margin-bottom: 14px;">
-                <div style="width: 80px; height: 100px; overflow: hidden; border: 3px solid #F59E0B; border-radius: 14px; background: #F8FAFC; display: flex; align-items: center; justify-content: center;">
-                  <img id="rosto-alvo-esquerda" src="" alt="Metade" style="width: 160px; height: 100px; max-width: none; object-fit: cover; object-position: left;">
-                </div>
+              <!-- Metade esquerda fixa em cima -->
+              <div style="width: 75px; height: 110px; overflow: hidden; border: 3px solid #F59E0B; border-radius: 14px; background: #F8FAFC; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);">
+                <img id="rosto-alvo-esquerda" src="" alt="Metade Esquerda" style="width: 150px; height: 110px; max-width: none; object-fit: cover; object-position: left;">
               </div>
 
+              <!-- 3 Opções da metade direita embaixo -->
               <div id="rosto-opcoes-grid" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;"></div>
             </div>
 
@@ -1231,9 +1050,28 @@
 
   <script>
     let audioAtivo = true;
+    let pontosConquista = parseInt(localStorage.getItem('turminha_pontos') || '0');
     const SENHA_MESTRA_CRIADORA = "65628467";
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxkMvHbuXfZWEfd1tzLDvk4YzIW66alJyp2J9VGm-8nQV1iotNqaDLDieEeVblb6RcTMA/exec";
     const LINK_KIWIFY = "https://pay.kiwify.com.br/avOqrEg";
+
+    function adicionarPontos(qtde) {
+      pontosConquista += qtde;
+      localStorage.setItem('turminha_pontos', pontosConquista);
+      atualizarPlacarConquistas();
+    }
+
+    function atualizarPlacarConquistas() {
+      const pEl = document.getElementById('placar-pontos');
+      const mEl = document.getElementById('medalha-status');
+      if (pEl) pEl.innerText = pontosConquista;
+      if (mEl) {
+        if (pontosConquista >= 30) mEl.innerText = "👑 Mestre da Turminha";
+        else if (pontosConquista >= 15) mEl.innerText = "⭐ Explorador Experiente";
+        else if (pontosConquista >= 5) mEl.innerText = "🌟 Amigo Dedicado";
+        else mEl.innerText = "⭐ Iniciante da Turminha";
+      }
+    }
 
     function exibirAvisoVisual(texto) {
       const toast = document.getElementById('visualToast');
@@ -1269,7 +1107,7 @@
       'Theo': { nome: "Theo", desc: "O Theo é o pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar a família." },
       'Nina': { nome: "Nina", desc: "A Nina é super esperta e adora aprender coisas novas com seus cabelos cacheados!" },
       'Iza': { nome: "Iza", desc: "A Iza é a vaidosa da Turminha! De vestidinho rosa e cabelos ondulados, espalha doçura por onde passa." },
-      'Sam': { nome: "Sam", desc: "O Sam é o paizão ruivo do Joca e do Leo. Descontraído, adora inventar brinquedos." },
+      'Sam': { nome: "Sam", desc: "O Sam é o paizão ruivo do Joca e do Leo. Descontraído, adora construir brinquedos." },
       'Lia': { nome: "Lia", desc: "A Lia é a mãe do Joca e do Leo. Estilosa e alegre, traz energia contagiante para o dia a dia." },
       'Joca': { nome: "Joca", desc: "O Joca é o menino de camiseta verde! Doidinho e engraçado, transforma tudo em diversão." },
       'Leo': { nome: "Leo", desc: "O Leo é irmão do Joca. Amante de detalhes e focado em suas descobertas com muita imaginação." },
@@ -1401,7 +1239,10 @@
       document.getElementById('btn-tab-' + pagina).classList.add('active');
 
       if (pagina === 'jogos') setTimeout(redimensionarCanvas, 100);
-      if (pagina === 'vip') verificarStatusVip();
+      if (pagina === 'vip') {
+        verificarStatusVip();
+        criarSeletorAvatarPerfil();
+      }
     }
 
     function mudarSubJogo(sub) {
@@ -1428,6 +1269,27 @@
       if(pAtual) pAtual.classList.add('active-vip-panel');
       if(bAtual) bAtual.classList.add('active');
       if(num === 5) carregarJogoMonteORosto();
+    }
+
+    /* SISTEMA DE PERFIL VIP */
+    function criarSeletorAvatarPerfil() {
+      const grid = document.getElementById('avatarEscolhaGrid');
+      if (!grid || grid.children.length > 0) return;
+      grid.innerHTML = '';
+      const avatarAtual = localStorage.getItem('turminha_avatar_escolhido') || TODOS_PERSONAGENS[0].img;
+      TODOS_PERSONAGENS.forEach(p => {
+        const imgBtn = document.createElement('img');
+        imgBtn.src = p.img;
+        imgBtn.className = 'avatar-escolha-btn' + (p.img === avatarAtual ? ' selecionado' : '');
+        imgBtn.title = p.nome;
+        imgBtn.onclick = () => {
+          document.querySelectorAll('.avatar-escolha-btn').forEach(b => b.classList.remove('selecionado'));
+          imgBtn.classList.add('selecionado');
+          localStorage.setItem('turminha_avatar_escolhido', p.img);
+          lerTexto(`Perfil alterado para ${p.nome}!`);
+        };
+        grid.appendChild(imgBtn);
+      });
     }
 
     const canvas = document.getElementById('paintCanvas');
@@ -1521,7 +1383,7 @@
       for (let i = 0; i < qContar; i++) {
         const img = document.createElement('img');
         img.src = charSorteado.img;
-        img.style.cssText = 'width:48px; height:48px; object-fit:contain;';
+        img.style.cssText = 'width:52px; height:52px; object-fit:contain;';
         display.appendChild(img);
       }
       const opts = document.getElementById('countOptions');
@@ -1530,7 +1392,11 @@
         const btn = document.createElement('button');
         btn.className = 'btn-choice'; btn.innerText = n;
         btn.onclick = () => {
-          if (n === qContar) { lerTexto("Muito bem! Acertou!"); setTimeout(carregarJogoContar, 700); }
+          if (n === qContar) { 
+            lerTexto("Muito bem! Acertou!"); 
+            adicionarPontos(5);
+            setTimeout(carregarJogoContar, 700); 
+          }
           else lerTexto("Tente de novo!");
         };
         opts.appendChild(btn);
@@ -1554,7 +1420,11 @@
         const btn = document.createElement('button');
         btn.className = 'btn-choice'; btn.innerText = l;
         btn.onclick = () => {
-          if (l === pLetraAtual.letra) { lerTexto("Parabéns! Letra correta!"); setTimeout(carregarJogoLetra, 700); }
+          if (l === pLetraAtual.letra) { 
+            lerTexto("Parabéns! Letra correta!"); 
+            adicionarPontos(5);
+            setTimeout(carregarJogoLetra, 700); 
+          }
           else lerTexto("Tente de novo!");
         };
         container.appendChild(btn);
@@ -1579,7 +1449,11 @@
           else {
             if (pCarta.dataset.img === src) {
               acertosMem++; lerTexto("Encontrou o par!"); pCarta = null;
-              if (acertosMem === 4) setTimeout(iniciarMemoria, 1800);
+              adicionarPontos(3);
+              if (acertosMem === 4) {
+                adicionarPontos(10);
+                setTimeout(iniciarMemoria, 1800);
+              }
             } else {
               travaMem = true;
               setTimeout(() => {
@@ -1610,7 +1484,11 @@
         btn.style.cssText = "padding:10px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:13px;";
         btn.innerText = o;
         btn.onclick = () => {
-          if (o === pQuizAtual.nome) { lerTexto("Muito bem!"); setTimeout(carregarQuiz, 700); }
+          if (o === pQuizAtual.nome) { 
+            lerTexto("Muito bem!"); 
+            adicionarPontos(5);
+            setTimeout(carregarQuiz, 700); 
+          }
           else lerTexto("Tente novamente!");
         };
         container.appendChild(btn);
@@ -1629,7 +1507,11 @@
         btn.style.cssText = "padding:10px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:13px;";
         btn.innerText = o;
         btn.onclick = () => {
-          if (o === pCorAtual.corCorreta) { lerTexto("Acertou em cheio!"); setTimeout(carregarJogoCor, 700); }
+          if (o === pCorAtual.corCorreta) { 
+            lerTexto("Acertou em cheio!"); 
+            adicionarPontos(5);
+            setTimeout(carregarJogoCor, 700); 
+          }
           else lerTexto("Tente de novo!");
         };
         container.appendChild(btn);
@@ -1652,13 +1534,14 @@
       gridRosto.innerHTML = '';
       opcoesRosto.forEach(p => {
         const wrap = document.createElement('div');
-        wrap.style.cssText = "width: 80px; height: 100px; overflow: hidden; border: 3px solid #CBD5E1; border-radius: 14px; background: #FFF; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s;";
-        wrap.innerHTML = `<img src="${p.img}" style="width: 160px; height: 100px; max-width: none; object-fit: cover; object-position: right; pointer-events: none;">`;
+        wrap.style.cssText = "width: 75px; height: 110px; overflow: hidden; border: 3px solid #CBD5E1; border-radius: 14px; background: #FFF; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s;";
+        wrap.innerHTML = `<img src="${p.img}" style="width: 150px; height: 110px; max-width: none; object-fit: cover; object-position: right; pointer-events: none;">`;
         wrap.onmouseover = () => wrap.style.borderColor = "#3B82F6";
         wrap.onmouseout = () => wrap.style.borderColor = "#CBD5E1";
         wrap.onclick = () => {
           if (p.nome === personagemAlvoRosto.nome) {
             lerTexto("Parabéns! Você montou o rostinho certinho!");
+            adicionarPontos(10);
             setTimeout(carregarJogoMonteORosto, 1200);
           } else {
             lerTexto("Ops! Essa não é a metade certa. Tente outra!");
@@ -1800,7 +1683,10 @@
       for (let i = 0; i < 12; i++) if (estadoTabuleiro[i] === pecaIndex) estadoTabuleiro[i] = null;
       estadoTabuleiro[slotIndex] = pecaIndex;
       renderizarTabuleiroPuzzle(); renderizarPecasEmbaralhadas();
-      if (estadoTabuleiro.every((val, i) => val === i)) lerTexto("Parabéns! Quebra-cabeça montado!");
+      if (estadoTabuleiro.every((val, i) => val === i)) {
+        lerTexto("Parabéns! Quebra-cabeça montado!");
+        adicionarPontos(15);
+      }
     }
 
     let cMemVip = [], pCartaVip = null, travaMemVip = false, acertosMemVip = 0;
@@ -1817,8 +1703,16 @@
           card.classList.add('flipped'); card.innerHTML = `<img src="${src}" alt="Carta VIP">`;
           if (!pCartaVip) pCartaVip = card;
           else {
-            if (pCartaVip.dataset.img === src) { acertosMemVip++; lerTexto("Par VIP!"); pCartaVip = null; if (acertosMemVip === 6) setTimeout(iniciarMemoriaVip, 1800); }
-            else {
+            if (pCartaVip.dataset.img === src) { 
+              acertosMemVip++; 
+              lerTexto("Par VIP!"); 
+              adicionarPontos(5);
+              pCartaVip = null; 
+              if (acertosMemVip === 6) {
+                adicionarPontos(15);
+                setTimeout(iniciarMemoriaVip, 1800);
+              } 
+            } else {
               travaMemVip = true;
               setTimeout(() => { pCartaVip.classList.remove('flipped'); pCartaVip.innerText = '❓'; card.classList.remove('flipped'); card.innerText = '❓'; pCartaVip = null; travaMemVip = false; }, 900);
             }
@@ -1835,7 +1729,15 @@
       itemSorteado.opcoes.sort(() => Math.random() - 0.5).forEach(opcaoNome => {
         const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:10px; font-size:14px; background:#F59E0B; border-radius:10px; border:none; color:white; font-weight:800; cursor:pointer; width:100%;";
         btn.innerText = opcaoNome;
-        btn.onclick = () => { if (opcaoNome === itemSorteado.resposta) { lerTexto("Parabéns! Resposta correta!"); setTimeout(carregarDesafioHistoriaVip, 800); } else lerTexto("Ops! Tente outra resposta."); };
+        btn.onclick = () => { 
+          if (opcaoNome === itemSorteado.resposta) { 
+            lerTexto("Parabéns! Resposta correta!"); 
+            adicionarPontos(8);
+            setTimeout(carregarDesafioHistoriaVip, 800); 
+          } else {
+            lerTexto("Ops! Tente outra resposta."); 
+          }
+        };
         containerOpcoes.appendChild(btn);
       });
     }
@@ -1848,11 +1750,20 @@
       pCor.corOpcoes.sort(() => Math.random() - 0.5).forEach(corOp => {
         const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:8px 14px; font-size:13px; background:#8B5CF6;";
         btn.innerText = corOp;
-        btn.onclick = () => { if (corOp === pCor.corCorreta) { lerTexto("Acertou!"); setTimeout(carregarJogoCorVip, 800); } else lerTexto("Tente de novo!"); };
+        btn.onclick = () => { 
+          if (corOp === pCor.corCorreta) { 
+            lerTexto("Acertou!"); 
+            adicionarPontos(5);
+            setTimeout(carregarJogoCorVip, 800); 
+          } else {
+            lerTexto("Tente de novo!"); 
+          }
+        };
         containerCor.appendChild(btn);
       });
     }
 
+    atualizarPlacarConquistas();
     carregarJogoContar();
     carregarJogoLetra();
     iniciarMemoria();
