@@ -216,7 +216,6 @@
       flex-shrink: 0;
     }
 
-    /* BLOCOS DE REDES SOCIAIS E PLATAFORMAS ORGANIZADOS */
     .social-block-container {
       padding: 0 16px;
       display: flex;
@@ -637,9 +636,7 @@
         </div>
       </section>
 
-      <!-- ORDENAÇÃO DAS REDES SOCIAIS DIVIDIDAS EM CATEGORIAS LÓGICAS -->
       <section class="social-block-container">
-        <!-- BLOCO 1: VÍDEOS & MÚSICAS -->
         <div class="social-group-box">
           <span class="social-group-title">▶️ Vídeos & Músicas</span>
           <div class="social-round-section">
@@ -649,7 +646,6 @@
           </div>
         </div>
 
-        <!-- BLOCO 2: REDES SOCIAIS & SHORTS -->
         <div class="social-group-box">
           <span class="social-group-title">📱 Redes Sociais & Fotos</span>
           <div class="social-round-section">
@@ -1013,7 +1009,7 @@
           </div>
 
           <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
-            <h4 style="color: #92400E; margin-bottom: 10px; font-size: 15px; font-weight: 900;">⭐ Minijogos VIP</h4>
+            <h4 style="color: #92400E; margin-bottom: 10px; font-size: 15px; font-weight: 900; text-align: center;">⭐ Minijogos VIP</h4>
             <nav class="vip-games-subnav">
               <button id="btn-vipanel-1" class="vip-sub-btn active" onclick="mudarPanelVip(1)">📖 Histórias</button>
               <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores & Detalhes</button>
@@ -1021,21 +1017,22 @@
               <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória 12</button>
             </nav>
 
-            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">📖 Desafio das Histórias</h5>
-              <p id="vip-historia-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 14px;"></p>
-              <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 380px;"></div>
+            <!-- PAINEL VIP 1 ALINHADO E CENTRALIZADO -->
+            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 20px 16px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center; width: 100%;">
+              <h5 style="color: #92400E; font-size: 16px; font-weight: 900; margin-bottom: 8px;">📖 Desafio das Histórias</h5>
+              <p id="vip-historia-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 16px; line-height: 1.5;"></p>
+              <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 420px; margin: 0 auto;"></div>
             </div>
 
-            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 6px;">🎨 Cores e Detalhes Secretos</h5>
+            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 20px 16px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center; width: 100%;">
+              <h5 style="color: #92400E; font-size: 16px; font-weight: 900; margin-bottom: 6px;">🎨 Cores e Detalhes Secretos</h5>
               <p id="vip-cor-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 8px;"></p>
               <img id="vip-cor-img" src="" alt="Detalhe VIP" style="width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px;">
               <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;"></div>
             </div>
 
-            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 4px;">🧩 Quebra-Cabeça da Turminha</h5>
+            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 20px 16px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center; width: 100%;">
+              <h5 style="color: #92400E; font-size: 16px; font-weight: 900; margin-bottom: 4px;">🧩 Quebra-Cabeça da Turminha</h5>
               <p style="font-size:11.5px; color:#78350F; margin-bottom:10px; font-weight:600;">Clique na peça e depois no espaço para encaixar!</p>
               <div id="puzzleSelector" class="puzzle-selector"></div>
               <div class="puzzle-full-preview"><img id="puzzleFullPreviewImg" src="" alt="Preview"></div>
@@ -1046,8 +1043,8 @@
               <button onclick="reiniciarPuzzle()" style="margin-top: 12px; padding: 10px 18px; min-height:48px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 12.5px; cursor: pointer;">Reiniciar 🔄</button>
             </div>
 
-            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧠 Memória Relâmpago (12 Cartas)</h5>
+            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 20px 16px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center; width: 100%;">
+              <h5 style="color: #92400E; font-size: 16px; font-weight: 900; margin-bottom: 10px;">🧠 Memória Relâmpago (12 Cartas)</h5>
               <div id="memoryBoardVip" class="memory-board"></div>
             </div>
 
@@ -1290,6 +1287,7 @@
       if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
     }
 
+    /* MUDAR PAINEL VIP AJUSTADO PARA ALINHAMENTO PERFEITO */
     function mudarPanelVip(num) {
       for (let i = 1; i <= 4; i++) {
         const panel = document.getElementById('panel-vip-' + i);
@@ -1305,7 +1303,7 @@
       const bAtual = document.getElementById('btn-vipanel-' + num);
       if (pAtual) {
         pAtual.classList.add('active-vip-panel');
-        pAtual.style.display = (num === 1 || num === 2) ? 'flex' : 'block';
+        pAtual.style.display = 'block';
       }
       if (bAtual) bAtual.classList.add('active');
 
