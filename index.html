@@ -216,27 +216,57 @@
       flex-shrink: 0;
     }
 
-    .social-round-section {
+    /* BLOCOS DE REDES SOCIAIS E PLATAFORMAS ORGANIZADOS */
+    .social-block-container {
       padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .social-group-box {
+      background: #F8FAFC;
+      border: 2px solid #E2E8F0;
+      border-radius: var(--radius-lg);
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-group-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .social-round-section {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
     }
+
     .social-round-btn {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: #FFF;
-      border: 2.5px solid #E2E8F0;
+      border: 2.5px solid #CBD5E1;
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
       box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
-    .social-round-btn img { width: 26px; height: 26px; object-fit: contain; }
+    .social-round-btn:active { transform: scale(0.92); }
+    .social-round-btn:hover { border-color: var(--primary); }
+    .social-round-btn img { width: 28px; height: 28px; object-fit: contain; }
 
     .section-family-container {
       padding: 0 16px;
@@ -607,14 +637,28 @@
         </div>
       </section>
 
-      <section class="social-round-section">
-        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube"><img src="https://i.imgur.com/rFW5M6l.png" alt="YouTube"></a>
-        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram"><img src="https://i.imgur.com/yIbaMKH.png" alt="Instagram"></a>
-        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok"><img src="https://i.imgur.com/iwSYwA7.png" alt="TikTok"></a>
-        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify"><img src="https://i.imgur.com/9c2BiJo.png" alt="Spotify"></a>
-        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music"><img src="https://i.imgur.com/mkgDBjM.png" alt="YouTube Music"></a>
-        <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook"><img src="https://i.imgur.com/viKEETj.png" alt="Facebook"></a>
-        <a href="https://www.threads.net/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/3qJ8rYd.png" alt="Threads"></a>
+      <!-- ORDENAÇÃO DAS REDES SOCIAIS DIVIDIDAS EM CATEGORIAS LÓGICAS -->
+      <section class="social-block-container">
+        <!-- BLOCO 1: VÍDEOS & MÚSICAS -->
+        <div class="social-group-box">
+          <span class="social-group-title">▶️ Vídeos & Músicas</span>
+          <div class="social-round-section">
+            <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube"><img src="https://i.imgur.com/rFW5M6l.png" alt="YouTube"></a>
+            <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music"><img src="https://i.imgur.com/mkgDBjM.png" alt="YouTube Music"></a>
+            <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify"><img src="https://i.imgur.com/9c2BiJo.png" alt="Spotify"></a>
+          </div>
+        </div>
+
+        <!-- BLOCO 2: REDES SOCIAIS & SHORTS -->
+        <div class="social-group-box">
+          <span class="social-group-title">📱 Redes Sociais & Fotos</span>
+          <div class="social-round-section">
+            <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram"><img src="https://i.imgur.com/yIbaMKH.png" alt="Instagram"></a>
+            <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok"><img src="https://i.imgur.com/iwSYwA7.png" alt="TikTok"></a>
+            <a href="https://www.threads.net/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/3qJ8rYd.png" alt="Threads"></a>
+            <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook"><img src="https://i.imgur.com/viKEETj.png" alt="Facebook"></a>
+          </div>
+        </div>
       </section>
 
       <section class="section-family-container">
@@ -700,7 +744,7 @@
               <img src="https://i.imgur.com/PZPpO14.png" class="floating-char-img" alt="Leo">
               <span class="floating-char-name">Leo</span>
               <span class="floating-char-tag">Explorador Focado</span>
-              <p class="floating-char-desc">Irmão do Joca. Amante de detalhes e focado em suas discoveries com muita imaginação.</p>
+              <p class="floating-char-desc">Irmão do Joca. Amante de detalhes e focado em suas descobertas com muita imaginação.</p>
             </div>
           </div>
         </div>
@@ -968,7 +1012,6 @@
             </div>
           </div>
 
-          <!-- NAVEGAÇÃO DOS MINIJOGOS VIP CORRIGIDA -->
           <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
             <h4 style="color: #92400E; margin-bottom: 10px; font-size: 15px; font-weight: 900;">⭐ Minijogos VIP</h4>
             <nav class="vip-games-subnav">
@@ -1075,7 +1118,6 @@
       }
     }
 
-    /* LEITURA DE VOZ DESTRAVADA E À PROVA DE FALHAS */
     function desbloquearAudioMobileOnce() {
       if ('speechSynthesis' in window) {
         const u = new SpeechSynthesisUtterance('');
@@ -1248,7 +1290,6 @@
       if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
     }
 
-    /* SISTEMA DE NAVEGAÇÃO DOS MINIJOGOS VIP TOTALMENTE CORRIGIDO */
     function mudarPanelVip(num) {
       for (let i = 1; i <= 4; i++) {
         const panel = document.getElementById('panel-vip-' + i);
@@ -1268,7 +1309,6 @@
       }
       if (bAtual) bAtual.classList.add('active');
 
-      // Inicialização sob demanda de cada jogo ao clicar na aba
       if (num === 1) carregarDesafioHistoriaVip();
       if (num === 2) carregarJogoCorVip();
       if (num === 3) iniciarPuzzleVip();
