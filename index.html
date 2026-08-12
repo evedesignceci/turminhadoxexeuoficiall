@@ -636,8 +636,8 @@
             <button class="btn-audio-mini" onclick="lerTexto('Mais do que um nome divertido, a Turminha do Xexéu é o nosso jeito de honrar as raízes e a história da nossa família.')" title="Ouvir">🔊</button>
           </div>
           <p>Mais do que um nome divertido, a <strong>Turminha do Xexéu</strong> é o nosso jeito de honrar as raízes e a história da nossa família.</p>
-          <p>O nome <strong>Xexéu</strong> é uma homenagem que atravessa gerações. Ele vem para honrar a memória de <em>Mariano Xexéu</em> e celebrar a vida de seu filho, <em>Pedro Mariano</em>, que é a grande inspiração para o nosso querido <strong>Vovô Beto</strong>. Escolhemos esse nome para transformar uma identidade familiar em um símbolo de união, alegria e aprendizado.</p>
-          <p>A <strong>Vovó Hilda</strong> é muito mais que uma personagem; ela é a nossa forma de eternizar quem sempre trouxe alegria. Inspirada na memória de <em>Astrogilda Grispym</em>, ela representa o amor que não conhece o tempo. O <strong>Vovô Beto</strong> traz para a Turminha aquela energia contagiante e o prazer pelas coisas simples, mostrando que cada momento em família é uma oportunidade para criar memórias inesquecíveis.</p>
+          <p>O nome <strong>Xexéu</strong> é uma homenagem que atravessa gerações. Ele honra a memória de <em>Mariano Xexéu</em> e celebra a vida de seu filho, <em>Pedro Mariano</em>, grande inspiração para o nosso querido <strong>Vovô Beto</strong>. Escolhemos esse nome para transformar nossa identidade familiar em um símbolo de união, alegria e aprendizado.</p>
+          <p>A <strong>Vovó Hilda</strong> é inspirada na inesquecível <em>Astrogilda Grispym</em>, representando o amor que não conhece o tempo. Já o <strong>Vovô Beto</strong> transmite aquela energia contagiante e o prazer pelas coisas simples, mostrando que cada momento em família é uma oportunidade para criar memórias inesquecíveis.</p>
         </div>
       </section>
 
@@ -683,7 +683,7 @@
               <img src="https://i.imgur.com/Hbf9i8C.png" class="floating-char-img" alt="Theo">
               <span class="floating-char-name">Theo</span>
               <span class="floating-char-tag">Pai Tranquilo</span>
-              <p class="floating-char-desc">Pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar as meninas.</p>
+              <p class="floating-char-desc">Pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar a família.</p>
             </div>
             <div class="floating-char-card card-f1" onclick="tocarVozETexto('Nina')">
               <img src="https://i.imgur.com/dfuGmNA.png" class="floating-char-img" alt="Nina">
@@ -941,10 +941,10 @@
             <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 800; font-size: 12px; cursor: pointer;">🔒 Sair</button>
           </div>
 
-          <!-- SELEÇÃO DE PERFIL COM TEMA DINÂMICO -->
+          <!-- SELEÇÃO DE PERFIL COM CORES EXCLUSIVAS POR PERSONAGEM -->
           <div class="perfil-selector-box">
             <h4 style="color: #1E293B; font-size: 15px; font-weight: 900; margin-bottom: 4px;">✨ Escolha seu Personagem (Tema do Site)</h4>
-            <p style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Ao escolher seu amiguinho, o portal inteiro ganha as cores dele!</p>
+            <p style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Ao escolher seu amiguinho, o portal inteiro ganha a cor exata dele!</p>
             <div id="avatarEscolhaGrid" class="avatar-escolha-grid"></div>
           </div>
 
@@ -1037,7 +1037,7 @@
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxkMvHbuXfZWEfd1tzLDvk4YzIW66alJyp2J9VGm-8nQV1iotNqaDLDieEeVblb6RcTMA/exec";
     const LINK_KIWIFY = "https://pay.kiwify.com.br/avOqrEg";
 
-    // PALETAS DE CORES EXCLUSIVAS PARA CADA PERSONAGEM
+    // PALETAS DE CORES EXATAS SOLICITADAS POR VOCÊ
     const TEMAS_PERSONAGENS = {
       'Capilé': { primary: '#38BDF8', dark: '#0284C7', grad: 'linear-gradient(180deg, #E0F2FE 0%, #F0F9FF 60%, #E0F2FE 100%)' },
       'Xexéu': { primary: '#16A34A', dark: '#15803D', grad: 'linear-gradient(180deg, #DCFCE7 0%, #F0FDF4 60%, #DCFCE7 100%)' },
@@ -1054,7 +1054,7 @@
     };
 
     function aplicarTemaPersonagem(nomePersonagem) {
-      const tema = TEMAS_PERSONAGENS[nomePersonagem] || TEMAS_PERSONAGENS['Xexéu'];
+      const tema = TEMAS_PERSONAGENS[nomePersonagem] || TEMAS_PERSONAGENS['Capilé'];
       document.documentElement.style.setProperty('--primary', tema.primary);
       document.documentElement.style.setProperty('--primary-dark', tema.dark);
       document.documentElement.style.setProperty('--bg-gradient', tema.grad);
@@ -1109,16 +1109,16 @@
     const INFO_PERSONAGENS = {
       'Xexéu': { nome: "Xexéu", desc: "O pássaro azul de boina amarela! Inspirado no pássaro xexéu e no nome do bisavô Mariano Xexéu, cheio de alegria e amizade." },
       'Capilé': { nome: "Capilé", desc: "O Capilé é o cachorrinho de orelhas grandes e coleira azul-celeste com pingente de osso dourado! Um amigão leal." },
-      'Maya': { nome: "Maya", desc: "A Maya é a mãe dedicada da Iza e da Nina. Extremamente organizada e atenciosa com as meninas." },
-      'Theo': { nome: "Theo", desc: "O Theo é o pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar a família." },
+      'Maya': { nome: "Maya", desc: "A Maya é a mãe dedicada da Iza e da Nina. Extremamente organizada e atenciosa com a família." },
+      'Theo': { nome: "Theo", desc: "O Theo é o pai da Iza e da Nina. Calmo, observador e sempre pronto para apoiar as meninas." },
       'Nina': { nome: "Nina", desc: "A Nina é super esperta e adora aprender coisas novas com seus cabelos cacheados!" },
       'Iza': { nome: "Iza", desc: "A Iza é a vaidosa da Turminha! De vestidinho rosa e cabelos ondulados, espalha doçura por onde passa." },
-      'Sam': { nome: "Sam", desc: "O Sam é o paizão ruivo do Joca e do Leo. Descontraído, adora construir brinquedos." },
-      'Lia': { nome: "Lia", desc: "A Lia é a mãe do Joca e do Leo. Estilosa e alegre, traz energia contagiante para o dia a dia." },
-      'Joca': { nome: "Joca", desc: "O Joca é o menino de camiseta verde! Doidinho e engraçado, transforma tudo em diversão." },
+      'Sam': { nome: "Sam", desc: "O Sam é o paizão ruivo do Joca e do Leo. Descontraído, adora construir brinquedos e invenções." },
+      'Lia': { nome: "Lia", desc: "A Lia é a mãe do Joca e do Leo. Estilosa e alegre, traz uma energia contagiante para o dia a dia." },
+      'Joca': { nome: "Joca", desc: "O Joca é o menino de camiseta verde! Doidinho e engraçado, transforma qualquer momento em diversão." },
       'Leo': { nome: "Leo", desc: "O Leo é irmão do Joca. Amante de detalhes e focado em suas descobertas com muita imaginação." },
-      'Beto': { nome: "Vovô Beto", desc: "O Vovô Beto usa óculos quadrados. Inspirado no querido Pedro Mariano, traz paciência, bom humor e energia contagiante." },
-      'Hilda': { nome: "Vovó Hilda", desc: "A Vovó Hilda usa óculos redondos. Inspirada na inesquecível Astrogilda Grispym, guardando doçura, abraços e valores preciosos." }
+      'Beto': { nome: "Vovô Beto", desc: "Usa óculos quadrados. Inspirado no querido Pedro Mariano, traz paciência, bom humor e energia contagiante." },
+      'Hilda': { nome: "Vovó Hilda", desc: "Usa óculos redondos. Inspirada na inesquecível Astrogilda Grispym, guardando doçura, abraços e valores preciosos." }
     };
 
     const TODOS_PERSONAGENS = [
@@ -1296,7 +1296,7 @@
           localStorage.setItem('turminha_avatar_escolhido', p.img);
           localStorage.setItem('turminha_nome_escolhido', p.nome);
           aplicarTemaPersonagem(p.nome);
-          lerTexto(`Tema alterado para ${p.nome}! O portal agora é todinho dele.`);
+          lerTexto(`Tema alterado para ${p.nome}! O portal agora está com a cor dele.`);
         };
         grid.appendChild(imgBtn);
       });
