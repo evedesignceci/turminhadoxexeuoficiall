@@ -60,7 +60,6 @@
       gap: 24px;
       padding-bottom: 32px;
       border: 3px solid #FFFFFF;
-      transition: border-color 0.4s ease;
     }
 
     header {
@@ -545,11 +544,6 @@
     .drive-banner-box { background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 100%); border: 2.5px solid #3B82F6; border-radius: var(--radius-md); padding: 20px; text-align: center; margin-bottom: 20px; }
     .btn-drive { display: inline-block; background: #2563EB; color: #FFF; font-weight: 800; font-size: 14px; padding: 12px 24px; border-radius: 12px; text-decoration: none; margin-top: 10px; }
 
-    .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 16px; margin-bottom: 20px; text-align: center; }
-    .avatar-escolha-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-    .avatar-escolha-btn { width: 50px; height: 50px; border-radius: 50%; border: 3px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 4px; transition: 0.2s; }
-    .avatar-escolha-btn.selecionado { border-color: #3B82F6; transform: scale(1.1); box-shadow: 0 4px 12px rgba(59,130,246,0.4); }
-
     .puzzle-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
     .puzzle-thumb-btn { width: 75px; height: 52px; border: 3px solid #CBD5E1; border-radius: 10px; background-size: cover; background-position: center; cursor: pointer; opacity: 0.6; }
     .puzzle-thumb-btn.active { border-color: #F59E0B; transform: scale(1.08); opacity: 1; }
@@ -683,7 +677,7 @@
               <img src="https://i.imgur.com/Hbf9i8C.png" class="floating-char-img" alt="Theo">
               <span class="floating-char-name">Theo</span>
               <span class="floating-char-tag">Pai Tranquilo</span>
-              <p class="floating-char-desc">Pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar a família.</p>
+              <p class="floating-char-desc">Pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar as meninas.</p>
             </div>
             <div class="floating-char-card card-f1" onclick="tocarVozETexto('Nina')">
               <img src="https://i.imgur.com/dfuGmNA.png" class="floating-char-img" alt="Nina">
@@ -941,13 +935,6 @@
             <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 800; font-size: 12px; cursor: pointer;">🔒 Sair</button>
           </div>
 
-          <!-- SELEÇÃO DE PERFIL COM CORES EXCLUSIVAS POR PERSONAGEM -->
-          <div class="perfil-selector-box">
-            <h4 style="color: #1E293B; font-size: 15px; font-weight: 900; margin-bottom: 4px;">✨ Escolha seu Personagem (Tema do Site)</h4>
-            <p style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Ao escolher seu amiguinho, o portal inteiro ganha a cor exata dele!</p>
-            <div id="avatarEscolhaGrid" class="avatar-escolha-grid"></div>
-          </div>
-
           <div class="drive-banner-box">
             <h4 style="color: #1E3A8A; font-size: 18px; font-weight: 900;">📁 Drive Exclusivo da Turminha</h4>
             <p style="font-size: 13px; color: #1E40AF; margin-top: 4px; font-weight: 600;">Baixe Wallpapers de alta qualidade, Desenhos para Imprimir e Colorir, e em breve Livros e Atividades Didáticas completas!</p>
@@ -1037,7 +1024,7 @@
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxkMvHbuXfZWEfd1tzLDvk4YzIW66alJyp2J9VGm-8nQV1iotNqaDLDieEeVblb6RcTMA/exec";
     const LINK_KIWIFY = "https://pay.kiwify.com.br/avOqrEg";
 
-    // PALETAS DE CORES EXATAS SOLICITADAS POR VOCÊ
+    // PALETAS DE CORES EXATAS DEFINIDAS POR VOCÊ
     const TEMAS_PERSONAGENS = {
       'Capilé': { primary: '#38BDF8', dark: '#0284C7', grad: 'linear-gradient(180deg, #E0F2FE 0%, #F0F9FF 60%, #E0F2FE 100%)' },
       'Xexéu': { primary: '#16A34A', dark: '#15803D', grad: 'linear-gradient(180deg, #DCFCE7 0%, #F0FDF4 60%, #DCFCE7 100%)' },
@@ -1058,7 +1045,8 @@
       document.documentElement.style.setProperty('--primary', tema.primary);
       document.documentElement.style.setProperty('--primary-dark', tema.dark);
       document.documentElement.style.setProperty('--bg-gradient', tema.grad);
-      document.getElementById('appContainer').style.borderColor = tema.primary;
+      const appContainer = document.getElementById('appContainer');
+      if(appContainer) appContainer.style.borderColor = tema.primary;
     }
 
     function adicionarPontos(qtde) {
@@ -1109,8 +1097,8 @@
     const INFO_PERSONAGENS = {
       'Xexéu': { nome: "Xexéu", desc: "O pássaro azul de boina amarela! Inspirado no pássaro xexéu e no nome do bisavô Mariano Xexéu, cheio de alegria e amizade." },
       'Capilé': { nome: "Capilé", desc: "O Capilé é o cachorrinho de orelhas grandes e coleira azul-celeste com pingente de osso dourado! Um amigão leal." },
-      'Maya': { nome: "Maya", desc: "A Maya é a mãe dedicada da Iza e da Nina. Extremamente organizada e atenciosa com a família." },
-      'Theo': { nome: "Theo", desc: "O Theo é o pai da Iza e da Nina. Calmo, observador e sempre pronto para apoiar as meninas." },
+      'Maya': { nome: "Maya", desc: "A Maya é a mãe dedicada da Iza e da Nina. Extremamente organizada, atenciosa e porto seguro da família." },
+      'Theo': { nome: "Theo", desc: "O Theo é o pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar a família." },
       'Nina': { nome: "Nina", desc: "A Nina é super esperta e adora aprender coisas novas com seus cabelos cacheados!" },
       'Iza': { nome: "Iza", desc: "A Iza é a vaidosa da Turminha! De vestidinho rosa e cabelos ondulados, espalha doçura por onde passa." },
       'Sam': { nome: "Sam", desc: "O Sam é o paizão ruivo do Joca e do Leo. Descontraído, adora construir brinquedos e invenções." },
@@ -1247,7 +1235,6 @@
       if (pagina === 'jogos') setTimeout(redimensionarCanvas, 100);
       if (pagina === 'vip') {
         verificarStatusVip();
-        criarSeletorAvatarPerfil();
       }
     }
 
@@ -1274,32 +1261,6 @@
       const bAtual = document.getElementById('btn-vipanel-' + num);
       if(pAtual) pAtual.classList.add('active-vip-panel');
       if(bAtual) bAtual.classList.add('active');
-    }
-
-    function criarSeletorAvatarPerfil() {
-      const grid = document.getElementById('avatarEscolhaGrid');
-      if (!grid || grid.children.length > 0) return;
-      grid.innerHTML = '';
-      const avatarAtual = localStorage.getItem('turminha_avatar_escolhido') || TODOS_PERSONAGENS[0].img;
-      const nomeAtual = localStorage.getItem('turminha_nome_escolhido') || TODOS_PERSONAGENS[0].nome;
-      
-      aplicarTemaPersonagem(nomeAtual);
-
-      TODOS_PERSONAGENS.forEach(p => {
-        const imgBtn = document.createElement('img');
-        imgBtn.src = p.img;
-        imgBtn.className = 'avatar-escolha-btn' + (p.img === avatarAtual ? ' selecionado' : '');
-        imgBtn.title = p.nome;
-        imgBtn.onclick = () => {
-          document.querySelectorAll('.avatar-escolha-btn').forEach(b => b.classList.remove('selecionado'));
-          imgBtn.classList.add('selecionado');
-          localStorage.setItem('turminha_avatar_escolhido', p.img);
-          localStorage.setItem('turminha_nome_escolhido', p.nome);
-          aplicarTemaPersonagem(p.nome);
-          lerTexto(`Tema alterado para ${p.nome}! O portal agora está com a cor dele.`);
-        };
-        grid.appendChild(imgBtn);
-      });
     }
 
     const canvas = document.getElementById('paintCanvas');
