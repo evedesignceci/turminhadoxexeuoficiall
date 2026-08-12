@@ -811,7 +811,7 @@
       <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
     </nav>
 
-    <!-- FAIXA SUPERIOR DE ANÚNCIO VIP COM CHAMADA IRRESISTÍVEL -->
+    <!-- FAIXA SUPERIOR DE ANÚNCIO VIP -->
     <div class="top-vip-announcement" onclick="mudarPagina('vip')">
       <span>⭐ Desbloqueie todo o Drive de Atividades, Jogos Exclusivos e Vídeos Antecipados por Apenas R$ 6,00/mês! Clique Aqui! 💖</span>
     </div>
@@ -849,7 +849,7 @@
       <section class="section-family-container">
         
         <div>
-          <h3 class="family-group-title">✨ O Símbolo e Mascote (Homenagem ao Bisavô)</h3>
+          <h3 class="family-group-title">✨ O Símbolo e Mascote</h3>
           <div class="floating-cards-grid">
             <div class="floating-char-card card-especial" onclick="tocarVozETexto('Xexéu')">
               <img src="https://i.imgur.com/jBeihpo.png" class="floating-char-img" alt="Xexéu">
@@ -1164,6 +1164,7 @@
               <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores & Detalhes</button>
               <button id="btn-vipanel-3" class="vip-sub-btn" onclick="mudarPanelVip(3)">🧩 Quebra-Cabeça</button>
               <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória 12 Cartas</button>
+              <button id="btn-vipanel-5" class="vip-sub-btn" onclick="mudarPanelVip(5)">🧩 Monte o Rosto</button>
             </nav>
 
             <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
@@ -1194,6 +1195,23 @@
               <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🧠 Memória Relâmpago (6 Pares / 12 Cartas)</h5>
               <div id="memoryBoardVip" class="memory-board" style="max-width: 380px;"></div>
             </div>
+
+            <!-- NOVO JOGO EXCLUSIVO VIP: MONTE O ROSTO -->
+            <div id="panel-vip-5" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
+              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🧩 Monte o Rosto da Turminha</h5>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Encontre a outra metade que completa o rostinho do personagem!</p>
+              
+              <!-- Metade esquerda fixa em cima -->
+              <div style="display: flex; justify-content: center; margin-bottom: 14px;">
+                <div style="width: 80px; height: 100px; overflow: hidden; border: 3px solid #F59E0B; border-radius: 14px; background: #F8FAFC; display: flex; align-items: center; justify-content: center;">
+                  <img id="rosto-alvo-esquerda" src="" alt="Metade" style="width: 160px; height: 100px; max-width: none; object-fit: cover; object-position: left;">
+                </div>
+              </div>
+
+              <!-- 3 Opções da metade direita embaixo -->
+              <div id="rosto-opcoes-grid" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;"></div>
+            </div>
+
           </div>
         </div>
 
@@ -1400,12 +1418,17 @@
     }
 
     function mudarPanelVip(num) {
-      for(let i=1; i<=4; i++) {
-        document.getElementById('panel-vip-' + i).classList.remove('active-vip-panel');
-        document.getElementById('btn-vipanel-' + i).classList.remove('active');
+      for(let i=1; i<=5; i++) {
+        const panel = document.getElementById('panel-vip-' + i);
+        const btn = document.getElementById('btn-vipanel-' + i);
+        if(panel) panel.classList.remove('active-vip-panel');
+        if(btn) btn.classList.remove('active');
       }
-      document.getElementById('panel-vip-' + num).classList.add('active-vip-panel');
-      document.getElementById('btn-vipanel-' + num).classList.add('active');
+      const pAtual = document.getElementById('panel-vip-' + num);
+      const bAtual = document.getElementById('btn-vipanel-' + num);
+      if(pAtual) pAtual.classList.add('active-vip-panel');
+      if(bAtual) bAtual.classList.add('active');
+      if(num === 5) carregarJogoMonteORosto();
     }
 
     const canvas = document.getElementById('paintCanvas');
@@ -1434,7 +1457,7 @@
         document.getElementById('btn-mode-color').classList.add('active');
         document.getElementById('coloringSelectGrid').classList.add('active');
         lerTexto("Escolha um personagem para pintar!");
-        carregarContornoPintar('https://i.imgur.com/KINBaeI.png', 'Xexéu', null);
+        carregarContornoPintar('https://i.imgur.com/jBeihpo.png', 'Xexéu', null);
       }
     }
 
@@ -1614,6 +1637,39 @@
       });
     }
 
+    // LÓGICA DO NOVO JOGO VIP: MONTE O ROSTO
+    let personagemAlvoRosto = null;
+    function carregarJogoMonteORosto() {
+      personagemAlvoRosto = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('rosto-alvo-esquerda').src = personagemAlvoRosto.img;
+      
+      let opcoesRosto = [personagemAlvoRosto];
+      while(opcoesRosto.length < 3) {
+        let randP = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+        if(!opcoesRosto.includes(randP)) opcoesRosto.push(randP);
+      }
+      opcoesRosto.sort(() => Math.random() - 0.5);
+
+      const gridRosto = document.getElementById('rosto-opcoes-grid');
+      gridRosto.innerHTML = '';
+      opcoesRosto.forEach(p => {
+        const wrap = document.createElement('div');
+        wrap.style.cssText = "width: 80px; height: 100px; overflow: hidden; border: 3px solid #CBD5E1; border-radius: 14px; background: #FFF; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s;";
+        wrap.innerHTML = `<img src="${p.img}" style="width: 160px; height: 100px; max-width: none; object-fit: cover; object-position: right; pointer-events: none;">`;
+        wrap.onmouseover = () => wrap.style.borderColor = "#3B82F6";
+        wrap.onmouseout = () => wrap.style.borderColor = "#CBD5E1";
+        wrap.onclick = () => {
+          if (p.nome === personagemAlvoRosto.nome) {
+            lerTexto("Parabéns! Você montou o rostinho certinho!");
+            setTimeout(carregarJogoMonteORosto, 1200);
+          } else {
+            lerTexto("Ops! Essa não é a metade certa. Tente outra!");
+          }
+        };
+        gridRosto.appendChild(wrap);
+      });
+    }
+
     function salvarECadastrar() {
       const emailInput = document.getElementById('cad-email');
       const senhaInput = document.getElementById('cad-senha');
@@ -1688,6 +1744,7 @@
         carregarJogoCorVip();
         iniciarPuzzleVip();
         iniciarMemoriaVip();
+        carregarJogoMonteORosto();
       } else {
         if(lockedView) lockedView.style.display = 'block';
         if(unlockedView) unlockedView.classList.remove('active-vip');
