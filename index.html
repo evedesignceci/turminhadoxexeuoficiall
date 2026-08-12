@@ -546,8 +546,8 @@
 
     .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 16px; margin-bottom: 20px; text-align: center; }
     .avatar-escolha-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-    .avatar-escolha-btn { width: 50px; height: 50px; border-radius: 50%; border: 3px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 4px; transition: 0.2s; }
-    .avatar-escolha-btn.selecionado { border-color: #3B82F6; transform: scale(1.1); box-shadow: 0 4px 12px rgba(59,130,246,0.4); }
+    .avatar-escolha-btn { width: 55px; height: 55px; border-radius: 50%; border: 3px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 4px; transition: 0.2s; }
+    .avatar-escolha-btn.selecionado { border-color: #F59E0B; transform: scale(1.1); box-shadow: 0 4px 12px rgba(245,158,11,0.4); }
 
     .puzzle-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
     .puzzle-thumb-btn { width: 75px; height: 52px; border: 3px solid #CBD5E1; border-radius: 10px; background-size: cover; background-position: center; cursor: pointer; opacity: 0.6; }
@@ -940,6 +940,13 @@
             <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 800; font-size: 12px; cursor: pointer;">🔒 Sair</button>
           </div>
 
+          <!-- SELEÇÃO DE PERFIL (APENAS PARA VISUALIZAR O AMIGUINHO FAVORITO) -->
+          <div class="perfil-selector-box">
+            <h4 style="color: #1E293B; font-size: 15px; font-weight: 900; margin-bottom: 4px;">👤 Escolha seu Amiguinho Favorito</h4>
+            <p style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Clique no personagem que vai te acompanhar na Área VIP!</p>
+            <div id="avatarEscolhaGrid" class="avatar-escolha-grid"></div>
+          </div>
+
           <div class="drive-banner-box">
             <h4 style="color: #1E3A8A; font-size: 18px; font-weight: 900;">📁 Drive Exclusivo da Turminha</h4>
             <p style="font-size: 13px; color: #1E40AF; margin-top: 4px; font-weight: 600;">Baixe Wallpapers de alta qualidade, Desenhos para Imprimir e Colorir, e em breve Livros e Atividades Didáticas completas!</p>
@@ -1215,6 +1222,7 @@
       if (pagina === 'jogos') setTimeout(redimensionarCanvas, 100);
       if (pagina === 'vip') {
         verificarStatusVip();
+        criarSeletorAvatarPerfil();
       }
     }
 
@@ -1241,6 +1249,26 @@
       const bAtual = document.getElementById('btn-vipanel-' + num);
       if(pAtual) pAtual.classList.add('active-vip-panel');
       if(bAtual) bAtual.classList.add('active');
+    }
+
+    function criarSeletorAvatarPerfil() {
+      const grid = document.getElementById('avatarEscolhaGrid');
+      if (!grid || grid.children.length > 0) return;
+      grid.innerHTML = '';
+      const avatarAtual = localStorage.getItem('turminha_avatar_escolhido') || TODOS_PERSONAGENS[0].img;
+      TODOS_PERSONAGENS.forEach(p => {
+        const imgBtn = document.createElement('img');
+        imgBtn.src = p.img;
+        imgBtn.className = 'avatar-escolha-btn' + (p.img === avatarAtual ? ' selecionado' : '');
+        imgBtn.title = p.nome;
+        imgBtn.onclick = () => {
+          document.querySelectorAll('.avatar-escolha-btn').forEach(b => b.classList.remove('selecionado'));
+          imgBtn.classList.add('selecionado');
+          localStorage.setItem('turminha_avatar_escolhido', p.img);
+          lerTexto(`${p.nome} escolhido como seu amiguinho favorito!`);
+        };
+        grid.appendChild(imgBtn);
+      });
     }
 
     const canvas = document.getElementById('paintCanvas');
