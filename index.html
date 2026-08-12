@@ -811,7 +811,7 @@
       <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
     </nav>
 
-    <!-- FAIXA SUPERIOR DE ANÚNCIO VIP -->
+    <!-- FAIXA SUPERIOR DE ANÚNCIO VIP COM CHAMADA IRRESISTÍVEL -->
     <div class="top-vip-announcement" onclick="mudarPagina('vip')">
       <span>⭐ Desbloqueie todo o Drive de Atividades, Jogos Exclusivos e Vídeos Antecipados por Apenas R$ 6,00/mês! Clique Aqui! 💖</span>
     </div>
@@ -881,7 +881,7 @@
               <img src="https://i.imgur.com/Hbf9i8C.png" class="floating-char-img" alt="Theo">
               <span class="floating-char-name">Theo</span>
               <span class="floating-char-tag">Pai Tranquilo</span>
-              <p class="floating-char-desc">Pai da Iza e da Nina. Calmo, observador e sempre pronto para apoiar as meninas.</p>
+              <p class="floating-char-desc">Pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar a família.</p>
             </div>
 
             <div class="floating-char-card card-f1" onclick="tocarVozETexto('Nina')">
@@ -928,7 +928,7 @@
               <img src="https://i.imgur.com/PZPpO14.png" class="floating-char-img" alt="Leo">
               <span class="floating-char-name">Leo</span>
               <span class="floating-char-tag">O Aventureiro</span>
-              <p class="floating-char-desc">Irmão do Joca. Agitado, enérgico e movido por muita imaginação.</p>
+              <p class="floating-char-desc">Irmão do Joca. Amante de detalhes e focado em suas descobertas com muita imaginação.</p>
             </div>
           </div>
         </div>
@@ -1196,19 +1196,16 @@
               <div id="memoryBoardVip" class="memory-board" style="max-width: 380px;"></div>
             </div>
 
-            <!-- NOVO JOGO EXCLUSIVO VIP: MONTE O ROSTO -->
             <div id="panel-vip-5" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
               <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 8px;">🧩 Monte o Rosto da Turminha</h5>
               <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Encontre a outra metade que completa o rostinho do personagem!</p>
               
-              <!-- Metade esquerda fixa em cima -->
               <div style="display: flex; justify-content: center; margin-bottom: 14px;">
                 <div style="width: 80px; height: 100px; overflow: hidden; border: 3px solid #F59E0B; border-radius: 14px; background: #F8FAFC; display: flex; align-items: center; justify-content: center;">
                   <img id="rosto-alvo-esquerda" src="" alt="Metade" style="width: 160px; height: 100px; max-width: none; object-fit: cover; object-position: left;">
                 </div>
               </div>
 
-              <!-- 3 Opções da metade direita embaixo -->
               <div id="rosto-opcoes-grid" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;"></div>
             </div>
 
@@ -1275,7 +1272,7 @@
       'Sam': { nome: "Sam", desc: "O Sam é o paizão ruivo do Joca e do Leo. Descontraído, adora inventar brinquedos." },
       'Lia': { nome: "Lia", desc: "A Lia é a mãe do Joca e do Leo. Estilosa e alegre, traz energia contagiante para o dia a dia." },
       'Joca': { nome: "Joca", desc: "O Joca é o menino de camiseta verde! Doidinho e engraçado, transforma tudo em diversão." },
-      'Leo': { nome: "Leo", desc: "O Leo é irmão do Joca. Enérgico, agitado e movido por muita imaginação." },
+      'Leo': { nome: "Leo", desc: "O Leo é irmão do Joca. Amante de detalhes e focado em suas descobertas com muita imaginação." },
       'Beto': { nome: "Vovô Beto", desc: "O Vovô Beto usa óculos quadrados. Inspirado no querido Pedro Mariano, traz paciência, bom humor e energia contagiante." },
       'Hilda': { nome: "Vovó Hilda", desc: "A Vovó Hilda usa óculos redondos. Inspirada na inesquecível Astrogilda Grispym, guardando doçura, abraços e valores preciosos." }
     };
@@ -1290,7 +1287,7 @@
       { nome: 'Sam', img: 'https://i.imgur.com/jPz7Qxh.png', letra: 'S', corPergunta: "Qual a cor do cabelo do paizão Sam?", corCorreta: "Ruivo", corOpcoes: ["Ruivo", "Preto", "Loiro"] },
       { nome: 'Lia', img: 'https://i.imgur.com/2PVG33C.png', letra: 'L', corPergunta: "Quem é a mãe alegre do Joca e do Leo?", corCorreta: "Lia", corOpcoes: ["Lia", "Maya", "Hilda"] },
       { nome: 'Joca', img: 'https://i.imgur.com/yQX0ZOy.png', letra: 'J', corPergunta: "Qual a cor da camiseta do Joca?", corCorreta: "Verde", corOpcoes: ["Amarela", "Verde", "Azul"] },
-      { nome: 'Leo', img: 'https://i.imgur.com/PZPpO14.png', letra: 'L', corPergunta: "Quem é o irmão enérgico do Joca?", corCorreta: "Leo", corOpcoes: ["Leo", "Theo", "Sam"] },
+      { nome: 'Leo', img: 'https://i.imgur.com/PZPpO14.png', letra: 'L', corPergunta: "Quem é o irmão focado e criativo do Joca?", corCorreta: "Leo", corOpcoes: ["Leo", "Theo", "Sam"] },
       { nome: 'Beto', img: 'https://i.imgur.com/2E6Dvfz.png', letra: 'B', corPergunta: "Qual o formato dos óculos do Vovô Beto?", corCorreta: "Quadrados", corOpcoes: ["Quadrados", "Redondos", "Sem óculos"] },
       { nome: 'Hilda', img: 'https://i.imgur.com/VZOGaEO.png', letra: 'H', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] }
     ];
@@ -1301,7 +1298,9 @@
       { pergunta: "Quem é a vovó carinhosa inspirada na Vovó Astrogilda Grispym?", resposta: "Hilda", opcoes: ["Hilda", "Lia", "Maya"] },
       { pergunta: "Qual amiguinho de camiseta verde é o irmão do Leo na Família 2?", resposta: "Joca", opcoes: ["Joca", "Xexéu", "Capilé"] },
       { pergunta: "Quem é o cachorrinho doidinho de coleira azul-celeste com pingente de osso dourado?", resposta: "Capilé", opcoes: ["Capilé", "Leo", "Beto"] },
-      { pergunta: "Qual é o nome do vovô de óculos quadrados inspirado no querido Pedro Mariano?", resposta: "Vovô Beto", opcoes: ["Vovô Beto", "Sam", "Theo"] }
+      { pergunta: "Qual é o nome do vovô de óculos quadrados inspirado no querido Pedro Mariano?", resposta: "Vovô Beto", opcoes: ["Vovô Beto", "Sam", "Theo"] },
+      { pergunta: "Quem é o passarinho azul de boina amarela mascote oficial da Turminha?", resposta: "Xexéu", opcoes: ["Xexéu", "Capilé", "Joca"] },
+      { pergunta: "Qual é o nome da mãe estilosa e alegre dos meninos Joca e Leo?", resposta: "Lia", opcoes: ["Lia", "Maya", "Hilda"] }
     ];
 
     function lerTexto(texto) {
@@ -1457,7 +1456,7 @@
         document.getElementById('btn-mode-color').classList.add('active');
         document.getElementById('coloringSelectGrid').classList.add('active');
         lerTexto("Escolha um personagem para pintar!");
-        carregarContornoPintar('https://i.imgur.com/jBeihpo.png', 'Xexéu', null);
+        carregarContornoPintar('https://i.imgur.com/KINBaeI.png', 'Xexéu', null);
       }
     }
 
@@ -1637,7 +1636,6 @@
       });
     }
 
-    // LÓGICA DO NOVO JOGO VIP: MONTE O ROSTO
     let personagemAlvoRosto = null;
     function carregarJogoMonteORosto() {
       personagemAlvoRosto = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
