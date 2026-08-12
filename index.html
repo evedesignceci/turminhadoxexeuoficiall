@@ -592,7 +592,7 @@
     <span>Seja VIP (R$ 6,00)</span>
   </div>
 
-  <div id="appContainer" class="app-container">
+  <div class="app-container">
 
     <header>
       <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" title="YouTube da Turminha">
@@ -1656,8 +1656,8 @@
 
     function carregarJogoCorVip() {
       const pCor = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('cor-pergunta-txt').innerText = pCor.corPergunta;
-      document.getElementById('cor-img').src = pCor.img;
+      document.getElementById('vip-cor-txt').innerText = pCor.corPergunta;
+      document.getElementById('vip-cor-img').src = pCor.img;
       const containerCor = document.getElementById('vip-cor-options'); containerCor.innerHTML = '';
       pCor.corOpcoes.sort(() => Math.random() - 0.5).forEach(corOp => {
         const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:8px 14px; font-size:13px; background:#8B5CF6;";
