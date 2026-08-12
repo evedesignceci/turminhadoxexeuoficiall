@@ -544,6 +544,11 @@
     .drive-banner-box { background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 100%); border: 2.5px solid #3B82F6; border-radius: var(--radius-md); padding: 20px; text-align: center; margin-bottom: 20px; }
     .btn-drive { display: inline-block; background: #2563EB; color: #FFF; font-weight: 800; font-size: 14px; padding: 12px 24px; border-radius: 12px; text-decoration: none; margin-top: 10px; }
 
+    .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 16px; margin-bottom: 20px; text-align: center; }
+    .avatar-escolha-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .avatar-escolha-btn { width: 50px; height: 50px; border-radius: 50%; border: 3px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 4px; transition: 0.2s; }
+    .avatar-escolha-btn.selecionado { border-color: #3B82F6; transform: scale(1.1); box-shadow: 0 4px 12px rgba(59,130,246,0.4); }
+
     .puzzle-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
     .puzzle-thumb-btn { width: 75px; height: 52px; border: 3px solid #CBD5E1; border-radius: 10px; background-size: cover; background-position: center; cursor: pointer; opacity: 0.6; }
     .puzzle-thumb-btn.active { border-color: #F59E0B; transform: scale(1.08); opacity: 1; }
@@ -1100,14 +1105,14 @@
     ];
 
     const PERGUNTAS_HISTORIAS_VIP = [
-      { pergunta: "Quem são as irmãs da Família 1 que têm como mãe a Maya e pai o Theo?", resposta: "Iza e Nina", opcoes: ["Iza e Nina", "Joca e Leo", "Maya e Lia"] },
-      { pergunta: "Qual pai ruivo é irmão da Maya e pai dos meninos Joca e Leo?", resposta: "Sam", opcoes: ["Sam", "Theo", "Beto"] },
-      { pergunta: "Quem é a vovó carinhosa inspirada na Vovó Astrogilda Grispym?", resposta: "Hilda", opcoes: ["Hilda", "Lia", "Maya"] },
-      { pergunta: "Qual amiguinho de camiseta verde é o irmão do Leo na Família 2?", resposta: "Joca", opcoes: ["Joca", "Xexéu", "Capilé"] },
-      { pergunta: "Quem é o cachorrinho doidinho de coleira azul-celeste com pingente de osso dourado?", resposta: "Capilé", opcoes: ["Capilé", "Leo", "Beto"] },
-      { pergunta: "Qual é o nome do vovô de óculos quadrados inspirado no querido Pedro Mariano?", resposta: "Vovô Beto", opcoes: ["Vovô Beto", "Sam", "Theo"] },
-      { pergunta: "Quem é o passarinho azul de boina amarela mascote oficial da Turminha?", resposta: "Xexéu", opcoes: ["Xexéu", "Capilé", "Joca"] },
-      { pergunta: "Qual é o nome da mãe estilosa e alegre dos meninos Joca e Leo?", resposta: "Lia", opcoes: ["Lia", "Maya", "Hilda"] }
+      { pergunta: "Quem são as filhas da Maya e do Theo?", resposta: "Iza e Nina", opcoes: ["Iza e Nina", "Joca e Leo", "Maya e Lia"] },
+      { pergunta: "Quem é o pai carinhoso e ruivo dos meninos Joca e Leo?", resposta: "Sam", opcoes: ["Sam", "Theo", "Beto"] },
+      { pergunta: "Qual vovó muito amada cuida de toda a família com carinho?", resposta: "Hilda", opcoes: ["Hilda", "Lia", "Maya"] },
+      { pergunta: "Quem é o menino super divertido de camiseta verde?", resposta: "Joca", opcoes: ["Joca", "Xexéu", "Capilé"] },
+      { pergunta: "Qual é o nome do cachorrinho de orelhas grandes da Turminha?", resposta: "Capilé", opcoes: ["Capilé", "Leo", "Beto"] },
+      { pergunta: "Quem é o vovô super alegre que usa óculos quadrados?", resposta: "Vovô Beto", opcoes: ["Vovô Beto", "Sam", "Theo"] },
+      { pergunta: "Quem é o nosso passarinho azul mascote favorito?", resposta: "Xexéu", opcoes: ["Xexéu", "Capilé", "Joca"] },
+      { pergunta: "Quem é a mãe estilosa e alegre do Joca e do Leo?", resposta: "Lia", opcoes: ["Lia", "Maya", "Hilda"] }
     ];
 
     function lerTexto(texto) {
