@@ -72,7 +72,7 @@
       margin: 12px 12px 0;
       box-shadow: var(--shadow-sm);
     }
-    .logo-img { max-width: 150px; height: auto; transition: transform 0.2s ease; }
+    .logo-img { max-width: 150px; height: auto; }
 
     .audio-toggle-btn {
       background: #FFFFFF;
@@ -117,7 +117,6 @@
       cursor: pointer;
       background: transparent;
       color: var(--text-muted);
-      transition: all 0.2s ease;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -242,7 +241,7 @@
       flex-direction: column;
       gap: 24px;
     }
-    .family-group-title { font-size: 18px; font-weight: 900; color: var(--primary-dark); margin-bottom: 12px; }
+    .family-group-title { font-size: 18px; font-weight: 900; color: var(--primary-dark); margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
 
     .floating-cards-grid {
       display: grid;
@@ -335,7 +334,7 @@
       border: 2px solid #E2E8F0;
       box-shadow: var(--shadow-sm);
     }
-    .age-title { font-size: 19px; font-weight: 900; color: var(--primary-dark); margin-bottom: 14px; }
+    .age-title { font-size: 19px; font-weight: 900; color: var(--primary-dark); margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
     
     .interactive-card {
       background: #F8FAFC;
@@ -479,7 +478,7 @@
     .puzzle-thumb-btn { width: 65px; height: 46px; border: 2.5px solid #CBD5E1; border-radius: 8px; background-size: cover; background-position: center; cursor: pointer; opacity: 0.6; }
     .puzzle-thumb-btn.active { border-color: #F59E0B; transform: scale(1.06); opacity: 1; }
     .puzzle-full-preview { text-align: center; margin-bottom: 10px; }
-    .puzzle-full-preview img { width: 140px; height: 105px; border-radius: 8px; border: 2px solid #F59E0B; object-fit: cover; }
+    .puzzle-full-preview img { width: 140px; height: 105px; border-radius: 8px; border: 2.5px solid #F59E0B; object-fit: cover; }
     
     .puzzle-workspace { display: flex; flex-direction: column; align-items: center; gap: 14px; }
     @media (min-width: 600px) { .puzzle-workspace { flex-direction: row; justify-content: center; align-items: flex-start; } }
@@ -577,7 +576,10 @@
 
       <section class="section-family-container">
         <div>
-          <h3 class="family-group-title">✨ O Símbolo e Mascote</h3>
+          <h3 class="family-group-title">
+            ✨ O Símbolo e Mascote
+            <button class="btn-audio-mini" style="width:30px; height:30px; font-size:14px;" onclick="lerTexto('O Símbolo e Mascote da Turminha do Xexéu.')">🔊</button>
+          </h3>
           <div class="floating-cards-grid">
             <div class="floating-char-card card-especial" onclick="tocarVozETexto('Xexéu')">
               <img src="https://i.imgur.com/jBeihpo.png" class="floating-char-img" alt="Xexéu">
@@ -595,7 +597,10 @@
         </div>
 
         <div>
-          <h3 class="family-group-title">💖 A Casa da Maya e do Theo</h3>
+          <h3 class="family-group-title">
+            💖 A Casa da Maya e do Theo
+            <button class="btn-audio-mini" style="width:30px; height:30px; font-size:14px;" onclick="lerTexto('A Casa da Maya e do Theo.')">🔊</button>
+          </h3>
           <div class="floating-cards-grid">
             <div class="floating-char-card card-f1" onclick="tocarVozETexto('Maya')">
               <img src="https://i.imgur.com/8TrWSb1.png" class="floating-char-img" alt="Maya">
@@ -625,7 +630,10 @@
         </div>
 
         <div>
-          <h3 class="family-group-title">⚡ A Casa do Sam e da Lia</h3>
+          <h3 class="family-group-title">
+            ⚡ A Casa do Sam e da Lia
+            <button class="btn-audio-mini" style="width:30px; height:30px; font-size:14px;" onclick="lerTexto('A Casa do Sam e da Lia.')">🔊</button>
+          </h3>
           <div class="floating-cards-grid">
             <div class="floating-char-card card-f2" onclick="tocarVozETexto('Sam')">
               <img src="https://i.imgur.com/jPz7Qxh.png" class="floating-char-img" alt="Sam">
@@ -655,7 +663,10 @@
         </div>
 
         <div>
-          <h3 class="family-group-title">👵👴 Os Avós</h3>
+          <h3 class="family-group-title">
+            👵👴 Os Avós
+            <button class="btn-audio-mini" style="width:30px; height:30px; font-size:14px;" onclick="lerTexto('Os Avós da Turminha.')">🔊</button>
+          </h3>
           <div class="floating-cards-grid">
             <div class="floating-char-card card-avos" onclick="tocarVozETexto('Beto')">
               <img src="https://i.imgur.com/2E6Dvfz.png" class="floating-char-img" alt="Vovô Beto">
@@ -708,7 +719,10 @@
     <!-- PÁGINA JOGOS -->
     <main id="pagina-jogos" class="page-content">
       <div class="age-group-section">
-        <h3 class="age-title">🎮 Área de Jogos da Turminha</h3>
+        <h3 class="age-title">
+          🎮 Área de Jogos da Turminha
+          <button class="btn-audio-mini" style="width:30px; height:30px; font-size:14px;" onclick="lerTexto('Bem-vindo à Área de Jogos da Turminha!')">🔊</button>
+        </h3>
         
         <div class="conquistas-box">
           <span>🏆 Suas Conquistas: <strong id="placar-pontos">0</strong> pontos</span>
@@ -1374,17 +1388,6 @@
     }
 
     let pQuizAtual = null;
-    const PERGUNTAS_HISTORIAS_VIP = [
-      { pergunta: "Quem são as filhas da Maya e do Theo?", resposta: "Iza e Nina", opcoes: ["Iza e Nina", "Joca e Leo", "Maya e Lia"] },
-      { pergunta: "Quem é o pai carinhoso e ruivo dos meninos Joca e Leo?", resposta: "Sam", opcoes: ["Sam", "Theo", "Beto"] },
-      { pergunta: "Qual vovó muito amada cuida de toda a família com carinho?", resposta: "Hilda", opcoes: ["Hilda", "Lia", "Maya"] },
-      { pergunta: "Quem é o menino super divertido de camiseta verde?", resposta: "Joca", opcoes: ["Joca", "Xexéu", "Capilé"] },
-      { pergunta: "Qual é o nome do cachorrinho de orelhas grandes da Turminha?", resposta: "Capilé", opcoes: ["Capilé", "Leo", "Beto"] },
-      { pergunta: "Quem é o vovô super alegre que usa óculos quadrados?", resposta: "Vovô Beto", opcoes: ["Vovô Beto", "Sam", "Theo"] },
-      { pergunta: "Quem é o nosso passarinho azul mascote favorito?", resposta: "Xexéu", opcoes: ["Xexéu", "Capilé", "Joca"] },
-      { pergunta: "Quem é a mãe estilosa e alegre do Joca e do Leo?", resposta: "Lia", opcoes: ["Lia", "Maya", "Hilda"] }
-    ];
-
     function carregarQuiz() {
       pQuizAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
       document.getElementById('quiz-img').src = pQuizAtual.img;
@@ -1474,11 +1477,12 @@
       const senha = senhaInput ? senhaInput.value.trim() : "";
 
       if (!email || !senha) {
+        lerTexto("Preencha o e-mail e a senha.");
         alert("Preencha o e-mail e a senha cadastrados.");
         return;
       }
 
-      // GARANTINDO A SENHA MESTRA DA EVELYN
+      // SENHA MESTRA DA EVELYN (SEMPRE LIBERA)
       if (senha === SENHA_MESTRA_CRIADORA) {
         localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
         verificarStatusVip();
@@ -1486,26 +1490,25 @@
         return;
       }
 
-      // Verificação normal de assinantes
+      // VERIFICAÇÃO RIGOROSA NO GOOGLE SHEETS / KIWIFY
       fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
         .then(response => response.json())
         .then(data => {
-          if (data.liberado) {
+          if (data && data.liberado === true) {
             localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
             verificarStatusVip();
-            lerTexto("Bem-vindo à Área VIP!");
+            lerTexto("Bem-vindo ao Clube VIP!");
           } else { 
-            // Fallback amigável caso o Apps Script esteja lento
-            localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
-            verificarStatusVip();
-            lerTexto("Acesso liberado com sucesso!");
+            // TRAVA O ACESSO SE NÃO PAGOU OU SENHA ESTIVER ERRADA
+            localStorage.removeItem('turminha_xexeu_vip_ativo');
+            lerTexto("Acesso negado! Assine o Clube VIP para desbloquear.");
+            alert("❌ Acesso Negado: E-mail ou senha não encontrados ou assinatura pendente. Assine por R$ 6,00 para liberar o acesso!");
           }
         })
         .catch(() => { 
-          // Caso ocorra erro de rede, permite entrada para não travar o usuário
-          localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
-          verificarStatusVip();
-          lerTexto("Acesso liberado!");
+          // SE O SERVIDOR FALHAR, MANTém BLOQUEADO POR SEGURANÇA (EXCETO SENHA MESTRA)
+          lerTexto("Acesso negado! Verifique seus dados ou assinatura.");
+          alert("❌ Erro ao validar acesso. Verifique seu e-mail e senha.");
         });
     }
 
@@ -1529,6 +1532,7 @@
     function sairVIP() {
       localStorage.removeItem('turminha_xexeu_vip_ativo');
       verificarStatusVip();
+      lerTexto("Você saiu da Área VIP.");
       location.reload();
     }
 
@@ -1615,6 +1619,17 @@
         board.appendChild(card);
       });
     }
+
+    const PERGUNTAS_HISTORIAS_VIP = [
+      { pergunta: "Quem são as filhas da Maya e do Theo?", resposta: "Iza e Nina", opcoes: ["Iza e Nina", "Joca e Leo", "Maya e Lia"] },
+      { pergunta: "Quem é o pai carinhoso e ruivo dos meninos Joca e Leo?", resposta: "Sam", opcoes: ["Sam", "Theo", "Beto"] },
+      { pergunta: "Qual vovó muito amada cuida de toda a família com carinho?", resposta: "Hilda", opcoes: ["Hilda", "Lia", "Maya"] },
+      { pergunta: "Quem é o menino super divertido de camiseta verde?", resposta: "Joca", opcoes: ["Joca", "Xexéu", "Capilé"] },
+      { pergunta: "Qual é o nome do cachorrinho de orelhas grandes da Turminha?", resposta: "Capilé", opcoes: ["Capilé", "Leo", "Beto"] },
+      { pergunta: "Quem é o vovô super alegre que usa óculos quadrados?", resposta: "Vovô Beto", opcoes: ["Vovô Beto", "Sam", "Theo"] },
+      { pergunta: "Quem é o nosso passarinho azul mascote favorito?", resposta: "Xexéu", opcoes: ["Xexéu", "Capilé", "Joca"] },
+      { pergunta: "Quem é a mãe estilosa e alegre do Joca e do Leo?", resposta: "Lia", opcoes: ["Lia", "Maya", "Hilda"] }
+    ];
 
     function carregarDesafioHistoriaVip() {
       const itemSorteado = PERGUNTAS_HISTORIAS_VIP[Math.floor(Math.random() * PERGUNTAS_HISTORIAS_VIP.length)];
