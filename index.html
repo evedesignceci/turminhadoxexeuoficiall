@@ -60,7 +60,6 @@
       gap: 20px;
       padding-bottom: 24px;
       border: 3px solid #FFFFFF;
-      position: relative;
     }
 
     header {
@@ -81,8 +80,7 @@
       color: var(--primary-dark);
       font-weight: 800;
       font-size: 13px;
-      padding: 10px 16px;
-      min-height: 48px;
+      padding: 8px 14px;
       border-radius: 50px;
       cursor: pointer;
       display: flex;
@@ -111,8 +109,7 @@
       flex: 1;
       min-width: 95px;
       max-width: 180px;
-      min-height: 48px;
-      padding: 10px 8px;
+      padding: 12px 8px;
       border: none;
       border-radius: var(--radius-md);
       font-weight: 800;
@@ -142,15 +139,33 @@
       border-color: transparent;
     }
 
+    /* AVISO DO NAVEGADOR EXTERNO PARA INSTAGRAM/FACEBOOK */
+    .browser-notice-box {
+      margin: 0 16px;
+      background: #EFF6FF;
+      border: 2px solid #93C5FD;
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      text-align: center;
+      color: #1E40AF;
+      font-size: 12.5px;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
     .top-vip-announcement {
       margin: 0 12px -10px;
       background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
       border: 2px dashed #F59E0B;
       border-radius: var(--radius-md);
-      padding: 12px 14px;
+      padding: 10px 14px;
       text-align: center;
       color: #92400E;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 800;
       cursor: pointer;
       box-shadow: var(--shadow-sm);
@@ -204,10 +219,10 @@
       background: linear-gradient(135deg, #FBBF24, #F59E0B);
       border: none;
       border-radius: 50%;
-      width: 42px;
-      height: 42px;
+      width: 36px;
+      height: 36px;
       cursor: pointer;
-      font-size: 18px;
+      font-size: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -216,56 +231,27 @@
       flex-shrink: 0;
     }
 
-    .social-block-container {
-      padding: 0 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .social-group-box {
-      background: #F8FAFC;
-      border: 2px solid #E2E8F0;
-      border-radius: var(--radius-lg);
-      padding: 12px 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .social-group-title {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
     .social-round-section {
+      padding: 0 16px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
-
     .social-round-btn {
-      width: 50px;
-      height: 50px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: #FFF;
-      border: 2.5px solid #CBD5E1;
+      border: 2.5px solid #E2E8F0;
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
       box-shadow: var(--shadow-sm);
-      transition: transform 0.2s ease, border-color 0.2s ease;
     }
-    .social-round-btn:active { transform: scale(0.92); }
-    .social-round-btn:hover { border-color: var(--primary); }
-    .social-round-btn img { width: 28px; height: 28px; object-fit: contain; }
+    .social-round-btn img { width: 24px; height: 24px; object-fit: contain; }
 
     .section-family-container {
       padding: 0 16px;
@@ -338,12 +324,11 @@
       flex-wrap: wrap;
     }
     .subnav-btn, .vip-sub-btn {
-      padding: 10px 14px;
-      min-height: 48px;
+      padding: 10px 12px;
       border: none;
       border-radius: 10px;
       font-weight: 800;
-      font-size: 12.5px;
+      font-size: 12px;
       cursor: pointer;
       background: #FFF;
       color: var(--primary-dark);
@@ -357,7 +342,7 @@
     .game-section-page { display: none; }
     .game-section-page.active-game-page { display: block; }
     .vip-game-panel { display: none; }
-    .vip-game-panel.active-vip-panel { display: block !important; }
+    .vip-game-panel.active-vip-panel { display: block; }
 
     .age-group-section {
       margin: 0 16px;
@@ -395,23 +380,22 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .coloring-select-grid { display: none; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+    .coloring-select-grid { display: none; justify-content: center; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
     .coloring-select-grid.active { display: flex; }
     .btn-color-draw {
       background: #FFF;
       border: 2px solid #CBD5E1;
-      padding: 8px 12px;
-      min-height: 48px;
-      border-radius: 12px;
+      padding: 6px 10px;
+      border-radius: 10px;
       font-weight: 700;
-      font-size: 12px;
+      font-size: 11px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 6px;
     }
     .btn-color-draw.selected { border-color: var(--primary); background: #E0F2FE; }
-    .btn-color-draw img { width: 26px; height: 26px; object-fit: contain; }
+    .btn-color-draw img { width: 22px; height: 22px; object-fit: contain; }
 
     .lousa-controls-bar {
       display: flex;
@@ -438,19 +422,17 @@
       cursor: crosshair;
     }
     
-    .palette { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap; width: 100%; }
-    .color-dot { width: 40px; height: 40px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer; }
+    .palette { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap; width: 100%; }
+    .color-dot { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer; }
 
-    .game-btn-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .game-btn-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
     .btn-choice {
       background: var(--purple);
       color: #FFF;
       border: none;
-      padding: 12px 18px;
-      min-height: 48px;
-      min-width: 48px;
+      padding: 10px 16px;
       font-weight: 800;
-      font-size: 15px;
+      font-size: 14px;
       border-radius: 12px;
       cursor: pointer;
       box-shadow: 0 3px 10px rgba(139, 92, 246, 0.3);
@@ -461,8 +443,7 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 8px;
       margin-top: 12px;
-      width: 100%;
-      max-width: 340px;
+      max-width: 320px;
       margin-left: auto;
       margin-right: auto;
     }
@@ -475,12 +456,11 @@
       justify-content: center;
       color: #FFF;
       font-weight: 900;
-      font-size: 22px;
+      font-size: 20px;
       cursor: pointer;
-      user-select: none;
     }
     .memory-card.flipped { background: #FFF; border: 2.5px solid var(--primary); }
-    .memory-card img { width: 85%; height: 85%; object-fit: contain; }
+    .memory-card img { width: 80%; height: 80%; object-fit: contain; }
 
     .vip-lock-container {
       background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
@@ -491,94 +471,60 @@
       box-shadow: var(--shadow-sm);
     }
     .vip-lock-header-clickable { cursor: pointer; user-select: none; }
-    .vip-price-tag { display: inline-block; background: #F59E0B; color: #FFF; font-weight: 900; font-size: 14px; padding: 10px 22px; border-radius: 30px; margin-bottom: 12px; }
+    .vip-price-tag { display: inline-block; background: #F59E0B; color: #FFF; font-weight: 900; font-size: 14px; padding: 8px 20px; border-radius: 30px; margin-bottom: 12px; }
     .vip-heart-msg { background: #FFFFFF; border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 14px; margin: 12px auto; max-width: 700px; color: #78350F; font-size: 13px; line-height: 1.5; font-weight: 600; text-align: left; }
     .vip-grid-forms { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 700px; margin: 16px auto 0; }
     @media (min-width: 650px) { .vip-grid-forms { grid-template-columns: 1fr 1fr; } }
     .vip-form-box { background: #FFF; padding: 16px; border-radius: var(--radius-md); border: 2px solid #FCD34D; text-align: left; }
     .vip-form-box h4 { font-size: 15px; color: #92400E; margin-bottom: 10px; font-weight: 900; }
-    .vip-input { width: 100%; padding: 12px; font-size: 13.5px; border: 2px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; outline: none; }
-    .btn-vip-checkout { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; font-weight: 800; font-size: 14px; padding: 14px 16px; min-height: 48px; border-radius: 12px; border: none; cursor: pointer; width: 100%; text-decoration: none; display: flex; align-items: center; justify-content: center; text-align: center; }
+    .vip-input { width: 100%; padding: 10px; font-size: 13px; border: 2px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; outline: none; }
+    .btn-vip-checkout { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; font-weight: 800; font-size: 14px; padding: 12px 16px; border-radius: 12px; border: none; cursor: pointer; width: 100%; text-decoration: none; display: block; text-align: center; }
 
     .vip-content-unlocked { display: none; flex-direction: column; gap: 16px; }
     .vip-content-unlocked.active-vip { display: flex; }
     .vip-card-box { background: #FFF; border: 2px solid #E2E8F0; border-radius: var(--radius-lg); padding: 16px; box-shadow: var(--shadow-sm); }
 
     .drive-banner-box { background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 100%); border: 2.5px solid #3B82F6; border-radius: var(--radius-md); padding: 16px; text-align: center; margin-bottom: 16px; }
-    .btn-drive { display: inline-flex; align-items: center; justify-content: center; background: #2563EB; color: #FFF; font-weight: 800; font-size: 13px; padding: 12px 20px; min-height: 48px; border-radius: 10px; text-decoration: none; margin-top: 8px; }
-
-    .drive-preview-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 10px;
-      margin: 12px 0;
-    }
-    .drive-preview-item {
-      background: #FFF;
-      border: 2px solid #BAE6FD;
-      border-radius: 10px;
-      padding: 6px;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-    }
-    .drive-preview-item img { width: 100%; height: 80px; object-fit: contain; border-radius: 6px; }
-    .drive-preview-item span { font-size: 10.5px; font-weight: 800; color: #1E40AF; display: block; margin-top: 4px; }
+    .btn-drive { display: inline-block; background: #2563EB; color: #FFF; font-weight: 800; font-size: 13px; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-top: 8px; }
 
     .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 14px; margin-bottom: 16px; text-align: center; }
-    .avatar-escolha-grid { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-    .avatar-escolha-btn { width: 52px; height: 52px; border-radius: 50%; border: 2.5px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 3px; }
+    .avatar-escolha-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+    .avatar-escolha-btn { width: 48px; height: 48px; border-radius: 50%; border: 2.5px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 3px; }
     .avatar-escolha-btn.selecionado { border-color: #F59E0B; transform: scale(1.08); box-shadow: 0 4px 10px rgba(245,158,11,0.4); }
 
     .puzzle-selector { display: flex; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
     .puzzle-thumb-btn { width: 65px; height: 46px; border: 2.5px solid #CBD5E1; border-radius: 8px; background-size: cover; background-position: center; cursor: pointer; opacity: 0.6; }
     .puzzle-thumb-btn.active { border-color: #F59E0B; transform: scale(1.06); opacity: 1; }
     .puzzle-full-preview { text-align: center; margin-bottom: 10px; }
-    .puzzle-full-preview img { width: 140px; height: 105px; border-radius: 8px; border: 2.5px solid #F59E0B; object-fit: cover; }
+    .puzzle-full-preview img { width: 140px; height: 105px; border-radius: 8px; border: 2px solid #F59E0B; object-fit: cover; }
     
     .puzzle-workspace { display: flex; flex-direction: column; align-items: center; gap: 14px; }
     @media (min-width: 600px) { .puzzle-workspace { flex-direction: row; justify-content: center; align-items: flex-start; } }
     
     .puzzle-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); gap: 2px; width: 260px; height: 195px; background: #FDE68A; padding: 4px; border-radius: 12px; }
-    .puzzle-dropzone { width: 61px; height: 61px; background: #FFF; border: 2px dashed #F59E0B; border-radius: 5px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-
+    .puzzle-dropzone { width: 61px; height: 61px; background: #FFF; border: 2px dashed #F59E0B; border-radius: 5px; display: flex; align-items: center; justify-content: center; }
     .puzzle-pieces-tray { display: flex; flex-wrap: wrap; gap: 6px; max-width: 260px; background: #F8FAFC; padding: 10px; border-radius: 12px; border: 2px solid #CBD5E1; justify-content: center; min-height: 140px; align-items: center; }
-    .draggable-piece { width: 58px; height: 58px; border-radius: 5px; cursor: pointer; overflow: hidden; border: 2.5px solid #3B82F6; touch-action: manipulation; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
-    .draggable-piece.selected-piece { border-color: #10B981; transform: scale(1.1); box-shadow: 0 0 10px #10B981; }
+    .draggable-piece { width: 58px; height: 58px; border-radius: 5px; cursor: grab; overflow: hidden; border: 2px solid #3B82F6; touch-action: none; }
     .draggable-piece img { width: 232px; height: 174px; object-fit: cover; pointer-events: none; }
 
     .video-section { padding: 0 16px; }
     .video-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 18px; box-shadow: var(--shadow-sm); border: 2px solid #E2E8F0; text-align: center; margin-bottom: 14px; }
     .video-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
     .video-header h3 { font-size: 17px; font-weight: 900; color: var(--primary-dark); }
-    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-md); background: #000; }
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-md); }
     .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
     .support-form-box { background: #FFFBEB; border: 2px solid #FCD34D; border-radius: var(--radius-lg); padding: 18px; margin: 0 16px; box-shadow: var(--shadow-sm); }
     .support-form-box h5 { color: #92400E; font-size: 16px; font-weight: 900; margin-bottom: 6px; }
     .support-form-box p { font-size: 12.5px; color: #78350F; margin-bottom: 12px; font-weight: 600; }
-    .support-input, .support-textarea { width: 100%; padding: 12px; border: 2px solid #FCD34D; border-radius: 10px; font-size: 13px; margin-bottom: 10px; background: #FFF; outline: none; }
+    .support-input, .support-textarea { width: 100%; padding: 10px 14px; border: 2px solid #FCD34D; border-radius: 10px; font-size: 13px; margin-bottom: 10px; background: #FFF; outline: none; }
     .support-textarea { resize: vertical; min-height: 80px; }
-    .support-btn { background: #D97706; color: #FFF; border: none; padding: 14px 18px; min-height: 48px; border-radius: 10px; font-weight: 800; font-size: 14px; cursor: pointer; width: 100%; }
+    .support-btn { background: #D97706; color: #FFF; border: none; padding: 12px 18px; border-radius: 10px; font-weight: 800; font-size: 14px; cursor: pointer; width: 100%; }
 
     #visualToast { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%) translateY(100px); background: #0F172A; color: #FFF; padding: 10px 20px; border-radius: 30px; font-size: 12px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease; z-index: 99999; pointer-events: none; }
     #visualToast.show { transform: translateX(-50%) translateY(0); }
 
-    .floating-vip-badge { position: fixed; bottom: 16px; right: 16px; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; padding: 12px 18px; min-height: 48px; border-radius: 50px; font-size: 12.5px; font-weight: 800; box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4); display: flex; align-items: center; gap: 6px; cursor: pointer; border: 2px solid #FDE68A; z-index: 9999; }
-
-    .floating-reward-pop {
-      position: absolute;
-      font-size: 20px;
-      font-weight: 900;
-      color: #F59E0B;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      pointer-events: none;
-      animation: floatUpAndFade 1s forwards ease-out;
-      z-index: 9999;
-    }
-    @keyframes floatUpAndFade {
-      0% { opacity: 1; transform: translateY(0) scale(1); }
-      100% { opacity: 0; transform: translateY(-45px) scale(1.3); }
-    }
+    .floating-vip-badge { position: fixed; bottom: 16px; right: 16px; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; padding: 10px 16px; border-radius: 50px; font-size: 12.5px; font-weight: 800; box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4); display: flex; align-items: center; gap: 6px; cursor: pointer; border: 2px solid #FDE68A; z-index: 9999; }
     
     footer { text-align: center; padding: 16px 16px 0; border-top: 1px solid #E2E8F0; font-size: 12px; color: var(--text-muted); font-weight: 600; }
   </style>
@@ -593,7 +539,7 @@
     <span>Seja VIP (R$ 6,00)</span>
   </div>
 
-  <div class="app-container" id="appContainer">
+  <div class="app-container">
 
     <header>
       <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" title="YouTube da Turminha">
@@ -611,6 +557,11 @@
       <button id="btn-tab-jogos" class="nav-tab-btn" onclick="mudarPagina('jogos')">🎮 Jogos</button>
       <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
     </nav>
+
+    <!-- AVISO PARA ABRIR NO NAVEGADOR EXTERNO -->
+    <div class="browser-notice-box">
+      <span>💡 Dica: Se o som estiver mudo, clique nos 3 pontinhos no canto superior e escolha <strong>"Abrir no Chrome"</strong> ou <strong>"Abrir no Safari"</strong>!</span>
+    </div>
 
     <!-- FAIXA SUPERIOR DE ANÚNCIO VIP -->
     <div class="top-vip-announcement" onclick="mudarPagina('vip')">
@@ -636,32 +587,21 @@
         </div>
       </section>
 
-      <section class="social-block-container">
-        <div class="social-group-box">
-          <span class="social-group-title">▶️ Vídeos & Músicas</span>
-          <div class="social-round-section">
-            <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube"><img src="https://i.imgur.com/rFW5M6l.png" alt="YouTube"></a>
-            <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music"><img src="https://i.imgur.com/mkgDBjM.png" alt="YouTube Music"></a>
-            <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify"><img src="https://i.imgur.com/9c2BiJo.png" alt="Spotify"></a>
-          </div>
-        </div>
-
-        <div class="social-group-box">
-          <span class="social-group-title">📱 Redes Sociais & Fotos</span>
-          <div class="social-round-section">
-            <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram"><img src="https://i.imgur.com/yIbaMKH.png" alt="Instagram"></a>
-            <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok"><img src="https://i.imgur.com/iwSYwA7.png" alt="TikTok"></a>
-            <a href="https://www.threads.net/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/3qJ8rYd.png" alt="Threads"></a>
-            <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook"><img src="https://i.imgur.com/viKEETj.png" alt="Facebook"></a>
-          </div>
-        </div>
+      <section class="social-round-section">
+        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="YouTube"><img src="https://i.imgur.com/rFW5M6l.png" alt="YouTube"></a>
+        <a href="https://www.instagram.com/turminhaxe_xeu" target="_blank" class="social-round-btn" title="Instagram"><img src="https://i.imgur.com/yIbaMKH.png" alt="Instagram"></a>
+        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="TikTok"><img src="https://i.imgur.com/iwSYwA7.png" alt="TikTok"></a>
+        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-round-btn" title="Spotify"><img src="https://i.imgur.com/9c2BiJo.png" alt="Spotify"></a>
+        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-round-btn" title="YouTube Music"><img src="https://i.imgur.com/mkgDBjM.png" alt="YouTube Music"></a>
+        <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-round-btn" title="Facebook"><img src="https://i.imgur.com/viKEETj.png" alt="Facebook"></a>
+        <a href="https://www.threads.net/@turminhaxe_xeu" target="_blank" class="social-round-btn" title="Threads"><img src="https://i.imgur.com/3qJ8rYd.png" alt="Threads"></a>
       </section>
 
       <section class="section-family-container">
         <div>
           <h3 class="family-group-title">
             ✨ O Símbolo e Mascote
-            <button class="btn-audio-mini" style="width:34px; height:34px; font-size:15px;" onclick="lerTexto('O Símbolo e Mascote da Turminha do Xexéu.')">🔊</button>
+            <button class="btn-audio-mini" style="width:30px; height:30px; font-size:14px;" onclick="lerTexto('O Símbolo e Mascote da Turminha do Xexéu.')">🔊</button>
           </h3>
           <div class="floating-cards-grid">
             <div class="floating-char-card card-especial" onclick="tocarVozETexto('Xexéu')">
@@ -682,7 +622,7 @@
         <div>
           <h3 class="family-group-title">
             💖 A Casa da Maya e do Theo
-            <button class="btn-audio-mini" style="width:34px; height:34px; font-size:15px;" onclick="lerTexto('A Casa da Maya e do Theo.')">🔊</button>
+            <button class="btn-audio-mini" style="width:30px; height:30px; font-size:14px;" onclick="lerTexto('A Casa da Maya e do Theo.')">🔊</button>
           </h3>
           <div class="floating-cards-grid">
             <div class="floating-char-card card-f1" onclick="tocarVozETexto('Maya')">
@@ -715,7 +655,7 @@
         <div>
           <h3 class="family-group-title">
             ⚡ A Casa do Sam e da Lia
-            <button class="btn-audio-mini" style="width:34px; height:34px; font-size:15px;" onclick="lerTexto('A Casa do Sam e da Lia.')">🔊</button>
+            <button class="btn-audio-mini" style="width:30px; height:30px; font-size:14px;" onclick="lerTexto('A Casa do Sam e da Lia.')">🔊</button>
           </h3>
           <div class="floating-cards-grid">
             <div class="floating-char-card card-f2" onclick="tocarVozETexto('Sam')">
@@ -748,7 +688,7 @@
         <div>
           <h3 class="family-group-title">
             👵👴 Os Avós
-            <button class="btn-audio-mini" style="width:34px; height:34px; font-size:15px;" onclick="lerTexto('Os Avós da Turminha.')">🔊</button>
+            <button class="btn-audio-mini" style="width:30px; height:30px; font-size:14px;" onclick="lerTexto('Os Avós da Turminha.')">🔊</button>
           </h3>
           <div class="floating-cards-grid">
             <div class="floating-char-card card-avos" onclick="tocarVozETexto('Beto')">
@@ -804,7 +744,7 @@
       <div class="age-group-section">
         <h3 class="age-title">
           🎮 Área de Jogos da Turminha
-          <button class="btn-audio-mini" style="width:34px; height:34px; font-size:15px;" onclick="lerTexto('Bem-vindo à Área de Jogos da Turminha!')">🔊</button>
+          <button class="btn-audio-mini" style="width:30px; height:30px; font-size:14px;" onclick="lerTexto('Bem-vindo à Área de Jogos da Turminha!')">🔊</button>
         </h3>
         
         <div class="conquistas-box">
@@ -823,9 +763,9 @@
         <!-- 1. LOUSA MÁGICA -->
         <div id="game-lousa" class="game-section-page active-game-page interactive-card lousa-container">
           <h4 style="font-weight: 800; margin-bottom: 10px; font-size: 17px;">🎨 Lousa Mágica & Desenhos</h4>
-          <div class="lousa-mode-tabs" style="display:flex; gap:8px; margin-bottom:10px;">
-            <button id="btn-mode-free" class="btn-choice active" onclick="setLousaMode('free')">✏️ Livre</button>
-            <button id="btn-mode-color" class="btn-choice" onclick="setLousaMode('color')">🖼️ Pintar</button>
+          <div class="lousa-mode-tabs">
+            <button id="btn-mode-free" class="btn-mode active" onclick="setLousaMode('free')">✏️ Livre</button>
+            <button id="btn-mode-color" class="btn-mode" onclick="setLousaMode('color')">🖼️ Pintar</button>
           </div>
           <div id="coloringSelectGrid" class="coloring-select-grid">
             <button class="btn-color-draw" onclick="carregarContornoPintar('https://i.imgur.com/KINBaeI.png', 'Xexéu', this)"><img src="https://i.imgur.com/jBeihpo.png" alt="Xexéu"> Xexéu</button>
@@ -853,9 +793,9 @@
             <div class="color-dot" style="background: #F59E0B;" onclick="mudarCor('#F59E0B')"></div>
             <div class="color-dot" style="background: #8B5CF6;" onclick="mudarCor('#8B5CF6')"></div>
             <div class="color-dot" style="background: #000000;" onclick="mudarCor('#000000')"></div>
-            <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 40px; height: 40px; border:none; cursor:pointer; background:none;">
-            <button onclick="limparCanvas()" style="padding: 10px 14px; font-weight: 800; border-radius: 10px; border: none; background: #FEE2E2; color: #DC2626; cursor: pointer; font-size: 12.5px; min-height:48px;">Limpar 🗑️</button>
-            <button onclick="salvarFotoDesenho()" style="padding: 10px 14px; font-weight: 800; border-radius: 10px; border: none; background: #D1FAE5; color: #065F46; cursor: pointer; font-size: 12.5px; min-height:48px;">📸 Salvar</button>
+            <input type="color" id="colorPicker" onchange="mudarCor(this.value)" style="width: 34px; height: 34px; border:none; cursor:pointer; background:none;">
+            <button onclick="limparCanvas()" style="padding: 8px 12px; font-weight: 800; border-radius: 8px; border: none; background: #FEE2E2; color: #DC2626; cursor: pointer; font-size: 12px;">Limpar 🗑️</button>
+            <button onclick="salvarFotoDesenho()" style="padding: 8px 12px; font-weight: 800; border-radius: 8px; border: none; background: #D1FAE5; color: #065F46; cursor: pointer; font-size: 12px;">📸 Salvar</button>
           </div>
         </div>
 
@@ -889,12 +829,12 @@
             <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #E2E8F0; text-align: center;">
               <p style="font-size: 13px; font-weight: 800; color: var(--primary-dark);">Quem é este personagem?</p>
               <img id="quiz-img" src="" alt="Quiz" style="width: 75px; height: 75px; object-fit: contain; margin: 8px 0;">
-              <div id="quiz-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
+              <div id="quiz-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
             </div>
             <div style="background: #FFF; padding: 14px; border-radius: 12px; border: 2px solid #E2E8F0; text-align: center;">
               <p id="cor-pergunta-txt" style="font-size: 13px; font-weight: 800; color: var(--primary-dark);"></p>
               <img id="cor-img" src="" alt="Detalhe" style="width: 75px; height: 75px; object-fit: contain; margin: 8px 0;">
-              <div id="cor-options" style="display: flex; flex-direction: column; gap: 8px;"></div>
+              <div id="cor-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
             </div>
           </div>
         </div>
@@ -947,7 +887,7 @@
               <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 3px;">Sua Senha:</label>
               <input type="password" id="log-senha" class="vip-input" placeholder="Sua senha">
               
-              <button type="button" onclick="fazerLogin()" style="width:100%; min-height:48px; padding: 10px; background: #3B82F6; color: #FFF; border: none; border-radius: 10px; font-weight: 800; cursor: pointer;">Entrar no Clube VIP</button>
+              <button type="button" onclick="fazerLogin()" style="width:100%; padding: 10px; background: #3B82F6; color: #FFF; border: none; border-radius: 10px; font-weight: 800; cursor: pointer;">Entrar no Clube VIP</button>
             </div>
           </div>
         </div>
@@ -958,7 +898,7 @@
               <h4 style="color: #065F46; font-size: 15px; font-weight: 900; margin-bottom: 2px;">🎉 Bem-vindo ao Clube VIP!</h4>
               <p style="font-size: 11.5px; color: #047857; margin: 0; font-weight: 600;">Seu apoio transforma este projeto todos os dias!</p>
             </div>
-            <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 8px 14px; min-height: 40px; border-radius: 8px; font-weight: 800; font-size: 11.5px; cursor: pointer;">🔒 Sair</button>
+            <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 11.5px; cursor: pointer;">🔒 Sair</button>
           </div>
 
           <!-- SELEÇÃO DE PERFIL -->
@@ -971,22 +911,6 @@
           <div class="drive-banner-box">
             <h4 style="color: #1E3A8A; font-size: 17px; font-weight: 900;">📁 Drive Exclusivo da Turminha</h4>
             <p style="font-size: 12.5px; color: #1E40AF; margin-top: 4px; font-weight: 600;">Baixe Wallpapers de alta qualidade e Desenhos para Colorir!</p>
-            
-            <div class="drive-preview-grid">
-              <div class="drive-preview-item">
-                <img src="https://i.imgur.com/KINBaeI.png" alt="Colorir">
-                <span>Colorir 🎨</span>
-              </div>
-              <div class="drive-preview-item">
-                <img src="https://i.imgur.com/0eJgoOG.png" alt="Wallpapers">
-                <span>Wallpapers 🖼️</span>
-              </div>
-              <div class="drive-preview-item">
-                <img src="https://i.imgur.com/3vp2olF.png" alt="Atividades">
-                <span>Atividades ✏️</span>
-              </div>
-            </div>
-
             <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-drive">Acessar Pasta do Google Drive 📥</a>
           </div>
 
@@ -995,7 +919,7 @@
               <h3>🎬 Episódios Secretos e Prévias VIP</h3>
             </div>
             <div class="video-wrapper">
-              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
+              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLFR1LwoD9sys" allowfullscreen></iframe>
             </div>
           </div>
 
@@ -1004,12 +928,12 @@
               <h3>😂 Erros de Gravação Exclusivos</h3>
             </div>
             <div class="video-wrapper">
-              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
+              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLInD9YI8ADrk" allowfullscreen></iframe>
             </div>
           </div>
 
           <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
-            <h4 style="color: #92400E; margin-bottom: 10px; font-size: 15px; font-weight: 900; text-align: center;">⭐ Minijogos VIP</h4>
+            <h4 style="color: #92400E; margin-bottom: 10px; font-size: 15px; font-weight: 900;">⭐ Minijogos VIP</h4>
             <nav class="vip-games-subnav">
               <button id="btn-vipanel-1" class="vip-sub-btn active" onclick="mudarPanelVip(1)">📖 Histórias</button>
               <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores & Detalhes</button>
@@ -1017,35 +941,33 @@
               <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória 12</button>
             </nav>
 
-            <!-- PAINEL VIP 1 ALINHADO E CENTRALIZADO -->
-            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 20px 16px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center; width: 100%;">
-              <h5 style="color: #92400E; font-size: 16px; font-weight: 900; margin-bottom: 8px;">📖 Desafio das Histórias</h5>
-              <p id="vip-historia-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 16px; line-height: 1.5;"></p>
-              <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 420px; margin: 0 auto;"></div>
+            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">📖 Desafio das Histórias</h5>
+              <p id="vip-historia-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 14px;"></p>
+              <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 380px;"></div>
             </div>
 
-            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 20px 16px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center; width: 100%;">
-              <h5 style="color: #92400E; font-size: 16px; font-weight: 900; margin-bottom: 6px;">🎨 Cores e Detalhes Secretos</h5>
+            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 6px;">🎨 Cores e Detalhes Secretos</h5>
               <p id="vip-cor-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 8px;"></p>
               <img id="vip-cor-img" src="" alt="Detalhe VIP" style="width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px;">
               <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;"></div>
             </div>
 
-            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 20px 16px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center; width: 100%;">
-              <h5 style="color: #92400E; font-size: 16px; font-weight: 900; margin-bottom: 4px;">🧩 Quebra-Cabeça da Turminha</h5>
-              <p style="font-size:11.5px; color:#78350F; margin-bottom:10px; font-weight:600;">Clique na peça e depois no espaço para encaixar!</p>
+            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
+              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧩 Quebra-Cabeça Proporcional</h5>
               <div id="puzzleSelector" class="puzzle-selector"></div>
               <div class="puzzle-full-preview"><img id="puzzleFullPreviewImg" src="" alt="Preview"></div>
               <div class="puzzle-workspace">
                 <div id="puzzleContainer" class="puzzle-grid"></div>
                 <div id="puzzlePiecesTray" class="puzzle-pieces-tray"></div>
               </div>
-              <button onclick="reiniciarPuzzle()" style="margin-top: 12px; padding: 10px 18px; min-height:48px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 12.5px; cursor: pointer;">Reiniciar 🔄</button>
+              <button onclick="reiniciarPuzzle()" style="margin-top: 12px; padding: 8px 16px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer;">Reiniciar 🔄</button>
             </div>
 
-            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 20px 16px; border-radius: 12px; border: 2px solid #FCD34D; text-align: center; width: 100%;">
-              <h5 style="color: #92400E; font-size: 16px; font-weight: 900; margin-bottom: 10px;">🧠 Memória Relâmpago (12 Cartas)</h5>
-              <div id="memoryBoardVip" class="memory-board"></div>
+            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
+              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧠 Memória Relâmpago (12 Cartas)</h5>
+              <div id="memoryBoardVip" class="memory-board" style="max-width: 360px;"></div>
             </div>
 
           </div>
@@ -1075,23 +997,10 @@
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxkMvHbuXfZWEfd1tzLDvk4YzIW66alJyp2J9VGm-8nQV1iotNqaDLDieEeVblb6RcTMA/exec";
     const LINK_KIWIFY = "https://pay.kiwify.com.br/avOqrEg";
 
-    function animarGanhoDePontos(e, texto) {
-      const pop = document.createElement('div');
-      pop.className = 'floating-reward-pop';
-      pop.innerText = texto || "+5 ⭐";
-      const x = e ? (e.clientX || e.pageX) : window.innerWidth / 2;
-      const y = e ? (e.clientY || e.pageY) : window.innerHeight / 2;
-      pop.style.left = `${x - 20}px`;
-      pop.style.top = `${y - 30}px`;
-      document.body.appendChild(pop);
-      setTimeout(() => pop.remove(), 1000);
-    }
-
-    function adicionarPontos(qtde, evento) {
+    function adicionarPontos(qtde) {
       pontosConquista += qtde;
       localStorage.setItem('turminha_pontos', pontosConquista);
       atualizarPlacarConquistas();
-      if (evento) animarGanhoDePontos(evento, `+${qtde} ⭐`);
     }
 
     function atualizarPlacarConquistas() {
@@ -1117,9 +1026,15 @@
 
     function desbloquearAudioMobileOnce() {
       if ('speechSynthesis' in window) {
-        const u = new SpeechSynthesisUtterance('');
-        window.speechSynthesis.speak(u);
+        window.speechSynthesis.cancel();
       }
+    }
+
+    let vozesDisponiveis = [];
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = () => {
+        vozesDisponiveis = window.speechSynthesis.getVoices();
+      };
     }
 
     function lerTexto(texto) {
@@ -1131,18 +1046,17 @@
           const utterance = new SpeechSynthesisUtterance(texto);
           utterance.lang = 'pt-BR';
           utterance.rate = 0.95;
-          utterance.pitch = 1.1;
-
-          const vozes = window.speechSynthesis.getVoices();
-          if (vozes.length > 0) {
-            const vozPt = vozes.find(v => v.lang.includes('pt-BR') || v.lang.includes('pt'));
-            if (vozPt) utterance.voice = vozPt;
+          
+          if (vozesDisponiveis.length === 0) {
+            vozesDisponiveis = window.speechSynthesis.getVoices();
+          }
+          const vozPt = vozesDisponiveis.find(v => v.lang.includes('pt') || v.lang.includes('PT'));
+          if (vozPt) {
+            utterance.voice = vozPt;
           }
 
           window.speechSynthesis.speak(utterance);
-        } catch (e) {
-          console.log("Erro na síntese de voz:", e);
-        }
+        } catch (e) { console.log("Erro no sintetizador de voz:", e); }
       }
     }
 
@@ -1287,30 +1201,17 @@
       if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
     }
 
-    /* MUDAR PAINEL VIP AJUSTADO PARA ALINHAMENTO PERFEITO */
     function mudarPanelVip(num) {
-      for (let i = 1; i <= 4; i++) {
+      for(let i=1; i<=4; i++) {
         const panel = document.getElementById('panel-vip-' + i);
         const btn = document.getElementById('btn-vipanel-' + i);
-        if (panel) {
-          panel.classList.remove('active-vip-panel');
-          panel.style.display = 'none';
-        }
-        if (btn) btn.classList.remove('active');
+        if(panel) panel.classList.remove('active-vip-panel');
+        if(btn) btn.classList.remove('active');
       }
-
       const pAtual = document.getElementById('panel-vip-' + num);
       const bAtual = document.getElementById('btn-vipanel-' + num);
-      if (pAtual) {
-        pAtual.classList.add('active-vip-panel');
-        pAtual.style.display = 'block';
-      }
-      if (bAtual) bAtual.classList.add('active');
-
-      if (num === 1) carregarDesafioHistoriaVip();
-      if (num === 2) carregarJogoCorVip();
-      if (num === 3) iniciarPuzzleVip();
-      if (num === 4) iniciarMemoriaVip();
+      if(pAtual) pAtual.classList.add('active-vip-panel');
+      if(bAtual) bAtual.classList.add('active');
     }
 
     function criarSeletorAvatarPerfil() {
@@ -1339,7 +1240,7 @@
     let imagemPintarCarregada = null, tamanhoPincel = 6, escalaZoomGuia = 0.85;
 
     function redimensionarCanvas() {
-      if (!canvas || !canvas.parentElement) return;
+      if (!canvas.parentElement) return;
       canvas.width = canvas.parentElement.clientWidth - 16;
       canvas.height = window.innerWidth >= 900 ? 380 : 280;
       if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada);
@@ -1410,9 +1311,8 @@
     canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; });
     canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
     canvas.addEventListener('mouseup', () => desenhando = false);
-    
-    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; e.preventDefault(); }, { passive: false });
-    canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); }, { passive: false });
+    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; e.preventDefault(); });
+    canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
     canvas.addEventListener('touchend', () => desenhando = false);
     window.addEventListener('resize', redimensionarCanvas);
 
@@ -1433,10 +1333,10 @@
       for (let n = 1; n <= 9; n++) {
         const btn = document.createElement('button');
         btn.className = 'btn-choice'; btn.innerText = n;
-        btn.onclick = (e) => {
+        btn.onclick = () => {
           if (n === qContar) { 
             lerTexto("Muito bem! Acertou!"); 
-            adicionarPontos(5, e);
+            adicionarPontos(5);
             setTimeout(carregarJogoContar, 700); 
           }
           else lerTexto("Tente de novo!");
@@ -1461,10 +1361,10 @@
       opcoes.sort(() => Math.random() - 0.5).forEach(l => {
         const btn = document.createElement('button');
         btn.className = 'btn-choice'; btn.innerText = l;
-        btn.onclick = (e) => {
+        btn.onclick = () => {
           if (l === pLetraAtual.letra) { 
             lerTexto("Parabéns! Letra correta!"); 
-            adicionarPontos(5, e);
+            adicionarPontos(5);
             setTimeout(carregarJogoLetra, 700); 
           }
           else lerTexto("Tente de novo!");
@@ -1484,16 +1384,16 @@
       cMem.forEach(src => {
         const card = document.createElement('div');
         card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
-        card.onclick = (e) => {
+        card.onclick = () => {
           if (travaMem || card.classList.contains('flipped')) return;
           card.classList.add('flipped'); card.innerHTML = `<img src="${src}" alt="Carta">`;
           if (!pCarta) pCarta = card;
           else {
             if (pCarta.dataset.img === src) {
               acertosMem++; lerTexto("Encontrou o par!"); pCarta = null;
-              adicionarPontos(3, e);
+              adicionarPontos(3);
               if (acertosMem === 4) {
-                adicionarPontos(10, e);
+                adicionarPontos(10);
                 setTimeout(iniciarMemoria, 1800);
               }
             } else {
@@ -1523,12 +1423,12 @@
       }
       opcoes.sort(() => Math.random() - 0.5).forEach(o => {
         const btn = document.createElement('button');
-        btn.style.cssText = "padding:12px; min-height:48px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:13px;";
+        btn.style.cssText = "padding:8px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:12px;";
         btn.innerText = o;
-        btn.onclick = (e) => {
+        btn.onclick = () => {
           if (o === pQuizAtual.nome) { 
             lerTexto("Muito bem!"); 
-            adicionarPontos(5, e);
+            adicionarPontos(5);
             setTimeout(carregarQuiz, 700); 
           }
           else lerTexto("Tente novamente!");
@@ -1546,12 +1446,12 @@
       container.innerHTML = '';
       pCorAtual.corOpcoes.sort(() => Math.random() - 0.5).forEach(o => {
         const btn = document.createElement('button');
-        btn.style.cssText = "padding:12px; min-height:48px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:13px;";
+        btn.style.cssText = "padding:8px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:12px;";
         btn.innerText = o;
-        btn.onclick = (e) => {
+        btn.onclick = () => {
           if (o === pCorAtual.corCorreta) { 
             lerTexto("Acertou em cheio!"); 
-            adicionarPontos(5, e);
+            adicionarPontos(5);
             setTimeout(carregarJogoCor, 700); 
           }
           else lerTexto("Tente de novo!");
@@ -1605,6 +1505,7 @@
         return;
       }
 
+      // SENHA MESTRA DA EVELYN (SEMPRE LIBERA)
       if (senha === SENHA_MESTRA_CRIADORA) {
         localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
         verificarStatusVip();
@@ -1612,6 +1513,7 @@
         return;
       }
 
+      // VALIDAÇÃO SEGURA NO GOOGLE SHEETS / KIWIFY
       fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
         .then(response => response.json())
         .then(data => {
@@ -1620,14 +1522,17 @@
             verificarStatusVip();
             lerTexto("Bem-vindo ao Clube VIP!");
           } else { 
+            // TRAVA O ACESSO SE NÃO PAGOU OU SENHA ESTIVER ERRADA
             localStorage.removeItem('turminha_xexeu_vip_ativo');
             lerTexto("Acesso negado! Assine o Clube VIP para desbloquear.");
-            alert("❌ Acesso Negado: E-mail ou senha não encontrados ou assinatura pendente.");
+            alert("❌ Acesso Negado: E-mail ou senha não encontrados ou assinatura pendente. Assine por R$ 6,00 para liberar o acesso!");
           }
         })
         .catch(() => { 
+          // SE O SERVIDOR FALHAR, MANTÉM BLOQUEADO POR SEGURANÇA
+          localStorage.removeItem('turminha_xexeu_vip_ativo');
           lerTexto("Acesso negado! Verifique seus dados ou assinatura.");
-          alert("❌ Erro ao validar acesso. Verifique seu e-mail e senha.");
+          alert("❌ Acesso Negado: Verifique seu e-mail e senha cadastrados na assinatura.");
         });
     }
 
@@ -1638,7 +1543,10 @@
       if (isVip === 'true') {
         if(lockedView) lockedView.style.display = 'none';
         if(unlockedView) unlockedView.classList.add('active-vip');
-        mudarPanelVip(1);
+        carregarDesafioHistoriaVip();
+        carregarJogoCorVip();
+        iniciarPuzzleVip();
+        iniciarMemoriaVip();
       } else {
         if(lockedView) lockedView.style.display = 'block';
         if(unlockedView) unlockedView.classList.remove('active-vip');
@@ -1655,7 +1563,6 @@
     const imagensBannersCapas = ['https://i.imgur.com/0eJgoOG.png', 'https://i.imgur.com/0eteSlf.png', 'https://i.imgur.com/eKxsqu8.png', 'https://i.imgur.com/kR23lSN.png'];
     let imgAlvoPuzzle = imagensBannersCapas[0];
     let estadoTabuleiro = new Array(12).fill(null);
-    let pecaSelecionadaIndex = null;
 
     function iniciarPuzzleVip() { criarSeletorCapas(); selecionarCapaPuzzle(imgAlvoPuzzle); }
     function criarSeletorCapas() {
@@ -1671,70 +1578,36 @@
       });
     }
     function selecionarCapaPuzzle(url) { imgAlvoPuzzle = url; document.getElementById('puzzleFullPreviewImg').src = url; reiniciarPuzzle(); }
-    function reiniciarPuzzle() { estadoTabuleiro = new Array(12).fill(null); pecaSelecionadaIndex = null; renderizarTabuleiroPuzzle(); renderizarPecasEmbaralhadas(); }
-    
+    function reiniciarPuzzle() { estadoTabuleiro = new Array(12).fill(null); renderizarTabuleiroPuzzle(); renderizarPecasEmbaralhadas(); }
     function renderizarTabuleiroPuzzle() {
       const container = document.getElementById('puzzleContainer'); container.innerHTML = '';
       for (let i = 0; i < 12; i++) {
-        const dropzone = document.createElement('div'); 
-        dropzone.className = 'puzzle-dropzone'; 
-        dropzone.dataset.slotIndex = i;
-        dropzone.onclick = (e) => encaixarPecaNoSlot(i, e);
-
-        if (estadoTabuleiro[i] !== null) {
-          dropzone.appendChild(criarElementoPeca(estadoTabuleiro[i]));
-        }
+        const dropzone = document.createElement('div'); dropzone.className = 'puzzle-dropzone'; dropzone.dataset.slotIndex = i;
+        dropzone.ondragover = (e) => { e.preventDefault(); };
+        dropzone.ondrop = (e) => { e.preventDefault(); const pecaIndex = parseInt(e.dataTransfer.getData('text/plain')); colocarPecaNoSlot(pecaIndex, i); };
+        if (estadoTabuleiro[i] !== null) dropzone.appendChild(criarElementoPeca(estadoTabuleiro[i]));
         container.appendChild(dropzone);
       }
     }
-
     function renderizarPecasEmbaralhadas() {
       const tray = document.getElementById('puzzlePiecesTray'); tray.innerHTML = '';
       let indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].sort(() => Math.random() - 0.5);
-      indices.forEach(originalIndex => { 
-        if (!estadoTabuleiro.includes(originalIndex)) {
-          const pecaEl = criarElementoPeca(originalIndex);
-          pecaEl.onclick = (e) => {
-            e.stopPropagation();
-            selecionarPecaParaEncaixe(originalIndex, pecaEl);
-          };
-          tray.appendChild(pecaEl); 
-        }
-      });
+      indices.forEach(originalIndex => { if (!estadoTabuleiro.includes(originalIndex)) tray.appendChild(criarElementoPeca(originalIndex)); });
     }
-
     function criarElementoPeca(originalIndex) {
-      const div = document.createElement('div'); 
-      div.className = 'draggable-piece' + (pecaSelecionadaIndex === originalIndex ? ' selected-piece' : ''); 
-      div.dataset.pieceIndex = originalIndex;
-      let row = Math.floor(originalIndex / 4); 
-      let col = originalIndex % 4;
-      div.innerHTML = `<img src="${imgAlvoPuzzle}" style="object-position: -${col * 58}px -${row * 58}px;">`;
+      const div = document.createElement('div'); div.className = 'draggable-piece'; div.draggable = true; div.dataset.pieceIndex = originalIndex;
+      let row = Math.floor(originalIndex / 4); let col = originalIndex % 4;
+      div.innerHTML = `<img src="${imgAlvoPuzzle}" style="object-position: -${col * 67}px -${row * 67}px;">`;
+      div.ondragstart = (e) => { e.dataTransfer.setData('text/plain', originalIndex); };
       return div;
     }
-
-    function selecionarPecaParaEncaixe(originalIndex, elemento) {
-      document.querySelectorAll('.draggable-piece').forEach(p => p.classList.remove('selected-piece'));
-      pecaSelecionadaIndex = originalIndex;
-      elemento.classList.add('selected-piece');
-      lerTexto("Peça selecionada! Agora toque no espaço para encaixar.");
-    }
-
-    function encaixarPecaNoSlot(slotIndex, e) {
-      if (pecaSelecionadaIndex === null) return;
-      
-      for (let i = 0; i < 12; i++) {
-        if (estadoTabuleiro[i] === pecaSelecionadaIndex) estadoTabuleiro[i] = null;
-      }
-      estadoTabuleiro[slotIndex] = pecaSelecionadaIndex;
-      pecaSelecionadaIndex = null;
-
-      renderizarTabuleiroPuzzle(); 
-      renderizarPecasEmbaralhadas();
-
+    function colocarPecaNoSlot(pecaIndex, slotIndex) {
+      for (let i = 0; i < 12; i++) if (estadoTabuleiro[i] === pecaIndex) estadoTabuleiro[i] = null;
+      estadoTabuleiro[slotIndex] = pecaIndex;
+      renderizarTabuleiroPuzzle(); renderizarPecasEmbaralhadas();
       if (estadoTabuleiro.every((val, i) => val === i)) {
         lerTexto("Parabéns! Quebra-cabeça montado!");
-        adicionarPontos(15, e);
+        adicionarPontos(15);
       }
     }
 
@@ -1747,7 +1620,7 @@
       const board = document.getElementById('memoryBoardVip'); board.innerHTML = '';
       cMemVip.forEach(src => {
         const card = document.createElement('div'); card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
-        card.onclick = (e) => {
+        card.onclick = () => {
           if (travaMemVip || card.classList.contains('flipped')) return;
           card.classList.add('flipped'); card.innerHTML = `<img src="${src}" alt="Carta VIP">`;
           if (!pCartaVip) pCartaVip = card;
@@ -1755,10 +1628,10 @@
             if (pCartaVip.dataset.img === src) { 
               acertosMemVip++; 
               lerTexto("Par VIP!"); 
-              adicionarPontos(5, e);
+              adicionarPontos(5);
               pCartaVip = null; 
               if (acertosMemVip === 6) {
-                adicionarPontos(15, e);
+                adicionarPontos(15);
                 setTimeout(iniciarMemoriaVip, 1800);
               } 
             } else {
@@ -1787,12 +1660,12 @@
       document.getElementById('vip-historia-txt').innerText = itemSorteado.pergunta;
       const containerOpcoes = document.getElementById('vip-historia-options'); containerOpcoes.innerHTML = '';
       itemSorteado.opcoes.sort(() => Math.random() - 0.5).forEach(opcaoNome => {
-        const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:12px; min-height:48px; font-size:14px; background:#F59E0B; border-radius:10px; border:none; color:white; font-weight:800; cursor:pointer; width:100%;";
+        const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:10px; font-size:14px; background:#F59E0B; border-radius:10px; border:none; color:white; font-weight:800; cursor:pointer; width:100%;";
         btn.innerText = opcaoNome;
-        btn.onclick = (e) => { 
+        btn.onclick = () => { 
           if (opcaoNome === itemSorteado.resposta) { 
             lerTexto("Parabéns! Resposta correta!"); 
-            adicionarPontos(8, e);
+            adicionarPontos(8);
             setTimeout(carregarDesafioHistoriaVip, 800); 
           } else {
             lerTexto("Ops! Tente outra resposta."); 
@@ -1808,12 +1681,12 @@
       document.getElementById('vip-cor-img').src = pCor.img;
       const containerCor = document.getElementById('vip-cor-options'); containerCor.innerHTML = '';
       pCor.corOpcoes.sort(() => Math.random() - 0.5).forEach(corOp => {
-        const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:10px 16px; min-height:48px; font-size:13px; background:#8B5CF6;";
+        const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:8px 14px; font-size:13px; background:#8B5CF6;";
         btn.innerText = corOp;
-        btn.onclick = (e) => { 
+        btn.onclick = () => { 
           if (corOp === pCor.corCorreta) { 
             lerTexto("Acertou!"); 
-            adicionarPontos(5, e);
+            adicionarPontos(5);
             setTimeout(carregarJogoCorVip, 800); 
           } else {
             lerTexto("Tente de novo!"); 
