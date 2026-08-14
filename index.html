@@ -42,224 +42,48 @@
       --shadow-lg: none !important;
       background: var(--bg-gradient);
     }
-    body.sensory-mode * {
-      animation: none !important; 
-    }
-    body.sensory-mode .app-container {
-      border: 2px solid #E2E8F0;
-    }
+    body.sensory-mode * { animation: none !important; }
+    body.sensory-mode .app-container { border: 2px solid #E2E8F0; }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', system-ui, -apple-system, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', system-ui, -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
 
-    body {
-      background: var(--bg-gradient);
-      color: var(--text-main);
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 8px 8px 50px;
-      transition: background 0.3s ease;
-    }
+    body { background: var(--bg-gradient); color: var(--text-main); display: flex; justify-content: center; min-height: 100vh; padding: 8px 8px 50px; transition: background 0.3s ease; }
 
-    .app-container {
-      width: 100%;
-      max-width: 1120px;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-lg);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      padding-bottom: 24px;
-      border: 3px solid #FFFFFF;
-    }
+    .app-container { width: 100%; max-width: 1120px; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: flex; flex-direction: column; gap: 20px; padding-bottom: 24px; border: 3px solid #FFFFFF; }
 
-    header {
-      padding: 14px 20px;
-      background: linear-gradient(135deg, #BAE6FD 0%, #E0F2FE 100%);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-radius: var(--radius-lg);
-      margin: 12px 12px 0;
-      box-shadow: var(--shadow-sm);
-    }
+    header { padding: 14px 20px; background: linear-gradient(135deg, #BAE6FD 0%, #E0F2FE 100%); display: flex; align-items: center; justify-content: space-between; border-radius: var(--radius-lg); margin: 12px 12px 0; box-shadow: var(--shadow-sm); }
     .logo-img { max-width: 150px; height: auto; }
 
-    .audio-toggle-btn {
-      background: #FFFFFF;
-      border: 2.5px solid var(--primary);
-      color: var(--primary-dark);
-      font-weight: 800;
-      font-size: 13px;
-      padding: 8px 14px;
-      border-radius: 50px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: var(--shadow-sm);
-    }
-    .audio-toggle-btn.muted {
-      background: #FEE2E2;
-      border-color: #EF4444;
-      color: #991B1B;
-    }
+    .audio-toggle-btn { background: #FFFFFF; border: 2.5px solid var(--primary); color: var(--primary-dark); font-weight: 800; font-size: 13px; padding: 8px 14px; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: var(--shadow-sm); }
+    .audio-toggle-btn.muted { background: #FEE2E2; border-color: #EF4444; color: #991B1B; }
 
-    .page-nav {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      background: #F0F9FF;
-      padding: 6px;
-      border-radius: var(--radius-lg);
-      margin: 0 12px;
-      border: 2px solid #BAE6FD;
-      flex-wrap: wrap;
-    }
-    .nav-tab-btn {
-      flex: 1;
-      min-width: 95px;
-      max-width: 180px;
-      padding: 12px 8px;
-      border: none;
-      border-radius: var(--radius-md);
-      font-weight: 800;
-      font-size: 13px;
-      cursor: pointer;
-      background: transparent;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-    .nav-tab-btn.active {
-      background: var(--primary);
-      color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
-    }
-    .nav-tab-btn.vip-tab {
-      background: #FEF3C7;
-      color: #92400E;
-      border: 2px solid #FCD34D;
-    }
-    .nav-tab-btn.vip-tab.active {
-      background: linear-gradient(135deg, #F59E0B, #D97706);
-      color: #FFF;
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
-      border-color: transparent;
-    }
-    .nav-tab-btn.tea-tab {
-      background: #E0F2FE;
-      color: var(--tea-blue);
-      border: 2px solid #7DD3FC;
-    }
-    .nav-tab-btn.tea-tab.active {
-      background: var(--tea-blue);
-      color: #FFF;
-      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
-      border-color: transparent;
-    }
+    .page-nav { display: flex; justify-content: center; gap: 8px; background: #F0F9FF; padding: 6px; border-radius: var(--radius-lg); margin: 0 12px; border: 2px solid #BAE6FD; flex-wrap: wrap; }
+    .nav-tab-btn { flex: 1; min-width: 95px; max-width: 180px; padding: 12px 8px; border: none; border-radius: var(--radius-md); font-weight: 800; font-size: 13px; cursor: pointer; background: transparent; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .nav-tab-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35); }
+    .nav-tab-btn.vip-tab { background: #FEF3C7; color: #92400E; border: 2px solid #FCD34D; }
+    .nav-tab-btn.vip-tab.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); border-color: transparent; }
+    .nav-tab-btn.tea-tab { background: #E0F2FE; color: var(--tea-blue); border: 2px solid #7DD3FC; }
+    .nav-tab-btn.tea-tab.active { background: var(--tea-blue); color: #FFF; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35); border-color: transparent; }
 
-    .browser-notice-box {
-      margin: 0 16px;
-      background: #EFF6FF;
-      border: 2px solid #93C5FD;
-      border-radius: var(--radius-md);
-      padding: 10px 14px;
-      text-align: center;
-      color: #1E40AF;
-      font-size: 12.5px;
-      font-weight: 700;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
+    .browser-notice-box { margin: 0 16px; background: #EFF6FF; border: 2px solid #93C5FD; border-radius: var(--radius-md); padding: 10px 14px; text-align: center; color: #1E40AF; font-size: 12.5px; font-weight: 700; box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; gap: 8px; }
 
-    .top-vip-announcement {
-      margin: 0 12px -10px;
-      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
-      border: 2px dashed #F59E0B;
-      border-radius: var(--radius-md);
-      padding: 10px 14px;
-      text-align: center;
-      color: #92400E;
-      font-size: 12px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: var(--shadow-sm);
-    }
+    .top-vip-announcement { margin: 0 12px -10px; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 10px 14px; text-align: center; color: #92400E; font-size: 12px; font-weight: 800; cursor: pointer; box-shadow: var(--shadow-sm); }
 
-    .page-content {
-      display: none;
-      flex-direction: column;
-      gap: 22px;
-      animation: fadeIn 0.3s ease;
-    }
+    .page-content { display: none; flex-direction: column; gap: 22px; animation: fadeIn 0.3s ease; }
     .page-content.active-page { display: flex; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-    .banner-intro-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding: 0 16px;
-    }
-    @media (min-width: 850px) {
-      .banner-intro-grid {
-        display: grid;
-        grid-template-columns: 1fr 1.2fr;
-        align-items: stretch;
-      }
-    }
+    .banner-intro-grid { display: flex; flex-direction: column; gap: 16px; padding: 0 16px; }
+    @media (min-width: 850px) { .banner-intro-grid { display: grid; grid-template-columns: 1fr 1.2fr; align-items: stretch; } }
     .banner-container { width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
     .banner-img { width: 100%; height: 100%; min-height: 190px; display: block; object-fit: cover; }
 
-    .intro-box {
-      width: 100%;
-      background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%);
-      border: 2.5px solid #FCD34D;
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-shadow: var(--shadow-sm);
-    }
+    .intro-box { width: 100%; background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%); border: 2.5px solid #FCD34D; border-radius: var(--radius-lg); padding: 20px; text-align: left; display: flex; flex-direction: column; justify-content: center; box-shadow: var(--shadow-sm); }
     .intro-box-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
     .intro-box h2 { font-size: 18px; font-weight: 900; color: #92400E; }
     .intro-box p { font-size: 13px; color: #78350F; line-height: 1.6; font-weight: 600; margin-bottom: 8px; }
 
-    .btn-audio-mini {
-      background: linear-gradient(135deg, #FBBF24, #F59E0B);
-      border: none;
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      cursor: pointer;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFF;
-      box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35);
-      flex-shrink: 0;
-    }
+    .btn-audio-mini { background: linear-gradient(135deg, #FBBF24, #F59E0B); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; color: #FFF; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35); flex-shrink: 0; }
 
     .social-round-section { padding: 0 16px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
     .social-round-btn { width: 44px; height: 44px; border-radius: 50%; background: #FFF; border: 2.5px solid #E2E8F0; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: var(--shadow-sm); }
@@ -339,6 +163,13 @@
     .btn-drive { display: inline-block; background: #2563EB; color: #FFF; font-weight: 800; font-size: 13px; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-top: 8px; transition: transform 0.2s;}
     .btn-drive:hover { transform: scale(1.05); }
 
+    /* Rotina de Super Força (Novo Recurso VIP) */
+    .rotina-item { display: flex; justify-content: space-between; align-items: center; background: #FFF; border: 2px solid #E2E8F0; padding: 10px 14px; border-radius: 10px; margin-bottom: 8px; transition: all 0.2s; }
+    .rotina-item.concluido { background: #DCFCE7; border-color: #86EFAC; opacity: 0.8; }
+    .rotina-item.concluido .rotina-texto { text-decoration: line-through; color: #166534; }
+    .btn-concluir-rotina { background: #10B981; color: #FFF; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
+    .btn-remover-rotina { background: #EF4444; color: #FFF; border: none; padding: 6px 10px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
+
     .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 14px; margin-bottom: 16px; text-align: center; }
     .avatar-escolha-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
     .avatar-escolha-btn { width: 48px; height: 48px; border-radius: 50%; border: 2.5px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 3px; }
@@ -376,25 +207,57 @@
     #visualToast.show { transform: translateX(-50%) translateY(0); }
     .floating-vip-badge { position: fixed; bottom: 16px; right: 16px; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; padding: 10px 16px; border-radius: 50px; font-size: 12.5px; font-weight: 800; box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4); display: flex; align-items: center; gap: 6px; cursor: pointer; border: 2px solid #FDE68A; z-index: 9999; }
     
-    footer { text-align: center; padding: 16px 16px 0; border-top: 1px solid #E2E8F0; font-size: 12px; color: var(--text-muted); font-weight: 600; }
+    footer { text-align: center; padding: 16px 16px 20px; border-top: 1px solid #E2E8F0; font-size: 12px; color: var(--text-muted); font-weight: 600; margin-top: 20px; display: flex; flex-direction: column; gap: 8px;}
+    footer a { color: var(--primary); text-decoration: underline; cursor: pointer; }
     
     /* Estilos TEA específicos */
     .tea-box { background: var(--tea-light); border: 2px solid #BAE6FD; border-radius: var(--radius-lg); padding: 20px; text-align: center; margin-bottom: 20px; }
     .tea-box h3 { color: var(--tea-blue); font-weight: 900; margin-bottom: 10px; }
     .btn-sensorial { background: #FFF; color: var(--tea-blue); border: 2px solid var(--tea-blue); padding: 10px 20px; border-radius: 20px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; transition: all 0.3s; }
     .btn-sensorial.ativo { background: var(--tea-blue); color: #FFF; }
-    .emotion-card { background: #FFF; border: 2px solid #E2E8F0; border-radius: 12px; padding: 15px; cursor: pointer; width: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .emotion-card { background: #FFF; border: 2px solid #E2E8F0; border-radius: 12px; padding: 15px; cursor: pointer; width: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .emotion-card:hover { border-color: var(--tea-blue); }
-    .emotion-card img { width: 60px; height: 60px; object-fit: contain; margin-bottom: 10px; }
+    .emotion-card img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 10px; }
     
     .cause-effect-btn { background: #FFF; border: 3px solid #E2E8F0; border-radius: 20px; padding: 20px; cursor: pointer; transition: transform 0.1s; }
     .cause-effect-btn:active { transform: scale(0.95); border-color: var(--tea-blue); background: var(--tea-light); }
     .cause-effect-btn img { width: 80px; height: 80px; object-fit: contain; }
+
+    /* Modal Privacidade e Cookies */
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); z-index: 10000; justify-content: center; align-items: center; padding: 16px; backdrop-filter: blur(4px); }
+    .modal-overlay.active { display: flex; }
+    .modal-content { background: #FFF; width: 100%; max-width: 600px; border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-lg); max-height: 85vh; overflow-y: auto; position: relative; }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: #F1F5F9; border: none; width: 32px; height: 32px; border-radius: 50%; font-weight: bold; cursor: pointer; color: #475569; }
+    .modal-content h3 { color: var(--primary-dark); margin-bottom: 12px; font-weight: 900; }
+    .modal-content p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; font-weight: 500; }
+
+    .cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: #1E293B; color: #FFF; padding: 16px; text-align: center; font-size: 13px; z-index: 100000; display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; transform: translateY(100%); transition: transform 0.4s ease; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); }
+    .cookie-banner.show { transform: translateY(0); }
+    .btn-cookie { background: #10B981; color: #FFF; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; }
   </style>
 </head>
 <body onclick="desbloquearAudioMobileOnce()">
 
   <div id="visualToast">Aviso do sistema</div>
+
+  <!-- Banner de Cookies LGPD -->
+  <div id="cookieBanner" class="cookie-banner">
+    <p style="margin:0;">🍪 A Turminha do Xexéu utiliza cookies (salvos apenas no seu aparelho) para salvar seus pontos e progresso de forma segura. <a onclick="abrirPrivacidade()" style="color:#3B82F6; text-decoration:underline; cursor:pointer;">Saiba mais</a>.</p>
+    <button class="btn-cookie" onclick="aceitarCookies()">Entendi e Aceito!</button>
+  </div>
+
+  <!-- Modal Política de Privacidade -->
+  <div class="modal-overlay" id="modalPrivacidade">
+    <div class="modal-content">
+      <button class="modal-close" onclick="fecharPrivacidade()">X</button>
+      <h3>🔒 Política de Privacidade da Turminha</h3>
+      <p>A <strong>Turminha do Xexéu</strong> (eve Design) tem um compromisso absoluto com a segurança e a privacidade da sua família, em conformidade com a Lei Geral de Proteção de Dados (LGPD).</p>
+      <p><strong>1. Dados Locais e Seguros:</strong> O nosso portal utiliza uma tecnologia chamada "Local Storage" (Armazenamento Local). Isso significa que as pontuações dos joguinhos, o avatar escolhido e as informações da "Rotina de Super Força" ficam salvas <strong>exclusivamente no seu próprio celular ou computador</strong>. Nós não recebemos, não armazenamos em servidores e não temos acesso a esses dados.</p>
+      <p><strong>2. Área VIP:</strong> Os dados solicitados para acesso à Área VIP (E-mail) são geridos por plataformas de pagamento parceiras (Kiwify) e utilizados unicamente para liberar o seu acesso ao conteúdo exclusivo.</p>
+      <p><strong>3. Sem Rastreadores Invasivos:</strong> Não utilizamos ferramentas ocultas de coleta de dados de navegação que exponham a identidade das crianças. Nosso foco é oferecer um ambiente 100% seguro, educativo e livre de preocupações para os pais.</p>
+      <p>Qualquer dúvida, entre em contato conosco pelo e-mail: turminhaxexeu@gmail.com</p>
+    </div>
+  </div>
 
   <div class="floating-vip-badge" onclick="mudarPagina('vip')">
     <span>⭐</span>
@@ -421,7 +284,6 @@
       <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
     </nav>
 
-    <!-- AVISO NAVEGADOR EXTERNO -->
     <div class="browser-notice-box">
       <span>💡 Dica: Se o som estiver mudo, toque nos 3 pontinhos e escolha <strong>"Abrir no Chrome"</strong> ou <strong>"Abrir no Safari"</strong>!</span>
     </div>
@@ -705,7 +567,7 @@
       </div>
     </main>
 
-    <!-- PÁGINA ESPAÇO TEA (INCLUSIVO) -->
+    <!-- PÁGINA ESPAÇO TEA (INCLUSIVO) COM NOVA JORNADA EMOCIONAL -->
     <main id="pagina-tea" class="page-content">
       <div class="age-group-section">
         <div class="tea-box">
@@ -717,25 +579,54 @@
           </button>
         </div>
 
-        <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Como estamos nos sentindo?</h4>
-        <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px;">
-          <p style="font-weight: 700; margin-bottom: 15px;">Clique na emoção certa!</p>
-          <img src="https://i.imgur.com/jBeihpo.png" alt="Xexéu" style="width: 100px; margin-bottom: 20px;">
+        <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Jornada das Emoções</h4>
+        <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px; position:relative; min-height: 250px;">
           
-          <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <div class="emotion-card" onclick="responderEmocao('Feliz')">
-              <div style="font-size: 40px;">😄</div>
-              <p style="font-weight: 800; color: #16A34A; margin-top: 5px;">Feliz</p>
-            </div>
-            <div class="emotion-card" onclick="responderEmocao('Calmo')">
-              <div style="font-size: 40px;">😌</div>
-              <p style="font-weight: 800; color: var(--tea-blue); margin-top: 5px;">Calmo</p>
-            </div>
-            <div class="emotion-card" onclick="responderEmocao('Triste')">
-              <div style="font-size: 40px;">😢</div>
-              <p style="font-weight: 800; color: #475569; margin-top: 5px;">Triste</p>
+          <!-- PASSO 1: O OUTRO (Xexéu) -->
+          <div id="emocoes-passo-1" style="width: 100%;">
+            <p style="font-weight: 700; margin-bottom: 15px;">Como o Xexéu está se sentindo hoje?</p>
+            <img src="https://i.imgur.com/jBeihpo.png" alt="Xexéu" style="width: 100px; margin-bottom: 20px;">
+            
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+              <div class="emotion-card" onclick="responderEmocao('Feliz')">
+                <div style="font-size: 35px;">😄</div>
+                <p style="font-weight: 800; color: #16A34A; margin-top: 5px; font-size:12px;">Feliz</p>
+              </div>
+              <div class="emotion-card" onclick="responderEmocao('Calmo')">
+                <div style="font-size: 35px;">😌</div>
+                <p style="font-weight: 800; color: var(--tea-blue); margin-top: 5px; font-size:12px;">Calmo</p>
+              </div>
+              <div class="emotion-card" onclick="responderEmocao('Triste')">
+                <div style="font-size: 35px;">😢</div>
+                <p style="font-weight: 800; color: #475569; margin-top: 5px; font-size:12px;">Triste</p>
+              </div>
             </div>
           </div>
+
+          <!-- PASSO 2: A CRIANÇA (E você?) -->
+          <div id="emocoes-passo-2" style="width: 100%; display: none;">
+            <p style="font-weight: 900; color: var(--primary-dark); font-size: 18px; margin-bottom: 15px;">E você? Como está se sentindo agora?</p>
+            
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+              <div class="emotion-card" onclick="responderMinhaEmocao('Feliz')" style="width: 80px; padding:10px;">
+                <div style="font-size: 30px;">😄</div>
+                <p style="font-weight: 800; color: #16A34A; margin-top: 5px; font-size:11px;">Feliz</p>
+              </div>
+              <div class="emotion-card" onclick="responderMinhaEmocao('Calmo')" style="width: 80px; padding:10px;">
+                <div style="font-size: 30px;">😌</div>
+                <p style="font-weight: 800; color: var(--tea-blue); margin-top: 5px; font-size:11px;">Calmo</p>
+              </div>
+              <div class="emotion-card" onclick="responderMinhaEmocao('Triste')" style="width: 80px; padding:10px;">
+                <div style="font-size: 30px;">😢</div>
+                <p style="font-weight: 800; color: #475569; margin-top: 5px; font-size:11px;">Triste</p>
+              </div>
+              <div class="emotion-card" onclick="responderMinhaEmocao('Bravo')" style="width: 80px; padding:10px;">
+                <div style="font-size: 30px;">😤</div>
+                <p style="font-weight: 800; color: #DC2626; margin-top: 5px; font-size:11px;">Bravo</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Causa e Efeito (Sons Isolados)</h4>
@@ -777,6 +668,7 @@
             <ul style="text-align: left; margin: 8px 0 8px 18px; font-weight: 600;">
               <li>📁 <strong>Drive Completo</strong> de atividades pedagógicas.</li>
               <li>🧩 <strong>Materiais Inclusivos (TEA):</strong> Pranchas de rotina, histórias sociais e painéis de emoções focados em comunicação alternativa.</li>
+              <li>🌟 <strong>Controle Visual de Rotina Saudável</strong> (Painel Mágico da Saúde).</li>
               <li>🎬 <strong>Episódios inéditos</strong> antes do YouTube.</li>
               <li>🎮 <strong>Minijogos Exclusivos VIP</strong> para aprender brincando.</li>
             </ul>
@@ -823,6 +715,32 @@
             <div id="avatarEscolhaGrid" class="avatar-escolha-grid"></div>
           </div>
 
+          <!-- NOVO RECURSO: ROTINA DA SAÚDE (AUXÍLIO PAIS) -->
+          <div class="vip-card-box" style="background: #F0FDF4; border-color: #86EFAC;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+              <div>
+                <h4 style="color: #166534; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🌟 Rotina de Super Força</h4>
+                <p style="font-size: 12px; color: #15803D; font-weight: 600; margin-bottom: 12px;">Auxílio visual para vitaminas e remedinhos. Os dados ficam salvos <strong>apenas no seu celular/computador</strong> (100% privado).</p>
+              </div>
+              <button class="btn-audio-mini" onclick="lerTexto('Esta é a nossa Rotina de Super Força! Toda vez que você cuidar da saúde, marque aqui para ganhar pontos mágicos!')" title="Ouvir">🔊</button>
+            </div>
+
+            <div style="background: #FFF; padding: 10px; border-radius: 10px; border: 2px dashed #86EFAC; margin-bottom: 14px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+              <select id="rotina-icone" style="padding: 8px; border-radius: 8px; border: 2px solid #CBD5E1; outline: none; font-size: 14px;">
+                <option value="💧">💧 Gotinha</option>
+                <option value="🥄">🥄 Xarope</option>
+                <option value="💊">💊 Comprimido</option>
+                <option value="🍎">🍎 Vitamina</option>
+              </select>
+              <input type="text" id="rotina-texto" placeholder="Ex: Vitamina C da Manhã" style="flex: 1; padding: 8px; border-radius: 8px; border: 2px solid #CBD5E1; outline: none; font-size: 13px;">
+              <button onclick="adicionarRotinaVip()" style="background: #10B981; color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; cursor: pointer;">Adicionar ➕</button>
+            </div>
+
+            <div id="lista-rotinas-vip">
+              <!-- Renderizado via JS -->
+            </div>
+          </div>
+
           <!-- DRIVE TRADICIONAL -->
           <div class="drive-banner-box">
             <h4 style="color: #1E3A8A; font-size: 17px; font-weight: 900;">📁 Drive Oficial da Turminha</h4>
@@ -830,7 +748,7 @@
             <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-drive">Acessar Pasta Oficial 📥</a>
           </div>
 
-          <!-- DRIVE INCLUSIVO TEA (NOVO) -->
+          <!-- DRIVE INCLUSIVO TEA -->
           <div class="drive-banner-box" style="background: var(--tea-light); border-color: var(--tea-blue);">
             <h4 style="color: #0369A1; font-size: 17px; font-weight: 900;">🧩 Drive Azul da Turminha (Recursos TEA)</h4>
             <p style="font-size: 12.5px; color: #0284C7; margin-top: 4px; font-weight: 600;">Baixe Pranchas de Rotina Visual, Histórias Sociais e Termômetros de Emoção (PDFs Inclusivos)!</p>
@@ -901,6 +819,7 @@
 
     <footer>
       <span>© Turminha do Xexéu - eve Design - Todos os direitos reservados</span>
+      <a onclick="abrirPrivacidade()">Política de Privacidade</a>
     </footer>
 
   </div>
@@ -911,10 +830,12 @@
     let audioUnlocked = false; 
     let vozesDisponiveis = [];
     let pontosConquista = parseInt(localStorage.getItem('turminha_pontos') || '0');
+    let listaRotinasSuperForca = JSON.parse(localStorage.getItem('turminha_rotinas')) || [];
+    
     const SENHA_MESTRA_CRIADORA = "65628467";
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxkMvHbuXfZWEfd1tzLDvk4YzIW66alJyp2J9VGm-8nQV1iotNqaDLDieEeVblb6RcTMA/exec";
     
-    // INFO PERSONAGENS PARA LÓGICAS (Mantidos do original)
+    // INFO PERSONAGENS PARA LÓGICAS
     const INFO_PERSONAGENS = {
       'Xexéu': { nome: "Xexéu", desc: "O pássaro azul de boina amarela! Inspirado no pássaro xexéu e no nome do bisavô Mariano Xexéu, cheio de alegria e amizade." },
       'Capilé': { nome: "Capilé", desc: "O Capilé é o cachorrinho de orelhas grandes e coleira azul-celeste com pingente de osso dourado! Um amigão leal." },
@@ -1032,6 +953,88 @@
       }
     }
 
+    // --- COOKIES E POLÍTICA DE PRIVACIDADE ---
+    function verificarCookies() {
+      const aceitou = localStorage.getItem('aceitou_cookies');
+      if (!aceitou) {
+        setTimeout(() => {
+          document.getElementById('cookieBanner').classList.add('show');
+        }, 1500);
+      }
+    }
+
+    function aceitarCookies() {
+      localStorage.setItem('aceitou_cookies', 'true');
+      document.getElementById('cookieBanner').classList.remove('show');
+    }
+
+    function abrirPrivacidade() {
+      document.getElementById('modalPrivacidade').classList.add('active');
+    }
+    function fecharPrivacidade() {
+      document.getElementById('modalPrivacidade').classList.remove('active');
+    }
+
+    // --- CONTROLE DE ROTINA DE SUPER FORÇA (ÁREA VIP) ---
+    function renderizarRotinasVip() {
+      const container = document.getElementById('lista-rotinas-vip');
+      if (!container) return;
+      container.innerHTML = '';
+      
+      if (listaRotinasSuperForca.length === 0) {
+        container.innerHTML = '<p style="text-align:center; font-size:12px; color:#94A3B8;">Nenhuma rotina adicionada ainda.</p>';
+        return;
+      }
+
+      listaRotinasSuperForca.forEach((rotina, index) => {
+        const item = document.createElement('div');
+        item.className = `rotina-item ${rotina.concluido ? 'concluido' : ''}`;
+        
+        item.innerHTML = `
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-size:24px;">${rotina.icone}</span>
+            <span class="rotina-texto" style="font-weight:700; font-size:14px; color:#1E293B;">${rotina.texto}</span>
+          </div>
+          <div style="display:flex; gap:6px;">
+            ${!rotina.concluido ? `<button class="btn-concluir-rotina" onclick="completarRotina(${index})">✔️ Pronto</button>` : `<span style="font-size:12px; font-weight:800; color:#166534;">Super Força Ativada! 🦸</span>`}
+            <button class="btn-remover-rotina" onclick="removerRotina(${index})">🗑️</button>
+          </div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function adicionarRotinaVip() {
+      const icone = document.getElementById('rotina-icone').value;
+      const texto = document.getElementById('rotina-texto').value.trim();
+      
+      if (!texto) {
+        alert("Digite o nome da vitamina ou remedinho!");
+        return;
+      }
+
+      listaRotinasSuperForca.push({ icone: icone, texto: texto, concluido: false });
+      localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
+      document.getElementById('rotina-texto').value = '';
+      renderizarRotinasVip();
+      lerTexto("Rotina adicionada com sucesso!");
+    }
+
+    function completarRotina(index) {
+      listaRotinasSuperForca[index].concluido = true;
+      localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
+      adicionarPontos(10);
+      renderizarRotinasVip();
+      lerTexto("Uau! Você ganhou 10 pontos de Super Força! Parabéns!");
+    }
+
+    function removerRotina(index) {
+      listaRotinasSuperForca.splice(index, 1);
+      localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
+      renderizarRotinasVip();
+    }
+
+    // --- SUPORTE TÉCNICO ---
     function enviarSuporteReclamacao() {
       const emailInput = document.getElementById('suporteEmail');
       const mensagemInput = document.getElementById('suporteMensagem');
@@ -1074,6 +1077,7 @@
       if (pagina === 'vip') {
         verificarStatusVip();
         criarSeletorAvatarPerfil();
+        renderizarRotinasVip();
       }
     }
 
@@ -1100,8 +1104,9 @@
       document.getElementById('btn-vipanel-' + num).classList.add('active');
     }
 
-    // --- ESPAÇO TEA (LÓGICA UX) ---
+    // --- ESPAÇO TEA: LÓGICA DE JORNADA EMOCIONAL (SCAFFOLDING) ---
     let sensoryModeAtivo = false;
+    
     function toggleSensoryMode() {
       sensoryModeAtivo = !sensoryModeAtivo;
       const btn = document.getElementById('btnSensoryToggle');
@@ -1109,7 +1114,7 @@
         document.body.classList.add('sensory-mode');
         btn.classList.add('ativo');
         btn.innerHTML = '🌿 Modo Calmo Ativado';
-        lerTexto("Modo sensorial ativado. Cores suaves.");
+        lerTexto("Modo sensorial ativado. Cores suaves e calmas.");
       } else {
         document.body.classList.remove('sensory-mode');
         btn.classList.remove('ativo');
@@ -1117,9 +1122,39 @@
         lerTexto("Modo padrão ativado.");
       }
     }
+    
     function responderEmocao(emocao) {
-      if (emocao === 'Feliz') lerTexto("Isso mesmo! O Xexéu está muito feliz!");
-      else lerTexto(`Você acha que ele está ${emocao}? Na verdade, o Xexéu está com um sorriso Feliz!`);
+      if (emocao === 'Feliz') {
+        lerTexto("Isso mesmo! O Xexéu está muito feliz! Agora, conta pra mim...");
+        
+        // Transição suave para o "E você?"
+        setTimeout(() => {
+          document.getElementById('emocoes-passo-1').style.display = 'none';
+          document.getElementById('emocoes-passo-2').style.display = 'block';
+          lerTexto("E você? Como está se sentindo agora?");
+        }, 2800);
+
+      } else {
+        lerTexto(`Você acha que ele está ${emocao}? Na verdade, o Xexéu está com um lindo sorriso Feliz!`);
+      }
+    }
+
+    function responderMinhaEmocao(emocao) {
+      if (emocao === 'Feliz') {
+        lerTexto("Que maravilha! Ficar feliz é muito gostoso! O Xexéu adora ver você sorrir!");
+      } else if (emocao === 'Calmo') {
+        lerTexto("Estar calmo é tão bom, não é verdade? Respire fundo e aproveite esse momento tranquilo.");
+      } else if (emocao === 'Triste') {
+        lerTexto("Está tudo bem se sentir triste às vezes. Que tal um abraço virtual bem apertado da Turminha?");
+      } else if (emocao === 'Bravo') {
+        lerTexto("Entendo que você está bravo. É normal. Vamos respirar fundo juntos? Puxa o ar... e solta...");
+      }
+      
+      // Reseta para a brincadeira original depois de um tempo para permitir repetição
+      setTimeout(() => {
+        document.getElementById('emocoes-passo-1').style.display = 'block';
+        document.getElementById('emocoes-passo-2').style.display = 'none';
+      }, 7000);
     }
 
     // --- LÓGICA VIP (LOGIN / CADASTRO) ---
@@ -1467,13 +1502,16 @@
     }
 
     // Inicialização Geral
-    atualizarPlacarConquistas();
-    carregarJogoContar();
-    carregarJogoLetra();
-    iniciarMemoria();
-    carregarQuiz();
-    carregarJogoCor();
-    verificarStatusVip();
+    window.onload = () => {
+      atualizarPlacarConquistas();
+      carregarJogoContar();
+      carregarJogoLetra();
+      iniciarMemoria();
+      carregarQuiz();
+      carregarJogoCor();
+      verificarStatusVip();
+      verificarCookies(); // Chama o banner de cookies
+    };
   </script>
 </body>
 </html>
