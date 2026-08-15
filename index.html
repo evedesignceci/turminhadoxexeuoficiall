@@ -294,7 +294,7 @@
     .modal-content h3 { color: var(--primary-dark); margin-bottom: 12px; font-weight: 900; }
     .modal-content p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; font-weight: 500; }
 
-    .cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: #1E293B; color: #FFF; padding: 16px; text-align: center; font-size: 13px; z-index: 100000; display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; transform: translateY(100%); transition: transform 0.4s ease; box-shadow: -4px 10px rgba(0,0,0,0.1); }
+    .cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: #1E293B; color: #FFF; padding: 16px; text-align: center; font-size: 13px; z-index: 100000; display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; transform: translateY(100%); transition: transform 0.4s ease; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); }
     .cookie-banner.show { transform: translateY(0); }
     .btn-cookie { background: #10B981; color: #FFF; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; }
   </style>
@@ -307,7 +307,7 @@
   <div id="modalBloqueioTempo" class="lock-modal">
     <div class="lock-box">
       <h3>⏰ O Tempo de Uso Acabou!</h3>
-      <p>Para desbloquear o portal e voltar a brincar, insira a <strong>senha dos pais</strong> cadastrada:</p>
+      <p>Para desbloquear o portal e voltar a brincar, insira a <strong>senha parental</strong> cadastrada:</p>
       <input type="password" id="senhaDesbloqueio" class="lock-input" placeholder="Digite a senha">
       <button class="lock-btn" onclick="tentarDesbloquearTela()">Desbloquear com Senha 🔓</button>
     </div>
@@ -638,11 +638,11 @@
       </div>
     </main>
 
-    <!-- PÁGINA ESPAÇO TEA (COM ONBOARDING INTRODUTÓRIO PARA OS PAIS) -->
+    <!-- PÁGINA ESPAÇO TEA (COM FLUXO DE ONBOARDING E ACESSO GRATUITO ESSENCIAL) -->
     <main id="pagina-tea" class="page-content">
       <div class="age-group-section">
         
-        <!-- ETAPA DE ONBOARDING: COLETA DE E-MAIL E SENHA PARENTAL (ESTILO REFERÊNCIA) -->
+        <!-- ETAPA DE ONBOARDING: CADASTRO INICIAL (EXEMPLO DE FLUXO) -->
         <div id="tea-onboarding-box" class="tea-box" style="background: #FFF; border: 2.5px solid var(--tea-blue);">
           <h3>🧩 Bem-vindo ao Espaço Inclusivo TEA</h3>
           <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Para personalizar a experiência e ativar o temporizador de segurança com senha parental, insira os dados abaixo:</p>
@@ -651,14 +651,14 @@
             <label style="font-size: 11px; font-weight: 800; color: var(--tea-blue); display: block; margin-bottom: 4px;">E-mail do Responsável:</label>
             <input type="email" id="tea-email" class="vip-input" placeholder="seu@email.com">
             
-            <label style="font-size: 11px; font-weight: 800; color: var(--tea-blue); display: block; margin-bottom: 4px;">Crie sua Senha Parental (para destravar telas):</label>
+            <label style="font-size: 11px; font-weight: 800; color: var(--tea-blue); display: block; margin-bottom: 4px;">Crie sua Senha Parental (para destravar o tempo):</label>
             <input type="password" id="tea-senha" class="vip-input" placeholder="Senha secreta">
             
             <button onclick="salvarOnboardingTea()" class="support-btn" style="background: var(--tea-blue); margin-top: 10px;">Acessar Espaço TEA 🚀</button>
           </div>
         </div>
 
-        <!-- CONTEÚDO DO ESPAÇO TEA (LIBERADO APÓS O ONBOARDING) -->
+        <!-- CONTEÚDO DO ESPAÇO TEA (LIBERADO APÓS ONBOARDING) -->
         <div id="tea-conteudo-liberado" style="display: none; flex-direction: column; gap: 22px;">
           <div class="tea-box">
             <h3>🌿 Modo Calmo Ativo</h3>
@@ -716,7 +716,7 @@
 
           </div>
 
-          <!-- PRANCHA CAA BÁSICA (GRATUITA) -->
+          <!-- PRANCHA CAA BÁSICA -->
           <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Comunicação Básica (CAA)</h4>
           <div class="interactive-card" style="border-color: #BAE6FD;">
             <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Toque no desenho para falar:</p>
@@ -725,7 +725,7 @@
               <div class="caa-btn" onclick="lerTexto('Estou com fome.')"><span>🍎</span><p>Comer</p></div>
               <div class="caa-btn" onclick="lerTexto('Preciso ir ao banheiro.')"><span>🚽</span><p>Banheiro</p></div>
             </div>
-            <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Quer <strong>adicionar seus próprios botões personalizados</strong>? Conheça o <strong>Clube VIP</strong>!</p>
+            <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Quer <strong>adicionar novos botões personalizados</strong>? Conheça o <strong>Clube VIP</strong>!</p>
           </div>
         </div>
 
