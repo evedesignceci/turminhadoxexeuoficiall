@@ -691,7 +691,7 @@
       </div>
     </main>
 
-    <!-- PÁGINA VIP TOTALMENTE NOVA E SEPARADA -->
+    <!-- PÁGINA VIP REESTRUTURADA COM ABAS INTERNAS -->
     <main id="pagina-vip" class="page-content">
       <div class="age-group-section">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
@@ -711,8 +711,8 @@
             <p>Ao assinar, você apoia nosso canal e garante acesso imediato a:</p>
             <ul style="text-align: left; margin: 8px 0 8px 18px; font-weight: 600;">
               <li>📁 <strong>Drive Completo</strong> de atividades pedagógicas.</li>
-              <li>🧩 <strong>Área TEA Exclusiva:</strong> Pranchas de rotina, caixa do acalento e PDFs Inclusivos.</li>
-              <li>🌟 <strong>Certificado Oficial</strong> de Super Fã.</li>
+              <li>🧩 <strong>Ába Especial Pais & TEA:</strong> Caixa do Acalento, Pranchas e Rotinas de Saúde.</li>
+              <li>🌟 <strong>Certificado Oficial</strong> de Super Fã personalizável.</li>
               <li>🎬 <strong>Episódios inéditos</strong> antes do YouTube.</li>
               <li>🎮 <strong>Minijogos Exclusivos VIP</strong> para aprender brincando.</li>
             </ul>
@@ -753,39 +753,39 @@
             <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 11.5px; cursor: pointer;">🔒 Sair</button>
           </div>
 
-          <!-- SELEÇÃO DE PERFIL COMUM A AMBOS -->
+          <!-- SELEÇÃO DE PERFIL -->
           <div class="perfil-selector-box">
             <h4 style="color: #1E293B; font-size: 14px; font-weight: 900; margin-bottom: 2px;">👤 Seu Perfil de Super Fã</h4>
             <div id="avatarEscolhaGrid" class="avatar-escolha-grid"></div>
           </div>
 
-          <!-- ABAS INTERNAS DO VIP -->
+          <!-- ABAS INTERNAS DA ÁREA VIP -->
           <div class="vip-internal-tabs">
             <button id="tab-vip-geral" class="vip-int-btn active" onclick="alternarAbaVip('geral')">🌟 Diversão VIP</button>
             <button id="tab-vip-tea" class="vip-int-btn" onclick="alternarAbaVip('tea')">🧩 Especial Pais & TEA</button>
           </div>
 
-          <!-- CONTEÚDO 1: DIVERSÃO VIP -->
+          <!-- SUB-ÁREA 1: DIVERSÃO VIP (Criança / Jogos / Certificado) -->
           <div id="conteudo-vip-geral" class="vip-sub-area active-area">
             
             <!-- CERTIFICADO DE SUPER FÃ -->
             <div class="certificado-container">
-              <h3>Certificado Oficial</h3>
-              <p style="font-size: 12px; color: #78350F; margin-bottom: 10px;">Digite o nome da criança para gerar o diploma!</p>
+              <h3>Diploma de Super Fã</h3>
+              <p style="font-size: 12px; color: #78350F; margin-bottom: 10px;">Digite o nome da criança para gerar o certificado oficial!</p>
               <input type="text" id="nome-certificado" placeholder="Nome da Criança" style="padding: 8px; border-radius: 8px; border: 2px solid #FCD34D; outline: none; margin-bottom: 10px; width: 80%; max-width: 250px;">
               <br>
               <button onclick="gerarCertificado()" style="background: #D97706; color: #FFF; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer;">Gerar Diploma 🎓</button>
               <div id="certificado-resultado" style="display:none; margin-top: 15px;">
                 <span class="certificado-nome" id="exibir-nome-certificado"></span>
-                <p style="font-weight: 800; color: #B45309; font-size: 14px;">É oficialmente um(a) Super Fã da Turminha do Xexéu!</p>
+                <p style="font-weight: 800; color: #B45309; font-size: 14px;">É oficialmente Super Fã da Turminha do Xexéu! 🌟</p>
               </div>
             </div>
 
             <!-- RÁDIO DA TURMINHA -->
             <div class="radio-vip-box">
-              <h3 style="margin-bottom: 10px; font-weight: 900;">🎵 Rádio da Turminha</h3>
-              <p style="font-size: 13px; color: #94A3B8; margin-bottom: 15px;">Ouça nossas músicas oficiais sem parar!</p>
-              <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="radio-btn">▶️ Tocar no Spotify</a>
+              <h3 style="margin-bottom: 6px; font-weight: 900;">🎵 Rádio da Turminha</h3>
+              <p style="font-size: 13px; color: #94A3B8; margin-bottom: 15px;">Ouça todas as músicas oficiais direto no Spotify!</p>
+              <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="radio-btn">▶️ Abrir Músicas no Spotify</a>
             </div>
 
             <div class="drive-banner-box">
@@ -843,19 +843,20 @@
             </div>
           </div>
 
-          <!-- CONTEÚDO 2: ESPECIAL PAIS & TEA -->
+          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA (Rotinas, Caixa do Acalento, Drive TEA em Manutenção) -->
           <div id="conteudo-vip-tea" class="vip-sub-area">
             
-            <div class="drive-banner-box" style="background: var(--tea-light); border-color: var(--tea-blue);">
-              <h4 style="color: #0369A1; font-size: 17px; font-weight: 900;">🧩 Drive Azul da Turminha (Recursos TEA)</h4>
-              <p style="font-size: 12.5px; color: #0284C7; margin-top: 4px; font-weight: 600;">Baixe Pranchas de Rotina Visual, Histórias Sociais e Termômetros de Emoção (PDFs Inclusivos)!</p>
-              <a href="https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=sharing" target="_blank" class="btn-drive" style="background: var(--tea-blue);">Acessar Pasta Inclusiva TEA 📥</a>
+            <!-- DRIVE AZUL EM MANUTENÇÃO (EM BREVE) -->
+            <div class="drive-banner-box" style="background: #F1F5F9; border-color: #94A3B8;">
+              <h4 style="color: #475569; font-size: 17px; font-weight: 900;">🧩 Drive Azul da Turminha (Recursos TEA) - Em Breve! 🚧</h4>
+              <p style="font-size: 12.5px; color: #64748B; margin-top: 4px; font-weight: 600;">Estamos preparando Pranchas de Rotina Visual, Histórias Sociais e Termômetros de Emoção para você baixar e imprimir. Novidades fresquinhas logo mais!</p>
+              <button disabled class="btn-drive" style="background: #94A3B8; cursor: not-allowed; border:none;">Em Manutenção ⏳</button>
             </div>
 
             <!-- CAIXA DO ACALENTO -->
             <div class="vip-card-box" style="background: #F8FAFC; border-color: #94A3B8;">
               <h4 style="color: #334155; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🎧 Caixa do Acalento (Sons Relaxantes)</h4>
-              <p style="font-size: 12px; color: #64748B; font-weight: 600;">Ferramenta de regulação sensorial para momentos de ansiedade.</p>
+              <p style="font-size: 12px; color: #64748B; font-weight: 600;">Ferramenta de regulação sensorial para auxiliar nos momentos de crise ou transição.</p>
               <div class="acalento-grid">
                 <button class="acalento-btn" onclick="lerTexto('Sshhhhh.... Som de chuvinha calma caindo lá fora.')">
                   <span>🌧️</span><p>Chuva</p>
@@ -863,17 +864,18 @@
                 <button class="acalento-btn" onclick="lerTexto('Piu Piu... Passarinhos cantando bem baixinho na floresta.')">
                   <span>🐦</span><p>Natureza</p>
                 </button>
-                <button class="acalento-btn" onclick="lerTexto('Vamos respirar juntos. Puxa o ar mágico... e assopra a velinha.')">
+                <button class="acalento-btn" onclick="lerTexto('Vamos respirar juntos. Puxa o ar mágico... e assopra a velinha devagar.')">
                   <span>🌬️</span><p>Respirar</p>
                 </button>
               </div>
             </div>
 
+            <!-- ROTINA DE SUPER FORÇA -->
             <div class="vip-card-box" style="background: #F0FDF4; border-color: #86EFAC;">
               <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                 <div>
                   <h4 style="color: #166534; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🌟 Rotina de Super Força</h4>
-                  <p style="font-size: 12px; color: #15803D; font-weight: 600; margin-bottom: 12px;">Controle visual para vitaminas e remedinhos (Salvo apenas no seu celular).</p>
+                  <p style="font-size: 12px; color: #15803D; font-weight: 600; margin-bottom: 12px;">Controle visual para vitaminas e remedinhos. Os dados ficam salvos <strong>apenas no seu aparelho</strong>.</p>
                 </div>
                 <button class="btn-audio-mini" onclick="lerTexto('Toda vez que você cuidar da saúde, marque aqui para ganhar pontos!')" title="Ouvir">🔊</button>
               </div>
@@ -928,7 +930,6 @@
     const SENHA_MESTRA_CRIADORA = "65628467";
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxkMvHbuXfZWEfd1tzLDvk4YzIW66alJyp2J9VGm-8nQV1iotNqaDLDieEeVblb6RcTMA/exec";
     
-    // INFO PERSONAGENS PARA LÓGICAS
     const TODOS_PERSONAGENS = [
       { nome: 'Xexéu', img: 'https://i.imgur.com/jBeihpo.png', letra: 'X', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
       { nome: 'Capilé', img: 'https://i.imgur.com/BBmAqLC.png', letra: 'C', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
