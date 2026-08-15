@@ -32,7 +32,7 @@
       --shadow-lg: 0 14px 30px rgba(59, 130, 246, 0.15);
     }
 
-    /* MODO SENSORIAL GLOBAL (O SITE INTEIRO FICA MINIMALISTA E CALMANTE) */
+    /* MODO SENSORIAL PROFUNDO E CALMANTE (BAIXO ESTÍMULO) */
     body.sensory-mode {
       --bg-gradient: #F1F5F9 !important; 
       --primary: #475569 !important;
@@ -52,7 +52,6 @@
     body.sensory-mode .interactive-card,
     body.sensory-mode .video-card { background: #FFFFFF !important; border: 2px solid #CBD5E1 !important; }
     
-    /* Esconde elementos desnecessários e flutuantes para evitar irritação sensorial */
     body.sensory-mode .browser-notice-box,
     body.sensory-mode .top-vip-announcement,
     body.sensory-mode .social-round-section,
@@ -295,7 +294,7 @@
     .modal-content h3 { color: var(--primary-dark); margin-bottom: 12px; font-weight: 900; }
     .modal-content p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; font-weight: 500; }
 
-    .cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: #1E293B; color: #FFF; padding: 16px; text-align: center; font-size: 13px; z-index: 100000; display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; transform: translateY(100%); transition: transform 0.4s ease; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); }
+    .cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: #1E293B; color: #FFF; padding: 16px; text-align: center; font-size: 13px; z-index: 100000; display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; transform: translateY(100%); transition: transform 0.4s ease; box-shadow: -4px 10px rgba(0,0,0,0.1); }
     .cookie-banner.show { transform: translateY(0); }
     .btn-cookie { background: #10B981; color: #FFF; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; }
   </style>
@@ -639,71 +638,101 @@
       </div>
     </main>
 
-    <!-- PÁGINA ESPAÇO TEA (GRATUITO) -->
+    <!-- PÁGINA ESPAÇO TEA (COM ONBOARDING INTRODUTÓRIO PARA OS PAIS) -->
     <main id="pagina-tea" class="page-content">
       <div class="age-group-section">
-        <div class="tea-box">
-          <h3>🧩 Espaço Inclusivo TEA</h3>
-          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Ambiente de acolhimento e regulação sensorial. Ative o Modo Calmo para remover qualquer estímulo visual irritante do site inteiro.</p>
+        
+        <!-- ETAPA DE ONBOARDING: COLETA DE E-MAIL E SENHA PARENTAL (ESTILO REFERÊNCIA) -->
+        <div id="tea-onboarding-box" class="tea-box" style="background: #FFF; border: 2.5px solid var(--tea-blue);">
+          <h3>🧩 Bem-vindo ao Espaço Inclusivo TEA</h3>
+          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Para personalizar a experiência e ativar o temporizador de segurança com senha parental, insira os dados abaixo:</p>
           
-          <button id="btnSensoryToggle" class="btn-sensorial" onclick="toggleSensoryMode()">
-            <span id="sensoryIcon">🌿</span> Ativar Modo Calmo (Minimalista)
-          </button>
+          <div style="max-width: 400px; margin: 0 auto; text-align: left;">
+            <label style="font-size: 11px; font-weight: 800; color: var(--tea-blue); display: block; margin-bottom: 4px;">E-mail do Responsável:</label>
+            <input type="email" id="tea-email" class="vip-input" placeholder="seu@email.com">
+            
+            <label style="font-size: 11px; font-weight: 800; color: var(--tea-blue); display: block; margin-bottom: 4px;">Crie sua Senha Parental (para destravar telas):</label>
+            <input type="password" id="tea-senha" class="vip-input" placeholder="Senha secreta">
+            
+            <button onclick="salvarOnboardingTea()" class="support-btn" style="background: var(--tea-blue); margin-top: 10px;">Acessar Espaço TEA 🚀</button>
+          </div>
         </div>
 
-        <!-- JORNADA DAS EMOÇÕES GRATUITA -->
-        <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Jornada das Emoções do Dia</h4>
-        <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px; position:relative; min-height: 270px; overflow:hidden;">
-          
-          <div id="emocoes-passo-1" class="fade-transition" style="width: 100%;">
-            <p style="font-weight: 700; margin-bottom: 15px;">Como o(a) <strong id="tea-emocao-nome" style="color: var(--tea-blue);">Xexéu</strong> está se sentindo hoje?</p>
-            <img id="tea-emocao-img" src="https://i.imgur.com/jBeihpo.png" alt="Personagem do Dia" style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 20px;">
-            
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-              <div class="emotion-card" onclick="responderEmocao('Feliz')">
-                <div style="font-size: 35px;">😄</div>
-                <p style="font-weight: 800; color: #16A34A; margin-top: 5px; font-size:12px;">Feliz</p>
-              </div>
-              <div class="emotion-card" onclick="responderEmocao('Calmo')">
-                <div style="font-size: 35px;">😌</div>
-                <p style="font-weight: 800; color: var(--tea-blue); margin-top: 5px; font-size:12px;">Calmo</p>
-              </div>
-              <div class="emotion-card" onclick="responderEmocao('Triste')">
-                <div style="font-size: 35px;">😢</div>
-                <p style="font-weight: 800; color: #475569; margin-top: 5px; font-size:12px;">Triste</p>
-              </div>
-            </div>
+        <!-- CONTEÚDO DO ESPAÇO TEA (LIBERADO APÓS O ONBOARDING) -->
+        <div id="tea-conteudo-liberado" style="display: none; flex-direction: column; gap: 22px;">
+          <div class="tea-box">
+            <h3>🌿 Modo Calmo Ativo</h3>
+            <button id="btnSensoryToggle" class="btn-sensorial" onclick="toggleSensoryMode()">
+              <span id="sensoryIcon">🌿</span> Alternar Estímulo Visual Minimalista
+            </button>
           </div>
 
-          <div id="emocoes-passo-2" class="fade-transition fade-out" style="width: 100%; display: none; position: absolute; top: 16px; left: 0;">
-            <p style="font-weight: 900; color: var(--primary-dark); font-size: 18px; margin-bottom: 15px;">E você? Como está se sentindo agora?</p>
+          <!-- JORNADA DAS EMOÇÕES -->
+          <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Jornada das Emoções do Dia</h4>
+          <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px; position:relative; min-height: 270px; overflow:hidden;">
             
-            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-              <div class="emotion-card" onclick="responderMinhaEmocao('Feliz')" style="width: 80px; padding:10px;">
-                <div style="font-size: 30px;">😄</div>
-                <p style="font-weight: 800; color: #16A34A; margin-top: 5px; font-size:11px;">Feliz</p>
-              </div>
-              <div class="emotion-card" onclick="responderMinhaEmocao('Calmo')" style="width: 80px; padding:10px;">
-                <div style="font-size: 30px;">😌</div>
-                <p style="font-weight: 800; color: var(--tea-blue); margin-top: 5px; font-size:11px;">Calmo</p>
-              </div>
-              <div class="emotion-card" onclick="responderMinhaEmocao('Triste')" style="width: 80px; padding:10px;">
-                <div style="font-size: 30px;">😢</div>
-                <p style="font-weight: 800; color: #475569; margin-top: 5px; font-size:11px;">Triste</p>
-              </div>
-              <div class="emotion-card" onclick="responderMinhaEmocao('Bravo')" style="width: 80px; padding:10px;">
-                <div style="font-size: 30px;">😤</div>
-                <p style="font-weight: 800; color: #DC2626; margin-top: 5px; font-size:11px;">Bravo</p>
+            <div id="emocoes-passo-1" class="fade-transition" style="width: 100%;">
+              <p style="font-weight: 700; margin-bottom: 15px;">Como o(a) <strong id="tea-emocao-nome" style="color: var(--tea-blue);">Xexéu</strong> está se sentindo hoje?</p>
+              <img id="tea-emocao-img" src="https://i.imgur.com/jBeihpo.png" alt="Personagem do Dia" style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 20px;">
+              
+              <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <div class="emotion-card" onclick="responderEmocao('Feliz')">
+                  <div style="font-size: 35px;">😄</div>
+                  <p style="font-weight: 800; color: #16A34A; margin-top: 5px; font-size:12px;">Feliz</p>
+                </div>
+                <div class="emotion-card" onclick="responderEmocao('Calmo')">
+                  <div style="font-size: 35px;">😌</div>
+                  <p style="font-weight: 800; color: var(--tea-blue); margin-top: 5px; font-size:12px;">Calmo</p>
+                </div>
+                <div class="emotion-card" onclick="responderEmocao('Triste')">
+                  <div style="font-size: 35px;">😢</div>
+                  <p style="font-weight: 800; color: #475569; margin-top: 5px; font-size:12px;">Triste</p>
+                </div>
               </div>
             </div>
+
+            <div id="emocoes-passo-2" class="fade-transition fade-out" style="width: 100%; display: none; position: absolute; top: 16px; left: 0;">
+              <p style="font-weight: 900; color: var(--primary-dark); font-size: 18px; margin-bottom: 15px;">E você? Como está se sentindo agora?</p>
+              
+              <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                <div class="emotion-card" onclick="responderMinhaEmocao('Feliz')" style="width: 80px; padding:10px;">
+                  <div style="font-size: 30px;">😄</div>
+                  <p style="font-weight: 800; color: #16A34A; margin-top: 5px; font-size:11px;">Feliz</p>
+                </div>
+                <div class="emotion-card" onclick="responderMinhaEmocao('Calmo')" style="width: 80px; padding:10px;">
+                  <div style="font-size: 30px;">😌</div>
+                  <p style="font-weight: 800; color: var(--tea-blue); margin-top: 5px; font-size:11px;">Calmo</p>
+                </div>
+                <div class="emotion-card" onclick="responderMinhaEmocao('Triste')" style="width: 80px; padding:10px;">
+                  <div style="font-size: 30px;">😢</div>
+                  <p style="font-weight: 800; color: #475569; margin-top: 5px; font-size:11px;">Triste</p>
+                </div>
+                <div class="emotion-card" onclick="responderMinhaEmocao('Bravo')" style="width: 80px; padding:10px;">
+                  <div style="font-size: 30px;">😤</div>
+                  <p style="font-weight: 800; color: #DC2626; margin-top: 5px; font-size:11px;">Bravo</p>
+                </div>
+              </div>
+            </div>
+
           </div>
 
+          <!-- PRANCHA CAA BÁSICA (GRATUITA) -->
+          <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Comunicação Básica (CAA)</h4>
+          <div class="interactive-card" style="border-color: #BAE6FD;">
+            <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Toque no desenho para falar:</p>
+            <div class="caa-grid">
+              <div class="caa-btn" onclick="lerTexto('Eu quero água, por favor.')"><span>💧</span><p>Água</p></div>
+              <div class="caa-btn" onclick="lerTexto('Estou com fome.')"><span>🍎</span><p>Comer</p></div>
+              <div class="caa-btn" onclick="lerTexto('Preciso ir ao banheiro.')"><span>🚽</span><p>Banheiro</p></div>
+            </div>
+            <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Quer <strong>adicionar seus próprios botões personalizados</strong>? Conheça o <strong>Clube VIP</strong>!</p>
+          </div>
         </div>
 
       </div>
     </main>
 
-    <!-- PÁGINA VIP REESTRUTURADA -->
+    <!-- PÁGINA VIP -->
     <main id="pagina-vip" class="page-content">
       <div class="age-group-section">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
@@ -1101,6 +1130,33 @@
     function abrirPrivacidade() { document.getElementById('modalPrivacidade').classList.add('active'); }
     function fecharPrivacidade() { document.getElementById('modalPrivacidade').classList.remove('active'); }
 
+    // --- ONBOARDING DO ESPAÇO TEA (COLETA DE E-MAIL E SENHA) ---
+    function salvarOnboardingTea() {
+      const email = document.getElementById('tea-email').value.trim();
+      const senha = document.getElementById('tea-senha').value.trim();
+
+      if (!email || !senha) {
+        alert("Por favor, preencha o e-mail e crie a senha parental!");
+        return;
+      }
+
+      localStorage.setItem('tea_email_pais', email);
+      localStorage.setItem('tea_senha_pais', senha);
+
+      document.getElementById('tea-onboarding-box').style.display = 'none';
+      document.getElementById('tea-conteudo-liberado').style.display = 'flex';
+      carregarPersonagemDoDiaTEA();
+      lerTexto("Espaço TEA configurado com sucesso! Aproveitem.");
+    }
+
+    function verificarStatusOnboardingTea() {
+      const emailSalvo = localStorage.getItem('tea_email_pais');
+      if (emailSalvo) {
+        document.getElementById('tea-onboarding-box').style.display = 'none';
+        document.getElementById('tea-conteudo-liberado').style.display = 'flex';
+      }
+    }
+
     // --- CAIXA DO ACALENTO (SOM REAL MP3) ---
     function tocarSomReal(urlMp3) {
       if (somAcalentoAtual) {
@@ -1129,13 +1185,15 @@
       const p = TODOS_PERSONAGENS.find(x => x.nome === nomeSorteado) || TODOS_PERSONAGENS[0];
       
       personagemEmocaoAtual = p.nome;
-      document.getElementById('tea-emocao-nome').innerText = p.nome;
-      document.getElementById('tea-emocao-img').src = p.img;
+      const nomeEl = document.getElementById('tea-emocao-nome');
+      const imgEl = document.getElementById('tea-emocao-img');
+      if (nomeEl) nomeEl.innerText = p.nome;
+      if (imgEl) imgEl.src = p.img;
       
-      document.getElementById('emocoes-passo-1').style.display = 'block';
-      document.getElementById('emocoes-passo-1').style.opacity = '1';
-      document.getElementById('emocoes-passo-2').style.display = 'none';
-      document.getElementById('emocoes-passo-2').style.opacity = '0';
+      const p1 = document.getElementById('emocoes-passo-1');
+      const p2 = document.getElementById('emocoes-passo-2');
+      if (p1) { p1.style.display = 'block'; p1.style.opacity = '1'; }
+      if (p2) { p2.style.display = 'none'; p2.style.opacity = '0'; }
     }
 
     function toggleSensoryMode() {
@@ -1143,13 +1201,11 @@
       const btn = document.getElementById('btnSensoryToggle');
       if (sensoryModeAtivo) {
         document.body.classList.add('sensory-mode');
-        btn.classList.add('ativo');
-        btn.innerHTML = '🌿 Modo Calmo Ativado';
+        if (btn) { btn.classList.add('ativo'); btn.innerHTML = '🌿 Modo Calmo Ativado'; }
         lerTexto("Modo sensorial ativado no site inteiro.");
       } else {
         document.body.classList.remove('sensory-mode');
-        btn.classList.remove('ativo');
-        btn.innerHTML = '🌿 Ativar Modo Calmo (Minimalista)';
+        if (btn) { btn.classList.remove('ativo'); btn.innerHTML = '🌿 Ativar Modo Calmo (Minimalista)'; }
         lerTexto("Modo padrão ativado.");
       }
     }
@@ -1161,13 +1217,15 @@
         const passo1 = document.getElementById('emocoes-passo-1');
         const passo2 = document.getElementById('emocoes-passo-2');
         
-        passo1.classList.add('fade-out');
+        if(passo1) passo1.classList.add('fade-out');
         
         setTimeout(() => {
-          passo1.style.display = 'none';
-          passo2.style.display = 'block';
-          void passo2.offsetWidth; 
-          passo2.classList.remove('fade-out');
+          if(passo1) passo1.style.display = 'none';
+          if(passo2) {
+            passo2.style.display = 'block';
+            void passo2.offsetWidth; 
+            passo2.classList.remove('fade-out');
+          }
           lerTexto("E você? Como está se sentindo agora?");
         }, 4000);
 
@@ -1185,12 +1243,14 @@
       setTimeout(() => {
         const passo1 = document.getElementById('emocoes-passo-1');
         const passo2 = document.getElementById('emocoes-passo-2');
-        passo2.classList.add('fade-out');
+        if(passo2) passo2.classList.add('fade-out');
         setTimeout(() => {
-          passo2.style.display = 'none';
-          passo1.style.display = 'block';
-          void passo1.offsetWidth;
-          passo1.classList.remove('fade-out');
+          if(passo2) passo2.style.display = 'none';
+          if(passo1) {
+            passo1.style.display = 'block';
+            void passo1.offsetWidth;
+            passo1.classList.remove('fade-out');
+          }
         }, 800);
       }, 8000);
     }
@@ -1203,9 +1263,8 @@
       const barra = document.getElementById('barra-temporizador');
       const txt = document.getElementById('texto-temporizador');
       
-      barra.style.width = '100%';
-      barra.style.backgroundColor = '#10B981'; 
-      txt.innerText = `${minutos}:00`;
+      if(barra) { barra.style.width = '100%'; barra.style.backgroundColor = '#10B981'; }
+      if(txt) txt.innerText = `${minutos}:00`;
       
       lerTexto(`Temporizador iniciado para ${minutos} minutos.`);
 
@@ -1213,18 +1272,18 @@
         tempoRestante--;
         const m = Math.floor(tempoRestante / 60);
         const s = tempoRestante % 60;
-        txt.innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+        if(txt) txt.innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
         
         const pct = (tempoRestante / totalTempo) * 100;
-        barra.style.width = `${pct}%`;
+        if(barra) barra.style.width = `${pct}%`;
 
-        if (pct < 30) barra.style.backgroundColor = '#F59E0B'; 
-        if (pct < 10) barra.style.backgroundColor = '#EF4444'; 
+        if (pct < 30 && barra) barra.style.backgroundColor = '#F59E0B'; 
+        if (pct < 10 && barra) barra.style.backgroundColor = '#EF4444'; 
         
         if (tempoRestante <= 0) {
           clearInterval(timerInterval);
-          lerTexto("O tempo de uso acabou! Chamando os pais.");
-          txt.innerText = "Tempo Esgotado!";
+          lerTexto("O tempo de uso acabou! Insira a senha parental.");
+          if(txt) txt.innerText = "Tempo Esgotado!";
           
           document.getElementById('modalBloqueioTempo').classList.add('active');
         }
@@ -1233,14 +1292,16 @@
 
     function tentarDesbloquearTela() {
       const digitada = document.getElementById('senhaDesbloqueio').value.trim();
-      const senhaSalvaNoCadastro = document.getElementById('cad-senha').value.trim() || SENHA_MESTRA_CRIADORA;
+      const senhaSalvaTea = localStorage.getItem('tea_senha_pais');
+      const senhaSalvaVip = document.getElementById('cad-senha')?.value.trim();
+      const senhaMestra = SENHA_MESTRA_CRIADORA;
 
-      if (digitada === senhaSalvaNoCadastro || digitada === SENHA_MESTRA_CRIADORA) {
+      if (digitada === senhaSalvaTea || digitada === senhaSalvaVip || digitada === senhaMestra) {
         document.getElementById('modalBloqueioTempo').classList.remove('active');
         document.getElementById('senhaDesbloqueio').value = '';
         lerTexto("Tempo desbloqueado com sucesso!");
       } else {
-        alert("❌ Senha incorreta! Peça para os pais verificarem a senha cadastrada.");
+        alert("❌ Senha incorreta! Digite a senha cadastrada por e-mail.");
       }
     }
 
@@ -1257,7 +1318,7 @@
       ];
       const todos = [...padroes, ...listaCaaVip];
 
-      todos.forEach((item, index) => {
+      todos.forEach((item) => {
         const btn = document.createElement('div');
         btn.className = 'caa-btn';
         btn.innerHTML = `<span>${item.emoji}</span><p>${item.texto}</p>`;
@@ -1292,7 +1353,7 @@
       if (pagina === 'jogos') setTimeout(redimensionarCanvas, 100);
       
       if (pagina === 'tea') {
-        carregarPersonagemDoDiaTEA();
+        verificarStatusOnboardingTea();
         lerTexto("Bem-vindo ao Espaço Inclusivo da Turminha.");
       }
       
@@ -1683,7 +1744,6 @@
       const imgsMem = sorteados.map(p => p.img);
       cMemVip = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
       const board = document.getElementById('memoryBoardVip'); board.innerHTML = '';
-      cMemVip.src = '';
       cMemVip.forEach(src => {
         const card = document.createElement('div'); card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
         card.onclick = () => {
@@ -1771,6 +1831,7 @@
       carregarJogoCor();
       verificarStatusVip();
       verificarCookies();
+      verificarStatusOnboardingTea();
       carregarPersonagemDoDiaTEA();
     };
   </script>
