@@ -32,22 +32,26 @@
       --shadow-lg: 0 14px 30px rgba(59, 130, 246, 0.15);
     }
 
-    /* MODO SENSORIAL PROFUNDO E CALMANTE (BAIXO ESTÍMULO) */
+    /* MODO SENSORIAL EXTREMO MINIMALISTA (ZERO EXCESSO) */
     body.sensory-mode {
-      --bg-gradient: #E2E8F0 !important; 
-      --primary: #64748B !important;
-      --secondary: #94A3B8 !important;
-      --tea-blue: #475569 !important;
-      --tea-light: #F8FAFC !important;
-      --shadow-sm: none !important;
-      --shadow-md: none !important;
-      --shadow-lg: none !important;
+      --bg-gradient: #F8FAFC !important; 
+      --primary: #475569 !important;
+      --secondary: #64748B !important;
+      --tea-blue: #334155 !important;
+      --tea-light: #FFFFFF !important;
       background: var(--bg-gradient);
     }
     body.sensory-mode * { animation: none !important; box-shadow: none !important; }
-    body.sensory-mode .app-container { border: 3px solid #CBD5E1; background: #F8FAFC; }
-    body.sensory-mode header { background: #CBD5E1 !important; }
-    body.sensory-mode .tea-box { background: #E2E8F0 !important; border-color: #94A3B8 !important; }
+    body.sensory-mode .app-container { border: 2px solid #E2E8F0; background: #FFFFFF; }
+    body.sensory-mode header { background: #F1F5F9 !important; }
+    body.sensory-mode .tea-box { background: #FFFFFF !important; border: 2px solid #CBD5E1 !important; }
+    /* Esconde excessos visuais e banners que possam irritar a criança em crise */
+    body.sensory-mode .browser-notice-box,
+    body.sensory-mode .top-vip-announcement,
+    body.sensory-mode .social-round-section,
+    body.sensory-mode .floating-vip-badge {
+      display: none !important;
+    }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', system-ui, -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
 
@@ -354,7 +358,7 @@
       <span>⭐ Desbloqueie todo o Drive de Atividades e Ferramentas TEA por R$ 6,00/mês! Clique Aqui! 💖</span>
     </div>
 
-    <!-- PÁGINA INÍCIO (ORIGINAL MANTIDA) -->
+    <!-- PÁGINA INÍCIO -->
     <main id="pagina-inicio" class="page-content active-page">
       <section class="banner-intro-grid">
         <div class="banner-container">
@@ -628,19 +632,19 @@
       </div>
     </main>
 
-    <!-- PÁGINA ESPAÇO TEA (GRATUITO E RICO) -->
+    <!-- PÁGINA ESPAÇO TEA (GRATUITO) -->
     <main id="pagina-tea" class="page-content">
       <div class="age-group-section">
         <div class="tea-box">
           <h3>🧩 Espaço Inclusivo TEA</h3>
-          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Ambiente de acolhimento e regulação sensorial. Ative o Modo Calmo para reduzir os estímulos visuais.</p>
+          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Ambiente de acolhimento e regulação sensorial. Ative o Modo Calmo para remover qualquer estímulo visual irritante.</p>
           
           <button id="btnSensoryToggle" class="btn-sensorial" onclick="toggleSensoryMode()">
-            <span id="sensoryIcon">🌿</span> Ativar Modo Calmo (Sem Animações)
+            <span id="sensoryIcon">🌿</span> Ativar Modo Calmo (Minimalista)
           </button>
         </div>
 
-        <!-- JORNADA DAS EMOÇÕES (CORRIGIDA E FUNCIONANDO) -->
+        <!-- JORNADA DAS EMOÇÕES GRATUITA -->
         <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Jornada das Emoções do Dia</h4>
         <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px; position:relative; min-height: 270px; overflow:hidden;">
           
@@ -689,15 +693,27 @@
 
         </div>
 
-        <!-- CAIXA DO ACALENTO GRATUITA (2 SONS BÁSICOS) -->
+        <!-- PRANCHA CAA BÁSICA (GRATUITA) -->
+        <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Comunicação Básica (CAA)</h4>
+        <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px;">
+          <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Toque no desenho para falar:</p>
+          <div class="caa-grid">
+            <div class="caa-btn" onclick="lerTexto('Eu quero água, por favor.')"><span>💧</span><p>Água</p></div>
+            <div class="caa-btn" onclick="lerTexto('Estou com fome.')"><span>🍎</span><p>Comer</p></div>
+            <div class="caa-btn" onclick="lerTexto('Preciso ir ao banheiro.')"><span>🚽</span><p>Banheiro</p></div>
+          </div>
+          <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Quer pranchas completas e <strong>poder adicionar mais opções</strong>? Conheça o <strong>Clube VIP</strong>!</p>
+        </div>
+
+        <!-- CAIXA DO ACALENTO BÁSICA (GRATUITA) -->
         <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Acalento Sensorial (Básico)</h4>
         <div class="interactive-card" style="border-color: #BAE6FD;">
-          <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Sons relaxantes para ajudar na calmaria do dia a dia.</p>
+          <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Sons relaxantes para ajudar na calmaria:</p>
           <div class="acalento-grid">
             <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_CHUVA.mp3')"><span>🌧️</span><p>Chuva</p></button>
             <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_NATUREZA.mp3')"><span>🐦</span><p>Pássaros</p></button>
           </div>
-          <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Quer mais opções (Ruído Branco, Mar e Fogueira)? Conheça o <strong>Clube VIP</strong>!</p>
+          <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Mais opções (Ruído Branco, Mar e Fogueira) disponíveis no <strong>Clube VIP</strong>!</p>
         </div>
 
       </div>
@@ -714,18 +730,18 @@
         <!-- VISÃO BLOQUEADA -->
         <div id="vip-locked-view" class="vip-lock-container">
           <div class="vip-lock-header-clickable" title="Clique para assinar" onclick="document.getElementById('cad-email').focus()">
-            <h3>🧸 Ferramentas Avançadas para Famílias e Terapeutas</h3>
+            <h3>🧸 Ferramentas Avançadas e Prancha Editável</h3>
             <div class="vip-price-tag" style="margin-top: 10px;">Acesso Ilimitado: R$ 6,00 / mês</div>
           </div>
           
           <div class="vip-heart-msg">
             <p style="margin-bottom: 6px;">💖 <strong>O que o Clube VIP desbloqueia para os Pais?</strong></p>
             <ul style="text-align: left; margin: 8px 0 8px 18px; font-weight: 600;">
-              <li>⏳ <strong>Temporizador Visual com Bloqueio por Senha:</strong> Gerencie o tempo de tela com segurança e evite crises de transição.</li>
-              <li>💬 <strong>Prancha de Comunicação (CAA Completa):</strong> Sistema de fala alternativa para apoiar a autonomia da criança.</li>
+              <li>💬 <strong>Prancha de Comunicação Editável (CAA):</strong> Adicione quantos cards e botões personalizados você quiser!</li>
+              <li>⏳ <strong>Temporizador Visual com Bloqueio por Senha:</strong> Gerencie o tempo de tela com segurança.</li>
               <li>🎧 <strong>Caixa do Acalento Completa:</strong> 5 sons relaxantes (Chuva, Pássaros, Ruído Branco, Mar e Fogueira).</li>
               <li>🌟 <strong>Rotina de Super Força:</strong> Acompanhamento lúdico de vitaminas e medicamentos.</li>
-              <li>📁 <strong>Drive Azul:</strong> Pranchas de rotina e histórias sociais em PDF para baixar.</li>
+              <li>📁 <strong>Drive Azul:</strong> Pranchas de rotina e histórias sociais em PDF.</li>
             </ul>
           </div>
           
@@ -759,7 +775,7 @@
           <div style="background: #D1FAE5; border: 2px solid #10B981; padding: 12px 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
             <div>
               <h4 style="color: #065F46; font-size: 15px; font-weight: 900; margin-bottom: 2px;">🎉 Bem-vindo ao Clube VIP!</h4>
-              <p style="font-size: 11.5px; color: #047857; margin: 0; font-weight: 600;">Seu acesso parental e de atividades está ativo.</p>
+              <p style="font-size: 11.5px; color: #047857; margin: 0; font-weight: 600;">Seu acesso parental e de ferramentas avançadas está ativo.</p>
             </div>
             <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 11.5px; cursor: pointer;">🔒 Sair</button>
           </div>
@@ -850,7 +866,7 @@
             </div>
           </div>
 
-          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA (COM TEMPORIZADOR PROTEGIDO POR SENHA E CAIXA DO ACALENTO COMPLETA) -->
+          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA (COM PRANCHA CAA EDITÁVEL, TEMPORIZADOR E CAIXA DO ACALENTO) -->
           <div id="conteudo-vip-tea" class="vip-sub-area">
             
             <!-- DRIVE AZUL EM MANUTENÇÃO -->
@@ -860,17 +876,19 @@
               <button disabled class="btn-drive" style="background: #94A3B8; cursor: not-allowed; border:none;">Em Manutenção ⏳</button>
             </div>
 
-            <!-- PRANCHA DE COMUNICAÇÃO (CAA) -->
+            <!-- PRANCHA DE COMUNICAÇÃO EDITÁVEL (EXCLUSIVA VIP) -->
             <div class="vip-card-box" style="border-color: #BAE6FD;">
-              <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 15px; margin-bottom: 5px;">💬 Prancha de Comunicação (CAA)</h4>
-              <p style="font-size: 12px; color: #475569; font-weight: 600;">Toque para a Turminha falar o que a criança precisa.</p>
-              <div class="caa-grid">
-                <div class="caa-btn" onclick="lerTexto('Eu quero água, por favor.')"><span>💧</span><p>Água</p></div>
-                <div class="caa-btn" onclick="lerTexto('Estou com fome. Quero comer.')"><span>🍎</span><p>Comer</p></div>
-                <div class="caa-btn" onclick="lerTexto('Preciso ir ao banheiro.')"><span>🚽</span><p>Banheiro</p></div>
-                <div class="caa-btn" onclick="lerTexto('Eu quero brincar agora.')"><span>🧩</span><p>Brincar</p></div>
-                <div class="caa-btn" onclick="lerTexto('Preciso de um abraço bem apertado.')"><span>🫂</span><p>Abraço</p></div>
-                <div class="caa-btn" onclick="lerTexto('Por favor, preciso de um pouco de silêncio e pausa.')"><span>🔇</span><p>Pausa</p></div>
+              <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 15px; margin-bottom: 5px;">💬 Prancha de Comunicação Editável (CAA)</h4>
+              <p style="font-size: 12px; color: #475569; font-weight: 600;">Adicione novos botões personalizados para a rotina da criança.</p>
+              
+              <div style="background: #F8FAFC; padding: 10px; border-radius: 8px; border: 2px dashed #BAE6FD; margin: 10px 0; display: flex; gap: 6px; flex-wrap: wrap;">
+                <input type="text" id="caaEmojiInput" placeholder="Emoji (ex: 🧸)" style="width: 60px; padding: 6px; text-align:center; border: 1px solid #CBD5E1; border-radius:6px;">
+                <input type="text" id="caaTextoInput" placeholder="Frase (ex: Quero meu ursinho)" style="flex:1; padding: 6px; border: 1px solid #CBD5E1; border-radius:6px; font-size:12px;">
+                <button onclick="adicionarBotaoCaaVip()" style="background: var(--tea-blue); color:#FFF; border:none; padding: 6px 12px; border-radius:6px; font-weight:800; cursor:pointer;">Adicionar ➕</button>
+              </div>
+
+              <div id="caaGridVip" class="caa-grid">
+                <!-- Renderizado via JS -->
               </div>
             </div>
 
@@ -891,7 +909,7 @@
               <p id="texto-temporizador" style="font-weight: 900; color: #475569; font-size: 20px; margin:0; text-align:center;">0:00</p>
             </div>
 
-            <!-- CAIXA DO ACALENTO COMPLETA (5 OPÇÕES) -->
+            <!-- CAIXA DO ACALENTO COMPLETA -->
             <div class="vip-card-box" style="background: #F8FAFC; border-color: #94A3B8;">
               <h4 style="color: #334155; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🎧 Caixa do Acalento (Sons Relaxantes)</h4>
               <p style="font-size: 12px; color: #64748B; font-weight: 600;">Regulação sensorial para momentos de crise ou transição.</p>
@@ -909,7 +927,7 @@
               <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                 <div>
                   <h4 style="color: #166534; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🌟 Rotina de Super Força</h4>
-                  <p style="font-size: 12px; color: #15803D; font-weight: 600; margin-bottom: 12px;">Controle visual para vitaminas e remedinhos. Os dados ficam salvos <strong>apenas no seu aparelho</strong>.</p>
+                  <p style="font-size: 12px; color: #15803D; font-weight: 600; margin-bottom: 12px;">Controle visual para vitaminas e remedinhos. Salvo <strong>apenas no aparelho</strong>.</p>
                 </div>
                 <button class="btn-audio-mini" onclick="lerTexto('Toda vez que você cuidar da saúde, marque aqui para ganhar pontos!')" title="Ouvir">🔊</button>
               </div>
@@ -957,6 +975,11 @@
     let vozesDisponiveis = [];
     let pontosConquista = parseInt(localStorage.getItem('turminha_pontos') || '0');
     let listaRotinasSuperForca = JSON.parse(localStorage.getItem('turminha_rotinas')) || [];
+    let listaCaaVip = JSON.parse(localStorage.getItem('turminha_caa_vip')) || [
+      { emoji: '🧸', texto: 'Quero meu brinquedo' },
+      { emoji: '🍎', texto: 'Estou com fome' },
+      { emoji: '💤', texto: 'Quero descansar' }
+    ];
     let timerInterval = null;
     let somAcalentoAtual = null;
     
@@ -1143,7 +1166,7 @@
       } else {
         document.body.classList.remove('sensory-mode');
         btn.classList.remove('ativo');
-        btn.innerHTML = '🌿 Ativar Modo Calmo (Sem Animações)';
+        btn.innerHTML = '🌿 Ativar Modo Calmo (Minimalista)';
         lerTexto("Modo padrão ativado.");
       }
     }
@@ -1238,6 +1261,42 @@
       }
     }
 
+    // --- PRANCHA CAA EDITÁVEL (VIP) ---
+    function renderizarCaaVip() {
+      const grid = document.getElementById('caaGridVip');
+      if (!grid) return;
+      grid.innerHTML = '';
+      
+      // Botões padrão fixos + personalizados salvos
+      const padroes = [
+        { emoji: '💧', texto: 'Água' },
+        { emoji: '🍎', texto: 'Comer' },
+        { emoji: '🚽', texto: 'Banheiro' }
+      ];
+      const todos = [...padroes, ...listaCaaVip];
+
+      todos.forEach((item, index) => {
+        const btn = document.createElement('div');
+        btn.className = 'caa-btn';
+        btn.innerHTML = `<span>${item.emoji}</span><p>${item.texto}</p>`;
+        btn.onclick = () => lerTexto(`Eu quero ${item.texto.toLowerCase()}.`);
+        grid.appendChild(btn);
+      });
+    }
+
+    function adicionarBotaoCaaVip() {
+      const emoji = document.getElementById('caaEmojiInput').value.trim() || '⭐';
+      const texto = document.getElementById('caaTextoInput').value.trim();
+      if (!texto) { alert("Digite a frase do botão!"); return; }
+
+      listaCaaVip.push({ emoji: emoji, texto: texto });
+      localStorage.setItem('turminha_caa_vip', JSON.stringify(listaCaaVip));
+      document.getElementById('caaEmojiInput').value = '';
+      document.getElementById('caaTextoInput').value = '';
+      renderizarCaaVip();
+      lerTexto("Novo botão adicionado com sucesso!");
+    }
+
     // --- NAVEGAÇÃO E ABAS PRINCIPAIS ---
     function mudarPagina(pagina) {
       ['inicio', 'videos', 'jogos', 'tea', 'vip'].forEach(p => {
@@ -1259,6 +1318,7 @@
         verificarStatusVip();
         criarSeletorAvatarPerfil();
         renderizarRotinasVip();
+        renderizarCaaVip();
       }
     }
 
