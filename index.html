@@ -32,7 +32,7 @@
       --shadow-lg: 0 14px 30px rgba(59, 130, 246, 0.15);
     }
 
-    /* MODO SENSORIAL PROFUNDO E CALMANTE (BAIXO ESTÍMULO) */
+    /* MODO SENSORIAL PROFUNDO E CALMANTE (BAIXO ESTÍMULO NO SITE INTEIRO) */
     body.sensory-mode {
       --bg-gradient: #F1F5F9 !important; 
       --primary: #475569 !important;
@@ -638,14 +638,14 @@
       </div>
     </main>
 
-    <!-- PÁGINA ESPAÇO TEA (COM FLUXO DE ONBOARDING E ACESSO GRATUITO ESSENCIAL) -->
+    <!-- PÁGINA ESPAÇO TEA (COM ONBOARDING E TEMPORIZADOR BÁSICO) -->
     <main id="pagina-tea" class="page-content">
       <div class="age-group-section">
         
-        <!-- ETAPA DE ONBOARDING: CADASTRO INICIAL (EXEMPLO DE FLUXO) -->
+        <!-- ETAPA DE ONBOARDING: COLETA DE E-MAIL E SENHA PARENTAL -->
         <div id="tea-onboarding-box" class="tea-box" style="background: #FFF; border: 2.5px solid var(--tea-blue);">
           <h3>🧩 Bem-vindo ao Espaço Inclusivo TEA</h3>
-          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Para personalizar a experiência e ativar o temporizador de segurança com senha parental, insira os dados abaixo:</p>
+          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Para configurar o temporizador de segurança com senha parental, insira os dados abaixo:</p>
           
           <div style="max-width: 400px; margin: 0 auto; text-align: left;">
             <label style="font-size: 11px; font-weight: 800; color: var(--tea-blue); display: block; margin-bottom: 4px;">E-mail do Responsável:</label>
@@ -716,6 +716,21 @@
 
           </div>
 
+          <!-- TEMPORIZADOR BÁSICO (GRATUITO: 1 e 3 MINUTOS) -->
+          <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Temporizador de Segurança (Básico)</h4>
+          <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px;">
+            <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Defina o tempo limite (Exigirá senha ao zerar):</p>
+            <div class="timer-btns">
+              <button class="timer-btn" onclick="iniciarTemporizador(1)">1 Minuto</button>
+              <button class="timer-btn" onclick="iniciarTemporizador(3)">3 Minutos</button>
+            </div>
+            <div class="timer-bar-bg">
+              <div id="barra-temporizador" class="timer-bar-fill" style="width: 100%;"></div>
+            </div>
+            <p id="texto-temporizador" style="font-weight: 900; color: #475569; font-size: 20px; margin:0; text-align:center;">0:00</p>
+            <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Quer opções maiores (5, 10, 15 ou 30 minutos) e Prancha Editável? Conheça o <strong>Clube VIP</strong>!</p>
+          </div>
+
           <!-- PRANCHA CAA BÁSICA -->
           <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Comunicação Básica (CAA)</h4>
           <div class="interactive-card" style="border-color: #BAE6FD;">
@@ -725,7 +740,6 @@
               <div class="caa-btn" onclick="lerTexto('Estou com fome.')"><span>🍎</span><p>Comer</p></div>
               <div class="caa-btn" onclick="lerTexto('Preciso ir ao banheiro.')"><span>🚽</span><p>Banheiro</p></div>
             </div>
-            <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Quer <strong>adicionar novos botões personalizados</strong>? Conheça o <strong>Clube VIP</strong>!</p>
           </div>
         </div>
 
@@ -743,7 +757,7 @@
         <!-- VISÃO BLOQUEADA -->
         <div id="vip-locked-view" class="vip-lock-container">
           <div class="vip-lock-header-clickable" title="Clique para assinar" onclick="document.getElementById('cad-email').focus()">
-            <h3>🧸 Ferramentas Avançadas e Prancha Editável</h3>
+            <h3>🧸 Ferramentas Avançadas, Temporizador Completo e Prancha Editável</h3>
             <div class="vip-price-tag" style="margin-top: 10px;">Acesso Ilimitado: R$ 6,00 / mês</div>
           </div>
           
@@ -751,7 +765,7 @@
             <p style="margin-bottom: 6px;">💖 <strong>O que o Clube VIP desbloqueia para os Pais?</strong></p>
             <ul style="text-align: left; margin: 8px 0 8px 18px; font-weight: 600;">
               <li>💬 <strong>Prancha de Comunicação Editável (CAA):</strong> Adicione quantos cards e botões personalizados você quiser!</li>
-              <li>⏳ <strong>Temporizador Visual com Bloqueio por Senha:</strong> Gerencie o tempo de tela com segurança.</li>
+              <li>⏳ <strong>Temporizador Expandido (Até 30 min):</strong> Opções de 5, 10, 15 e 30 minutos com bloqueio por senha.</li>
               <li>🎧 <strong>Caixa do Acalento Completa:</strong> 5 sons relaxantes (Chuva, Pássaros, Ruído Branco, Mar e Fogueira).</li>
               <li>🌟 <strong>Rotina de Super Força:</strong> Acompanhamento lúdico de vitaminas e medicamentos.</li>
               <li>📁 <strong>Drive Azul:</strong> Pranchas de rotina e histórias sociais em PDF.</li>
@@ -821,7 +835,7 @@
             <div class="radio-vip-box">
               <h3 style="margin-bottom: 6px; font-weight: 900;">🎵 Rádio da Turminha</h3>
               <p style="font-size: 13px; color: #94A3B8; margin-bottom: 15px;">Ouça todas as músicas oficiais direto no Spotify!</p>
-              <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="radio-btn">▶️ Abrir Músicas no Spotify</a>
+              <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6?si=H4uu2B9pSd2GIwIs1Tx8Rg" target="_blank" class="radio-btn">▶️ Abrir Músicas no Spotify</a>
             </div>
 
             <div class="drive-banner-box">
@@ -853,14 +867,9 @@
               </div>
 
               <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
-                <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧩 Quebra-Cabeça Proporcional</h5>
-                <div id="puzzleSelector" class="puzzle-selector"></div>
-                <div class="puzzle-full-preview"><img id="puzzleFullPreviewImg" src="" alt="Preview"></div>
-                <div class="puzzle-workspace">
-                  <div id="puzzleContainer" class="puzzle-grid"></div>
-                  <div id="puzzlePiecesTray" class="puzzle-pieces-tray"></div>
-                </div>
-                <button onclick="reiniciarPuzzle()" style="margin-top: 12px; padding: 8px 16px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer;">Reiniciar 🔄</button>
+                <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧩 Quebra-Cabeça Proporcional - Em Breve 🚧</h5>
+                <p style="font-size: 12px; color: #78350F; margin-bottom: 10px;">Envie imagens de proporção 4:3 (ex: 800x600px) para liberar.</p>
+                <button disabled style="padding: 8px 16px; background: #CBD5E1; color: #64748B; border: none; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: not-allowed;">Manutenção ⏳</button>
               </div>
 
               <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
@@ -879,7 +888,7 @@
             </div>
           </div>
 
-          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA (COM PRANCHA CAA EDITÁVEL, TEMPORIZADOR E CAIXA DO ACALENTO) -->
+          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA (VIP - EXPANDIDO COM MAIS MINUTOS, PRANCHA EDITÁVEL E SONS REAIS) -->
           <div id="conteudo-vip-tea" class="vip-sub-area">
             
             <!-- DRIVE AZUL EM MANUTENÇÃO -->
@@ -892,7 +901,7 @@
             <!-- PRANCHA DE COMUNICAÇÃO EDITÁVEL (EXCLUSIVA VIP) -->
             <div class="vip-card-box" style="border-color: #BAE6FD;">
               <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 15px; margin-bottom: 5px;">💬 Prancha de Comunicação Editável (CAA)</h4>
-              <p style="font-size: 12px; color: #475569; font-weight: 600;">Adicione novos botões personalizados para a rotina da criança.</p>
+              <p style="font-size: 12px; color: #475569; font-weight: 600;">Adicione quantos botões personalizados você quiser para a rotina da criança.</p>
               
               <div style="background: #F8FAFC; padding: 10px; border-radius: 8px; border: 2px dashed #BAE6FD; margin: 10px 0; display: flex; gap: 6px; flex-wrap: wrap;">
                 <input type="text" id="caaEmojiInput" placeholder="Emoji (ex: 🧸)" style="width: 60px; padding: 6px; text-align:center; border: 1px solid #CBD5E1; border-radius:6px;">
@@ -900,20 +909,19 @@
                 <button onclick="adicionarBotaoCaaVip()" style="background: var(--tea-blue); color:#FFF; border:none; padding: 6px 12px; border-radius:6px; font-weight:800; cursor:pointer;">Adicionar ➕</button>
               </div>
 
-              <div id="caaGridVip" class="caa-grid">
-                <!-- Renderizado via JS -->
-              </div>
+              <div id="caaGridVip" class="caa-grid"></div>
             </div>
 
-            <!-- TEMPORIZADOR COM BLOQUEIO POR SENHA PARENTAL -->
+            <!-- TEMPORIZADOR EXPANDIDO (VIP: 5, 10, 15, 30 MINUTOS) -->
             <div class="vip-card-box" style="border-color: #BAE6FD;">
-              <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 15px; margin-bottom: 5px;">⏳ Temporizador Visual com Senha Parental</h4>
-              <p style="font-size: 12px; color: #475569; font-weight: 600;">Defina o tempo. Quando zerar, o app exigirá a senha cadastrada para destravar.</p>
+              <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 15px; margin-bottom: 5px;">⏳ Temporizador Visual Avançado (VIP)</h4>
+              <p style="font-size: 12px; color: #475569; font-weight: 600;">Opções estendidas para gerenciar períodos maiores de atividades.</p>
               
               <div class="timer-btns" style="margin-top: 10px;">
-                <button class="timer-btn" onclick="iniciarTemporizador(1)">1 Minuto</button>
-                <button class="timer-btn" onclick="iniciarTemporizador(3)">3 Minutos</button>
-                <button class="timer-btn" onclick="iniciarTemporizador(5)">5 Minutos</button>
+                <button class="timer-btn" onclick="iniciarTemporizador(5)">5 Min</button>
+                <button class="timer-btn" onclick="iniciarTemporizador(10)">10 Min</button>
+                <button class="timer-btn" onclick="iniciarTemporizador(15)">15 Min</button>
+                <button class="timer-btn" onclick="iniciarTemporizador(30)">30 Min</button>
               </div>
 
               <div class="timer-bar-bg">
@@ -922,10 +930,10 @@
               <p id="texto-temporizador" style="font-weight: 900; color: #475569; font-size: 20px; margin:0; text-align:center;">0:00</p>
             </div>
 
-            <!-- CAIXA DO ACALENTO COMPLETA -->
+            <!-- CAIXA DO ACALENTO COMPLETA (5 SONS) -->
             <div class="vip-card-box" style="background: #F8FAFC; border-color: #94A3B8;">
-              <h4 style="color: #334155; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🎧 Caixa do Acalento (Sons Relaxantes)</h4>
-              <p style="font-size: 12px; color: #64748B; font-weight: 600;">Regulação sensorial para momentos de crise ou transição.</p>
+              <h4 style="color: #334155; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🎧 Caixa do Acalento Completa (Sons Relaxantes)</h4>
+              <p style="font-size: 12px; color: #64748B; font-weight: 600;">Regulação sensorial estendida para momentos de crise.</p>
               <div class="acalento-grid">
                 <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_CHUVA.mp3')"><span>🌧️</span><p>Chuva</p></button>
                 <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_NATUREZA.mp3')"><span>🐦</span><p>Pássaros</p></button>
