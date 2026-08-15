@@ -32,20 +32,27 @@
       --shadow-lg: 0 14px 30px rgba(59, 130, 246, 0.15);
     }
 
-    /* MODO SENSORIAL EXTREMO MINIMALISTA (ZERO EXCESSO) */
+    /* MODO SENSORIAL GLOBAL (O SITE INTEIRO FICA MINIMALISTA E CALMANTE) */
     body.sensory-mode {
-      --bg-gradient: #F8FAFC !important; 
+      --bg-gradient: #F1F5F9 !important; 
       --primary: #475569 !important;
+      --primary-dark: #334155 !important;
       --secondary: #64748B !important;
       --tea-blue: #334155 !important;
       --tea-light: #FFFFFF !important;
-      background: var(--bg-gradient);
+      background: var(--bg-gradient) !important;
+      color: #1E293B !important;
     }
-    body.sensory-mode * { animation: none !important; box-shadow: none !important; }
-    body.sensory-mode .app-container { border: 2px solid #E2E8F0; background: #FFFFFF; }
-    body.sensory-mode header { background: #F1F5F9 !important; }
-    body.sensory-mode .tea-box { background: #FFFFFF !important; border: 2px solid #CBD5E1 !important; }
-    /* Esconde excessos visuais e banners que possam irritar a criança em crise */
+    body.sensory-mode * { animation: none !important; box-shadow: none !important; transition: none !important; }
+    body.sensory-mode .app-container { border: 2px solid #CBD5E1; background: #FFFFFF; }
+    body.sensory-mode header { background: #E2E8F0 !important; }
+    body.sensory-mode .tea-box, 
+    body.sensory-mode .vip-card-box, 
+    body.sensory-mode .vip-lock-container, 
+    body.sensory-mode .interactive-card,
+    body.sensory-mode .video-card { background: #FFFFFF !important; border: 2px solid #CBD5E1 !important; }
+    
+    /* Esconde elementos desnecessários e flutuantes para evitar irritação sensorial */
     body.sensory-mode .browser-notice-box,
     body.sensory-mode .top-vip-announcement,
     body.sensory-mode .social-round-section,
@@ -637,7 +644,7 @@
       <div class="age-group-section">
         <div class="tea-box">
           <h3>🧩 Espaço Inclusivo TEA</h3>
-          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Ambiente de acolhimento e regulação sensorial. Ative o Modo Calmo para remover qualquer estímulo visual irritante.</p>
+          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Ambiente de acolhimento e regulação sensorial. Ative o Modo Calmo para remover qualquer estímulo visual irritante do site inteiro.</p>
           
           <button id="btnSensoryToggle" class="btn-sensorial" onclick="toggleSensoryMode()">
             <span id="sensoryIcon">🌿</span> Ativar Modo Calmo (Minimalista)
@@ -691,29 +698,6 @@
             </div>
           </div>
 
-        </div>
-
-        <!-- PRANCHA CAA BÁSICA (GRATUITA) -->
-        <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Comunicação Básica (CAA)</h4>
-        <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px;">
-          <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Toque no desenho para falar:</p>
-          <div class="caa-grid">
-            <div class="caa-btn" onclick="lerTexto('Eu quero água, por favor.')"><span>💧</span><p>Água</p></div>
-            <div class="caa-btn" onclick="lerTexto('Estou com fome.')"><span>🍎</span><p>Comer</p></div>
-            <div class="caa-btn" onclick="lerTexto('Preciso ir ao banheiro.')"><span>🚽</span><p>Banheiro</p></div>
-          </div>
-          <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Quer pranchas completas e <strong>poder adicionar mais opções</strong>? Conheça o <strong>Clube VIP</strong>!</p>
-        </div>
-
-        <!-- CAIXA DO ACALENTO BÁSICA (GRATUITA) -->
-        <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Acalento Sensorial (Básico)</h4>
-        <div class="interactive-card" style="border-color: #BAE6FD;">
-          <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Sons relaxantes para ajudar na calmaria:</p>
-          <div class="acalento-grid">
-            <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_CHUVA.mp3')"><span>🌧️</span><p>Chuva</p></button>
-            <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_NATUREZA.mp3')"><span>🐦</span><p>Pássaros</p></button>
-          </div>
-          <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Mais opções (Ruído Branco, Mar e Fogueira) disponíveis no <strong>Clube VIP</strong>!</p>
         </div>
 
       </div>
@@ -1154,7 +1138,6 @@
       document.getElementById('emocoes-passo-2').style.opacity = '0';
     }
 
-    let sensoryModeAtivo = false;
     function toggleSensoryMode() {
       sensoryModeAtivo = !sensoryModeAtivo;
       const btn = document.getElementById('btnSensoryToggle');
@@ -1162,7 +1145,7 @@
         document.body.classList.add('sensory-mode');
         btn.classList.add('ativo');
         btn.innerHTML = '🌿 Modo Calmo Ativado';
-        lerTexto("Modo sensorial profundo ativado.");
+        lerTexto("Modo sensorial ativado no site inteiro.");
       } else {
         document.body.classList.remove('sensory-mode');
         btn.classList.remove('ativo');
@@ -1267,7 +1250,6 @@
       if (!grid) return;
       grid.innerHTML = '';
       
-      // Botões padrão fixos + personalizados salvos
       const padroes = [
         { emoji: '💧', texto: 'Água' },
         { emoji: '🍎', texto: 'Comer' },
@@ -1701,6 +1683,7 @@
       const imgsMem = sorteados.map(p => p.img);
       cMemVip = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
       const board = document.getElementById('memoryBoardVip'); board.innerHTML = '';
+      cMemVip.src = '';
       cMemVip.forEach(src => {
         const card = document.createElement('div'); card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
         card.onclick = () => {
