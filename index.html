@@ -32,7 +32,7 @@
       --shadow-lg: 0 14px 30px rgba(59, 130, 246, 0.15);
     }
 
-    /* MODO SENSORIAL PARA TEA (Menos estímulo visual) */
+    /* MODO SENSORIAL PARA TEA */
     body.sensory-mode {
       --bg-gradient: #F0F9FF !important; 
       --primary: #60A5FA !important;
@@ -119,7 +119,7 @@
     .age-group-section { margin: 0 16px; background: #FFFFFF; border-radius: var(--radius-lg); padding: 18px; border: 2px solid #E2E8F0; box-shadow: var(--shadow-sm); }
     .age-title { font-size: 19px; font-weight: 900; color: var(--primary-dark); margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
     
-    .interactive-card { background: #F8FAFC; border-radius: var(--radius-md); padding: 16px; text-align: center; border: 2px solid #E2E8F0; display: flex; flex-direction: column; align-items: center; }
+    .interactive-card { background: #F8FAFC; border-radius: var(--radius-md); padding: 16px; text-align: center; border: 2px solid #E2E8F0; display: flex; flex-direction: column; align-items: center; position: relative; }
     .conquistas-box { background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%); border: 2px solid #FCD34D; border-radius: var(--radius-md); padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; font-weight: 800; color: #92400E; font-size: 13.5px; box-shadow: var(--shadow-sm); }
 
     /* Lousa Mágica */
@@ -163,14 +163,40 @@
     .btn-drive { display: inline-block; background: #2563EB; color: #FFF; font-weight: 800; font-size: 13px; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-top: 8px; transition: transform 0.2s;}
     .btn-drive:hover { transform: scale(1.05); }
 
-    /* Rotina de Super Força (Novo Recurso VIP) */
+    /* NOVO: ABAS INTERNAS VIP */
+    .vip-internal-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; background: #FFFBEB; padding: 8px; border-radius: var(--radius-lg); border: 2px solid #FCD34D;}
+    .vip-int-btn { flex: 1; min-width: 140px; padding: 10px 14px; border-radius: 10px; border: 2px solid transparent; font-weight: 900; font-size: 14px; cursor: pointer; background: transparent; color: #92400E; transition: all 0.2s; }
+    .vip-int-btn.active { background: #F59E0B; color: #FFF; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3); border-color: #D97706; }
+    
+    .vip-sub-area { display: none; flex-direction: column; gap: 16px; animation: fadeIn 0.3s ease; }
+    .vip-sub-area.active-area { display: flex; }
+
+    /* Rotina de Super Força (VIP TEA) */
     .rotina-item { display: flex; justify-content: space-between; align-items: center; background: #FFF; border: 2px solid #E2E8F0; padding: 10px 14px; border-radius: 10px; margin-bottom: 8px; transition: all 0.2s; }
     .rotina-item.concluido { background: #DCFCE7; border-color: #86EFAC; opacity: 0.8; }
     .rotina-item.concluido .rotina-texto { text-decoration: line-through; color: #166534; }
     .btn-concluir-rotina { background: #10B981; color: #FFF; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
     .btn-remover-rotina { background: #EF4444; color: #FFF; border: none; padding: 6px 10px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
 
-    .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 14px; margin-bottom: 16px; text-align: center; }
+    /* Certificado VIP */
+    .certificado-container { background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 4px double #F59E0B; border-radius: 12px; padding: 20px; text-align: center; position: relative; }
+    .certificado-container h3 { font-family: 'Georgia', serif; font-size: 22px; color: #92400E; margin-bottom: 10px; }
+    .certificado-nome { font-size: 26px; font-weight: 900; color: var(--primary-dark); text-transform: uppercase; margin: 15px 0; border-bottom: 2px solid #92400E; display: inline-block; min-width: 200px; }
+    
+    /* Rádio VIP */
+    .radio-vip-box { background: #1E293B; border-radius: var(--radius-lg); padding: 20px; text-align: center; color: #FFF; position: relative; overflow: hidden; }
+    .radio-vip-box::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%); animation: pulse 4s infinite; z-index: 0; pointer-events: none; }
+    @keyframes pulse { 0% { transform: scale(0.9); } 50% { transform: scale(1.1); } 100% { transform: scale(0.9); } }
+    .radio-btn { background: #10B981; color: #FFF; border: none; padding: 12px 24px; border-radius: 30px; font-weight: 900; font-size: 16px; cursor: pointer; z-index: 1; position: relative; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); }
+
+    /* Caixa do Acalento (TEA) */
+    .acalento-grid { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
+    .acalento-btn { background: #FFF; border: 2px solid var(--tea-blue); border-radius: 50%; width: 70px; height: 70px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.2s; }
+    .acalento-btn:hover { background: var(--tea-light); transform: scale(1.05); }
+    .acalento-btn span { font-size: 24px; }
+    .acalento-btn p { font-size: 10px; font-weight: 800; color: var(--tea-blue); margin: 4px 0 0 0; }
+
+    .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 14px; text-align: center; }
     .avatar-escolha-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
     .avatar-escolha-btn { width: 48px; height: 48px; border-radius: 50%; border: 2.5px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 3px; }
     .avatar-escolha-btn.selecionado { border-color: #F59E0B; transform: scale(1.08); box-shadow: 0 4px 10px rgba(245,158,11,0.4); }
@@ -215,13 +241,27 @@
     .tea-box h3 { color: var(--tea-blue); font-weight: 900; margin-bottom: 10px; }
     .btn-sensorial { background: #FFF; color: var(--tea-blue); border: 2px solid var(--tea-blue); padding: 10px 20px; border-radius: 20px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; transition: all 0.3s; }
     .btn-sensorial.ativo { background: var(--tea-blue); color: #FFF; }
-    .emotion-card { background: #FFF; border: 2px solid #E2E8F0; border-radius: 12px; padding: 15px; cursor: pointer; width: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-    .emotion-card:hover { border-color: var(--tea-blue); }
+    .emotion-card { background: #FFF; border: 2px solid #E2E8F0; border-radius: 12px; padding: 15px; cursor: pointer; width: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.2s;}
+    .emotion-card:hover { border-color: var(--tea-blue); transform: scale(1.05); }
     .emotion-card img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 10px; }
     
     .cause-effect-btn { background: #FFF; border: 3px solid #E2E8F0; border-radius: 20px; padding: 20px; cursor: pointer; transition: transform 0.1s; }
     .cause-effect-btn:active { transform: scale(0.95); border-color: var(--tea-blue); background: var(--tea-light); }
     .cause-effect-btn img { width: 80px; height: 80px; object-fit: contain; }
+
+    .fade-transition { opacity: 1; transition: opacity 0.8s ease-in-out; }
+    .fade-out { opacity: 0; }
+
+    .caa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
+    .caa-btn { background: #FFF; border: 2px solid #BAE6FD; border-radius: 12px; padding: 10px; text-align: center; cursor: pointer; transition: all 0.2s; }
+    .caa-btn:active { background: #E0F2FE; border-color: var(--tea-blue); transform: scale(0.95); }
+    .caa-btn span { display: block; font-size: 28px; margin-bottom: 5px; }
+    .caa-btn p { font-size: 11px; font-weight: 800; color: var(--tea-blue); margin: 0; }
+
+    .timer-bar-bg { width: 100%; height: 24px; background: #E2E8F0; border-radius: 12px; overflow: hidden; margin: 15px 0; border: 2px solid #CBD5E1; }
+    .timer-bar-fill { width: 100%; height: 100%; background: #10B981; transition: width 1s linear, background-color 0.5s ease; }
+    .timer-btns { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .timer-btn { background: var(--tea-blue); color: #FFF; border: none; padding: 8px 12px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
 
     /* Modal Privacidade e Cookies */
     .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); z-index: 10000; justify-content: center; align-items: center; padding: 16px; backdrop-filter: blur(4px); }
@@ -288,7 +328,6 @@
       <span>💡 Dica: Se o som estiver mudo, toque nos 3 pontinhos e escolha <strong>"Abrir no Chrome"</strong> ou <strong>"Abrir no Safari"</strong>!</span>
     </div>
 
-    <!-- FAIXA VIP SUPERIOR -->
     <div class="top-vip-announcement" onclick="mudarPagina('vip')">
       <span>⭐ Desbloqueie todo o Drive de Atividades e Recursos TEA por R$ 6,00/mês! Clique Aqui! 💖</span>
     </div>
@@ -307,7 +346,7 @@
             <button class="btn-audio-mini" onclick="lerTexto('Mais do que um nome divertido, a Turminha do Xexéu é o nosso jeito de honrar as raízes e a história da nossa família.')" title="Ouvir">🔊</button>
           </div>
           <p>Mais do que um nome divertido, a <strong>Turminha do Xexéu</strong> é o nosso jeito de honrar as raízes e a história da nossa família.</p>
-          <p>O nome <strong>Xexéu</strong> é uma homenagem que atravessa gerações. Ele honra a memória de <em>Mariano Xexéu</em> e celebra a vida de seu filho, <em>Pedro Mariano</em>, grande inspiração para o nosso querido <strong>Vovô Beto</strong>.</p>
+          <p>O nome <strong>Xexéu</strong> é uma homenagem que atravessa gerações. Ele honra a memória de <em>Mariano Xexéu</em> e celebra a vida de seu filho, <em>Pedro Mariano</em>.</p>
           <p>A <strong>Vovó Hilda</strong> é inspirada na inesquecível <em>Astrogilda Grispym</em>, representando o amor que não conhece o tempo.</p>
         </div>
       </section>
@@ -333,13 +372,11 @@
               <img src="https://i.imgur.com/jBeihpo.png" class="floating-char-img" alt="Xexéu">
               <span class="floating-char-name">Xexéu</span>
               <span class="floating-char-tag">Mascote Oficial</span>
-              <p class="floating-char-desc">Inspirado no pássaro xexéu e no nome do bisavô Mariano Xexéu. É o espírito alegre!</p>
             </div>
             <div class="floating-char-card card-especial" onclick="tocarVozETexto('Capilé')">
               <img src="https://i.imgur.com/BBmAqLC.png" class="floating-char-img" alt="Capilé">
               <span class="floating-char-name">Capilé</span>
               <span class="floating-char-tag">O Companheiro</span>
-              <p class="floating-char-desc">Cachorrinho de orelhas grandes e coleira azul-celeste com pingente de osso dourado!</p>
             </div>
           </div>
         </div>
@@ -354,25 +391,21 @@
               <img src="https://i.imgur.com/8TrWSb1.png" class="floating-char-img" alt="Maya">
               <span class="floating-char-name">Maya</span>
               <span class="floating-char-tag">Mãe & Guia</span>
-              <p class="floating-char-desc">Mãe dedicada da Iza e da Nina. Extremamente organizada e atenciosa.</p>
             </div>
             <div class="floating-char-card card-f1" onclick="tocarVozETexto('Theo')">
               <img src="https://i.imgur.com/Hbf9i8C.png" class="floating-char-img" alt="Theo">
               <span class="floating-char-name">Theo</span>
               <span class="floating-char-tag">Pai Protetor</span>
-              <p class="floating-char-desc">Pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo.</p>
             </div>
             <div class="floating-char-card card-f1" onclick="tocarVozETexto('Nina')">
               <img src="https://i.imgur.com/dfuGmNA.png" class="floating-char-img" alt="Nina">
               <span class="floating-char-name">Nina</span>
               <span class="floating-char-tag">Super Esperta</span>
-              <p class="floating-char-desc">Super esperta, tem cabelos cacheados e adora aprender coisas novas!</p>
             </div>
             <div class="floating-char-card card-f1" onclick="tocarVozETexto('Iza')">
               <img src="https://i.imgur.com/TsKlbEX.png" class="floating-char-img" alt="Iza">
               <span class="floating-char-name">Iza</span>
               <span class="floating-char-tag">A Vaidosa</span>
-              <p class="floating-char-desc">Vestidinho rosa, cabelos ondulados e um jeitinho charmoso e doce.</p>
             </div>
           </div>
         </div>
@@ -387,25 +420,21 @@
               <img src="https://i.imgur.com/jPz7Qxh.png" class="floating-char-img" alt="Sam">
               <span class="floating-char-name">Sam</span>
               <span class="floating-char-tag">Pai Inventor</span>
-              <p class="floating-char-desc">Paizão ruivo do Joca e do Leo. Descontraído, adora construir brinquedos.</p>
             </div>
             <div class="floating-char-card card-f2" onclick="tocarVozETexto('Lia')">
               <img src="https://i.imgur.com/2PVG33C.png" class="floating-char-img" alt="Lia">
               <span class="floating-char-name">Lia</span>
               <span class="floating-char-tag">Mãe Alegria</span>
-              <p class="floating-char-desc">Mãe do Joca e do Leo. Estilosa e alegre, traz energia contagiante.</p>
             </div>
             <div class="floating-char-card card-f2" onclick="tocarVozETexto('Joca')">
               <img src="https://i.imgur.com/yQX0ZOy.png" class="floating-char-img" alt="Joca">
               <span class="floating-char-name">Joca</span>
               <span class="floating-char-tag">O Divertido</span>
-              <p class="floating-char-desc">Menino de camiseta verde! Engraçado e super companheiro.</p>
             </div>
             <div class="floating-char-card card-f2" onclick="tocarVozETexto('Leo')">
               <img src="https://i.imgur.com/PZPpO14.png" class="floating-char-img" alt="Leo">
               <span class="floating-char-name">Leo</span>
               <span class="floating-char-tag">Explorador Focado</span>
-              <p class="floating-char-desc">Amante de detalhes e focado em suas descobertas com muita imaginação.</p>
             </div>
           </div>
         </div>
@@ -420,13 +449,11 @@
               <img src="https://i.imgur.com/2E6Dvfz.png" class="floating-char-img" alt="Vovô Beto">
               <span class="floating-char-name">Vovô Beto</span>
               <span class="floating-char-tag">Vovô Coruja</span>
-              <p class="floating-char-desc">Usa óculos quadrados. Traz paciência, bom humor e energia contagiante.</p>
             </div>
             <div class="floating-char-card card-avos" onclick="tocarVozETexto('Hilda')">
               <img src="https://i.imgur.com/VZOGaEO.png" class="floating-char-img" alt="Vovó Hilda">
               <span class="floating-char-name">Vovó Hilda</span>
               <span class="floating-char-tag">Vovó Acolhedora</span>
-              <p class="floating-char-desc">Usa óculos redondos. Guardando doçura, abraços e valores preciosos.</p>
             </div>
           </div>
         </div>
@@ -567,25 +594,26 @@
       </div>
     </main>
 
-    <!-- PÁGINA ESPAÇO TEA (INCLUSIVO) COM NOVA JORNADA EMOCIONAL -->
+    <!-- PÁGINA ESPAÇO TEA (INCLUSIVO) - EXPANDIDO -->
     <main id="pagina-tea" class="page-content">
       <div class="age-group-section">
         <div class="tea-box">
           <h3>🧩 Espaço Inclusivo TEA</h3>
-          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">A Turminha do Xexéu abraça a neurodiversidade! Criamos este espaço seguro para crianças no Espectro Autista, com estímulos suaves e previsibilidade.</p>
+          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">A Turminha do Xexéu abraça a neurodiversidade! Criamos este espaço seguro, com estímulos suaves, previsibilidade e apoio visual.</p>
           
           <button id="btnSensoryToggle" class="btn-sensorial" onclick="toggleSensoryMode()">
             <span id="sensoryIcon">🌿</span> Ativar Modo Calmo (Sem Animações)
           </button>
         </div>
 
+        <!-- 1. JORNADA DAS EMOÇÕES COM PERSONAGEM DO DIA E TRANSIÇÃO SUAVE -->
         <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Jornada das Emoções</h4>
-        <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px; position:relative; min-height: 250px;">
+        <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px; position:relative; min-height: 270px; overflow:hidden;">
           
-          <!-- PASSO 1: O OUTRO (Xexéu) -->
-          <div id="emocoes-passo-1" style="width: 100%;">
-            <p style="font-weight: 700; margin-bottom: 15px;">Como o Xexéu está se sentindo hoje?</p>
-            <img src="https://i.imgur.com/jBeihpo.png" alt="Xexéu" style="width: 100px; margin-bottom: 20px;">
+          <!-- PASSO 1: O OUTRO (Personagem Dinâmico) -->
+          <div id="emocoes-passo-1" class="fade-transition" style="width: 100%;">
+            <p style="font-weight: 700; margin-bottom: 15px;">Como o(a) <strong id="tea-emocao-nome" style="color: var(--tea-blue);">Xexéu</strong> está se sentindo hoje?</p>
+            <img id="tea-emocao-img" src="https://i.imgur.com/jBeihpo.png" alt="Personagem do Dia" style="width: 100px; margin-bottom: 20px;">
             
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
               <div class="emotion-card" onclick="responderEmocao('Feliz')">
@@ -604,7 +632,7 @@
           </div>
 
           <!-- PASSO 2: A CRIANÇA (E você?) -->
-          <div id="emocoes-passo-2" style="width: 100%; display: none;">
+          <div id="emocoes-passo-2" class="fade-transition fade-out" style="width: 100%; display: none; position: absolute; top: 16px; left: 0;">
             <p style="font-weight: 900; color: var(--primary-dark); font-size: 18px; margin-bottom: 15px;">E você? Como está se sentindo agora?</p>
             
             <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
@@ -629,30 +657,46 @@
 
         </div>
 
-        <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Causa e Efeito (Sons Isolados)</h4>
-        <div class="interactive-card" style="border-color: #BAE6FD;">
-          <p style="font-weight: 700; margin-bottom: 15px; font-size: 13px;">Toque no amiguinho para descobrir o que ele faz!</p>
-          <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <button class="cause-effect-btn" onclick="lerTexto('Piu Piu! O Xexéu cantou bem baixinho e calmo.')">
-              <img src="https://i.imgur.com/jBeihpo.png" alt="Xexéu">
-            </button>
-            <button class="cause-effect-btn" onclick="lerTexto('Au Au! O Capilé abanou o rabinho.')">
-              <img src="https://i.imgur.com/BBmAqLC.png" alt="Capilé">
-            </button>
-            <button class="cause-effect-btn" onclick="lerTexto('Hahaha! O Joca deu uma risada divertida!')">
-              <img src="https://i.imgur.com/yQX0ZOy.png" alt="Joca">
-            </button>
+        <!-- 2. PRANCHA DE COMUNICAÇÃO (CAA) -->
+        <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Apoio de Comunicação (CAA)</h4>
+        <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px;">
+          <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Toque no desenho para a Turminha falar por você!</p>
+          <div class="caa-grid">
+            <div class="caa-btn" onclick="lerTexto('Eu quero água, por favor.')"><span>💧</span><p>Água</p></div>
+            <div class="caa-btn" onclick="lerTexto('Estou com fome. Quero comer.')"><span>🍎</span><p>Comer</p></div>
+            <div class="caa-btn" onclick="lerTexto('Preciso ir ao banheiro.')"><span>🚽</span><p>Banheiro</p></div>
+            <div class="caa-btn" onclick="lerTexto('Eu quero brincar agora.')"><span>🧩</span><p>Brincar</p></div>
+            <div class="caa-btn" onclick="lerTexto('Preciso de um abraço bem apertado.')"><span>🫂</span><p>Abraço</p></div>
+            <div class="caa-btn" onclick="lerTexto('Por favor, preciso de um pouco de silêncio e pausa.')"><span>🔇</span><p>Pausa</p></div>
           </div>
         </div>
+
+        <!-- 3. TEMPORIZADOR VISUAL -->
+        <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Temporizador Visual</h4>
+        <div class="interactive-card" style="border-color: #BAE6FD;">
+          <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Ajuda a saber quando a brincadeira vai acabar.</p>
+          
+          <div class="timer-btns">
+            <button class="timer-btn" onclick="iniciarTemporizador(1)">1 Minuto</button>
+            <button class="timer-btn" onclick="iniciarTemporizador(3)">3 Minutos</button>
+            <button class="timer-btn" onclick="iniciarTemporizador(5)">5 Minutos</button>
+          </div>
+
+          <div class="timer-bar-bg">
+            <div id="barra-temporizador" class="timer-bar-fill" style="width: 100%;"></div>
+          </div>
+          <p id="texto-temporizador" style="font-weight: 900; color: #475569; font-size: 24px; margin:0;">0:00</p>
+        </div>
+
       </div>
     </main>
 
-    <!-- PÁGINA VIP -->
+    <!-- PÁGINA VIP TOTALMENTE NOVA E SEPARADA -->
     <main id="pagina-vip" class="page-content">
       <div class="age-group-section">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
           <h3 class="age-title" style="color: #1E293B; margin: 0;">⭐ Clube VIP da Turminha</h3>
-          <button class="btn-audio-mini" onclick="lerTexto('Faça parte do Clube VIP e tenha acesso a todo o material exclusivo, incluindo conteúdos adaptados para autistas!')" title="Ouvir">🔊</button>
+          <button class="btn-audio-mini" onclick="lerTexto('Faça parte do Clube VIP e tenha acesso a todo o material exclusivo, incluindo conteúdos adaptados para autistas e muita diversão!')" title="Ouvir">🔊</button>
         </div>
 
         <!-- VISÃO BLOQUEADA -->
@@ -667,8 +711,8 @@
             <p>Ao assinar, você apoia nosso canal e garante acesso imediato a:</p>
             <ul style="text-align: left; margin: 8px 0 8px 18px; font-weight: 600;">
               <li>📁 <strong>Drive Completo</strong> de atividades pedagógicas.</li>
-              <li>🧩 <strong>Materiais Inclusivos (TEA):</strong> Pranchas de rotina, histórias sociais e painéis de emoções focados em comunicação alternativa.</li>
-              <li>🌟 <strong>Controle Visual de Rotina Saudável</strong> (Painel Mágico da Saúde).</li>
+              <li>🧩 <strong>Área TEA Exclusiva:</strong> Pranchas de rotina, caixa do acalento e PDFs Inclusivos.</li>
+              <li>🌟 <strong>Certificado Oficial</strong> de Super Fã.</li>
               <li>🎬 <strong>Episódios inéditos</strong> antes do YouTube.</li>
               <li>🎮 <strong>Minijogos Exclusivos VIP</strong> para aprender brincando.</li>
             </ul>
@@ -709,99 +753,147 @@
             <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 11.5px; cursor: pointer;">🔒 Sair</button>
           </div>
 
-          <!-- SELEÇÃO DE PERFIL -->
+          <!-- SELEÇÃO DE PERFIL COMUM A AMBOS -->
           <div class="perfil-selector-box">
-            <h4 style="color: #1E293B; font-size: 14px; font-weight: 900; margin-bottom: 2px;">👤 Escolha seu Amiguinho Favorito</h4>
+            <h4 style="color: #1E293B; font-size: 14px; font-weight: 900; margin-bottom: 2px;">👤 Seu Perfil de Super Fã</h4>
             <div id="avatarEscolhaGrid" class="avatar-escolha-grid"></div>
           </div>
 
-          <!-- NOVO RECURSO: ROTINA DA SAÚDE (AUXÍLIO PAIS) -->
-          <div class="vip-card-box" style="background: #F0FDF4; border-color: #86EFAC;">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-              <div>
-                <h4 style="color: #166534; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🌟 Rotina de Super Força</h4>
-                <p style="font-size: 12px; color: #15803D; font-weight: 600; margin-bottom: 12px;">Auxílio visual para vitaminas e remedinhos. Os dados ficam salvos <strong>apenas no seu celular/computador</strong> (100% privado).</p>
+          <!-- ABAS INTERNAS DO VIP -->
+          <div class="vip-internal-tabs">
+            <button id="tab-vip-geral" class="vip-int-btn active" onclick="alternarAbaVip('geral')">🌟 Diversão VIP</button>
+            <button id="tab-vip-tea" class="vip-int-btn" onclick="alternarAbaVip('tea')">🧩 Especial Pais & TEA</button>
+          </div>
+
+          <!-- CONTEÚDO 1: DIVERSÃO VIP -->
+          <div id="conteudo-vip-geral" class="vip-sub-area active-area">
+            
+            <!-- CERTIFICADO DE SUPER FÃ -->
+            <div class="certificado-container">
+              <h3>Certificado Oficial</h3>
+              <p style="font-size: 12px; color: #78350F; margin-bottom: 10px;">Digite o nome da criança para gerar o diploma!</p>
+              <input type="text" id="nome-certificado" placeholder="Nome da Criança" style="padding: 8px; border-radius: 8px; border: 2px solid #FCD34D; outline: none; margin-bottom: 10px; width: 80%; max-width: 250px;">
+              <br>
+              <button onclick="gerarCertificado()" style="background: #D97706; color: #FFF; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer;">Gerar Diploma 🎓</button>
+              <div id="certificado-resultado" style="display:none; margin-top: 15px;">
+                <span class="certificado-nome" id="exibir-nome-certificado"></span>
+                <p style="font-weight: 800; color: #B45309; font-size: 14px;">É oficialmente um(a) Super Fã da Turminha do Xexéu!</p>
               </div>
-              <button class="btn-audio-mini" onclick="lerTexto('Esta é a nossa Rotina de Super Força! Toda vez que você cuidar da saúde, marque aqui para ganhar pontos mágicos!')" title="Ouvir">🔊</button>
             </div>
 
-            <div style="background: #FFF; padding: 10px; border-radius: 10px; border: 2px dashed #86EFAC; margin-bottom: 14px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-              <select id="rotina-icone" style="padding: 8px; border-radius: 8px; border: 2px solid #CBD5E1; outline: none; font-size: 14px;">
-                <option value="💧">💧 Gotinha</option>
-                <option value="🥄">🥄 Xarope</option>
-                <option value="💊">💊 Comprimido</option>
-                <option value="🍎">🍎 Vitamina</option>
-              </select>
-              <input type="text" id="rotina-texto" placeholder="Ex: Vitamina C da Manhã" style="flex: 1; padding: 8px; border-radius: 8px; border: 2px solid #CBD5E1; outline: none; font-size: 13px;">
-              <button onclick="adicionarRotinaVip()" style="background: #10B981; color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; cursor: pointer;">Adicionar ➕</button>
+            <!-- RÁDIO DA TURMINHA -->
+            <div class="radio-vip-box">
+              <h3 style="margin-bottom: 10px; font-weight: 900;">🎵 Rádio da Turminha</h3>
+              <p style="font-size: 13px; color: #94A3B8; margin-bottom: 15px;">Ouça nossas músicas oficiais sem parar!</p>
+              <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="radio-btn">▶️ Tocar no Spotify</a>
             </div>
 
-            <div id="lista-rotinas-vip">
-              <!-- Renderizado via JS -->
-            </div>
-          </div>
-
-          <!-- DRIVE TRADICIONAL -->
-          <div class="drive-banner-box">
-            <h4 style="color: #1E3A8A; font-size: 17px; font-weight: 900;">📁 Drive Oficial da Turminha</h4>
-            <p style="font-size: 12.5px; color: #1E40AF; margin-top: 4px; font-weight: 600;">Baixe Wallpapers de alta qualidade e Desenhos para Colorir!</p>
-            <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-drive">Acessar Pasta Oficial 📥</a>
-          </div>
-
-          <!-- DRIVE INCLUSIVO TEA -->
-          <div class="drive-banner-box" style="background: var(--tea-light); border-color: var(--tea-blue);">
-            <h4 style="color: #0369A1; font-size: 17px; font-weight: 900;">🧩 Drive Azul da Turminha (Recursos TEA)</h4>
-            <p style="font-size: 12.5px; color: #0284C7; margin-top: 4px; font-weight: 600;">Baixe Pranchas de Rotina Visual, Histórias Sociais e Termômetros de Emoção (PDFs Inclusivos)!</p>
-            <a href="https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=sharing" target="_blank" class="btn-drive" style="background: var(--tea-blue);">Acessar Pasta Inclusiva TEA 📥</a>
-          </div>
-
-          <!-- JOGOS VIP EXCLUSIVOS -->
-          <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
-            <h4 style="color: #92400E; margin-bottom: 10px; font-size: 15px; font-weight: 900;">⭐ Minijogos VIP</h4>
-            <nav class="vip-games-subnav">
-              <button id="btn-vipanel-1" class="vip-sub-btn active" onclick="mudarPanelVip(1)">📖 Histórias</button>
-              <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores & Detalhes</button>
-              <button id="btn-vipanel-3" class="vip-sub-btn" onclick="mudarPanelVip(3)">🧩 Quebra-Cabeça</button>
-              <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória 12</button>
-            </nav>
-
-            <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">📖 Desafio das Histórias</h5>
-              <p id="vip-historia-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 14px;"></p>
-              <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 380px;"></div>
+            <div class="drive-banner-box">
+              <h4 style="color: #1E3A8A; font-size: 17px; font-weight: 900;">📁 Drive Oficial da Turminha</h4>
+              <p style="font-size: 12.5px; color: #1E40AF; margin-top: 4px; font-weight: 600;">Baixe Wallpapers de alta qualidade e Desenhos para Colorir!</p>
+              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-drive">Acessar Pasta Oficial 📥</a>
             </div>
 
-            <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 6px;">🎨 Cores e Detalhes Secretos</h5>
-              <p id="vip-cor-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 8px;"></p>
-              <img id="vip-cor-img" src="" alt="Detalhe VIP" style="width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px;">
-              <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;"></div>
-            </div>
+            <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
+              <h4 style="color: #92400E; margin-bottom: 10px; font-size: 15px; font-weight: 900;">⭐ Minijogos VIP</h4>
+              <nav class="vip-games-subnav">
+                <button id="btn-vipanel-1" class="vip-sub-btn active" onclick="mudarPanelVip(1)">📖 Histórias</button>
+                <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Cores & Detalhes</button>
+                <button id="btn-vipanel-3" class="vip-sub-btn" onclick="mudarPanelVip(3)">🧩 Quebra-Cabeça</button>
+                <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória 12</button>
+              </nav>
 
-            <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧩 Quebra-Cabeça Proporcional</h5>
-              <div id="puzzleSelector" class="puzzle-selector"></div>
-              <div class="puzzle-full-preview"><img id="puzzleFullPreviewImg" src="" alt="Preview"></div>
-              <div class="puzzle-workspace">
-                <div id="puzzleContainer" class="puzzle-grid"></div>
-                <div id="puzzlePiecesTray" class="puzzle-pieces-tray"></div>
+              <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">📖 Desafio das Histórias</h5>
+                <p id="vip-historia-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 14px;"></p>
+                <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 380px;"></div>
               </div>
-              <button onclick="reiniciarPuzzle()" style="margin-top: 12px; padding: 8px 16px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer;">Reiniciar 🔄</button>
+
+              <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 6px;">🎨 Cores e Detalhes Secretos</h5>
+                <p id="vip-cor-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 8px;"></p>
+                <img id="vip-cor-img" src="" alt="Detalhe VIP" style="width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px;">
+                <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;"></div>
+              </div>
+
+              <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
+                <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧩 Quebra-Cabeça Proporcional</h5>
+                <div id="puzzleSelector" class="puzzle-selector"></div>
+                <div class="puzzle-full-preview"><img id="puzzleFullPreviewImg" src="" alt="Preview"></div>
+                <div class="puzzle-workspace">
+                  <div id="puzzleContainer" class="puzzle-grid"></div>
+                  <div id="puzzlePiecesTray" class="puzzle-pieces-tray"></div>
+                </div>
+                <button onclick="reiniciarPuzzle()" style="margin-top: 12px; padding: 8px 16px; background: #F59E0B; color: #FFF; border: none; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer;">Reiniciar 🔄</button>
+              </div>
+
+              <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
+                <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧠 Memória Relâmpago (12 Cartas)</h5>
+                <div id="memoryBoardVip" class="memory-board" style="max-width: 360px;"></div>
+              </div>
             </div>
 
-            <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
-              <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧠 Memória Relâmpago (12 Cartas)</h5>
-              <div id="memoryBoardVip" class="memory-board" style="max-width: 360px;"></div>
+            <div class="video-card">
+              <div class="video-header">
+                <h3>🎬 Episódios Secretos e Prévias VIP</h3>
+              </div>
+              <div class="video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLFR1LwoD9sys" allowfullscreen></iframe>
+              </div>
             </div>
           </div>
 
-          <div class="video-card">
-            <div class="video-header">
-              <h3>🎬 Episódios Secretos e Prévias VIP</h3>
+          <!-- CONTEÚDO 2: ESPECIAL PAIS & TEA -->
+          <div id="conteudo-vip-tea" class="vip-sub-area">
+            
+            <div class="drive-banner-box" style="background: var(--tea-light); border-color: var(--tea-blue);">
+              <h4 style="color: #0369A1; font-size: 17px; font-weight: 900;">🧩 Drive Azul da Turminha (Recursos TEA)</h4>
+              <p style="font-size: 12.5px; color: #0284C7; margin-top: 4px; font-weight: 600;">Baixe Pranchas de Rotina Visual, Histórias Sociais e Termômetros de Emoção (PDFs Inclusivos)!</p>
+              <a href="https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=sharing" target="_blank" class="btn-drive" style="background: var(--tea-blue);">Acessar Pasta Inclusiva TEA 📥</a>
             </div>
-            <div class="video-wrapper">
-              <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLFR1LwoD9sys" allowfullscreen></iframe>
+
+            <!-- CAIXA DO ACALENTO -->
+            <div class="vip-card-box" style="background: #F8FAFC; border-color: #94A3B8;">
+              <h4 style="color: #334155; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🎧 Caixa do Acalento (Sons Relaxantes)</h4>
+              <p style="font-size: 12px; color: #64748B; font-weight: 600;">Ferramenta de regulação sensorial para momentos de ansiedade.</p>
+              <div class="acalento-grid">
+                <button class="acalento-btn" onclick="lerTexto('Sshhhhh.... Som de chuvinha calma caindo lá fora.')">
+                  <span>🌧️</span><p>Chuva</p>
+                </button>
+                <button class="acalento-btn" onclick="lerTexto('Piu Piu... Passarinhos cantando bem baixinho na floresta.')">
+                  <span>🐦</span><p>Natureza</p>
+                </button>
+                <button class="acalento-btn" onclick="lerTexto('Vamos respirar juntos. Puxa o ar mágico... e assopra a velinha.')">
+                  <span>🌬️</span><p>Respirar</p>
+                </button>
+              </div>
             </div>
+
+            <div class="vip-card-box" style="background: #F0FDF4; border-color: #86EFAC;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <div>
+                  <h4 style="color: #166534; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🌟 Rotina de Super Força</h4>
+                  <p style="font-size: 12px; color: #15803D; font-weight: 600; margin-bottom: 12px;">Controle visual para vitaminas e remedinhos (Salvo apenas no seu celular).</p>
+                </div>
+                <button class="btn-audio-mini" onclick="lerTexto('Toda vez que você cuidar da saúde, marque aqui para ganhar pontos!')" title="Ouvir">🔊</button>
+              </div>
+
+              <div style="background: #FFF; padding: 10px; border-radius: 10px; border: 2px dashed #86EFAC; margin-bottom: 14px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                <select id="rotina-icone" style="padding: 8px; border-radius: 8px; border: 2px solid #CBD5E1; outline: none; font-size: 14px;">
+                  <option value="💧">💧 Gotinha</option>
+                  <option value="🥄">🥄 Xarope</option>
+                  <option value="💊">💊 Comprimido</option>
+                  <option value="🍎">🍎 Vitamina</option>
+                </select>
+                <input type="text" id="rotina-texto" placeholder="Ex: Vitamina C da Manhã" style="flex: 1; padding: 8px; border-radius: 8px; border: 2px solid #CBD5E1; outline: none; font-size: 13px;">
+                <button onclick="adicionarRotinaVip()" style="background: #10B981; color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; cursor: pointer;">Adicionar ➕</button>
+              </div>
+
+              <div id="lista-rotinas-vip">
+                <!-- Renderizado via JS -->
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -831,26 +923,12 @@
     let vozesDisponiveis = [];
     let pontosConquista = parseInt(localStorage.getItem('turminha_pontos') || '0');
     let listaRotinasSuperForca = JSON.parse(localStorage.getItem('turminha_rotinas')) || [];
+    let timerInterval = null;
     
     const SENHA_MESTRA_CRIADORA = "65628467";
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxkMvHbuXfZWEfd1tzLDvk4YzIW66alJyp2J9VGm-8nQV1iotNqaDLDieEeVblb6RcTMA/exec";
     
     // INFO PERSONAGENS PARA LÓGICAS
-    const INFO_PERSONAGENS = {
-      'Xexéu': { nome: "Xexéu", desc: "O pássaro azul de boina amarela! Inspirado no pássaro xexéu e no nome do bisavô Mariano Xexéu, cheio de alegria e amizade." },
-      'Capilé': { nome: "Capilé", desc: "O Capilé é o cachorrinho de orelhas grandes e coleira azul-celeste com pingente de osso dourado! Um amigão leal." },
-      'Maya': { nome: "Maya", desc: "A Maya é a mãe dedicada da Iza e da Nina. Extremamente organizada, atenciosa e porto seguro da família." },
-      'Theo': { nome: "Theo", desc: "O Theo é o pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo para apoiar as meninas." },
-      'Nina': { nome: "Nina", desc: "A Nina é super esperta e adora aprender coisas novas com seus cabelos cacheados!" },
-      'Iza': { nome: "Iza", desc: "A Iza é a vaidosa da Turminha! De vestidinho rosa e cabelos ondulados, espalha doçura por onde passa." },
-      'Sam': { nome: "Sam", desc: "O Sam é o paizão ruivo do Joca e do Leo. Descontraído, adora construir brinquedos e invenções." },
-      'Lia': { nome: "Lia", desc: "A Lia é a mãe do Joca e do Leo. Estilosa e alegre, traz energia contagiante para o dia a dia." },
-      'Joca': { nome: "Joca", desc: "O Joca é o menino de camiseta verde! Doidinho e engraçado, transforma qualquer momento em diversão." },
-      'Leo': { nome: "Leo", desc: "O Leo é irmão do Joca. Amante de detalhes e focado em suas descobertas com muita imaginação." },
-      'Beto': { nome: "Vovô Beto", desc: "Usa óculos quadrados. Inspirado no querido Pedro Mariano, traz paciência, bom humor e energia contagiante." },
-      'Hilda': { nome: "Vovó Hilda", desc: "Usa óculos redondos. Inspirada na inesquecível Astrogilda Grispym, guardando doçura, abraços e valores preciosos." }
-    };
-
     const TODOS_PERSONAGENS = [
       { nome: 'Xexéu', img: 'https://i.imgur.com/jBeihpo.png', letra: 'X', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
       { nome: 'Capilé', img: 'https://i.imgur.com/BBmAqLC.png', letra: 'C', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
@@ -865,6 +943,21 @@
       { nome: 'Beto', img: 'https://i.imgur.com/2E6Dvfz.png', letra: 'B', corPergunta: "Qual o formato dos óculos do Vovô Beto?", corCorreta: "Quadrados", corOpcoes: ["Quadrados", "Redondos", "Sem óculos"] },
       { nome: 'Hilda', img: 'https://i.imgur.com/VZOGaEO.png', letra: 'H', corPergunta: "Qual o formato dos óculos da Vovó Hilda?", corCorreta: "Redondos", corOpcoes: ["Redondos", "Quadrados", "Triangulares"] }
     ];
+
+    const INFO_PERSONAGENS = {
+      'Xexéu': { nome: "Xexéu", desc: "O pássaro azul de boina amarela! Inspirado no pássaro xexéu e no nome do bisavô Mariano Xexéu." },
+      'Capilé': { nome: "Capilé", desc: "O Capilé é o cachorrinho de orelhas grandes e coleira azul-celeste com pingente de osso dourado!" },
+      'Maya': { nome: "Maya", desc: "A Maya é a mãe dedicada da Iza e da Nina. Extremamente organizada e atenciosa." },
+      'Theo': { nome: "Theo", desc: "O Theo é o pai da Iza e da Nina. Calmo, observador e com um sorriso tranquilo." },
+      'Nina': { nome: "Nina", desc: "A Nina é super esperta e adora aprender coisas novas com seus cabelos cacheados!" },
+      'Iza': { nome: "Iza", desc: "A Iza é a vaidosa da Turminha! De vestidinho rosa e cabelos ondulados." },
+      'Sam': { nome: "Sam", desc: "O Sam é o paizão ruivo do Joca e do Leo. Descontraído, adora construir brinquedos." },
+      'Lia': { nome: "Lia", desc: "A Lia é a mãe do Joca e do Leo. Estilosa e alegre, traz energia contagiante." },
+      'Joca': { nome: "Joca", desc: "O Joca é o menino de camiseta verde! Doidinho e engraçado." },
+      'Leo': { nome: "Leo", desc: "O Leo é focado em suas descobertas com muita imaginação." },
+      'Beto': { nome: "Vovô Beto", desc: "Usa óculos quadrados. Traz paciência, bom humor e energia contagiante." },
+      'Hilda': { nome: "Vovó Hilda", desc: "Usa óculos redondos. Guardando doçura, abraços e valores preciosos." }
+    };
 
     // --- LEITURA DE VOZ E PONTUAÇÃO ---
     function adicionarPontos(qtde) {
@@ -894,9 +987,7 @@
     }
 
     if ('speechSynthesis' in window) {
-      window.speechSynthesis.onvoiceschanged = () => {
-        vozesDisponiveis = window.speechSynthesis.getVoices();
-      };
+      window.speechSynthesis.onvoiceschanged = () => { vozesDisponiveis = window.speechSynthesis.getVoices(); };
     }
 
     function lerTexto(texto) {
@@ -957,9 +1048,7 @@
     function verificarCookies() {
       const aceitou = localStorage.getItem('aceitou_cookies');
       if (!aceitou) {
-        setTimeout(() => {
-          document.getElementById('cookieBanner').classList.add('show');
-        }, 1500);
+        setTimeout(() => { document.getElementById('cookieBanner').classList.add('show'); }, 1500);
       }
     }
 
@@ -968,101 +1057,122 @@
       document.getElementById('cookieBanner').classList.remove('show');
     }
 
-    function abrirPrivacidade() {
-      document.getElementById('modalPrivacidade').classList.add('active');
-    }
-    function fecharPrivacidade() {
-      document.getElementById('modalPrivacidade').classList.remove('active');
-    }
+    function abrirPrivacidade() { document.getElementById('modalPrivacidade').classList.add('active'); }
+    function fecharPrivacidade() { document.getElementById('modalPrivacidade').classList.remove('active'); }
 
-    // --- CONTROLE DE ROTINA DE SUPER FORÇA (ÁREA VIP) ---
-    function renderizarRotinasVip() {
-      const container = document.getElementById('lista-rotinas-vip');
-      if (!container) return;
-      container.innerHTML = '';
+    // --- ESPAÇO TEA: TRANSIÇÃO SUAVE E PERSONAGEM DO DIA ---
+    let personagemEmocaoAtual = "Xexéu";
+
+    function carregarPersonagemDoDiaTEA() {
+      const dia = new Date().getDay(); 
+      const nomesPorDia = ['Xexéu', 'Maya', 'Joca', 'Nina', 'Sam', 'Capilé', 'Iza'];
+      const nomeSorteado = nomesPorDia[dia] || 'Xexéu';
       
-      if (listaRotinasSuperForca.length === 0) {
-        container.innerHTML = '<p style="text-align:center; font-size:12px; color:#94A3B8;">Nenhuma rotina adicionada ainda.</p>';
-        return;
-      }
+      const p = TODOS_PERSONAGENS.find(x => x.nome === nomeSorteado) || TODOS_PERSONAGENS[0];
+      
+      personagemEmocaoAtual = p.nome;
+      document.getElementById('tea-emocao-nome').innerText = p.nome;
+      document.getElementById('tea-emocao-img').src = p.img;
+      
+      document.getElementById('emocoes-passo-1').style.display = 'block';
+      document.getElementById('emocoes-passo-1').style.opacity = '1';
+      document.getElementById('emocoes-passo-2').style.display = 'none';
+      document.getElementById('emocoes-passo-2').style.opacity = '0';
+    }
 
-      listaRotinasSuperForca.forEach((rotina, index) => {
-        const item = document.createElement('div');
-        item.className = `rotina-item ${rotina.concluido ? 'concluido' : ''}`;
+    let sensoryModeAtivo = false;
+    function toggleSensoryMode() {
+      sensoryModeAtivo = !sensoryModeAtivo;
+      const btn = document.getElementById('btnSensoryToggle');
+      if (sensoryModeAtivo) {
+        document.body.classList.add('sensory-mode');
+        btn.classList.add('ativo');
+        btn.innerHTML = '🌿 Modo Calmo Ativado';
+        lerTexto("Modo sensorial ativado. Cores suaves e calmas.");
+      } else {
+        document.body.classList.remove('sensory-mode');
+        btn.classList.remove('ativo');
+        btn.innerHTML = '🌿 Ativar Modo Calmo (Sem Animações)';
+        lerTexto("Modo padrão ativado.");
+      }
+    }
+    
+    function responderEmocao(emocao) {
+      if (emocao === 'Feliz') {
+        lerTexto(`Isso mesmo! O ${personagemEmocaoAtual} está muito feliz! Agora, conta pra mim...`);
         
-        item.innerHTML = `
-          <div style="display:flex; align-items:center; gap:10px;">
-            <span style="font-size:24px;">${rotina.icone}</span>
-            <span class="rotina-texto" style="font-weight:700; font-size:14px; color:#1E293B;">${rotina.texto}</span>
-          </div>
-          <div style="display:flex; gap:6px;">
-            ${!rotina.concluido ? `<button class="btn-concluir-rotina" onclick="completarRotina(${index})">✔️ Pronto</button>` : `<span style="font-size:12px; font-weight:800; color:#166534;">Super Força Ativada! 🦸</span>`}
-            <button class="btn-remover-rotina" onclick="removerRotina(${index})">🗑️</button>
-          </div>
-        `;
-        container.appendChild(item);
-      });
-    }
+        const passo1 = document.getElementById('emocoes-passo-1');
+        const passo2 = document.getElementById('emocoes-passo-2');
+        
+        passo1.classList.add('fade-out');
+        
+        setTimeout(() => {
+          passo1.style.display = 'none';
+          passo2.style.display = 'block';
+          void passo2.offsetWidth; 
+          passo2.classList.remove('fade-out');
+          lerTexto("E você? Como está se sentindo agora?");
+        }, 4000);
 
-    function adicionarRotinaVip() {
-      const icone = document.getElementById('rotina-icone').value;
-      const texto = document.getElementById('rotina-texto').value.trim();
-      
-      if (!texto) {
-        alert("Digite o nome da vitamina ou remedinho!");
-        return;
+      } else {
+        lerTexto(`Você acha que ele está ${emocao}? Na verdade, o ${personagemEmocaoAtual} está com um lindo sorriso Feliz!`);
       }
-
-      listaRotinasSuperForca.push({ icone: icone, texto: texto, concluido: false });
-      localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
-      document.getElementById('rotina-texto').value = '';
-      renderizarRotinasVip();
-      lerTexto("Rotina adicionada com sucesso!");
     }
 
-    function completarRotina(index) {
-      listaRotinasSuperForca[index].concluido = true;
-      localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
-      adicionarPontos(10);
-      renderizarRotinasVip();
-      lerTexto("Uau! Você ganhou 10 pontos de Super Força! Parabéns!");
+    function responderMinhaEmocao(emocao) {
+      if (emocao === 'Feliz') lerTexto("Que maravilha! Ficar feliz é muito gostoso! O Xexéu adora ver você sorrir!");
+      else if (emocao === 'Calmo') lerTexto("Estar calmo é tão bom, não é verdade? Respire fundo e aproveite esse momento tranquilo.");
+      else if (emocao === 'Triste') lerTexto("Está tudo bem se sentir triste às vezes. Que tal um abraço virtual bem apertado da Turminha?");
+      else if (emocao === 'Bravo') lerTexto("Entendo que você está bravo. É normal. Vamos respirar fundo juntos? Puxa o ar... e solta...");
+      
+      setTimeout(() => {
+        const passo1 = document.getElementById('emocoes-passo-1');
+        const passo2 = document.getElementById('emocoes-passo-2');
+        passo2.classList.add('fade-out');
+        setTimeout(() => {
+          passo2.style.display = 'none';
+          passo1.style.display = 'block';
+          void passo1.offsetWidth;
+          passo1.classList.remove('fade-out');
+        }, 800);
+      }, 8000);
     }
 
-    function removerRotina(index) {
-      listaRotinasSuperForca.splice(index, 1);
-      localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
-      renderizarRotinasVip();
+    // --- TEMPORIZADOR VISUAL (TEA) ---
+    function iniciarTemporizador(minutos) {
+      clearInterval(timerInterval);
+      let tempoRestante = minutos * 60;
+      const totalTempo = tempoRestante;
+      const barra = document.getElementById('barra-temporizador');
+      const txt = document.getElementById('texto-temporizador');
+      
+      barra.style.width = '100%';
+      barra.style.backgroundColor = '#10B981'; 
+      txt.innerText = `${minutos}:00`;
+      
+      lerTexto(`Temporizador iniciado para ${minutos} minutos.`);
+
+      timerInterval = setInterval(() => {
+        tempoRestante--;
+        const m = Math.floor(tempoRestante / 60);
+        const s = tempoRestante % 60;
+        txt.innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
+        
+        const pct = (tempoRestante / totalTempo) * 100;
+        barra.style.width = `${pct}%`;
+
+        if (pct < 30) barra.style.backgroundColor = '#F59E0B'; 
+        if (pct < 10) barra.style.backgroundColor = '#EF4444'; 
+        
+        if (tempoRestante <= 0) {
+          clearInterval(timerInterval);
+          lerTexto("O tempo acabou! Você foi muito bem!");
+          txt.innerText = "Tempo Esgotado!";
+        }
+      }, 1000);
     }
 
-    // --- SUPORTE TÉCNICO ---
-    function enviarSuporteReclamacao() {
-      const emailInput = document.getElementById('suporteEmail');
-      const mensagemInput = document.getElementById('suporteMensagem');
-      const btnEnviar = document.getElementById('btnEnviarSuporte');
-      const email = emailInput ? emailInput.value.trim() : "";
-      const mensagem = mensagemInput ? mensagemInput.value.trim() : "";
-
-      if (!email || !mensagem) { alert("Por favor, preencha o e-mail e a mensagem!"); return; }
-
-      if (btnEnviar) { btnEnviar.innerText = "Enviando... ⏳"; btnEnviar.disabled = true; }
-
-      const payload = { email: email, mensagem: mensagem, assunto: "Suporte Turminha", tipo: 'SUPORTE_TURMINHA', data: new Date().toLocaleString('pt-BR') };
-
-      fetch(URL_SCRIPT, {
-        method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
-      }).then(() => {
-        alert("Sua mensagem foi enviada com sucesso!");
-        if (emailInput) emailInput.value = '';
-        if (mensagemInput) mensagemInput.value = '';
-        if (btnEnviar) { btnEnviar.innerText = "Enviar Mensagem ✉️"; btnEnviar.disabled = false; }
-        lerTexto("Mensagem enviada!");
-      }).catch(() => {
-        alert("Mensagem enviada!");
-        if (btnEnviar) { btnEnviar.innerText = "Enviar Mensagem ✉️"; btnEnviar.disabled = false; }
-      });
-    }
-
-    // --- NAVEGAÇÃO E ABAS ---
+    // --- NAVEGAÇÃO E ABAS PRINCIPAIS ---
     function mudarPagina(pagina) {
       ['inicio', 'videos', 'jogos', 'tea', 'vip'].forEach(p => {
         document.getElementById('pagina-' + p).classList.remove('active-page');
@@ -1073,7 +1183,12 @@
       document.getElementById('btn-tab-' + pagina).classList.add('active');
 
       if (pagina === 'jogos') setTimeout(redimensionarCanvas, 100);
-      if (pagina === 'tea') lerTexto("Bem-vindo ao Espaço Inclusivo da Turminha.");
+      
+      if (pagina === 'tea') {
+        carregarPersonagemDoDiaTEA();
+        lerTexto("Bem-vindo ao Espaço Inclusivo da Turminha.");
+      }
+      
       if (pagina === 'vip') {
         verificarStatusVip();
         criarSeletorAvatarPerfil();
@@ -1093,71 +1208,81 @@
       if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
     }
 
-    function mudarPanelVip(num) {
-      for(let i=1; i<=4; i++) {
-        const panel = document.getElementById('panel-vip-' + i);
-        const btn = document.getElementById('btn-vipanel-' + i);
-        if(panel) panel.classList.remove('active-vip-panel');
-        if(btn) btn.classList.remove('active');
-      }
-      document.getElementById('panel-vip-' + num).classList.add('active-vip-panel');
-      document.getElementById('btn-vipanel-' + num).classList.add('active');
+    // --- LÓGICA VIP (ABAS INTERNAS, LOGIN, CERTIFICADO) ---
+    function alternarAbaVip(aba) {
+      document.getElementById('tab-vip-geral').classList.remove('active');
+      document.getElementById('tab-vip-tea').classList.remove('active');
+      document.getElementById('conteudo-vip-geral').classList.remove('active-area');
+      document.getElementById('conteudo-vip-tea').classList.remove('active-area');
+
+      document.getElementById(`tab-vip-${aba}`).classList.add('active');
+      document.getElementById(`conteudo-vip-${aba}`).classList.add('active-area');
+
+      if(aba === 'geral') lerTexto("Área de diversão ativada!");
+      if(aba === 'tea') lerTexto("Área especial para os pais ativada!");
     }
 
-    // --- ESPAÇO TEA: LÓGICA DE JORNADA EMOCIONAL (SCAFFOLDING) ---
-    let sensoryModeAtivo = false;
-    
-    function toggleSensoryMode() {
-      sensoryModeAtivo = !sensoryModeAtivo;
-      const btn = document.getElementById('btnSensoryToggle');
-      if (sensoryModeAtivo) {
-        document.body.classList.add('sensory-mode');
-        btn.classList.add('ativo');
-        btn.innerHTML = '🌿 Modo Calmo Ativado';
-        lerTexto("Modo sensorial ativado. Cores suaves e calmas.");
-      } else {
-        document.body.classList.remove('sensory-mode');
-        btn.classList.remove('ativo');
-        btn.innerHTML = '🌿 Ativar Modo Calmo (Sem Animações)';
-        lerTexto("Modo padrão ativado.");
+    function gerarCertificado() {
+      const nome = document.getElementById('nome-certificado').value.trim();
+      if (!nome) {
+        alert("Por favor, digite o nome da criança!");
+        return;
       }
-    }
-    
-    function responderEmocao(emocao) {
-      if (emocao === 'Feliz') {
-        lerTexto("Isso mesmo! O Xexéu está muito feliz! Agora, conta pra mim...");
-        
-        // Transição suave para o "E você?"
-        setTimeout(() => {
-          document.getElementById('emocoes-passo-1').style.display = 'none';
-          document.getElementById('emocoes-passo-2').style.display = 'block';
-          lerTexto("E você? Como está se sentindo agora?");
-        }, 2800);
-
-      } else {
-        lerTexto(`Você acha que ele está ${emocao}? Na verdade, o Xexéu está com um lindo sorriso Feliz!`);
-      }
+      document.getElementById('exibir-nome-certificado').innerText = nome;
+      document.getElementById('certificado-resultado').style.display = 'block';
+      lerTexto(`Parabéns, ${nome}! Você agora é Super Fã oficial da Turminha do Xexéu!`);
     }
 
-    function responderMinhaEmocao(emocao) {
-      if (emocao === 'Feliz') {
-        lerTexto("Que maravilha! Ficar feliz é muito gostoso! O Xexéu adora ver você sorrir!");
-      } else if (emocao === 'Calmo') {
-        lerTexto("Estar calmo é tão bom, não é verdade? Respire fundo e aproveite esse momento tranquilo.");
-      } else if (emocao === 'Triste') {
-        lerTexto("Está tudo bem se sentir triste às vezes. Que tal um abraço virtual bem apertado da Turminha?");
-      } else if (emocao === 'Bravo') {
-        lerTexto("Entendo que você está bravo. É normal. Vamos respirar fundo juntos? Puxa o ar... e solta...");
+    function renderizarRotinasVip() {
+      const container = document.getElementById('lista-rotinas-vip');
+      if (!container) return;
+      container.innerHTML = '';
+      if (listaRotinasSuperForca.length === 0) {
+        container.innerHTML = '<p style="text-align:center; font-size:12px; color:#94A3B8;">Nenhuma rotina adicionada ainda.</p>';
+        return;
       }
-      
-      // Reseta para a brincadeira original depois de um tempo para permitir repetição
-      setTimeout(() => {
-        document.getElementById('emocoes-passo-1').style.display = 'block';
-        document.getElementById('emocoes-passo-2').style.display = 'none';
-      }, 7000);
+      listaRotinasSuperForca.forEach((rotina, index) => {
+        const item = document.createElement('div');
+        item.className = `rotina-item ${rotina.concluido ? 'concluido' : ''}`;
+        item.innerHTML = `
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-size:24px;">${rotina.icone}</span>
+            <span class="rotina-texto" style="font-weight:700; font-size:14px; color:#1E293B;">${rotina.texto}</span>
+          </div>
+          <div style="display:flex; gap:6px;">
+            ${!rotina.concluido ? `<button class="btn-concluir-rotina" onclick="completarRotina(${index})">✔️ Pronto</button>` : `<span style="font-size:12px; font-weight:800; color:#166534;">Força Ativada! 🦸</span>`}
+            <button class="btn-remover-rotina" onclick="removerRotina(${index})">🗑️</button>
+          </div>
+        `;
+        container.appendChild(item);
+      });
     }
 
-    // --- LÓGICA VIP (LOGIN / CADASTRO) ---
+    function adicionarRotinaVip() {
+      const icone = document.getElementById('rotina-icone').value;
+      const texto = document.getElementById('rotina-texto').value.trim();
+      if (!texto) { alert("Digite o nome da rotina!"); return; }
+      listaRotinasSuperForca.push({ icone: icone, texto: texto, concluido: false });
+      localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
+      document.getElementById('rotina-texto').value = '';
+      renderizarRotinasVip();
+      lerTexto("Rotina adicionada com sucesso!");
+    }
+
+    function completarRotina(index) {
+      listaRotinasSuperForca[index].concluido = true;
+      localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
+      adicionarPontos(10);
+      renderizarRotinasVip();
+      lerTexto("Você ganhou 10 pontos de Super Força!");
+    }
+
+    function removerRotina(index) {
+      listaRotinasSuperForca.splice(index, 1);
+      localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
+      renderizarRotinasVip();
+    }
+
     function salvarECadastrar() {
       const email = document.getElementById('cad-email').value.trim();
       const senha = document.getElementById('cad-senha').value.trim();
@@ -1169,16 +1294,13 @@
     function fazerLogin() {
       const email = document.getElementById('log-email').value.trim();
       const senha = document.getElementById('log-senha').value.trim();
-
       if (!email || !senha) { alert("Preencha e-mail e senha."); return; }
-
       if (senha === SENHA_MESTRA_CRIADORA) {
         localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
         verificarStatusVip();
         lerTexto("Acesso Mestre liberado!");
         return;
       }
-
       fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
         .then(response => response.json())
         .then(data => {
@@ -1238,7 +1360,18 @@
       });
     }
 
-    // --- LÓGICA DOS JOGOS PADRÃO ---
+    function mudarPanelVip(num) {
+      for(let i=1; i<=4; i++) {
+        const panel = document.getElementById('panel-vip-' + i);
+        const btn = document.getElementById('btn-vipanel-' + i);
+        if(panel) panel.classList.remove('active-vip-panel');
+        if(btn) btn.classList.remove('active');
+      }
+      document.getElementById('panel-vip-' + num).classList.add('active-vip-panel');
+      document.getElementById('btn-vipanel-' + num).classList.add('active');
+    }
+
+    // --- LÓGICA DOS JOGOS PADRÃO (Lousa, Contar, Letras, Memória, Quiz) ---
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas.getContext('2d');
     let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free', imagemPintarCarregada = null, tamanhoPincel = 6, escalaZoomGuia = 0.85;
@@ -1501,6 +1634,27 @@
       });
     }
 
+    function enviarSuporteReclamacao() {
+      const emailInput = document.getElementById('suporteEmail');
+      const mensagemInput = document.getElementById('suporteMensagem');
+      const btnEnviar = document.getElementById('btnEnviarSuporte');
+      const email = emailInput ? emailInput.value.trim() : "";
+      const mensagem = mensagemInput ? mensagemInput.value.trim() : "";
+      if (!email || !mensagem) { alert("Por favor, preencha o e-mail e a mensagem!"); return; }
+      if (btnEnviar) { btnEnviar.innerText = "Enviando... ⏳"; btnEnviar.disabled = true; }
+      const payload = { email: email, mensagem: mensagem, assunto: "Suporte Turminha", tipo: 'SUPORTE_TURMINHA', data: new Date().toLocaleString('pt-BR') };
+      fetch(URL_SCRIPT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).then(() => {
+        alert("Sua mensagem foi enviada com sucesso!");
+        if (emailInput) emailInput.value = '';
+        if (mensagemInput) mensagemInput.value = '';
+        if (btnEnviar) { btnEnviar.innerText = "Enviar Mensagem ✉️"; btnEnviar.disabled = false; }
+        lerTexto("Mensagem enviada!");
+      }).catch(() => {
+        alert("Mensagem enviada!");
+        if (btnEnviar) { btnEnviar.innerText = "Enviar Mensagem ✉️"; btnEnviar.disabled = false; }
+      });
+    }
+
     // Inicialização Geral
     window.onload = () => {
       atualizarPlacarConquistas();
@@ -1510,7 +1664,8 @@
       carregarQuiz();
       carregarJogoCor();
       verificarStatusVip();
-      verificarCookies(); // Chama o banner de cookies
+      verificarCookies();
+      carregarPersonagemDoDiaTEA();
     };
   </script>
 </body>
