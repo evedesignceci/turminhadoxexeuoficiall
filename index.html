@@ -540,7 +540,7 @@
       </section>
     </main>
 
-    <!-- PÁGINA JOGOS (COM TEMPORIZADOR GERAL DINÂMICO GRÁTIS/VIP) -->
+    <!-- PÁGINA JOGOS (COM TEMPORIZADOR GERAL DINÂMICO) -->
     <main id="pagina-jogos" class="page-content">
       <div class="age-group-section">
         <h3 class="age-title">
@@ -558,7 +558,7 @@
           <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 14px; margin-bottom: 4px;">⏳ Temporizador de Uso</h4>
           <p style="font-size: 11px; color: #475569; font-weight: 600; margin-bottom: 8px;">Defina um limite de tempo (Grátis: 1 e 3 min | VIP: até 30 min).</p>
           <div class="timer-btns" id="botoesTemporizadorGeral">
-            <!-- Gerado via JS de acordo com status VIP -->
+            <!-- Gerado via JS -->
           </div>
           <div class="timer-bar-bg" style="margin: 8px 0;">
             <div id="barra-temporizador" class="timer-bar-fill" style="width: 100%;"></div>
@@ -656,7 +656,7 @@
       </div>
     </main>
 
-    <!-- PÁGINA ESPAÇO TEA (COM ONBOARDING E GERALZÃO) -->
+    <!-- PÁGINA ESPAÇO TEA (COM ONBOARDING E CONFIGURAÇÃO GERAL) -->
     <main id="pagina-tea" class="page-content">
       <div class="age-group-section">
         
@@ -767,13 +767,18 @@
           </div>
           
           <div class="vip-heart-msg">
-            <p style="margin-bottom: 6px;">💖 <strong>O que o Clube VIP desbloqueia para os Pais?</strong></p>
+            <p style="margin-bottom: 6px;">💖 <strong>O que o Clube VIP desbloqueia para os Pais e para as Crianças?</strong></p>
             <ul style="text-align: left; margin: 8px 0 8px 18px; font-weight: 600;">
-              <li>🔊 <strong>Configuração de Voz Global:</strong> Escolha o tipo de voz e a velocidade de leitura para o site inteiro.</li>
-              <li>💬 <strong>Prancha de Comunicação Editável (CAA):</strong> Adicione quantos cards e botões personalizados você quiser!</li>
-              <li>⏳ <strong>Temporizador Expandido (Até 30 min):</strong> Opções de 5, 10, 15 e 30 minutos com bloqueio por senha.</li>
-              <li>🎧 <strong>Caixa do Acalento Completa:</strong> 5 sons relaxantes (Chuva, Pássaros, Ruído Branco, Mar e Fogueira).</li>
-              <li>🌟 <strong>Rotina de Super Força:</strong> Acompanhamento lúdico de vitaminas e medicamentos.</li>
+              <li>📁 <strong>Drive Completo de Atividades Pedagógicas:</strong> Material exclusivo para imprimir em alta qualidade.</li>
+              <li>🧩 <strong>Área Especial Pais & TEA (VIP):</strong> Pranchas de rotina visual e histórias sociais adaptadas.</li>
+              <li>💬 <strong>Prancha de Comunicação Editável (CAA):</strong> Adicione quantos cards e botões personalizados você quiser para a rotina diária!</li>
+              <li>⏳ <strong>Temporizador Expandido (Até 30 min):</strong> Opções de 5, 10, 15 e 30 minutos com bloqueio de segurança por senha parental.</li>
+              <li>🔊 <strong>Configuração de Voz Global:</strong> Escolha o tipo exato de voz e a velocidade de leitura para todo o portal.</li>
+              <li>🎧 <strong>Caixa do Acalento Completa:</strong> 5 sons relaxantes (Chuva, Pássaros, Ruído Branco, Mar e Fogueira) para regulação sensorial.</li>
+              <li>🌟 <strong>Rotina de Super Força:</strong> Acompanhamento lúdico de vitaminas e medicamentos direto no app.</li>
+              <li>🌟 <strong>Diploma de Super Fã Personalizável:</strong> Gere certificados exclusivos com o nome da criança.</li>
+              <li>🎬 <strong>Episódios Inéditos e Erros de Gravação:</strong> Conteúdos liberados em primeira mão antes de irem para o YouTube.</li>
+              <li>🎮 <strong>Minijogos Exclusivos VIP:</strong> Desafios de histórias, cores, quebra-cabeças e memória avançada.</li>
             </ul>
           </div>
           
@@ -893,7 +898,7 @@
             </div>
           </div>
 
-          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA (COM CONFIGURAÇÃO DE VOZ, PRANCHA EDITÁVEL, TEMPORIZADOR E SONS) -->
+          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA (COM CONFIGURAÇÃO DE VOZ, PRANCHA EDITÁVEL E SONS) -->
           <div id="conteudo-vip-tea" class="vip-sub-area">
             
             <!-- CONFIGURAÇÃO DE VOZ GLOBAL (EXCLUSIVA VIP) -->
@@ -1233,15 +1238,12 @@
     function toggleSensoryMode() {
       const isSensory = document.body.classList.toggle('sensory-mode');
       const btnHeader = document.getElementById('btnSensoryHeader');
-      const btnTea = document.getElementById('btnSensoryToggle');
       
       if (isSensory) {
         if(btnHeader) btnHeader.innerHTML = '🌿 Normal';
-        if(btnTea) btnTea.innerHTML = '🌿 Desativar Modo Calmo';
         lerTexto("Modo calmo ativado no site inteiro.");
       } else {
         if(btnHeader) btnHeader.innerHTML = '🌿 Modo Calmo';
-        if(btnTea) btnTea.innerHTML = '🌿 Ativar Modo Calmo (Minimalista)';
         lerTexto("Modo padrão ativado.");
       }
     }
@@ -1755,134 +1757,6 @@
           else lerTexto("Tente de novo!");
         };
         container.appendChild(btn);
-      });
-    }
-
-    // --- LÓGICA JOGOS VIP ---
-    const imagensBannersCapas = ['https://i.imgur.com/0eJgoOG.png', 'https://i.imgur.com/0eteSlf.png', 'https://i.imgur.com/eKxsqu8.png', 'https://i.imgur.com/kR23lSN.png'];
-    let imgAlvoPuzzle = imagensBannersCapas[0], estadoTabuleiro = new Array(12).fill(null);
-
-    function iniciarPuzzleVip() { criarSeletorCapas(); selecionarCapaPuzzle(imgAlvoPuzzle); }
-    function criarSeletorCapas() {
-      const selector = document.getElementById('puzzleSelector'); if (selector.children.length > 0) return; selector.innerHTML = '';
-      imagensBannersCapas.forEach((urlImg) => {
-        const thumb = document.createElement('div'); thumb.className = 'puzzle-thumb-btn' + (urlImg === imgAlvoPuzzle ? ' active' : ''); thumb.style.backgroundImage = `url(${urlImg})`;
-        thumb.onclick = () => { document.querySelectorAll('.puzzle-thumb-btn').forEach(t => t.classList.remove('active')); thumb.classList.add('active'); selecionarCapaPuzzle(urlImg); };
-        selector.appendChild(thumb);
-      });
-    }
-    function selecionarCapaPuzzle(url) { imgAlvoPuzzle = url; document.getElementById('puzzleFullPreviewImg').src = url; reiniciarPuzzle(); }
-    function reiniciarPuzzle() { estadoTabuleiro = new Array(12).fill(null); renderizarTabuleiroPuzzle(); renderizarPecasEmbaralhadas(); }
-    function renderizarTabuleiroPuzzle() {
-      const container = document.getElementById('puzzleContainer'); container.innerHTML = '';
-      for (let i = 0; i < 12; i++) {
-        const dropzone = document.createElement('div'); dropzone.className = 'puzzle-dropzone'; dropzone.dataset.slotIndex = i;
-        dropzone.ondragover = (e) => e.preventDefault();
-        dropzone.ondrop = (e) => { e.preventDefault(); const pecaIndex = parseInt(e.dataTransfer.getData('text/plain')); colocarPecaNoSlot(pecaIndex, i); };
-        if (estadoTabuleiro[i] !== null) dropzone.appendChild(criarElementoPeca(estadoTabuleiro[i]));
-        container.appendChild(dropzone);
-      }
-    }
-    function renderizarPecasEmbaralhadas() {
-      const tray = document.getElementById('puzzlePiecesTray'); tray.innerHTML = '';
-      let indices = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].sort(() => Math.random() - 0.5);
-      indices.forEach(i => { if (!estadoTabuleiro.includes(i)) tray.appendChild(criarElementoPeca(i)); });
-    }
-    function criarElementoPeca(i) {
-      const div = document.createElement('div'); div.className = 'draggable-piece'; div.draggable = true; div.dataset.pieceIndex = i;
-      let row = Math.floor(i / 4), col = i % 4;
-      div.innerHTML = `<img src="${imgAlvoPuzzle}" style="object-position: -${col * 67}px -${row * 67}px;">`;
-      div.ondragstart = (e) => e.dataTransfer.setData('text/plain', i);
-      return div;
-    }
-    function colocarPecaNoSlot(pecaIndex, slotIndex) {
-      for (let i = 0; i < 12; i++) if (estadoTabuleiro[i] === pecaIndex) estadoTabuleiro[i] = null;
-      estadoTabuleiro[slotIndex] = pecaIndex;
-      renderizarTabuleiroPuzzle(); renderizarPecasEmbaralhadas();
-      if (estadoTabuleiro.every((val, i) => val === i)) { lerTexto("Parabéns!"); adicionarPontos(15); }
-    }
-
-    let cMemVip = [], pCartaVip = null, travaMemVip = false, acertosMemVip = 0;
-    function iniciarMemoriaVip() {
-      acertosMemVip = 0;
-      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 6);
-      const imgsMem = sorteados.map(p => p.img);
-      cMemVip = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
-      const board = document.getElementById('memoryBoardVip'); board.innerHTML = '';
-      cMemVip.forEach(src => {
-        const card = document.createElement('div'); card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
-        card.onclick = () => {
-          if (travaMemVip || card.classList.contains('flipped')) return;
-          card.classList.add('flipped'); card.innerHTML = `<img src="${src}" alt="Carta VIP">`;
-          if (!pCartaVip) pCartaVip = card;
-          else {
-            if (pCartaVip.dataset.img === src) { 
-              acertosMemVip++; lerTexto("Par VIP!"); adicionarPontos(5); pCartaVip = null; 
-              if (acertosMemVip === 6) { adicionarPontos(15); setTimeout(iniciarMemoriaVip, 1800); } 
-            } else {
-              travaMemVip = true;
-              setTimeout(() => { pCartaVip.classList.remove('flipped'); pCartaVip.innerText = '❓'; card.classList.remove('flipped'); card.innerText = '❓'; pCartaVip = null; travaMemVip = false; }, 900);
-            }
-          }
-        };
-        board.appendChild(card);
-      });
-    }
-
-    const PERGUNTAS_HISTORIAS_VIP = [
-      { pergunta: "Quem são as filhas da Maya e do Theo?", resposta: "Iza e Nina", opcoes: ["Iza e Nina", "Joca e Leo", "Maya e Lia"] },
-      { pergunta: "Quem é o pai carinhoso e ruivo dos meninos Joca e Leo?", resposta: "Sam", opcoes: ["Sam", "Theo", "Beto"] },
-      { pergunta: "Qual vovó muito amada cuida de toda a família com carinho?", resposta: "Hilda", opcoes: ["Hilda", "Lia", "Maya"] },
-      { pergunta: "Quem é o menino super divertido de camiseta verde?", resposta: "Joca", opcoes: ["Joca", "Xexéu", "Capilé"] },
-      { pergunta: "Qual é o nome do cachorrinho de orelhas grandes da Turminha?", resposta: "Capilé", opcoes: ["Capilé", "Leo", "Beto"] }
-    ];
-
-    function carregarDesafioHistoriaVip() {
-      const itemSorteado = PERGUNTAS_HISTORIAS_VIP[Math.floor(Math.random() * PERGUNTAS_HISTORIAS_VIP.length)];
-      document.getElementById('vip-historia-txt').innerText = itemSorteado.pergunta;
-      const containerOpcoes = document.getElementById('vip-historia-options'); containerOpcoes.innerHTML = '';
-      itemSorteado.opcoes.sort(() => Math.random() - 0.5).forEach(opcaoNome => {
-        const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:10px; font-size:14px; background:#F59E0B; border-radius:10px; border:none; color:white; font-weight:800; cursor:pointer; width:100%;"; btn.innerText = opcaoNome;
-        btn.onclick = () => { 
-          if (opcaoNome === itemSorteado.resposta) { lerTexto("Parabéns!"); adicionarPontos(8); setTimeout(carregarDesafioHistoriaVip, 800); } 
-          else { lerTexto("Ops! Tente outra resposta."); }
-        };
-        containerOpcoes.appendChild(btn);
-      });
-    }
-
-    function carregarJogoCorVip() {
-      const pCor = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('vip-cor-txt').innerText = pCor.corPergunta; document.getElementById('vip-cor-img').src = pCor.img;
-      const containerCor = document.getElementById('vip-cor-options'); containerCor.innerHTML = '';
-      pCor.corOpcoes.sort(() => Math.random() - 0.5).forEach(corOp => {
-        const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.style.cssText = "padding:8px 14px; font-size:13px; background:#8B5CF6;"; btn.innerText = corOp;
-        btn.onclick = () => { 
-          if (corOp === pCor.corCorreta) { lerTexto("Acertou!"); adicionarPontos(5); setTimeout(carregarJogoCorVip, 800); } 
-          else { lerTexto("Tente de novo!"); }
-        };
-        containerCor.appendChild(btn);
-      });
-    }
-
-    function enviarSuporteReclamacao() {
-      const emailInput = document.getElementById('suporteEmail');
-      const mensagemInput = document.getElementById('suporteMensagem');
-      const btnEnviar = document.getElementById('btnEnviarSuporte');
-      const email = emailInput ? emailInput.value.trim() : "";
-      const mensagem = mensagemInput ? mensagemInput.value.trim() : "";
-      if (!email || !mensagem) { alert("Por favor, preencha o e-mail e a mensagem!"); return; }
-      if (btnEnviar) { btnEnviar.innerText = "Enviando... ⏳"; btnEnviar.disabled = true; }
-      const payload = { email: email, mensagem: mensagem, assunto: "Suporte Turminha", tipo: 'SUPORTE_TURMINHA', data: new Date().toLocaleString('pt-BR') };
-      fetch(URL_SCRIPT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }).then(() => {
-        alert("Sua mensagem foi enviada com sucesso!");
-        if (emailInput) emailInput.value = '';
-        if (mensagemInput) mensagemInput.value = '';
-        if (btnEnviar) { btnEnviar.innerText = "Enviar Mensagem ✉️"; btnEnviar.disabled = false; }
-        lerTexto("Mensagem enviada!");
-      }).catch(() => {
-        alert("Mensagem enviada!");
-        if (btnEnviar) { btnEnviar.innerText = "Enviar Mensagem ✉️"; btnEnviar.disabled = false; }
       });
     }
 
