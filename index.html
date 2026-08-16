@@ -155,7 +155,7 @@
     .memory-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; max-width: 320px; margin-left: auto; margin-right: auto; }
     .memory-card { aspect-ratio: 1; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 900; font-size: 20px; cursor: pointer; }
     .memory-card.flipped { background: #FFF; border: 2.5px solid var(--primary); }
-    .memory-card img { width: 80%; height: 80%; object-fit: contain; }
+    .memory-card span { font-size: 28px; }
 
     /* ESTILOS VIP */
     .vip-lock-container { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 3px solid #FCD34D; border-radius: var(--radius-lg); padding: 22px 16px; text-align: center; box-shadow: var(--shadow-sm); }
@@ -656,11 +656,10 @@
       </div>
     </main>
 
-    <!-- PÁGINA ESPAÇO TEA (COM ONBOARDING E CONFIGURAÇÃO GERAL) -->
+    <!-- PÁGINA ESPAÇO TEA -->
     <main id="pagina-tea" class="page-content">
       <div class="age-group-section">
         
-        <!-- ONBOARDING GERALZÃO -->
         <div id="tea-onboarding-box" class="tea-box" style="background: #FFF; border: 2.5px solid var(--tea-blue);">
           <h3>🧩 Configure seu Espaço TEA</h3>
           <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Personalize a experiência com o nome da criança e crie sua senha parental para o temporizador:</p>
@@ -679,14 +678,12 @@
           </div>
         </div>
 
-        <!-- CONTEÚDO DO ESPAÇO TEA -->
         <div id="tea-conteudo-liberado" style="display: none; flex-direction: column; gap: 22px;">
           <div class="tea-box">
             <h3 id="saudacao-espaco-tea">🌿 Espaço Personalizado Ativo</h3>
             <p style="font-size: 12px; color: #475569; font-weight: 600; margin-top: 4px;">Ambiente seguro de regulação sensorial e apoio à comunicação.</p>
           </div>
 
-          <!-- JORNADA DAS EMOÇÕES -->
           <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Jornada das Emoções do Dia</h4>
           <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px; position:relative; min-height: 270px; overflow:hidden;">
             
@@ -735,7 +732,6 @@
 
           </div>
 
-          <!-- PRANCHA CAA BÁSICA -->
           <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Comunicação Básica (CAA)</h4>
           <div class="interactive-card" style="border-color: #BAE6FD;">
             <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Toque no desenho para falar:</p>
@@ -1604,7 +1600,7 @@
       document.getElementById('btn-vipanel-' + num).classList.add('active');
     }
 
-    // --- LÓGICA DOS JOGOS PADRÃO (Lousa, Contar, Letras, Memória, Quiz) ---
+    // --- LÓGICA DOS JOGOS PADRÃO (Lousa, Contar, Letras, Memória, Quiz com Emojis Seguros) ---
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas.getContext('2d');
     let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free', imagemPintarCarregada = null, tamanhoPincel = 6, escalaZoomGuia = 0.85;
@@ -1663,15 +1659,16 @@
     window.addEventListener('resize', redimensionarCanvas);
 
     let qContar = 0;
+    const emojisJogo = ['🧸', '⭐', '🍎', '🚗', '🎈', '🐶', '🐱', '🐸', '⚽', '🎨'];
     function carregarJogoContar() {
-      qContar = Math.floor(Math.random() * 9) + 1;
-      const charSorteado = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      qContar = Math.floor(Math.random() * 5) + 1;
+      const emojiSorteado = emojisJogo[Math.floor(Math.random() * emojisJogo.length)];
       const display = document.getElementById('countDisplay'); display.innerHTML = '';
       for (let i = 0; i < qContar; i++) {
-        const img = document.createElement('img'); img.src = charSorteado.img; img.style.cssText = 'width:44px; height:44px; object-fit:contain;'; display.appendChild(img);
+        const span = document.createElement('span'); span.innerText = emojiSorteado; span.style.cssText = 'font-size:36px;'; display.appendChild(span);
       }
       const opts = document.getElementById('countOptions'); opts.innerHTML = '';
-      for (let n = 1; n <= 9; n++) {
+      for (let n = 1; n <= 6; n++) {
         const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.innerText = n;
         btn.onclick = () => {
           if (n === qContar) { lerTexto("Muito bem!"); adicionarPontos(5); setTimeout(carregarJogoContar, 700); }
@@ -1682,12 +1679,24 @@
     }
 
     let pLetraAtual = null;
+    const itensLetras = [
+      { nome: 'Ursinho', letra: 'U', emoji: '🧸' },
+      { nome: 'Abacate', letra: 'A', emoji: '🥑' },
+      { nome: 'Bola', letra: 'B', emoji: '⚽' },
+      { nome: 'Dado', letra: 'D', emoji: '🎲' },
+      { nome: 'Estrela', letra: 'E', emoji: '⭐' },
+      { nome: 'Gato', letra: 'G', emoji: '🐱' },
+      { nome: 'Lua', letra: 'L', emoji: '🌙' },
+      { nome: 'Pato', letra: 'P', emoji: '🦆' }
+    ];
     function carregarJogoLetra() {
-      pLetraAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      pLetraAtual = itensLetras[Math.floor(Math.random() * itensLetras.length)];
       document.getElementById('nome-letra-personagem').innerText = pLetraAtual.nome;
-      document.getElementById('img-letra-personagem').src = pLetraAtual.img;
+      const imgEl = document.getElementById('img-letra-personagem');
+      if(imgEl) { imgEl.style.fontSize = '60px'; imgEl.innerText = pLetraAtual.emoji; imgEl.src = ''; }
+      
       const container = document.getElementById('opcoes-letras'); container.innerHTML = '';
-      const alfabeto = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','X','Z'];
+      const alfabeto = ['A','B','C','D','E','F','G','H','I','J','L','M','N','P','Q','R','S','T','U','V'];
       let opcoes = [pLetraAtual.letra];
       while (opcoes.length < 3) { let l = alfabeto[Math.floor(Math.random() * alfabeto.length)]; if (!opcoes.includes(l)) opcoes.push(l); }
       opcoes.sort(() => Math.random() - 0.5).forEach(l => {
@@ -1703,18 +1712,18 @@
     let cMem = [], pCarta = null, travaMem = false, acertosMem = 0;
     function iniciarMemoria() {
       acertosMem = 0;
-      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 4);
-      const imgsMem = sorteados.map(p => p.img);
-      cMem = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
+      const paresEmojis = ['🐶', '🐱', '🐸', '🐰', '🦁', '🐵', '🐼', '🐨'];
+      const sorteados = [...paresEmojis].sort(() => Math.random() - 0.5).slice(0, 4);
+      cMem = [...sorteados, ...sorteados].sort(() => Math.random() - 0.5);
       const board = document.getElementById('memoryBoard'); board.innerHTML = '';
-      cMem.forEach(src => {
-        const card = document.createElement('div'); card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
+      cMem.forEach(emoji => {
+        const card = document.createElement('div'); card.className = 'memory-card'; card.dataset.emoji = emoji; card.innerText = '❓';
         card.onclick = () => {
           if (travaMem || card.classList.contains('flipped')) return;
-          card.classList.add('flipped'); card.innerHTML = `<img src="${src}" alt="Carta">`;
+          card.classList.add('flipped'); card.innerHTML = `<span>${emoji}</span>`;
           if (!pCarta) pCarta = card;
           else {
-            if (pCarta.dataset.img === src) {
+            if (pCarta.dataset.emoji === emoji) {
               acertosMem++; lerTexto("Encontrou o par!"); pCarta = null; adicionarPontos(3);
               if (acertosMem === 4) { adicionarPontos(10); setTimeout(iniciarMemoria, 1800); }
             } else {
@@ -1728,36 +1737,43 @@
     }
 
     let pQuizAtual = null;
+    const listaQuiz = [
+      { pergunta: "Qual bicho mia e gosta de leite?", resposta: "Gato 🐱", opcoes: ["Gato 🐱", "Cachorro 🐶", "Pato 🦆"], img: "🐱" },
+      { peruca: "Qual bicho late e protege a casa?", resposta: "Cachorro 🐶", opcoes: ["Gato 🐱", "Cachorro 🐶", "Sapo 🐸"], img: "🐶" },
+      { pergunta: "Qual fruta é vermelha e docinha?", resposta: "Maçã 🍎", opcoes: ["Banana 🍌", "Maçã 🍎", "Limão 🍋"], img: "🍎" },
+      { pergunta: "O que brilha no céu de noite?", resposta: "Estrela ⭐", opcoes: ["Sol ☀️", "Estrela ⭐", "Nuvem ☁️"], img: "⭐" }
+    ];
     function carregarQuiz() {
-      pQuizAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('quiz-img').src = pQuizAtual.img;
+      pQuizAtual = listaQuiz[Math.floor(Math.random() * listaQuiz.length)];
+      const quizImg = document.getElementById('quiz-img');
+      if(quizImg) { quizImg.style.fontSize = '50px'; quizImg.innerText = pQuizAtual.img; quizImg.src = ''; }
+      
       const container = document.getElementById('quiz-options'); container.innerHTML = '';
-      let opcoes = [pQuizAtual.nome];
-      while (opcoes.length < 3) { let o = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome; if (!opcoes.includes(o)) opcoes.push(o); }
-      opcoes.sort(() => Math.random() - 0.5).forEach(o => {
+      pQuizAtual.opcoes.sort(() => Math.random() - 0.5).forEach(o => {
         const btn = document.createElement('button'); btn.style.cssText = "padding:8px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:12px;"; btn.innerText = o;
         btn.onclick = () => {
-          if (o === pQuizAtual.nome) { lerTexto("Muito bem!"); adicionarPontos(5); setTimeout(carregarQuiz, 700); }
+          if (o === pQuizAtual.resposta) { lerTexto("Muito bem!"); adicionarPontos(5); setTimeout(carregarQuiz, 700); }
           else lerTexto("Tente novamente!");
         };
         container.appendChild(btn);
       });
-    }
-
-    let pCorAtual = null;
-    function carregarJogoCor() {
-      pCorAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('cor-pergunta-txt').innerText = pCorAtual.corPergunta;
-      document.getElementById('cor-img').src = pCorAtual.img;
-      const container = document.getElementById('cor-options'); container.innerHTML = '';
-      pCorAtual.corOpcoes.sort(() => Math.random() - 0.5).forEach(o => {
-        const btn = document.createElement('button'); btn.style.cssText = "padding:8px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:12px;"; btn.innerText = o;
-        btn.onclick = () => {
-          if (o === pCorAtual.corCorreta) { lerTexto("Acertou!"); adicionarPontos(5); setTimeout(carregarJogoCor, 700); }
-          else lerTexto("Tente de novo!");
-        };
-        container.appendChild(btn);
-      });
+      
+      const corTxt = document.getElementById('cor-pergunta-txt');
+      const corImg = document.getElementById('cor-img');
+      const corOpts = document.getElementById('cor-options');
+      if(corTxt) corTxt.innerText = "Qual é a cor do Sol?";
+      if(corImg) { corImg.style.fontSize = '50px'; corImg.innerText = '☀️'; corImg.src = ''; }
+      if(corOpts) {
+        corOpts.innerHTML = '';
+        ["Amarelo 🟡", "Azul 🔵", "Verde 🟢"].forEach(c => {
+          const b = document.createElement('button'); b.style.cssText = "padding:6px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:11px;"; b.innerText = c;
+          b.onclick = () => {
+            if(c.includes("Amarelo")) { lerTexto("Isso mesmo!"); adicionarPontos(5); }
+            else lerTexto("Tente de novo!");
+          };
+          corOpts.appendChild(b);
+        });
+      }
     }
 
     // Inicialização Geral
