@@ -342,10 +342,15 @@
       <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" title="YouTube da Turminha">
         <img src="https://i.imgur.com/3lM9igy.png" alt="Logo Turminha do Xexéu" class="logo-img">
       </a>
-      <button id="toggleAudioBtn" class="audio-toggle-btn" onclick="alternarAudioGlobal()">
-        <span id="audioIcon">🔊</span>
-        <span id="audioText">Voz Ligada</span>
-      </button>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button id="btnSensoryHeader" class="btn-sensorial" style="padding: 6px 12px; font-size:11px;" onclick="toggleSensoryMode()">
+          <span>🌿</span> Modo Calmo
+        </button>
+        <button id="toggleAudioBtn" class="audio-toggle-btn" onclick="alternarAudioGlobal()">
+          <span id="audioIcon">🔊</span>
+          <span id="audioText">Voz</span>
+        </button>
+      </div>
     </header>
 
     <nav class="page-nav">
@@ -535,7 +540,7 @@
       </section>
     </main>
 
-    <!-- PÁGINA JOGOS -->
+    <!-- PÁGINA JOGOS (COM O TEMPORIZADOR GLOBAL DE SEGURANÇA) -->
     <main id="pagina-jogos" class="page-content">
       <div class="age-group-section">
         <h3 class="age-title">
@@ -546,6 +551,21 @@
         <div class="conquistas-box">
           <span>🏆 Suas Conquistas: <strong id="placar-pontos">0</strong> pontos</span>
           <span id="medalha-status">⭐ Iniciante da Turminha</span>
+        </div>
+
+        <!-- TEMPORIZADOR GLOBAL DE SEGURANÇA PARA OS JOGOS -->
+        <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 16px; background: #F0F9FF;">
+          <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 14px; margin-bottom: 4px;">⏳ Temporizador de Uso</h4>
+          <p style="font-size: 11px; color: #475569; font-weight: 600; margin-bottom: 8px;">Defina um limite de tempo (Grátis: 1 e 3 min | VIP: até 30 min).</p>
+          <div class="timer-btns" id="botoesTemporizadorGeral">
+            <button class="timer-btn" onclick="iniciarTemporizador(1)">1 Min</button>
+            <button class="timer-btn" onclick="iniciarTemporizador(3)">3 Min</button>
+            <!-- Minutos estendidos inseridos via JS se VIP -->
+          </div>
+          <div class="timer-bar-bg" style="margin: 8px 0;">
+            <div id="barra-temporizador" class="timer-bar-fill" style="width: 100%;"></div>
+          </div>
+          <p id="texto-temporizador" style="font-weight: 900; color: #475569; font-size: 16px; margin:0; text-align:center;">0:00</p>
         </div>
 
         <nav class="games-subnav">
@@ -638,33 +658,34 @@
       </div>
     </main>
 
-    <!-- PÁGINA ESPAÇO TEA (COM ONBOARDING E TEMPORIZADOR BÁSICO) -->
+    <!-- PÁGINA ESPAÇO TEA (CONFIGURAÇÃO GERAL E ACOLHEDORA) -->
     <main id="pagina-tea" class="page-content">
       <div class="age-group-section">
         
-        <!-- ETAPA DE ONBOARDING: COLETA DE E-MAIL E SENHA PARENTAL -->
+        <!-- ONBOARDING GERALZÃO (CONFIGURAÇÃO DO ESPAÇO) -->
         <div id="tea-onboarding-box" class="tea-box" style="background: #FFF; border: 2.5px solid var(--tea-blue);">
-          <h3>🧩 Bem-vindo ao Espaço Inclusivo TEA</h3>
-          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Para configurar o temporizador de segurança com senha parental, insira os dados abaixo:</p>
+          <h3>🧩 Configure seu Espaço TEA</h3>
+          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Personalize a experiência com o nome da criança e crie sua senha parental para o temporizador:</p>
           
           <div style="max-width: 400px; margin: 0 auto; text-align: left;">
-            <label style="font-size: 11px; font-weight: 800; color: var(--tea-blue); display: block; margin-bottom: 4px;">E-mail do Responsável:</label>
+            <label style="font-size: 11px; font-weight: 800; color: var(--tea-blue); display: block; margin-bottom: 4px;">Nome da Criança ou Responsável:</label>
+            <input type="text" id="tea-nome-crianca" class="vip-input" placeholder="Ex: Lucas">
+
+            <label style="font-size: 11px; font-weight: 800; color: var(--tea-blue); display: block; margin-bottom: 4px;">E-mail de Contato:</label>
             <input type="email" id="tea-email" class="vip-input" placeholder="seu@email.com">
             
-            <label style="font-size: 11px; font-weight: 800; color: var(--tea-blue); display: block; margin-bottom: 4px;">Crie sua Senha Parental (para destravar o tempo):</label>
+            <label style="font-size: 11px; font-weight: 800; color: var(--tea-blue); display: block; margin-bottom: 4px;">Senha Parental (para destravar o tempo):</label>
             <input type="password" id="tea-senha" class="vip-input" placeholder="Senha secreta">
             
-            <button onclick="salvarOnboardingTea()" class="support-btn" style="background: var(--tea-blue); margin-top: 10px;">Acessar Espaço TEA 🚀</button>
+            <button onclick="salvarOnboardingTea()" class="support-btn" style="background: var(--tea-blue); margin-top: 10px;">Salvar e Entrar no Espaço TEA 🚀</button>
           </div>
         </div>
 
-        <!-- CONTEÚDO DO ESPAÇO TEA (LIBERADO APÓS ONBOARDING) -->
+        <!-- CONTEÚDO DO ESPAÇO TEA (LIBERADO APÓS CONFIGURAÇÃO) -->
         <div id="tea-conteudo-liberado" style="display: none; flex-direction: column; gap: 22px;">
           <div class="tea-box">
-            <h3>🌿 Modo Calmo Ativo</h3>
-            <button id="btnSensoryToggle" class="btn-sensorial" onclick="toggleSensoryMode()">
-              <span id="sensoryIcon">🌿</span> Alternar Estímulo Visual Minimalista
-            </button>
+            <h3 id="saudacao-espaco-tea">🌿 Espaço Personalizado Ativo</h3>
+            <p style="font-size: 12px; color: #475569; font-weight: 600; margin-top: 4px;">Ambiente seguro de regulação sensorial e apoio à comunicação.</p>
           </div>
 
           <!-- JORNADA DAS EMOÇÕES -->
@@ -716,21 +737,6 @@
 
           </div>
 
-          <!-- TEMPORIZADOR BÁSICO (GRATUITO: 1 e 3 MINUTOS) -->
-          <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Temporizador de Segurança (Básico)</h4>
-          <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px;">
-            <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Defina o tempo limite (Exigirá senha ao zerar):</p>
-            <div class="timer-btns">
-              <button class="timer-btn" onclick="iniciarTemporizador(1)">1 Minuto</button>
-              <button class="timer-btn" onclick="iniciarTemporizador(3)">3 Minutos</button>
-            </div>
-            <div class="timer-bar-bg">
-              <div id="barra-temporizador" class="timer-bar-fill" style="width: 100%;"></div>
-            </div>
-            <p id="texto-temporizador" style="font-weight: 900; color: #475569; font-size: 20px; margin:0; text-align:center;">0:00</p>
-            <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Quer opções maiores (5, 10, 15 ou 30 minutos) e Prancha Editável? Conheça o <strong>Clube VIP</strong>!</p>
-          </div>
-
           <!-- PRANCHA CAA BÁSICA -->
           <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Comunicação Básica (CAA)</h4>
           <div class="interactive-card" style="border-color: #BAE6FD;">
@@ -740,6 +746,7 @@
               <div class="caa-btn" onclick="lerTexto('Estou com fome.')"><span>🍎</span><p>Comer</p></div>
               <div class="caa-btn" onclick="lerTexto('Preciso ir ao banheiro.')"><span>🚽</span><p>Banheiro</p></div>
             </div>
+            <p style="font-size: 11px; color: #64748B; margin-top: 10px;">✨ Quer <strong>adicionar novos botões personalizados e ilimitados</strong>? Conheça o <strong>Clube VIP</strong>!</p>
           </div>
         </div>
 
@@ -757,29 +764,29 @@
         <!-- VISÃO BLOQUEADA -->
         <div id="vip-locked-view" class="vip-lock-container">
           <div class="vip-lock-header-clickable" title="Clique para assinar" onclick="document.getElementById('cad-email').focus()">
-            <h3>🧸 Ferramentas Avançadas, Temporizador Completo e Prancha Editável</h3>
+            <h3>🧸 Ferramentas Avançadas, Temporizador Completo e Configuração de Voz</h3>
             <div class="vip-price-tag" style="margin-top: 10px;">Acesso Ilimitado: R$ 6,00 / mês</div>
           </div>
           
           <div class="vip-heart-msg">
             <p style="margin-bottom: 6px;">💖 <strong>O que o Clube VIP desbloqueia para os Pais?</strong></p>
             <ul style="text-align: left; margin: 8px 0 8px 18px; font-weight: 600;">
+              <li>🔊 <strong>Configuração de Voz Global:</strong> Escolha o tipo de voz e a velocidade de leitura para o site inteiro.</li>
               <li>💬 <strong>Prancha de Comunicação Editável (CAA):</strong> Adicione quantos cards e botões personalizados você quiser!</li>
               <li>⏳ <strong>Temporizador Expandido (Até 30 min):</strong> Opções de 5, 10, 15 e 30 minutos com bloqueio por senha.</li>
               <li>🎧 <strong>Caixa do Acalento Completa:</strong> 5 sons relaxantes (Chuva, Pássaros, Ruído Branco, Mar e Fogueira).</li>
               <li>🌟 <strong>Rotina de Super Força:</strong> Acompanhamento lúdico de vitaminas e medicamentos.</li>
-              <li>📁 <strong>Drive Azul:</strong> Pranchas de rotina e histórias sociais em PDF.</li>
             </ul>
           </div>
           
           <div class="vip-grid-forms">
             <div class="vip-form-box" id="caixa-cadastro-vip">
               <h4>✨ Desbloquear Acesso VIP</h4>
-              <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 3px;">Seu E-mail (Receberá a senha):</label>
+              <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 3px;">Seu E-mail:</label>
               <input type="email" id="cad-email" class="vip-input" placeholder="seu@email.com">
               
-              <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 3px;">Crie uma Senha Parental:</label>
-              <input type="password" id="cad-senha" class="vip-input" placeholder="Senha secreta para bloqueios">
+              <label style="font-size: 11px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 3px;">Crie uma Senha:</label>
+              <input type="password" id="cad-senha" class="vip-input" placeholder="Senha secreta">
               
               <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-vip-checkout" onclick="salvarECadastrar()">Quero Ser VIP por R$ 6,00 💳</a>
             </div>
@@ -888,9 +895,25 @@
             </div>
           </div>
 
-          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA (VIP - EXPANDIDO COM MAIS MINUTOS, PRANCHA EDITÁVEL E SONS REAIS) -->
+          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA (COM CONFIGURAÇÃO DE VOZ, PRANCHA EDITÁVEL, TEMPORIZADOR E SONS) -->
           <div id="conteudo-vip-tea" class="vip-sub-area">
             
+            <!-- CONFIGURAÇÃO DE VOZ GLOBAL (EXCLUSIVA VIP) -->
+            <div class="vip-card-box" style="background: #EFF6FF; border-color: #93C5FD;">
+              <h4 style="color: #1E40AF; font-weight: 900; font-size: 15px; margin-bottom: 6px;">🔊 Configuração de Voz dos Cartões</h4>
+              <p style="font-size: 12px; color: #1E3A8A; font-weight: 600; margin-bottom: 12px;">Escolha o tom de voz e a velocidade de leitura para o site inteiro.</p>
+              
+              <div style="display: flex; flex-direction: column; gap: 8px; text-align: left;">
+                <label style="font-size: 11px; font-weight: 800; color: #1E40AF;">Selecione a Voz Disponível:</label>
+                <select id="selectVozVip" class="vip-input" onchange="mudarVozSelecionada(this.value)" style="background: #FFF;">
+                  <option value="">Carregando vozes...</option>
+                </select>
+
+                <label style="font-size: 11px; font-weight: 800; color: #1E40AF;">Velocidade de Fala (<span id="txtVelocidade">1.0x</span>):</label>
+                <input type="range" id="rangeVelocidade" min="0.7" max="1.3" step="0.05" value="1.0" oninput="mudarVelocidadeFala(this.value)">
+              </div>
+            </div>
+
             <!-- DRIVE AZUL EM MANUTENÇÃO -->
             <div class="drive-banner-box" style="background: #F1F5F9; border-color: #94A3B8;">
               <h4 style="color: #475569; font-size: 17px; font-weight: 900;">🧩 Drive Azul da Turminha (Recursos TEA) - Em Breve! 🚧</h4>
@@ -912,28 +935,10 @@
               <div id="caaGridVip" class="caa-grid"></div>
             </div>
 
-            <!-- TEMPORIZADOR EXPANDIDO (VIP: 5, 10, 15, 30 MINUTOS) -->
-            <div class="vip-card-box" style="border-color: #BAE6FD;">
-              <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 15px; margin-bottom: 5px;">⏳ Temporizador Visual Avançado (VIP)</h4>
-              <p style="font-size: 12px; color: #475569; font-weight: 600;">Opções estendidas para gerenciar períodos maiores de atividades.</p>
-              
-              <div class="timer-btns" style="margin-top: 10px;">
-                <button class="timer-btn" onclick="iniciarTemporizador(5)">5 Min</button>
-                <button class="timer-btn" onclick="iniciarTemporizador(10)">10 Min</button>
-                <button class="timer-btn" onclick="iniciarTemporizador(15)">15 Min</button>
-                <button class="timer-btn" onclick="iniciarTemporizador(30)">30 Min</button>
-              </div>
-
-              <div class="timer-bar-bg">
-                <div id="barra-temporizador" class="timer-bar-fill" style="width: 100%;"></div>
-              </div>
-              <p id="texto-temporizador" style="font-weight: 900; color: #475569; font-size: 20px; margin:0; text-align:center;">0:00</p>
-            </div>
-
-            <!-- CAIXA DO ACALENTO COMPLETA (5 SONS) -->
+            <!-- CAIXA DO ACALENTO COMPLETA -->
             <div class="vip-card-box" style="background: #F8FAFC; border-color: #94A3B8;">
-              <h4 style="color: #334155; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🎧 Caixa do Acalento Completa (Sons Relaxantes)</h4>
-              <p style="font-size: 12px; color: #64748B; font-weight: 600;">Regulação sensorial estendida para momentos de crise.</p>
+              <h4 style="color: #334155; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🎧 Caixa do Acalento (Sons Relaxantes)</h4>
+              <p style="font-size: 12px; color: #64748B; font-weight: 600;">Regulação sensorial para momentos de crise ou transição.</p>
               <div class="acalento-grid">
                 <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_CHUVA.mp3')"><span>🌧️</span><p>Chuva</p></button>
                 <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_NATUREZA.mp3')"><span>🐦</span><p>Pássaros</p></button>
@@ -994,6 +999,9 @@
     let audioAtivo = true;
     let audioUnlocked = false; 
     let vozesDisponiveis = [];
+    let vozSelecionadaIndex = localStorage.getItem('turminha_voz_index') || 0;
+    let velocidadeFala = parseFloat(localStorage.getItem('turminha_velocidade') || 1.0);
+    
     let pontosConquista = parseInt(localStorage.getItem('turminha_pontos') || '0');
     let listaRotinasSuperForca = JSON.parse(localStorage.getItem('turminha_rotinas')) || [];
     let listaCaaVip = JSON.parse(localStorage.getItem('turminha_caa_vip')) || [
@@ -1037,35 +1045,42 @@
       'Hilda': { nome: "Vovó Hilda", desc: "Usa óculos redondos. Guardando doçura, abraços e valores preciosos." }
     };
 
-    // --- LEITURA DE VOZ E PONTUAÇÃO ---
-    function adicionarPontos(qtde) {
-      pontosConquista += qtde;
-      localStorage.setItem('turminha_pontos', pontosConquista);
-      atualizarPlacarConquistas();
-    }
-
-    function atualizarPlacarConquistas() {
-      const pEl = document.getElementById('placar-pontos');
-      const mEl = document.getElementById('medalha-status');
-      if (pEl) pEl.innerText = pontosConquista;
-      if (mEl) {
-        if (pontosConquista >= 30) mEl.innerText = "👑 Mestre da Turminha";
-        else if (pontosConquista >= 15) mEl.innerText = "⭐ Explorador Experiente";
-        else if (pontosConquista >= 5) mEl.innerText = "🌟 Amigo Dedicado";
-        else mEl.innerText = "⭐ Iniciante da Turminha";
-      }
-    }
-
-    function desbloquearAudioMobileOnce() {
-      if (!audioUnlocked && 'speechSynthesis' in window) {
-        const silentUtterance = new SpeechSynthesisUtterance('');
-        window.speechSynthesis.speak(silentUtterance);
-        audioUnlocked = true;
+    // --- LEITURA DE VOZ FLUÍDA E CONFIGURÁVEL ---
+    function carregarVozes() {
+      if ('speechSynthesis' in window) {
+        vozesDisponiveis = window.speechSynthesis.getVoices();
+        const select = document.getElementById('selectVozVip');
+        if (select && vozesDisponiveis.length > 0) {
+          select.innerHTML = '';
+          vozesDisponiveis.forEach((voz, index) => {
+            if (voz.lang.includes('pt') || voz.lang.includes('PT')) {
+              const opt = document.createElement('option');
+              opt.value = index;
+              opt.innerText = `${voz.name} (${voz.lang})`;
+              if (index == vozSelecionadaIndex) opt.selected = true;
+              select.appendChild(opt);
+            }
+          });
+        }
       }
     }
 
     if ('speechSynthesis' in window) {
-      window.speechSynthesis.onvoiceschanged = () => { vozesDisponiveis = window.speechSynthesis.getVoices(); };
+      window.speechSynthesis.onvoiceschanged = carregarVozes;
+      carregarVozes();
+    }
+
+    function mudarVozSelecionada(index) {
+      vozSelecionadaIndex = index;
+      localStorage.setItem('turminha_voz_index', index);
+      lerTexto("Voz alterada com sucesso!");
+    }
+
+    function mudarVelocidadeFala(val) {
+      velocidadeFala = parseFloat(val);
+      localStorage.setItem('turminha_velocidade', velocidadeFala);
+      const txt = document.getElementById('txtVelocidade');
+      if(txt) txt.innerText = `${velocidadeFala}x`;
     }
 
     function lerTexto(texto) {
@@ -1076,12 +1091,20 @@
           window.speechSynthesis.cancel(); 
           const utterance = new SpeechSynthesisUtterance(texto);
           utterance.lang = 'pt-BR';
-          utterance.rate = 0.90; 
-          utterance.pitch = 1.1; 
+          utterance.rate = velocidadeFala; 
+          utterance.pitch = 1.05; 
           
-          if (vozesDisponiveis.length === 0) vozesDisponiveis = window.speechSynthesis.getVoices();
-          const vozPt = vozesDisponiveis.find(v => v.lang.includes('pt-BR') || v.lang.includes('pt'));
-          if (vozPt) utterance.voice = vozPt;
+          if (vozesDisponiveis.length === 0) {
+            vozesDisponiveis = window.speechSynthesis.getVoices();
+          }
+          
+          if (vozesDisponiveis[vozSelecionadaIndex]) {
+            utterance.voice = vozesDisponiveis[vozSelecionadaIndex];
+          } else {
+            const vozPt = vozesDisponiveis.find(v => v.lang.includes('pt-BR') || v.lang.includes('pt'));
+            if (vozPt) utterance.voice = vozPt;
+          }
+          
           window.speechSynthesis.speak(utterance);
         } catch (e) { console.log(e); }
       }
@@ -1103,12 +1126,12 @@
       if (audioAtivo) {
         btn.classList.remove('muted');
         document.getElementById('audioIcon').innerText = '🔊';
-        document.getElementById('audioText').innerText = 'Voz Ligada';
+        document.getElementById('audioText').innerText = 'Voz';
         lerTexto("A voz da Turminha está ativada!");
       } else {
         btn.classList.add('muted');
         document.getElementById('audioIcon').innerText = '🔇';
-        document.getElementById('audioText').innerText = 'Voz Desligada';
+        document.getElementById('audioText').innerText = 'Mudo';
         exibirAvisoVisual("Voz desligada!");
       }
     }
@@ -1140,6 +1163,7 @@
 
     // --- ONBOARDING DO ESPAÇO TEA (COLETA DE E-MAIL E SENHA) ---
     function salvarOnboardingTea() {
+      const nomeCrianca = document.getElementById('tea-nome-crianca').value.trim();
       const email = document.getElementById('tea-email').value.trim();
       const senha = document.getElementById('tea-senha').value.trim();
 
@@ -1148,6 +1172,7 @@
         return;
       }
 
+      localStorage.setItem('tea_nome_crianca', nomeCrianca || 'Amigo(a)');
       localStorage.setItem('tea_email_pais', email);
       localStorage.setItem('tea_senha_pais', senha);
 
@@ -1159,9 +1184,12 @@
 
     function verificarStatusOnboardingTea() {
       const emailSalvo = localStorage.getItem('tea_email_pais');
+      const nomeSalvo = localStorage.getItem('tea_nome_crianca') || 'Visitante';
       if (emailSalvo) {
         document.getElementById('tea-onboarding-box').style.display = 'none';
         document.getElementById('tea-conteudo-liberado').style.display = 'flex';
+        const saudacaoEl = document.getElementById('saudacao-espaco-tea');
+        if (saudacaoEl) saudacaoEl.innerText = `🌿 Olá, ${nomeSalvo}! Espaço Personalizado`;
       }
     }
 
@@ -1205,15 +1233,17 @@
     }
 
     function toggleSensoryMode() {
-      sensoryModeAtivo = !sensoryModeAtivo;
-      const btn = document.getElementById('btnSensoryToggle');
-      if (sensoryModeAtivo) {
-        document.body.classList.add('sensory-mode');
-        if (btn) { btn.classList.add('ativo'); btn.innerHTML = '🌿 Modo Calmo Ativado'; }
-        lerTexto("Modo sensorial ativado no site inteiro.");
+      const isSensory = document.body.classList.toggle('sensory-mode');
+      const btnHeader = document.getElementById('btnSensoryHeader');
+      const btnTea = document.getElementById('btnSensoryToggle');
+      
+      if (isSensory) {
+        if(btnHeader) btnHeader.innerHTML = '🌿 Normal';
+        if(btnTea) btnTea.innerHTML = '🌿 Desativar Modo Calmo';
+        lerTexto("Modo calmo ativado no site inteiro.");
       } else {
-        document.body.classList.remove('sensory-mode');
-        if (btn) { btn.classList.remove('ativo'); btn.innerHTML = '🌿 Ativar Modo Calmo (Minimalista)'; }
+        if(btnHeader) btnHeader.innerHTML = '🌿 Modo Calmo';
+        if(btnTea) btnTea.innerHTML = '🌿 Ativar Modo Calmo (Minimalista)';
         lerTexto("Modo padrão ativado.");
       }
     }
@@ -1235,7 +1265,7 @@
             passo2.classList.remove('fade-out');
           }
           lerTexto("E você? Como está se sentindo agora?");
-        }, 4000);
+        }, 3500);
 
       } else {
         lerTexto(`Você acha que ele(a) está ${emocao}? Na verdade, o(a) ${personagemEmocaoAtual} está com um lindo sorriso Feliz!`);
@@ -1260,7 +1290,30 @@
             passo1.classList.remove('fade-out');
           }
         }, 800);
-      }, 8000);
+      }, 7000);
+    }
+
+    // --- ATUALIZAÇÃO DO TEMPORIZADOR GERAL DE ACORDO COM STATUS VIP ---
+    function atualizarBotoesTemporizadorGeral() {
+      const container = document.getElementById('botoesTemporizadorGeral');
+      if (!container) return;
+      const isVip = localStorage.getItem('turminha_xexeu_vip_ativo') === 'true';
+      
+      if (isVip) {
+        container.innerHTML = `
+          <button class="timer-btn" onclick="iniciarTemporizador(1)">1 Min</button>
+          <button class="timer-btn" onclick="iniciarTemporizador(3)">3 Min</button>
+          <button class="timer-btn" onclick="iniciarTemporizador(5)">5 Min</button>
+          <button class="timer-btn" onclick="iniciarTemporizador(10)">10 Min</button>
+          <button class="timer-btn" onclick="iniciarTemporizador(15)">15 Min</button>
+          <button class="timer-btn" onclick="iniciarTemporizador(30)">30 Min</button>
+        `;
+      } else {
+        container.innerHTML = `
+          <button class="timer-btn" onclick="iniciarTemporizador(1)">1 Min</button>
+          <button class="timer-btn" onclick="iniciarTemporizador(3)">3 Min</button>
+        `;
+      }
     }
 
     // --- TEMPORIZADOR COM BLOQUEIO DE SENHA (PARENTAL LOCK) ---
@@ -1309,7 +1362,7 @@
         document.getElementById('senhaDesbloqueio').value = '';
         lerTexto("Tempo desbloqueado com sucesso!");
       } else {
-        alert("❌ Senha incorreta! Digite a senha cadastrada por e-mail.");
+        alert("❌ Senha incorreta! Digite a senha parental cadastrada.");
       }
     }
 
@@ -1358,7 +1411,10 @@
       document.getElementById('pagina-' + pagina).classList.add('active-page');
       document.getElementById('btn-tab-' + pagina).classList.add('active');
 
-      if (pagina === 'jogos') setTimeout(redimensionarCanvas, 100);
+      if (pagina === 'jogos') {
+        setTimeout(redimensionarCanvas, 100);
+        atualizarBotoesTemporizadorGeral();
+      }
       
       if (pagina === 'tea') {
         verificarStatusOnboardingTea();
@@ -1370,6 +1426,7 @@
         criarSeletorAvatarPerfil();
         renderizarRotinasVip();
         renderizarCaaVip();
+        carregarVozes();
       }
     }
 
@@ -1501,9 +1558,11 @@
         if(lockedView) lockedView.style.display = 'none';
         if(unlockedView) unlockedView.classList.add('active-vip');
         carregarDesafioHistoriaVip(); carregarJogoCorVip(); iniciarPuzzleVip(); iniciarMemoriaVip();
+        atualizarBotoesTemporizadorGeral();
       } else {
         if(lockedView) lockedView.style.display = 'block';
         if(unlockedView) unlockedView.classList.remove('active-vip');
+        atualizarBotoesTemporizadorGeral();
       }
     }
 
@@ -1841,6 +1900,8 @@
       verificarCookies();
       verificarStatusOnboardingTea();
       carregarPersonagemDoDiaTEA();
+      carregarVozes();
+      atualizarBotoesTemporizadorGeral();
     };
   </script>
 </body>
