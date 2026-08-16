@@ -540,7 +540,7 @@
       </section>
     </main>
 
-    <!-- PÁGINA JOGOS (COM O TEMPORIZADOR GLOBAL DE SEGURANÇA) -->
+    <!-- PÁGINA JOGOS (COM TEMPORIZADOR GERAL DINÂMICO GRÁTIS/VIP) -->
     <main id="pagina-jogos" class="page-content">
       <div class="age-group-section">
         <h3 class="age-title">
@@ -553,14 +553,12 @@
           <span id="medalha-status">⭐ Iniciante da Turminha</span>
         </div>
 
-        <!-- TEMPORIZADOR GLOBAL DE SEGURANÇA PARA OS JOGOS -->
+        <!-- TEMPORIZADOR GERAL DE SEGURANÇA -->
         <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 16px; background: #F0F9FF;">
           <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 14px; margin-bottom: 4px;">⏳ Temporizador de Uso</h4>
           <p style="font-size: 11px; color: #475569; font-weight: 600; margin-bottom: 8px;">Defina um limite de tempo (Grátis: 1 e 3 min | VIP: até 30 min).</p>
           <div class="timer-btns" id="botoesTemporizadorGeral">
-            <button class="timer-btn" onclick="iniciarTemporizador(1)">1 Min</button>
-            <button class="timer-btn" onclick="iniciarTemporizador(3)">3 Min</button>
-            <!-- Minutos estendidos inseridos via JS se VIP -->
+            <!-- Gerado via JS de acordo com status VIP -->
           </div>
           <div class="timer-bar-bg" style="margin: 8px 0;">
             <div id="barra-temporizador" class="timer-bar-fill" style="width: 100%;"></div>
@@ -658,11 +656,11 @@
       </div>
     </main>
 
-    <!-- PÁGINA ESPAÇO TEA (CONFIGURAÇÃO GERAL E ACOLHEDORA) -->
+    <!-- PÁGINA ESPAÇO TEA (COM ONBOARDING E GERALZÃO) -->
     <main id="pagina-tea" class="page-content">
       <div class="age-group-section">
         
-        <!-- ONBOARDING GERALZÃO (CONFIGURAÇÃO DO ESPAÇO) -->
+        <!-- ONBOARDING GERALZÃO -->
         <div id="tea-onboarding-box" class="tea-box" style="background: #FFF; border: 2.5px solid var(--tea-blue);">
           <h3>🧩 Configure seu Espaço TEA</h3>
           <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Personalize a experiência com o nome da criança e crie sua senha parental para o temporizador:</p>
@@ -681,7 +679,7 @@
           </div>
         </div>
 
-        <!-- CONTEÚDO DO ESPAÇO TEA (LIBERADO APÓS CONFIGURAÇÃO) -->
+        <!-- CONTEÚDO DO ESPAÇO TEA -->
         <div id="tea-conteudo-liberado" style="display: none; flex-direction: column; gap: 22px;">
           <div class="tea-box">
             <h3 id="saudacao-espaco-tea">🌿 Espaço Personalizado Ativo</h3>
