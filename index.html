@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@500;700;800;900&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -50,6 +50,7 @@
     body.sensory-mode .vip-card-box, 
     body.sensory-mode .vip-lock-container, 
     body.sensory-mode .interactive-card,
+    body.sensory-mode .config-card,
     body.sensory-mode .video-card { background: #FFFFFF !important; border: 2px solid #CBD5E1 !important; }
     
     body.sensory-mode .browser-notice-box,
@@ -72,16 +73,18 @@
     .audio-toggle-btn.muted { background: #FEE2E2; border-color: #EF4444; color: #991B1B; }
 
     .page-nav { display: flex; justify-content: center; gap: 8px; background: #F0F9FF; padding: 6px; border-radius: var(--radius-lg); margin: 0 12px; border: 2px solid #BAE6FD; flex-wrap: wrap; }
-    .nav-tab-btn { flex: 1; min-width: 95px; max-width: 180px; padding: 12px 8px; border: none; border-radius: var(--radius-md); font-weight: 800; font-size: 13px; cursor: pointer; background: transparent; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; }
+    .nav-tab-btn { flex: 1; min-width: 90px; max-width: 160px; padding: 12px 8px; border: none; border-radius: var(--radius-md); font-weight: 800; font-size: 13px; cursor: pointer; background: transparent; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; }
     .nav-tab-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35); }
     .nav-tab-btn.vip-tab { background: #FEF3C7; color: #92400E; border: 2px solid #FCD34D; }
     .nav-tab-btn.vip-tab.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); border-color: transparent; }
     .nav-tab-btn.tea-tab { background: #E0F2FE; color: var(--tea-blue); border: 2px solid #7DD3FC; }
     .nav-tab-btn.tea-tab.active { background: var(--tea-blue); color: #FFF; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35); border-color: transparent; }
+    .nav-tab-btn.config-tab { background: #F3E8FF; color: #6B21A8; border: 2px solid #D8B4FE; }
+    .nav-tab-btn.config-tab.active { background: #8B5CF6; color: #FFF; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.35); border-color: transparent; }
 
     .browser-notice-box { margin: 0 16px; background: #EFF6FF; border: 2px solid #93C5FD; border-radius: var(--radius-md); padding: 10px 14px; text-align: center; color: #1E40AF; font-size: 12.5px; font-weight: 700; box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; gap: 8px; }
-
-    .top-vip-announcement { margin: 0 12px -10px; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 10px 14px; text-align: center; color: #92400E; font-size: 12px; font-weight: 800; cursor: pointer; box-shadow: var(--shadow-sm); }
+    .top-vip-announcement { margin: 0 12px -10px; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 12px 14px; text-align: center; color: #92400E; font-size: 13px; font-weight: 800; cursor: pointer; box-shadow: var(--shadow-sm); transition: transform 0.2s; }
+    .top-vip-announcement:hover { transform: scale(1.01); }
 
     .page-content { display: none; flex-direction: column; gap: 22px; animation: fadeIn 0.3s ease; }
     .page-content.active-page { display: flex; }
@@ -123,7 +126,7 @@
 
     .char-details-box { margin: 0 16px; background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%); border: 2.5px solid var(--primary); border-radius: var(--radius-lg); padding: 18px; text-align: center; }
 
-    /* ESTILOS DE JOGOS */
+    /* ESTILOS DE JOGOS & INTERATIVOS */
     .games-subnav, .vip-games-subnav { display: flex; justify-content: center; gap: 6px; background: #E0F2FE; padding: 6px; border-radius: var(--radius-md); margin-bottom: 14px; flex-wrap: wrap; }
     .subnav-btn, .vip-sub-btn { padding: 10px 12px; border: none; border-radius: 10px; font-weight: 800; font-size: 12px; cursor: pointer; background: #FFF; color: var(--primary-dark); box-shadow: 0 2px 6px rgba(0,0,0,0.04); transition: all 0.2s; }
     .subnav-btn.active { background: var(--primary); color: #FFF; }
@@ -131,7 +134,7 @@
     
     .game-section-page { display: none; } .game-section-page.active-game-page { display: flex; flex-direction: column; align-items: center; }
     .vip-game-panel { display: none; } .vip-game-panel.active-vip-panel { display: block; }
-
+    
     .age-group-section { margin: 0 16px; background: #FFFFFF; border-radius: var(--radius-lg); padding: 18px; border: 2px solid #E2E8F0; box-shadow: var(--shadow-sm); }
     .age-title { font-size: 19px; font-weight: 900; color: var(--primary-dark); margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
     
@@ -168,9 +171,34 @@
     .memory-card.flipped { background: #FFF; border: 2.5px solid var(--primary); transform: rotateY(180deg); }
     .memory-card img { width: 80%; height: 80%; object-fit: contain; }
 
+    /* ESTILOS DE SONS RELAXANTES (CAIXA DO ACALENTO) */
+    .acalento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 15px; width: 100%; }
+    .acalento-btn { background: #FFFFFF; border: 2.5px solid var(--tea-blue); border-radius: 16px; padding: 14px 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: all 0.2s ease; position: relative; box-shadow: var(--shadow-sm); }
+    .acalento-btn:hover { background: var(--tea-light); transform: translateY(-3px); }
+    .acalento-btn.tocando { border-color: #10B981; background: #DCFCE7; box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3); }
+    .acalento-btn.bloqueado { border-color: #CBD5E1; background: #F1F5F9; opacity: 0.85; }
+    .acalento-btn span.sound-icon { font-size: 32px; margin-bottom: 6px; }
+    .acalento-btn p { font-size: 12px; font-weight: 800; color: var(--text-main); margin: 0; }
+    .acalento-badge-lock { position: absolute; top: 6px; right: 6px; background: #F59E0B; color: #FFF; font-size: 9px; font-weight: 900; padding: 2px 6px; border-radius: 10px; }
+
+    /* ESTILOS DE CONFIGURAÇÕES */
+    .config-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 18px; border: 2px solid #E2E8F0; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 14px; text-align: left; }
+    .config-card h4 { font-size: 16px; font-weight: 900; color: var(--primary-dark); display: flex; align-items: center; justify-content: space-between; }
+    .badge-plan { font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
+    .badge-free { background: #E2E8F0; color: #475569; }
+    .badge-vip { background: #FEF3C7; color: #D97706; border: 1.5px solid #F59E0B; }
+    .config-item { background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: var(--radius-md); padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+    .config-switch-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    
+    .switch-toggle { position: relative; display: inline-block; width: 50px; height: 26px; flex-shrink: 0; }
+    .switch-toggle input { opacity: 0; width: 0; height: 0; }
+    .switch-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #CBD5E1; transition: .3s; border-radius: 34px; }
+    .switch-slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+    input:checked + .switch-slider { background-color: var(--primary); }
+    input:checked + .switch-slider:before { transform: translateX(24px); }
+
     /* ESTILOS VIP */
     .vip-lock-container { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 3px solid #FCD34D; border-radius: var(--radius-lg); padding: 22px 16px; text-align: center; box-shadow: var(--shadow-sm); }
-    .vip-lock-header-clickable { cursor: pointer; user-select: none; }
     .vip-price-tag { display: inline-block; background: #F59E0B; color: #FFF; font-weight: 900; font-size: 14px; padding: 8px 20px; border-radius: 30px; margin-bottom: 12px; }
     .vip-heart-msg { background: #FFFFFF; border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 14px; margin: 12px auto; max-width: 700px; color: #78350F; font-size: 13px; line-height: 1.5; font-weight: 600; text-align: left; }
     .vip-grid-forms { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 700px; margin: 16px auto 0; }
@@ -183,16 +211,19 @@
     .vip-content-unlocked { display: none; flex-direction: column; gap: 16px; }
     .vip-content-unlocked.active-vip { display: flex; }
     .vip-card-box { background: #FFF; border: 2px solid #E2E8F0; border-radius: var(--radius-lg); padding: 16px; box-shadow: var(--shadow-sm); }
-
     .drive-banner-box { background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 100%); border: 2.5px solid #3B82F6; border-radius: var(--radius-md); padding: 16px; text-align: center; margin-bottom: 16px; }
     .btn-drive { display: inline-block; background: #2563EB; color: #FFF; font-weight: 800; font-size: 13px; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-top: 8px; transition: transform 0.2s;}
-    .btn-drive:hover { transform: scale(1.05); }
+
+    /* MODAL DE CONVITE VIP */
+    .vip-modal-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.75); z-index: 100000; justify-content: center; align-items: center; padding: 16px; backdrop-filter: blur(4px); }
+    .vip-modal-backdrop.active { display: flex; }
+    .vip-modal-box { background: #FFFBEB; border: 3px solid #F59E0B; border-radius: var(--radius-xl); padding: 24px; max-width: 420px; width: 100%; text-align: center; box-shadow: var(--shadow-lg); animation: popIn 0.3s ease; }
+    @keyframes popIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
     /* ABAS INTERNAS VIP */
     .vip-internal-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; background: #FFFBEB; padding: 8px; border-radius: var(--radius-lg); border: 2px solid #FCD34D;}
     .vip-int-btn { flex: 1; min-width: 140px; padding: 10px 14px; border-radius: 10px; border: 2px solid transparent; font-weight: 900; font-size: 14px; cursor: pointer; background: transparent; color: #92400E; transition: all 0.2s; }
     .vip-int-btn.active { background: #F59E0B; color: #FFF; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3); border-color: #D97706; }
-    
     .vip-sub-area { display: none; flex-direction: column; gap: 16px; animation: fadeIn 0.3s ease; }
     .vip-sub-area.active-area { display: flex; }
 
@@ -203,23 +234,26 @@
     .btn-concluir-rotina { background: #10B981; color: #FFF; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
     .btn-remover-rotina { background: #EF4444; color: #FFF; border: none; padding: 6px 10px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
 
-    /* Certificado VIP */
-    .certificado-container { background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 4px double #F59E0B; border-radius: 12px; padding: 20px; text-align: center; position: relative; }
-    .certificado-container h3 { font-family: 'Georgia', serif; font-size: 22px; color: #92400E; margin-bottom: 10px; }
-    .certificado-nome { font-size: 26px; font-weight: 900; color: var(--primary-dark); text-transform: uppercase; margin: 15px 0; border-bottom: 2px solid #92400E; display: inline-block; min-width: 200px; }
-    
+    /* NOVO DIPLOMA VIP REFORMULADO */
+    .certificado-moldura { background: #FFFDF7; border: 6px double #D97706; border-radius: 16px; padding: 26px 20px; text-align: center; position: relative; box-shadow: 0 8px 24px rgba(217, 119, 6, 0.15); max-width: 600px; margin: 0 auto; }
+    .certificado-moldura::before { content: '★ ★ ★'; display: block; color: #D97706; font-size: 16px; margin-bottom: 6px; }
+    .certificado-titulo { font-family: 'Cinzel', Georgia, serif; font-size: 24px; font-weight: 900; color: #78350F; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .certificado-subtitulo { font-size: 12px; font-weight: 700; color: #B45309; text-transform: uppercase; margin-bottom: 16px; }
+    .certificado-corpo { font-size: 14px; color: #475569; font-weight: 600; line-height: 1.6; }
+    .certificado-nome-destaque { font-family: 'Cinzel', Georgia, serif; font-size: 28px; font-weight: 900; color: var(--primary-dark); text-transform: uppercase; margin: 16px 0; border-bottom: 3px solid #F59E0B; display: inline-block; padding: 0 20px 4px; }
+    .certificado-selo-container { display: flex; justify-content: space-around; align-items: center; margin-top: 20px; border-top: 1.5px dashed #CBD5E1; padding-top: 14px; }
+    .certificado-selo { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 10px rgba(217, 119, 6, 0.35); }
+    .certificado-assinatura { font-size: 11px; font-weight: 800; color: #78350F; }
+
+    /* CARD DE REPARO LÚDICO */
+    .card-em-reparo { background: #F8FAFC; border: 2px dashed #94A3B8; border-radius: var(--radius-lg); padding: 24px 16px; text-align: center; color: #475569; }
+    .card-em-reparo span.icon-reparo { font-size: 38px; display: block; margin-bottom: 8px; animation: pulse 2s infinite; }
+
     /* Rádio VIP */
     .radio-vip-box { background: #1E293B; border-radius: var(--radius-lg); padding: 20px; text-align: center; color: #FFF; position: relative; overflow: hidden; }
     .radio-vip-box::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%); animation: pulse 4s infinite; z-index: 0; pointer-events: none; }
     @keyframes pulse { 0% { transform: scale(0.9); } 50% { transform: scale(1.1); } 100% { transform: scale(0.9); } }
     .radio-btn { background: #10B981; color: #FFF; border: none; padding: 12px 24px; border-radius: 30px; font-weight: 900; font-size: 16px; cursor: pointer; z-index: 1; position: relative; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); }
-
-    /* Caixa do Acalento (TEA) */
-    .acalento-grid { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
-    .acalento-btn { background: #FFF; border: 2px solid var(--tea-blue); border-radius: 12px; width: 85px; padding: 10px 5px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.2s; }
-    .acalento-btn:hover { background: var(--tea-light); transform: scale(1.05); }
-    .acalento-btn span { font-size: 26px; }
-    .acalento-btn p { font-size: 10px; font-weight: 800; color: var(--tea-blue); margin: 6px 0 0 0; text-align: center; }
 
     .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 14px; text-align: center; }
     .avatar-escolha-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
@@ -293,6 +327,21 @@
 
   <div id="visualToast">Aviso do sistema</div>
 
+  <!-- MODAL DE CONVITE VIP LÚDICO -->
+  <div id="modalConviteVip" class="vip-modal-backdrop">
+    <div class="vip-modal-box">
+      <span style="font-size: 40px;">⭐</span>
+      <h3 style="color: #92400E; font-weight: 900; margin: 8px 0;">Recurso Exclusivo do Clube VIP!</h3>
+      <p style="font-size: 13px; color: #78350F; font-weight: 600; line-height: 1.5; margin-bottom: 16px;">
+        Quer liberar todos os sons relaxantes, pranchas infinitas, jogos secretos e vozes ilimitadas?
+      </p>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <button class="btn-vip-checkout" onclick="fecharModalVip(); mudarPagina('vip');">Seja VIP da Turminha por R$ 6,00 💳</button>
+        <button onclick="fecharModalVip()" style="background:transparent; border:none; color:#78350F; font-weight:800; font-size:12px; cursor:pointer; padding:6px;">Continuar no Grátis</button>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL TEMPO ESGOTADO -->
   <div id="modalBloqueioTempo" class="lock-modal">
     <div class="lock-box">
@@ -314,8 +363,8 @@
     <div class="modal-content">
       <button class="modal-close" onclick="fecharPrivacidade()">X</button>
       <h3 style="color: var(--primary-dark); margin-bottom: 12px; font-weight: 900;">🔒 Política de Privacidade da Turminha</h3>
-      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px;">A <strong>Turminha do Xexéu</strong> preza pela total segurança e privacidade da sua família, em total conformidade com a LGPD.</p>
-      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px;"><strong>1. Dados Locais e Seguros:</strong> O portal utiliza armazenamento local (Local Storage). Pontuações, rotinas e avatares ficam salvos exclusivamente no aparelho.</p>
+      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px;">A <strong>Turminha do Xexéu</strong> preza pela total segurança e privacidade da sua família, em conformidade com a LGPD.</p>
+      <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px;"><strong>1. Dados Locais e Seguros:</strong> O portal utiliza armazenamento local (Local Storage). Pontuações, configurações e nomes ficam salvos exclusivamente no aparelho.</p>
       <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px;">Qualquer dúvida, envie um e-mail para: turminhaxexeu@gmail.com</p>
     </div>
   </div>
@@ -347,6 +396,7 @@
       <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">🎬 Vídeos</button>
       <button id="btn-tab-jogos" class="nav-tab-btn" onclick="mudarPagina('jogos')">🎮 Jogos</button>
       <button id="btn-tab-tea" class="nav-tab-btn tea-tab" onclick="mudarPagina('tea')">🧩 Espaço TEA</button>
+      <button id="btn-tab-config" class="nav-tab-btn config-tab" onclick="mudarPagina('config')">⚙️ Ajustes</button>
       <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
     </nav>
 
@@ -354,8 +404,9 @@
       <span>💡 Dica: Se o som estiver mudo, toque nos 3 pontinhos e escolha <strong>"Abrir no Chrome"</strong> ou <strong>"Abrir no Safari"</strong>!</span>
     </div>
 
+    <!-- FRASE DE IMPACTO REFORMULADA -->
     <div class="top-vip-announcement" onclick="mudarPagina('vip')">
-      <span>⭐ Desbloqueie todo o Drive de Atividades e Ferramentas TEA por R$ 6,00/mês! Clique Aqui! 💖</span>
+      <span>✨ Desbloqueie o Drive Completo de Atividades, Ferramentas TEA e Jogos Exclusivos por apenas R$ 6,00/mês! Toque aqui e faça parte 💖</span>
     </div>
 
     <!-- PÁGINA INÍCIO -->
@@ -545,7 +596,7 @@
         <!-- TEMPORIZADOR GERAL -->
         <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 16px; background: #F0F9FF;">
           <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 14px; margin-bottom: 4px;">⏳ Temporizador de Uso</h4>
-          <p style="font-size: 11px; color: #475569; font-weight: 600; margin-bottom: 8px;">Defina um limite de tempo.</p>
+          <p style="font-size: 11px; color: #475569; font-weight: 600; margin-bottom: 8px;">Defina um limite de tempo seguro para a criança brincar.</p>
           <div class="timer-btns" id="botoesTemporizadorGeral"></div>
           <div class="timer-bar-bg" style="margin: 8px 0;">
             <div id="barra-temporizador" class="timer-bar-fill" style="width: 100%;"></div>
@@ -671,6 +722,7 @@
             <p style="font-size: 12px; color: #475569; font-weight: 600; margin-top: 4px;">Ambiente seguro de regulação sensorial e apoio à comunicação.</p>
           </div>
 
+          <!-- JORNADA DAS EMOÇÕES -->
           <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Jornada das Emoções do Dia</h4>
           <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px; position:relative; min-height: 270px; overflow:hidden;">
             
@@ -719,6 +771,19 @@
 
           </div>
 
+          <!-- CAIXA DO ACALENTO (SONS RELAXANTES INTEGRADOS) -->
+          <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 6px;">🎧 Caixa do Acalento (Sons Suaves)</h4>
+          <p style="font-size: 12px; color: #475569; text-align: center; margin-bottom: 12px; font-weight: 600;">Sons contínuos para acalmar, concentrar e regular estímulos sensoriais.</p>
+          
+          <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 24px;">
+            <div id="gridSonsAcalento" class="acalento-grid"></div>
+            <div id="controleSomAtivo" style="display:none; margin-top: 14px; background: #DCFCE7; border: 1.5px solid #86EFAC; padding: 8px 14px; border-radius: 12px; align-items:center; justify-content: space-between;">
+              <span id="txtSomTocando" style="font-size: 12px; font-weight: 800; color: #166534;">Tocando agora: Chuva</span>
+              <button onclick="pararSomRelaxante()" style="background: #EF4444; color:#FFF; border:none; padding: 4px 10px; border-radius: 8px; font-weight:800; font-size:11px; cursor:pointer;">Pausar Som ⏸️</button>
+            </div>
+          </div>
+
+          <!-- COMUNICAÇÃO BÁSICA CAA -->
           <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center; margin-bottom: 15px;">Comunicação Básica (CAA)</h4>
           <div class="interactive-card" style="border-color: #BAE6FD;">
             <p style="font-weight: 700; margin-bottom: 5px; font-size: 13px;">Toque no desenho para falar:</p>
@@ -727,6 +792,94 @@
               <div class="caa-btn" onclick="lerTexto('Estou com fome.')"><span>🍎</span><p>Comer</p></div>
               <div class="caa-btn" onclick="lerTexto('Preciso ir ao banheiro.')"><span>🚽</span><p>Banheiro</p></div>
             </div>
+            <p style="font-size: 11.5px; color: #64748B; margin-top: 14px; font-weight:600;">
+              ✨ Deseja criar botões personalizados ilimitados? <a onclick="abrirModalVip()" style="color:var(--primary); text-decoration:underline; cursor:pointer; font-weight:800;">Desbloqueie no Clube VIP por R$ 6,00!</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- PÁGINA CONFIGURAÇÕES -->
+    <main id="pagina-config" class="page-content">
+      <div class="age-group-section">
+        <h3 class="age-title">
+          ⚙️ Ajustes do Portal
+          <button class="btn-audio-mini" style="width:30px; height:30px; font-size:14px;" onclick="lerTexto('Central de Configurações e Personalização.')">🔊</button>
+        </h3>
+
+        <!-- CARD 1: NOME & MENÇÕES PERSONALIZADAS -->
+        <div class="config-card">
+          <h4>
+            <span>👤 Nome da Criança e Menções</span>
+            <span id="configBadgeNome" class="badge-plan badge-free">Grátis (1 Troca)</span>
+          </h4>
+          
+          <div class="config-item">
+            <label style="font-size: 12px; font-weight: 800; color: var(--text-main);">Nome da Criança:</label>
+            <div style="display:flex; gap:8px;">
+              <input type="text" id="configInputNome" class="vip-input" style="margin-bottom:0;" placeholder="Digite o nome da criança">
+              <button id="btnSalvarNomeConfig" onclick="salvarNomeUsuarioConfig()" style="background: var(--primary); color:#FFF; border:none; padding: 0 16px; border-radius: 10px; font-weight:800; cursor:pointer;">Salvar</button>
+            </div>
+            <p id="configAvisoNome" style="font-size: 11px; color: #64748B; font-weight: 600; margin: 0;">
+              ✨ No Plano Grátis você pode alterar o nome apenas <strong>1 vez</strong>.
+            </p>
+          </div>
+
+          <div class="config-item">
+            <div class="config-switch-row">
+              <div>
+                <strong style="font-size: 13px; color: var(--text-main); display:block;">Chamar a Criança pelo Nome</strong>
+                <span style="font-size: 11.5px; color: #64748B; font-weight: 600;">A Turminha falará o nome da criança durante os jogos e narrações.</span>
+              </div>
+              <label class="switch-toggle">
+                <input type="checkbox" id="configToggleMencoes" onchange="toggleMencoesNome(this.checked)">
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: VOZ DA IA & NARRADOR -->
+        <div class="config-card">
+          <h4>
+            <span>🗣️ Configuração de Voz da IA</span>
+            <span id="configBadgeVoz" class="badge-plan badge-free">1 Voz Padrão</span>
+          </h4>
+
+          <div class="config-item">
+            <label style="font-size: 12px; font-weight: 800; color: var(--text-main);">Voz do Narrador:</label>
+            <select id="configSelectVoz" class="vip-input" onchange="mudarVozConfig(this.value)" style="background:#FFF; margin-bottom: 4px;">
+              <option value="0">Voz Padrão (Grátis)</option>
+            </select>
+            <p id="configAvisoVoz" style="font-size: 11px; color: #D97706; font-weight: 700; margin: 0;">
+              ⭐ O Plano Grátis possui apenas 1 voz padrão. Assine o Clube VIP para destravar todas as vozes e timbres!
+            </p>
+          </div>
+
+          <div class="config-item" id="boxVelocidadeVip" style="opacity: 0.6;">
+            <div class="config-switch-row">
+              <label style="font-size: 12px; font-weight: 800; color: var(--text-main);">Velocidade da Fala: <span id="txtVelocidadeConfig">1.0x</span></label>
+              <span class="badge-plan badge-vip" style="font-size:9px;">Exclusivo VIP</span>
+            </div>
+            <input type="range" id="configRangeVelocidade" min="0.7" max="1.3" step="0.05" value="1.0" oninput="mudarVelocidadeConfig(this.value)" disabled>
+          </div>
+        </div>
+
+        <!-- CARD 3: RECURSOS DO ESPAÇO TEA -->
+        <div class="config-card">
+          <h4>
+            <span>🧩 Recursos TEA & Sensorial</span>
+            <span id="configBadgeTea" class="badge-plan badge-free">Básico</span>
+          </h4>
+          <div class="config-item">
+            <p style="font-size: 12px; color: #475569; font-weight: 600; margin: 0; line-height: 1.6;">
+              • <strong>Sons Relaxantes:</strong> <span id="txtStatusSonsConfig">2 sons grátis (6 no VIP)</span><br>
+              • <strong>Prancha de Comunicação:</strong> <span id="txtStatusCaaConfig">3 cards básicos (VIP para ilimitados)</span><br>
+              • <strong>Temporizador com Senha:</strong> <span id="txtStatusTimerConfig">Até 3 minutos (VIP até 30 min)</span>
+            </p>
+            <button onclick="mudarPagina('vip')" class="btn-vip-checkout" style="margin-top: 6px; padding: 8px 12px; font-size: 12px;">Desbloquear Tudo no VIP por R$ 6,00</button>
           </div>
         </div>
 
@@ -741,20 +894,25 @@
           <button class="btn-audio-mini" onclick="lerTexto('Faça parte do Clube VIP e tenha acesso a ferramentas avançadas!')" title="Ouvir">🔊</button>
         </div>
 
+        <!-- VISÃO BLOQUEADA -->
         <div id="vip-locked-view" class="vip-lock-container">
           <div class="vip-lock-header-clickable">
-            <h3>🧸 Ferramentas Avançadas & Temporizador Completo</h3>
+            <h3>🧸 Ferramentas Avançadas, Jogos VIP e Temporizador Completo</h3>
             <div class="vip-price-tag" style="margin-top: 10px;">Acesso Ilimitado: R$ 6,00 / mês</div>
           </div>
           
           <div class="vip-heart-msg">
-            <p style="margin-bottom: 6px;">💖 <strong>O que o Clube VIP desbloqueia?</strong></p>
-            <ul style="text-align: left; margin: 8px 0 8px 18px; font-weight: 600;">
-              <li>📁 <strong>Drive Completo de Atividades Pedagógicas:</strong> Imprima em alta qualidade.</li>
+            <p style="margin-bottom: 6px;">💖 <strong>O que o Clube VIP desbloqueia para sua família?</strong></p>
+            <ul style="text-align: left; margin: 8px 0 8px 18px; font-weight: 600; line-height: 1.6;">
+              <li>📁 <strong>Drive Completo de Atividades Pedagógicas:</strong> Imprima livrinhos e desenhos em alta qualidade.</li>
+              <li>🎮 <strong>Minijogos Exclusivos VIP:</strong> Desafios de histórias, memória 12 cartas e detalhes secretos.</li>
+              <li>🎧 <strong>Todos os 6 Sons Relaxantes da Caixa do Acalento:</strong> Áudios contínuos para regulação.</li>
+              <li>🗣️ <strong>Todas as Vozes da IA Liberadas:</strong> Escolha o tom e velocidade ideais.</li>
+              <li>👤 <strong>Personalização Ilimitada de Nomes:</strong> A Turminha chama seu filho pelo nome sempre.</li>
               <li>💬 <strong>Prancha de Comunicação Editável (CAA):</strong> Crie novos botões com voz.</li>
-              <li>⏳ <strong>Temporizador Expandido:</strong> Até 30 minutos com bloqueio parental.</li>
-              <li>🎧 <strong>Caixa do Acalento:</strong> Sons relaxantes para momentos de transição.</li>
-              <li>🌟 <strong>Rotina de Super Força:</strong> Acompanhe vitaminas e remédios com pontos.</li>
+              <li>⏳ <strong>Temporizador Expandido:</strong> Até 30 minutos com bloqueio parental por senha.</li>
+              <li>🌟 <strong>Rotina de Super Força:</strong> Acompanhe vitaminas e remédios com pontuação gamificada.</li>
+              <li>🎓 <strong>Diploma Oficial de Super Fã:</strong> Certificado exclusivo para imprimir.</li>
             </ul>
           </div>
           
@@ -783,11 +941,12 @@
           </div>
         </div>
 
+        <!-- VISÃO DESBLOQUEADA -->
         <div id="vip-unlocked-view" class="vip-content-unlocked">
           <div style="background: #D1FAE5; border: 2px solid #10B981; padding: 12px 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
             <div>
               <h4 style="color: #065F46; font-size: 15px; font-weight: 900; margin-bottom: 2px;">🎉 Bem-vindo ao Clube VIP!</h4>
-              <p style="font-size: 11.5px; color: #047857; margin: 0; font-weight: 600;">Seu acesso completo está ativo.</p>
+              <p style="font-size: 11.5px; color: #047857; margin: 0; font-weight: 600;">Seu acesso completo e recursos avançados estão ativos.</p>
             </div>
             <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 11.5px; cursor: pointer;">🔒 Sair</button>
           </div>
@@ -798,20 +957,80 @@
           </div>
 
           <div class="vip-internal-tabs">
-            <button id="tab-vip-geral" class="vip-int-btn active" onclick="alternarAbaVip('geral')">🌟 Diversão VIP</button>
+            <button id="tab-vip-geral" class="vip-int-btn active" onclick="alternarAbaVip('geral')">🌟 Diversão & Jogos VIP</button>
             <button id="tab-vip-tea" class="vip-int-btn" onclick="alternarAbaVip('tea')">🧩 Especial Pais & TEA (VIP)</button>
           </div>
 
+          <!-- SUB-ÁREA 1: DIVERSÃO E JOGOS VIP -->
           <div id="conteudo-vip-geral" class="vip-sub-area active-area">
-            <div class="certificado-container">
-              <h3>Diploma de Super Fã</h3>
-              <p style="font-size: 12px; color: #78350F; margin-bottom: 10px;">Digite o nome da criança para gerar o certificado oficial!</p>
-              <input type="text" id="nome-certificado" placeholder="Nome da Criança" style="padding: 8px; border-radius: 8px; border: 2px solid #FCD34D; outline: none; margin-bottom: 10px; width: 80%; max-width: 250px;">
-              <br>
-              <button onclick="gerarCertificado()" style="background: #D97706; color: #FFF; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer;">Gerar Diploma 🎓</button>
-              <div id="certificado-resultado" style="display:none; margin-top: 15px;">
-                <span class="certificado-nome" id="exibir-nome-certificado"></span>
-                <p style="font-weight: 800; color: #B45309; font-size: 14px;">É oficialmente Super Fã da Turminha do Xexéu! 🌟</p>
+            
+            <!-- DIPLOMA REFORMULADO -->
+            <div class="interactive-card" style="background:#FFF;">
+              <h4 style="color:#92400E; font-weight:900; margin-bottom:12px;">🎓 Gerador de Certificado de Honra</h4>
+              <div style="display:flex; justify-content:center; gap:8px; margin-bottom:16px;">
+                <input type="text" id="nome-certificado" placeholder="Nome da Criança" class="vip-input" style="max-width:260px; margin:0;">
+                <button onclick="gerarCertificado()" style="background:#D97706; color:#FFF; border:none; padding:0 16px; border-radius:10px; font-weight:800; cursor:pointer;">Gerar Diploma</button>
+              </div>
+
+              <div id="certificado-resultado" style="display:none;">
+                <div class="certificado-moldura">
+                  <div class="certificado-titulo">Diploma Oficial de Super Fã</div>
+                  <div class="certificado-subtitulo">Turminha do Xexéu • Reconhecimento de Honra</div>
+                  <p class="certificado-corpo">Certificamos com muita alegria que</p>
+                  <div class="certificado-nome-destaque" id="exibir-nome-certificado">Lucas</div>
+                  <p class="certificado-corpo">
+                    é oficialmente membro honorário e <strong>Super Fã da Turminha do Xexéu</strong>, enchendo nossos dias de amor, imaginação e criatividade!
+                  </p>
+                  <div class="certificado-selo-container">
+                    <div class="certificado-selo">🌟</div>
+                    <div class="certificado-assinatura">
+                      <span>___________________________</span><br>
+                      <strong>Turminha do Xexéu</strong><br>
+                      <span style="font-size:9px; color:#64748B;">Portal Oficial de Educação e Afeto</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MINIJOGOS EXCLUSIVOS VIP -->
+            <div class="vip-card-box" style="background: #FFFBEB; border-color: #FCD34D;">
+              <h4 style="color: #92400E; margin-bottom: 10px; font-size: 15px; font-weight: 900;">⭐ Minijogos Exclusivos VIP</h4>
+              <nav class="vip-games-subnav">
+                <button id="btn-vipanel-1" class="vip-sub-btn active" onclick="mudarPanelVip(1)">📖 Histórias</button>
+                <button id="btn-vipanel-2" class="vip-sub-btn" onclick="mudarPanelVip(2)">🎨 Detalhes Secretos</button>
+                <button id="btn-vipanel-3" class="vip-sub-btn" onclick="mudarPanelVip(3)">🧩 Quebra-Cabeça</button>
+                <button id="btn-vipanel-4" class="vip-sub-btn" onclick="mudarPanelVip(4)">🧠 Memória 12</button>
+              </nav>
+
+              <!-- PAINEL 1: HISTÓRIAS VIP -->
+              <div id="panel-vip-1" class="vip-game-panel active-vip-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center; min-height: 260px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">📖 Desafio das Histórias</h5>
+                <p id="vip-historia-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 14px;">Quem é o companheiro de quatro patas com coleira azul?</p>
+                <div id="vip-historia-options" style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 380px;"></div>
+              </div>
+
+              <!-- PAINEL 2: DETALHES SECRETOS VIP -->
+              <div id="panel-vip-2" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center; min-height: 260px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 6px;">🎨 Cores e Detalhes Secretos</h5>
+                <p id="vip-cor-txt" style="font-size: 14px; font-weight: 800; color: #78350F; margin-bottom: 8px;">Qual a cor da boina do Xexéu?</p>
+                <img id="vip-cor-img" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786902347/xexeu.png" alt="Detalhe VIP" style="width: 80px; height: 80px; object-fit: contain; margin-bottom: 10px;">
+                <div id="vip-cor-options" style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;"></div>
+              </div>
+
+              <!-- PAINEL 3: QUEBRA-CABEÇA EM PREPARAÇÃO -->
+              <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
+                <div class="card-em-reparo">
+                  <span class="icon-reparo">🚧</span>
+                  <h4 style="color:#92400E; font-weight:900; margin-bottom:6px;">Quebra-Cabeça Proporcional em Preparação!</h4>
+                  <p style="font-size: 12px; color: #64748B; font-weight: 600;">Estamos finalizando as ilustrações em proporção 4:3 para uma experiência mágica e encaixe perfeito. Novidade disponível em breve!</p>
+                </div>
+              </div>
+
+              <!-- PAINEL 4: MEMÓRIA 12 CARTAS -->
+              <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 12px; text-align: center;">
+                <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧠 Memória Relâmpago (12 Cartas)</h5>
+                <div id="memoryBoardVip" class="memory-board" style="max-width: 360px; grid-template-columns: repeat(4, 1fr);"></div>
               </div>
             </div>
 
@@ -828,7 +1047,17 @@
             </div>
           </div>
 
+          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA -->
           <div id="conteudo-vip-tea" class="vip-sub-area">
+            
+            <!-- DRIVE AZUL EM PREPARAÇÃO -->
+            <div class="card-em-reparo">
+              <span class="icon-reparo">🛠️</span>
+              <h4 style="color:#0284C7; font-weight:900; margin-bottom:4px;">Drive Azul TEA em Montagem!</h4>
+              <p style="font-size:12px; color:#475569; font-weight:600;">Estamos catalogando pranchas de rotina visual e histórias sociais em PDF para download direto. Disponível muito em breve!</p>
+            </div>
+
+            <!-- PRANCHA DE COMUNICAÇÃO EDITÁVEL -->
             <div class="vip-card-box" style="border-color: #BAE6FD;">
               <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 15px; margin-bottom: 5px;">💬 Prancha de Comunicação Editável (CAA)</h4>
               <p style="font-size: 12px; color: #475569; font-weight: 600;">Adicione botões personalizados com voz falada para o dia a dia.</p>
@@ -842,6 +1071,7 @@
               <div id="caaGridVip" class="caa-grid"></div>
             </div>
 
+            <!-- ROTINA DE SUPER FORÇA -->
             <div class="vip-card-box" style="background: #F0FDF4; border-color: #86EFAC;">
               <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                 <div>
@@ -888,8 +1118,8 @@
     // --- VARIÁVEIS GERAIS ---
     let audioAtivo = true;
     let vozesDisponiveis = [];
-    let vozSelecionadaIndex = 0;
-    let velocidadeFala = 1.0;
+    let vozSelecionadaIndex = parseInt(localStorage.getItem('turminha_voz_index') || '0');
+    let velocidadeFala = parseFloat(localStorage.getItem('turminha_velocidade') || '1.0');
     
     let pontosConquista = parseInt(localStorage.getItem('turminha_pontos') || '0');
     let listaRotinasSuperForca = JSON.parse(localStorage.getItem('turminha_rotinas')) || [];
@@ -899,10 +1129,27 @@
       { emoji: '💤', texto: 'Quero descansar' }
     ];
     let timerInterval = null;
+    let somAcalentoAudio = null;
+    let somAcalentoIdAtual = null;
     
+    // Configurações de Nome e Menções
+    let nomeUsuario = localStorage.getItem('turminha_nome_crianca') || 'Amigo(a)';
+    let trocasNomeRealizadas = parseInt(localStorage.getItem('turminha_trocas_nome') || '0');
+    let chamarPeloNome = localStorage.getItem('turminha_chamar_nome') === 'true';
+
     const SENHA_MESTRA_CRIADORA = "65628467";
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxkMvHbuXfZWEfd1tzLDvk4YzIW66alJyp2J9VGm-8nQV1iotNqaDLDieEeVblb6RcTMA/exec";
     
+    // LISTA DE SONS RELAXANTES
+    const LISTA_SONS_RELAXANTES = [
+      { id: 'chuva', nome: 'Chuva Suave', icon: '🌧️', url: 'https://cdn.freesound.org/previews/237/237729_4284968-lq.mp3', gratis: true },
+      { id: 'mar', nome: 'Ondas do Mar', icon: '🌊', url: 'https://cdn.freesound.org/previews/400/400632_5121236-lq.mp3', gratis: true },
+      { id: 'passaros', nome: 'Pássaros na Floresta', icon: '🐦', url: 'https://cdn.freesound.org/previews/416/416529_5121236-lq.mp3', gratis: false },
+      { id: 'ruido', nome: 'Ruído Branco Calmante', icon: '📻', url: 'https://cdn.freesound.org/previews/512/512471_108261-lq.mp3', gratis: false },
+      { id: 'fogueira', nome: 'Fogueira Aconchegante', icon: '🔥', url: 'https://cdn.freesound.org/previews/487/487726_9961300-lq.mp3', gratis: false },
+      { id: 'rio', nome: 'Rio na Floresta', icon: '💧', url: 'https://cdn.freesound.org/previews/522/522384_7037-lq.mp3', gratis: false }
+    ];
+
     const TODOS_PERSONAGENS = [
       { nome: 'Xexéu', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786902347/xexeu.png', letra: 'X', corPergunta: "Qual a cor da boina do Xexéu?", corCorreta: "Amarela", corOpcoes: ["Verde", "Amarela", "Rosa"] },
       { nome: 'Capilé', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786902348/capile.png', letra: 'C', corPergunta: "Qual a cor da coleira do Capilé?", corCorreta: "Azul", corOpcoes: ["Azul", "Vermelha", "Roxa"] },
@@ -934,16 +1181,42 @@
     };
 
     // --- LEITURA POR VOZ & FEEDBACKS ---
-    function lerTexto(texto) {
-      exibirAvisoVisual(texto);
+    function carregarVozes() {
+      if ('speechSynthesis' in window) {
+        vozesDisponiveis = window.speechSynthesis.getVoices().filter(v => v.lang.includes('pt') || v.lang.includes('PT'));
+        atualizarSelectVozesConfig();
+      }
+    }
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.onvoiceschanged = carregarVozes;
+    }
+
+    function lerTexto(texto, prefixarNome = false) {
+      let textoFinal = texto;
+      if (prefixarNome && chamarPeloNome && nomeUsuario && nomeUsuario !== 'Amigo(a)') {
+        textoFinal = `${nomeUsuario}, ${texto.charAt(0).toLowerCase() + texto.slice(1)}`;
+      }
+
+      exibirAvisoVisual(textoFinal);
       if (!audioAtivo) return;
+
       if ('speechSynthesis' in window) {
         try {
           window.speechSynthesis.cancel(); 
-          const utterance = new SpeechSynthesisUtterance(texto);
+          const utterance = new SpeechSynthesisUtterance(textoFinal);
           utterance.lang = 'pt-BR';
-          utterance.rate = 1.0; 
-          utterance.pitch = 1.1; 
+          
+          const isVip = localStorage.getItem('turminha_xexeu_vip_ativo') === 'true';
+          if (isVip) {
+            utterance.rate = velocidadeFala;
+            if (vozesDisponiveis[vozSelecionadaIndex]) utterance.voice = vozesDisponiveis[vozSelecionadaIndex];
+          } else {
+            utterance.rate = 1.0;
+            if (vozesDisponiveis[0]) utterance.voice = vozesDisponiveis[0];
+          }
+
+          utterance.pitch = 1.05; 
           window.speechSynthesis.speak(utterance);
         } catch (e) { console.log(e); }
       }
@@ -954,7 +1227,7 @@
       if (!p) return;
       document.getElementById('detalhe-nome').innerText = p.nome;
       document.getElementById('detalhe-texto').innerText = p.desc;
-      lerTexto(p.desc);
+      lerTexto(p.desc, true);
     }
 
     function alternarAudioGlobal() {
@@ -984,6 +1257,74 @@
       }
     }
 
+    function abrirModalVip() { document.getElementById('modalConviteVip').classList.add('active'); }
+    function fecharModalVip() { document.getElementById('modalConviteVip').classList.remove('active'); }
+
+    // --- SONS RELAXANTES (CAIXA DO ACALENTO) ---
+    function renderizarSonsAcalento() {
+      const grid = document.getElementById('gridSonsAcalento');
+      if (!grid) return;
+      grid.innerHTML = '';
+      const isVip = localStorage.getItem('turminha_xexeu_vip_ativo') === 'true';
+
+      LISTA_SONS_RELAXANTES.forEach(som => {
+        const btn = document.createElement('div');
+        const liberado = som.gratis || isVip;
+        btn.className = `acalento-btn ${liberado ? '' : 'bloqueado'} ${somAcalentoIdAtual === som.id ? 'tocando' : ''}`;
+        
+        btn.innerHTML = `
+          ${!liberado ? '<span class="acalento-badge-lock">⭐ VIP</span>' : ''}
+          <span class="sound-icon">${som.icon}</span>
+          <p>${som.nome}</p>
+        `;
+
+        btn.onclick = () => {
+          if (!liberado) {
+            abrirModalVip();
+          } else {
+            tocarSomRelaxante(som);
+          }
+        };
+
+        grid.appendChild(btn);
+      });
+    }
+
+    function tocarSomRelaxante(som) {
+      if (somAcalentoAudio && somAcalentoIdAtual === som.id) {
+        pararSomRelaxante();
+        return;
+      }
+
+      if (somAcalentoAudio) {
+        somAcalentoAudio.pause();
+        somAcalentoAudio = null;
+      }
+
+      somAcalentoAudio = new Audio(som.url);
+      somAcalentoAudio.loop = true;
+      somAcalentoAudio.play().then(() => {
+        somAcalentoIdAtual = som.id;
+        document.getElementById('controleSomAtivo').style.display = 'flex';
+        document.getElementById('txtSomTocando').innerText = `Tocando agora: ${som.icon} ${som.nome}`;
+        renderizarSonsAcalento();
+        lerTexto(`Reproduzindo som de ${som.nome}`);
+      }).catch(err => {
+        console.log("Erro de áudio:", err);
+        lerTexto("Áudio temporariamente em manutenção.");
+      });
+    }
+
+    function pararSomRelaxante() {
+      if (somAcalentoAudio) {
+        somAcalentoAudio.pause();
+        somAcalentoAudio = null;
+      }
+      somAcalentoIdAtual = null;
+      document.getElementById('controleSomAtivo').style.display = 'none';
+      renderizarSonsAcalento();
+    }
+
     // --- PONTOS E CONQUISTAS ---
     function adicionarPontos(qtd) {
       pontosConquista += qtd;
@@ -1003,9 +1344,178 @@
       }
     }
 
+    // --- PAINEL DE CONFIGURAÇÕES ---
+    function renderizarConfiguracoes() {
+      const isVip = localStorage.getItem('turminha_xexeu_vip_ativo') === 'true';
+      
+      const inputNome = document.getElementById('configInputNome');
+      const btnSalvar = document.getElementById('btnSalvarNomeConfig');
+      const avisoNome = document.getElementById('configAvisoNome');
+      const badgeNome = document.getElementById('configBadgeNome');
+      const toggleMencoes = document.getElementById('configToggleMencoes');
+
+      if (inputNome) inputNome.value = (nomeUsuario !== 'Amigo(a)') ? nomeUsuario : '';
+      if (toggleMencoes) toggleMencoes.checked = chamarPeloNome;
+
+      if (isVip) {
+        badgeNome.className = 'badge-plan badge-vip';
+        badgeNome.innerText = 'VIP (Trocas Ilimitadas)';
+        avisoNome.innerHTML = '✨ Como assinante VIP, você pode alterar o nome da criança sempre que quiser!';
+        inputNome.disabled = false;
+        btnSalvar.disabled = false;
+        btnSalvar.style.opacity = '1';
+      } else {
+        badgeNome.className = 'badge-plan badge-free';
+        badgeNome.innerText = 'Grátis (1 Troca)';
+        if (trocasNomeRealizadas >= 1) {
+          inputNome.disabled = true;
+          btnSalvar.disabled = true;
+          btnSalvar.style.opacity = '0.5';
+          avisoNome.innerHTML = '🔒 <strong>Limite de troca atingido no Plano Grátis.</strong> Assine o VIP para alterar novamente!';
+        } else {
+          inputNome.disabled = false;
+          btnSalvar.disabled = false;
+          btnSalvar.style.opacity = '1';
+          avisoNome.innerHTML = '✨ No Plano Grátis você pode alterar o nome apenas <strong>1 vez</strong>.';
+        }
+      }
+
+      const badgeVoz = document.getElementById('configBadgeVoz');
+      const avisoVoz = document.getElementById('configAvisoVoz');
+      const boxVelocidade = document.getElementById('boxVelocidadeVip');
+      const rangeVelocidade = document.getElementById('configRangeVelocidade');
+      const txtVelocidade = document.getElementById('txtVelocidadeConfig');
+
+      if (isVip) {
+        badgeVoz.className = 'badge-plan badge-vip';
+        badgeVoz.innerText = 'VIP (Vozes Liberadas)';
+        avisoVoz.style.display = 'none';
+        boxVelocidade.style.opacity = '1';
+        rangeVelocidade.disabled = false;
+        rangeVelocidade.value = velocidadeFala;
+        txtVelocidade.innerText = `${velocidadeFala}x`;
+      } else {
+        badgeVoz.className = 'badge-plan badge-free';
+        badgeVoz.innerText = '1 Voz Padrão';
+        avisoVoz.style.display = 'block';
+        boxVelocidade.style.opacity = '0.6';
+        rangeVelocidade.disabled = true;
+      }
+
+      const badgeTea = document.getElementById('configBadgeTea');
+      const txtCaa = document.getElementById('txtStatusCaaConfig');
+      const txtTimer = document.getElementById('txtStatusTimerConfig');
+      const txtSons = document.getElementById('txtStatusSonsConfig');
+
+      if (isVip) {
+        badgeTea.className = 'badge-plan badge-vip';
+        badgeTea.innerText = 'VIP Completo';
+        txtCaa.innerHTML = '<strong style="color:var(--green);">Ilimitados & Editáveis</strong>';
+        txtTimer.innerHTML = '<strong style="color:var(--green);">Até 30 Minutos</strong>';
+        txtSons.innerHTML = '<strong style="color:var(--green);">Todos os 6 Sons Liberados</strong>';
+      } else {
+        badgeTea.className = 'badge-plan badge-free';
+        badgeTea.innerText = 'Básico';
+        txtCaa.innerText = '3 cards básicos (VIP para ilimitados)';
+        txtTimer.innerText = 'Até 3 minutos (VIP até 30 min)';
+        txtSons.innerText = '2 sons grátis (6 no VIP)';
+      }
+
+      atualizarSelectVozesConfig();
+      renderizarSonsAcalento();
+    }
+
+    function atualizarSelectVozesConfig() {
+      const select = document.getElementById('configSelectVoz');
+      if (!select) return;
+      const isVip = localStorage.getItem('turminha_xexeu_vip_ativo') === 'true';
+
+      select.innerHTML = '';
+      if (vozesDisponiveis.length === 0) {
+        select.innerHTML = '<option value="0">Voz Padrão</option>';
+        return;
+      }
+
+      if (isVip) {
+        vozesDisponiveis.forEach((voz, idx) => {
+          const opt = document.createElement('option');
+          opt.value = idx;
+          opt.innerText = `🗣️ ${voz.name} (${voz.lang})`;
+          if (idx === vozSelecionadaIndex) opt.selected = true;
+          select.appendChild(opt);
+        });
+      } else {
+        const opt = document.createElement('option');
+        opt.value = 0;
+        opt.innerText = `🗣️ ${vozesDisponiveis[0]?.name || 'Voz Padrão'} (Grátis)`;
+        select.appendChild(opt);
+
+        if (vozesDisponiveis.length > 1) {
+          const optBloq = document.createElement('option');
+          optBloq.disabled = true;
+          optBloq.innerText = `🔒 +${vozesDisponiveis.length - 1} Outras Vozes (Disponíveis no VIP)`;
+          select.appendChild(optBloq);
+        }
+      }
+    }
+
+    function salvarNomeUsuarioConfig() {
+      const isVip = localStorage.getItem('turminha_xexeu_vip_ativo') === 'true';
+      const novoNome = document.getElementById('configInputNome').value.trim();
+      
+      if (!novoNome) {
+        alert("Por favor, digite um nome válido.");
+        return;
+      }
+
+      if (!isVip && trocasNomeRealizadas >= 1) {
+        abrirModalVip();
+        return;
+      }
+
+      nomeUsuario = novoNome;
+      localStorage.setItem('turminha_nome_crianca', nomeUsuario);
+      
+      if (!isVip) {
+        trocasNomeRealizadas++;
+        localStorage.setItem('turminha_trocas_nome', trocasNomeRealizadas);
+      }
+
+      renderizarConfiguracoes();
+      lerTexto(`Nome configurado com sucesso para ${nomeUsuario}!`);
+    }
+
+    function toggleMencoesNome(ativado) {
+      chamarPeloNome = ativado;
+      localStorage.setItem('turminha_chamar_nome', ativado ? 'true' : 'false');
+      if (ativado) {
+        lerTexto(`As menções estão ativadas para você, ${nomeUsuario}!`);
+      } else {
+        lerTexto("Menções por nome desativadas.");
+      }
+    }
+
+    function mudarVozConfig(val) {
+      const isVip = localStorage.getItem('turminha_xexeu_vip_ativo') === 'true';
+      if (!isVip) {
+        abrirModalVip();
+        return;
+      }
+      vozSelecionadaIndex = parseInt(val);
+      localStorage.setItem('turminha_voz_index', vozSelecionadaIndex);
+      lerTexto("Tom de voz atualizado com sucesso!");
+    }
+
+    function mudarVelocidadeConfig(val) {
+      velocidadeFala = parseFloat(val);
+      localStorage.setItem('turminha_velocidade', velocidadeFala);
+      const txt = document.getElementById('txtVelocidadeConfig');
+      if (txt) txt.innerText = `${velocidadeFala}x`;
+    }
+
     // --- NAVEGAÇÃO ENTRE ABAS ---
     function mudarPagina(pagina) {
-      ['inicio', 'videos', 'jogos', 'tea', 'vip'].forEach(p => {
+      ['inicio', 'videos', 'jogos', 'tea', 'config', 'vip'].forEach(p => {
         const pagEl = document.getElementById('pagina-' + p);
         const btnEl = document.getElementById('btn-tab-' + p);
         if (pagEl) pagEl.classList.remove('active-page');
@@ -1021,12 +1531,19 @@
         setTimeout(redimensionarCanvas, 100);
         atualizarBotoesTemporizadorGeral();
       }
-      if (pagina === 'tea') verificarStatusOnboardingTea();
+      if (pagina === 'tea') {
+        verificarStatusOnboardingTea();
+        renderizarSonsAcalento();
+      }
+      if (pagina === 'config') renderizarConfiguracoes();
       if (pagina === 'vip') {
         verificarStatusVip();
         criarSeletorAvatarPerfil();
         renderizarRotinasVip();
         renderizarCaaVip();
+        carregarDesafioHistoriaVip();
+        carregarJogoCorVip();
+        iniciarMemoriaVip();
       }
     }
 
@@ -1044,7 +1561,7 @@
       if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
     }
 
-    // --- JOGOS: 1. LOUSA MÁGICA ---
+    // --- JOGOS GRÁTIS: 1. LOUSA MÁGICA ---
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas.getContext('2d');
     let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free', imagemPintarCarregada = null, tamanhoPincel = 6, escalaZoomGuia = 0.85;
@@ -1077,7 +1594,7 @@
       if (btnElemento) btnElemento.classList.add('selected');
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const img = new Image(); img.crossOrigin = "Anonymous"; img.src = urlImg;
-      img.onload = () => { imagemPintarCarregada = img; desenharContornoNoCanvas(img); lerTexto("Vamos pintar o " + nome + "!"); };
+      img.onload = () => { imagemPintarCarregada = img; desenharContornoNoCanvas(img); lerTexto("Vamos pintar o " + nome + "!", true); };
     }
 
     function desenharContornoNoCanvas(img) {
@@ -1105,7 +1622,7 @@
     canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
     canvas.addEventListener('touchend', () => desenhando = false);
 
-    // --- JOGOS: 2. VAMOS CONTAR ---
+    // --- JOGOS GRÁTIS: 2. CONTAR ---
     let qContar = 0;
     function carregarJogoContar() {
       qContar = Math.floor(Math.random() * 5) + 1;
@@ -1120,7 +1637,7 @@
         btn.onclick = () => {
           if (n === qContar) {
             btn.classList.add('correct');
-            lerTexto("Muito bem! Você contou certinho!");
+            lerTexto("Muito bem! Você acertou!", true);
             adicionarPontos(5);
             setTimeout(carregarJogoContar, 800);
           } else {
@@ -1133,7 +1650,7 @@
       }
     }
 
-    // --- JOGOS: 3. PRIMEIRAS LETRAS ---
+    // --- JOGOS GRÁTIS: 3. LETRAS ---
     let pLetraAtual = null;
     function carregarJogoLetra() {
       pLetraAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
@@ -1153,7 +1670,7 @@
         btn.onclick = () => {
           if (l === pLetraAtual.letra) {
             btn.classList.add('correct');
-            lerTexto("Parabéns! " + pLetraAtual.nome + " começa com " + l);
+            lerTexto("Parabéns! " + pLetraAtual.nome + " começa com " + l, true);
             adicionarPontos(5);
             setTimeout(carregarJogoLetra, 800);
           } else {
@@ -1166,7 +1683,7 @@
       });
     }
 
-    // --- JOGOS: 4. MEMÓRIA ---
+    // --- JOGOS GRÁTIS: 4. MEMÓRIA ---
     let cMem = [], pCarta = null, travaMem = false, acertosMem = 0;
     function iniciarMemoria() {
       acertosMem = 0;
@@ -1189,7 +1706,7 @@
               adicionarPontos(3);
               if (acertosMem === 4) {
                 adicionarPontos(10);
-                lerTexto("Parabéns! Você completou o jogo da memória!");
+                lerTexto("Parabéns! Você completou o jogo da memória!", true);
                 setTimeout(iniciarMemoria, 1800);
               }
             } else {
@@ -1206,7 +1723,7 @@
       });
     }
 
-    // --- JOGOS: 5. QUIZ E CORES ---
+    // --- JOGOS GRÁTIS: 5. QUIZ ---
     let pQuizAtual = null;
     function carregarQuiz() {
       pQuizAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
@@ -1228,7 +1745,7 @@
         btn.onclick = () => {
           if (o === pQuizAtual.nome) {
             btn.classList.add('correct');
-            lerTexto("Muito bem! É o " + o);
+            lerTexto("Muito bem! É o " + o, true);
             adicionarPontos(5);
             setTimeout(carregarQuiz, 800);
           } else {
@@ -1240,7 +1757,6 @@
         container.appendChild(btn);
       });
 
-      // Pergunta de cores dinâmica
       const pCor = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
       const corTxt = document.getElementById('cor-pergunta-txt');
       const corImg = document.getElementById('cor-img');
@@ -1259,7 +1775,7 @@
           b.onclick = () => {
             if(c === pCor.corCorreta) {
               b.classList.add('correct');
-              lerTexto("Isso mesmo! Acertou a resposta!");
+              lerTexto("Isso mesmo! Acertou a resposta!", true);
               adicionarPontos(5);
               setTimeout(carregarQuiz, 800);
             } else {
@@ -1271,6 +1787,136 @@
           corOpts.appendChild(b);
         });
       }
+    }
+
+    // --- JOGOS EXCLUSIVOS VIP ---
+    function mudarPanelVip(num) {
+      for(let i=1; i<=4; i++) {
+        const panel = document.getElementById('panel-vip-' + i);
+        const btn = document.getElementById('btn-vipanel-' + i);
+        if(panel) panel.classList.remove('active-vip-panel');
+        if(btn) btn.classList.remove('active');
+      }
+      document.getElementById('panel-vip-' + num).classList.add('active-vip-panel');
+      document.getElementById('btn-vipanel-' + num).classList.add('active');
+    }
+
+    const HISTORIAS_VIP = [
+      { pergunta: "Qual o cachorrinho de orelhas grandes com pingente dourado?", correta: "Capilé", opcoes: ["Capilé", "Xexéu", "Joca"] },
+      { pergunta: "Quem é a vovó carinhosa de óculos redondos?", correta: "Vovó Hilda", opcoes: ["Vovó Hilda", "Maya", "Lia"] },
+      { pergunta: "Quem é o paizão ruivo que adora criar invenções?", correta: "Sam", opcoes: ["Sam", "Theo", "Vovô Beto"] },
+      { pergunta: "Quem é a menina vaidosa de vestido rosa?", correta: "Iza", opcoes: ["Iza", "Nina", "Lia"] }
+    ];
+
+    function carregarDesafioHistoriaVip() {
+      const h = HISTORIAS_VIP[Math.floor(Math.random() * HISTORIAS_VIP.length)];
+      const txt = document.getElementById('vip-historia-txt');
+      const container = document.getElementById('vip-historia-options');
+      if (!txt || !container) return;
+
+      txt.innerText = h.pergunta;
+      container.innerHTML = '';
+
+      h.opcoes.sort(() => Math.random() - 0.5).forEach(op => {
+        const btn = document.createElement('button');
+        btn.className = "btn-choice";
+        btn.style.fontSize = "14px";
+        btn.style.padding = "10px 14px";
+        btn.innerText = op;
+        btn.onclick = () => {
+          if (op === h.correta) {
+            btn.classList.add('correct');
+            lerTexto("Incrível! Você conhece tudo sobre a Turminha!", true);
+            adicionarPontos(10);
+            setTimeout(carregarDesafioHistoriaVip, 900);
+          } else {
+            btn.classList.add('wrong');
+            lerTexto("Pense bem e tente novamente!");
+            setTimeout(() => btn.classList.remove('wrong'), 500);
+          }
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    function carregarJogoCorVip() {
+      const p = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      const txt = document.getElementById('vip-cor-txt');
+      const img = document.getElementById('vip-cor-img');
+      const container = document.getElementById('vip-cor-options');
+      if (!txt || !container) return;
+
+      txt.innerText = p.corPergunta;
+      img.src = p.img;
+      container.innerHTML = '';
+
+      p.corOpcoes.forEach(op => {
+        const btn = document.createElement('button');
+        btn.className = "btn-choice";
+        btn.style.fontSize = "13px";
+        btn.style.padding = "8px 14px";
+        btn.innerText = op;
+        btn.onclick = () => {
+          if (op === p.corCorreta) {
+            btn.classList.add('correct');
+            lerTexto("Perfeito! Detalhe correto!", true);
+            adicionarPontos(10);
+            setTimeout(carregarJogoCorVip, 900);
+          } else {
+            btn.classList.add('wrong');
+            lerTexto("Quase! Observe a imagem!");
+            setTimeout(() => btn.classList.remove('wrong'), 500);
+          }
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    let cMemVip = [], pCartaVip = null, travaMemVip = false, acertosMemVip = 0;
+    function iniciarMemoriaVip() {
+      acertosMemVip = 0;
+      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 6);
+      const imgs = sorteados.map(p => p.img);
+      cMemVip = [...imgs, ...imgs].sort(() => Math.random() - 0.5);
+      const board = document.getElementById('memoryBoardVip');
+      if (!board) return;
+      board.innerHTML = '';
+
+      cMemVip.forEach(src => {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        card.dataset.img = src;
+        card.innerText = '⭐';
+        card.onclick = () => {
+          if (travaMemVip || card.classList.contains('flipped')) return;
+          card.classList.add('flipped');
+          card.innerHTML = `<img src="${src}" alt="Carta">`;
+
+          if (!pCartaVip) {
+            pCartaVip = card;
+          } else {
+            if (pCartaVip.dataset.img === src) {
+              acertosMemVip++;
+              lerTexto("Par VIP encontrado!");
+              pCartaVip = null;
+              adicionarPontos(5);
+              if (acertosMemVip === 6) {
+                adicionarPontos(20);
+                lerTexto("Sensacional! Você dominou o desafio de 12 cartas VIP!", true);
+                setTimeout(iniciarMemoriaVip, 2000);
+              }
+            } else {
+              travaMemVip = true;
+              setTimeout(() => {
+                pCartaVip.classList.remove('flipped'); pCartaVip.innerText = '⭐';
+                card.classList.remove('flipped'); card.innerText = '⭐';
+                pCartaVip = null; travaMemVip = false;
+              }, 900);
+            }
+          }
+        };
+        board.appendChild(card);
+      });
     }
 
     // --- TEMPORIZADOR & CONTROLE PARENTAL ---
@@ -1291,6 +1937,7 @@
         container.innerHTML = `
           <button class="timer-btn" onclick="iniciarTemporizador(1)">1 Min</button>
           <button class="timer-btn" onclick="iniciarTemporizador(3)">3 Min</button>
+          <button class="timer-btn" style="background:#F59E0B;" onclick="abrirModalVip()">🔒 Mais tempos no VIP</button>
         `;
       }
     }
@@ -1356,7 +2003,11 @@
       const email = document.getElementById('tea-email').value.trim();
       const senha = document.getElementById('tea-senha').value.trim();
       if (!email || !senha) { alert("Preencha e-mail e senha parental!"); return; }
-      localStorage.setItem('tea_nome_crianca', nome || 'Amigo(a)');
+      
+      if (nome) {
+        nomeUsuario = nome;
+        localStorage.setItem('turminha_nome_crianca', nomeUsuario);
+      }
       localStorage.setItem('tea_email_pais', email);
       localStorage.setItem('tea_senha_pais', senha);
       verificarStatusOnboardingTea();
@@ -1365,18 +2016,17 @@
 
     function verificarStatusOnboardingTea() {
       const email = localStorage.getItem('tea_email_pais');
-      const nome = localStorage.getItem('tea_nome_crianca') || 'Visitante';
       if (email) {
         document.getElementById('tea-onboarding-box').style.display = 'none';
         document.getElementById('tea-conteudo-liberado').style.display = 'flex';
         const saudacao = document.getElementById('saudacao-espaco-tea');
-        if (saudacao) saudacao.innerText = `🌿 Olá, ${nome}! Espaço Personalizado`;
+        if (saudacao) saudacao.innerText = `🌿 Olá, ${nomeUsuario}! Espaço Personalizado`;
       }
     }
 
     function responderEmocao(emocao) {
       if (emocao === 'Feliz') {
-        lerTexto("Isso mesmo! O Xexéu está muito feliz!");
+        lerTexto("Isso mesmo! O Xexéu está muito feliz!", true);
         const p1 = document.getElementById('emocoes-passo-1');
         const p2 = document.getElementById('emocoes-passo-2');
         if (p1) p1.classList.add('fade-out');
@@ -1391,7 +2041,7 @@
     }
 
     function responderMinhaEmocao(emocao) {
-      lerTexto("Obrigado por compartilhar! Sentir " + emocao.toLowerCase() + " faz parte do nosso dia.");
+      lerTexto("Obrigado por compartilhar! Sentir " + emocao.toLowerCase() + " faz parte do nosso dia.", true);
       setTimeout(() => {
         const p1 = document.getElementById('emocoes-passo-1');
         const p2 = document.getElementById('emocoes-passo-2');
@@ -1473,7 +2123,7 @@
       localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
       adicionarPontos(10);
       renderizarRotinasVip();
-      lerTexto("Você ganhou 10 pontos de Super Força!");
+      lerTexto("Você ganhou 10 pontos de Super Força!", true);
     }
 
     function removerRotina(index) {
@@ -1494,6 +2144,7 @@
         if(unlocked) unlocked.classList.remove('active-vip');
       }
       atualizarBotoesTemporizadorGeral();
+      renderizarConfiguracoes();
     }
 
     function fazerLogin() {
@@ -1531,11 +2182,12 @@
     }
 
     function gerarCertificado() {
-      const nome = document.getElementById('nome-certificado').value.trim();
-      if (!nome) { alert("Digite o nome da criança!"); return; }
-      document.getElementById('exibir-nome-certificado').innerText = nome;
+      const inputNome = document.getElementById('nome-certificado').value.trim();
+      const nomeFinal = inputNome || ((nomeUsuario !== 'Amigo(a)') ? nomeUsuario : 'Super Campeão');
+      
+      document.getElementById('exibir-nome-certificado').innerText = nomeFinal;
       document.getElementById('certificado-resultado').style.display = 'block';
-      lerTexto(`Parabéns, ${nome}! Você é Super Fã oficial da Turminha do Xexéu!`);
+      lerTexto(`Parabéns, ${nomeFinal}! Seu Diploma de Super Fã oficial está pronto!`);
     }
 
     function criarSeletorAvatarPerfil() {
@@ -1583,6 +2235,7 @@
 
     // --- INICIALIZAÇÃO SEGURA ---
     window.onload = () => {
+      carregarVozes();
       atualizarPlacarConquistas();
       carregarJogoContar();
       carregarJogoLetra();
@@ -1592,6 +2245,7 @@
       verificarCookies();
       verificarStatusOnboardingTea();
       atualizarBotoesTemporizadorGeral();
+      renderizarConfiguracoes();
     };
     window.addEventListener('resize', redimensionarCanvas);
   </script>
