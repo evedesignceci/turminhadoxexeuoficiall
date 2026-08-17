@@ -1500,11 +1500,8 @@
         if (!opcoes.includes(o)) opcoes.push(o);
       }
       opcoes.sort(() => Math.random() - 0.5).forEach(o => {
-        const btn = document.createElement('button');
-        btn.className = "btn-choice";
-        btn.style.fontSize = "14px";
-        btn.style.padding = "10px 14px";
-        btn.innerText = o;
+        const btn = document.createElement('button'); btn.className = "btn-choice";
+        btn.style.fontSize = "14px"; btn.style.padding = "10px 14px"; btn.innerText = o;
         btn.onclick = () => {
           if (o === pQuizAtual.nome) {
             btn.classList.add('correct'); playCorrectSound(); lerTexto("Muito bem!", true);
@@ -1527,11 +1524,8 @@
       if(corOpts) {
         corOpts.innerHTML = '';
         pCor.corOpcoes.forEach(c => {
-          const b = document.createElement('button');
-          b.className = "btn-choice";
-          b.style.fontSize = "13px";
-          b.style.padding = "10px 14px";
-          b.innerText = c;
+          const b = document.createElement('button'); b.className = "btn-choice";
+          b.style.fontSize = "13px"; b.style.padding = "10px 14px"; b.innerText = c;
           b.onclick = () => {
             if(c === pCor.corCorreta) {
               b.classList.add('correct'); playCorrectSound(); lerTexto("Acertou!", true);
@@ -1577,11 +1571,8 @@
       container.innerHTML = '';
 
       h.opcoes.sort(() => Math.random() - 0.5).forEach(op => {
-        const btn = document.createElement('button');
-        btn.className = "btn-choice";
-        btn.style.fontSize = "15px";
-        btn.style.padding = "12px 16px";
-        btn.innerText = op;
+        const btn = document.createElement('button'); btn.className = "btn-choice";
+        btn.style.fontSize = "15px"; btn.style.padding = "12px 16px"; btn.innerText = op;
         btn.onclick = () => {
           if (op === h.correta) {
             btn.classList.add('correct'); playCorrectSound();
@@ -1602,16 +1593,11 @@
       const container = document.getElementById('vip-cor-options');
       if (!txt || !container) return;
 
-      txt.innerText = p.corPergunta;
-      img.src = p.img;
-      container.innerHTML = '';
+      txt.innerText = p.corPergunta; img.src = p.img; container.innerHTML = '';
 
       p.corOpcoes.forEach(op => {
-        const btn = document.createElement('button');
-        btn.className = "btn-choice";
-        btn.style.fontSize = "14px";
-        btn.style.padding = "10px 16px";
-        btn.innerText = op;
+        const btn = document.createElement('button'); btn.className = "btn-choice";
+        btn.style.fontSize = "14px"; btn.style.padding = "10px 16px"; btn.innerText = op;
         btn.onclick = () => {
           if (op === p.corCorreta) {
             btn.classList.add('correct'); playCorrectSound();
@@ -1632,19 +1618,15 @@
       const imgs = sorteados.map(p => p.img);
       cMemVip = [...imgs, ...imgs].sort(() => Math.random() - 0.5);
       const board = document.getElementById('memoryBoardVip');
-      if (!board) return;
-      board.innerHTML = '';
+      if (!board) return; board.innerHTML = '';
 
       cMemVip.forEach(src => {
-        const card = document.createElement('div');
-        card.className = 'memory-card';
-        card.dataset.img = src;
-        card.innerText = '⭐';
+        const card = document.createElement('div'); card.className = 'memory-card';
+        card.dataset.img = src; card.innerText = '⭐';
         card.onclick = () => {
           if (travaMemVip || card.classList.contains('flipped')) return;
           playClickSound();
-          card.classList.add('flipped');
-          card.innerHTML = `<img src="${src}" alt="Carta">`;
+          card.classList.add('flipped'); card.innerHTML = `<img src="${src}" alt="Carta">`;
 
           if (!pCartaVip) {
             pCartaVip = card;
@@ -1701,12 +1683,11 @@
       
       if(barra) { barra.style.width = '100%'; barra.style.backgroundColor = '#10B981'; }
       if(txt) txt.innerText = `${minutos}:00`;
-      lerTexto(`Temporizador iniciado para ${minutos} minutos.`);
+      lerTexto(`Temporizador: ${minutos} minutos.`);
 
       timerInterval = setInterval(() => {
         tempoRestante--;
-        const m = Math.floor(tempoRestante / 60);
-        const s = tempoRestante % 60;
+        const m = Math.floor(tempoRestante / 60); const s = tempoRestante % 60;
         if(txt) txt.innerText = `${m}:${s < 10 ? '0' : ''}${s}`;
         
         const pct = (tempoRestante / totalTempo) * 100;
@@ -1754,14 +1735,10 @@
       const senha = document.getElementById('tea-senha').value.trim();
       if (!email || !senha) { alert("Preencha e-mail e senha parental!"); return; }
       
-      if (nome) {
-        nomeUsuario = nome;
-        localStorage.setItem('turminha_nome_crianca', nomeUsuario);
-      }
+      if (nome) { nomeUsuario = nome; localStorage.setItem('turminha_nome_crianca', nomeUsuario); }
       localStorage.setItem('tea_email_pais', email);
       localStorage.setItem('tea_senha_pais', senha);
-      verificarStatusOnboardingTea();
-      lerTexto("Espaço TEA configurado com sucesso!"); playCorrectSound();
+      verificarStatusOnboardingTea(); lerTexto("Espaço TEA configurado com sucesso!"); playCorrectSound();
     }
 
     function verificarStatusOnboardingTea() {
@@ -1804,16 +1781,10 @@
 
     function renderizarCaaVip() {
       const grid = document.getElementById('caaGridVip');
-      if (!grid) return;
-      grid.innerHTML = '';
-      const padroes = [
-        { emoji: '💧', texto: 'Água, por favor' },
-        { emoji: '🍎', texto: 'Estou com fome' },
-        { emoji: '🚽', texto: 'Ir ao banheiro' }
-      ];
+      if (!grid) return; grid.innerHTML = '';
+      const padroes = [ { emoji: '💧', texto: 'Água, por favor' }, { emoji: '🍎', texto: 'Estou com fome' }, { emoji: '🚽', texto: 'Ir ao banheiro' } ];
       [...padroes, ...listaCaaVip].forEach(item => {
-        const btn = document.createElement('div');
-        btn.className = 'caa-btn';
+        const btn = document.createElement('div'); btn.className = 'caa-btn';
         btn.innerHTML = `<span>${item.emoji}</span><p>${item.texto}</p>`;
         btn.onclick = () => { playClickSound(); lerTexto(item.texto); };
         grid.appendChild(btn);
@@ -1826,27 +1797,21 @@
       if (!texto) { alert("Digite a frase!"); return; }
       listaCaaVip.push({ emoji, texto });
       localStorage.setItem('turminha_caa_vip', JSON.stringify(listaCaaVip));
-      document.getElementById('caaEmojiInput').value = '';
-      document.getElementById('caaTextoInput').value = '';
-      renderizarCaaVip();
-      lerTexto("Botão adicionado!"); playCorrectSound();
+      document.getElementById('caaEmojiInput').value = ''; document.getElementById('caaTextoInput').value = '';
+      renderizarCaaVip(); lerTexto("Botão adicionado!"); playCorrectSound();
     }
 
     function renderizarRotinasVip() {
       const container = document.getElementById('lista-rotinas-vip');
-      if (!container) return;
-      container.innerHTML = '';
+      if (!container) return; container.innerHTML = '';
       if (listaRotinasSuperForca.length === 0) {
-        container.innerHTML = '<p style="text-align:center; font-size:12px; color:#94A3B8;">Nenhuma rotina cadastrada.</p>';
-        return;
+        container.innerHTML = '<p style="text-align:center; font-size:12px; color:#94A3B8;">Nenhuma rotina cadastrada.</p>'; return;
       }
       listaRotinasSuperForca.forEach((r, i) => {
-        const item = document.createElement('div');
-        item.className = `rotina-item ${r.concluido ? 'concluido' : ''}`;
+        const item = document.createElement('div'); item.className = `rotina-item ${r.concluido ? 'concluido' : ''}`;
         item.innerHTML = `
           <div style="display:flex; align-items:center; gap:10px;">
-            <span style="font-size:24px;">${r.icone}</span>
-            <span class="rotina-texto" style="font-weight:700; font-size:14px;">${r.texto}</span>
+            <span style="font-size:24px;">${r.icone}</span> <span class="rotina-texto" style="font-weight:700; font-size:14px;">${r.texto}</span>
           </div>
           <div style="display:flex; gap:6px;">
             ${!r.concluido ? `<button class="btn-concluir-rotina" onclick="completarRotina(${i}); playClickSound();">✔️ Pronto</button>` : `<span style="font-size:12px; font-weight:800; color:#166534;">Concluído 🦸</span>`}
@@ -1863,16 +1828,13 @@
       if (!texto) { alert("Digite o nome da rotina!"); return; }
       listaRotinasSuperForca.push({ icone, texto, concluido: false });
       localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
-      document.getElementById('rotina-texto').value = '';
-      renderizarRotinasVip(); playCorrectSound();
+      document.getElementById('rotina-texto').value = ''; renderizarRotinasVip(); playCorrectSound();
     }
 
     function completarRotina(index) {
       listaRotinasSuperForca[index].concluido = true;
       localStorage.setItem('turminha_rotinas', JSON.stringify(listaRotinasSuperForca));
-      adicionarPontos(10);
-      renderizarRotinasVip(); playCorrectSound();
-      lerTexto("Você ganhou 10 pontos de Super Força!", true);
+      adicionarPontos(10); renderizarRotinasVip(); playCorrectSound(); lerTexto("10 pontos de Super Força!", true);
     }
 
     function removerRotina(index) {
@@ -1892,8 +1854,7 @@
         if(locked) locked.style.display = 'block';
         if(unlocked) unlocked.classList.remove('active-vip');
       }
-      atualizarBotoesTemporizadorGeral();
-      renderizarConfiguracoes();
+      atualizarBotoesTemporizadorGeral(); renderizarConfiguracoes();
     }
 
     function fazerLogin() {
@@ -1902,34 +1863,24 @@
       if (!email || !senha) { alert("Preencha e-mail e senha."); return; }
 
       if (senha === SENHA_MESTRA_CRIADORA) {
-        ativarModoVipGlobal();
-        lerTexto("Acesso Mestre liberado!"); playCorrectSound();
-        return;
+        ativarModoVipGlobal(); lerTexto("Acesso Mestre liberado!"); playCorrectSound(); return;
       }
 
       fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
         .then(response => response.json())
         .then(data => {
           if (data && data.liberado === true) {
-            ativarModoVipGlobal(); playCorrectSound();
-            lerTexto("Bem-vindo ao Clube VIP!");
+            ativarModoVipGlobal(); playCorrectSound(); lerTexto("Bem-vindo ao Clube VIP!");
           } else { 
-            localStorage.removeItem('turminha_xexeu_vip_ativo'); playWrongSound();
-            alert("❌ Assinatura pendente ou senha incorreta.");
+            localStorage.removeItem('turminha_xexeu_vip_ativo'); playWrongSound(); alert("❌ Assinatura pendente ou senha incorreta.");
           }
-        })
-        .catch(() => { alert("Ocorreu um erro ao conectar."); });
+        }).catch(() => { alert("Ocorreu um erro ao conectar."); });
     }
 
     function ativarModoVipGlobal() {
       localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
-      verificarStatusVip();
-      criarSeletorAvatarPerfil();
-      renderizarRotinasVip();
-      renderizarCaaVip();
-      carregarDesafioHistoriaVip();
-      carregarJogoCorVip();
-      iniciarMemoriaVip();
+      verificarStatusVip(); criarSeletorAvatarPerfil(); renderizarRotinasVip(); renderizarCaaVip();
+      carregarDesafioHistoriaVip(); carregarJogoCorVip(); iniciarMemoriaVip();
     }
 
     function salvarECadastrar() {
@@ -1942,8 +1893,7 @@
 
     function sairVIP() {
       localStorage.removeItem('turminha_xexeu_vip_ativo');
-      verificarStatusVip();
-      location.reload();
+      verificarStatusVip(); location.reload();
     }
 
     function alternarAbaVip(aba) {
@@ -1959,7 +1909,6 @@
     function gerarCertificado() {
       const inputNome = document.getElementById('nome-certificado').value.trim();
       const nomeFinal = inputNome || ((nomeUsuario !== 'Amigo(a)') ? nomeUsuario : 'Super Campeão');
-      
       document.getElementById('exibir-nome-certificado').innerText = nomeFinal;
       document.getElementById('diplomaDataEmissao').innerText = `Emissão Oficial: ${new Date().toLocaleDateString('pt-BR')}`;
       document.getElementById('certificado-resultado').style.display = 'block';
@@ -1970,141 +1919,78 @@
       const inputNome = document.getElementById('nome-certificado-gratis').value.trim();
       const nomeFinal = inputNome || ((nomeUsuario !== 'Amigo(a)') ? nomeUsuario : 'Super Campeão');
       
-      const canvasDiploma = document.createElement('canvas');
-      const ctxD = canvasDiploma.getContext('2d');
-      canvasDiploma.width = 1000;
-      canvasDiploma.height = 700;
+      const canvasDiploma = document.createElement('canvas'); const ctxD = canvasDiploma.getContext('2d');
+      canvasDiploma.width = 1000; canvasDiploma.height = 700;
       
-      ctxD.fillStyle = '#FFFBEB';
-      ctxD.fillRect(0, 0, canvasDiploma.width, canvasDiploma.height);
-      ctxD.lineWidth = 10;
-      ctxD.strokeStyle = '#FCD34D';
-      ctxD.strokeRect(20, 20, canvasDiploma.width - 40, canvasDiploma.height - 40);
+      ctxD.fillStyle = '#FFFBEB'; ctxD.fillRect(0, 0, canvasDiploma.width, canvasDiploma.height);
+      ctxD.lineWidth = 10; ctxD.strokeStyle = '#FCD34D'; ctxD.strokeRect(20, 20, canvasDiploma.width - 40, canvasDiploma.height - 40);
 
-      ctxD.textAlign = 'center';
-      ctxD.font = '900 40px "Baloo 2", sans-serif';
-      ctxD.fillStyle = '#D97706';
+      ctxD.textAlign = 'center'; ctxD.font = '900 40px "Baloo 2", sans-serif'; ctxD.fillStyle = '#D97706';
       ctxD.fillText('CERTIFICADO DE FÃ', 500, 120);
 
-      ctxD.font = '600 22px "Quicksand", sans-serif';
-      ctxD.fillStyle = '#78350F';
+      ctxD.font = '600 22px "Quicksand", sans-serif'; ctxD.fillStyle = '#78350F';
       ctxD.fillText('Com muita alegria certificamos que', 500, 220);
 
-      ctxD.font = '900 60px "Fredoka", sans-serif';
-      ctxD.fillStyle = '#1D4ED8';
+      ctxD.font = '900 60px "Fredoka", sans-serif'; ctxD.fillStyle = '#1D4ED8';
       ctxD.fillText(nomeFinal.toUpperCase(), 500, 320);
 
-      ctxD.font = '600 20px "Quicksand", sans-serif';
-      ctxD.fillStyle = '#475569';
+      ctxD.font = '600 20px "Quicksand", sans-serif'; ctxD.fillStyle = '#475569';
       ctxD.fillText('é um amigo especial da Turminha do Xexéu!', 500, 420);
       
-      ctxD.fillStyle = '#EF4444';
-      ctxD.font = '600 18px "Quicksand", sans-serif';
+      ctxD.fillStyle = '#EF4444'; ctxD.font = '600 18px "Quicksand", sans-serif';
       ctxD.fillText('📸 Poste a foto e marque @turminhaxe_xeu', 500, 480);
 
-      ctxD.font = 'bold 50px sans-serif';
-      ctxD.fillText('⭐', 500, 600);
+      ctxD.font = 'bold 50px sans-serif'; ctxD.fillText('⭐', 500, 600);
 
       const downloadLink = document.createElement('a');
       downloadLink.download = `Diploma-Fa-${nomeFinal.replace(/\s+/g, '-')}.png`;
-      downloadLink.href = canvasDiploma.toDataURL('image/png');
-      downloadLink.click();
+      downloadLink.href = canvasDiploma.toDataURL('image/png'); downloadLink.click();
       playCorrectSound(); lerTexto("Certificado baixado!", true);
     }
 
     function baixarDiplomaComoImagem() {
       const nome = document.getElementById('exibir-nome-certificado').innerText || "Super Fã";
-      const canvasDiploma = document.createElement('canvas');
-      const ctxD = canvasDiploma.getContext('2d');
+      const canvasDiploma = document.createElement('canvas'); const ctxD = canvasDiploma.getContext('2d');
 
-      canvasDiploma.width = 1200;
-      canvasDiploma.height = 850;
-
-      ctxD.fillStyle = '#FFFDF7';
-      ctxD.fillRect(0, 0, canvasDiploma.width, canvasDiploma.height);
-
-      ctxD.lineWidth = 14;
-      ctxD.strokeStyle = '#D97706';
-      ctxD.strokeRect(30, 30, canvasDiploma.width - 60, canvasDiploma.height - 60);
-
-      ctxD.lineWidth = 4;
-      ctxD.strokeStyle = '#F59E0B';
-      ctxD.strokeRect(48, 48, canvasDiploma.width - 96, canvasDiploma.height - 96);
-
-      ctxD.textAlign = 'center';
-      ctxD.font = 'bold 28px sans-serif';
-      ctxD.fillStyle = '#D97706';
-      ctxD.fillText('★  ★  ★', 600, 110);
-
-      ctxD.font = '900 42px "Cinzel", Georgia, serif';
-      ctxD.fillStyle = '#78350F';
-      ctxD.fillText('DIPLOMA DE SUPER FÃ', 600, 175);
-
-      ctxD.font = '700 20px "Fredoka", sans-serif';
-      ctxD.fillStyle = '#B45309';
-      ctxD.fillText('RECONHECIMENTO DE HONRA', 600, 220);
-
-      ctxD.font = '600 24px "Quicksand", sans-serif';
-      ctxD.fillStyle = '#475569';
-      ctxD.fillText('Certificamos com muita alegria que', 600, 310);
-
-      ctxD.font = '900 52px "Cinzel", Georgia, serif';
-      ctxD.fillStyle = '#1D4ED8';
-      ctxD.fillText(nome.toUpperCase(), 600, 395);
-
-      ctxD.lineWidth = 4;
-      ctxD.strokeStyle = '#F59E0B';
-      ctxD.beginPath();
-      ctxD.moveTo(400, 420);
-      ctxD.lineTo(800, 420);
-      ctxD.stroke();
-
-      ctxD.font = '600 22px "Quicksand", sans-serif';
-      ctxD.fillStyle = '#475569';
+      canvasDiploma.width = 1200; canvasDiploma.height = 850;
+      ctxD.fillStyle = '#FFFDF7'; ctxD.fillRect(0, 0, canvasDiploma.width, canvasDiploma.height);
+      ctxD.lineWidth = 14; ctxD.strokeStyle = '#D97706'; ctxD.strokeRect(30, 30, canvasDiploma.width - 60, canvasDiploma.height - 60);
+      ctxD.lineWidth = 4; ctxD.strokeStyle = '#F59E0B'; ctxD.strokeRect(48, 48, canvasDiploma.width - 96, canvasDiploma.height - 96);
+      ctxD.textAlign = 'center'; ctxD.font = 'bold 28px sans-serif'; ctxD.fillStyle = '#D97706'; ctxD.fillText('★  ★  ★', 600, 110);
+      ctxD.font = '900 42px "Cinzel", Georgia, serif'; ctxD.fillStyle = '#78350F'; ctxD.fillText('DIPLOMA DE SUPER FÃ', 600, 175);
+      ctxD.font = '700 20px "Fredoka", sans-serif'; ctxD.fillStyle = '#B45309'; ctxD.fillText('RECONHECIMENTO DE HONRA', 600, 220);
+      ctxD.font = '600 24px "Quicksand", sans-serif'; ctxD.fillStyle = '#475569'; ctxD.fillText('Certificamos com muita alegria que', 600, 310);
+      ctxD.font = '900 52px "Cinzel", Georgia, serif'; ctxD.fillStyle = '#1D4ED8'; ctxD.fillText(nome.toUpperCase(), 600, 395);
+      
+      ctxD.lineWidth = 4; ctxD.strokeStyle = '#F59E0B'; ctxD.beginPath(); ctxD.moveTo(400, 420); ctxD.lineTo(800, 420); ctxD.stroke();
+      
+      ctxD.font = '600 22px "Quicksand", sans-serif'; ctxD.fillStyle = '#475569';
       ctxD.fillText('é oficialmente membro honorário VIP da Turminha do Xexéu!', 600, 490);
 
-      ctxD.fillStyle = '#F59E0B';
-      ctxD.beginPath();
-      ctxD.arc(360, 680, 45, 0, Math.PI * 2);
-      ctxD.fill();
+      ctxD.fillStyle = '#F59E0B'; ctxD.beginPath(); ctxD.arc(360, 680, 45, 0, Math.PI * 2); ctxD.fill();
+      ctxD.font = 'bold 42px sans-serif'; ctxD.fillStyle = '#FFFFFF'; ctxD.fillText('🌟', 360, 695);
 
-      ctxD.font = 'bold 42px sans-serif';
-      ctxD.fillStyle = '#FFFFFF';
-      ctxD.fillText('🌟', 360, 695);
+      ctxD.font = '600 18px "Quicksand", sans-serif'; ctxD.fillStyle = '#78350F'; ctxD.fillText('___________________________', 840, 670);
+      ctxD.font = '800 20px "Baloo 2", sans-serif'; ctxD.fillText('Turminha do Xexéu', 840, 700);
+      ctxD.font = '600 14px "Quicksand", sans-serif'; ctxD.fillStyle = '#64748B'; ctxD.fillText(`Emissão: ${new Date().toLocaleDateString('pt-BR')}`, 840, 725);
 
-      ctxD.font = '600 18px "Quicksand", sans-serif';
-      ctxD.fillStyle = '#78350F';
-      ctxD.fillText('___________________________', 840, 670);
-      ctxD.font = '800 20px "Baloo 2", sans-serif';
-      ctxD.fillText('Turminha do Xexéu', 840, 700);
-      ctxD.font = '600 14px "Quicksand", sans-serif';
-      ctxD.fillStyle = '#64748B';
-      ctxD.fillText(`Emissão: ${new Date().toLocaleDateString('pt-BR')}`, 840, 725);
-
-      const downloadLink = document.createElement('a');
-      downloadLink.download = `Diploma-VIP-${nome.replace(/\s+/g, '-')}.png`;
-      downloadLink.href = canvasDiploma.toDataURL('image/png');
-      downloadLink.click();
+      const downloadLink = document.createElement('a'); downloadLink.download = `Diploma-VIP-${nome.replace(/\s+/g, '-')}.png`;
+      downloadLink.href = canvasDiploma.toDataURL('image/png'); downloadLink.click();
       playCorrectSound(); lerTexto("Diploma baixado!");
     }
 
     function criarSeletorAvatarPerfil() {
       const grid = document.getElementById('avatarEscolhaGrid');
-      if (!grid || grid.children.length > 0) return;
-      grid.innerHTML = '';
+      if (!grid || grid.children.length > 0) return; grid.innerHTML = '';
       const atual = localStorage.getItem('turminha_avatar_escolhido') || TODOS_PERSONAGENS[0].img;
       TODOS_PERSONAGENS.forEach(p => {
-        const img = document.createElement('img');
-        img.src = p.img;
+        const img = document.createElement('img'); img.src = p.img;
         img.className = 'avatar-escolha-btn perfil-avatar' + (p.img === atual ? ' selecionado' : '');
-        img.style.width = '55px';
-        img.style.height = '55px';
-        img.style.margin = '4px';
+        img.style.width = '55px'; img.style.height = '55px'; img.style.margin = '4px';
         img.onclick = () => {
           playClickSound();
           document.querySelectorAll('.avatar-escolha-btn').forEach(b => b.classList.remove('selecionado'));
-          img.classList.add('selecionado');
-          localStorage.setItem('turminha_avatar_escolhido', p.img);
+          img.classList.add('selecionado'); localStorage.setItem('turminha_avatar_escolhido', p.img);
           lerTexto(`${p.nome} escolhido!`);
         };
         grid.appendChild(img);
@@ -2116,39 +2002,18 @@
       const msg = document.getElementById('suporteMensagem').value.trim();
       if (!email || !msg) { alert("Preencha seu e-mail e a mensagem!"); return; }
       fetch(URL_SCRIPT, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, mensagem: msg, tipo: "SUPORTE" }) })
-      .then(() => {
-        alert("Mensagem enviada com sucesso!");
-        document.getElementById('suporteEmail').value = '';
-        document.getElementById('suporteMensagem').value = '';
-        playCorrectSound();
-      });
+      .then(() => { alert("Mensagem enviada com sucesso!"); document.getElementById('suporteEmail').value = ''; document.getElementById('suporteMensagem').value = ''; playCorrectSound(); });
     }
 
-    function verificarCookies() {
-      if (!localStorage.getItem('aceitou_cookies')) {
-        setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1500);
-      }
-    }
-    function aceitarCookies() {
-      playClickSound();
-      localStorage.setItem('aceitou_cookies', 'true');
-      document.getElementById('cookieBanner').classList.remove('show');
-    }
+    function verificarCookies() { if (!localStorage.getItem('aceitou_cookies')) setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1500); }
+    function aceitarCookies() { playClickSound(); localStorage.setItem('aceitou_cookies', 'true'); document.getElementById('cookieBanner').classList.remove('show'); }
     function abrirPrivacidade() { playClickSound(); document.getElementById('modalPrivacidade').classList.add('active'); }
     function fecharPrivacidade() { playClickSound(); document.getElementById('modalPrivacidade').classList.remove('active'); }
 
     window.onload = () => {
-      carregarVozes();
-      atualizarPlacarConquistas();
-      carregarJogoContar();
-      carregarJogoLetra();
-      iniciarMemoria();
-      carregarQuiz();
-      verificarStatusVip();
-      verificarCookies();
-      verificarStatusOnboardingTea();
-      atualizarBotoesTemporizadorGeral();
-      renderizarConfiguracoes();
+      carregarVozes(); atualizarPlacarConquistas(); carregarJogoContar(); carregarJogoLetra();
+      iniciarMemoria(); carregarQuiz(); verificarStatusVip(); verificarCookies(); verificarStatusOnboardingTea();
+      atualizarBotoesTemporizadorGeral(); renderizarConfiguracoes();
     };
     window.addEventListener('resize', redimensionarCanvas);
   </script>
