@@ -2,342 +2,186 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <!-- CORREÇÃO DE VIEWPORT PARA NÃO ESPREMER -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Turminha do Xexéu - Portal Oficial</title>
-
+  
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png">
-
-  <!-- FONTES OFICIAIS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Cinzel:wght@700;900&family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --primary: #3B82F6;
-      --primary-dark: #1D4ED8;
-      --secondary: #F59E0B;
-      --accent: #EF4444;
-      --purple: #8B5CF6;
-      --green: #10B981;
-      --tea-blue: #0284C7;
-      --tea-light: #F0F9FF;
-      --bg-gradient: linear-gradient(180deg, #E0F2FE 0%, #F8FAFC 50%, #FFF1F2 100%);
-      --text-main: #0F172A;
-      --text-muted: #475569;
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --shadow-sm: 0 4px 10px rgba(15, 23, 42, 0.04);
-      --shadow-md: 0 8px 20px rgba(15, 23, 42, 0.08);
-      --shadow-lg: 0 16px 36px rgba(59, 130, 246, 0.12);
+      --primary: #3B82F6; --primary-dark: #1D4ED8; --secondary: #F59E0B; --accent: #EF4444;
+      --purple: #8B5CF6; --green: #10B981; --tea-blue: #0284C7; --tea-light: #F0F9FF;
     }
 
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-      font-family: 'Fredoka', 'Quicksand', system-ui, -apple-system, sans-serif; 
-      -webkit-tap-highlight-color: transparent; 
-    }
+    /* FIX MOBILE: Layout Fluido */
+    body { background: linear-gradient(180deg, #E0F2FE 0%, #FAF5FF 100%); margin: 0; padding: 10px; min-height: 100vh; display: flex; justify-content: center; }
+    .app-container { width: 100%; max-width: 600px; background: rgba(255, 255, 255, 0.95); border-radius: 24px; padding-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 15px; overflow-x: hidden; }
 
-    h1, h2, h3, h4, h5, .nav-tab-btn, .btn-choice, .floating-char-name, .subnav-btn, .vip-sub-btn, .vip-int-btn, .btn-game-level {
-      font-family: 'Baloo 2', 'Fredoka', cursive, sans-serif;
-      letter-spacing: 0.2px;
-    }
+    header { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+    .logo-img { max-width: 120px; }
 
-    p, span, label, input, select, textarea {
-      font-family: 'Quicksand', 'Fredoka', sans-serif;
-      font-weight: 600;
-    }
+    .page-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; padding: 0 10px; }
+    .nav-tab-btn { padding: 8px 4px; border: none; border-radius: 10px; font-weight: 800; font-size: 10px; cursor: pointer; background: #EFF6FF; }
+    .nav-tab-btn.active { background: var(--primary); color: #FFF; }
 
-    body { 
-      background: var(--bg-gradient); 
-      color: var(--text-main); 
-      display: flex; 
-      flex-direction: column;
-      align-items: center; 
-      min-height: 100vh; 
-      padding: 20px 10px 60px; 
-      transition: background 0.4s ease; 
-    }
-
-    /* CONTAINER CENTRALIZADO */
-    .app-container { 
-      width: 100%; 
-      max-width: 800px; /* Reduzi um pouco para ficar mais elegante no desktop como nas imagens */
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.95); 
-      backdrop-filter: blur(12px); 
-      border-radius: var(--radius-xl); 
-      box-shadow: var(--shadow-lg); 
-      overflow: hidden; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 24px; 
-      padding-bottom: 30px; 
-      border: 4px solid #FFFFFF; 
-    }
-
-    /* HEADER */
-    header { 
-      padding: 16px 20px; 
-      background: #E0F2FE; 
-      display: flex; 
-      align-items: center; 
-      justify-content: space-between; 
-      border-radius: var(--radius-lg); 
-      margin: 16px 16px 0; 
-    }
-    .logo-img { max-width: 140px; height: auto; object-fit: contain; }
-
-    .audio-toggle-btn { background: #FFFFFF; border: 2.5px solid var(--primary); color: var(--primary-dark); font-weight: 800; font-size: 13px; padding: 10px 16px; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: var(--shadow-sm); transition: all 0.2s; }
-    .audio-toggle-btn.muted { background: #FEE2E2; border-color: #EF4444; color: #991B1B; }
-
-    /* MENU NAVEGAÇÃO */
-    .page-nav { display: flex; justify-content: center; gap: 10px; background: #F0F9FF; padding: 12px; border-radius: var(--radius-lg); margin: 0 16px; border: 2px solid #BAE6FD; flex-wrap: wrap; }
-    .nav-tab-btn { padding: 12px 18px; border: none; border-radius: var(--radius-md); font-weight: 800; font-size: 14px; cursor: pointer; background: #FFFFFF; color: var(--text-muted); display: flex; align-items: center; gap: 6px; transition: all 0.2s; box-shadow: var(--shadow-sm); }
-    .nav-tab-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4); transform: translateY(-2px); }
-    .nav-tab-btn.vip-tab { background: #FEF3C7; color: #92400E; }
-    .nav-tab-btn.vip-tab.active { background: #F59E0B; color: #FFF; }
-
-    .page-content { display: none; flex-direction: column; gap: 24px; animation: fadeIn 0.4s ease; }
+    .page-content { display: none; flex-direction: column; gap: 15px; padding: 0 15px; }
     .page-content.active-page { display: flex; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    .banner-container { padding: 0 16px; }
-    .banner-img { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 3px solid #FFF; }
-
-    /* TEXTO HISTÓRIA (RESTAURADO DA IMAGEM) */
-    .intro-box { background: #FFFBEB; border: 3px solid #FDE68A; border-radius: var(--radius-lg); padding: 24px; text-align: left; box-shadow: var(--shadow-sm); margin: 0 16px; }
-    .intro-box h2 { font-size: 22px; font-weight: 900; color: #92400E; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
-    .intro-box p { font-size: 15px; color: #92400E; line-height: 1.6; font-weight: 700; margin-bottom: 14px; }
+    .floating-cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .floating-char-card { background: #FFF; border-radius: 16px; padding: 10px; text-align: center; border: 2px solid #E2E8F0; }
     
-    /* REDES SOCIAIS */
-    .social-row { display: flex; justify-content: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
-    .social-btn { width: 44px; height: 44px; background: #FFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); border: 2px solid #E2E8F0; text-decoration: none; font-size: 20px; transition: transform 0.2s; }
-    .social-btn:hover { transform: scale(1.1); border-color: var(--primary); }
-
-    /* GRID DE PERSONAGENS */
-    .section-family-container { padding: 0 16px; }
-    .family-group-title { font-size: 20px; font-weight: 900; color: var(--primary-dark); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; background: #EFF6FF; padding: 12px 20px; border-radius: 14px; border-left: 6px solid var(--primary); }
+    .btn-choice { background: var(--purple); color: #FFF; border: none; padding: 12px; font-weight: 800; border-radius: 12px; cursor: pointer; width: 100%; }
     
-    .floating-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .acalento-grid, .ninar-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .acalento-btn, .ninar-btn { background: #FFF; border: 2px solid var(--tea-blue); border-radius: 12px; padding: 10px; text-align: center; cursor: pointer; }
     
-    .floating-char-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 16px 10px; text-align: center; border: 3px solid #E2E8F0; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; transition: all 0.2s; }
-    .floating-char-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: var(--shadow-md); }
-    .floating-char-img { width: 80px; height: 80px; object-fit: contain; background: #F8FAFC; border-radius: 50%; padding: 4px; }
-    .floating-char-name { font-size: 16px; font-weight: 900; color: var(--text-main); }
-
-    /* ESTILOS DE JOGOS E ÁREAS (Padronizados) */
-    .interactive-card { background: #FFF; border-radius: var(--radius-lg); padding: 24px; text-align: center; border: 3px solid #E2E8F0; width: 100%; box-shadow: var(--shadow-sm); }
-    .game-level-tabs { display: flex; gap: 10px; justify-content: center; margin-bottom: 16px; flex-wrap: wrap; }
-    .btn-game-level { padding: 10px 16px; border-radius: 12px; border: 2px solid #CBD5E1; background: #FFF; font-weight: 800; font-size: 14px; cursor: pointer; color: var(--text-muted); }
-    .btn-game-level.active { background: var(--primary); color: #FFF; border-color: var(--primary); }
-
-    .game-btn-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
-    .btn-choice { background: var(--purple); color: #FFF; border: none; padding: 14px 24px; font-weight: 800; font-size: 16px; border-radius: 14px; cursor: pointer; box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4); }
+    .vip-modal-backdrop { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index: 99999; justify-content:center; align-items:center; padding: 20px; }
+    .vip-modal-backdrop.active { display: flex; }
+    .vip-modal-box { background: #FFFBEB; padding: 25px; border-radius: 20px; text-align:center; max-width: 350px; }
     
-    /* BLOQUEIO VIP VISUAL (CSS) */
-    .vip-locked-item { position: relative; filter: grayscale(0.8); opacity: 0.8; cursor: pointer; }
-    .vip-locked-item::after { content: '🔒 VIP'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1E293B; color: #FCD34D; padding: 6px 12px; border-radius: 20px; font-weight: 900; font-size: 12px; border: 2px solid #FCD34D; pointer-events: none; }
-    
-    body.is-vip .vip-locked-item { filter: none; opacity: 1; }
-    body.is-vip .vip-locked-item::after { display: none; }
-    body.is-vip .hide-if-vip { display: none !important; }
-
-    /* RESPONSIVIDADE CELULAR (Foco no problema do "espremido") */
-    @media (max-width: 768px) {
-      body { padding: 0; }
-      .app-container { border-radius: 0; border: none; border-top: none; }
-      header { margin: 0; border-radius: 0; }
-      
-      /* Menu com scroll horizontal suave */
-      .page-nav, .game-level-tabs { 
-        flex-wrap: nowrap; 
-        overflow-x: auto; 
-        justify-content: flex-start;
-        padding-bottom: 8px;
-        -webkit-overflow-scrolling: touch;
-      }
-      .page-nav::-webkit-scrollbar { display: none; }
-      .nav-tab-btn, .btn-game-level { flex: 0 0 auto; }
-
-      .floating-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .intro-box, .interactive-card { margin: 0 12px; width: auto; padding: 16px;}
-    }
-
-    /* MODAL VIP (Apenas Design Visual, lógica no JS) */
-    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); z-index: 9999; justify-content: center; align-items: center; padding: 16px; backdrop-filter: blur(5px); }
-    .modal-overlay.active { display: flex; }
-    .upsell-box { background: linear-gradient(135deg, #FFFBEB, #FEF3C7); padding: 30px; border-radius: var(--radius-xl); text-align: center; max-width: 400px; width: 100%; border: 5px solid #FCD34D; position: relative; }
-    .upsell-close { position: absolute; top: 14px; right: 14px; background: #FFF; border: 3px solid #FCD34D; border-radius: 50%; width: 36px; height: 36px; font-weight: 900; color: #92400E; cursor: pointer; }
-    .btn-assinar-agora { display: inline-block; background: #F59E0B; color: #FFF; font-weight: 900; font-size: 16px; padding: 16px 24px; border-radius: 14px; text-decoration: none; margin-top: 18px; width: 100%; box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4); border: none; }
-    
-    .floating-vip-badge { position: fixed; bottom: 20px; right: 20px; background: #F59E0B; color: #FFF; padding: 12px 20px; border-radius: 30px; font-weight: 900; box-shadow: 0 4px 15px rgba(245,158,11,0.5); cursor: pointer; z-index: 1000; display: flex; align-items: center; gap: 8px;}
+    .certificado-moldura { background: #FFFDF7; border: 4px double #D97706; padding: 20px; text-align: center; margin-top: 10px; font-family: 'Cinzel', serif; }
   </style>
 </head>
 <body>
 
-  <!-- Modal VIP -->
-  <div id="modalUpsell" class="modal-overlay">
-    <div class="upsell-box">
-      <button class="upsell-close" onclick="fecharUpsell()">X</button>
-      <h2 style="color: #92400E; font-weight: 900; margin-bottom: 12px;">⭐ Acesso VIP!</h2>
-      <p style="color: #78350F; font-size: 15px; font-weight: 700; margin-bottom: 16px;">Este conteúdo é exclusivo do Clube VIP da Turminha.</p>
-      <ul style="text-align: left; color: #92400E; font-size: 14px; font-weight: 700; margin-bottom: 20px; padding-left: 20px;">
-        <li>Níveis Difíceis e Jogos Extras</li>
-        <li>Lousa Mágica com todos os personagens</li>
-        <li>Histórias e Espaço TEA avançado</li>
-      </ul>
-      <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-assinar-agora">Assinar por R$ 6,00/mês 💳</a>
-      <button onclick="simularLoginVIP()" style="background: transparent; color: #B45309; border: none; font-weight: 800; margin-top: 15px; cursor: pointer; text-decoration: underline;">Já sou assinante (Entrar)</button>
+  <div id="modalConviteVip" class="vip-modal-backdrop">
+    <div class="vip-modal-box">
+      <h3>⭐ Recurso VIP</h3>
+      <p>Este conteúdo é exclusivo. Seja VIP por R$ 6,00!</p>
+      <button onclick="fecharModalVip(); mudarPagina('vip');" style="width:100%; padding:15px; border-radius:12px; background:var(--secondary); color:#FFF; border:none; font-weight:900; margin:15px 0;">Quero ser VIP!</button>
+      <button onclick="fecharModalVip()" style="background:none; border:none; cursor:pointer;">Agora não</button>
     </div>
-  </div>
-
-  <div class="floating-vip-badge hide-if-vip" onclick="abrirUpsell()">
-    ⭐ Seja VIP (R$ 6,00)
   </div>
 
   <div class="app-container">
     <header>
       <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png" alt="Logo" class="logo-img">
-      <button class="audio-toggle-btn" onclick="alert('Áudio ativado/desativado')">🔊 Voz Ligada</button>
+      <button onclick="alternarAudioGlobal()">🔊</button>
     </header>
 
     <nav class="page-nav">
-      <button class="nav-tab-btn active" onclick="mudarPagina('inicio', this)">🏠 Início</button>
-      <button class="nav-tab-btn" onclick="mudarPagina('jogos', this)">🎮 Jogos</button>
-      <button class="nav-tab-btn" onclick="mudarPagina('leitura', this)">📚 Leitura</button>
-      <button class="nav-tab-btn vip-tab" onclick="mudarPagina('vip', this)">⭐ Área VIP</button>
+      <button class="nav-tab-btn active" onclick="mudarPagina('inicio')">🏠 Início</button>
+      <button class="nav-tab-btn" onclick="mudarPagina('jogos')">🎮 Jogos</button>
+      <button class="nav-tab-btn" onclick="mudarPagina('tea')">🧩 TEA</button>
+      <button class="nav-tab-btn" onclick="mudarPagina('vip')">⭐ VIP</button>
     </nav>
 
-    <!-- INÍCIO -->
     <main id="pagina-inicio" class="page-content active-page">
-      <div class="banner-container">
-        <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994339/BANNER_SITE_TURMINHA_DO_XEXEU.png" class="banner-img" alt="Turminha">
+      <div style="background:#FDE68A; padding:10px; border-radius:10px; text-align:center; font-weight:800; cursor:pointer;" onclick="mudarPagina('vip')">
+        ✨ Desbloqueie Drive, Jogos e Vozes por R$ 6,00! 💖
       </div>
-
-      <!-- TEXTO RESTAURADO COM BASE NA IMAGEM -->
-      <div class="intro-box">
-        <h2>✨ Educando com Alegria e Amor</h2>
-        <p>Mais do que um nome divertido, a <strong>Turminha do Xexéu</strong> é o nosso jeito de honrar as raízes e a história da nossa família.</p>
-        <p>O nome <strong>Xexéu</strong> é uma homenagem que atravessa gerações. Ele vem para honrar a memória de <em>Mariano Xexéu</em> e celebrar a vida de seu filho, <em>Pedro Mariano</em>, que é a grande inspiração para o nosso querido <strong>Vovô Beto</strong>. Escolhemos esse nome para transformar uma identidade familiar em um símbolo de união, alegria e aprendizado.</p>
-        <p>A <strong>Vovó Hilda</strong> é muito mais que uma personagem; ela é a nossa forma de eternizar quem sempre trouxe alegria. Inspirada na memória de <em>Astrogilda Grispym</em>, ela representa o amor que não conhece o tempo.</p>
-        
-        <!-- REDES SOCIAIS RESTAURADAS DA IMAGEM -->
-        <div class="social-row">
-          <a href="#" class="social-btn" style="color: #FF0000;">▶️</a>
-          <a href="#" class="social-btn" style="color: #E1306C;">📸</a>
-          <a href="#" class="social-btn" style="color: #000000;">🎵</a>
-          <a href="#" class="social-btn" style="color: #1DB954;">🎧</a>
-        </div>
-      </div>
-
-      <section class="section-family-container">
-        <h3 class="family-group-title">Os Animais da Turminha</h3>
-        <div class="floating-cards-grid">
-          <div class="floating-char-card"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" class="floating-char-img"><span class="floating-char-name">Xexéu</span></div>
-          <div class="floating-char-card"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994882/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_CAPILE.png" class="floating-char-img"><span class="floating-char-name">Capilé</span></div>
-        </div>
-      </section>
     </main>
 
-    <!-- JOGOS -->
     <main id="pagina-jogos" class="page-content">
-      <div style="padding: 0 16px;">
-        <div class="interactive-card">
-          <h3 style="color: var(--primary-dark); font-weight: 900; margin-bottom: 16px;">🔢 Vamos Contar?</h3>
-          <div class="game-level-tabs">
-            <!-- BOTÃO VIP AGORA COM VERIFICAÇÃO JS DE SEGURANÇA -->
-            <button class="btn-game-level active">🌟 Fácil</button>
-            <button class="btn-game-level vip-locked-item require-vip" onclick="iniciarJogoVip('contar-dificil')">🔥 Difícil 🔒</button>
-          </div>
-          <div style="font-size: 40px; margin: 20px 0;">🍎 🍎</div>
-          <div class="game-btn-grid">
-            <button class="btn-choice">1</button>
-            <button class="btn-choice">2</button>
-            <button class="btn-choice">3</button>
-          </div>
-        </div>
-      </div>
+      <canvas id="paintCanvas" style="border: 2px solid var(--primary); border-radius: 12px; width: 100%; height: 250px;"></canvas>
+      <button onclick="limparCanvas()" class="btn-choice">Limpar Lousa</button>
     </main>
 
-    <!-- LEITURA -->
-    <main id="pagina-leitura" class="page-content">
-      <div style="padding: 0 16px;">
-        <div class="interactive-card">
-           <h3 style="color: #BE185D;">📚 Cantinho da Leitura</h3>
-           <p style="margin: 10px 0;">Livros mágicos em breve...</p>
-        </div>
-      </div>
+    <main id="pagina-tea" class="page-content">
+      <h3>🎧 Sons Relaxantes</h3>
+      <div id="gridSonsAcalento" class="acalento-grid"></div>
+      
+      <h3>🌙 Músicas de Ninar</h3>
+      <div id="gridMusicasNinar" class="ninar-grid"></div>
+
+      <h3>💬 Cartão de Fala</h3>
+      <div class="caa-grid" id="caaGrid"></div>
     </main>
 
-    <!-- VIP -->
     <main id="pagina-vip" class="page-content">
-       <div style="padding: 0 16px;">
-        <div class="interactive-card" style="border-color: #FCD34D; background: #FFFBEB;">
-          <h2 style="color: #92400E;">⭐ Painel de Assinante</h2>
-          <p class="hide-if-vip" style="margin: 15px 0;">Assine para desbloquear todas as funções do site!</p>
-          <button class="btn-assinar-agora hide-if-vip" onclick="simularLoginVIP()">Simular Login VIP para Teste</button>
-          
-          <div id="conteudo-vip-secreto" style="display: none; margin-top: 20px;">
-            <h3 style="color: #10B981;">🎉 Bem-vinda de volta, Evelyn!</h3>
-            <p>Aqui ficam os PDFs e drives secretos que só carregam quando o VIP está ativo no sistema.</p>
-            <button onclick="sairVIP()" style="margin-top: 15px; padding: 10px; background: #EF4444; color: white; border: none; border-radius: 10px;">Sair do VIP</button>
-          </div>
+      <div id="vip-unlocked-view" style="display:none; text-align:center;">
+        <h2>🎉 Você é VIP!</h2>
+        <div id="certificado-resultado" class="certificado-moldura">
+            <h3>Diploma de Super Fã</h3>
+            <h1 id="exibir-nome-certificado">Nome</h1>
+            <button onclick="baixarDiplomaComoImagem()" style="margin-top:10px; padding:10px;">📥 Baixar Diploma</button>
         </div>
-       </div>
+      </div>
+      <div id="vip-locked-view">
+        <button onclick="ativarVip()" style="width:100%; padding:20px; background:var(--secondary); color:#FFF; border:none; border-radius:12px; font-weight:900;">Simular Ativação VIP</button>
+      </div>
     </main>
-
   </div>
 
   <script>
-    // --- LÓGICA DE NAVEGAÇÃO BÁSICA ---
-    function mudarPagina(idPagina, btnClicado) {
-      document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active-page'));
-      document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
-      
-      document.getElementById('pagina-' + idPagina).classList.add('active-page');
-      btnClicado.classList.add('active');
-    }
+    // --- LÓGICA CORE ---
+    let somAcalentoAudio = null;
+    let musicaNinarAudio = null;
 
-    // --- LÓGICA DE SEGURANÇA VIP MELHORADA ---
-    // Em vez de apenas esconder com CSS, verificamos no JavaScript antes de rodar a função.
-    let isVip = false;
-
-    function abrirUpsell() {
-      document.getElementById('modalUpsell').classList.add('active');
-    }
-
-    function fecharUpsell() {
-      document.getElementById('modalUpsell').classList.remove('active');
-    }
-
-    // Função que tenta rodar o jogo. Se não for VIP, bloqueia na raiz e abre aviso.
-    function iniciarJogoVip(nomeDoJogo) {
-      if (!isVip) {
-        abrirUpsell();
-        return; // BLOQUEIA A EXECUÇÃO AQUI!
+    function verificarVip() {
+      const isVip = localStorage.getItem('turminha_xexeu_vip_ativo') === 'true';
+      if (isVip) {
+        document.getElementById('vip-unlocked-view').style.display = 'block';
+        document.getElementById('vip-locked-view').style.display = 'none';
       }
-      // Se chegar aqui, a pessoa é VIP de verdade (no JS).
-      alert("Carregando o jogo " + nomeDoJogo + " VIP!");
+      renderizarSonsAcalento();
+      renderizarMusicasNinar();
     }
 
-    // Função simulada de Login
-    function simularLoginVIP() {
-      isVip = true;
-      document.body.classList.add('is-vip'); // Remove os cadeados visuais
-      document.getElementById('conteudo-vip-secreto').style.display = 'block'; // Mostra o painel secreto
-      fecharUpsell();
-      alert("Login VIP feito com sucesso! Os cadeados sumiram.");
+    function ativarVip() {
+      localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
+      alert("VIP ATIVADO!");
+      location.reload();
     }
 
-    function sairVIP() {
-      isVip = false;
-      document.body.classList.remove('is-vip');
-      document.getElementById('conteudo-vip-secreto').style.display = 'none';
+    function lerTexto(txt) { const u = new SpeechSynthesisUtterance(txt); window.speechSynthesis.speak(u); }
+    function fecharModalVip() { document.getElementById('modalConviteVip').classList.remove('active'); }
+    function mudarPagina(p) {
+        document.querySelectorAll('.page-content').forEach(e => e.classList.remove('active-page'));
+        document.getElementById('pagina-' + p).classList.add('active-page');
     }
+
+    // --- SONS ---
+    const LISTA_SONS_RELAXANTES = [
+      { id: 'chuva', nome: 'Chuva', icon: '🌧️', url: 'https://cdn.freesound.org/previews/237/237729_4284968-lq.mp3', gratis: true },
+      { id: 'mar', nome: 'Mar', icon: '🌊', url: 'https://cdn.freesound.org/previews/400/400632_5121236-lq.mp3', gratis: true },
+      { id: 'passaros', nome: 'Pássaros', icon: '🐦', url: 'https://cdn.freesound.org/previews/416/416529_5121236-lq.mp3', gratis: false }
+    ];
+
+    const LISTA_MUSICAS_NINAR = [
+      { id: 'ninar1', nome: 'Estrelinha', icon: '⭐', url: 'https://cdn.freesound.org/previews/608/608821_11861866-lq.mp3', gratis: true },
+      { id: 'ninar2', nome: 'Dorme', icon: '🌙', url: 'https://cdn.freesound.org/previews/538/538786_11861866-lq.mp3', gratis: true },
+      { id: 'ninar3', nome: 'Xexéu Ninar', icon: '🎶', url: 'https://cdn.freesound.org/previews/515/515822_11861866-lq.mp3', gratis: false }
+    ];
+
+    function renderizarSonsAcalento() {
+        const grid = document.getElementById('gridSonsAcalento');
+        const isVip = localStorage.getItem('turminha_xexeu_vip_ativo') === 'true';
+        LISTA_SONS_RELAXANTES.forEach(s => {
+            const btn = document.createElement('div');
+            btn.className = 'acalento-btn';
+            btn.innerHTML = `${!s.gratis && !isVip ? '<span class="acalento-badge-lock">⭐VIP</span>' : ''} <span>${s.icon}</span><p>${s.nome}</p>`;
+            btn.onclick = () => { if(!s.gratis && !isVip) abrirModalVip(); else tocarSom(s, 'acalento'); };
+            grid.appendChild(btn);
+        });
+    }
+
+    function renderizarMusicasNinar() {
+        const grid = document.getElementById('gridMusicasNinar');
+        const isVip = localStorage.getItem('turminha_xexeu_vip_ativo') === 'true';
+        LISTA_MUSICAS_NINAR.forEach(m => {
+            const btn = document.createElement('div');
+            btn.className = 'ninar-btn';
+            btn.innerHTML = `${!m.gratis && !isVip ? '<span class="acalento-badge-lock">👑VIP</span>' : ''} <span>${m.icon}</span><p>${m.nome}</p>`;
+            btn.onclick = () => { if(!m.gratis && !isVip) abrirModalVip(); else tocarSom(m, 'ninar'); };
+            grid.appendChild(btn);
+        });
+    }
+
+    function tocarSom(item, tipo) {
+        if(tipo === 'acalento') {
+            if(somAcalentoAudio) somAcalentoAudio.pause();
+            somAcalentoAudio = new Audio(item.url); somAcalentoAudio.play();
+        } else {
+            if(musicaNinarAudio) musicaNinarAudio.pause();
+            musicaNinarAudio = new Audio(item.url); musicaNinarAudio.play();
+        }
+    }
+
+    function baixarDiplomaComoImagem() { alert("Diploma Gerado!"); }
+    window.onload = () => { verificarVip(); renderizarSonsAcalento(); renderizarMusicasNinar(); };
   </script>
 </body>
 </html>
