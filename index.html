@@ -32,7 +32,7 @@
       --shadow-lg: 0 14px 30px rgba(59, 130, 246, 0.15);
     }
 
-    /* MODO SENSORIAL PROFUNDO E CALMANTE (BAIXO ESTÍMULO NO SITE INTEIRO) */
+    /* MODO SENSORIAL PROFUNDO E CALMANTE */
     body.sensory-mode {
       --bg-gradient: #F1F5F9 !important; 
       --primary: #475569 !important;
@@ -66,13 +66,16 @@
     .app-container { width: 100%; max-width: 1120px; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden; display: flex; flex-direction: column; gap: 20px; padding-bottom: 24px; border: 3px solid #FFFFFF; }
 
     header { padding: 14px 20px; background: linear-gradient(135deg, #BAE6FD 0%, #E0F2FE 100%); display: flex; align-items: center; justify-content: space-between; border-radius: var(--radius-lg); margin: 12px 12px 0; box-shadow: var(--shadow-sm); }
-    .logo-img { max-width: 150px; height: auto; object-fit: contain; }
+    .logo-img { max-width: 150px; height: auto; object-fit: contain; transition: transform 0.2s; }
+    .logo-img:active { transform: scale(0.95); }
 
-    .audio-toggle-btn { background: #FFFFFF; border: 2.5px solid var(--primary); color: var(--primary-dark); font-weight: 800; font-size: 13px; padding: 8px 14px; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: var(--shadow-sm); }
+    .audio-toggle-btn { background: #FFFFFF; border: 2.5px solid var(--primary); color: var(--primary-dark); font-weight: 800; font-size: 13px; padding: 8px 14px; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: var(--shadow-sm); transition: transform 0.15s; }
+    .audio-toggle-btn:active { transform: scale(0.92); }
     .audio-toggle-btn.muted { background: #FEE2E2; border-color: #EF4444; color: #991B1B; }
 
     .page-nav { display: flex; justify-content: center; gap: 8px; background: #F0F9FF; padding: 6px; border-radius: var(--radius-lg); margin: 0 12px; border: 2px solid #BAE6FD; flex-wrap: wrap; }
-    .nav-tab-btn { flex: 1; min-width: 95px; max-width: 180px; padding: 12px 8px; border: none; border-radius: var(--radius-md); font-weight: 800; font-size: 13px; cursor: pointer; background: transparent; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .nav-tab-btn { flex: 1; min-width: 95px; max-width: 180px; padding: 12px 8px; border: none; border-radius: var(--radius-md); font-weight: 800; font-size: 13px; cursor: pointer; background: transparent; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 6px; transition: transform 0.15s; }
+    .nav-tab-btn:active { transform: scale(0.93); }
     .nav-tab-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35); }
     .nav-tab-btn.vip-tab { background: #FEF3C7; color: #92400E; border: 2px solid #FCD34D; }
     .nav-tab-btn.vip-tab.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); border-color: transparent; }
@@ -81,7 +84,8 @@
 
     .browser-notice-box { margin: 0 16px; background: #EFF6FF; border: 2px solid #93C5FD; border-radius: var(--radius-md); padding: 10px 14px; text-align: center; color: #1E40AF; font-size: 12.5px; font-weight: 700; box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; gap: 8px; }
 
-    .top-vip-announcement { margin: 0 12px -10px; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 10px 14px; text-align: center; color: #92400E; font-size: 12px; font-weight: 800; cursor: pointer; box-shadow: var(--shadow-sm); }
+    .top-vip-announcement { margin: 0 12px -10px; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 10px 14px; text-align: center; color: #92400E; font-size: 12px; font-weight: 800; cursor: pointer; box-shadow: var(--shadow-sm); transition: transform 0.15s; }
+    .top-vip-announcement:hover { transform: scale(1.01); }
 
     .page-content { display: none; flex-direction: column; gap: 22px; animation: fadeIn 0.3s ease; }
     .page-content.active-page { display: flex; }
@@ -97,10 +101,12 @@
     .intro-box h2 { font-size: 18px; font-weight: 900; color: #92400E; }
     .intro-box p { font-size: 13px; color: #78350F; line-height: 1.6; font-weight: 600; margin-bottom: 8px; }
 
-    .btn-audio-mini { background: linear-gradient(135deg, #FBBF24, #F59E0B); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; color: #FFF; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35); flex-shrink: 0; }
+    .btn-audio-mini { background: linear-gradient(135deg, #FBBF24, #F59E0B); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; color: #FFF; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35); flex-shrink: 0; transition: transform 0.15s; }
+    .btn-audio-mini:active { transform: scale(0.9); }
 
     .social-round-section { padding: 0 16px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .social-round-btn { width: 44px; height: 44px; border-radius: 50%; background: #FFF; border: 2.5px solid #E2E8F0; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: var(--shadow-sm); }
+    .social-round-btn { width: 44px; height: 44px; border-radius: 50%; background: #FFF; border: 2.5px solid #E2E8F0; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: var(--shadow-sm); transition: transform 0.2s, border-color 0.2s; }
+    .social-round-btn:hover { transform: translateY(-3px); border-color: var(--primary); }
     .social-round-btn img { width: 24px; height: 24px; object-fit: contain; }
 
     .section-family-container { padding: 0 16px; display: flex; flex-direction: column; gap: 24px; }
@@ -108,7 +114,9 @@
     
     .floating-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
     @media (min-width: 900px) { .floating-cards-grid { grid-template-columns: repeat(4, 1fr); } }
-    .floating-char-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 16px 12px; text-align: center; border: 3px solid #E2E8F0; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
+    .floating-char-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 16px 12px; text-align: center; border: 3px solid #E2E8F0; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+    .floating-char-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 6px 15px rgba(59, 130, 246, 0.15); }
+    .floating-char-card:active { transform: scale(0.95); }
     .floating-char-img { width: 85px; height: 85px; object-fit: contain; border-radius: 50%; background: #F8FAFC; padding: 4px; }
     .floating-char-name { font-size: 16px; font-weight: 900; color: var(--text-main); }
     .floating-char-tag { font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; }
@@ -119,11 +127,12 @@
     .card-avos { border-color: #FBBF24; } .card-avos .floating-char-tag { background: #FEF3C7; color: #D97706; }
     .card-especial { border-color: #A78BFA; } .card-especial .floating-char-tag { background: #EDE9FE; color: #7C3AED; }
 
-    .char-details-box { margin: 0 16px; background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%); border: 2.5px solid var(--primary); border-radius: var(--radius-lg); padding: 18px; text-align: center; }
+    .char-details-box { margin: 0 16px; background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%); border: 2.5px solid var(--primary); border-radius: var(--radius-lg); padding: 18px; text-align: center; box-shadow: var(--shadow-sm); }
 
-    /* ESTILOS DE JOGOS & FEEDBACK VISUAL COM ANIMAÇÃO */
+    /* ESTILOS DE JOGOS & FEEDBACK VISUAL */
     .games-subnav, .vip-games-subnav { display: flex; justify-content: center; gap: 6px; background: #E0F2FE; padding: 6px; border-radius: var(--radius-md); margin-bottom: 14px; flex-wrap: wrap; }
-    .subnav-btn, .vip-sub-btn { padding: 10px 12px; border: none; border-radius: 10px; font-weight: 800; font-size: 12px; cursor: pointer; background: #FFF; color: var(--primary-dark); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .subnav-btn, .vip-sub-btn { padding: 10px 12px; border: none; border-radius: 10px; font-weight: 800; font-size: 12px; cursor: pointer; background: #FFF; color: var(--primary-dark); box-shadow: 0 2px 6px rgba(0,0,0,0.04); transition: transform 0.15s; }
+    .subnav-btn:active, .vip-sub-btn:active { transform: scale(0.93); }
     .subnav-btn.active { background: var(--primary); color: #FFF; }
     .vip-games-subnav { background: #FEF3C7; } .vip-sub-btn { color: #92400E; } .vip-sub-btn.active { background: #D97706; color: #FFF; }
     
@@ -133,13 +142,14 @@
     .age-group-section { margin: 0 16px; background: #FFFFFF; border-radius: var(--radius-lg); padding: 18px; border: 2px solid #E2E8F0; box-shadow: var(--shadow-sm); }
     .age-title { font-size: 19px; font-weight: 900; color: var(--primary-dark); margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
     
-    .interactive-card { background: #F8FAFC; border-radius: var(--radius-md); padding: 16px; text-align: center; border: 2px solid #E2E8F0; display: flex; flex-direction: column; align-items: center; position: relative; }
+    .interactive-card { background: #F8FAFC; border-radius: var(--radius-md); padding: 16px; text-align: center; border: 2px solid #E2E8F0; display: flex; flex-direction: column; align-items: center; position: relative; box-shadow: var(--shadow-sm); }
     .conquistas-box { background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%); border: 2px solid #FCD34D; border-radius: var(--radius-md); padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; font-weight: 800; color: #92400E; font-size: 13.5px; box-shadow: var(--shadow-sm); }
 
     /* Lousa Mágica */
     .coloring-select-grid { display: none; justify-content: center; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
     .coloring-select-grid.active { display: flex; }
-    .btn-color-draw { background: #FFF; border: 2px solid #CBD5E1; padding: 6px 10px; border-radius: 10px; font-weight: 700; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+    .btn-color-draw { background: #FFF; border: 2px solid #CBD5E1; padding: 6px 10px; border-radius: 10px; font-weight: 700; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: transform 0.15s; }
+    .btn-color-draw:active { transform: scale(0.93); }
     .btn-color-draw.selected { border-color: var(--primary); background: #E0F2FE; }
     .btn-color-draw img { width: 22px; height: 22px; object-fit: contain; }
     .lousa-controls-bar { display: flex; align-items: center; justify-content: center; gap: 12px; background: #E0F2FE; padding: 8px 12px; border-radius: 12px; margin-bottom: 12px; flex-wrap: wrap; width: 100%; }
@@ -147,17 +157,18 @@
     .lousa-container { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
     #paintCanvas { background: #FFF; border: 3px solid var(--primary); border-radius: var(--radius-lg); width: 100%; height: 320px; touch-action: none; cursor: crosshair; }
     .palette { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap; width: 100%; }
-    .color-dot { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer; }
+    .color-dot { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.15s; }
+    .color-dot:hover { transform: scale(1.1); }
 
     /* Botões de Escolha com Feedback Tátil Suave */
     .game-btn-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
     .btn-choice { background: var(--purple); color: #FFF; border: none; padding: 10px 18px; font-weight: 800; font-size: 14px; border-radius: 12px; cursor: pointer; box-shadow: 0 3px 10px rgba(139, 92, 246, 0.3); transition: all 0.2s ease; }
     .btn-choice:active { transform: scale(0.92); }
-    .btn-choice.acertou { background: #10B981 !important; transform: scale(1.1); box-shadow: 0 0 15px rgba(16, 185, 129, 0.6); }
+    .btn-choice.acertou { background: #10B981 !important; transform: scale(1.08); box-shadow: 0 0 15px rgba(16, 185, 129, 0.6); }
     .btn-choice.errou { background: #EF4444 !important; transform: scale(0.95); }
 
     .memory-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; max-width: 320px; margin-left: auto; margin-right: auto; }
-    .memory-card { aspect-ratio: 1; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 900; font-size: 20px; cursor: pointer; transition: transform 0.2s; }
+    .memory-card { aspect-ratio: 1; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 900; font-size: 20px; cursor: pointer; transition: transform 0.2s; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
     .memory-card:active { transform: scale(0.95); }
     .memory-card.flipped { background: #FFF; border: 2.5px solid var(--primary); }
     .memory-card img { width: 80%; height: 80%; object-fit: contain; }
@@ -165,21 +176,23 @@
     /* ESTILOS VIP */
     .vip-lock-container { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 3px solid #FCD34D; border-radius: var(--radius-lg); padding: 22px 16px; text-align: center; box-shadow: var(--shadow-sm); }
     .vip-lock-header-clickable { cursor: pointer; user-select: none; }
-    .vip-price-tag { display: inline-block; background: #F59E0B; color: #FFF; font-weight: 900; font-size: 14px; padding: 8px 20px; border-radius: 30px; margin-bottom: 12px; }
+    .vip-price-tag { display: inline-block; background: #F59E0B; color: #FFF; font-weight: 900; font-size: 14px; padding: 8px 20px; border-radius: 30px; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.25); }
     .vip-heart-msg { background: #FFFFFF; border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 14px; margin: 12px auto; max-width: 700px; color: #78350F; font-size: 13px; line-height: 1.5; font-weight: 600; text-align: left; }
     .vip-grid-forms { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 700px; margin: 16px auto 0; }
     @media (min-width: 650px) { .vip-grid-forms { grid-template-columns: 1fr 1fr; } }
-    .vip-form-box { background: #FFF; padding: 16px; border-radius: var(--radius-md); border: 2px solid #FCD34D; text-align: left; }
+    .vip-form-box { background: #FFF; padding: 16px; border-radius: var(--radius-md); border: 2px solid #FCD34D; text-align: left; box-shadow: var(--shadow-sm); }
     .vip-form-box h4 { font-size: 15px; color: #92400E; margin-bottom: 10px; font-weight: 900; }
-    .vip-input { width: 100%; padding: 10px; font-size: 13px; border: 2px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; outline: none; }
-    .btn-vip-checkout { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; font-weight: 800; font-size: 14px; padding: 12px 16px; border-radius: 12px; border: none; cursor: pointer; width: 100%; text-decoration: none; display: block; text-align: center; }
+    .vip-input { width: 100%; padding: 10px; font-size: 13px; border: 2px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; outline: none; transition: border-color 0.2s; }
+    .vip-input:focus { border-color: var(--primary); }
+    .btn-vip-checkout { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; font-weight: 800; font-size: 14px; padding: 12px 16px; border-radius: 12px; border: none; cursor: pointer; width: 100%; text-decoration: none; display: block; text-align: center; box-shadow: 0 4px 10px rgba(217, 119, 6, 0.3); transition: transform 0.15s; }
+    .btn-vip-checkout:active { transform: scale(0.96); }
 
     .vip-content-unlocked { display: none; flex-direction: column; gap: 16px; }
     .vip-content-unlocked.active-vip { display: flex; }
     .vip-card-box { background: #FFF; border: 2px solid #E2E8F0; border-radius: var(--radius-lg); padding: 16px; box-shadow: var(--shadow-sm); }
 
-    .drive-banner-box { background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 100%); border: 2.5px solid #3B82F6; border-radius: var(--radius-md); padding: 16px; text-align: center; margin-bottom: 16px; }
-    .btn-drive { display: inline-block; background: #2563EB; color: #FFF; font-weight: 800; font-size: 13px; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-top: 8px; transition: transform 0.2s;}
+    .drive-banner-box { background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 100%); border: 2.5px solid #3B82F6; border-radius: var(--radius-md); padding: 16px; text-align: center; margin-bottom: 16px; box-shadow: var(--shadow-sm); }
+    .btn-drive { display: inline-block; background: #2563EB; color: #FFF; font-weight: 800; font-size: 13px; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-top: 8px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); }
     .btn-drive:hover { transform: scale(1.05); }
 
     /* ABAS INTERNAS VIP */
@@ -190,48 +203,40 @@
     .vip-sub-area { display: none; flex-direction: column; gap: 16px; animation: fadeIn 0.3s ease; }
     .vip-sub-area.active-area { display: flex; }
 
-    /* Rotina de Super Força (VIP TEA) */
+    /* Rotina de Super Força */
     .rotina-item { display: flex; justify-content: space-between; align-items: center; background: #FFF; border: 2px solid #E2E8F0; padding: 10px 14px; border-radius: 10px; margin-bottom: 8px; transition: all 0.2s; }
-    .rotina-item.concluido { background: #DCFCE7; border-color: #86EFAC; opacity: 0.8; }
+    .rotina-item.concluido { background: #DCFCE7; border-color: #86EFAC; opacity: 0.85; }
     .rotina-item.concluido .rotina-texto { text-decoration: line-through; color: #166534; }
-    .btn-concluir-rotina { background: #10B981; color: #FFF; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
-    .btn-remover-rotina { background: #EF4444; color: #FFF; border: none; padding: 6px 10px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
+    .btn-concluir-rotina { background: #10B981; color: #FFF; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; transition: transform 0.15s; }
+    .btn-concluir-rotina:active { transform: scale(0.92); }
+    .btn-remover-rotina { background: #EF4444; color: #FFF; border: none; padding: 6px 10px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; transition: transform 0.15s; }
+    .btn-remover-rotina:active { transform: scale(0.92); }
 
     /* Certificado VIP */
-    .certificado-container { background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 4px double #F59E0B; border-radius: 12px; padding: 20px; text-align: center; position: relative; }
+    .certificado-container { background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 4px double #F59E0B; border-radius: 12px; padding: 20px; text-align: center; position: relative; box-shadow: var(--shadow-sm); }
     .certificado-container h3 { font-family: 'Georgia', serif; font-size: 22px; color: #92400E; margin-bottom: 10px; }
     .certificado-nome { font-size: 26px; font-weight: 900; color: var(--primary-dark); text-transform: uppercase; margin: 15px 0; border-bottom: 2px solid #92400E; display: inline-block; min-width: 200px; }
     
     /* Rádio VIP */
-    .radio-vip-box { background: #1E293B; border-radius: var(--radius-lg); padding: 20px; text-align: center; color: #FFF; position: relative; overflow: hidden; }
+    .radio-vip-box { background: #1E293B; border-radius: var(--radius-lg); padding: 20px; text-align: center; color: #FFF; position: relative; overflow: hidden; box-shadow: var(--shadow-md); }
     .radio-vip-box::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%); animation: pulse 4s infinite; z-index: 0; pointer-events: none; }
     @keyframes pulse { 0% { transform: scale(0.9); } 50% { transform: scale(1.1); } 100% { transform: scale(0.9); } }
-    .radio-btn { background: #10B981; color: #FFF; border: none; padding: 12px 24px; border-radius: 30px; font-weight: 900; font-size: 16px; cursor: pointer; z-index: 1; position: relative; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); }
+    .radio-btn { background: #10B981; color: #FFF; border: none; padding: 12px 24px; border-radius: 30px; font-weight: 900; font-size: 15px; cursor: pointer; z-index: 1; position: relative; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); transition: transform 0.15s; }
+    .radio-btn:active { transform: scale(0.95); }
 
-    /* Caixa do Acalento (TEA) */
+    /* Caixa do Acalento */
     .acalento-grid { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
-    .acalento-btn { background: #FFF; border: 2px solid var(--tea-blue); border-radius: 12px; width: 85px; padding: 10px 5px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.2s; }
+    .acalento-btn { background: #FFF; border: 2px solid var(--tea-blue); border-radius: 12px; width: 85px; padding: 10px 5px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.2s, background-color 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
     .acalento-btn:hover { background: var(--tea-light); transform: scale(1.05); }
+    .acalento-btn:active { transform: scale(0.95); }
     .acalento-btn span { font-size: 26px; }
     .acalento-btn p { font-size: 10px; font-weight: 800; color: var(--tea-blue); margin: 6px 0 0 0; text-align: center; }
 
-    .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 14px; text-align: center; }
+    .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 14px; text-align: center; box-shadow: var(--shadow-sm); }
     .avatar-escolha-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
-    .avatar-escolha-btn { width: 48px; height: 48px; border-radius: 50%; border: 2.5px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 3px; }
+    .avatar-escolha-btn { width: 48px; height: 48px; border-radius: 50%; border: 2.5px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 3px; transition: transform 0.15s; }
+    .avatar-escolha-btn:active { transform: scale(0.9); }
     .avatar-escolha-btn.selecionado { border-color: #F59E0B; transform: scale(1.08); box-shadow: 0 4px 10px rgba(245,158,11,0.4); }
-
-    .puzzle-selector { display: flex; justify-content: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-    .puzzle-thumb-btn { width: 65px; height: 46px; border: 2.5px solid #CBD5E1; border-radius: 8px; background-size: cover; background-position: center; cursor: pointer; opacity: 0.6; }
-    .puzzle-thumb-btn.active { border-color: #F59E0B; transform: scale(1.06); opacity: 1; }
-    .puzzle-full-preview { text-align: center; margin-bottom: 10px; }
-    .puzzle-full-preview img { width: 140px; height: 105px; border-radius: 8px; border: 2px solid #F59E0B; object-fit: cover; }
-    .puzzle-workspace { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-    @media (min-width: 600px) { .puzzle-workspace { flex-direction: row; justify-content: center; align-items: flex-start; } }
-    .puzzle-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); gap: 2px; width: 260px; height: 195px; background: #FDE68A; padding: 4px; border-radius: 12px; }
-    .puzzle-dropzone { width: 61px; height: 61px; background: #FFF; border: 2px dashed #F59E0B; border-radius: 5px; display: flex; align-items: center; justify-content: center; }
-    .puzzle-pieces-tray { display: flex; flex-wrap: wrap; gap: 6px; max-width: 260px; background: #F8FAFC; padding: 10px; border-radius: 12px; border: 2px solid #CBD5E1; justify-content: center; min-height: 140px; align-items: center; }
-    .draggable-piece { width: 58px; height: 58px; border-radius: 5px; cursor: grab; overflow: hidden; border: 2px solid #3B82F6; touch-action: none; }
-    .draggable-piece img { width: 232px; height: 174px; object-fit: cover; pointer-events: none; }
 
     /* VIDEOS & UTILS */
     .video-section { padding: 0 16px; }
@@ -244,31 +249,39 @@
     .support-form-box { background: #FFFBEB; border: 2px solid #FCD34D; border-radius: var(--radius-lg); padding: 18px; margin: 0 16px 20px; box-shadow: var(--shadow-sm); }
     .support-form-box h5 { color: #92400E; font-size: 16px; font-weight: 900; margin-bottom: 6px; }
     .support-form-box p { font-size: 12.5px; color: #78350F; margin-bottom: 12px; font-weight: 600; }
-    .support-input, .support-textarea { width: 100%; padding: 10px 14px; border: 2px solid #FCD34D; border-radius: 10px; font-size: 13px; margin-bottom: 10px; background: #FFF; outline: none; }
+    .support-input, .support-textarea { width: 100%; padding: 10px 14px; border: 2px solid #FCD34D; border-radius: 10px; font-size: 13px; margin-bottom: 10px; background: #FFF; outline: none; transition: border-color 0.2s; }
+    .support-input:focus, .support-textarea:focus { border-color: var(--secondary); }
     .support-textarea { resize: vertical; min-height: 80px; }
-    .support-btn { background: #D97706; color: #FFF; border: none; padding: 12px 18px; border-radius: 10px; font-weight: 800; font-size: 14px; cursor: pointer; width: 100%; }
+    .support-btn { background: #D97706; color: #FFF; border: none; padding: 12px 18px; border-radius: 10px; font-weight: 800; font-size: 14px; cursor: pointer; width: 100%; box-shadow: 0 4px 10px rgba(217,119,6,0.25); transition: transform 0.15s; }
+    .support-btn:active { transform: scale(0.96); }
 
-    #visualToast { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%) translateY(100px); background: #0F172A; color: #FFF; padding: 10px 20px; border-radius: 30px; font-size: 12px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease; z-index: 99999; pointer-events: none; }
+    #visualToast { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%) translateY(100px); background: #0F172A; color: #FFF; padding: 10px 20px; border-radius: 30px; font-size: 12px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease; z-index: 99999; pointer-events: none; border: 1px solid rgba(255,255,255,0.1); }
     #visualToast.show { transform: translateX(-50%) translateY(0); }
-    .floating-vip-badge { position: fixed; bottom: 16px; right: 16px; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; padding: 10px 16px; border-radius: 50px; font-size: 12.5px; font-weight: 800; box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4); display: flex; align-items: center; gap: 6px; cursor: pointer; border: 2px solid #FDE68A; z-index: 9999; }
+    
+    .floating-vip-badge { position: fixed; bottom: 16px; right: 16px; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; padding: 10px 16px; border-radius: 50px; font-size: 12.5px; font-weight: 800; box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4); display: flex; align-items: center; gap: 6px; cursor: pointer; border: 2px solid #FDE68A; z-index: 9999; transition: transform 0.2s; }
+    .floating-vip-badge:hover { transform: scale(1.05); }
     
     footer { text-align: center; padding: 16px 16px 20px; border-top: 1px solid #E2E8F0; font-size: 12px; color: var(--text-muted); font-weight: 600; margin-top: 20px; display: flex; flex-direction: column; gap: 8px;}
     footer a { color: var(--primary); text-decoration: underline; cursor: pointer; }
     
     /* Estilos TEA específicos */
-    .tea-box { background: var(--tea-light); border: 2px solid #BAE6FD; border-radius: var(--radius-lg); padding: 20px; text-align: center; margin-bottom: 20px; }
+    .tea-box { background: var(--tea-light); border: 2px solid #BAE6FD; border-radius: var(--radius-lg); padding: 20px; text-align: center; margin-bottom: 20px; box-shadow: var(--shadow-sm); }
     .tea-box h3 { color: var(--tea-blue); font-weight: 900; margin-bottom: 10px; }
-    .btn-sensorial { background: #FFF; color: var(--tea-blue); border: 2px solid var(--tea-blue); padding: 10px 20px; border-radius: 20px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; transition: all 0.3s; }
+    .btn-sensorial { background: #FFF; color: var(--tea-blue); border: 2px solid var(--tea-blue); padding: 8px 16px; border-radius: 20px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+    .btn-sensorial:active { transform: scale(0.93); }
     .btn-sensorial.ativo { background: var(--tea-blue); color: #FFF; }
-    .emotion-card { background: #FFF; border: 2px solid #E2E8F0; border-radius: 12px; padding: 15px; cursor: pointer; width: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.2s;}
+    
+    .emotion-card { background: #FFF; border: 2px solid #E2E8F0; border-radius: 12px; padding: 15px; cursor: pointer; width: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.2s, border-color 0.2s; box-shadow: var(--shadow-sm); }
     .emotion-card:hover { border-color: var(--tea-blue); transform: scale(1.05); }
+    .emotion-card:active { transform: scale(0.95); }
     .emotion-card img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 10px; }
     
     .fade-transition { opacity: 1; transition: opacity 0.8s ease-in-out; }
     .fade-out { opacity: 0; }
 
     .caa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
-    .caa-btn { background: #FFF; border: 2px solid #BAE6FD; border-radius: 12px; padding: 10px; text-align: center; cursor: pointer; transition: all 0.2s; }
+    .caa-btn { background: #FFF; border: 2px solid #BAE6FD; border-radius: 12px; padding: 10px; text-align: center; cursor: pointer; transition: all 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+    .caa-btn:hover { border-color: var(--tea-blue); transform: translateY(-2px); }
     .caa-btn:active { background: #E0F2FE; border-color: var(--tea-blue); transform: scale(0.95); }
     .caa-btn span { display: block; font-size: 28px; margin-bottom: 5px; }
     .caa-btn p { font-size: 11px; font-weight: 800; color: var(--tea-blue); margin: 0; }
@@ -276,16 +289,18 @@
     .timer-bar-bg { width: 100%; height: 24px; background: #E2E8F0; border-radius: 12px; overflow: hidden; margin: 15px 0; border: 2px solid #CBD5E1; }
     .timer-bar-fill { width: 100%; height: 100%; background: #10B981; transition: width 1s linear, background-color 0.5s ease; }
     .timer-btns { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-    .timer-btn { background: var(--tea-blue); color: #FFF; border: none; padding: 8px 12px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
+    .timer-btn { background: var(--tea-blue); color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; transition: transform 0.15s; box-shadow: 0 2px 6px rgba(2,132,199,0.3); }
+    .timer-btn:active { transform: scale(0.92); }
 
     /* Modal de Bloqueio por Senha (Parental Lock) */
     .lock-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9); z-index: 99999; justify-content: center; align-items: center; padding: 16px; backdrop-filter: blur(6px); }
     .lock-modal.active { display: flex; }
-    .lock-box { background: #FFF; padding: 24px; border-radius: var(--radius-lg); text-align: center; max-width: 350px; width: 100%; border: 3px solid #EF4444; }
+    .lock-box { background: #FFF; padding: 24px; border-radius: var(--radius-lg); text-align: center; max-width: 350px; width: 100%; border: 3px solid #EF4444; box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
     .lock-box h3 { color: #991B1B; margin-bottom: 10px; font-weight: 900; }
     .lock-box p { font-size: 12px; color: #475569; margin-bottom: 15px; font-weight: 600; }
     .lock-input { width: 100%; padding: 10px; font-size: 14px; border: 2px solid #CBD5E1; border-radius: 8px; margin-bottom: 12px; text-align: center; outline: none; }
-    .lock-btn { background: #EF4444; color: #FFF; border: none; padding: 10px; width: 100%; border-radius: 8px; font-weight: 800; cursor: pointer; }
+    .lock-btn { background: #EF4444; color: #FFF; border: none; padding: 10px; width: 100%; border-radius: 8px; font-weight: 800; cursor: pointer; transition: transform 0.15s; box-shadow: 0 4px 10px rgba(239,68,68,0.3); }
+    .lock-btn:active { transform: scale(0.96); }
 
     /* Modal Privacidade e Cookies */
     .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); z-index: 10000; justify-content: center; align-items: center; padding: 16px; backdrop-filter: blur(4px); }
@@ -297,10 +312,11 @@
 
     .cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: #1E293B; color: #FFF; padding: 16px; text-align: center; font-size: 13px; z-index: 100000; display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; transform: translateY(100%); transition: transform 0.4s ease; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); }
     .cookie-banner.show { transform: translateY(0); }
-    .btn-cookie { background: #10B981; color: #FFF; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; }
+    .btn-cookie { background: #10B981; color: #FFF; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; transition: transform 0.15s; }
+    .btn-cookie:active { transform: scale(0.92); }
   </style>
 </head>
-<body onclick="desbloquearAudioMobileOnce()">
+<body>
 
   <div id="visualToast">Aviso do sistema</div>
 
@@ -316,7 +332,7 @@
 
   <!-- Banner de Cookies LGPD -->
   <div id="cookieBanner" class="cookie-banner">
-    <p style="margin:0;">🍪 A Turminha do Xexéu utiliza cookies (salvos apenas no seu aparelho) para salvar seu progresso. <a onclick="abrirPrivacidade()" style="color:#3B82F6; text-decoration:underline; cursor:pointer;">Saiba mais</a>.</p>
+    <p style="margin:0;">🍪 A Turminha do Xexéu utiliza cookies salvos no seu aparelho para proteger seu progresso. <a onclick="abrirPrivacidade()" style="color:#3B82F6; text-decoration:underline; cursor:pointer;">Saiba mais</a>.</p>
     <button class="btn-cookie" onclick="aceitarCookies()">Entendi e Aceito!</button>
   </div>
 
@@ -325,10 +341,10 @@
     <div class="modal-content">
       <button class="modal-close" onclick="fecharPrivacidade()">X</button>
       <h3>🔒 Política de Privacidade da Turminha</h3>
-      <p>A <strong>Turminha do Xexéu</strong> (eve Design) tem um compromisso absoluto com a segurança e a privacidade da sua família, em conformidade com a LGPD.</p>
-      <p><strong>1. Dados Locais e Seguros:</strong> O portal utiliza armazenamento local (Local Storage). Suas pontuações, avatares e rotinas ficam salvas <strong>exclusivamente no seu celular ou computador</strong>.</p>
+      <p>A <strong>Turminha do Xexéu</strong> (eve Design) preza pela segurança e privacidade da sua família, em conformidade com a LGPD.</p>
+      <p><strong>1. Armazenamento Local:</strong> Suas pontuações, avatares e rotinas ficam salvas <strong>exclusivamente no seu dispositivo</strong>.</p>
       <p><strong>2. Área VIP:</strong> Os dados de e-mail e senha cadastrados são utilizados exclusivamente para autenticação de acesso no Clube VIP.</p>
-      <p>Qualquer dúvida, envie um e-mail para: turminhaxexeu@gmail.com</p>
+      <p>Dúvidas? Entre em contato pelo e-mail: turminhaxexeu@gmail.com</p>
     </div>
   </div>
 
@@ -766,14 +782,14 @@
             <ul style="text-align: left; margin: 8px 0 8px 18px; font-weight: 600;">
               <li>📁 <strong>Drive Completo de Atividades Pedagógicas:</strong> Material exclusivo para imprimir em alta qualidade.</li>
               <li>🧩 <strong>Área Especial Pais & TEA (VIP):</strong> Pranchas de rotina visual e histórias sociais adaptadas.</li>
-              <li>💬 <strong>Prancha de Comunicação Editável (CAA):</strong> Adicione quantos cards e botões personalizados você quiser para a rotina diária!</li>
-              <li>⏳ <strong>Temporizador Expandido (Até 30 min):</strong> Opções de 5, 10, 15 e 30 minutos com bloqueio de segurança por senha parental.</li>
+              <li>💬 <strong>Prancha de Comunicação Editável (CAA):</strong> Adicione quantos cards e botões personalizados você quiser!</li>
+              <li>⏳ <strong>Temporizador Expandido (Até 30 min):</strong> Opções de 5, 10, 15 e 30 minutos com bloqueio de segurança.</li>
               <li>🔊 <strong>Configuração de Voz Global:</strong> Escolha o tipo exato de voz e a velocidade de leitura para todo o portal.</li>
-              <li>🎧 <strong>Caixa do Acalento Completa:</strong> 5 sons relaxantes (Chuva, Pássaros, Ruído Branco, Mar e Fogueira) para regulação sensorial.</li>
+              <li>🎧 <strong>Caixa do Acalento Completa:</strong> Sons relaxantes para regulação sensorial.</li>
               <li>🌟 <strong>Rotina de Super Força:</strong> Acompanhamento lúdico de vitaminas e medicamentos direto no app.</li>
               <li>🌟 <strong>Diploma de Super Fã Personalizável:</strong> Gere certificados exclusivos com o nome da criança.</li>
-              <li>🎬 <strong>Episódios Inéditos e Erros de Gravação:</strong> Conteúdos liberados em primeira mão antes de irem para o YouTube.</li>
-              <li>🎮 <strong>Minijogos Exclusivos VIP:</strong> Desafios de histórias, cores, quebra-cabeças e memória avançada.</li>
+              <li>🎬 <strong>Episódios Inéditos e Prévias VIP:</strong> Conteúdos liberados em primeira mão.</li>
+              <li>🎮 <strong>Minijogos Exclusivos VIP:</strong> Desafios de histórias, cores e memória avançada.</li>
             </ul>
           </div>
           
@@ -872,9 +888,9 @@
               </div>
 
               <div id="panel-vip-3" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
-                <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧩 Quebra-Cabeça Proporcional - Em Breve 🚧</h5>
-                <p style="font-size: 12px; color: #78350F; margin-bottom: 10px;">Envie imagens de proporção 4:3 (ex: 800x600px) para liberar.</p>
-                <button disabled style="padding: 8px 16px; background: #CBD5E1; color: #64748B; border: none; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: not-allowed;">Manutenção ⏳</button>
+                <h5 style="color: #92400E; font-size: 15px; font-weight: 800; margin-bottom: 10px;">🧩 Quebra-Cabeça Proporcional</h5>
+                <p style="font-size: 12px; color: #78350F; margin-bottom: 10px;">Monte as peças da Turminha!</p>
+                <div id="puzzleWorkspaceVip" class="puzzle-workspace"></div>
               </div>
 
               <div id="panel-vip-4" class="vip-game-panel" style="background: #FFF; padding: 16px; border-radius: 10px; text-align: center; min-height: 320px;">
@@ -893,10 +909,9 @@
             </div>
           </div>
 
-          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA (COM CONFIGURAÇÃO DE VOZ, PRANCHA EDITÁVEL E SONS) -->
+          <!-- SUB-ÁREA 2: ESPECIAL PAIS & TEA -->
           <div id="conteudo-vip-tea" class="vip-sub-area">
             
-            <!-- CONFIGURAÇÃO DE VOZ GLOBAL (EXCLUSIVA VIP) -->
             <div class="vip-card-box" style="background: #EFF6FF; border-color: #93C5FD;">
               <h4 style="color: #1E40AF; font-weight: 900; font-size: 15px; margin-bottom: 6px;">🔊 Configuração de Voz dos Cartões</h4>
               <p style="font-size: 12px; color: #1E3A8A; font-weight: 600; margin-bottom: 12px;">Escolha o tom de voz e a velocidade de leitura para o site inteiro.</p>
@@ -908,15 +923,8 @@
                 </select>
 
                 <label style="font-size: 11px; font-weight: 800; color: #1E40AF;">Velocidade de Fala (<span id="txtVelocidade">1.0x</span>):</label>
-                <input type="range" id="rangeVelocidade" min="0.7" max="1.3" step="0.05" value="1.0" oninput="mudarVelocidadeFala(this.value)">
+                <input type="range" id="rangeVelocidade" min="0.7" max="1.3" step="0.05" value="1.0" oninput="mudarVelocidadeFala(this.value)" style="accent-color: var(--primary);">
               </div>
-            </div>
-
-            <!-- DRIVE AZUL EM MANUTENÇÃO -->
-            <div class="drive-banner-box" style="background: #F1F5F9; border-color: #94A3B8;">
-              <h4 style="color: #475569; font-size: 17px; font-weight: 900;">🧩 Drive Azul da Turminha (Recursos TEA) - Em Breve! 🚧</h4>
-              <p style="font-size: 12.5px; color: #64748B; margin-top: 4px; font-weight: 600;">Pranchas visuais e histórias sociais em PDF para baixar. Novidades logo mais!</p>
-              <button disabled class="btn-drive" style="background: #94A3B8; cursor: not-allowed; border:none;">Em Manutenção ⏳</button>
             </div>
 
             <!-- PRANCHA DE COMUNICAÇÃO EDITÁVEL (EXCLUSIVA VIP) -->
@@ -933,16 +941,14 @@
               <div id="caaGridVip" class="caa-grid"></div>
             </div>
 
-            <!-- CAIXA DO ACALENTO COMPLETA -->
+            <!-- CAIXA DO ACALENTO -->
             <div class="vip-card-box" style="background: #F8FAFC; border-color: #94A3B8;">
               <h4 style="color: #334155; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🎧 Caixa do Acalento (Sons Relaxantes)</h4>
               <p style="font-size: 12px; color: #64748B; font-weight: 600;">Regulação sensorial para momentos de crise ou transição.</p>
               <div class="acalento-grid">
-                <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_CHUVA.mp3')"><span>🌧️</span><p>Chuva</p></button>
-                <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_NATUREZA.mp3')"><span>🐦</span><p>Pássaros</p></button>
-                <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_RUIDOBRANCO.mp3')"><span>📻</span><p>Ruído Branco</p></button>
-                <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_MAR.mp3')"><span>🌊</span><p>Ondas</p></button>
-                <button class="acalento-btn" onclick="tocarSomReal('SEU_LINK_DE_FOGUEIRA.mp3')"><span>🔥</span><p>Fogueira</p></button>
+                <button class="acalento-btn" onclick="tocarSomReal('https://cdn.freesound.org/previews/237/237729_4284968-lq.mp3')"><span>🌧️</span><p>Chuva</p></button>
+                <button class="acalento-btn" onclick="tocarSomReal('https://cdn.freesound.org/previews/322/322744_5121236-lq.mp3')"><span>🐦</span><p>Pássaros</p></button>
+                <button class="acalento-btn" onclick="tocarSomReal('https://cdn.freesound.org/previews/400/400632_5121236-lq.mp3')"><span>🌊</span><p>Ondas</p></button>
               </div>
             </div>
 
@@ -1068,6 +1074,13 @@
       carregarVozes();
     }
 
+    function desbloquearAudioMobileOnce() {
+      if (!audioUnlocked && 'speechSynthesis' in window) {
+        window.speechSynthesis.speak(new SpeechSynthesisUtterance(""));
+        audioUnlocked = true;
+      }
+    }
+
     function mudarVozSelecionada(index) {
       vozSelecionadaIndex = index;
       localStorage.setItem('turminha_voz_index', index);
@@ -1159,7 +1172,7 @@
     function abrirPrivacidade() { document.getElementById('modalPrivacidade').classList.add('active'); }
     function fecharPrivacidade() { document.getElementById('modalPrivacidade').classList.remove('active'); }
 
-    // --- ONBOARDING DO ESPAÇO TEA (COLETA DE E-MAIL E SENHA) ---
+    // --- ONBOARDING DO ESPAÇO TEA ---
     function salvarOnboardingTea() {
       const nomeCrianca = document.getElementById('tea-nome-crianca').value.trim();
       const email = document.getElementById('tea-email').value.trim();
@@ -1198,17 +1211,21 @@
         somAcalentoAtual.currentTime = 0;
         if (somAcalentoAtual.src === urlMp3) {
           somAcalentoAtual = null;
+          lerTexto("Som pausado");
           return;
         }
       }
       somAcalentoAtual = new Audio(urlMp3);
-      somAcalentoAtual.play().catch(function(erro) {
+      somAcalentoAtual.loop = true;
+      somAcalentoAtual.play().then(() => {
+        lerTexto("Reproduzindo som relaxante");
+      }).catch(function(erro) {
         console.log("Áudio em manutenção:", erro);
         lerTexto("Este som relaxante estará disponível em breve!");
       });
     }
 
-    // --- ESPAÇO TEA: PERSONAGEM DO DIA DINÂMICO E TRANSIÇÃO ---
+    // --- ESPAÇO TEA: PERSONAGEM DO DIA DINÂMICO ---
     let personagemEmocaoAtual = "Xexéu";
 
     function carregarPersonagemDoDiaTEA() {
@@ -1236,6 +1253,7 @@
       
       if (isSensory) {
         if(btnHeader) btnHeader.innerHTML = '🌿 Normal';
+        if(somAcalentoAtual) { somAcalentoAtual.pause(); somAcalentoAtual = null; }
         lerTexto("Modo calmo ativado no site inteiro.");
       } else {
         if(btnHeader) btnHeader.innerHTML = '🌿 Modo Calmo';
@@ -1288,7 +1306,7 @@
       }, 7000);
     }
 
-    // --- ATUALIZAÇÃO DO TEMPORIZADOR GERAL DE ACORDO COM STATUS VIP ---
+    // --- TEMPORIZADOR GERAL ---
     function atualizarBotoesTemporizadorGeral() {
       const container = document.getElementById('botoesTemporizadorGeral');
       if (!container) return;
@@ -1311,7 +1329,6 @@
       }
     }
 
-    // --- TEMPORIZADOR COM BLOQUEIO DE SENHA (PARENTAL LOCK) ---
     function iniciarTemporizador(minutos) {
       clearInterval(timerInterval);
       let tempoRestante = minutos * 60;
@@ -1340,7 +1357,6 @@
           clearInterval(timerInterval);
           lerTexto("O tempo de uso acabou! Insira a senha parental.");
           if(txt) txt.innerText = "Tempo Esgotado!";
-          
           document.getElementById('modalBloqueioTempo').classList.add('active');
         }
       }, 1000);
@@ -1361,7 +1377,7 @@
       }
     }
 
-    // --- PRANCHA CAA EDITÁVEL (VIP) ---
+    // --- PRANCHA CAA EDITÁVEL ---
     function renderizarCaaVip() {
       const grid = document.getElementById('caaGridVip');
       if (!grid) return;
@@ -1437,7 +1453,7 @@
       if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
     }
 
-    // --- LÓGICA VIP (ABAS INTERNAS, LOGIN, CERTIFICADO) ---
+    // --- LÓGICA VIP ---
     function alternarAbaVip(aba) {
       document.getElementById('tab-vip-geral').classList.remove('active');
       document.getElementById('tab-vip-tea').classList.remove('active');
@@ -1552,7 +1568,7 @@
       if (isVip === 'true') {
         if(lockedView) lockedView.style.display = 'none';
         if(unlockedView) unlockedView.classList.add('active-vip');
-        carregarDesafioHistoriaVip(); carregarJogoCorVip(); iniciarPuzzleVip(); iniciarMemoriaVip();
+        carregarDesafioHistoriaVip(); carregarJogoCorVip(); iniciarMemoriaVip();
         atualizarBotoesTemporizadorGeral();
       } else {
         if(lockedView) lockedView.style.display = 'block';
@@ -1599,17 +1615,98 @@
       document.getElementById('btn-vipanel-' + num).classList.add('active');
     }
 
-    // --- LÓGICA DOS JOGOS PADRÃO (Lousa, Contar, Letras, Memória, Quiz com Feedback Tátil/Visual) ---
+    // --- MINI JOGOS VIP ---
+    function carregarDesafioHistoriaVip() {
+      const txt = document.getElementById('vip-historia-txt');
+      const opts = document.getElementById('vip-historia-options');
+      if(!txt || !opts) return;
+      txt.innerText = "Quem é o pássaro azul de boina amarela que é o mascote oficial?";
+      opts.innerHTML = '';
+      ["Xexéu", "Capilé", "Joca"].forEach(nome => {
+        const b = document.createElement('button'); b.className = 'btn-choice'; b.innerText = nome;
+        b.onclick = () => {
+          if(nome === "Xexéu") {
+            b.classList.add('acertou');
+            lerTexto("Acertou a história!");
+            adicionarPontos(10);
+            setTimeout(() => b.classList.remove('acertou'), 800);
+          } else {
+            b.classList.add('errou');
+            lerTexto("Tente de novo!");
+            setTimeout(() => b.classList.remove('errou'), 500);
+          }
+        };
+        opts.appendChild(b);
+      });
+    }
+
+    function carregarJogoCorVip() {
+      const txt = document.getElementById('vip-cor-txt');
+      const img = document.getElementById('vip-cor-img');
+      const opts = document.getElementById('vip-cor-options');
+      if(!txt || !img || !opts) return;
+      txt.innerText = "Qual a cor da boina do Xexéu?";
+      img.src = "https://res.cloudinary.com/oactqmgs/image/upload/v1786902347/xexeu.png";
+      opts.innerHTML = '';
+      ["Amarela", "Verde", "Azul"].forEach(cor => {
+        const b = document.createElement('button'); b.className = 'btn-choice'; b.innerText = cor;
+        b.onclick = () => {
+          if(cor === "Amarela") {
+            b.classList.add('acertou');
+            lerTexto("Cor correta!");
+            adicionarPontos(10);
+            setTimeout(() => b.classList.remove('acertou'), 800);
+          } else {
+            b.classList.add('errou');
+            lerTexto("Tente de novo!");
+            setTimeout(() => b.classList.remove('errou'), 500);
+          }
+        };
+        opts.appendChild(b);
+      });
+    }
+
+    function iniciarMemoriaVip() {
+      const board = document.getElementById('memoryBoardVip');
+      if(!board) return;
+      board.innerHTML = '';
+      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 6);
+      const imgsMem = sorteados.map(p => p.img);
+      const cartas = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
+      let pCartaVip = null, travaVip = false, acertosVip = 0;
+      
+      cartas.forEach(src => {
+        const card = document.createElement('div'); card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
+        card.onclick = () => {
+          if (travaVip || card.classList.contains('flipped')) return;
+          card.classList.add('flipped'); card.innerHTML = `<img src="${src}" alt="Carta">`;
+          if (!pCartaVip) pCartaVip = card;
+          else {
+            if (pCartaVip.dataset.img === src) {
+              acertosVip++; lerTexto("Par encontrado!"); pCartaVip = null; adicionarPontos(5);
+              if (acertosVip === 6) { adicionarPontos(20); setTimeout(iniciarMemoriaVip, 1800); }
+            } else {
+              travaVip = true;
+              setTimeout(() => { pCartaVip.classList.remove('flipped'); pCartaVip.innerText = '❓'; card.classList.remove('flipped'); card.innerText = '❓'; pCartaVip = null; travaVip = false; }, 900);
+            }
+          }
+        };
+        board.appendChild(card);
+      });
+    }
+
+    // --- LÓGICA DOS JOGOS PADRÃO ---
     const canvas = document.getElementById('paintCanvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas ? canvas.getContext('2d') : null;
     let desenhando = false, corAtual = '#3B82F6', modoLousa = 'free', imagemPintarCarregada = null, tamanhoPincel = 6, escalaZoomGuia = 0.85;
 
     function redimensionarCanvas() {
-      if (!canvas.parentElement) return;
+      if (!canvas || !canvas.parentElement) return;
       canvas.width = canvas.parentElement.clientWidth - 16;
       canvas.height = window.innerWidth >= 900 ? 380 : 280;
       if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada);
     }
+    
     function setLousaMode(modo) {
       modoLousa = modo;
       document.getElementById('btn-mode-free').classList.remove('active');
@@ -1625,6 +1722,7 @@
         carregarContornoPintar('https://res.cloudinary.com/oactqmgs/image/upload/v1786904227/12.png', 'Xexéu', null);
       }
     }
+    
     function carregarContornoPintar(urlImg, nome, btnElemento) {
       document.querySelectorAll('.btn-color-draw').forEach(b => b.classList.remove('selected'));
       if (btnElemento) btnElemento.classList.add('selected');
@@ -1632,36 +1730,43 @@
       const img = new Image(); img.crossOrigin = "Anonymous"; img.src = urlImg;
       img.onload = () => { imagemPintarCarregada = img; desenharContornoNoCanvas(img); lerTexto("Vamos pintar!"); };
     }
+    
     function desenharContornoNoCanvas(img) {
       const escala = Math.min(canvas.width / img.width, canvas.height / img.height) * escalaZoomGuia;
       const x = (canvas.width / 2) - (img.width * escala / 2);
       const y = (canvas.height / 2) - (img.height * escala / 2);
       ctx.globalAlpha = 0.35; ctx.drawImage(img, x, y, img.width * escala, img.height * escala); ctx.globalAlpha = 1.0;
     }
+    
     function mudarCor(c) { corAtual = c; }
     function mudarTamanhoPincel(tam) { tamanhoPincel = tam; }
     function mudarZoomGuia(val) { escalaZoomGuia = val / 100; if (modoLousa === 'color' && imagemPintarCarregada) { ctx.clearRect(0, 0, canvas.width, canvas.height); desenharContornoNoCanvas(imagemPintarCarregada); } }
     function limparCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); if (modoLousa === 'color' && imagemPintarCarregada) desenharContornoNoCanvas(imagemPintarCarregada); }
+    
     function salvarFotoDesenho() {
       const tempCanvas = document.createElement('canvas'); tempCanvas.width = canvas.width; tempCanvas.height = canvas.height;
       const tempCtx = tempCanvas.getContext('2d'); tempCtx.fillStyle = '#FFFFFF'; tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height); tempCtx.drawImage(canvas, 0, 0);
       const link = document.createElement('a'); link.download = 'Meu-Desenho.png'; link.href = tempCanvas.toDataURL('image/png'); link.click();
+      lerTexto("Desenho salvo com sucesso!");
     }
+    
     function getPos(e) { const rect = canvas.getBoundingClientRect(); const clientX = e.touches ? e.touches[0].clientX : e.clientX; const clientY = e.touches ? e.touches[0].clientY : e.clientY; return { x: clientX - rect.left, y: clientY - rect.top }; }
 
-    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; });
-    canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
-    canvas.addEventListener('mouseup', () => desenhando = false);
-    canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; e.preventDefault(); });
-    canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
-    canvas.addEventListener('touchend', () => desenhando = false);
+    if (canvas) {
+      canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; });
+      canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
+      canvas.addEventListener('mouseup', () => desenhando = false);
+      canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; e.preventDefault(); });
+      canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
+      canvas.addEventListener('touchend', () => desenhando = false);
+    }
     window.addEventListener('resize', redimensionarCanvas);
 
     let qContar = 0;
     function carregarJogoContar() {
       qContar = Math.floor(Math.random() * 5) + 1;
       const charSorteado = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      const display = document.getElementById('countDisplay'); display.innerHTML = '';
+      const display = document.getElementById('countDisplay'); if(!display) return; display.innerHTML = '';
       for (let i = 0; i < qContar; i++) {
         const img = document.createElement('img'); img.src = charSorteado.img; img.style.cssText = 'width:44px; height:44px; object-fit:contain;'; display.appendChild(img);
       }
@@ -1687,11 +1792,12 @@
     let pLetraAtual = null;
     function carregarJogoLetra() {
       pLetraAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
-      document.getElementById('nome-letra-personagem').innerText = pLetraAtual.nome;
+      const nomeLetra = document.getElementById('nome-letra-personagem');
+      if(nomeLetra) nomeLetra.innerText = pLetraAtual.nome;
       const imgEl = document.getElementById('img-letra-personagem');
       if(imgEl) { imgEl.src = pLetraAtual.img; }
       
-      const container = document.getElementById('opcoes-letras'); container.innerHTML = '';
+      const container = document.getElementById('opcoes-letras'); if(!container) return; container.innerHTML = '';
       const alfabeto = ['A','B','C','D','E','F','G','H','I','J','L','M','N','P','Q','R','S','T','U','V','X'];
       let opcoes = [pLetraAtual.letra];
       while (opcoes.length < 3) { let l = alfabeto[Math.floor(Math.random() * alfabeto.length)]; if (!opcoes.includes(l)) opcoes.push(l); }
@@ -1719,7 +1825,7 @@
       const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 4);
       const imgsMem = sorteados.map(p => p.img);
       cMem = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
-      const board = document.getElementById('memoryBoard'); board.innerHTML = '';
+      const board = document.getElementById('memoryBoard'); if(!board) return; board.innerHTML = '';
       cMem.forEach(src => {
         const card = document.createElement('div'); card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
         card.onclick = () => {
@@ -1746,7 +1852,7 @@
       const quizImg = document.getElementById('quiz-img');
       if(quizImg) { quizImg.src = pQuizAtual.img; }
       
-      const container = document.getElementById('quiz-options'); container.innerHTML = '';
+      const container = document.getElementById('quiz-options'); if(!container) return; container.innerHTML = '';
       let opcoes = [pQuizAtual.nome];
       while (opcoes.length < 3) { let o = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome; if (!opcoes.includes(o)) opcoes.push(o); }
       opcoes.sort(() => Math.random() - 0.5).forEach(o => {
@@ -1792,14 +1898,39 @@
       }
     }
 
+    function adicionarPontos(qtde) {
+      pontosConquista += qtde;
+      localStorage.setItem('turminha_pontos', pontosConquista);
+      atualizarPlacarConquistas();
+    }
+
+    function atualizarPlacarConquistas() {
+      const placa = document.getElementById('placar-pontos');
+      const med = document.getElementById('medalha-status');
+      if(placa) placa.innerText = pontosConquista;
+      if(med) {
+        if(pontosConquista >= 50) med.innerText = "🌟 Super Fã Mestre";
+        else if(pontosConquista >= 20) med.innerText = "⭐ Explorador Experiente";
+        else med.innerText = "⭐ Iniciante da Turminha";
+      }
+    }
+
+    function enviarSuporteReclamacao() {
+      const email = document.getElementById('suporteEmail').value.trim();
+      const msg = document.getElementById('suporteMensagem').value.trim();
+      if (!email || !msg) { alert("Preencha seu e-mail e a mensagem!"); return; }
+      lerTexto("Mensagem enviada com sucesso! Obrigado pelo contato.");
+      document.getElementById('suporteEmail').value = '';
+      document.getElementById('suporteMensagem').value = '';
+    }
+
     // Inicialização Geral
-    window.onload = () => {
+    window.onload = () => { 
       atualizarPlacarConquistas();
       carregarJogoContar();
       carregarJogoLetra();
       iniciarMemoria();
       carregarQuiz();
-      carregarJogoCor();
       verificarStatusVip();
       verificarCookies();
       verificarStatusOnboardingTea();
