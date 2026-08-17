@@ -14,6 +14,8 @@
     :root {
       --primary: #3B82F6; --primary-dark: #1D4ED8; --secondary: #F59E0B; --accent: #EF4444;
       --purple: #8B5CF6; --green: #10B981; --tea-blue: #0284C7; --tea-light: #F0F9FF;
+      --shadow-sm: 0 4px 12px rgba(0,0,0,0.06);
+      --radius-lg: 20px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', 'Quicksand', sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -27,109 +29,131 @@
 
     body { background: linear-gradient(180deg, #E0F2FE 0%, #FAF5FF 100%); color: #0F172A; display: flex; justify-content: center; min-height: 100vh; padding: 10px; }
 
-    .app-container { width: 100%; max-width: 900px; margin: 0 auto; background: rgba(255, 255, 255, 0.98); border-radius: 24px; padding-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 15px; border: 3px solid #FFF; overflow: hidden; position: relative; }
+    .app-container { width: 100%; max-width: 900px; margin: 0 auto; background: rgba(255, 255, 255, 0.98); border-radius: 28px; padding-bottom: 30px; box-shadow: 0 12px 35px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 15px; border: 3px solid #FFF; overflow: hidden; position: relative; }
 
-    header { padding: 15px 20px; background: linear-gradient(135deg, #BAE6FD 0%, #E0F2FE 100%); display: flex; align-items: center; justify-content: space-between; border-radius: 16px; margin: 12px 12px 0; }
-    .logo-img { max-width: 140px; }
+    header { padding: 15px 22px; background: linear-gradient(135deg, #BAE6FD 0%, #E0F2FE 100%); display: flex; align-items: center; justify-content: space-between; border-radius: 18px; margin: 12px 12px 0; box-shadow: var(--shadow-sm); }
+    .logo-img { max-width: 130px; transition: transform 0.2s; }
+    .logo-img:active { transform: scale(0.95); }
     .header-actions { display: flex; align-items: center; gap: 8px; }
-    .audio-toggle-btn, .config-btn, .btn-sensorial { background: #FFF; border: 2.5px solid var(--primary); color: var(--primary-dark); font-weight: 800; font-size: 13px; padding: 8px 14px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+    
+    .btn-header-action { background: #FFF; border: 2.5px solid var(--primary); color: var(--primary-dark); font-weight: 800; font-size: 13px; padding: 8px 14px; border-radius: 20px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); transition: 0.15s; }
+    .btn-header-action:active { transform: scale(0.92); background: #F8FAFC; }
+    .btn-header-action.muted { border-color: #94A3B8; color: #64748B; background: #F1F5F9; }
 
     /* GAVETA DE CONFIGURAÇÕES */
-    .config-drawer { position: fixed; top: 0; right: -360px; width: 100%; max-width: 340px; height: 100%; background: #FFF; box-shadow: -5px 0 20px rgba(0,0,0,0.15); z-index: 999999; transition: right 0.3s ease; padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; }
+    .config-drawer { position: fixed; top: 0; right: -380px; width: 100%; max-width: 360px; height: 100%; background: #FFF; box-shadow: -8px 0 25px rgba(0,0,0,0.18); z-index: 999999; transition: right 0.35s cubic-bezier(0.1, 0.9, 0.2, 1); padding: 22px; display: flex; flex-direction: column; gap: 18px; overflow-y: auto; }
     .config-drawer.open { right: 0; }
-    .drawer-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999998; }
+    .drawer-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999998; backdrop-filter: blur(2px); }
     .drawer-overlay.active { display: block; }
 
-    .page-nav { display: flex; overflow-x: auto; gap: 6px; padding: 10px 12px; scrollbar-width: none; border-bottom: 2px solid #E0F2FE; }
+    /* NAVEGAÇÃO POR ABAS */
+    .page-nav { display: flex; overflow-x: auto; gap: 8px; padding: 10px 14px; scrollbar-width: none; border-bottom: 2px solid #E0F2FE; }
     .page-nav::-webkit-scrollbar { display: none; }
-    .nav-tab-btn { flex: 0 0 auto; white-space: nowrap; padding: 10px 14px; border: none; border-radius: 12px; font-weight: 800; font-size: 13px; cursor: pointer; background: #F0F9FF; color: #475569; transition: 0.2s; }
-    .nav-tab-btn.active { background: var(--primary); color: #FFF; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3); }
+    .nav-tab-btn { flex: 0 0 auto; white-space: nowrap; padding: 10px 16px; border: none; border-radius: 14px; font-weight: 800; font-size: 13px; cursor: pointer; background: #F0F9FF; color: #475569; transition: 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+    .nav-tab-btn:active { transform: scale(0.94); }
+    .nav-tab-btn.active { background: var(--primary); color: #FFF; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35); }
     .nav-tab-btn.vip-tab { background: #FEF3C7; color: #92400E; border: 2px solid #FCD34D; }
-    .nav-tab-btn.vip-tab.active { background: #F59E0B; color: #FFF; }
+    .nav-tab-btn.vip-tab.active { background: #F59E0B; color: #FFF; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35); }
     .nav-tab-btn.tea-tab { background: #E0F2FE; color: var(--tea-blue); border: 2px solid #7DD3FC; }
     .nav-tab-btn.tea-tab.active { background: var(--tea-blue); color: #FFF; }
 
     .page-content { display: none; flex-direction: column; gap: 20px; padding: 0 16px; animation: fadeIn 0.3s ease; }
     .page-content.active-page { display: flex; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-    .interactive-card { background: #F8FAFC; border-radius: 16px; padding: 18px; border: 2px solid #E2E8F0; text-align: center; }
-    .banner-img { width: 100%; border-radius: 16px; border: 2px solid #E2E8F0; }
-    .intro-box { background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%); border: 2.5px solid #FCD34D; border-radius: 16px; padding: 20px; text-align: left; }
+    .interactive-card { background: #F8FAFC; border-radius: 18px; padding: 20px; border: 2px solid #E2E8F0; text-align: center; box-shadow: var(--shadow-sm); }
+    .banner-img { width: 100%; border-radius: 18px; border: 2px solid #E2E8F0; box-shadow: var(--shadow-sm); }
+    .intro-box { background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%); border: 2.5px solid #FCD34D; border-radius: 18px; padding: 22px; text-align: left; box-shadow: var(--shadow-sm); }
     .intro-box-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-    .btn-audio-mini { background: #F59E0B; color: #FFF; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; }
     
-    .social-round-section { display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .social-round-btn { width: 42px; height: 42px; border-radius: 50%; background: #FFF; border: 2px solid #E2E8F0; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+    .btn-audio-mini { background: #F59E0B; color: #FFF; border: none; border-radius: 50%; width: 34px; height: 34px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3); transition: transform 0.15s; }
+    .btn-audio-mini:active { transform: scale(0.9); }
+    
+    .social-round-section { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .social-round-btn { width: 45px; height: 45px; border-radius: 50%; background: #FFF; border: 2px solid #E2E8F0; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 2px 6px rgba(0,0,0,0.04); transition: transform 0.2s, border-color 0.2s; }
+    .social-round-btn:hover { transform: translateY(-3px); border-color: var(--primary); }
     .social-round-btn img { width: 22px; height: 22px; object-fit: contain; }
 
     /* FAMÍLIAS E PERSONAGENS */
     .section-family-container { display: flex; flex-direction: column; gap: 20px; }
-    .family-group-title { font-size: 17px; font-weight: 900; color: var(--primary-dark); margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; background: #EFF6FF; padding: 10px 14px; border-radius: 12px; border-left: 5px solid var(--primary); }
+    .family-group-title { font-size: 17px; font-weight: 900; color: var(--primary-dark); margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; background: #EFF6FF; padding: 12px 16px; border-radius: 14px; border-left: 6px solid var(--primary); }
     .floating-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
-    .floating-char-card { background: #FFFFFF; border-radius: 16px; padding: 14px 10px; text-align: center; border: 2px solid #E2E8F0; cursor: pointer; transition: 0.2s; display: flex; flex-direction: column; align-items: center; gap: 6px; }
-    .floating-char-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+    .floating-char-card { background: #FFFFFF; border-radius: 18px; padding: 16px 10px; text-align: center; border: 2px solid #E2E8F0; cursor: pointer; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+    .floating-char-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 6px 15px rgba(59, 130, 246, 0.15); }
+    .floating-char-card:active { transform: scale(0.95); }
     .floating-char-img { width: 75px; height: 75px; object-fit: contain; border-radius: 50%; background: #F8FAFC; padding: 4px; }
-    .floating-char-name { font-size: 15px; font-weight: 900; color: var(--text-main); }
-    .floating-char-tag { font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; background: #E0F2FE; color: var(--primary-dark); }
+    .floating-char-name { font-size: 15px; font-weight: 900; color: #1E293B; }
+    .floating-char-tag { font-size: 10px; font-weight: 800; padding: 3px 9px; border-radius: 20px; text-transform: uppercase; background: #E0F2FE; color: var(--primary-dark); }
 
     /* BLOQUEIO VIP */
-    .vip-locked { filter: grayscale(0.8); opacity: 0.75; position: relative; cursor: pointer !important; }
-    .vip-locked::after { content: '🔒 VIP'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1E293B; color: #FCD34D; padding: 6px 12px; border-radius: 20px; font-weight: 900; font-size: 12px; z-index: 10; pointer-events: none; }
+    .vip-locked { filter: grayscale(0.85); opacity: 0.75; position: relative; cursor: pointer !important; transition: transform 0.2s; }
+    .vip-locked:hover { transform: scale(1.02); opacity: 0.9; }
+    .vip-locked::after { content: '🔒 VIP'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1E293B; color: #FCD34D; padding: 6px 14px; border-radius: 20px; font-weight: 900; font-size: 12px; z-index: 10; pointer-events: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
     .vip-badge-small { background: #F59E0B; color: #FFF; font-size: 9px; padding: 2px 6px; border-radius: 6px; vertical-align: middle; }
 
     /* MODAL VIP */
-    .vip-modal-backdrop { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.8); z-index: 999999; justify-content:center; align-items:center; padding: 20px; backdrop-filter: blur(4px); }
+    .vip-modal-backdrop { display: none; position: fixed; inset:0; background: rgba(0,0,0,0.8); z-index: 999999; justify-content:center; align-items:center; padding: 20px; backdrop-filter: blur(5px); animation: fadeIn 0.2s; }
     .vip-modal-backdrop.active { display: flex; }
-    .vip-modal-box { background: #FFFBEB; padding: 25px; border-radius: 20px; text-align:center; max-width: 380px; border: 4px solid #FCD34D; }
+    .vip-modal-box { background: #FFFBEB; padding: 28px; border-radius: 22px; text-align:center; max-width: 380px; width: 100%; border: 4px solid #FCD34D; box-shadow: 0 15px 35px rgba(0,0,0,0.25); }
 
     /* JOGOS & SUBNAV */
-    .games-subnav { display: flex; overflow-x: auto; gap: 6px; background: #E0F2FE; padding: 6px; border-radius: 12px; margin-bottom: 15px; scrollbar-width: none; }
-    .subnav-btn { flex: 0 0 auto; padding: 8px 14px; border: none; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; background: #FFF; color: var(--primary-dark); }
-    .subnav-btn.active { background: var(--primary); color: #FFF; }
+    .games-subnav { display: flex; overflow-x: auto; gap: 6px; background: #E0F2FE; padding: 8px; border-radius: 14px; margin-bottom: 15px; scrollbar-width: none; }
+    .subnav-btn { flex: 0 0 auto; padding: 9px 15px; border: none; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; background: #FFF; color: var(--primary-dark); transition: transform 0.15s; }
+    .subnav-btn:active { transform: scale(0.93); }
+    .subnav-btn.active { background: var(--primary); color: #FFF; box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3); }
     .game-section-page { display: none; flex-direction: column; align-items: center; width: 100%; }
     .game-section-page.active-game-page { display: flex; }
-    .btn-choice { background: var(--purple); color: #FFF; border: none; padding: 12px 20px; font-weight: 800; font-size: 14px; border-radius: 12px; cursor: pointer; transition: 0.15s; }
+    
+    .btn-choice { background: var(--purple); color: #FFF; border: none; padding: 12px 22px; font-weight: 800; font-size: 14px; border-radius: 14px; cursor: pointer; transition: transform 0.15s, background-color 0.2s; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.25); }
     .btn-choice:active { transform: scale(0.92); }
-    .btn-choice.correct { background: #10B981 !important; }
-    .btn-choice.wrong { background: #EF4444 !important; }
+    .btn-choice.correct { background: var(--green) !important; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3); }
 
     /* LOUSA */
-    .coloring-select-grid { display: flex; justify-content: center; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
-    .btn-color-draw { background: #FFF; border: 2px solid #CBD5E1; padding: 6px 10px; border-radius: 10px; font-weight: 700; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
-    .btn-color-draw.selected { border-color: var(--primary); background: #E0F2FE; }
-    #paintCanvas { background: #FFF; border: 3px solid var(--primary); border-radius: 16px; width: 100%; height: 280px; touch-action: none; cursor: crosshair; }
-    .palette { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 10px; flex-wrap: wrap; }
-    .color-dot { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #FFF; cursor: pointer; }
+    .btn-color-draw { background: #FFF; border: 2px solid #CBD5E1; padding: 8px 12px; border-radius: 12px; font-weight: 700; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: transform 0.15s; }
+    .btn-color-draw:active { transform: scale(0.93); }
+    .btn-color-draw.selected { border-color: var(--primary); background: #E0F2FE; box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2); }
+    
+    #paintCanvas { background: #FFF; border: 3px solid var(--primary); border-radius: 18px; width: 100%; height: 280px; touch-action: none; cursor: crosshair; box-shadow: inset 0 2px 6px rgba(0,0,0,0.05); }
+    .palette { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+    .color-dot { width: 36px; height: 36px; border-radius: 50%; border: 3px solid #FFF; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15); transition: transform 0.15s; }
+    .color-dot:hover { transform: scale(1.1); }
+    .color-dot:active { transform: scale(0.95); }
 
     /* PLAYLIST & VÍDEOS */
-    .playlist-item { display: flex; justify-content: space-between; align-items: center; background: #F8FAFC; border: 2px solid #E2E8F0; padding: 12px; border-radius: 12px; margin-bottom: 8px; font-weight: 700; font-size: 13px; color: #334155; }
+    .playlist-item { display: flex; justify-content: space-between; align-items: center; background: #F8FAFC; border: 2px solid #E2E8F0; padding: 14px; border-radius: 14px; margin-bottom: 10px; font-weight: 700; font-size: 13px; color: #334155; cursor: pointer; transition: border-color 0.2s; }
+    .playlist-item:hover { border-color: var(--primary); }
     .playlist-item.em-reparo { background: #F1F5F9; border-style: dashed; color: #64748B; cursor: not-allowed; }
-    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 16px; overflow: hidden; margin-top: 10px; border: 2px solid #E2E8F0; }
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 18px; overflow: hidden; margin-top: 10px; border: 2px solid #E2E8F0; box-shadow: var(--shadow-sm); }
     .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
     /* ESPAÇO TEA */
-    .tea-box { background: var(--tea-light); border: 2px solid #BAE6FD; border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 15px; }
-    .caa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
-    .caa-btn { background: #FFF; border: 2px solid #BAE6FD; border-radius: 12px; padding: 12px 5px; text-align: center; cursor: pointer; }
+    .tea-box { background: var(--tea-light); border: 2px solid #BAE6FD; border-radius: 18px; padding: 22px; text-align: center; margin-bottom: 15px; box-shadow: var(--shadow-sm); }
+    .caa-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+    .caa-btn { background: #FFF; border: 2px solid #BAE6FD; border-radius: 14px; padding: 14px 6px; text-align: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.03); transition: transform 0.15s, border-color 0.2s; }
+    .caa-btn:hover { transform: translateY(-2px); border-color: var(--primary); }
+    .caa-btn:active { transform: scale(0.95); }
 
     /* ÁREA VIP */
-    .vip-lock-container { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 3px solid #FCD34D; border-radius: 16px; padding: 22px 16px; text-align: center; box-shadow: var(--shadow-sm); }
-    .vip-price-tag { display: inline-block; background: #F59E0B; color: #FFF; font-weight: 900; font-size: 14px; padding: 8px 20px; border-radius: 30px; margin-bottom: 12px; }
-    .vip-heart-msg { background: #FFFFFF; border: 2px dashed #F59E0B; border-radius: 12px; padding: 14px; margin: 12px auto; max-width: 700px; color: #78350F; font-size: 13px; line-height: 1.5; font-weight: 600; text-align: left; }
-    .vip-grid-forms { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 700px; margin: 16px auto 0; }
+    .vip-lock-container { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 3px solid #FCD34D; border-radius: 18px; padding: 24px 18px; text-align: center; box-shadow: var(--shadow-sm); }
+    .vip-price-tag { display: inline-block; background: #F59E0B; color: #FFF; font-weight: 900; font-size: 14px; padding: 8px 22px; border-radius: 30px; margin-bottom: 14px; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.25); }
+    .vip-heart-msg { background: #FFFFFF; border: 2px dashed #F59E0B; border-radius: 14px; padding: 16px; margin: 14px auto; max-width: 700px; color: #78350F; font-size: 13px; line-height: 1.5; font-weight: 600; text-align: left; }
+    .vip-grid-forms { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 700px; margin: 18px auto 0; }
     @media (min-width: 650px) { .vip-grid-forms { grid-template-columns: 1fr 1fr; } }
-    .vip-form-box { background: #FFF; padding: 16px; border-radius: 12px; border: 2px solid #FCD34D; text-align: left; }
-    .btn-vip-checkout { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; font-weight: 800; font-size: 14px; padding: 12px 16px; border-radius: 12px; border: none; cursor: pointer; width: 100%; text-decoration: none; display: block; text-align: center; }
+    .vip-form-box { background: #FFF; padding: 18px; border-radius: 14px; border: 2px solid #FCD34D; text-align: left; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    
+    .btn-vip-checkout { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; font-weight: 800; font-size: 14px; padding: 13px 18px; border-radius: 12px; border: none; cursor: pointer; width: 100%; text-decoration: none; display: block; text-align: center; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3); transition: transform 0.15s; }
+    .btn-vip-checkout:active { transform: scale(0.96); }
 
     /* CERTIFICADO */
-    .certificado-moldura { background: #FFFDF7; border: 6px double #D97706; padding: 25px 15px; text-align: center; margin-top: 15px; font-family: 'Cinzel', serif; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .certificado-moldura { background: #FFFDF7; border: 6px double #D97706; padding: 25px 15px; text-align: center; margin-top: 15px; font-family: 'Cinzel', serif; border-radius: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
     .certificado-moldura h3 { font-size: 20px; color: #92400E; margin-bottom: 5px; }
     .certificado-moldura h1 { font-size: 24px; color: #1D4ED8; margin: 10px 0; border-bottom: 2px solid #FCD34D; display: inline-block; padding: 0 10px; text-transform: uppercase; }
 
-    .vip-input { width: 100%; padding: 10px; font-size: 13px; border: 2px solid #CBD5E1; border-radius: 10px; margin-bottom: 10px; outline: none; }
+    .vip-input { width: 100%; padding: 11px; font-size: 13px; border: 2px solid #CBD5E1; border-radius: 10px; margin-bottom: 12px; outline: none; transition: border-color 0.2s; }
+    .vip-input:focus { border-color: var(--primary); }
 
-    #visualToast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(100px); background: #0F172A; color: #FFF; padding: 10px 20px; border-radius: 30px; font-size: 13px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: 0.3s ease; z-index: 999999; pointer-events: none; }
+    /* TOAST MODERNO */
+    #visualToast { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%) translateY(100px); background: #0F172A; color: #FFF; padding: 12px 22px; border-radius: 30px; font-size: 13px; font-weight: 700; box-shadow: 0 10px 25px rgba(0,0,0,0.25); transition: transform 0.3s cubic-bezier(0.1, 0.9, 0.2, 1); z-index: 999999; pointer-events: none; border: 1px solid rgba(255,255,255,0.1); }
     #visualToast.show { transform: translateX(-50%) translateY(0); }
   </style>
 </head>
@@ -141,9 +165,9 @@
   <div id="modalConviteVip" class="vip-modal-backdrop">
     <div class="vip-modal-box">
       <h3 style="color: #92400E; font-size: 20px; font-weight:900;">⭐ Recurso VIP Exclusivo</h3>
-      <p style="margin: 10px 0; color: #78350F; font-size: 13px; font-weight:600;">Este recurso está bloqueado no modo grátis. Torne-se Membro VIP por R$ 6,00/mês e libere TUDO!</p>
-      <button onclick="fecharModalVip(); mudarPagina('vip');" style="width:100%; padding:14px; background:#F59E0B; color:#FFF; border:none; border-radius:12px; font-weight:900; font-size:15px; cursor:pointer;">Quero Ser VIP ⭐</button>
-      <button onclick="fecharModalVip()" style="background:none; border:none; color:#78350F; font-weight:700; margin-top:10px; cursor:pointer;">Agora Não</button>
+      <p style="margin: 12px 0 18px; color: #78350F; font-size: 13px; font-weight:600; line-height: 1.4;">Este recurso está bloqueado no modo grátis. Torne-se Membro VIP por R$ 6,00/mês e libere TUDO!</p>
+      <button onclick="fecharModalVip(); mudarPagina('vip');" style="width:100%; padding:14px; background:#F59E0B; color:#FFF; border:none; border-radius:12px; font-weight:900; font-size:15px; cursor:pointer; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); transition: transform 0.15s;">Quero Ser VIP ⭐</button>
+      <button onclick="fecharModalVip()" style="background:none; border:none; color:#78350F; font-weight:700; margin-top:14px; cursor:pointer; font-size: 13px;">Agora Não</button>
     </div>
   </div>
 
@@ -151,50 +175,47 @@
   <div id="drawerOverlay" class="drawer-overlay" onclick="fecharConfigDrawer()"></div>
   <div id="configDrawer" class="config-drawer">
     <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #F1F5F9; padding-bottom:12px;">
-      <h3 style="color:var(--primary-dark); font-size:18px; font-weight:900;">⚙️ Configurações & Perfil</h3>
+      <h3 style="color:var(--primary-dark); font-size:18px; font-weight:900;">⚙️ Configurações</h3>
       <button onclick="fecharConfigDrawer()" style="background:none; border:none; font-weight:bold; font-size:20px; cursor:pointer; color:#475569;">✕</button>
     </div>
     
     <div>
-      <label style="font-size:13px; font-weight:800; color:#334155; display:block; margin-bottom:6px;">Sua Foto de Perfil (Avatar):</label>
+      <label style="font-size:13px; font-weight:800; color:#334155; display:block; margin-bottom:8px;">Avatar de Perfil:</label>
       <div id="avatarGridAjustes" style="display:flex; flex-wrap:wrap; gap:8px;"></div>
     </div>
 
-    <div style="border-top:1px solid #E2E8F0; padding-top:12px;">
+    <div style="border-top:1px solid #E2E8F0; padding-top:14px;">
       <label style="font-size:13px; font-weight:800; color:#334155; display:block; margin-bottom:4px;">Nome da Criança / Família:</label>
       <input type="text" id="configInputNome" placeholder="Ex: Lucas" class="vip-input">
       
       <label style="font-size:13px; font-weight:800; color:#334155; display:block; margin-bottom:4px;">Especificações (Idade / Perfil):</label>
       <input type="text" id="configInputSpecs" placeholder="Ex: 5 anos / Perfil Sensorial" class="vip-input">
 
-      <button onclick="salvarConfiguracoesGerais()" style="width:100%; padding:10px; background:var(--primary); color:#FFF; border:none; border-radius:10px; font-weight:800; cursor:pointer;">Salvar Configurações 💾</button>
+      <button onclick="salvarConfiguracoesGerais()" style="width:100%; padding:12px; background:var(--primary); color:#FFF; border:none; border-radius:12px; font-weight:800; cursor:pointer; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);">Salvar Configurações 💾</button>
     </div>
 
-    <div style="border-top:1px solid #E2E8F0; padding-top:12px;">
-      <label style="font-size:13px; font-weight:800; color:#334155; display:block; margin-bottom:6px;">Volume da Turminha (Grátis):</label>
-      <input type="range" id="rangeVolume" min="0" max="1" step="0.1" value="1.0" oninput="mudarVolumeGlobal(this.value)" style="width:100%;">
+    <div style="border-top:1px solid #E2E8F0; padding-top:14px;">
+      <label style="font-size:13px; font-weight:800; color:#334155; display:block; margin-bottom:8px;">Volume da Turminha:</label>
+      <input type="range" id="rangeVolume" min="0" max="1" step="0.1" value="1.0" oninput="mudarVolumeGlobal(this.value)" style="width:100%; accent-color: var(--primary);">
     </div>
 
-    <div style="border-top:1px solid #E2E8F0; padding-top:12px; background:#FFFBEB; padding:12px; border-radius:10px; border:1px solid #FCD34D;" id="boxTrocaVozConfig">
-      <label style="font-size:13px; font-weight:800; color:#92400E; display:block; margin-bottom:6px;">Trocar Voz da IA <span class="vip-badge-small">VIP</span></label>
-      <select id="configSelectVoz" class="vip-input" style="background:#FFF; margin-bottom:0;" onchange="mudarVozIA(this.value)">
-        <option value="padrao">Voz Padrão</option>
-      </select>
+    <div style="border-top:1px solid #E2E8F0; padding-top:14px;">
+      <button class="btn-header-action" onclick="alternarModoSensorial()" id="btnModoSensorial" style="width:100%; justify-content:center; padding: 12px; background: #F8FAFC;">🧩 Ativar Modo Calmo (TEA)</button>
     </div>
   </div>
 
   <div class="app-container">
     <header>
-      <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png" alt="Logo" class="logo-img">
+      <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png" alt="Logo" class="logo-img" onclick="mudarPagina('inicio')">
       <div class="header-actions">
-        <button class="config-btn" onclick="abrirConfigDrawer()">⚙️ ☰</button>
-        <button id="toggleAudioBtn" class="audio-toggle-btn" onclick="alternarAudioGlobal()">🔊 Voz</button>
+        <button class="btn-header-action" onclick="abrirConfigDrawer()">⚙️ Ajustes</button>
+        <button id="toggleAudioBtn" class="btn-header-action" onclick="alternarAudioGlobal()">🔊 Voz</button>
       </div>
     </header>
 
     <nav class="page-nav">
       <button id="btn-tab-inicio" class="nav-tab-btn active" onclick="mudarPagina('inicio')">🏠 Início</button>
-      <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">🎬 Vídeos e Músicas</button>
+      <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">🎬 Vídeos</button>
       <button id="btn-tab-jogos" class="nav-tab-btn" onclick="mudarPagina('jogos')">🎮 Jogos</button>
       <button id="btn-tab-leitura" class="nav-tab-btn" onclick="mudarPagina('leitura')">📚 Leitura</button>
       <button id="btn-tab-tea" class="nav-tab-btn tea-tab" onclick="mudarPagina('tea')">🧩 Espaço TEA</button>
@@ -203,7 +224,7 @@
 
     <!-- INÍCIO -->
     <main id="pagina-inicio" class="page-content active-page">
-      <div style="background:#FDE68A; padding:10px; border-radius:12px; text-align:center; font-weight:800; cursor:pointer; color:#92400E;" onclick="mudarPagina('vip')">
+      <div style="background:#FDE68A; padding:12px; border-radius:14px; text-align:center; font-weight:800; cursor:pointer; color:#92400E; box-shadow: var(--shadow-sm);" onclick="mudarPagina('vip')">
         ✨ Desbloqueie o Drive de Atividades e Jogos Completos por R$ 6,00! 💖
       </div>
 
@@ -211,11 +232,11 @@
 
       <div class="intro-box">
         <div class="intro-box-header">
-          <h2 id="saudacaoInicial">✨ Educando com Alegria e Amor</h2>
+          <h2 id="saudacaoInicial" style="color: #92400E;">✨ Educando com Alegria e Amor</h2>
           <button class="btn-audio-mini" onclick="lerTexto('Mais do que um nome divertido, a Turminha do Xexéu honra a nossa família.')">🔊</button>
         </div>
-        <p>Mais do que um nome divertido, a <strong>Turminha do Xexéu</strong> é o nosso jeito de honrar as raízes e a história da nossa família.</p>
-        <p>O nome <strong>Xexéu</strong> é uma homenagem que atravessa gerações. Ele honra a memória de <em>Mariano Xexéu</em> e celebra a vida de seu filho, <em>Pedro Mariano</em>, o Vovô Beto.</p>
+        <p style="color: #78350F; line-height: 1.5;">Mais do que um nome divertido, a <strong>Turminha do Xexéu</strong> é o nosso jeito de honrar as raízes e a história da nossa família.</p>
+        <p style="color: #78350F; line-height: 1.5; margin-top: 6px;">O nome <strong>Xexéu</strong> é uma homenagem que atravessa gerações. Ele honra a memória de <em>Mariano Xexéu</em> e celebra a vida de seu filho, <em>Pedro Mariano</em>, o Vovô Beto.</p>
       </div>
 
       <section class="social-round-section">
@@ -229,8 +250,8 @@
       <div class="interactive-card" style="background:#FFFDF7; border-color:#D97706;">
         <h3 style="color:#92400E; font-weight:900; margin-bottom:8px;">🎓 Diploma de Super Fã (Grátis)</h3>
         <p style="font-size:13px; color:#78350F; margin-bottom:12px;">Gere seu diploma gratuito agora mesmo!</p>
-        <input type="text" id="nome-certificado-gratis" placeholder="Nome da Criança" class="vip-input" style="max-width:260px; margin:0 auto 10px; display:block;">
-        <button onclick="gerarCertificadoGratis()" style="background:#D97706; color:#FFF; border:none; padding:10px 16px; border-radius:10px; font-weight:800; cursor:pointer;">Gerar Diploma Grátis 📥</button>
+        <input type="text" id="nome-certificado-gratis" placeholder="Nome da Criança" class="vip-input" style="max-width:260px; margin:0 auto 12px; display:block;">
+        <button onclick="gerarCertificadoGratis()" style="background:#D97706; color:#FFF; border:none; padding:11px 18px; border-radius:12px; font-weight:800; cursor:pointer; box-shadow: 0 4px 10px rgba(217, 119, 6, 0.25);">Gerar Diploma Grátis 📥</button>
         <div id="areaCertificadoGratis" style="display:none;">
           <div class="certificado-moldura">
             <h3>DIPLOMA DE SUPER FÃ</h3>
@@ -238,11 +259,11 @@
             <h1 id="exibirNomeCertificadoGratis">Amigo(a)</h1>
             <p style="font-size:12px; color:#475569;">é oficialmente um membro honorário da Turminha do Xexéu!</p>
           </div>
-          <button onclick="window.print()" style="margin-top:12px; padding:10px 20px; background:#10B981; color:#FFF; border:none; border-radius:10px; font-weight:900; cursor:pointer;">🖨️ Imprimir Diploma</button>
+          <button onclick="window.print()" style="margin-top:14px; padding:11px 22px; background:#10B981; color:#FFF; border:none; border-radius:12px; font-weight:900; cursor:pointer; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);">🖨️ Imprimir Diploma</button>
         </div>
       </div>
 
-      <!-- TODOS OS PERSONAGENS -->
+      <!-- PERSONAGENS -->
       <section class="section-family-container">
         <div>
           <h3 class="family-group-title">✨ O Símbolo e Mascote</h3>
@@ -285,17 +306,17 @@
     <!-- VÍDEOS E MÚSICAS -->
     <main id="pagina-videos" class="page-content">
       <div class="interactive-card">
-        <h3 class="section-title">🎬 Vídeos Oficiais</h3>
+        <h3 class="section-title" style="color:var(--primary-dark); margin-bottom:10px;">🎬 Vídeos Oficiais</h3>
         <div class="video-wrapper">
           <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
         </div>
       </div>
 
       <div class="interactive-card">
-        <h3 class="section-title">🎧 Playlist Spotify</h3>
-        <iframe style="border-radius:12px; margin-bottom:12px;" src="https://open.spotify.com/embed/artist/6ykKQ3uP6Wl2REylKJAdJ6?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <h3 class="section-title" style="color:var(--primary-dark); margin-bottom:10px;">🎧 Playlist Spotify</h3>
+        <iframe style="border-radius:12px; margin-bottom:14px;" src="https://open.spotify.com/embed/artist/6ykKQ3uP6Wl2REylKJAdJ6?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
-        <h4 style="text-align:left; color:#1E293B; margin: 10px 0;">☁️ Sons Relaxantes (Caixa do Acalento)</h4>
+        <h4 style="text-align:left; color:#1E293B; margin: 12px 0 8px;">☁️ Sons Relaxantes (Caixa do Acalento)</h4>
         <div id="gridSonsPlaylist"></div>
       </div>
     </main>
@@ -312,37 +333,42 @@
         </nav>
 
         <div id="painel-lousa" class="game-section-page active-game-page" style="width:100%;">
-          <div style="display:flex; justify-content:center; gap:6px; margin-bottom:10px;">
-            <button onclick="modoLousa='free'; ctx.clearRect(0,0,canvas.width,canvas.height); imgContornoCarregada=null; lerTexto('Desenho livre ativado');" style="padding:6px 12px; border-radius:8px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer;">✏️ Desenho Livre</button>
+          <div style="display:flex; justify-content:center; gap:8px; margin-bottom:12px; flex-wrap: wrap;">
+            <button onclick="modoLousa='free'; ctx.clearRect(0,0,canvas.width,canvas.height); imgContornoCarregada=null; lerTexto('Desenho livre ativado');" class="btn-color-draw">✏️ Desenho Livre</button>
+            <button onclick="baixarDesenhoLousa()" class="btn-color-draw" style="background:#E0F2FE; border-color:var(--primary); color:var(--primary-dark);">📥 Salvar Arte</button>
           </div>
           <div id="coloringSelectGrid" style="display:flex; gap:6px; flex-wrap:wrap; justify-content:center; margin-bottom:12px;"></div>
           <canvas id="paintCanvas"></canvas>
           <div class="palette">
-            <div class="color-dot" style="background: #3B82F6;" onclick="corAtual='#3B82F6'; lerTexto('Cor azul selecionada');"></div>
-            <div class="color-dot" style="background: #EF4444;" onclick="corAtual='#EF4444'; lerTexto('Cor vermelha selecionada');"></div>
-            <div class="color-dot" style="background: #10B981;" onclick="corAtual='#10B981'; lerTexto('Cor verde selecionada');"></div>
-            <button onclick="limparCanvas(); lerTexto('Lousa limpa');" style="background:#FEE2E2; color:#DC2626; border:none; padding:8px 12px; border-radius:8px; font-weight:800; cursor:pointer;">Limpar</button>
+            <div class="color-dot" style="background: #3B82F6;" onclick="corAtual='#3B82F6'; lerTexto('Azul');"></div>
+            <div class="color-dot" style="background: #EF4444;" onclick="corAtual='#EF4444'; lerTexto('Vermelho');"></div>
+            <div class="color-dot" style="background: #10B981;" onclick="corAtual='#10B981'; lerTexto('Verde');"></div>
+            <div class="color-dot" style="background: #F59E0B;" onclick="corAtual='#F59E0B'; lerTexto('Amarelo');"></div>
+            <div class="color-dot" style="background: #8B5CF6;" onclick="corAtual='#8B5CF6'; lerTexto('Roxo');"></div>
+            <button onclick="limparCanvas(); lerTexto('Lousa limpa');" style="background:#FEE2E2; color:#DC2626; border:none; padding:8px 14px; border-radius:10px; font-weight:800; cursor:pointer; box-shadow: 0 2px 6px rgba(220,38,38,0.2);">Limpar</button>
           </div>
         </div>
 
         <div id="painel-contar" class="game-section-page" style="width:100%; flex-direction:column; align-items:center;">
-          <div id="countDisplay" style="display:flex; gap:8px; min-height:60px; margin-bottom:15px; justify-content:center;"></div>
-          <div id="countOptions" style="display:flex; gap:10px; justify-content:center;"></div>
+          <p style="font-weight:800; color:#475569; margin-bottom:10px;">Quantos Xexéus aparecem?</p>
+          <div id="countDisplay" style="display:flex; gap:8px; min-height:60px; margin-bottom:15px; justify-content:center; align-items: center;"></div>
+          <div id="countOptions" style="display:flex; gap:12px; justify-content:center;"></div>
         </div>
 
         <div id="painel-letras" class="game-section-page" style="width:100%; flex-direction:column; align-items:center;">
-          <p style="font-weight:800; margin-bottom:6px;">Nome: <strong id="nome-letra-personagem" style="color:var(--purple);">Xexéu</strong></p>
-          <img id="img-letra-personagem" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" style="width:90px; height:90px; object-fit:contain; margin-bottom:10px;">
-          <div id="opcoes-letras" style="display:flex; gap:10px; justify-content:center;"></div>
+          <p style="font-weight:800; margin-bottom:6px; color:#475569;">Personagem:</p>
+          <img id="img-letra-personagem" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" style="width:85px; height:85px; object-fit:contain; margin-bottom:12px;">
+          <div id="opcoes-letras" style="display:flex; gap:10px; justify-content:center; flex-wrap: wrap;"></div>
         </div>
 
         <div id="painel-memoria" class="game-section-page" style="width:100%; flex-direction:column; align-items:center;">
-          <div id="memoryBoard" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:10px;"></div>
+          <p style="font-weight:800; color:#475569; margin-bottom:10px;">Encontre os pares!</p>
+          <div id="memoryBoard" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:12px;"></div>
         </div>
 
         <div id="painel-quiz" class="game-section-page" style="width:100%; flex-direction:column; align-items:center;">
-          <p style="font-weight:800; margin-bottom:6px;">Quem é este personagem?</p>
-          <img id="quiz-img" src="" style="width:85px; height:85px; object-fit:contain; margin-bottom:10px;">
+          <p style="font-weight:800; color:#475569; margin-bottom:8px;">Quem é este personagem?</p>
+          <img id="quiz-img" src="" style="width:85px; height:85px; object-fit:contain; margin-bottom:12px;">
           <div id="quiz-options" style="display:flex; flex-direction:column; gap:8px; width:100%; max-width:250px;"></div>
         </div>
       </div>
@@ -351,7 +377,7 @@
     <!-- LEITURA -->
     <main id="pagina-leitura" class="page-content">
       <div class="interactive-card">
-        <h3 class="section-title">📚 Cantinho da Leitura</h3>
+        <h3 class="section-title" style="color:var(--primary-dark); margin-bottom:12px;">📚 Cantinho da Leitura</h3>
         <div class="playlist-item em-reparo" onclick="lerTexto('Esta historinha estará disponível em breve.')">
           <div><span>📖</span> A Origem do Xexéu (Grátis)</div> <span>Em Breve ⏳</span>
         </div>
@@ -361,11 +387,11 @@
     <!-- ESPAÇO TEA -->
     <main id="pagina-tea" class="page-content">
       <div class="tea-box">
-        <h3>🧩 Comunicação Básica (CAA)</h3>
+        <h3 style="color:var(--tea-blue);">🧩 Comunicação Básica (CAA)</h3>
         <div class="caa-grid">
-          <div class="caa-btn" onclick="lerTexto('Quero Água')"><span>💧</span><p>Água</p></div>
-          <div class="caa-btn" onclick="lerTexto('Quero Comer')"><span>🍎</span><p>Comer</p></div>
-          <div class="caa-btn" onclick="lerTexto('Banheiro')"><span>🚽</span><p>Banheiro</p></div>
+          <div class="caa-btn" onclick="lerTexto('Quero Água')"><span>💧</span><p style="margin-top:4px; font-size:13px;">Água</p></div>
+          <div class="caa-btn" onclick="lerTexto('Quero Comer')"><span>🍎</span><p style="margin-top:4px; font-size:13px;">Comer</p></div>
+          <div class="caa-btn" onclick="lerTexto('Banheiro')"><span>🚽</span><p style="margin-top:4px; font-size:13px;">Banheiro</p></div>
         </div>
       </div>
     </main>
@@ -373,15 +399,15 @@
     <!-- ÁREA VIP -->
     <main id="pagina-vip" class="page-content">
       <div id="vip-locked-view" class="vip-lock-container">
-        <h3>⭐ Clube VIP da Turminha</h3>
+        <h3 style="color:#92400E; font-size:20px; font-weight:900;">⭐ Clube VIP da Turminha</h3>
         <div class="vip-price-tag" style="margin-top: 10px;">Acesso Completo: R$ 6,00 / mês</div>
         
         <div class="vip-heart-msg">
           <p>💖 <strong>O que o Clube VIP desbloqueia para você?</strong></p>
-          <ul style="text-align: left; margin: 8px 0 0 18px; font-weight: 600;">
+          <ul style="text-align: left; margin: 8px 0 0 18px; font-weight: 600; line-height: 1.6;">
             <li>📁 Drive Completo de Atividades e Desenhos para Baixar.</li>
-            <li>🎨 Lousa Mágica com todos os 12 personagens liberados.</li>
-            <li>👤 Escolha entre todos os avatares de perfil exclusivos.</li>
+            <li>🎨 Lousa Mágica com todos os personagens liberados.</li>
+            <li>👤 Escolha entre todos os avatares exclusivos.</li>
             <li>🗣️ Troca ilimitada de vozes e velocidade da IA.</li>
             <li>💬 Prancha de Comunicação CAA editável e ilimitada.</li>
           </ul>
@@ -389,7 +415,7 @@
 
         <div class="vip-grid-forms">
           <div class="vip-form-box">
-            <h4>✨ Desbloquear Acesso VIP</h4>
+            <h4 style="color:#92400E; margin-bottom:8px;">✨ Desbloquear Acesso VIP</h4>
             <label style="font-size:11px; font-weight:700; color:#475569; display:block; margin-bottom:3px;">Seu E-mail:</label>
             <input type="email" id="cad-email" class="vip-input" placeholder="seu@email.com">
             <label style="font-size:11px; font-weight:700; color:#475569; display:block; margin-bottom:3px;">Crie uma Senha:</label>
@@ -398,26 +424,26 @@
           </div>
 
           <div class="vip-form-box" style="border-color: #CBD5E1;">
-            <h4 style="color: #1E293B;">🔑 Já sou Assinante</h4>
+            <h4 style="color: #1E293B; margin-bottom:8px;">🔑 Já sou Assinante</h4>
             <label style="font-size:11px; font-weight:700; color:#475569; display:block; margin-bottom:3px;">E-mail Cadastrado:</label>
             <input type="email" id="log-email" class="vip-input" placeholder="seu@email.com">
             <label style="font-size:11px; font-weight:700; color:#475569; display:block; margin-bottom:3px;">Sua Senha:</label>
             <input type="password" id="log-senha" class="vip-input" placeholder="Sua senha">
-            <button type="button" onclick="fazerLoginVipLocal()" style="width:100%; padding:10px; background:#3B82F6; color:#FFF; border:none; border-radius:10px; font-weight:800; cursor:pointer;">Entrar no VIP</button>
+            <button type="button" onclick="fazerLoginVipLocal()" style="width:100%; padding:12px; background:#3B82F6; color:#FFF; border:none; border-radius:10px; font-weight:800; cursor:pointer; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);">Entrar no VIP</button>
           </div>
         </div>
       </div>
 
       <div id="vip-unlocked-view" style="display:none;">
-        <div style="background:#D1FAE5; border:2px solid #10B981; padding:15px; border-radius:16px; display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+        <div style="background:#D1FAE5; border:2px solid #10B981; padding:16px; border-radius:16px; display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; box-shadow: var(--shadow-sm);">
           <h3 style="color:#065F46; margin:0; font-size:16px;">🎉 Acesso VIP Ativo!</h3>
-          <button onclick="sairVip()" style="background:#EF4444; color:#FFF; border:none; padding:8px 12px; border-radius:8px; font-weight:800; cursor:pointer;">Sair</button>
+          <button onclick="sairVip()" style="background:#EF4444; color:#FFF; border:none; padding:8px 14px; border-radius:8px; font-weight:800; cursor:pointer;">Sair</button>
         </div>
 
         <div class="interactive-card" style="background:#FFF;">
           <h4 style="color:#92400E; font-weight:900; margin-bottom:10px;">🎓 Gerar Certificado Avançado VIP</h4>
-          <input type="text" id="nome-certificado" placeholder="Nome da Criança" class="vip-input" style="max-width:260px; margin:0 auto 10px; display:block;">
-          <button onclick="gerarCertificadoVip()" style="background:#D97706; color:#FFF; border:none; padding:10px 16px; border-radius:10px; font-weight:800; cursor:pointer;">Visualizar Diploma VIP</button>
+          <input type="text" id="nome-certificado" placeholder="Nome da Criança" class="vip-input" style="max-width:260px; margin:0 auto 12px; display:block;">
+          <button onclick="gerarCertificadoVip()" style="background:#D97706; color:#FFF; border:none; padding:11px 18px; border-radius:12px; font-weight:800; cursor:pointer; box-shadow: 0 4px 10px rgba(217,119,6,0.25);">Visualizar Diploma VIP</button>
           
           <div id="areaCertificadoVip" style="display:none;">
             <div class="certificado-moldura">
@@ -426,13 +452,13 @@
               <h1 id="exibirNomeCertificadoVip">Amigo(a)</h1>
               <p style="font-size:12px; color:#475569;">é membro oficial e VIP da Turminha do Xexéu!</p>
             </div>
-            <button onclick="window.print()" style="margin-top:15px; width:100%; padding:12px; background:#10B981; color:#FFF; border:none; border-radius:12px; font-weight:900; cursor:pointer;">🖨️ Imprimir Certificado VIP</button>
+            <button onclick="window.print()" style="margin-top:15px; width:100%; padding:12px; background:#10B981; color:#FFF; border:none; border-radius:12px; font-weight:900; cursor:pointer; box-shadow: 0 4px 10px rgba(16,185,129,0.3);">🖨️ Imprimir Certificado VIP</button>
           </div>
         </div>
         
-        <div style="margin-top:15px; background:#E0F2FE; border:2px solid #3B82F6; padding:20px; border-radius:16px; text-align:center;">
+        <div style="margin-top:15px; background:#E0F2FE; border:2px solid #3B82F6; padding:22px; border-radius:18px; text-align:center; box-shadow: var(--shadow-sm);">
           <h4 style="color:#1E3A8A; font-size:18px;">📁 Drive Oficial e Atividades</h4>
-          <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" style="display:inline-block; margin-top:10px; background:#2563EB; color:#FFF; padding:10px 20px; border-radius:10px; text-decoration:none; font-weight:800;">Acessar Arquivos 📥</a>
+          <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" style="display:inline-block; margin-top:12px; background:#2563EB; color:#FFF; padding:11px 22px; border-radius:12px; text-decoration:none; font-weight:800; box-shadow: 0 4px 12px rgba(37,99,235,0.3);">Acessar Arquivos 📥</a>
         </div>
       </div>
     </main>
@@ -445,6 +471,7 @@
     let corAtual = '#3B82F6';
     let nomeDaCrianca = localStorage.getItem('turminha_nome_usuario') || 'Amigo(a)';
     let specsCrianca = localStorage.getItem('turminha_specs') || '';
+    let modoSensorialAtivo = false;
     
     const PERSONAGENS_PERFIL = [
       { nome: 'Xexéu', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png', isVip: false },
@@ -486,6 +513,13 @@
       'Hilda': { nome: "Vovó Hilda", desc: "A vovó de óculos redondos." }
     };
 
+    function mostrarToast(msg) {
+      const t = document.getElementById('visualToast');
+      t.innerText = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
     function mudarPagina(id) {
       document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active-page'));
       document.querySelectorAll('.nav-tab-btn').forEach(b => b.classList.remove('active'));
@@ -511,6 +545,7 @@
       document.getElementById('configInputSpecs').value = specsCrianca;
       renderizarAvatares();
     }
+    
     function fecharConfigDrawer() { 
       document.getElementById('configDrawer').classList.remove('open'); 
       document.getElementById('drawerOverlay').classList.remove('active');
@@ -528,33 +563,50 @@
         specsCrianca = inputSpecs;
         localStorage.setItem('turminha_specs', specsCrianca);
       }
+      mostrarToast(`Configurações salvas com sucesso! ✨`);
       lerTexto(`Configurações salvas para ${nomeDaCrianca}!`);
+      fecharConfigDrawer();
+    }
+
+    function alternarModoSensorial() {
+      modoSensorialAtivo = !modoSensorialAtivo;
+      document.body.classList.toggle('sensory-mode', modoSensorialAtivo);
+      const btn = document.getElementById('btnModoSensorial');
+      if(modoSensorialAtivo) {
+        btn.innerText = '🧩 Modo Calmo Ativo';
+        if(somAtualAudio) { somAtualAudio.pause(); somAtualAudio = null; }
+        mostrarToast('Modo Calmo (TEA) ativado 🌿');
+      } else {
+        btn.innerText = '🧩 Ativar Modo Calmo (TEA)';
+        mostrarToast('Modo Padrão ativado');
+      }
       fecharConfigDrawer();
     }
 
     function abrirModalVip() { document.getElementById('modalConviteVip').classList.add('active'); }
     function fecharModalVip() { document.getElementById('modalConviteVip').classList.remove('active'); }
     
-    function simularAtivacaoVip() {
-      localStorage.setItem('turminha_vip', 'true');
-      alert('🌟 VIP Ativado com sucesso!');
-      atualizarInterfaceVip();
+    function fazerLoginVipLocal() {
+      const email = document.getElementById('log-email').value;
+      if(email) {
+        localStorage.setItem('turminha_vip', 'true');
+        mostrarToast('🌟 Login VIP efetuado com sucesso!');
+        atualizarInterfaceVip();
+      } else {
+        mostrarToast('Digite o e-mail cadastrado.');
+      }
     }
+    
     function sairVip() {
       localStorage.removeItem('turminha_vip');
       atualizarInterfaceVip();
+      mostrarToast('Sessão VIP encerrada.');
     }
 
     function atualizarInterfaceVip() {
       const isVip = localStorage.getItem('turminha_vip') === 'true';
       document.getElementById('vip-unlocked-view').style.display = isVip ? 'block' : 'none';
       document.getElementById('vip-locked-view').style.display = isVip ? 'none' : 'block';
-
-      const selectVoz = document.getElementById('configSelectVoz');
-      if(selectVoz) {
-        selectVoz.disabled = !isVip;
-        selectVoz.style.opacity = isVip ? '1' : '0.6';
-      }
 
       renderizarAvatares();
       renderizarBotoesLousa();
@@ -576,7 +628,7 @@
           img.onclick = abrirModalVip;
         } else {
           img.style.cssText = "width:50px; height:50px; border-radius:50%; object-fit:contain; border:2px solid #10B981; cursor:pointer;";
-          img.onclick = () => { lerTexto(`Avatar ${p.nome} selecionado!`); };
+          img.onclick = () => { mostrarToast(`Avatar ${p.nome} selecionado!`); lerTexto(`Avatar ${p.nome} selecionado!`); };
         }
         grid.appendChild(img);
       });
@@ -621,7 +673,7 @@
           div.onclick = abrirModalVip;
         } else {
           div.className = 'playlist-item';
-          div.innerHTML = `<div><span>${som.icon}</span> ${som.nome} ${!som.isVip ? '(Grátis)' : ''}</div> <button style="background:var(--primary);color:#FFF;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;">▶️</button>`;
+          div.innerHTML = `<div><span>${som.icon}</span> ${som.nome}</div> <button style="background:var(--primary);color:#FFF;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;">▶️</button>`;
           div.onclick = () => tocarAcalento(som.url, false);
         }
         container.appendChild(div);
@@ -644,7 +696,7 @@
     }
 
     function lerTexto(txt) {
-      if (!isAudioActive || !('speechSynthesis' in window)) return;
+      if (!isAudioActive || modoSensorialAtivo || !('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(txt);
       u.lang = 'pt-BR';
@@ -655,25 +707,25 @@
     function tocarVozETexto(chave) {
       const p = INFO_PERSONAGENS[chave];
       if (!p) return;
-      document.getElementById('detalhe-nome').innerText = p.nome;
-      document.getElementById('detalhe-texto').innerText = p.desc;
+      mostrarToast(`${p.nome}: ${p.desc}`);
       lerTexto(p.desc);
     }
 
     function tocarAcalento(url, isVipBlocked) {
       if (isVipBlocked) { abrirModalVip(); return; }
-      if (somAtualAudio) { somAtualAudio.pause(); somAtualAudio = null; lerTexto("Som pausado"); return; }
+      if (somAtualAudio) { somAtualAudio.pause(); somAtualAudio = null; mostrarToast("Som pausado"); lerTexto("Som pausado"); return; }
       somAtualAudio = new Audio(url);
       somAtualAudio.volume = volumeGlobal;
       somAtualAudio.loop = true;
       somAtualAudio.play();
+      mostrarToast("Reproduzindo som relaxante 🌿");
       lerTexto("Reproduzindo som relaxante");
     }
 
     // LOUSA MÁGICA
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas ? canvas.getContext('2d') : null;
-    let desenhando = false, imgContornoCarregada = null, corAtual = '#3B82F6';
+    let desenhando = false, imgContornoCarregada = null;
 
     function ajustarCanvas() {
       if (!canvas || !canvas.parentElement) return;
@@ -685,7 +737,7 @@
     function carregarContorno(url) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const img = new Image(); img.crossOrigin = "Anonymous"; img.src = url;
-      img.onload = () => { imgContornoCarregada = img; desenharImgFundo(img); lerTexto("Vamos colorir!"); };
+      img.onload = () => { imgContornoCarregada = img; desenharImgFundo(img); mostrarToast("Modo de colorir carregado! 🎨"); lerTexto("Vamos colorir!"); };
     }
 
     function desenharImgFundo(img) {
@@ -694,9 +746,26 @@
       ctx.globalAlpha = 1.0;
     }
 
-    function limparCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); if(imgContornoCarregada) desenharImgFundo(imgContornoCarregada); }
+    function limparCanvas() { 
+      ctx.clearRect(0, 0, canvas.width, canvas.height); 
+      if(imgContornoCarregada) desenharImgFundo(imgContornoCarregada); 
+    }
+
+    function baixarDesenhoLousa() {
+      if (!canvas) return;
+      const link = document.createElement('a');
+      link.download = 'minha-arte-turminha.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      mostrarToast('Arte salva com sucesso! 📥✨');
+      lerTexto('Desenho salvo no seu dispositivo.');
+    }
     
-    function getPos(e) { const r = canvas.getBoundingClientRect(); const cx = e.touches ? e.touches[0].clientX : e.clientX, cy = e.touches ? e.touches[0].clientY : e.clientY; return { x: cx - r.left, y: cy - r.top }; }
+    function getPos(e) { 
+      const r = canvas.getBoundingClientRect(); 
+      const cx = e.touches ? e.touches[0].clientX : e.clientX, cy = e.touches ? e.touches[0].clientY : e.clientY; 
+      return { x: cx - r.left, y: cy - r.top }; 
+    }
     
     if (canvas) {
       canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 6; ctx.lineCap = 'round'; });
@@ -710,31 +779,74 @@
     function carregarJogosIniciais() {
       const d = document.getElementById('countDisplay'), o = document.getElementById('countOptions');
       if(d && o) {
-        d.innerHTML = '<img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" style="width:40px"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" style="width:40px">';
+        d.innerHTML = '<img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" style="width:45px"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" style="width:45px">';
         o.innerHTML = '';
-        [1,2,3].forEach(n => {
+        [1, 2, 3].forEach(n => {
           const b = document.createElement('button'); b.className = 'btn-choice'; b.innerText = n;
-          b.onclick = () => { if(n === 2) { b.classList.add('correct'); lerTexto("Acertou!"); setTimeout(carregarJogosIniciais, 800); } else { lerTexto("Tente de novo"); } };
+          b.onclick = () => { 
+            if(n === 2) { 
+              b.classList.add('correct'); 
+              mostrarToast('Parabéns, você acertou! 🎉');
+              lerTexto("Acertou!"); 
+              setTimeout(carregarJogosIniciais, 900); 
+            } else { 
+              mostrarToast('Tente novamente!');
+              lerTexto("Tente de novo"); 
+            } 
+          };
           o.appendChild(b);
         });
       }
+      
       const mb = document.getElementById('memoryBoard');
       if(mb) {
         mb.innerHTML = '';
-        ['⭐','⭐','🎈','🎈'].sort(()=>Math.random()-0.5).forEach(el => {
-          const c = document.createElement('div'); c.style.cssText = "width:70px; height:70px; background:var(--primary); border-radius:12px; display:flex; align-items:center; justify-content:center; color:#FFF; font-size:26px; cursor:pointer;"; c.innerText = '❓';
-          c.onclick = () => { c.classList.add('flipped'); c.innerText = el; lerTexto("Carta virada"); };
+        ['⭐','⭐','🎈','🎈'].sort(() => Math.random() - 0.5).forEach(el => {
+          const c = document.createElement('div'); 
+          c.style.cssText = "width:75px; height:75px; background:var(--primary); border-radius:14px; display:flex; align-items:center; justify-content:center; color:#FFF; font-size:28px; cursor:pointer; box-shadow: 0 4px 10px rgba(59,130,246,0.25);"; 
+          c.innerText = '❓';
+          c.onclick = () => { c.innerText = el; lerTexto("Carta virada"); };
           mb.appendChild(c);
         });
       }
+
       const qi = document.getElementById('quiz-img'), qo = document.getElementById('quiz-options');
       if(qi && qo) {
         qi.src = 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png';
         qo.innerHTML = '';
         ['Xexéu', 'Capilé'].forEach(nome => {
           const b = document.createElement('button'); b.className = 'btn-choice'; b.innerText = nome;
-          b.onclick = () => { if(nome === 'Xexéu') { b.classList.add('correct'); lerTexto("Muito bem!"); setTimeout(carregarJogosIniciais, 800); } else { lerTexto("Tente de novo"); } };
+          b.onclick = () => { 
+            if(nome === 'Xexéu') { 
+              b.classList.add('correct'); 
+              mostrarToast('Muito bem! 🌟');
+              lerTexto("Muito bem!"); 
+              setTimeout(carregarJogosIniciais, 900); 
+            } else { 
+              mostrarToast('Quase lá, tente de novo!');
+              lerTexto("Tente de novo"); 
+            } 
+          };
           qo.appendChild(b);
+        });
+      }
+
+      const ol = document.getElementById('opcoes-letras');
+      if(ol) {
+        ol.innerHTML = '';
+        ['X', 'C', 'M'].forEach(l => {
+          const b = document.createElement('button'); b.className = 'btn-choice'; b.innerText = l;
+          b.onclick = () => {
+            if(l === 'X') {
+              b.classList.add('correct');
+              mostrarToast('Letra correta! 🔤');
+              lerTexto('Isso mesmo, começa com X!');
+            } else {
+              mostrarToast('Tente de novo!');
+              lerTexto('Tente outra letra.');
+            }
+          };
+          ol.appendChild(b);
         });
       }
     }
@@ -743,6 +855,7 @@
       let nome = document.getElementById('nome-certificado-gratis').value.trim() || nomeDaCrianca;
       document.getElementById('exibirNomeCertificadoGratis').innerText = nome;
       document.getElementById('areaCertificadoGratis').style.display = 'block';
+      mostrarToast(`Diploma gerado para ${nome}! 🎓`);
       lerTexto(`Diploma gratuito gerado para ${nome}!`);
     }
 
@@ -750,6 +863,7 @@
       let nome = document.getElementById('nome-certificado').value.trim() || nomeDaCrianca;
       document.getElementById('exibirNomeCertificadoVip').innerText = nome;
       document.getElementById('areaCertificadoVip').style.display = 'block';
+      mostrarToast(`Diploma VIP gerado para ${nome}! ⭐`);
       lerTexto(`Diploma VIP gerado para ${nome}!`);
     }
 
@@ -757,7 +871,10 @@
       atualizarInterfaceVip(); 
       carregarJogosIniciais();
       const salvo = localStorage.getItem('turminha_nome_usuario');
-      if(salvo) { nomeDaCrianca = salvo; document.getElementById('saudacaoInicial').innerText = `✨ Olá, ${nomeDaCrianca}! Educando com Amor`; }
+      if(salvo) { 
+        nomeDaCrianca = salvo; 
+        document.getElementById('saudacaoInicial').innerText = `✨ Olá, ${nomeDaCrianca}! Educando com Amor`; 
+      }
       window.addEventListener('resize', ajustarCanvas);
     };
   </script>
