@@ -21,7 +21,6 @@
       --tea-blue: #0284C7;
       --tea-light: #F0F9FF;
       --bg-gradient: linear-gradient(180deg, #E0F2FE 0%, #FAF5FF 60%, #FFF1F2 100%);
-      --card-bg: #FFFFFF;
       --text-main: #0F172A;
       --text-muted: #475569;
       --radius-xl: 24px;
@@ -30,32 +29,6 @@
       --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.05);
       --shadow-md: 0 8px 20px rgba(15, 23, 42, 0.08);
       --shadow-lg: 0 14px 30px rgba(59, 130, 246, 0.15);
-    }
-
-    body.sensory-mode {
-      --bg-gradient: #F1F5F9 !important; 
-      --primary: #475569 !important;
-      --primary-dark: #334155 !important;
-      --secondary: #64748B !important;
-      --tea-blue: #334155 !important;
-      --tea-light: #FFFFFF !important;
-      background: var(--bg-gradient) !important;
-      color: #1E293B !important;
-    }
-    body.sensory-mode * { animation: none !important; box-shadow: none !important; transition: none !important; }
-    body.sensory-mode .app-container { border: 2px solid #CBD5E1; background: #FFFFFF; }
-    body.sensory-mode header { background: #E2E8F0 !important; }
-    body.sensory-mode .tea-box, 
-    body.sensory-mode .vip-card-box, 
-    body.sensory-mode .vip-lock-container, 
-    body.sensory-mode .interactive-card,
-    body.sensory-mode .video-card { background: #FFFFFF !important; border: 2px solid #CBD5E1 !important; }
-    
-    body.sensory-mode .browser-notice-box,
-    body.sensory-mode .top-vip-announcement,
-    body.sensory-mode .social-round-section,
-    body.sensory-mode .floating-vip-badge {
-      display: none !important;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', system-ui, -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -70,258 +43,155 @@
     .audio-toggle-btn { background: #FFFFFF; border: 2.5px solid var(--primary); color: var(--primary-dark); font-weight: 800; font-size: 13px; padding: 8px 14px; border-radius: 50px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: var(--shadow-sm); }
     .audio-toggle-btn.muted { background: #FEE2E2; border-color: #EF4444; color: #991B1B; }
 
-    /* MENU RESPONSIVO (SCROLL HORIZONTAL NO CELULAR) */
-    .page-nav { 
-      display: flex; 
-      gap: 8px; 
-      background: #F0F9FF; 
-      padding: 8px; 
-      border-radius: var(--radius-lg); 
-      margin: 0 12px; 
-      border: 2px solid #BAE6FD; 
-      overflow-x: auto; /* Permite rolar no celular */
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; /* Esconde scrollbar Firefox */
-    }
-    .page-nav::-webkit-scrollbar { display: none; } /* Esconde scrollbar Chrome/Safari */
-    
+    /* MENU PRINCIPAL RESPONSIVO */
+    .page-nav { display: flex; gap: 8px; background: #F0F9FF; padding: 8px; border-radius: var(--radius-lg); margin: 0 12px; border: 2px solid #BAE6FD; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .page-nav::-webkit-scrollbar { display: none; }
     .nav-tab-btn { flex: 0 0 auto; padding: 12px 16px; border: none; border-radius: var(--radius-md); font-weight: 800; font-size: 13px; cursor: pointer; background: transparent; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.2s; }
     .nav-tab-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35); }
     .nav-tab-btn.vip-tab { background: #FEF3C7; color: #92400E; border: 2px solid #FCD34D; }
-    .nav-tab-btn.vip-tab.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4); border-color: transparent; }
+    .nav-tab-btn.vip-tab.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; border-color: transparent; }
     .nav-tab-btn.tea-tab { background: #E0F2FE; color: var(--tea-blue); border: 2px solid #7DD3FC; }
-    .nav-tab-btn.tea-tab.active { background: var(--tea-blue); color: #FFF; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35); border-color: transparent; }
+    .nav-tab-btn.tea-tab.active { background: var(--tea-blue); color: #FFF; border-color: transparent; }
     .nav-tab-btn.leitura-tab { background: #FCE7F3; color: #BE185D; border: 2px solid #F9A8D4; }
-    .nav-tab-btn.leitura-tab.active { background: #DB2777; color: #FFF; box-shadow: 0 4px 12px rgba(219, 39, 119, 0.35); border-color: transparent; }
+    .nav-tab-btn.leitura-tab.active { background: #DB2777; color: #FFF; border-color: transparent; }
 
-    .browser-notice-box { margin: 0 16px; background: #EFF6FF; border: 2px solid #93C5FD; border-radius: var(--radius-md); padding: 10px 14px; text-align: center; color: #1E40AF; font-size: 12.5px; font-weight: 700; box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; gap: 8px; }
     .top-vip-announcement { margin: 0 12px -10px; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 10px 14px; text-align: center; color: #92400E; font-size: 12px; font-weight: 800; cursor: pointer; box-shadow: var(--shadow-sm); }
 
     .page-content { display: none; flex-direction: column; gap: 22px; animation: fadeIn 0.3s ease; }
     .page-content.active-page { display: flex; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
+    /* ESTRUTURA GERAL DOS CARDS */
     .banner-intro-grid { display: flex; flex-direction: column; gap: 16px; padding: 0 16px; }
     @media (min-width: 850px) { .banner-intro-grid { display: grid; grid-template-columns: 1fr 1.2fr; align-items: stretch; } }
     .banner-container { width: 100%; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
     .banner-img { width: 100%; height: 100%; min-height: 190px; display: block; object-fit: cover; }
-
     .intro-box { width: 100%; background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%); border: 2.5px solid #FCD34D; border-radius: var(--radius-lg); padding: 20px; text-align: left; display: flex; flex-direction: column; justify-content: center; box-shadow: var(--shadow-sm); }
-    .intro-box-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-    .intro-box h2 { font-size: 18px; font-weight: 900; color: #92400E; }
-    .intro-box p { font-size: 13px; color: #78350F; line-height: 1.6; font-weight: 600; margin-bottom: 8px; }
-
     .btn-audio-mini { background: linear-gradient(135deg, #FBBF24, #F59E0B); border: none; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; color: #FFF; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.35); flex-shrink: 0; }
 
-    .social-round-section { padding: 0 16px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .social-round-btn { width: 44px; height: 44px; border-radius: 50%; background: #FFF; border: 2.5px solid #E2E8F0; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: var(--shadow-sm); }
-    .social-round-btn img { width: 24px; height: 24px; object-fit: contain; }
-
+    /* PERSONAGENS */
     .section-family-container { padding: 0 16px; display: flex; flex-direction: column; gap: 24px; }
     .family-group-title { font-size: 18px; font-weight: 900; color: var(--primary-dark); margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
-    
     .floating-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
     .floating-char-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 16px 12px; text-align: center; border: 3px solid #E2E8F0; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
     .floating-char-img { width: 85px; height: 85px; object-fit: contain; border-radius: 50%; background: #F8FAFC; padding: 4px; }
     .floating-char-name { font-size: 16px; font-weight: 900; color: var(--text-main); }
     .floating-char-tag { font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 20px; text-transform: uppercase; }
     .floating-char-desc { font-size: 12px; font-weight: 600; color: var(--text-muted); line-height: 1.4; }
-
     .card-f1 { border-color: #F472B6; } .card-f1 .floating-char-tag { background: #FCE7F3; color: #DB2777; }
     .card-f2 { border-color: #60A5FA; } .card-f2 .floating-char-tag { background: #DBEAFE; color: #2563EB; }
     .card-avos { border-color: #FBBF24; } .card-avos .floating-char-tag { background: #FEF3C7; color: #D97706; }
     .card-especial { border-color: #A78BFA; } .card-especial .floating-char-tag { background: #EDE9FE; color: #7C3AED; }
 
-    .char-details-box { margin: 0 16px; background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%); border: 2.5px solid var(--primary); border-radius: var(--radius-lg); padding: 18px; text-align: center; }
-
-    /* ESTILOS DE JOGOS & FEEDBACK VISUAL COM ANIMAÇÃO */
-    .games-subnav, .vip-games-subnav { display: flex; justify-content: flex-start; gap: 6px; background: #E0F2FE; padding: 8px; border-radius: var(--radius-md); margin-bottom: 14px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-    .games-subnav::-webkit-scrollbar, .vip-games-subnav::-webkit-scrollbar { display: none; }
-    
-    .subnav-btn, .vip-sub-btn { flex: 0 0 auto; padding: 10px 14px; border: none; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; background: #FFF; color: var(--primary-dark); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    /* JOGOS E ESTRUTURA VIP VITRINE */
+    .games-subnav { display: flex; justify-content: flex-start; gap: 6px; background: #E0F2FE; padding: 8px; border-radius: var(--radius-md); margin-bottom: 14px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .games-subnav::-webkit-scrollbar { display: none; }
+    .subnav-btn { flex: 0 0 auto; padding: 10px 14px; border: none; border-radius: 10px; font-weight: 800; font-size: 13px; cursor: pointer; background: #FFF; color: var(--primary-dark); box-shadow: 0 2px 6px rgba(0,0,0,0.04); position: relative; }
     .subnav-btn.active { background: var(--primary); color: #FFF; }
-    .vip-games-subnav { background: #FEF3C7; } .vip-sub-btn { color: #92400E; } .vip-sub-btn.active { background: #D97706; color: #FFF; }
     
     .game-section-page { display: none; } .game-section-page.active-game-page { display: block; }
-    .vip-game-panel { display: none; } .vip-game-panel.active-vip-panel { display: block; }
-
     .age-group-section { margin: 0 16px; background: #FFFFFF; border-radius: var(--radius-lg); padding: 18px; border: 2px solid #E2E8F0; box-shadow: var(--shadow-sm); }
-    .age-title { font-size: 19px; font-weight: 900; color: var(--primary-dark); margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
-    
     .interactive-card { background: #F8FAFC; border-radius: var(--radius-md); padding: 16px; text-align: center; border: 2px solid #E2E8F0; display: flex; flex-direction: column; align-items: center; position: relative; width: 100%; overflow: hidden; }
-    .conquistas-box { background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%); border: 2px solid #FCD34D; border-radius: var(--radius-md); padding: 12px 16px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; font-weight: 800; color: #92400E; font-size: 13.5px; box-shadow: var(--shadow-sm); flex-wrap: wrap; gap: 8px;}
-
-    /* Lousa Mágica */
-    .coloring-select-grid { display: none; justify-content: flex-start; gap: 6px; margin-bottom: 12px; overflow-x: auto; padding-bottom: 5px; width: 100%; }
-    .coloring-select-grid.active { display: flex; }
-    .btn-color-draw { flex: 0 0 auto; background: #FFF; border: 2px solid #CBD5E1; padding: 6px 10px; border-radius: 10px; font-weight: 700; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
-    .btn-color-draw.selected { border-color: var(--primary); background: #E0F2FE; }
-    .btn-color-draw img { width: 22px; height: 22px; object-fit: contain; }
-    .lousa-controls-bar { display: flex; align-items: center; justify-content: center; gap: 12px; background: #E0F2FE; padding: 8px 12px; border-radius: 12px; margin-bottom: 12px; flex-wrap: wrap; width: 100%; }
-    .lousa-controls-bar label { font-size: 12px; font-weight: 800; color: var(--primary-dark); display: flex; align-items: center; gap: 6px; }
-    .lousa-container { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
-    #paintCanvas { background: #FFF; border: 3px solid var(--primary); border-radius: var(--radius-lg); width: 100%; max-width: 100%; height: 320px; touch-action: none; cursor: crosshair; }
-    .palette { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap; width: 100%; }
-    .color-dot { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer; }
-
-    /* Botões de Escolha */
+    
     .game-btn-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
     .btn-choice { background: var(--purple); color: #FFF; border: none; padding: 10px 18px; font-weight: 800; font-size: 14px; border-radius: 12px; cursor: pointer; box-shadow: 0 3px 10px rgba(139, 92, 246, 0.3); transition: all 0.2s ease; }
     .btn-choice:active { transform: scale(0.92); }
     .btn-choice.acertou { background: #10B981 !important; transform: scale(1.1); box-shadow: 0 0 15px rgba(16, 185, 129, 0.6); }
     .btn-choice.errou { background: #EF4444 !important; transform: scale(0.95); }
 
-    /* Ajuste para não espremer Jogo da Memória no Mobile */
+    /* CADEADO VIP - ESTILO VITRINE */
+    .vip-locked-item { position: relative; filter: grayscale(0.85); opacity: 0.8; cursor: pointer !important; pointer-events: auto !important; }
+    .vip-locked-item::after { content: '🔒 VIP'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #1E293B; color: #FCD34D; padding: 8px 16px; border-radius: 20px; font-weight: 900; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 10; border: 2px solid #FCD34D; pointer-events: none; }
+    .vip-locked-item * { pointer-events: none; }
+    .vip-unlocked { filter: none !important; opacity: 1 !important; }
+    .vip-unlocked::after { display: none !important; }
+    .vip-unlocked * { pointer-events: auto; }
+
+    /* LOUSA MOBILE FIX & MODO PINTAR */
+    .lousa-mode-tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 12px; width: 100%; }
+    .btn-lousa-mode { padding: 8px 16px; border-radius: 10px; border: 2px solid #CBD5E1; background: #FFF; font-weight: 800; font-size: 12px; cursor: pointer; color: var(--text-muted); }
+    .btn-lousa-mode.active { background: var(--primary); color: #FFF; border-color: var(--primary); }
+
+    .coloring-select-grid { display: none; justify-content: flex-start; gap: 8px; margin-bottom: 12px; overflow-x: auto; padding-bottom: 5px; width: 100%; }
+    .coloring-select-grid.active { display: flex; }
+    .btn-color-draw { flex: 0 0 auto; background: #FFF; border: 2px solid #CBD5E1; padding: 6px 12px; border-radius: 10px; font-weight: 800; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; color: var(--primary-dark); }
+    .btn-color-draw.selected { border-color: var(--primary); background: #E0F2FE; }
+    .lousa-container { width: 100%; display: flex; flex-direction: column; align-items: center; position: relative; }
+    #paintCanvas { background-color: #FFF; border: 3px solid var(--primary); border-radius: var(--radius-lg); width: 100%; height: 350px; touch-action: none; cursor: crosshair; }
+    .palette { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap; width: 100%; }
+    .color-dot { width: 34px; height: 34px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 2px 6px rgba(0,0,0,0.2); cursor: pointer; }
+
+    /* LEITURA ESTILOS (FREEMIUM) */
+    .livro-card { background: #FFF; border: 2px solid #F9A8D4; border-radius: var(--radius-md); padding: 16px; display: flex; align-items: center; gap: 12px; margin-bottom: 12px; cursor: pointer; transition: transform 0.2s; text-align: left; }
+    .livro-card:active { transform: scale(0.98); }
+    .livro-icone { font-size: 30px; background: #FCE7F3; padding: 10px; border-radius: 12px; }
+    .livro-titulo { font-weight: 900; color: #9D174D; font-size: 15px; margin-bottom: 4px; }
+    .livro-desc { font-weight: 600; color: #BE185D; font-size: 12px; }
+
+    /* Jogo da Memória */
     .memory-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(65px, 1fr)); gap: 8px; margin-top: 12px; width: 100%; max-width: 340px; margin-left: auto; margin-right: auto; }
     .memory-card { aspect-ratio: 1; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 900; font-size: clamp(16px, 5vw, 24px); cursor: pointer; transition: transform 0.2s; }
     .memory-card:active { transform: scale(0.95); }
     .memory-card.flipped { background: #FFF; border: 2.5px solid var(--primary); }
     .memory-card img { width: 85%; height: 85%; object-fit: contain; }
 
-    /* ESTILOS VIP */
-    .vip-lock-container { background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 3px solid #FCD34D; border-radius: var(--radius-lg); padding: 22px 16px; text-align: center; box-shadow: var(--shadow-sm); }
-    .vip-lock-header-clickable { cursor: pointer; user-select: none; }
-    .vip-price-tag { display: inline-block; background: #F59E0B; color: #FFF; font-weight: 900; font-size: 14px; padding: 8px 20px; border-radius: 30px; margin-bottom: 12px; }
-    .vip-heart-msg { background: #FFFFFF; border: 2px dashed #F59E0B; border-radius: var(--radius-md); padding: 14px; margin: 12px auto; max-width: 700px; color: #78350F; font-size: 13px; line-height: 1.5; font-weight: 600; text-align: left; }
-    .vip-grid-forms { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 700px; margin: 16px auto 0; }
-    @media (min-width: 650px) { .vip-grid-forms { grid-template-columns: 1fr 1fr; } }
-    .vip-form-box { background: #FFF; padding: 16px; border-radius: var(--radius-md); border: 2px solid #FCD34D; text-align: left; }
-    .vip-form-box h4 { font-size: 15px; color: #92400E; margin-bottom: 10px; font-weight: 900; }
+    /* MODAL UPSELL (VENDAS VIP) */
+    .upsell-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); z-index: 999999; justify-content: center; align-items: center; padding: 16px; backdrop-filter: blur(5px); }
+    .upsell-modal.active { display: flex; animation: fadeIn 0.3s ease; }
+    .upsell-box { background: linear-gradient(135deg, #FFFBEB, #FEF3C7); padding: 24px; border-radius: var(--radius-xl); text-align: center; max-width: 400px; width: 100%; border: 4px solid #FCD34D; position: relative; }
+    .upsell-close { position: absolute; top: 12px; right: 12px; background: #FFF; border: 2px solid #FCD34D; border-radius: 50%; width: 32px; height: 32px; font-weight: 900; color: #92400E; cursor: pointer; }
+    .btn-assinar-agora { display: inline-block; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; font-weight: 900; font-size: 16px; padding: 14px 20px; border-radius: 12px; text-decoration: none; margin-top: 15px; width: 100%; box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4); border: none; cursor: pointer;}
+    
+    /* AREA VIP ESTILOS */
+    .vip-form-box { background: #FFF; padding: 16px; border-radius: var(--radius-md); border: 2px solid #FCD34D; text-align: left; margin-bottom: 15px;}
     .vip-input { width: 100%; padding: 10px; font-size: 13px; border: 2px solid #E2E8F0; border-radius: 10px; margin-bottom: 10px; outline: none; }
-    .btn-vip-checkout { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; font-weight: 800; font-size: 14px; padding: 12px 16px; border-radius: 12px; border: none; cursor: pointer; width: 100%; text-decoration: none; display: block; text-align: center; }
-
-    .vip-content-unlocked { display: none; flex-direction: column; gap: 16px; }
-    .vip-content-unlocked.active-vip { display: flex; animation: fadeIn 0.4s ease; }
-    .vip-card-box { background: #FFF; border: 2px solid #E2E8F0; border-radius: var(--radius-lg); padding: 16px; box-shadow: var(--shadow-sm); }
-
-    .drive-banner-box { background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 100%); border: 2.5px solid #3B82F6; border-radius: var(--radius-md); padding: 16px; text-align: center; margin-bottom: 16px; }
-    .btn-drive { display: inline-block; background: #2563EB; color: #FFF; font-weight: 800; font-size: 13px; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-top: 8px; transition: transform 0.2s;}
     
-    .vip-internal-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; background: #FFFBEB; padding: 8px; border-radius: var(--radius-lg); border: 2px solid #FCD34D;}
-    .vip-int-btn { flex: 1; min-width: 140px; padding: 10px 14px; border-radius: 10px; border: 2px solid transparent; font-weight: 900; font-size: 14px; cursor: pointer; background: transparent; color: #92400E; transition: all 0.2s; }
-    .vip-int-btn.active { background: #F59E0B; color: #FFF; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3); border-color: #D97706; }
-    
-    .vip-sub-area { display: none; flex-direction: column; gap: 16px; animation: fadeIn 0.3s ease; }
-    .vip-sub-area.active-area { display: flex; }
-
-    .rotina-item { display: flex; justify-content: space-between; align-items: center; background: #FFF; border: 2px solid #E2E8F0; padding: 10px 14px; border-radius: 10px; margin-bottom: 8px; transition: all 0.2s; flex-wrap: wrap; gap: 8px;}
-    .rotina-item.concluido { background: #DCFCE7; border-color: #86EFAC; opacity: 0.8; }
-    .rotina-item.concluido .rotina-texto { text-decoration: line-through; color: #166534; }
-    .btn-concluir-rotina { background: #10B981; color: #FFF; border: none; padding: 6px 12px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
-    .btn-remover-rotina { background: #EF4444; color: #FFF; border: none; padding: 6px 10px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
-
-    /* Certificado VIP */
-    .certificado-container { background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border: 4px double #F59E0B; border-radius: 12px; padding: 20px; text-align: center; position: relative; }
-    .certificado-container h3 { font-family: 'Georgia', serif; font-size: 22px; color: #92400E; margin-bottom: 10px; }
-    .certificado-nome { font-size: 26px; font-weight: 900; color: var(--primary-dark); text-transform: uppercase; margin: 15px 0; border-bottom: 2px solid #92400E; display: inline-block; min-width: 200px; }
-    
-    /* Rádio VIP */
-    .radio-vip-box { background: #1E293B; border-radius: var(--radius-lg); padding: 20px; text-align: center; color: #FFF; position: relative; overflow: hidden; }
-    .radio-btn { background: #10B981; color: #FFF; border: none; padding: 12px 24px; border-radius: 30px; font-weight: 900; font-size: 16px; cursor: pointer; z-index: 1; position: relative; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4); }
-
-    /* Caixa do Acalento (TEA) */
-    .acalento-grid { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 15px; }
-    .acalento-btn { background: #FFF; border: 2px solid var(--tea-blue); border-radius: 12px; width: 85px; padding: 10px 5px; display: flex; flex-direction: column; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.2s; }
-    .acalento-btn:hover { background: var(--tea-light); transform: scale(1.05); }
-    .acalento-btn span { font-size: 26px; }
-    .acalento-btn p { font-size: 10px; font-weight: 800; color: var(--tea-blue); margin: 6px 0 0 0; text-align: center; }
-
-    .perfil-selector-box { background: #F8FAFC; border: 2px solid #CBD5E1; border-radius: var(--radius-md); padding: 14px; text-align: center; }
-    .avatar-escolha-grid { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
-    .avatar-escolha-btn { width: 48px; height: 48px; border-radius: 50%; border: 2.5px solid #CBD5E1; cursor: pointer; object-fit: contain; background: #FFF; padding: 3px; }
-    .avatar-escolha-btn.selecionado { border-color: #F59E0B; transform: scale(1.08); box-shadow: 0 4px 10px rgba(245,158,11,0.4); }
-
-    /* VIDEOS & UTILS */
-    .video-section { padding: 0 16px; }
-    .video-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 18px; box-shadow: var(--shadow-sm); border: 2px solid #E2E8F0; text-align: center; margin-bottom: 14px; }
-    .video-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-    .video-header h3 { font-size: 17px; font-weight: 900; color: var(--primary-dark); }
-    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-md); }
-    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-
-    .support-form-box { background: #FFFBEB; border: 2px solid #FCD34D; border-radius: var(--radius-lg); padding: 18px; margin: 0 16px 20px; box-shadow: var(--shadow-sm); }
-    .support-input, .support-textarea { width: 100%; padding: 10px 14px; border: 2px solid #FCD34D; border-radius: 10px; font-size: 13px; margin-bottom: 10px; background: #FFF; outline: none; }
-    .support-textarea { resize: vertical; min-height: 80px; }
-    .support-btn { background: #D97706; color: #FFF; border: none; padding: 12px 18px; border-radius: 10px; font-weight: 800; font-size: 14px; cursor: pointer; width: 100%; }
-
-    #visualToast { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%) translateY(100px); background: #0F172A; color: #FFF; padding: 10px 20px; border-radius: 30px; font-size: 12px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease; z-index: 99999; pointer-events: none; }
-    #visualToast.show { transform: translateX(-50%) translateY(0); }
-    
-    .floating-vip-badge { position: fixed; bottom: 16px; right: 16px; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); color: #FFF; padding: 10px 16px; border-radius: 50px; font-size: 12.5px; font-weight: 800; box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4); display: flex; align-items: center; gap: 6px; cursor: pointer; border: 2px solid #FDE68A; z-index: 9999; }
-    
-    footer { text-align: center; padding: 16px 16px 20px; border-top: 1px solid #E2E8F0; font-size: 12px; color: var(--text-muted); font-weight: 600; margin-top: 20px; display: flex; flex-direction: column; gap: 8px;}
-    footer a { color: var(--primary); text-decoration: underline; cursor: pointer; }
-    
-    /* Estilos TEA específicos */
+    /* TEA ESTILOS */
     .tea-box { background: var(--tea-light); border: 2px solid #BAE6FD; border-radius: var(--radius-lg); padding: 20px; text-align: center; margin-bottom: 20px; }
-    .tea-box h3 { color: var(--tea-blue); font-weight: 900; margin-bottom: 10px; }
-    .btn-sensorial { background: #FFF; color: var(--tea-blue); border: 2px solid var(--tea-blue); padding: 10px 20px; border-radius: 20px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; transition: all 0.3s; }
-    .btn-sensorial.ativo { background: var(--tea-blue); color: #FFF; }
-    .emotion-card { background: #FFF; border: 2px solid #E2E8F0; border-radius: 12px; padding: 15px; cursor: pointer; width: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.2s;}
-    .emotion-card:hover { border-color: var(--tea-blue); transform: scale(1.05); }
-    .emotion-card img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 10px; }
-    
-    .fade-transition { opacity: 1; transition: opacity 0.8s ease-in-out; }
-    .fade-out { opacity: 0; }
-
     .caa-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 10px; margin-top: 15px; }
     .caa-btn { background: #FFF; border: 2px solid #BAE6FD; border-radius: 12px; padding: 10px; text-align: center; cursor: pointer; transition: all 0.2s; }
-    .caa-btn:active { background: #E0F2FE; border-color: var(--tea-blue); transform: scale(0.95); }
     .caa-btn span { display: block; font-size: 28px; margin-bottom: 5px; }
     .caa-btn p { font-size: 11px; font-weight: 800; color: var(--tea-blue); margin: 0; }
-
-    .timer-bar-bg { width: 100%; height: 24px; background: #E2E8F0; border-radius: 12px; overflow: hidden; margin: 15px 0; border: 2px solid #CBD5E1; }
-    .timer-bar-fill { width: 100%; height: 100%; background: #10B981; transition: width 1s linear, background-color 0.5s ease; }
     .timer-btns { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
     .timer-btn { background: var(--tea-blue); color: #FFF; border: none; padding: 8px 12px; border-radius: 8px; font-weight: 800; font-size: 12px; cursor: pointer; }
 
-    /* Modais */
-    .lock-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.9); z-index: 99999; justify-content: center; align-items: center; padding: 16px; backdrop-filter: blur(6px); }
-    .lock-modal.active { display: flex; }
-    .lock-box { background: #FFF; padding: 24px; border-radius: var(--radius-lg); text-align: center; max-width: 350px; width: 100%; border: 3px solid #EF4444; }
-    .lock-input { width: 100%; padding: 10px; font-size: 14px; border: 2px solid #CBD5E1; border-radius: 8px; margin-bottom: 12px; text-align: center; outline: none; }
-    .lock-btn { background: #EF4444; color: #FFF; border: none; padding: 10px; width: 100%; border-radius: 8px; font-weight: 800; cursor: pointer; }
+    #visualToast { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%) translateY(100px); background: #0F172A; color: #FFF; padding: 10px 20px; border-radius: 30px; font-size: 12px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: transform 0.3s ease; z-index: 99999; pointer-events: none; }
+    #visualToast.show { transform: translateX(-50%) translateY(0); }
 
-    .cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: #1E293B; color: #FFF; padding: 16px; text-align: center; font-size: 13px; z-index: 100000; display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap; transform: translateY(100%); transition: transform 0.4s ease; box-shadow: 0 -4px 10px rgba(0,0,0,0.1); }
-    .cookie-banner.show { transform: translateY(0); }
-    .btn-cookie { background: #10B981; color: #FFF; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 800; cursor: pointer; }
-    
-    .aba-construcao { padding: 40px 20px; text-align: center; border: 2px dashed #F472B6; background: #FDF2F8; border-radius: var(--radius-lg); margin: 0 16px; }
-    .aba-construcao img { width: 150px; margin-bottom: 20px; }
-    .aba-construcao h3 { color: #BE185D; font-weight: 900; font-size: 22px; margin-bottom: 10px; }
+    /* Ocultar elementos de UI condicionalmente baseados no status VIP */
+    .hide-if-vip { display: block; }
+    body.is-vip .hide-if-vip { display: none !important; }
+    .show-if-vip { display: none; }
+    body.is-vip .show-if-vip { display: block !important; }
   </style>
 </head>
-<body onclick="desbloquearAudioMobileOnce()">
+<body>
 
   <div id="visualToast">Aviso do sistema</div>
 
-  <!-- MODAL TEMPO ESGOTADO -->
-  <div id="modalBloqueioTempo" class="lock-modal">
-    <div class="lock-box">
-      <h3 style="color: #991B1B; font-weight: 900;">⏰ Tempo Esgotado!</h3>
-      <p style="font-size: 12px; color: #475569; margin-bottom: 15px; font-weight: 600;">Para voltar a brincar, insira a <strong>senha parental</strong>:</p>
-      <input type="password" id="senhaDesbloqueio" class="lock-input" placeholder="Digite a senha">
-      <button class="lock-btn" onclick="tentarDesbloquearTela()">Desbloquear com Senha 🔓</button>
+  <!-- MODAL DE UPSELL (VENDAS VIP) -->
+  <div id="modalUpsell" class="upsell-modal">
+    <div class="upsell-box">
+      <button class="upsell-close" onclick="fecharUpsell()">X</button>
+      <h2 style="color: #92400E; font-weight: 900; margin-bottom: 10px;">⭐ Acesso VIP!</h2>
+      <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786902347/xexeu.png" style="width: 80px; margin-bottom: 10px;">
+      <p style="color: #78350F; font-size: 14px; font-weight: 600; margin-bottom: 15px;">A ferramenta <strong id="upsell-nome-item">Selecionada</strong> é exclusiva para o Clube VIP.</p>
+      <ul style="text-align: left; color: #92400E; font-size: 13px; font-weight: 700; margin-bottom: 15px; padding-left: 20px;">
+        <li>🎮 Memória, Quiz e Mais Contornos da Lousa</li>
+        <li>📚 Mais Historinhas Mágicas Completas</li>
+        <li>🧩 Caixa de Acalento e Pranchas Avançadas TEA</li>
+        <li>📁 Acesso ao Drive Oficial (PDFs para Imprimir)</li>
+      </ul>
+      <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-assinar-agora">Assinar por R$ 6,00/mês 💳</a>
+      <button onclick="irParaLoginVIP()" style="background: transparent; color: #B45309; border: none; font-weight: 800; margin-top: 15px; cursor: pointer; text-decoration: underline;">Já sou assinante (Login)</button>
     </div>
-  </div>
-
-  <div id="cookieBanner" class="cookie-banner">
-    <p style="margin:0;">🍪 Utilizamos cookies (salvos no seu aparelho) para salvar o progresso. <a onclick="abrirPrivacidade()" style="color:#3B82F6; cursor:pointer;">Saiba mais</a>.</p>
-    <button class="btn-cookie" onclick="aceitarCookies()">Entendi e Aceito!</button>
-  </div>
-
-  <div class="floating-vip-badge" onclick="mudarPagina('vip')">
-    <span>⭐</span><span>Seja VIP (R$ 6,00)</span>
   </div>
 
   <div class="app-container">
 
     <header>
-      <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" title="YouTube da Turminha">
-        <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png" alt="Logo" class="logo-img">
-      </a>
+      <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png" alt="Logo" class="logo-img">
       <div style="display:flex; align-items:center; gap:8px;">
-        <button id="btnSensoryHeader" class="btn-sensorial" style="padding: 6px 12px; font-size:11px;" onclick="toggleSensoryMode()">🌿 Modo Calmo</button>
         <button id="toggleAudioBtn" class="audio-toggle-btn" onclick="alternarAudioGlobal()">
           <span id="audioIcon">🔊</span><span id="audioText">Voz</span>
         </button>
@@ -331,15 +201,14 @@
     <!-- MENU PRINCIPAL RESPONSIVO -->
     <nav class="page-nav">
       <button id="btn-tab-inicio" class="nav-tab-btn active" onclick="mudarPagina('inicio')">🏠 Início</button>
-      <button id="btn-tab-videos" class="nav-tab-btn" onclick="mudarPagina('videos')">🎬 Vídeos</button>
       <button id="btn-tab-jogos" class="nav-tab-btn" onclick="mudarPagina('jogos')">🎮 Jogos</button>
       <button id="btn-tab-leitura" class="nav-tab-btn leitura-tab" onclick="mudarPagina('leitura')">📚 Leitura</button>
       <button id="btn-tab-tea" class="nav-tab-btn tea-tab" onclick="mudarPagina('tea')">🧩 Espaço TEA</button>
-      <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Área VIP</button>
+      <button id="btn-tab-vip" class="nav-tab-btn vip-tab" onclick="mudarPagina('vip')">⭐ Painel VIP</button>
     </nav>
 
-    <div class="browser-notice-box">
-      <span>💡 Dica: Se o som estiver mudo, toque nos 3 pontinhos e escolha <strong>"Abrir no Chrome"</strong> ou <strong>"Abrir no Safari"</strong>!</span>
+    <div class="top-vip-announcement hide-if-vip" onclick="mudarPagina('vip')">
+      <span>⭐ Desbloqueie todo o Portal e Drives por apenas R$ 6,00/mês! Assine Aqui! 💖</span>
     </div>
 
     <!-- PÁGINA INÍCIO -->
@@ -355,11 +224,10 @@
             <h2>✨ Educando com Alegria</h2>
             <button class="btn-audio-mini" onclick="lerTexto('Mais do que um nome divertido, a Turminha do Xexéu é o nosso jeito de honrar as raízes da nossa família.')">🔊</button>
           </div>
-          <p>A <strong>Turminha do Xexéu</strong> é o nosso jeito de honrar as raízes e a história da nossa família.</p>
+          <p>A <strong>Turminha do Xexéu</strong> é o nosso jeito de honrar as raízes e a história da nossa família. Conheça todos abaixo!</p>
         </div>
       </section>
 
-      <!-- PERSONAGENS REDUZIDOS PARA CABER NO EXEMPLO (MANTER OS SEUS REAIS NO SEU ARQUIVO) -->
       <section class="section-family-container">
         <div>
           <h3 class="family-group-title">✨ O Símbolo e Mascote</h3>
@@ -376,183 +244,302 @@
             </div>
           </div>
         </div>
-      </section>
-      
-      <section class="char-details-box" id="detalhes-personagem">
-        <h3 id="detalhe-nome" style="color: var(--primary-dark); font-weight: 900; font-size: 16px;">Clique em um personagem acima para ouvir!</h3>
-        <p id="detalhe-texto" style="font-weight: 600; color: var(--text-muted); margin-top: 4px; font-size: 13px;">A narração apresentará os amigos da Turminha para você!</p>
+
+        <div>
+          <h3 class="family-group-title">💖 A Casa da Maya e do Theo</h3>
+          <div class="floating-cards-grid">
+            <div class="floating-char-card card-f1" onclick="tocarVozETexto('Maya')">
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786907604/16.png" class="floating-char-img" alt="Maya">
+              <span class="floating-char-name">Maya</span>
+              <span class="floating-char-tag">Mãe & Guia</span>
+            </div>
+            <div class="floating-char-card card-f1" onclick="tocarVozETexto('Theo')">
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786907605/17.png" class="floating-char-img" alt="Theo">
+              <span class="floating-char-name">Theo</span>
+              <span class="floating-char-tag">Pai Protetor</span>
+            </div>
+            <div class="floating-char-card card-f1" onclick="tocarVozETexto('Nina')">
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786903228/Sem_nome_512_x_512_px_1.png" class="floating-char-img" alt="Nina">
+              <span class="floating-char-name">Nina</span>
+              <span class="floating-char-tag">Super Esperta</span>
+            </div>
+            <div class="floating-char-card card-f1" onclick="tocarVozETexto('Iza')">
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786902350/iza.png" class="floating-char-img" alt="Iza">
+              <span class="floating-char-name">Iza</span>
+              <span class="floating-char-tag">A Vaidosa</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="family-group-title">⚡ A Casa do Sam e da Lia</h3>
+          <div class="floating-cards-grid">
+            <div class="floating-char-card card-f2" onclick="tocarVozETexto('Sam')">
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786907601/14.png" class="floating-char-img" alt="Sam">
+              <span class="floating-char-name">Sam</span>
+              <span class="floating-char-tag">Pai Inventor</span>
+            </div>
+            <div class="floating-char-card card-f2" onclick="tocarVozETexto('Lia')">
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786907602/15.png" class="floating-char-img" alt="Lia">
+              <span class="floating-char-name">Lia</span>
+              <span class="floating-char-tag">Mãe Alegria</span>
+            </div>
+            <div class="floating-char-card card-f2" onclick="tocarVozETexto('Joca')">
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786902350/joca.png" class="floating-char-img" alt="Joca">
+              <span class="floating-char-name">Joca</span>
+              <span class="floating-char-tag">O Divertido</span>
+            </div>
+            <div class="floating-char-card card-f2" onclick="tocarVozETexto('Leo')">
+              <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786902347/leo.png" class="floating-char-img" alt="Leo">
+              <span class="floating-char-name">Leo</span>
+              <span class="floating-char-tag">Explorador</span>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
 
-    <!-- NOVA PÁGINA LEITURA (EM REFORMA) -->
+    <!-- NOVA PÁGINA LEITURA (FREEMIUM / VITRINE) -->
     <main id="pagina-leitura" class="page-content">
-      <div class="aba-construcao">
-        <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994873/DESENHOS_DA_LOUSA_IZA.png" alt="Iza Lendo">
-        <h3>📚 Cantinho da Leitura</h3>
-        <p style="color: #831843; font-weight: 600; font-size: 14px; margin-bottom: 15px;">Estamos preparando histórias mágicas e ilustradas da Turminha para vocês lerem juntos!</p>
-        <span style="background: #FCE7F3; color: #DB2777; padding: 6px 12px; border-radius: 20px; font-weight: 800; border: 2px solid #F9A8D4;">🚧 Em Reforma 🚧</span>
+      <div class="age-group-section">
+        <h3 class="age-title" style="color: #BE185D;">📚 Cantinho da Leitura</h3>
+        <p style="font-size: 13px; font-weight: 600; color: #9D174D; margin-bottom: 20px;">Leia as histórias mágicas da Turminha!</p>
+        
+        <!-- Histórias Livres -->
+        <div class="livro-card" onclick="lerTexto('Era uma vez na vila da Turminha... Em breve história completa!')">
+          <div class="livro-icone">📖</div>
+          <div>
+            <div class="livro-titulo">A Origem do Xexéu (Grátis)</div>
+            <div class="livro-desc">Descubra como o pássaro azul conheceu a turma!</div>
+          </div>
+        </div>
+
+        <!-- Histórias VIP -->
+        <div class="livro-card require-vip vip-locked-item" style="border-color:#FCD34D;" onclick="verificarAcessoAcao('Histórias Mágicas (Iza)')">
+          <div class="livro-icone">👑</div>
+          <div>
+            <div class="livro-titulo">O Vestido Mágico da Iza 🔒</div>
+            <div class="livro-desc">Uma aventura exclusiva no guarda-roupa.</div>
+          </div>
+        </div>
+
+        <div class="livro-card require-vip vip-locked-item" style="border-color:#FCD34D;" onclick="verificarAcessoAcao('Histórias Mágicas (Capilé)')">
+          <div class="livro-icone">👑</div>
+          <div>
+            <div class="livro-titulo">O Pingente Dourado do Capilé 🔒</div>
+            <div class="livro-desc">Ajude Capilé a encontrar seu osso dourado.</div>
+          </div>
+        </div>
+
+        <div class="livro-card require-vip vip-locked-item" style="border-color:#FCD34D;" onclick="verificarAcessoAcao('Histórias Mágicas (Joca e Leo)')">
+          <div class="livro-icone">👑</div>
+          <div>
+            <div class="livro-titulo">As Invenções do Joca e Leo 🔒</div>
+            <div class="livro-desc">Uma história de criatividade e bagunça!</div>
+          </div>
+        </div>
+
       </div>
     </main>
 
-    <!-- PÁGINA VÍDEOS -->
-    <main id="pagina-videos" class="page-content">
-      <section class="video-section">
-        <div class="video-card">
-          <div class="video-header"><h3>🎬 Canal Oficial - Playlist Completa</h3></div>
-          <div class="video-wrapper">
-            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" allowfullscreen></iframe>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- PÁGINA JOGOS (AJUSTADO PARA NÃO ESPREMER) -->
+    <!-- PÁGINA JOGOS (MISTURA GRÁTIS E VIP) -->
     <main id="pagina-jogos" class="page-content">
       <div class="age-group-section">
-        <h3 class="age-title">🎮 Área de Jogos da Turminha</h3>
-        <div class="conquistas-box">
-          <span>🏆 Suas Conquistas: <strong id="placar-pontos">0</strong> pontos</span>
-        </div>
+        <h3 class="age-title">🎮 Vitrine de Jogos</h3>
 
+        <!-- SUBMENU COM JOGOS GRÁTIS E VIP -->
         <nav class="games-subnav">
           <button id="subtab-lousa" class="subnav-btn active" onclick="mudarSubJogo('lousa')">🎨 Lousa Mágica</button>
           <button id="subtab-contar" class="subnav-btn" onclick="mudarSubJogo('contar')">🔢 Contar</button>
-          <button id="subtab-memoria" class="subnav-btn" onclick="mudarSubJogo('memoria')">🧠 Memória</button>
+          <button id="subtab-letras" class="subnav-btn" onclick="mudarSubJogo('letras')">🔤 Letras</button>
+          
+          <!-- JOGOS VIP SINALIZADOS -->
+          <button id="subtab-memoria" class="subnav-btn require-vip" onclick="verificarAcessoJogo('memoria', 'Jogo da Memória')">🧠 Memória 🔒</button>
+          <button id="subtab-quiz" class="subnav-btn require-vip" onclick="verificarAcessoJogo('quiz', 'Quiz da Turminha')">❓ Quiz 🔒</button>
         </nav>
 
+        <!-- JOGO: LOUSA (GRÁTIS + CORES E CONTORNOS VIP) -->
         <div id="game-lousa" class="game-section-page active-game-page interactive-card lousa-container">
-          <h4 style="font-weight: 800; margin-bottom: 10px; font-size: 17px;">🎨 Lousa Mágica & Desenhos</h4>
-          <canvas id="paintCanvas"></canvas>
-          <div class="palette">
+          <h4 style="font-weight: 800; margin-bottom: 10px;">🎨 Lousa Mágica</h4>
+          
+          <!-- Botões de Modo: Livre ou Pintar -->
+          <div class="lousa-mode-tabs">
+            <button id="btn-mode-free" class="btn-lousa-mode active" onclick="setLousaMode('free')">✏️ Modo Livre</button>
+            <button id="btn-mode-color" class="btn-lousa-mode" onclick="setLousaMode('color')">🖼️ Pintar Desenhos</button>
+          </div>
+
+          <!-- Grade de Desenhos para Colorir (Grátis e VIP) -->
+          <div id="coloringSelectGrid" class="coloring-select-grid">
+            <!-- GRÁTIS -->
+            <button class="btn-color-draw" onclick="carregarContornoNaLousa('https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_XEXEU.png', this)">Xexéu</button>
+            <button class="btn-color-draw" onclick="carregarContornoNaLousa('https://res.cloudinary.com/oactqmgs/image/upload/v1786994874/DESENHOS_DA_LOUSA_CAPILE.png', this)">Capilé</button>
+            <button class="btn-color-draw" onclick="carregarContornoNaLousa('https://res.cloudinary.com/oactqmgs/image/upload/v1786994873/DESENHOS_DA_LOUSA_IZA.png', this)">Iza</button>
+            <button class="btn-color-draw" onclick="carregarContornoNaLousa('https://res.cloudinary.com/oactqmgs/image/upload/v1786994874/DESENHOS_DA_LOUSA_JOCA.png', this)">Joca</button>
+
+            <!-- VIP -->
+            <button class="btn-color-draw require-vip vip-locked-item" style="border-color:#FCD34D;" onclick="verificarAcessoContorno('https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_NINA.png', this, 'Nina')">Nina 🔒</button>
+            <button class="btn-color-draw require-vip vip-locked-item" style="border-color:#FCD34D;" onclick="verificarAcessoContorno('https://res.cloudinary.com/oactqmgs/image/upload/v1786994875/DESENHOS_DA_LOUSA_LEO.png', this, 'Leo')">Leo 🔒</button>
+            <button class="btn-color-draw require-vip vip-locked-item" style="border-color:#FCD34D;" onclick="verificarAcessoContorno('https://res.cloudinary.com/oactqmgs/image/upload/v1786994875/DESENHOS_DA_LOUSA_MAYA.png', this, 'Maya')">Maya 🔒</button>
+            <button class="btn-color-draw require-vip vip-locked-item" style="border-color:#FCD34D;" onclick="verificarAcessoContorno('https://res.cloudinary.com/oactqmgs/image/upload/v1786994877/DESENHOS_DA_LOUSA_THEO.png', this, 'Theo')">Theo 🔒</button>
+            <button class="btn-color-draw require-vip vip-locked-item" style="border-color:#FCD34D;" onclick="verificarAcessoContorno('https://res.cloudinary.com/oactqmgs/image/upload/v1786994875/DESENHOS_DA_LOUSA_LIA.png', this, 'Lia')">Lia 🔒</button>
+            <button class="btn-color-draw require-vip vip-locked-item" style="border-color:#FCD34D;" onclick="verificarAcessoContorno('https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_SAM.png', this, 'Sam')">Sam 🔒</button>
+            <button class="btn-color-draw require-vip vip-locked-item" style="border-color:#FCD34D;" onclick="verificarAcessoContorno('https://res.cloudinary.com/oactqmgs/image/upload/v1786994877/DESENHOS_DA_LOUSA_VOVO_HILDA.png', this, 'Vovó Hilda')">Hilda 🔒</button>
+            <button class="btn-color-draw require-vip vip-locked-item" style="border-color:#FCD34D;" onclick="verificarAcessoContorno('https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_VOVO_BETO.png', this, 'Vovô Beto')">Beto 🔒</button>
+          </div>
+
+          <div class="palette" style="background: #F1F5F9; padding: 10px; border-radius: 12px; margin-bottom: 10px;">
+            <span style="font-size: 11px; font-weight: 800; color: #475569; width: 100%;">Cores Básicas:</span>
             <div class="color-dot" style="background: #3B82F6;" onclick="mudarCor('#3B82F6')"></div>
             <div class="color-dot" style="background: #EF4444;" onclick="mudarCor('#EF4444')"></div>
             <div class="color-dot" style="background: #10B981;" onclick="mudarCor('#10B981')"></div>
-            <button onclick="limparCanvas()" style="padding: 8px 12px; font-weight: 800; border-radius: 8px; border: none; background: #FEE2E2; color: #DC2626; cursor: pointer; font-size: 12px;">Limpar 🗑️</button>
+            
+            <span style="font-size: 11px; font-weight: 800; color: #475569; width: 100%; margin-top: 5px;">Cores VIP 🔒:</span>
+            <div class="color-dot require-vip vip-locked-item" style="background: #F59E0B;" onclick="verificarCorVip('#F59E0B')"></div>
+            <div class="color-dot require-vip vip-locked-item" style="background: #8B5CF6;" onclick="verificarCorVip('#8B5CF6')"></div>
+            <div class="color-dot require-vip vip-locked-item" style="background: #000000;" onclick="verificarCorVip('#000000')"></div>
           </div>
+          
+          <!-- O canvas agora recebe a imagem de fundo via CSS -->
+          <canvas id="paintCanvas" style="background-position: center; background-repeat: no-repeat; background-size: contain;"></canvas>
+          <button onclick="limparCanvas()" style="margin-top: 10px; padding: 8px 16px; font-weight: 800; border-radius: 8px; border: none; background: #FEE2E2; color: #DC2626; cursor: pointer;">Limpar Lousa 🗑️</button>
         </div>
 
+        <!-- JOGO: CONTAR (GRÁTIS) -->
         <div id="game-contar" class="game-section-page interactive-card">
           <h4 style="font-weight: 800; font-size: 18px;">🔢 Vamos Contar?</h4>
           <div id="countDisplay" style="display: flex; justify-content: center; align-items: center; gap: 8px; margin: 16px 0; min-height: 80px; flex-wrap: wrap;"></div>
           <div id="countOptions" class="game-btn-grid"></div>
         </div>
 
-        <div id="game-memoria" class="game-section-page interactive-card">
-          <h4 style="font-weight: 800; font-size: 18px;">🧠 Jogo da Memória</h4>
+        <!-- JOGO: LETRAS (GRÁTIS) -->
+        <div id="game-letras" class="game-section-page interactive-card">
+          <h4 style="font-weight: 800; font-size: 18px;">🔤 Qual é a Primeira Letra?</h4>
+          <p style="font-size: 13.5px; font-weight: 700; margin-top: 4px;">Nome: <strong id="nome-letra-personagem" style="color: var(--purple); font-size: 17px;">Xexéu</strong></p>
+          <img id="img-letra-personagem" src="" alt="Personagem" style="width: 100px; height: 100px; object-fit: contain; margin: 12px 0;">
+          <div id="opcoes-letras" class="game-btn-grid"></div>
+        </div>
+
+        <!-- JOGO: MEMÓRIA (VIP) -->
+        <div id="game-memoria" class="game-section-page interactive-card require-vip vip-locked-item" onclick="verificarAcessoAcao('Jogo da Memória')">
+          <h4 style="font-weight: 800; font-size: 18px;">🧠 Jogo da Memória VIP</h4>
+          <p style="font-size: 13px; color: var(--text-muted);">Encontre os pares dos amigos!</p>
           <div id="memoryBoard" class="memory-board"></div>
         </div>
+
+        <!-- JOGO: QUIZ (VIP) -->
+        <div id="game-quiz" class="game-section-page interactive-card require-vip vip-locked-item" onclick="verificarAcessoAcao('Quiz da Turminha')">
+          <h4 style="font-weight: 800; font-size: 18px; text-align: center;">❓ Quiz Desafio VIP</h4>
+          <p style="font-size: 13px; font-weight: 800; color: var(--primary-dark);">Quem é este personagem?</p>
+          <img id="quiz-img" src="" alt="Quiz" style="width: 75px; height: 75px; object-fit: contain; margin: 8px 0;">
+          <div id="quiz-options" style="display: flex; flex-direction: column; gap: 6px;"></div>
+        </div>
+
       </div>
     </main>
 
-    <!-- PÁGINA ESPAÇO TEA -->
+    <!-- PÁGINA ESPAÇO TEA (GRÁTIS + VIP VITRINE) -->
     <main id="pagina-tea" class="page-content">
       <div class="age-group-section">
-        <div id="tea-onboarding-box" class="tea-box" style="background: #FFF; border: 2.5px solid var(--tea-blue);">
-          <h3>🧩 Configure seu Espaço TEA</h3>
-          <p style="font-size: 13px; color: #334155; font-weight: 600; margin-bottom: 15px;">Personalize a experiência com o nome da criança:</p>
-          <input type="text" id="tea-nome-crianca" class="vip-input" placeholder="Ex: Lucas">
-          <button onclick="salvarOnboardingTea()" class="support-btn" style="background: var(--tea-blue);">Entrar no Espaço TEA 🚀</button>
-        </div>
+        <h3 class="age-title" style="color: var(--tea-blue);">🧩 Espaço Inclusivo TEA</h3>
 
-        <div id="tea-conteudo-liberado" style="display: none; flex-direction: column; gap: 22px;">
-          <h4 style="color: var(--tea-blue); font-weight: 800; text-align: center;">Jornada das Emoções do Dia</h4>
-          <!-- (Seu código original de emoções se mantém aqui) -->
-          <p style="text-align: center; color: var(--tea-blue); font-weight: 600;">O Espaço TEA está ativado!</p>
-        </div>
-      </div>
-    </main>
-
-    <!-- PÁGINA VIP (COM DESTRAVAMENTO AUTOMÁTICO E ÁUDIOS REAIS) -->
-    <main id="pagina-vip" class="page-content">
-      <div class="age-group-section">
-        <h3 class="age-title" style="color: #1E293B; margin-bottom: 14px;">⭐ Clube VIP da Turminha</h3>
-
-        <!-- VISÃO BLOQUEADA -->
-        <div id="vip-locked-view" class="vip-lock-container">
-          <h3>🧸 Ferramentas Avançadas</h3>
-          <div class="vip-grid-forms">
-            <div class="vip-form-box" style="border-color: #CBD5E1;">
-              <h4 style="color: #1E293B;">🔑 Já sou Assinante</h4>
-              <input type="email" id="log-email" class="vip-input" placeholder="seu@email.com">
-              <input type="password" id="log-senha" class="vip-input" placeholder="Sua senha">
-              <button type="button" onclick="fazerLogin()" style="width:100%; padding: 10px; background: #3B82F6; color: #FFF; border: none; border-radius: 10px; font-weight: 800; cursor: pointer;">Entrar no Clube VIP</button>
-            </div>
+        <!-- GRÁTIS: TEMPORIZADOR BÁSICO -->
+        <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 16px; background: #F0F9FF;">
+          <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 14px;">⏳ Temporizador</h4>
+          <div class="timer-btns" style="margin-top: 10px;">
+            <button class="timer-btn" onclick="lerTexto('Tempo de 1 minuto iniciado')">1 Min</button>
+            <button class="timer-btn" onclick="lerTexto('Tempo de 3 minutos iniciado')">3 Min</button>
+            <button class="timer-btn require-vip vip-locked-item" style="background: #94A3B8;" onclick="verificarAcessoAcao('Temporizador Longo')">15 Min 🔒</button>
+            <button class="timer-btn require-vip vip-locked-item" style="background: #94A3B8;" onclick="verificarAcessoAcao('Temporizador Longo')">30 Min 🔒</button>
           </div>
         </div>
 
-        <!-- VISÃO DESBLOQUEADA (ÁREA VIP) -->
-        <div id="vip-unlocked-view" class="vip-content-unlocked">
-          <div style="background: #D1FAE5; border: 2px solid #10B981; padding: 12px 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center;">
-            <h4 style="color: #065F46; font-size: 15px; font-weight: 900; margin: 0;">🎉 Acesso VIP Liberado!</h4>
+        <!-- GRÁTIS: CAA BÁSICO -->
+        <div class="interactive-card" style="border-color: #BAE6FD; margin-bottom: 16px;">
+          <h4 style="color: var(--tea-blue); font-weight: 900; font-size: 14px;">💬 Comunicação (Básica)</h4>
+          <div class="caa-grid">
+            <div class="caa-btn" onclick="lerTexto('Quero água')"><span>💧</span><p>Água</p></div>
+            <div class="caa-btn" onclick="lerTexto('Quero comer')"><span>🍎</span><p>Comer</p></div>
+            <div class="caa-btn require-vip vip-locked-item" onclick="verificarAcessoAcao('Prancha Editável Ilimitada')" style="border-color:#FCD34D;"><span>➕</span><p>Mais Botões 🔒</p></div>
+          </div>
+        </div>
+
+        <!-- VIP: CAIXA DE ACALENTO (MOSTRA COMO BLOQUEADO/VITRINE) -->
+        <div class="interactive-card require-vip vip-locked-item" style="border-color: #FCD34D; background: #FFFBEB;" onclick="verificarAcessoAcao('Caixa de Acalento')">
+          <h4 style="color: #92400E; font-weight: 900; font-size: 14px;">🎧 Caixa do Acalento VIP</h4>
+          <p style="font-size: 11px; font-weight: 600; color: #78350F; margin-bottom: 8px;">Áudios reais para regulação sensorial.</p>
+          <div class="caa-grid">
+            <div class="caa-btn" style="border-color: #FCD34D;" onclick="tocarSomVip('https://actions.google.com/sounds/v1/weather/rain_heavy_loud.ogg')"><span>🌧️</span><p>Chuva</p></div>
+            <div class="caa-btn" style="border-color: #FCD34D;" onclick="tocarSomVip('https://actions.google.com/sounds/v1/animals/birds_in_forest.ogg')"><span>🐦</span><p>Pássaros</p></div>
+            <div class="caa-btn" style="border-color: #FCD34D;" onclick="tocarSomVip('https://actions.google.com/sounds/v1/water/ocean_waves_crashing.ogg')"><span>🌊</span><p>Ondas</p></div>
+          </div>
+          <button onclick="pararAcalento()" style="margin-top:15px; width:100%; background: #EF4444; color: #FFF; border: none; padding: 10px; border-radius: 8px; font-weight: 800; cursor: pointer; display: none;" id="btnPararSom">⏹️ Parar Som</button>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- PÁGINA VIP (APENAS LOGIN E DRIVES) -->
+    <main id="pagina-vip" class="page-content">
+      <div class="age-group-section">
+        <h3 class="age-title" style="color: #1E293B;">⭐ Painel de Pais e Acesso Drive</h3>
+
+        <!-- ÁREA DE LOGIN (SOME SE ESTIVER LOGADO) -->
+        <div class="hide-if-vip">
+          <div class="vip-form-box">
+            <h4 style="color: #1E293B;">🔑 Já sou Assinante</h4>
+            <p style="font-size: 12px; color: #64748B; margin-bottom: 10px;">A senha mestra de teste é: 65628467</p>
+            <input type="password" id="log-senha" class="vip-input" placeholder="Sua senha">
+            <button type="button" onclick="fazerLogin()" style="width:100%; padding: 12px; background: #3B82F6; color: #FFF; border: none; border-radius: 10px; font-weight: 800; cursor: pointer;">Desbloquear Portal</button>
+          </div>
+          
+          <div style="text-align: center; margin-top: 20px;">
+            <p style="font-weight: 800; color: #92400E;">Ainda não tem acesso?</p>
+            <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-assinar-agora">Quero ser VIP por R$ 6,00 💳</a>
+          </div>
+        </div>
+
+        <!-- ÁREA DE DRIVES (SÓ APARECE SE LOGADO) -->
+        <div class="show-if-vip">
+          <div style="background: #D1FAE5; border: 2px solid #10B981; padding: 12px 16px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h4 style="color: #065F46; font-size: 15px; font-weight: 900; margin: 0;">🎉 Portal 100% Liberado!</h4>
             <button onclick="sairVIP()" style="background: #EF4444; color: #FFF; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 800; cursor: pointer;">Sair</button>
           </div>
 
-          <div class="vip-internal-tabs">
-            <button id="tab-vip-geral" class="vip-int-btn active" onclick="alternarAbaVip('geral')">🌟 Diversão VIP</button>
-            <button id="tab-vip-tea" class="vip-int-btn" onclick="alternarAbaVip('tea')">🧩 Especial Pais & TEA</button>
-          </div>
-
-          <div id="conteudo-vip-geral" class="vip-sub-area active-area">
-             <!-- Rádio VIP -->
-             <div class="radio-vip-box">
-              <h3 style="margin-bottom: 6px; font-weight: 900;">🎵 Rádio da Turminha</h3>
-              <p style="font-size: 13px; color: #94A3B8; margin-bottom: 15px;">Ouça todas as músicas oficiais direto no Spotify!</p>
-              <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="radio-btn">▶️ Abrir Músicas no Spotify</a>
-            </div>
-          </div>
-
-          <div id="conteudo-vip-tea" class="vip-sub-area">
-            <!-- CAIXA DO ACALENTO (SOMENTE SONS CALMANTES REAIS) -->
-            <div class="vip-card-box" style="background: #F8FAFC; border-color: #94A3B8;">
-              <h4 style="color: #334155; margin-bottom: 6px; font-size: 15px; font-weight: 900;">🎧 Caixa do Acalento (Sons Relaxantes)</h4>
-              <p style="font-size: 12px; color: #64748B; font-weight: 600;">Áudios de regulação sensorial de alta qualidade.</p>
-              <div class="acalento-grid">
-                <!-- LINKS REAIS E SEGUROS DO GOOGLE ACTIONS (DOMÍNIO PÚBLICO E ESTÁVEIS) -->
-                <button class="acalento-btn" onclick="tocarSomReal('https://actions.google.com/sounds/v1/weather/rain_heavy_loud.ogg')"><span>🌧️</span><p>Chuva</p></button>
-                <button class="acalento-btn" onclick="tocarSomReal('https://actions.google.com/sounds/v1/animals/birds_in_forest.ogg')"><span>🐦</span><p>Pássaros</p></button>
-                <button class="acalento-btn" onclick="tocarSomReal('https://actions.google.com/sounds/v1/science_fiction/space_engine_ambient.ogg')"><span>📻</span><p>Ruído Branco</p></button>
-                <button class="acalento-btn" onclick="tocarSomReal('https://actions.google.com/sounds/v1/water/ocean_waves_crashing.ogg')"><span>🌊</span><p>Ondas</p></button>
-                <button class="acalento-btn" onclick="tocarSomReal('https://actions.google.com/sounds/v1/weather/crackling_fireplace.ogg')"><span>🔥</span><p>Fogueira</p></button>
-              </div>
-              <button onclick="pararAcalento()" style="margin-top:15px; width:100%; background: #EF4444; color: #FFF; border: none; padding: 10px; border-radius: 8px; font-weight: 800; cursor: pointer;">⏹️ Parar Som</button>
-            </div>
+          <div style="background: linear-gradient(135deg, #E0F2FE 0%, #DBEAFE 100%); border: 2.5px solid #3B82F6; border-radius: var(--radius-md); padding: 20px; text-align: center; margin-bottom: 16px;">
+            <h4 style="color: #1E3A8A; font-size: 17px; font-weight: 900;">📁 Drive Oficial da Turminha</h4>
+            <p style="font-size: 12.5px; color: #1E40AF; margin-top: 4px; font-weight: 600; margin-bottom: 15px;">Baixe Wallpapers de alta qualidade e Desenhos em PDF para Imprimir e Colorir!</p>
+            <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" style="display: inline-block; background: #2563EB; color: #FFF; font-weight: 900; padding: 12px 24px; border-radius: 10px; text-decoration: none;">Acessar Pasta Oficial 📥</a>
           </div>
         </div>
+
       </div>
     </main>
 
   </div>
 
   <script>
-    /* Lógica e Variáveis de Jogo e Audio (Simplificada para a estrutura funcionar perfeitamente) */
+    /* ================= DADOS DOS PERSONAGENS ================= */
+    const TODOS_PERSONAGENS = [
+      { nome: 'Xexéu', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786902347/xexeu.png', letra: 'X', desc: "O pássaro azul de boina amarela!" },
+      { nome: 'Capilé', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786902348/capile.png', letra: 'C', desc: "O cachorrinho do pingente de osso dourado." },
+      { nome: 'Maya', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786907604/16.png', letra: 'M', desc: "Mãe dedicada da Iza e da Nina." },
+      { nome: 'Theo', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786907605/17.png', letra: 'T', desc: "Pai calmo da Iza e da Nina." },
+      { nome: 'Nina', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786903228/Sem_nome_512_x_512_px_1.png', letra: 'N', desc: "Menina esperta de cabelos cacheados." },
+      { nome: 'Iza', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786902350/iza.png', letra: 'I', desc: "A menina vaidosa de vestido rosa." },
+      { nome: 'Sam', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786907601/14.png', letra: 'S', desc: "Pai inventor do Joca e do Leo." },
+      { nome: 'Lia', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786907602/15.png', letra: 'L', desc: "Mãe alegre do Joca e do Leo." },
+      { nome: 'Joca', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786902350/joca.png', letra: 'J', desc: "O menino divertido de verde." },
+      { nome: 'Leo', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786902347/leo.png', letra: 'L', desc: "Menino focado nas descobertas." },
+      { nome: 'Beto', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786902348/vovo_beto.png', letra: 'B', desc: "Vovô coruja de óculos quadrados." },
+      { nome: 'Hilda', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786902347/vovo_hilda.png', letra: 'H', desc: "Vovó acolhedora de óculos redondos." }
+    ];
+
+    /* ================= VARIÁVEIS GERAIS ================= */
     let audioAtivo = true;
     let somAcalentoAtual = null;
     const SENHA_MESTRA = "65628467";
 
-    // --- SONS DE ACALENTO REAIS ---
-    function tocarSomReal(url) {
-      if (somAcalentoAtual) {
-        somAcalentoAtual.pause();
-        somAcalentoAtual.currentTime = 0;
-        if (somAcalentoAtual.src === url) {
-          somAcalentoAtual = null; // Clicou no mesmo, então pausa
-          return;
-        }
-      }
-      somAcalentoAtual = new Audio(url);
-      somAcalentoAtual.loop = true; // Mantém o som calmo rodando
-      somAcalentoAtual.play().catch(e => console.log("Erro ao tocar:", e));
-      lerTexto("Som ativado.");
-    }
-
-    function pararAcalento() {
-      if(somAcalentoAtual) {
-        somAcalentoAtual.pause();
-        somAcalentoAtual = null;
-        lerTexto("Som pausado.");
-      }
-    }
-
+    /* ================= ÁUDIO E VOZ ================= */
     function lerTexto(txt) {
       const toast = document.getElementById('visualToast');
       if (toast) { toast.innerText = txt; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2500); }
@@ -562,6 +549,11 @@
       window.speechSynthesis.speak(u);
     }
 
+    function tocarVozETexto(nome) {
+      const p = TODOS_PERSONAGENS.find(x => x.nome === nome);
+      if (p) lerTexto(p.desc);
+    }
+
     function alternarAudioGlobal() {
       audioAtivo = !audioAtivo;
       const btn = document.getElementById('toggleAudioBtn');
@@ -569,12 +561,31 @@
         btn.classList.remove('muted'); document.getElementById('audioIcon').innerText = '🔊'; document.getElementById('audioText').innerText = 'Voz';
       } else {
         btn.classList.add('muted'); document.getElementById('audioIcon').innerText = '🔇'; document.getElementById('audioText').innerText = 'Mudo';
+        if(window.speechSynthesis) window.speechSynthesis.cancel();
       }
     }
 
-    // --- NAVEGAÇÃO E ABAS ---
+    function tocarSomVip(url) {
+      if(!isUserVip()) return;
+      if (somAcalentoAtual) {
+        somAcalentoAtual.pause(); somAcalentoAtual.currentTime = 0;
+        if (somAcalentoAtual.src === url) { somAcalentoAtual = null; document.getElementById('btnPararSom').style.display='none'; return; }
+      }
+      somAcalentoAtual = new Audio(url); somAcalentoAtual.loop = true;
+      somAcalentoAtual.play().catch(e => console.log("Erro áudio:", e));
+      document.getElementById('btnPararSom').style.display = 'block';
+      lerTexto("Som ativado.");
+    }
+
+    function pararAcalento() {
+      if(somAcalentoAtual) { somAcalentoAtual.pause(); somAcalentoAtual = null; }
+      document.getElementById('btnPararSom').style.display = 'none';
+      lerTexto("Som pausado.");
+    }
+
+    /* ================= NAVEGAÇÃO ================= */
     function mudarPagina(pagina) {
-      ['inicio', 'videos', 'jogos', 'leitura', 'tea', 'vip'].forEach(p => {
+      ['inicio', 'jogos', 'leitura', 'tea', 'vip'].forEach(p => {
         const pag = document.getElementById('pagina-' + p);
         const btn = document.getElementById('btn-tab-' + p);
         if(pag) pag.classList.remove('active-page');
@@ -582,95 +593,280 @@
       });
       document.getElementById('pagina-' + pagina).classList.add('active-page');
       document.getElementById('btn-tab-' + pagina).classList.add('active');
-
       if(pagina === 'jogos') setTimeout(redimensionarCanvas, 100);
-      if(pagina === 'vip') verificarStatusVip();
     }
 
-    function mudarSubJogo(sub) {
-      ['lousa', 'contar', 'memoria'].forEach(s => {
-        document.getElementById('game-' + s).classList.remove('active-game-page');
-        document.getElementById('subtab-' + s).classList.remove('active');
+    /* ================= VITRINE E UPSELL (VIP) ================= */
+    function isUserVip() { return localStorage.getItem('turminha_xexeu_vip_ativo') === 'true'; }
+
+    function verificarAcessoJogo(idJogo, nomeDoJogo) {
+      if (isUserVip()) mudarSubJogoInterno(idJogo); else abrirUpsell(nomeDoJogo);
+    }
+
+    function verificarAcessoAcao(nomeDaFerramenta) {
+      if (!isUserVip()) abrirUpsell(nomeDaFerramenta);
+    }
+
+    function verificarCorVip(corHex) {
+      if (isUserVip()) mudarCor(corHex); else abrirUpsell('Cores Especiais da Lousa');
+    }
+    
+    function verificarAcessoContorno(imgUrl, btnElement, nomeDesenho) {
+      if (isUserVip()) carregarContornoNaLousa(imgUrl, btnElement); else abrirUpsell('Desenho VIP: ' + nomeDesenho);
+    }
+
+    function mudarSubJogoInterno(sub) {
+      ['lousa', 'contar', 'letras', 'memoria', 'quiz'].forEach(s => {
+        const page = document.getElementById('game-' + s);
+        const btn = document.getElementById('subtab-' + s);
+        if(page) page.classList.remove('active-game-page');
+        if(btn) btn.classList.remove('active');
       });
       document.getElementById('game-' + sub).classList.add('active-game-page');
       document.getElementById('subtab-' + sub).classList.add('active');
+    }
+
+    function mudarSubJogo(sub) {
+      mudarSubJogoInterno(sub);
       if(sub === 'lousa') setTimeout(redimensionarCanvas, 50);
     }
 
-    function alternarAbaVip(aba) {
-      document.getElementById('tab-vip-geral').classList.remove('active');
-      document.getElementById('tab-vip-tea').classList.remove('active');
-      document.getElementById('conteudo-vip-geral').classList.remove('active-area');
-      document.getElementById('conteudo-vip-tea').classList.remove('active-area');
-
-      document.getElementById(`tab-vip-${aba}`).classList.add('active');
-      document.getElementById(`conteudo-vip-${aba}`).classList.add('active-area');
+    function abrirUpsell(nomeItem) {
+      document.getElementById('upsell-nome-item').innerText = nomeItem;
+      document.getElementById('modalUpsell').classList.add('active');
     }
 
-    // --- LÓGICA VIP COM LIBERAÇÃO AUTOMÁTICA VISUAL ---
+    function fecharUpsell() { document.getElementById('modalUpsell').classList.remove('active'); }
+
+    function irParaLoginVIP() {
+      fecharUpsell(); mudarPagina('vip'); document.getElementById('log-senha').focus();
+    }
+
     function fazerLogin() {
-      const email = document.getElementById('log-email').value.trim();
       const senha = document.getElementById('log-senha').value.trim();
-      if (!email || !senha) { alert("Preencha e-mail e senha."); return; }
-      
-      // Validação da senha mestra instantânea
       if (senha === SENHA_MESTRA) {
         localStorage.setItem('turminha_xexeu_vip_ativo', 'true');
-        verificarStatusVip(); // Chama a verificação que atualiza a tela na mesma hora
+        aplicarStatusVipUI();
         lerTexto("Acesso VIP Liberado!");
         document.getElementById('log-senha').value = '';
-        return;
-      }
-      
-      alert("❌ Acesso Negado: Senha incorreta.");
-    }
-
-    function verificarStatusVip() {
-      const isVip = localStorage.getItem('turminha_xexeu_vip_ativo');
-      const lockedView = document.getElementById('vip-locked-view');
-      const unlockedView = document.getElementById('vip-unlocked-view');
-      if (isVip === 'true') {
-        if(lockedView) lockedView.style.display = 'none';
-        if(unlockedView) unlockedView.classList.add('active-vip');
+        mudarPagina('jogos');
       } else {
-        if(lockedView) lockedView.style.display = 'block';
-        if(unlockedView) unlockedView.classList.remove('active-vip');
+        alert("❌ Senha incorreta.");
       }
     }
 
     function sairVIP() {
       localStorage.removeItem('turminha_xexeu_vip_ativo');
-      verificarStatusVip();
-      lerTexto("Você saiu da Área VIP.");
+      aplicarStatusVipUI();
+      pararAcalento();
+      lerTexto("Você saiu. Os itens VIP foram trancados.");
+      mudarPagina('inicio');
     }
 
-    // --- LOUSA MAGICA RESPONSIVA ---
+    function aplicarStatusVipUI() {
+      const isVip = isUserVip();
+      if (isVip) document.body.classList.add('is-vip'); else document.body.classList.remove('is-vip');
+
+      document.querySelectorAll('.require-vip').forEach(item => {
+        if (isVip) {
+          item.classList.add('vip-unlocked');
+          if(item.tagName === 'BUTTON' && item.innerText.includes('🔒')) {
+             item.dataset.originalText = item.innerText;
+             item.innerText = item.innerText.replace('🔒', '⭐');
+          }
+          if(item.classList.contains('livro-card') && item.innerHTML.includes('🔒')) {
+             item.dataset.originalHtml = item.innerHTML;
+             item.innerHTML = item.innerHTML.replace(/🔒/g, '⭐');
+          }
+        } else {
+          item.classList.remove('vip-unlocked');
+          if(item.tagName === 'BUTTON' && item.dataset.originalText) item.innerText = item.dataset.originalText;
+          if(item.classList.contains('livro-card') && item.dataset.originalHtml) item.innerHTML = item.dataset.originalHtml;
+        }
+      });
+
+      if (isVip) {
+        iniciarMemoria();
+        carregarQuiz();
+      }
+    }
+
+    /* ================= LOUSA MOBILE E MODOS ================= */
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas ? canvas.getContext('2d') : null;
     let desenhando = false, corAtual = '#3B82F6';
 
+    function setLousaMode(modo) {
+      document.getElementById('btn-mode-free').classList.remove('active');
+      document.getElementById('btn-mode-color').classList.remove('active');
+      const grid = document.getElementById('coloringSelectGrid');
+      
+      if (modo === 'free') {
+        document.getElementById('btn-mode-free').classList.add('active');
+        grid.classList.remove('active');
+        canvas.style.backgroundImage = 'none'; // Tira o desenho de fundo
+        limparCanvas();
+        lerTexto("Modo de desenho livre!");
+      } else {
+        document.getElementById('btn-mode-color').classList.add('active');
+        grid.classList.add('active');
+        lerTexto("Escolha um desenho para colorir!");
+      }
+    }
+
+    function carregarContornoNaLousa(urlImg, btnElemento) {
+      // Destaca botão selecionado
+      document.querySelectorAll('.btn-color-draw').forEach(b => b.classList.remove('selected'));
+      if(btnElemento) btnElemento.classList.add('selected');
+      
+      // Limpa desenhos anteriores
+      limparCanvas();
+      
+      // Coloca o contorno como Fundo do Canvas (o CSS background-size:contain garante a proporção)
+      canvas.style.backgroundImage = `url('${urlImg}')`;
+      lerTexto("Vamos pintar!");
+    }
+
     function redimensionarCanvas() {
       if (!canvas || !canvas.parentElement) return;
-      canvas.width = canvas.parentElement.clientWidth - 16;
-      canvas.height = window.innerWidth >= 900 ? 380 : 280;
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = rect.width - 32;
+      canvas.height = window.innerWidth >= 900 ? 380 : 320;
     }
-    function mudarCor(c) { corAtual = c; }
+    
+    function mudarCor(c) { corAtual = c; lerTexto("Cor selecionada"); }
     function limparCanvas() { if(ctx) ctx.clearRect(0, 0, canvas.width, canvas.height); }
     
-    function getPos(e) { const rect = canvas.getBoundingClientRect(); const cx = e.touches ? e.touches[0].clientX : e.clientX; const cy = e.touches ? e.touches[0].clientY : e.clientY; return { x: cx - rect.left, y: cy - rect.top }; }
+    function getPos(e) { 
+      const rect = canvas.getBoundingClientRect(); 
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const cx = e.touches ? e.touches[0].clientX : e.clientX; 
+      const cy = e.touches ? e.touches[0].clientY : e.clientY; 
+      return { x: (cx - rect.left) * scaleX, y: (cy - rect.top) * scaleY }; 
+    }
 
     if(canvas) {
-      canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 6; ctx.lineCap = 'round'; });
-      canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
-      canvas.addEventListener('mouseup', () => desenhando = false);
-      canvas.addEventListener('touchstart', (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 6; ctx.lineCap = 'round'; e.preventDefault(); });
-      canvas.addEventListener('touchmove', (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); });
-      canvas.addEventListener('touchend', () => desenhando = false);
+      canvas.addEventListener('touchstart', function(e) { e.preventDefault(); }, { passive: false });
+      canvas.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
+
+      const iniciarDesenho = (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = 10; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; };
+      const desenhar = (e) => { if(!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); };
+      const pararDesenho = () => { desenhando = false; };
+
+      canvas.addEventListener('mousedown', iniciarDesenho);
+      canvas.addEventListener('mousemove', desenhar);
+      canvas.addEventListener('mouseup', pararDesenho);
+      canvas.addEventListener('mouseout', pararDesenho);
+
+      canvas.addEventListener('touchstart', iniciarDesenho);
+      canvas.addEventListener('touchmove', desenhar);
+      canvas.addEventListener('touchend', pararDesenho);
+      
       window.addEventListener('resize', redimensionarCanvas);
     }
 
+    /* ================= OUTROS JOGOS ================= */
+    function carregarJogoContar() {
+      let qContar = Math.floor(Math.random() * 5) + 1;
+      const charSorteado = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      const display = document.getElementById('countDisplay'); display.innerHTML = '';
+      for (let i = 0; i < qContar; i++) {
+        const img = document.createElement('img'); img.src = charSorteado.img; img.style.cssText = 'width:44px; height:44px; object-fit:contain;'; display.appendChild(img);
+      }
+      const opts = document.getElementById('countOptions'); opts.innerHTML = '';
+      for (let n = 1; n <= 6; n++) {
+        const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.innerText = n;
+        btn.onclick = () => {
+          if (n === qContar) {
+            btn.classList.add('acertou'); lerTexto("Acertou!");
+            setTimeout(() => { btn.classList.remove('acertou'); carregarJogoContar(); }, 800);
+          } else {
+            btn.classList.add('errou'); lerTexto("Tente de novo!");
+            setTimeout(() => btn.classList.remove('errou'), 500);
+          }
+        };
+        opts.appendChild(btn);
+      }
+    }
+
+    function carregarJogoLetras() {
+      let pLetraAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('nome-letra-personagem').innerText = pLetraAtual.nome;
+      document.getElementById('img-letra-personagem').src = pLetraAtual.img;
+      const container = document.getElementById('opcoes-letras'); container.innerHTML = '';
+      const alfabeto = ['A','B','C','D','E','F','G','H','I','J','L','M','N','P','Q','R','S','T','U','V','X'];
+      let opcoes = [pLetraAtual.letra];
+      while (opcoes.length < 3) { let l = alfabeto[Math.floor(Math.random() * alfabeto.length)]; if (!opcoes.includes(l)) opcoes.push(l); }
+      opcoes.sort(() => Math.random() - 0.5).forEach(l => {
+        const btn = document.createElement('button'); btn.className = 'btn-choice'; btn.innerText = l;
+        btn.onclick = () => {
+          if (l === pLetraAtual.letra) {
+            btn.classList.add('acertou'); lerTexto("Parabéns!");
+            setTimeout(() => { btn.classList.remove('acertou'); carregarJogoLetras(); }, 800);
+          } else {
+            btn.classList.add('errou'); lerTexto("Tente de novo!");
+            setTimeout(() => btn.classList.remove('errou'), 500);
+          }
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    let cMem = [], pCarta = null, travaMem = false, acertosMem = 0;
+    function iniciarMemoria() {
+      acertosMem = 0; pCarta = null; travaMem = false;
+      const sorteados = [...TODOS_PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, 4);
+      const imgsMem = sorteados.map(p => p.img);
+      cMem = [...imgsMem, ...imgsMem].sort(() => Math.random() - 0.5);
+      const board = document.getElementById('memoryBoard'); board.innerHTML = '';
+      cMem.forEach(src => {
+        const card = document.createElement('div'); card.className = 'memory-card'; card.dataset.img = src; card.innerText = '❓';
+        card.onclick = () => {
+          if (travaMem || card.classList.contains('flipped') || !isUserVip()) return;
+          card.classList.add('flipped'); card.innerHTML = `<img src="${src}" alt="Carta">`;
+          if (!pCarta) pCarta = card;
+          else {
+            if (pCarta.dataset.img === src) {
+              acertosMem++; lerTexto("Encontrou o par!"); pCarta = null;
+              if (acertosMem === 4) { setTimeout(() => { lerTexto("Você Venceu!"); iniciarMemoria(); }, 1800); }
+            } else {
+              travaMem = true;
+              setTimeout(() => { pCarta.classList.remove('flipped'); pCarta.innerText = '❓'; card.classList.remove('flipped'); card.innerText = '❓'; pCarta = null; travaMem = false; }, 900);
+            }
+          }
+        };
+        board.appendChild(card);
+      });
+    }
+
+    function carregarQuiz() {
+      let pQuizAtual = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)];
+      document.getElementById('quiz-img').src = pQuizAtual.img;
+      const container = document.getElementById('quiz-options'); container.innerHTML = '';
+      let opcoes = [pQuizAtual.nome];
+      while (opcoes.length < 3) { let o = TODOS_PERSONAGENS[Math.floor(Math.random() * TODOS_PERSONAGENS.length)].nome; if (!opcoes.includes(o)) opcoes.push(o); }
+      opcoes.sort(() => Math.random() - 0.5).forEach(o => {
+        const btn = document.createElement('button'); btn.style.cssText = "padding:8px; border-radius:10px; border:2px solid #CBD5E1; background:#FFF; font-weight:800; cursor:pointer; font-size:12px;"; btn.innerText = o;
+        btn.onclick = () => {
+          if(!isUserVip()) return;
+          if (o === pQuizAtual.nome) {
+            btn.classList.add('acertou'); lerTexto("Muito bem!");
+            setTimeout(() => { btn.classList.remove('acertou'); carregarQuiz(); }, 800);
+          } else {
+            btn.classList.add('errou'); lerTexto("Tente novamente!");
+            setTimeout(() => btn.classList.remove('errou'), 500);
+          }
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    // INICIALIZAÇÃO
     window.onload = () => {
-      verificarStatusVip();
+      aplicarStatusVipUI();
+      carregarJogoContar();
+      carregarJogoLetras();
     };
   </script>
 </body>
