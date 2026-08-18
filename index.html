@@ -371,7 +371,7 @@
       </section>
     </main>
 
-    <!-- PÁGINA 2: VÍDEOS E MÚSICAS (COM SONS EM REPARO) -->
+    <!-- PÁGINA 2: VÍDEOS E MÚSICAS (COM TODOS OS SONS EM REPARO EXCETO OS 2 GRÁTIS) -->
     <main id="pagina-videos" class="page-content content-wrapper">
       <div class="media-section-grid">
         <div class="video-card hover-float">
@@ -392,32 +392,15 @@
 
       <div class="interactive-card">
         <h4 style="font-size:24px; font-weight:900; color:var(--tea-blue); margin-bottom:14px; display:flex; justify-content:space-between; align-items:center;">
-          🌙 Sons e Acalento (Em Reparo)
-          <button class="btn-audio-mini" onclick="lerTexto('Nossos sons relaxantes estão passando por melhorias e estarão disponíveis em breve!')">🔊</button>
+          🌙 Sons e Acalento (Grátis & VIP)
+          <button class="btn-audio-mini" onclick="lerTexto('Sons suaves para relaxar, focar ou dormir.')">🔊</button>
         </h4>
-        <p style="font-size:14px; color:#475569; font-weight:600; margin-bottom:16px;">Estamos aprimorando a caixa de som relaxante para melhor qualidade. Em breve!</p>
         <div class="media-card-grid">
-          <div class="media-item-box" onclick="alert('🚧 Este som está temporariamente em reparo para melhorias!')">
-            <span style="font-size:42px;">🌧️</span><strong style="font-size:16px;">Chuva Suave</strong>
-            <span style="font-size:12px; color:#D97706; font-weight:900;">🚧 Em Reparo</span>
-          </div>
-          <div class="media-item-box" onclick="alert('🚧 Este som está temporariamente em reparo para melhorias!')">
-            <span style="font-size:42px;">🐦</span><strong style="font-size:16px;">Passarinhos</strong>
-            <span style="font-size:12px; color:#D97706; font-weight:900;">🚧 Em Reparo</span>
-          </div>
-          <div class="media-item-box" onclick="alert('🚧 Este som está temporariamente em reparo para melhorias!')">
-            <span style="font-size:42px;">🌊</span><strong style="font-size:16px;">Ondas do Mar</strong>
-            <span style="font-size:12px; color:#D97706; font-weight:900;">🚧 Em Reparo</span>
-          </div>
-          <div class="media-item-box" onclick="alert('🚧 Este som está temporariamente em reparo para melhorias!')">
-            <span style="font-size:42px;">🔥</span><strong style="font-size:16px;">Fogueira</strong>
-            <span style="font-size:12px; color:#D97706; font-weight:900;">🚧 Em Reparo</span>
-          </div>
-          <div class="media-item-box locked" onclick="mudarPagina('vip')">
-            <span class="media-badge-vip">👑 VIP</span><span style="font-size:42px;">🍃</span>
-            <strong style="font-size:16px;">Vento Suave</strong>
-            <span style="font-size:11px; color:#D97706; font-weight:800;">Exclusivo VIP</span>
-          </div>
+          <div class="media-item-box" onclick="tocarSomReal('https://actions.google.com/sounds/v1/weather/light_rain.ogg')"><span style="font-size:42px;">🌧️</span><strong style="font-size:16px;">Chuva Suave</strong><span style="font-size:13px; color:#16A34A; font-weight:900;">GRÁTIS (Tocar)</span></div>
+          <div class="media-item-box" onclick="tocarSomReal('https://actions.google.com/sounds/v1/animals/bird_chirping.ogg')"><span style="font-size:42px;">🐦</span><strong style="font-size:16px;">Passarinhos</strong><span style="font-size:13px; color:#16A34A; font-weight:900;">GRÁTIS (Tocar)</span></div>
+          <div class="media-item-box" onclick="alert('🚧 Este som está temporariamente em reparo para melhorias!')"><span style="font-size:42px;">🌊</span><strong style="font-size:16px;">Ondas do Mar</strong><span style="font-size:12px; color:#D97706; font-weight:900;">🚧 Em Reparo</span></div>
+          <div class="media-item-box" onclick="alert('🚧 Este som está temporariamente em reparo para melhorias!')"><span style="font-size:42px;">🔥</span><strong style="font-size:16px;">Fogueira</strong><span style="font-size:12px; color:#D97706; font-weight:900;">🚧 Em Reparo</span></div>
+          <div class="media-item-box locked" onclick="mudarPagina('vip')"><span class="media-badge-vip">👑 VIP</span><span style="font-size:42px;">🍃</span><strong style="font-size:16px;">Vento Suave</strong><span style="font-size:11px; color:#D97706; font-weight:800;">Exclusivo VIP</span></div>
         </div>
       </div>
     </main>
@@ -492,9 +475,9 @@
               <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994883/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_LEO.png" style="width:70px; height:70px; object-fit:contain;">
               <h3 style="margin:0; font-size:24px;">🧩 Espaço TEA com o Leo</h3>
             </div>
-            <button class="btn-audio-mini" onclick="lerTexto('Espaço TEA com o Leo. Vamos fazer tudo com calma, no seu próprio tempo. Este espaço foi criado com muito carinho para apoiar a comunicação, a rotina e a regulação emocional.')">🔊</button>
+            <button class="btn-audio-mini" onclick="lerTexto('Espaço TEA com o Leo. Vamos fazer tudo com calma, no seu próprio tempo.')">🔊</button>
           </div>
-          <p style="font-size: 15px; color: #475569; font-weight: 600;">"Oi! Eu sou o Leo. Vamos fazer tudo com calma e no nosso próprio tempo? Este espaço foi criado com muito carinho para apoiar a comunicação, a rotina e a regulação emocional."</p>
+          <p style="font-size: 15px; color: #475569; font-weight: 600;">"Oi! Eu sou o Leo. Vamos fazer tudo com calma e no nosso próprio tempo?"</p>
         </div>
 
         <div class="interactive-card" style="border-color: #BAE6FD; margin-top: 24px; text-align:left;">
@@ -521,14 +504,14 @@
       </div>
     </main>
 
-    <!-- PÁGINA 5: LIVROS -->
+    <!-- PÁGINA 5: LIVROS (TODOS EM REPARO EXCETO 1 GRÁTIS) -->
     <main id="pagina-livros" class="page-content content-wrapper">
       <div class="age-group-section">
         <h3 class="age-title">
           <span>📚 Biblioteca da Turminha</span>
-          <button class="btn-audio-mini" onclick="lerTexto('Biblioteca da Turminha. Temos um livro grátis e muitos em breve no VIP!')">🔊</button>
+          <button class="btn-audio-mini" onclick="lerTexto('Biblioteca da Turminha. Livros em reparo ou em breve!')">🔊</button>
         </h3>
-        <p style="font-size:15px; font-weight:600; color:#475569; text-align:center; margin-bottom:20px;">Explore nossas histórias ou aguarde os próximos lançamentos!</p>
+        <p style="font-size:15px; font-weight:600; color:#475569; text-align:center; margin-bottom:20px;">Nossas histórias estão passando por atualizações e melhorias!</p>
         
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:20px;">
           <div class="interactive-card hover-float" onclick="lerTexto('Abrindo livro: O Abraço Doce')">
@@ -536,16 +519,15 @@
             <h4 style="color:var(--primary-dark); font-size:18px; margin:10px 0;">O Abraço Doce</h4>
             <span style="background:#10B981; color:#FFF; font-size:11px; font-weight:800; padding:4px 10px; border-radius:20px;">GRÁTIS</span>
           </div>
-          <div class="interactive-card locked" onclick="mudarPagina('vip')">
-            <span class="media-badge-vip">👑 VIP</span>
-            <span style="font-size:45px;">🔒</span>
-            <h4 style="color:#92400E; font-size:18px; margin:10px 0;">Aventuras do Xexéu</h4>
-            <span style="font-size:12px; color:#D97706; font-weight:800;">Disponível no VIP</span>
-          </div>
-          <div class="interactive-card" style="border-style:dashed; opacity:0.8;">
+          <div class="interactive-card" style="border-style:dashed; opacity:0.8;" onclick="alert('🚧 Este livro está temporariamente em reparo!')">
             <span style="font-size:45px;">🚧</span>
-            <h4 style="color:#64748B; font-size:18px; margin:10px 0;">Em Breve</h4>
-            <span style="font-size:12px; color:#64748B;">Novas histórias</span>
+            <h4 style="color:#64748B; font-size:18px; margin:10px 0;">Aventuras do Xexéu</h4>
+            <span style="font-size:12px; color:#D97706; font-weight:800;">🚧 Em Reparo</span>
+          </div>
+          <div class="interactive-card" style="border-style:dashed; opacity:0.8;" onclick="alert('🚧 Este livro está temporariamente em reparo!')">
+            <span style="font-size:45px;">🚧</span>
+            <h4 style="color:#64748B; font-size:18px; margin:10px 0;">O Segredo do Capilé</h4>
+            <span style="font-size:12px; color:#D97706; font-weight:800;">🚧 Em Reparo</span>
           </div>
         </div>
       </div>
@@ -655,7 +637,7 @@
       </div>
     </main>
 
-    <!-- CONFIG & PERFIL (COM SELETOR DE VOZ DO NAVEGADOR) -->
+    <!-- CONFIG & PERFIL -->
     <main id="pagina-config" class="page-content content-wrapper">
       <div class="age-group-section">
         <h3 class="age-title">⚙️ Configurações de Voz & Acessibilidade</h3>
@@ -765,7 +747,7 @@
     function mudarVozSelecionada(index) {
       if (!isUserVip) {
         alert("🔒 A escolha avançada de voz é exclusiva para membros VIP!");
-        abrirAreaProtegida('vip');
+        mudarPagina('vip');
         return;
       }
       vozSelecionadaIndex = index;
@@ -978,7 +960,7 @@
     function adicionarRotinaPersonalizada() {
       const texto = document.getElementById('rotina-nova-texto').value.trim();
       if (!texto) { alert("Escreva a tarefa!"); return; }
-      if (!isUserVip && rotinasSalvas.length >= 3) { alert("No modo Grátis você pode ter até 3 rotinas. Assine o VIP para ilimitadas!"); abrirAreaProtegida('vip'); return; }
+      if (!isUserVip && rotinasSalvas.length >= 3) { alert("No modo Grátis você pode ter até 3 rotinas. Assine o VIP para ilimitadas!"); mudarPagina('vip'); return; }
       rotinasSalvas.push({ id: Date.now(), texto: texto, feito: false });
       localStorage.setItem('turminha_rotina', JSON.stringify(rotinasSalvas));
       document.getElementById('rotina-nova-texto').value = ''; renderizarRotinas(); lerTexto("Rotina adicionada!");
@@ -1008,7 +990,7 @@
       
       if (!isUserVip && cartoesCaaSalvos.length >= 4) {
         alert("🔒 No plano Grátis você pode adicionar até 2 cartões personalizados além dos padrões. Assine o VIP para ter cartões ilimitados!");
-        abrirAreaProtegida('vip');
+        mudarPagina('vip');
         return;
       }
       cartoesCaaSalvos.push({ emoji, texto });
@@ -1041,7 +1023,7 @@
     function iniciarTemporizador(minutos) {
       if (!isUserVip && minutos > 2) {
         alert("🔒 No modo Grátis, o temporizador vai até 2 minutos. Torne-se VIP para liberar até 30 minutos!");
-        abrirAreaProtegida('vip');
+        mudarPagina('vip');
         return;
       }
       clearInterval(timerInterval);
@@ -1169,7 +1151,7 @@
       }
       if(!isUserVip) {
         const btnVip = document.createElement('button'); btnVip.className = 'btn-color-draw'; btnVip.style.cssText = "border-color:#F59E0B; background:#FFFBEB; color:#92400E;";
-        btnVip.innerHTML = '🔒 +9 Desenhos (VIP)'; btnVip.onclick = () => abrirAreaProtegida('vip'); grid.appendChild(btnVip);
+        btnVip.innerHTML = '🔒 +9 Desenhos (VIP)'; btnVip.onclick = () => mudarPagina('vip'); grid.appendChild(btnVip);
       }
     }
 
