@@ -63,6 +63,7 @@
       background: #FFFFFF; border: 2px solid #CBD5E1; box-shadow: var(--shadow-3d); color: var(--text-main);
       padding: 10px 18px; border-radius: var(--radius-md); font-weight: 700; font-size: 14px; cursor: pointer;
       display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.08s ease, box-shadow 0.08s ease;
+      text-decoration: none;
     }
     .btn-tactile:active { transform: translateY(4px); box-shadow: 0 1px 0px #CBD5E1; }
     .btn-tactile.primary { background: var(--primary); border-color: var(--primary-hover); color: #FFF; box-shadow: var(--shadow-3d-primary); }
@@ -72,7 +73,6 @@
     .btn-tactile.green { background: var(--green); border-color: var(--green-dark); color: #FFF; box-shadow: var(--shadow-3d-green); }
     .btn-tactile.green:active { box-shadow: 0 1px 0px #047857; }
     .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
-    .btn-tactile.pink:active { box-shadow: 0 1px 0px #9D174D; }
     .btn-icon-round { width: 44px; height: 44px; border-radius: 50%; padding: 0; font-size: 18px; }
 
     nav.main-nav {
@@ -89,7 +89,8 @@
     .nav-item-btn:hover { background: #F1F5F9; color: var(--primary); }
     .nav-item-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); }
     .nav-item-btn.central-item.active { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
-    .nav-item-btn.vip-item.active { background: linear-gradient(135deg, #F59E0B, #D97706); }
+    .nav-item-btn.vip-item { background: #FEF3C7; color: #92400E; border: 1.5px solid #FCD34D; }
+    .nav-item-btn.vip-item.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; }
     .nav-item-btn.tea-item.active { background: var(--tea-blue); }
 
     .page-box { display: none; flex-direction: column; gap: 20px; animation: fadeIn 0.25s ease-out; }
@@ -152,9 +153,34 @@
     .level-btn { background: #F1F5F9; border: 2px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; }
     .level-btn.active { background: var(--primary); color: #FFF; border-color: var(--primary); }
 
-    .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 480px; margin: 0 auto; }
-    .memory-tile { aspect-ratio: 1; background: #3B82F6; border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 0 #1D4ED8; }
-    .memory-tile.flipped { background: #FFFFFF; border: 3px solid #3B82F6; }
+    /* JOGO DA MEMÓRIA COM TRANSIÇÃO 3D SUAVE */
+    .memory-grid { 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 12px; 
+      max-width: 480px; 
+      margin: 0 auto; 
+      perspective: 1000px; 
+    }
+    .memory-tile { 
+      aspect-ratio: 1; 
+      background: #3B82F6; 
+      border-radius: 16px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      cursor: pointer; 
+      box-shadow: 0 5px 0 #1D4ED8; 
+      transform-style: preserve-3d; 
+      transition: transform 0.35s cubic-bezier(0.4, 0.2, 0.2, 1), background 0.2s;
+    }
+    .memory-tile:active { transform: scale(0.95); }
+    .memory-tile.flipped { 
+      background: #FFFFFF; 
+      border: 3px solid #3B82F6; 
+      transform: rotateY(180deg); 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    }
     .memory-tile img { width: 75%; height: 75%; object-fit: contain; }
 
     .app-modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(5px); z-index: 99999; align-items: center; justify-content: center; padding: 20px; }
@@ -207,7 +233,7 @@
 
   <div id="appToast">Mensagem do Portal</div>
 
-  <!-- MODAL TEMPO ESGOTADO (PARENTAL) -->
+  <!-- MODAL TEMPO ESGOTADO -->
   <div id="modalTempoEsgotado" class="app-modal">
     <div class="modal-content" style="border-color: var(--accent);">
       <span style="font-size: 44px;">⏰</span>
@@ -263,7 +289,7 @@
       </div>
     </header>
 
-    <!-- NAVEGAÇÃO PRINCIPAL (TODAS AS ABAS VISÍVEIS E ACESSÍVEIS) -->
+    <!-- NAVEGAÇÃO PRINCIPAL -->
     <nav class="main-nav">
       <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Central</button>
       <button class="nav-item-btn" onclick="navegar('inicio')">🏠 Início</button>
@@ -701,14 +727,41 @@
       </div>
     </div>
 
-    <!-- PÁGINA: CLUBE VIP -->
+    <!-- PÁGINA: CLUBE VIP (ESTRUTURA FIXA E VISÍVEL) -->
     <div id="page-vip" class="page-box">
-      <div class="game-card" id="cardPainelVipStatus" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D;">
-        <div style="text-align: center; max-width: 850px; margin: 0 auto;" id="conteudoDinamicoVip"></div>
+      <div class="game-card" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D; text-align: center;">
+        <span style="font-size: 52px;">⭐</span>
+        <h2 style="color: #92400E; font-size: 30px; font-weight: 900; margin-bottom: 8px;">Clube VIP Turminha do Xexéu</h2>
+        <p style="color: #78350F; font-size: 16px; font-weight: 700; margin-bottom: 20px;">
+          Atividades pedagógicas exclusivas, minijogos doces e controle de tempo expandido por apenas <strong>R$ 6,00/mês</strong>.
+        </p>
+
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;" id="boxBotoesDrivesVip"></div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
+          <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #FDE68A; text-align: left;">
+            <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ O que o VIP desbloqueia:</h4>
+            <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
+              <li><strong>📁 Drive de Atividades:</strong> Desenhos para colorir em alta resolução, Wallpapers e Atividades para imprimir.</li>
+              <li><strong>🧩 Drive Azul TEA:</strong> Materiais adaptados e histórias sociais (Em breve).</li>
+              <li>🧁 Confeitaria da Vovó Hilda e Cata-Estrelas.</li>
+              <li>Todos os 12 contornos na lousa mágica.</li>
+              <li>Prancha CAA de fala sem limites.</li>
+              <li>Temporizador de até 30 minutos.</li>
+            </ul>
+          </div>
+
+          <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #CBD5E1; text-align: left;" id="boxFormularioLoginVip">
+            <h4 style="font-size: 16px; color: #1E293B; margin-bottom: 10px;">🔑 Já é Assinante? Acesse aqui:</h4>
+            <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail cadastrado">
+            <input type="password" id="loginSenhaVip" class="form-input" placeholder="Sua senha de acesso">
+            <button class="btn-tactile primary" id="btnEntrarVipSubmit" style="width: 100%;" onclick="executarLoginVip()">Validar Acesso VIP 🚀</button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- PÁGINA: PERFIL & AJUSTES DOS PAIS (TOTALMENTE ACESSÍVEL) -->
+    <!-- PÁGINA: PERFIL & AJUSTES -->
     <div id="page-perfil" class="page-box">
       <div class="game-card">
         <div class="game-card-title">
@@ -759,9 +812,6 @@
   </div>
 
   <script>
-    /* =========================================================
-       ESTADO E CONSTANTES DA APLICAÇÃO
-    ========================================================= */
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwrmDcZf4u4nMmfUSmq25RB6dHhpq0dud_JKezy2aIhYwesh6JVxSP2Vb4xMSU9W31H/exec";
     const LINK_DRIVE_ATIVIDADES_DEFAULT = "https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link";
     const LINK_DRIVE_TEA_DEFAULT = "https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link";
@@ -813,9 +863,6 @@
       { id: 2, texto: '📚 Hora do livro', feito: false }
     ];
 
-    /* =========================================================
-       INICIALIZAÇÃO & NAVEGAÇÃO
-    ========================================================= */
     window.addEventListener('DOMContentLoaded', () => {
       renderTodosPersonagensInicio();
       renderCartoesCaa();
@@ -877,7 +924,7 @@
     function toggleModoCalmo() {
       const ativado = document.body.classList.toggle('sensory-mode');
       exibirToast(ativado ? 'Modo Calmo Ativado' : 'Modo Padrão');
-      falarTexto(ativado ? 'Modo Calmo ativado. As cores e luzes estão mais suaves.' : 'Modo Padrão ativado.');
+      falarTexto(ativado ? 'Modo Calmo ativado.' : 'Modo Padrão ativado.');
     }
 
     function exibirToast(msg) {
@@ -894,30 +941,24 @@
       document.getElementById('badgeNivel').innerText = pontos > 50 ? '🌟 Super Fã' : pontos > 20 ? '⭐ Curioso' : 'Iniciante';
     }
 
-    /* SOM DO POP-IT (WEB AUDIO API) */
     function tocarSomPop() {
       if (!audioAtivo) return;
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
-
         osc.type = 'sine';
         osc.frequency.setValueAtTime(450, audioCtx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.08);
-
         gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
-
         osc.connect(gain);
         gain.connect(audioCtx.destination);
-
         osc.start();
         osc.stop(audioCtx.currentTime + 0.08);
       } catch (e) {}
     }
 
-    /* ESPAÇO TEA */
     function renderCartoesCaa() {
       const c = document.getElementById('caaContainerCards');
       if (!c) return;
@@ -959,7 +1000,7 @@
       localStorage.setItem('xexeu_caa', JSON.stringify(cartoesCaa));
       document.getElementById('novoCaaTexto').value = '';
       renderCartoesCaa();
-      falarTexto(`Cartão de ${texto} adicionado à prancha!`);
+      falarTexto(`Cartão de ${texto} adicionado!`);
     }
 
     function expressarSentimento(sentimento, respostaLeo) {
@@ -983,7 +1024,6 @@
         bubble.onclick = () => {
           tocarSomPop();
           if (navigator.vibrate) navigator.vibrate(20);
-
           bubble.classList.toggle('popped');
           if (bubble.classList.contains('popped')) {
             bubble.innerHTML = '✨';
@@ -1001,10 +1041,9 @@
         b.classList.remove('popped');
         b.innerHTML = '🫧';
       });
-      falarTexto('Pop-it restaurado! Pronto para estourar de novo!');
+      falarTexto('Pop-it restaurado!');
     }
 
-    /* DESTRAVAMENTO GLOBAL DO VIP */
     function atualizarInterfaceVipCompleta() {
       const bTitulo = document.getElementById('txtBarraFlutuanteTitulo');
       const bSub = document.getElementById('txtBarraFlutuanteSub');
@@ -1032,57 +1071,23 @@
         tabEst.style.color = isVip ? "var(--secondary-dark)" : "#D97706";
       }
 
-      const painel = document.getElementById('conteudoDinamicoVip');
-      if (painel) {
+      const boxDrives = document.getElementById('boxBotoesDrivesVip');
+      if (boxDrives) {
         if (isVip) {
           const driveLink = (linksDrivesSeguros && linksDrivesSeguros.atividades) ? linksDrivesSeguros.atividades : LINK_DRIVE_ATIVIDADES_DEFAULT;
-          
-          painel.innerHTML = `
-            <span style="font-size: 52px;">👑</span>
-            <h2 style="color: #065F46; font-size: 32px; font-weight: 900; margin-bottom: 8px;">Você é Membro VIP Oficial!</h2>
-            <p style="color: #047857; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Todos os conteúdos, joguinhos doces e ferramentas estão liberados.</p>
-            
-            <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-              <a href="${driveLink}" target="_blank" class="btn-tactile primary" style="text-decoration: none; padding: 14px 22px; font-size: 15px;">
-                📁 Abrir Drive de Atividades (🎨 Para Colorir, 📱 Wallpapers, 📝 Atividades)
-              </a>
-              <button class="btn-tactile" style="background: #E0F2FE; border-color: #7DD3FC; color: #0369A1; cursor: not-allowed; padding: 14px 22px; font-size: 15px;" onclick="alert('🧩 O Drive Azul TEA está em fase de preparação com materiais visuais e histórias sociais exclusivas. Em breve!')">
-                🧩 Drive Azul TEA (⏳ Em Construção)
-              </button>
-            </div>
-            <button class="btn-tactile" style="color: #EF4444; border-color: #FCA5A5;" onclick="deslogarVip()">Sair do VIP</button>
+          boxDrives.innerHTML = `
+            <a href="${driveLink}" target="_blank" class="btn-tactile primary" style="padding: 14px 22px; font-size: 15px;">
+              📁 Abrir Drive de Atividades (🎨 Para Colorir, 📱 Wallpapers, 📝 Atividades)
+            </a>
+            <button class="btn-tactile" style="background: #E0F2FE; border-color: #7DD3FC; color: #0369A1; cursor: not-allowed; padding: 14px 22px; font-size: 15px;" onclick="alert('🧩 O Drive Azul TEA está em fase de preparação com materiais visuais e histórias sociais exclusivas. Em breve!')">
+              🧩 Drive Azul TEA (⏳ Em Construção)
+            </button>
           `;
         } else {
-          painel.innerHTML = `
-            <span style="font-size: 48px;">⭐</span>
-            <h2 style="color: #92400E; font-size: 30px; font-weight: 900; margin-bottom: 8px;">Clube VIP Turminha do Xexéu</h2>
-            <p style="color: #78350F; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Todas as atividades pedagógicas, livros, minijogos exclusivos e controle parental avançado por apenas <strong>R$ 6,00/mês</strong>.</p>
-            
-            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-              <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive de Atividades (Para colorir, Wallpapers e Atividades)')">🔒 Drive de Atividades (VIP)</button>
-              <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive Azul TEA')">🔒 Drive Azul TEA (VIP)</button>
-              <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-tactile vip" style="text-decoration: none;">Quero ser VIP no Kiwify (R$ 6,00) 💳</a>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
-              <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #FDE68A; text-align: left;">
-                <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ O que o VIP desbloqueia:</h4>
-                <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
-                  <li><strong>📁 Drive de Atividades:</strong> Desenhos para colorir em alta resolução, Wallpapers e Atividades pedagógicas para imprimir.</li>
-                  <li><strong>🧩 Drive Azul TEA:</strong> Materiais adaptados e histórias sociais (Em breve!).</li>
-                  <li>🧁 Fábrica de Bolinhos da Vovó Hilda e Cata-Estrelas.</li>
-                  <li>Todos os 12 contornos na lousa mágica.</li>
-                  <li>Prancha CAA de fala sem limites.</li>
-                  <li>Temporizador de até 30 minutos.</li>
-                </ul>
-              </div>
-              <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #CBD5E1; text-align: left;">
-                <h4 style="font-size: 16px; color: #1E293B; margin-bottom: 10px;">🔑 Já é Assinante? Entre aqui:</h4>
-                <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail cadastrado">
-                <input type="password" id="loginSenhaVip" class="form-input" placeholder="Sua senha de acesso">
-                <button class="btn-tactile primary" style="width: 100%;" onclick="executarLoginVip()">Validar Acesso VIP 🚀</button>
-              </div>
-            </div>
+          boxDrives.innerHTML = `
+            <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive de Atividades (Para colorir, Wallpapers e Atividades)')">🔒 Drive de Atividades (VIP)</button>
+            <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive Azul TEA')">🔒 Drive Azul TEA (VIP)</button>
+            <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-tactile vip">Quero ser VIP no Kiwify (R$ 6,00) 💳</a>
           `;
         }
       }
@@ -1097,7 +1102,6 @@
       falarTexto(`O ${nomeDrive} é exclusivo do Clube VIP.`);
     }
 
-    /* JOGOS VIP DOCES */
     function renderConteudoJogosDocesVip() {
       const boxCup = document.getElementById('boxConteudoCupcake');
       const boxEst = document.getElementById('boxConteudoEstrelas');
@@ -1110,9 +1114,7 @@
               <h3 style="color:#BE185D; font-size:24px; margin:8px 0;">Fábrica de Bolinhos da Vovó Hilda</h3>
               <p style="color:#9D174D; font-weight:600; margin-bottom:12px;">"Vamos fazer um bolinho bem fofinho e doce juntos, meu bem?"</p>
               
-              <div class="cupcake-preview" id="cupcakeVisual">
-                <span id="txtCupcakePreview">🧁</span>
-              </div>
+              <div class="cupcake-preview" id="cupcakeVisual"><span id="txtCupcakePreview">🧁</span></div>
 
               <div style="display:flex; flex-direction:column; gap:12px; max-width:500px; margin:0 auto;">
                 <div>
@@ -1169,10 +1171,7 @@
                 <span class="interactive-star" style="top:170px; left:35%;" onclick="catarEstrela(this, 'Estrela Rosa')">✨</span>
                 <span class="interactive-star" style="top:50px; left:80%;" onclick="catarEstrela(this, 'Cometa')">💫</span>
               </div>
-
-              <div style="display:flex; justify-content:center; gap:12px;">
-                <button class="btn-tactile primary" onclick="renovarEstrelas()">✨ Mais Estrelas no Céu</button>
-              </div>
+              <button class="btn-tactile primary" onclick="renovarEstrelas()">✨ Mais Estrelas no Céu</button>
             </div>
           `;
         } else {
@@ -1197,7 +1196,7 @@
     }
     function finalizarBolinho() {
       atualizarScore(10);
-      falarTexto("A Vovó Hilda amou o seu bolinho! Ficou delicioso!");
+      falarTexto("A Vovó Hilda amou o seu bolinho!");
       alert("🧁 A Vovó Hilda provou e disse: 'Que bolinho maravilhoso, meu amor!'");
     }
 
@@ -1222,7 +1221,6 @@
       falarTexto("O céu está repleto de estrelas brilhantes!");
     }
 
-    /* RENDER SONS */
     function renderSonsAcalento() {
       const container = document.getElementById('containerSonsAcalento');
       if (!container) return;
@@ -1232,25 +1230,9 @@
           <h4 style="font-size: 15px;">Chuva Suave</h4>
           <span style="font-size: 12px; color: var(--green); font-weight: 800;">Tocar Som 🔊</span>
         </div>
-        <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
-          <span style="font-size: 32px;">🐦</span>
-          <h4 style="font-size: 15px; color: #64748B;">Passarinhos</h4>
-          <span style="font-size: 12px; color: #D97706; font-weight: 800;">⏳ Em Breve</span>
-        </div>
-        <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
-          <span style="font-size: 32px;">🌊</span>
-          <h4 style="font-size: 15px; color: #64748B;">Ondas do Mar</h4>
-          <span style="font-size: 12px; color: #D97706; font-weight: 800;">⏳ Em Breve</span>
-        </div>
-        <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
-          <span style="font-size: 32px;">🔥</span>
-          <h4 style="font-size: 15px; color: #64748B;">Fogueira Aconchegante</h4>
-          <span style="font-size: 12px; color: #D97706; font-weight: 800;">⏳ Em Breve</span>
-        </div>
       `;
     }
 
-    /* SEGURANÇA & PARENTAL */
     function salvarNovoPin() {
       const p = document.getElementById('inputNovoPin').value.trim();
       if (p.length === 4) {
@@ -1263,18 +1245,20 @@
       }
     }
 
-    /* LOGIN VIP */
     function executarLoginVip() {
       const email = document.getElementById('loginEmailVip').value.trim();
       const senha = document.getElementById('loginSenhaVip').value.trim();
-      if (!email || !senha) return alert('Preencha seu e-mail e senha!');
+      if (!email || !senha) return alert('Preencha seu e-mail e senha de acesso!');
 
-      const btn = document.querySelector('#page-vip button.primary');
+      const btn = document.getElementById('btnEntrarVipSubmit');
       if (btn) btn.innerText = "Verificando... ⏳";
 
       fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
-        .then(res => res.json())
-        .then(data => {
+        .then(res => res.text())
+        .then(text => {
+          let data;
+          try { data = JSON.parse(text); } catch(e) { data = { liberado: false }; }
+
           if (data.liberado && data.status === 'ativo') {
             isVip = true;
             linksDrivesSeguros = data.drives || {
@@ -1283,7 +1267,7 @@
             };
             localStorage.setItem('xexeu_vip', 'true');
             localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
-            alert('🎉 Acesso VIP Confirmado!');
+            alert('🎉 Acesso VIP Confirmado com Sucesso!');
             atualizarInterfaceVipCompleta();
             navegar('central');
           } else if (data.status === 'cancelado' || data.status === 'reembolsado') {
@@ -1298,7 +1282,7 @@
             if (btn) btn.innerText = "Validar Acesso VIP 🚀";
           }
         }).catch(() => { 
-          alert('Erro de conexão ao verificar assinatura.');
+          alert('Erro de conexão ao verificar assinatura. Tente novamente em instantes.');
           if (btn) btn.innerText = "Validar Acesso VIP 🚀";
         });
     }
@@ -1314,7 +1298,6 @@
       }
     }
 
-    /* LOUSA */
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
 
     function initLousa() {
@@ -1416,7 +1399,6 @@
       });
     }
 
-    /* JOGOS */
     let nivelContar = 1, nivelLetras = 1, nivelMemoria = 1, nivelQuiz = 1;
 
     function trocarJogo(subjogo) {
@@ -1433,7 +1415,6 @@
       if (subjogo === 'quiz') iniciarJogoQuiz();
     }
 
-    /* 1. CONTAR */
     function setNivelContar(n) {
       nivelContar = n;
       document.querySelectorAll('[id^="btnNivelContar-"]').forEach(b => b.classList.remove('active'));
@@ -1479,7 +1460,6 @@
       });
     }
 
-    /* 2. LETRAS */
     function setNivelLetras(n) {
       nivelLetras = n;
       document.querySelectorAll('[id^="btnNivelLetras-"]').forEach(b => b.classList.remove('active'));
@@ -1517,7 +1497,6 @@
       });
     }
 
-    /* 3. MEMÓRIA */
     function setNivelMemoria(n) {
       nivelMemoria = n;
       document.querySelectorAll('[id^="btnNivelMemoria-"]').forEach(b => b.classList.remove('active'));
@@ -1565,7 +1544,6 @@
       });
     }
 
-    /* 4. QUIZ */
     function setNivelQuiz(n) {
       nivelQuiz = n;
       document.querySelectorAll('[id^="btnNivelQuiz-"]').forEach(b => b.classList.remove('active'));
@@ -1602,7 +1580,6 @@
       });
     }
 
-    /* RESPIRAÇÃO GUIADA */
     function iniciarAnimacaoRespiracao() {
       const bubble = document.getElementById('breatheVisualBubble');
       const text = document.getElementById('breatheStatusText');
@@ -1628,7 +1605,6 @@
       }, 11000);
     }
 
-    /* CERTIFICADO CANVAS */
     function desenharCertificadoCanvas() {
       const c = document.getElementById('canvasCertificado');
       if (!c) return;
@@ -1637,11 +1613,9 @@
 
       ctxCert.fillStyle = '#FFFDF5';
       ctxCert.fillRect(0, 0, 800, 500);
-
       ctxCert.lineWidth = 12;
       ctxCert.strokeStyle = '#FCD34D';
       ctxCert.strokeRect(15, 15, 770, 470);
-
       ctxCert.lineWidth = 4;
       ctxCert.strokeStyle = '#2563EB';
       ctxCert.strokeRect(25, 25, 750, 450);
@@ -1698,7 +1672,6 @@
       falarTexto('Certificado baixado com sucesso!');
     }
 
-    /* TEMPORIZADOR */
     function iniciarTimer(minutos) {
       if (!isVip && minutos > 2) {
         alert('🔒 Limites acima de 2 minutos são exclusivos para o VIP!');
@@ -1750,7 +1723,6 @@
       falarTexto('Tocando som de acalento.');
     }
 
-    /* CAA, ROTINAS, AVATARES */
     function renderTodosPersonagensInicio() {
       const grids = { mascotes: document.getElementById('gridMascotes'), maya: document.getElementById('gridCasaMaya'), sam: document.getElementById('gridCasaSam'), avos: document.getElementById('gridAvos') };
       Object.values(grids).forEach(g => { if(g) g.innerHTML = ''; });
