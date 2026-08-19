@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Turminha do Xexéu — Portal Oficial</title>
+  <title>Turminha do Xexéu — Portal Oficial & Game Hub</title>
   
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +18,7 @@
       --secondary-dark: #D97706;
       --accent: #EF4444;
       --purple: #8B5CF6;
+      --pink: #EC4899;
       --green: #10B981;
       --green-dark: #059669;
       --tea-blue: #0284C7;
@@ -35,6 +36,7 @@
       --shadow-3d-primary: 0 5px 0px #1E40AF;
       --shadow-3d-vip: 0 5px 0px #B45309;
       --shadow-3d-green: 0 5px 0px #047857;
+      --shadow-3d-pink: 0 5px 0px #BE185D;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', 'Nunito', sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -69,6 +71,8 @@
     .btn-tactile.vip:active { box-shadow: 0 1px 0px #78350F; }
     .btn-tactile.green { background: var(--green); border-color: var(--green-dark); color: #FFF; box-shadow: var(--shadow-3d-green); }
     .btn-tactile.green:active { box-shadow: 0 1px 0px #047857; }
+    .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
+    .btn-tactile.pink:active { box-shadow: 0 1px 0px #9D174D; }
     .btn-icon-round { width: 44px; height: 44px; border-radius: 50%; padding: 0; font-size: 18px; }
 
     nav.main-nav {
@@ -162,6 +166,22 @@
     .breathe-bubble.expand { transform: scale(1.35); background: linear-gradient(135deg, #10B981, #059669); }
     .breathe-bubble.hold { transform: scale(1.35); background: linear-gradient(135deg, #F59E0B, #D97706); }
     .breathe-bubble.shrink { transform: scale(0.85); background: linear-gradient(135deg, #38BDF8, #0284C7); }
+
+    .cupcake-preview {
+      width: 160px; height: 160px; margin: 16px auto; background: #FFFBEB; border: 3px dashed #F59E0B;
+      border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      font-size: 60px; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.2);
+    }
+    .star-sky-field {
+      width: 100%; height: 260px; background: linear-gradient(180deg, #1E1B4B 0%, #312E81 100%);
+      border-radius: 16px; position: relative; overflow: hidden; border: 3px solid #818CF8; margin: 16px 0;
+    }
+    .interactive-star {
+      position: absolute; font-size: 32px; cursor: pointer; transition: transform 0.15s;
+      animation: floatStar 3s ease-in-out infinite alternate;
+    }
+    .interactive-star:active { transform: scale(1.4) rotate(20deg); }
+    @keyframes floatStar { from { transform: translateY(0px); } to { transform: translateY(-10px); } }
   </style>
 </head>
 <body>
@@ -338,8 +358,10 @@
           <button class="game-subtab-btn" onclick="trocarJogo('letras')">🔤 Primeira Letra</button>
           <button class="game-subtab-btn" onclick="trocarJogo('memoria')">🧠 Jogo da Memória</button>
           <button class="game-subtab-btn" onclick="trocarJogo('quiz')">❓ Super Quiz</button>
-          <button class="game-subtab-btn" id="subtab-labirinto" onclick="trocarJogo('labirinto')" style="border-color: #F59E0B; color: #D97706;">🔒 Labirinto VIP</button>
-          <button class="game-subtab-btn" id="subtab-puzzle" onclick="trocarJogo('puzzle')" style="border-color: #F59E0B; color: #D97706;">🔒 Quebra-Cabeça VIP</button>
+          <button class="game-subtab-btn" id="subtab-cupcake" onclick="trocarJogo('cupcake')" style="border-color: #EC4899; color: #BE185D;">🧁 Fábrica de Bolinhos VIP</button>
+          <button class="game-subtab-btn" id="subtab-estrelas" onclick="trocarJogo('estrelas')" style="border-color: #F59E0B; color: #D97706;">⭐ Cata-Estrelas VIP</button>
+          <button class="game-subtab-btn" onclick="trocarJogo('labirinto')" style="border-style:dashed;">⏳ Labirinto (Em Breve)</button>
+          <button class="game-subtab-btn" onclick="trocarJogo('puzzle')" style="border-style:dashed;">⏳ Quebra-Cabeça (Em Breve)</button>
         </div>
 
         <!-- 1. LOUSA -->
@@ -417,13 +439,33 @@
           <div id="boxQuizBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- 6. JOGOS EXCLUSIVOS VIP -->
+        <!-- NOVO JOGO VIP 1: FÁBRICA DE BOLINHOS DA VOVÓ HILDA -->
+        <div id="subgame-cupcake" class="minigame-container">
+          <div id="boxConteudoCupcake"></div>
+        </div>
+
+        <!-- NOVO JOGO VIP 2: CATA-ESTRELINHAS CALMO COM XEXÉU -->
+        <div id="subgame-estrelas" class="minigame-container">
+          <div id="boxConteudoEstrelas"></div>
+        </div>
+
+        <!-- JOGOS COLOCADOS EM BREVE -->
         <div id="subgame-labirinto" class="minigame-container">
-          <div id="boxConteudoLabirinto"></div>
+          <div style="padding: 30px; background: #F8FAFC; border: 2px dashed #CBD5E1; border-radius: 18px;">
+            <span style="font-size: 48px;">🌀</span>
+            <h3 style="color: #64748B; font-size: 22px; margin: 8px 0;">Labirinto da Turminha</h3>
+            <p style="color: #64748B; margin-bottom: 14px;">Este joguinho de trilhas está passando por novos ajustes visuais fofos!</p>
+            <span style="background: #FEF3C7; color: #92400E; padding: 6px 16px; border-radius: 20px; font-weight: 800; font-size: 13px;">⏳ Em Breve</span>
+          </div>
         </div>
 
         <div id="subgame-puzzle" class="minigame-container">
-          <div id="boxConteudoPuzzle"></div>
+          <div style="padding: 30px; background: #F8FAFC; border: 2px dashed #CBD5E1; border-radius: 18px;">
+            <span style="font-size: 48px;">🧩</span>
+            <h3 style="color: #64748B; font-size: 22px; margin: 8px 0;">Quebra-Cabeça da Turminha</h3>
+            <p style="color: #64748B; margin-bottom: 14px;">Estamos preparando novas ilustrações fáceis para encaixar peças!</p>
+            <span style="background: #FEF3C7; color: #92400E; padding: 6px 16px; border-radius: 20px; font-weight: 800; font-size: 13px;">⏳ Em Breve</span>
+          </div>
         </div>
       </div>
     </div>
@@ -573,7 +615,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 8: CLUBE VIP & SEGURANÇA (DRIVES 100% EXCLUSIVOS VIP) -->
+    <!-- PÁGINA 8: CLUBE VIP & SEGURANÇA (DRIVES PROTEGIDOS) -->
     <div id="page-vip" class="page-box">
       <div class="game-card" id="cardPainelVipStatus" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D;">
         <div style="text-align: center; max-width: 850px; margin: 0 auto;" id="conteudoDinamicoVip"></div>
@@ -635,7 +677,7 @@
        ESTADO E CONSTANTES DA APLICAÇÃO
     ========================================================= */
     const SENHA_MESTRA = "65628467";
-    const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxtV9X0CNAFK69n7JGLBKyPaXCFERg4L4Y-jFw96xj18vueORUGlRtBXOJeJtBboQki/exec";
+    const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwrmDcZf4u4nMmfUSmq25RB6dHhpq0dud_JKezy2aIhYwesh6JVxSP2Vb4xMSU9W31H/exec";
     
     let audioAtivo = true;
     let timerId = null;
@@ -645,6 +687,11 @@
     let vozesDisponiveis = [];
     let vozSelecionadaIdx = localStorage.getItem('xexeu_voz_idx') || 0;
     let velocidadeFala = parseFloat(localStorage.getItem('xexeu_voz_vel') || 1.0);
+
+    /* ESTADO DOS MINIJOGOS DOCES */
+    let bolinhoMassa = '🧁';
+    let bolinhoCobertura = '🍓';
+    let bolinhoConfeito = '✨';
 
     /* OS 12 PERSONAGENS */
     const PERSONAGENS = [
@@ -747,266 +794,8 @@
     }
 
     /* =========================================================
-       DESTRAVAMENTO GLOBAL DO VIP (DRIVES EXCLUSIVOS)
+       LOUSA MÁGICA
     ========================================================= */
-    function atualizarInterfaceVipCompleta() {
-      const bTitulo = document.getElementById('txtBarraFlutuanteTitulo');
-      const bSub = document.getElementById('txtBarraFlutuanteSub');
-      if (isVip) {
-        bTitulo.innerText = "👑 Membro VIP Ativo";
-        bSub.innerText = "Acesso completo liberado em todo o portal!";
-        bSub.style.color = "#86EFAC";
-      } else {
-        bTitulo.innerText = "Clube VIP por apenas R$ 6,00";
-        bSub.innerText = "Desbloqueie todos os jogos, ferramentas e drives!";
-        bSub.style.color = "#FCD34D";
-      }
-
-      const txt = document.getElementById('txtStatusVipAtual');
-      if (txt) txt.innerHTML = isVip ? 'Plano: <strong style="color:#059669;">👑 VIP Ativo</strong>' : 'Plano: <strong style="color:#D97706;">Grátis (Básico)</strong>';
-
-      const tabLab = document.getElementById('subtab-labirinto');
-      const tabPuz = document.getElementById('subtab-puzzle');
-      if (tabLab) {
-        tabLab.innerText = isVip ? "🌀 Labirinto do Leo" : "🔒 Labirinto VIP";
-        tabLab.style.color = isVip ? "var(--primary)" : "#D97706";
-      }
-      if (tabPuz) {
-        tabPuz.innerText = isVip ? "🧩 Quebra-Cabeça" : "🔒 Quebra-Cabeça VIP";
-        tabPuz.style.color = isVip ? "var(--primary)" : "#D97706";
-      }
-
-      // Painel VIP com Proteção Estrita dos Drives
-      const painel = document.getElementById('conteudoDinamicoVip');
-      if (painel) {
-        if (isVip) {
-          painel.innerHTML = `
-            <span style="font-size: 52px;">👑</span>
-            <h2 style="color: #065F46; font-size: 32px; font-weight: 900; margin-bottom: 8px;">Você é Membro VIP Oficial!</h2>
-            <p style="color: #047857; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Todos os conteúdos e ferramentas estão totalmente liberados.</p>
-            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-tactile primary" style="text-decoration: none;">📁 Abrir Drive de Atividades</a>
-              <a href="https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link" target="_blank" class="btn-tactile" style="background: #0284C7; color:#FFF; border-color:#0369A1; text-decoration: none;">🧩 Abrir Drive Azul TEA</a>
-            </div>
-            <button class="btn-tactile" style="color: #EF4444; border-color: #FCA5A5;" onclick="deslogarVip()">Sair do VIP</button>
-          `;
-        } else {
-          painel.innerHTML = `
-            <span style="font-size: 48px;">⭐</span>
-            <h2 style="color: #92400E; font-size: 30px; font-weight: 900; margin-bottom: 8px;">Clube VIP Turminha do Xexéu</h2>
-            <p style="color: #78350F; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Todas as atividades pedagógicas, livros, minijogos exclusivos e controle parental avançado por apenas <strong>R$ 6,00/mês</strong>.</p>
-            
-            <!-- DRIVES BLOQUEADOS NO MODO GRÁTIS -->
-            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-              <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive de Atividades')">🔒 Drive de Atividades (VIP)</button>
-              <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive Azul TEA')">🔒 Drive Azul TEA (VIP)</button>
-              <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-tactile vip" style="text-decoration: none;">Quero ser VIP no Kiwify (R$ 6,00) 💳</a>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
-              <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #FDE68A; text-align: left;">
-                <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ O que o VIP desbloqueia:</h4>
-                <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
-                  <li><strong>📁 Acesso exclusivo aos Drives de impressão.</strong></li>
-                  <li>Todos os 12 contornos na lousa mágica.</li>
-                  <li>Prancha CAA de fala sem limites.</li>
-                  <li>Temporizador de até 30 minutos.</li>
-                  <li>Voz sintetizada avançada para leitura.</li>
-                </ul>
-              </div>
-              <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #CBD5E1; text-align: left;">
-                <h4 style="font-size: 16px; color: #1E293B; margin-bottom: 10px;">🔑 Já é Assinante? Entre aqui:</h4>
-                <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail cadastrado">
-                <input type="password" id="loginSenhaVip" class="form-input" placeholder="Sua senha de acesso">
-                <button class="btn-tactile primary" style="width: 100%;" onclick="executarLoginVip()">Validar Acesso VIP 🚀</button>
-              </div>
-            </div>
-          `;
-        }
-      }
-
-      renderThumbnailsLousa();
-      renderConteudoJogosVip();
-      renderSonsAcalento();
-    }
-
-    function bloquearAcessoDrive(nomeDrive) {
-      alert(`🔒 O ${nomeDrive} é exclusivo para membros do Clube VIP! Assine por apenas R$ 6,00 para liberar.`);
-      falarTexto(`O ${nomeDrive} é exclusivo do Clube VIP.`);
-    }
-
-    /* JOGOS VIP */
-    function renderConteudoJogosVip() {
-      const boxLab = document.getElementById('boxConteudoLabirinto');
-      const boxPuz = document.getElementById('boxConteudoPuzzle');
-
-      if (boxLab) {
-        if (isVip) {
-          boxLab.innerHTML = `
-            <div style="background:#F0F9FF; border:3px solid #BAE6FD; border-radius:18px; padding:24px;">
-              <span style="font-size:48px;">🌀</span>
-              <h3 style="color:var(--tea-blue); font-size:24px; margin:10px 0;">Labirinto Sensorial do Leo</h3>
-              <p style="color:#0369A1; font-weight:600; margin-bottom:16px;">Ajude o Leo a levar o Capilé até a casinha clicando nos caminhos certos!</p>
-              <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-                <button class="btn-tactile primary" onclick="falarTexto('Você encontrou a trilha azul! Muito bem!'); atualizarScore(10);">Trilha Azul 🔷</button>
-                <button class="btn-tactile green" onclick="falarTexto('Você atravessou o bosque verde!'); atualizarScore(10);">Trilha Verde 🌲</button>
-                <button class="btn-tactile vip" onclick="falarTexto('Parabéns! Chegou à casinha com segurança!'); atualizarScore(15);">Casinha 🏡</button>
-              </div>
-            </div>
-          `;
-        } else {
-          boxLab.innerHTML = `
-            <div style="padding: 30px; background: #FFFBEB; border: 2px dashed #F59E0B; border-radius: 16px;">
-              <span style="font-size: 40px;">🌀</span>
-              <h3 style="color: #92400E; font-size: 22px; margin: 8px 0;">Labirinto Sensorial do Leo</h3>
-              <p style="color: #78350F; margin-bottom: 16px;">Jogo interativo exclusivo para assinantes VIP!</p>
-              <button class="btn-tactile vip" onclick="navegar('vip')">Desbloquear no Clube VIP 👑</button>
-            </div>
-          `;
-        }
-      }
-
-      if (boxPuz) {
-        if (isVip) {
-          boxPuz.innerHTML = `
-            <div style="background:#FDF4FF; border:3px solid #F0ABFC; border-radius:18px; padding:24px;">
-              <span style="font-size:48px;">🧩</span>
-              <h3 style="color:#A21CAF; font-size:24px; margin:10px 0;">Quebra-Cabeça da Turminha</h3>
-              <p style="color:#86198F; font-weight:600; margin-bottom:16px;">Monte o quebra-cabeça dos amiguinhos escolhendo as peças em ordem!</p>
-              <div style="display:grid; grid-template-columns:repeat(2, 110px); gap:10px; justify-content:center; margin:0 auto 16px;">
-                <button class="btn-tactile" style="height:90px; font-size:26px;" onclick="falarTexto('Peça 1 colocada!'); atualizarScore(5);">🧩 1</button>
-                <button class="btn-tactile" style="height:90px; font-size:26px;" onclick="falarTexto('Peça 2 encaixada!'); atualizarScore(5);">🧩 2</button>
-                <button class="btn-tactile" style="height:90px; font-size:26px;" onclick="falarTexto('Peça 3 no lugar!'); atualizarScore(5);">🧩 3</button>
-                <button class="btn-tactile" style="height:90px; font-size:26px;" onclick="falarTexto('Quebra-cabeça concluído com sucesso!'); atualizarScore(10);">🌟 Fim</button>
-              </div>
-            </div>
-          `;
-        } else {
-          boxPuz.innerHTML = `
-            <div style="padding: 30px; background: #FFFBEB; border: 2px dashed #F59E0B; border-radius: 16px;">
-              <span style="font-size: 40px;">🧩</span>
-              <h3 style="color: #92400E; font-size: 22px; margin: 8px 0;">Quebra-Cabeça da Turminha</h3>
-              <p style="color: #78350F; margin-bottom: 16px;">Montagem de peças e desenvolvimento espacial exclusivo VIP!</p>
-              <button class="btn-tactile vip" onclick="navegar('vip')">Desbloquear no Clube VIP 👑</button>
-            </div>
-          `;
-        }
-      }
-    }
-
-    /* SONS DE ACALENTO (PASSARINHO EM BREVE) */
-    function renderSonsAcalento() {
-      const container = document.getElementById('containerSonsAcalento');
-      if (!container) return;
-      container.innerHTML = `
-        <div class="game-card" style="text-align: center; cursor: pointer; padding: 14px;" onclick="tocarSomRelaxante('https://actions.google.com/sounds/v1/weather/light_rain.ogg')">
-          <span style="font-size: 32px;">🌧️</span>
-          <h4 style="font-size: 15px;">Chuva Suave</h4>
-          <span style="font-size: 12px; color: var(--green); font-weight: 800;">Tocar Som 🔊</span>
-        </div>
-        <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
-          <span style="font-size: 32px;">🐦</span>
-          <h4 style="font-size: 15px; color: #64748B;">Passarinhos</h4>
-          <span style="font-size: 12px; color: #D97706; font-weight: 800;">⏳ Em Breve</span>
-        </div>
-        <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
-          <span style="font-size: 32px;">🌊</span>
-          <h4 style="font-size: 15px; color: #64748B;">Ondas do Mar</h4>
-          <span style="font-size: 12px; color: #D97706; font-weight: 800;">⏳ Em Breve</span>
-        </div>
-        <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
-          <span style="font-size: 32px;">🔥</span>
-          <h4 style="font-size: 15px; color: #64748B;">Fogueira Aconchegante</h4>
-          <span style="font-size: 12px; color: #D97706; font-weight: 800;">⏳ Em Breve</span>
-        </div>
-      `;
-    }
-
-    /* PARENTAL GATE */
-    let rotaPendente = 'perfil', solucaoMatematica = 0;
-
-    function abrirParentalGate(destino) {
-      rotaPendente = destino || 'perfil';
-      const n1 = Math.floor(Math.random() * 7) + 2;
-      const n2 = Math.floor(Math.random() * 7) + 2;
-      solucaoMatematica = n1 * n2;
-      document.getElementById('desafioMatematicoTexto').innerText = `Quanto é ${n1} x ${n2}?`;
-      document.getElementById('respostaDesafioParental').value = '';
-      document.getElementById('modalParentalGate').classList.add('show');
-    }
-
-    function fecharParentalGate() { document.getElementById('modalParentalGate').classList.remove('show'); }
-
-    function validarParentalGate() {
-      const val = document.getElementById('respostaDesafioParental').value.trim();
-      const pinSalvo = localStorage.getItem('xexeu_pin') || '1234';
-
-      if (parseInt(val) === solucaoMatematica || val === pinSalvo || val === SENHA_MESTRA) {
-        fecharParentalGate();
-        navegar(rotaPendente);
-        falarTexto('Acesso liberado com sucesso!');
-      } else {
-        alert('❌ Senha ou cálculo incorreto!');
-      }
-    }
-
-    function salvarNovoPin() {
-      const p = document.getElementById('inputNovoPin').value.trim();
-      if (p.length === 4) {
-        pinParental = p;
-        localStorage.setItem('xexeu_pin', p);
-        alert('✅ PIN atualizado!');
-        document.getElementById('inputNovoPin').value = '';
-      } else {
-        alert('Digite exatamente 4 números!');
-      }
-    }
-
-    /* LOGIN VIP SEGURO (KIWIFY) */
-    function executarLoginVip() {
-      const email = document.getElementById('loginEmailVip').value.trim();
-      const senha = document.getElementById('loginSenhaVip').value.trim();
-      if (!email || !senha) return alert('Preencha seu e-mail e senha!');
-
-      if (senha === SENHA_MESTRA) {
-        isVip = true;
-        localStorage.setItem('xexeu_vip', 'true');
-        alert('✅ Acesso VIP Mestre Liberado!');
-        atualizarInterfaceVipCompleta();
-        navegar('inicio');
-        return;
-      }
-
-      fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
-        .then(res => res.json())
-        .then(data => {
-          if (data.liberado && data.status === 'ativo') {
-            isVip = true;
-            localStorage.setItem('xexeu_vip', 'true');
-            alert('🎉 Acesso VIP Confirmado!');
-            atualizarInterfaceVipCompleta();
-            navegar('inicio');
-          } else if (data.status === 'cancelado' || data.status === 'reembolsado') {
-            isVip = false;
-            localStorage.removeItem('xexeu_vip');
-            alert('❌ Sua assinatura está cancelada ou reembolsada.');
-            atualizarInterfaceVipCompleta();
-          } else {
-            alert('❌ E-mail ou senha incorretos.');
-          }
-        }).catch(() => { alert('Erro de conexão ao verificar assinatura.'); });
-    }
-
-    function deslogarVip() {
-      if (confirm('Deseja sair do VIP?')) {
-        isVip = false;
-        localStorage.removeItem('xexeu_vip');
-        atualizarInterfaceVipCompleta();
-        alert('Você saiu do VIP.');
-      }
-    }
-
-    /* LOUSA MÁGICA */
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
 
     function initLousa() {
