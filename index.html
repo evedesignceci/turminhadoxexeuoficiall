@@ -207,29 +207,13 @@
 
   <div id="appToast">Mensagem do Portal</div>
 
-  <!-- MODAL PARENTAL GATE -->
-  <div id="modalParentalGate" class="app-modal">
-    <div class="modal-content" style="border-color: #F59E0B;">
-      <button class="modal-close-btn" onclick="fecharParentalGate()">✕</button>
-      <span style="font-size: 40px;">👨‍👩‍👧‍👦</span>
-      <h3 style="color: #92400E; font-size: 22px; font-weight: 800; margin: 8px 0;">Área dos Pais & Configurações</h3>
-      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Resolva o cálculo ou insira seu PIN:</p>
-      <div style="background: #FEF3C7; padding: 12px; border-radius: 12px; margin-bottom: 12px; font-size: 20px; font-weight: 800; color: #78350F;" id="desafioMatematicoTexto">Quanto é 7 x 4?</div>
-      <input type="text" id="respostaDesafioParental" class="form-input" placeholder="Resposta ou PIN dos Pais" style="text-align: center;">
-      <div style="display: flex; gap: 10px;">
-        <button class="btn-tactile" style="flex: 1;" onclick="fecharParentalGate()">Cancelar</button>
-        <button class="btn-tactile vip" style="flex: 1;" onclick="validarParentalGate()">Entrar ➔</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL TEMPO ESGOTADO -->
+  <!-- MODAL TEMPO ESGOTADO (PARENTAL) -->
   <div id="modalTempoEsgotado" class="app-modal">
     <div class="modal-content" style="border-color: var(--accent);">
       <span style="font-size: 44px;">⏰</span>
       <h3 style="color: var(--accent); font-size: 24px; font-weight: 800; margin: 8px 0;">Hora de Fazer uma Pausa!</h3>
       <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">O limite de tempo definido pelos pais foi atingido.</p>
-      <input type="password" id="pinDesbloqueioTempo" class="form-input" placeholder="PIN dos Pais" style="text-align: center;">
+      <input type="password" id="pinDesbloqueioTempo" class="form-input" placeholder="PIN dos Pais (Padrão: 1234)" style="text-align: center;">
       <button class="btn-tactile green" style="width: 100%;" onclick="desbloquearTempoComPin()">Desbloquear Acesso 🔓</button>
     </div>
   </div>
@@ -275,11 +259,11 @@
       <div class="top-actions">
         <button class="btn-tactile btn-icon-round" onclick="toggleModoCalmo()" title="Modo Calmo Sensory">🌿</button>
         <button class="btn-tactile btn-icon-round" id="btnAudioToggle" onclick="toggleAudioVoz()" title="Voz do Portal">🔊</button>
-        <button class="btn-tactile btn-icon-round" onclick="abrirParentalGate('perfil')" title="Perfil & Ajustes">⚙️</button>
+        <button class="btn-tactile btn-icon-round" onclick="navegar('perfil')" title="Perfil & Ajustes">⚙️</button>
       </div>
     </header>
 
-    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <!-- NAVEGAÇÃO PRINCIPAL (TODAS AS ABAS VISÍVEIS E ACESSÍVEIS) -->
     <nav class="main-nav">
       <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Central</button>
       <button class="nav-item-btn" onclick="navegar('inicio')">🏠 Início</button>
@@ -290,7 +274,7 @@
       <button class="nav-item-btn" onclick="navegar('rotina')">📅 Rotina</button>
       <button class="nav-item-btn" onclick="navegar('certificado')">🏆 Certificado</button>
       <button class="nav-item-btn vip-item" onclick="navegar('vip')">⭐ Clube VIP</button>
-      <button class="nav-item-btn" onclick="abrirParentalGate('perfil')">👤 Perfil</button>
+      <button class="nav-item-btn" onclick="navegar('perfil')">👤 Perfil & Ajustes</button>
     </nav>
 
     <!-- PÁGINA: CENTRAL -->
@@ -717,14 +701,14 @@
       </div>
     </div>
 
-    <!-- PÁGINA: CLUBE VIP (DRIVES PROTEGIDOS) -->
+    <!-- PÁGINA: CLUBE VIP -->
     <div id="page-vip" class="page-box">
       <div class="game-card" id="cardPainelVipStatus" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D;">
         <div style="text-align: center; max-width: 850px; margin: 0 auto;" id="conteudoDinamicoVip"></div>
       </div>
     </div>
 
-    <!-- PÁGINA: PERFIL & AJUSTES DOS PAIS -->
+    <!-- PÁGINA: PERFIL & AJUSTES DOS PAIS (TOTALMENTE ACESSÍVEL) -->
     <div id="page-perfil" class="page-box">
       <div class="game-card">
         <div class="game-card-title">
@@ -776,11 +760,9 @@
 
   <script>
     /* =========================================================
-       ESTADO E CONSTANTES DA APLICAÇÃO (100% PROTEGIDO)
+       ESTADO E CONSTANTES DA APLICAÇÃO
     ========================================================= */
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwrmDcZf4u4nMmfUSmq25RB6dHhpq0dud_JKezy2aIhYwesh6JVxSP2Vb4xMSU9W31H/exec";
-    
-    // Links oficiais seguros (carregados dinamicamente)
     const LINK_DRIVE_ATIVIDADES_DEFAULT = "https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link";
     const LINK_DRIVE_TEA_DEFAULT = "https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link";
 
@@ -866,6 +848,7 @@
 
       if (paginaId === 'jogos') trocarJogo('lousa');
       if (paginaId === 'certificado') desenharCertificadoCanvas();
+      if (paginaId === 'vip') atualizarInterfaceVipCompleta();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1021,7 +1004,7 @@
       falarTexto('Pop-it restaurado! Pronto para estourar de novo!');
     }
 
-    /* DESTRAVAMENTO GLOBAL DO VIP (TOTALMENTE LIBERADO NO VIP) */
+    /* DESTRAVAMENTO GLOBAL DO VIP */
     function atualizarInterfaceVipCompleta() {
       const bTitulo = document.getElementById('txtBarraFlutuanteTitulo');
       const bSub = document.getElementById('txtBarraFlutuanteSub');
@@ -1267,47 +1250,20 @@
       `;
     }
 
-    /* PARENTAL GATE */
-    let rotaPendente = 'perfil', solucaoMatematica = 0;
-
-    function abrirParentalGate(destino) {
-      rotaPendente = destino || 'perfil';
-      const n1 = Math.floor(Math.random() * 7) + 2;
-      const n2 = Math.floor(Math.random() * 7) + 2;
-      solucaoMatematica = n1 * n2;
-      document.getElementById('desafioMatematicoTexto').innerText = `Quanto é ${n1} x ${n2}?`;
-      document.getElementById('respostaDesafioParental').value = '';
-      document.getElementById('modalParentalGate').classList.add('show');
-    }
-
-    function fecharParentalGate() { document.getElementById('modalParentalGate').classList.remove('show'); }
-
-    function validarParentalGate() {
-      const val = document.getElementById('respostaDesafioParental').value.trim();
-      const pinSalvo = localStorage.getItem('xexeu_pin') || '1234';
-
-      if (parseInt(val) === solucaoMatematica || val === pinSalvo) {
-        fecharParentalGate();
-        navegar(rotaPendente);
-        falarTexto('Acesso liberado com sucesso!');
-      } else {
-        alert('❌ Senha ou cálculo incorreto!');
-      }
-    }
-
+    /* SEGURANÇA & PARENTAL */
     function salvarNovoPin() {
       const p = document.getElementById('inputNovoPin').value.trim();
       if (p.length === 4) {
         pinParental = p;
         localStorage.setItem('xexeu_pin', p);
-        alert('✅ PIN atualizado!');
+        alert('✅ PIN atualizado com sucesso!');
         document.getElementById('inputNovoPin').value = '';
       } else {
-        alert('Digite exatamente 4 números!');
+        alert('Digite exatamente 4 números para o PIN!');
       }
     }
 
-    /* LOGIN VIP SEGURO */
+    /* LOGIN VIP */
     function executarLoginVip() {
       const email = document.getElementById('loginEmailVip').value.trim();
       const senha = document.getElementById('loginSenhaVip').value.trim();
@@ -1746,7 +1702,7 @@
     function iniciarTimer(minutos) {
       if (!isVip && minutos > 2) {
         alert('🔒 Limites acima de 2 minutos são exclusivos para o VIP!');
-        abrirParentalGate('vip');
+        navegar('vip');
         return;
       }
       clearInterval(timerId);
@@ -1882,7 +1838,7 @@
       document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = n);
       desenharCertificadoCanvas();
       falarTexto(`Nome alterado para ${n}!`);
-      alert('✅ Nome salvo!');
+      alert('✅ Nome salvo com sucesso!');
     }
 
     function carregarVozes() {
