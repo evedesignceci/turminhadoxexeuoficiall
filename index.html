@@ -189,6 +189,18 @@
       border-radius: 16px; position: relative; overflow: hidden; border: 3px solid #818CF8; margin: 14px 0;
     }
     .interactive-star { position: absolute; font-size: 32px; cursor: pointer; transition: transform 0.15s; }
+
+    .popit-board {
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; max-width: 420px; margin: 14px auto;
+      background: #FDF4FF; border: 3px solid #F0ABFC; padding: 16px; border-radius: 20px;
+    }
+    .popit-bubble {
+      aspect-ratio: 1; border-radius: 50%; border: 2px solid #E879F9; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 14px;
+      box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15), 0 4px 6px rgba(0,0,0,0.05);
+      transition: all 0.1s ease;
+    }
+    .popit-bubble.popped { transform: scale(0.88); box-shadow: inset 0 4px 0 rgba(0,0,0,0.2); opacity: 0.6; }
   </style>
 </head>
 <body>
@@ -267,7 +279,7 @@
       </div>
     </header>
 
-    <!-- NAVEGAÇÃO PRINCIPAL (TODAS AS ABAS VISÍVEIS) -->
+    <!-- NAVEGAÇÃO PRINCIPAL -->
     <nav class="main-nav">
       <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Central</button>
       <button class="nav-item-btn" onclick="navegar('inicio')">🏠 Início</button>
@@ -306,7 +318,7 @@
           <span class="hub-card-icon">🧩</span>
           <span class="hub-card-tag" style="background: #E0F2FE; color: var(--tea-blue);">Inclusivo & Calmo</span>
           <h4 class="hub-card-title">Espaço TEA do Leo</h4>
-          <p class="hub-card-desc">Pranchas de fala (CAA) e treino da calma com respiração guiada visual.</p>
+          <p class="hub-card-desc">Pranchas de fala editáveis, termômetro emocional e plástico-bolha pop-it sensorial.</p>
         </div>
 
         <div class="hub-card" onclick="irParaJogosVip('cupcake')" style="border-color: #FBCFE8;">
@@ -539,42 +551,72 @@
       <div class="game-card" style="border-color: #BAE6FD; background: #F0F9FF;">
         <div class="game-card-title" style="color: var(--tea-blue);">
           <span>🧩 Espaço TEA com o Leo</span>
-          <button class="btn-tactile btn-icon-round" onclick="falarTexto('Espaço inclusivo com o Leo. Tudo no seu tempo, com tranquilidade e calma.')">🔊</button>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn-tactile" style="background:#FFF; color:var(--tea-blue); border-color:#BAE6FD;" onclick="toggleModoCalmo()">🌿 Modo Calmo</button>
+            <button class="btn-tactile btn-icon-round" onclick="falarTexto('Espaço inclusivo com o Leo. Tudo no seu tempo, com tranquilidade, carinho e acolhimento.')">🔊</button>
+          </div>
         </div>
-        <p style="font-size: 15px; color: #0369A1; font-weight: 600;">"Olá! Aqui nós nos comunicamos, respiramos e organizamos o dia com previsibilidade e carinho."</p>
+        <p style="font-size: 15px; color: #0369A1; font-weight: 600;">"Olá! Aqui nós nos comunicamos, respiramos e nos expressamos com respeito e segurança."</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <!-- TERMÔMETRO EMOCIONAL -->
+      <div class="game-card" style="border-color: #C7D2FE; background: #FAFAFE;">
+        <div class="game-card-title" style="color: #4338CA;">
+          <span>💖 Como Estou me Sentindo Agora?</span>
+          <span style="font-size: 12px; background: #EEF2FF; color: #4338CA; padding: 4px 10px; border-radius: 20px;">Toque para expressar</span>
+        </div>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">Identifique seu sentimento e o Leo te ajudará a acolher cada emoção:</p>
+        
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+          <button class="btn-tactile" style="background:#DCFCE7; border-color:#86EFAC; color:#14532D;" onclick="expressarSentimento('Feliz', 'Que alegria! Estar feliz é maravilhoso. Vamos comemorar com a turminha!')">😄 Feliz</button>
+          <button class="btn-tactile" style="background:#E0F2FE; border-color:#7DD3FC; color:#0369A1;" onclick="expressarSentimento('Calmo', 'Muito bem! Sentir paz e calma no coração faz o dia ficar tranquilo.')">😌 Calmo</button>
+          <button class="btn-tactile" style="background:#FEF3C7; border-color:#FDE047; color:#854D0E;" onclick="expressarSentimento('Com Medo', 'Está tudo bem sentir medo. Você está seguro aqui conosco. Respire fundo devagar.')">🥺 Assustado</button>
+          <button class="btn-tactile" style="background:#FEE2E2; border-color:#FCA5A5; color:#991B1B;" onclick="expressarSentimento('Bravo', 'Sentir raiva acontece. Vamos apertar as mãozinhas e soltar o ar para a calma voltar?')">😠 Bravo</button>
+          <button class="btn-tactile" style="background:#F3E8FF; border-color:#D8B4FE; color:#581C87;" onclick="expressarSentimento('Triste', 'Quando a tristeza chega, um abraço quentinho da Vovó Hilda e um descanso ajudam a sarar.')">😢 Triste</button>
+          <button class="btn-tactile" style="background:#F1F5F9; border-color:#CBD5E1; color:#475569;" onclick="expressarSentimento('Cansado', 'Seu corpinho precisa de uma pausa. Deite um pouquinho e feche os olhinhos.')">🥱 Cansado</button>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px;">
+        <!-- CAA COM REMOÇÃO -->
         <div class="game-card">
-          <div class="game-card-title"><span>🗣️ Prancha de Fala (CAA)</span></div>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Clique para expressar sentimentos e necessidades:</p>
+          <div class="game-card-title">
+            <span>🗣️ Prancha de Fala (CAA)</span>
+            <span style="font-size: 12px; color: var(--text-muted);">Toque no cartão ou exclua no ✕</span>
+          </div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Clique no cartão para falar:</p>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px;" id="caaContainerCards"></div>
           
           <div style="margin-top: 16px; padding-top: 14px; border-top: 2px solid #E2E8F0;">
             <h5 style="font-size: 14px; margin-bottom: 8px; color: var(--text-main);">➕ Criar Cartão Personalizado</h5>
             <div style="display: flex; gap: 8px;">
-              <input type="text" id="novoCaaEmoji" class="form-input" style="width: 70px; margin-bottom: 0; text-align: center;" placeholder="🧸">
+              <input type="text" id="novoCaaEmoji" class="form-input" style="width: 65px; margin-bottom: 0; text-align: center;" placeholder="🧸">
               <input type="text" id="novoCaaTexto" class="form-input" style="flex: 1; margin-bottom: 0;" placeholder="Ex: Desenhar">
               <button class="btn-tactile primary" onclick="adicionarCardCaa()">Criar</button>
             </div>
           </div>
         </div>
 
+        <!-- RESPIRAÇÃO GUIADA -->
         <div class="game-card" style="text-align: center;">
           <div class="game-card-title"><span>🌬️ Treino da Calma com o Leo</span></div>
           <p style="font-size: 13px; color: var(--text-muted);">Siga a bolha para desacelerar o coraçãozinho:</p>
           
           <div class="breathe-box-interactive">
             <div class="breathe-bubble" id="breatheVisualBubble">Inspire...</div>
-            <h4 id="breatheStatusText" style="color: var(--tea-blue); font-size: 17px; margin-top: 10px;">Puxe o ar pelo nariz bem devagar 🌿</h4>
-          </div>
-
-          <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
-            <button class="btn-tactile" onclick="falarTexto('Estou muito Feliz!')">😄 Feliz</button>
-            <button class="btn-tactile" onclick="falarTexto('Estou Calmo e Tranquilo.')">😌 Calmo</button>
-            <button class="btn-tactile" onclick="falarTexto('Preciso de um tempinho de silêncio.')">🛑 Pausa</button>
+            <h4 id="breatheStatusText" style="color: var(--tea-blue); font-size: 16px; margin-top: 10px;">Puxe o ar pelo nariz bem devagar 🌿</h4>
           </div>
         </div>
+      </div>
+
+      <!-- POP-IT SENSORIAL -->
+      <div class="game-card" style="text-align: center; border-color: #F0ABFC; background: #FFF5FF;">
+        <div class="game-card-title" style="color: #A21CAF;">
+          <span>🫧 Pop-It Sensorial da Calma</span>
+          <button class="btn-tactile" style="background:#FFF; color:#A21CAF; border-color:#F0ABFC;" onclick="resetarPopIt()">✨ Restaurar Bolhas</button>
+        </div>
+        <p style="font-size: 13px; color: #86198F; font-weight: 600;">Estoure as bolhas coloridas para relaxar as mãozinhas e acalmar os pensamentos:</p>
+        <div class="popit-board" id="popitGridContainer"></div>
       </div>
     </div>
 
@@ -775,7 +817,9 @@
       { emoji: '💧', texto: 'Água' },
       { emoji: '🍎', texto: 'Comer' },
       { emoji: '🚽', texto: 'Banheiro' },
-      { emoji: '😴', texto: 'Dormir' }
+      { emoji: '😴', texto: 'Dormir' },
+      { emoji: '🧸', texto: 'Brincar' },
+      { emoji: '🫂', texto: 'Abraço' }
     ];
 
     let rotinas = JSON.parse(localStorage.getItem('xexeu_rotinas')) || [
@@ -792,6 +836,7 @@
       renderRotinas();
       renderAvatarSelector();
       renderSonsAcalento();
+      renderPopItSensorial();
       initLousa();
       atualizarScore(0);
       carregarVozes();
@@ -799,7 +844,7 @@
       iniciarAnimacaoRespiracao();
       desenharCertificadoCanvas();
       
-      const nomeSalvo = localStorage.getItem('xexeu_nome') || 'Evelyn';
+      const nomeSalvo = localStorage.getItem('xexeu_nome') || 'Amiguinho';
       document.getElementById('inputNomePerfil').value = nomeSalvo;
       document.getElementById('inputNomeCertificado').value = nomeSalvo;
       document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = nomeSalvo);
@@ -845,6 +890,7 @@
     function toggleModoCalmo() {
       const ativado = document.body.classList.toggle('sensory-mode');
       exibirToast(ativado ? 'Modo Calmo Ativado' : 'Modo Padrão');
+      falarTexto(ativado ? 'Modo Calmo ativado. As cores e luzes estão mais suaves.' : 'Modo Padrão ativado.');
     }
 
     function exibirToast(msg) {
@@ -859,6 +905,90 @@
       localStorage.setItem('xexeu_pontos', pontos);
       document.getElementById('headerPontos').innerText = pontos;
       document.getElementById('badgeNivel').innerText = pontos > 50 ? '🌟 Super Fã' : pontos > 20 ? '⭐ Curioso' : 'Iniciante';
+    }
+
+    /* ESPAÇO TEA */
+    function renderCartoesCaa() {
+      const c = document.getElementById('caaContainerCards');
+      if (!c) return;
+      c.innerHTML = '';
+      cartoesCaa.forEach((item, index) => {
+        const b = document.createElement('div');
+        b.className = 'game-card';
+        b.style.cssText = 'padding: 12px 8px; text-align: center; cursor: pointer; border-color: #BAE6FD; position: relative;';
+        b.innerHTML = `
+          <button onclick="event.stopPropagation(); removerCardCaa(${index})" style="position: absolute; top: 4px; right: 4px; background: #FEE2E2; border: 1px solid #FCA5A5; color: #991B1B; border-radius: 50%; width: 22px; height: 22px; font-size: 11px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Excluir Cartão">✕</button>
+          <span style="font-size:32px;">${item.emoji}</span>
+          <h5 style="margin-top:6px; color:#0369A1; font-size:14px;">${item.texto}</h5>
+        `;
+        b.onclick = () => falarTexto(`Eu quero ${item.texto.toLowerCase()}`);
+        c.appendChild(b);
+      });
+    }
+
+    function removerCardCaa(index) {
+      const nomeCard = cartoesCaa[index].texto;
+      if (confirm(`Deseja remover o cartão "${nomeCard}"?`)) {
+        cartoesCaa.splice(index, 1);
+        localStorage.setItem('xexeu_caa', JSON.stringify(cartoesCaa));
+        renderCartoesCaa();
+        falarTexto(`Cartão de ${nomeCard} removido.`);
+      }
+    }
+
+    function adicionarCardCaa() {
+      const emoji = document.getElementById('novoCaaEmoji').value.trim() || '⭐';
+      const texto = document.getElementById('novoCaaTexto').value.trim();
+      if (!texto) return alert('Digite o texto do cartão!');
+      if (!isVip && cartoesCaa.length >= 8) { 
+        alert('🔒 Plano Grátis permite até 8 cartões. Seja VIP para cartões ilimitados!'); 
+        navegar('vip'); 
+        return; 
+      }
+      cartoesCaa.push({ emoji, texto });
+      localStorage.setItem('xexeu_caa', JSON.stringify(cartoesCaa));
+      document.getElementById('novoCaaTexto').value = '';
+      renderCartoesCaa();
+      falarTexto(`Cartão de ${texto} adicionado à prancha!`);
+    }
+
+    function expressarSentimento(sentimento, respostaLeo) {
+      falarTexto(`Estou me sentindo ${sentimento}. ${respostaLeo}`);
+      atualizarScore(5);
+    }
+
+    function renderPopItSensorial() {
+      const container = document.getElementById('popitGridContainer');
+      if (!container) return;
+      container.innerHTML = '';
+      const cores = ['#F472B6', '#38BDF8', '#4ADE80', '#FBBF24', '#A78BFA', '#FB7185'];
+
+      for (let i = 0; i < 24; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'popit-bubble';
+        const cor = cores[i % cores.length];
+        bubble.style.backgroundColor = cor;
+        bubble.innerHTML = '🫧';
+
+        bubble.onclick = () => {
+          bubble.classList.toggle('popped');
+          if (bubble.classList.contains('popped')) {
+            bubble.innerHTML = '✨';
+            atualizarScore(1);
+          } else {
+            bubble.innerHTML = '🫧';
+          }
+        };
+        container.appendChild(bubble);
+      }
+    }
+
+    function resetarPopIt() {
+      document.querySelectorAll('.popit-bubble').forEach(b => {
+        b.classList.remove('popped');
+        b.innerHTML = '🫧';
+      });
+      falarTexto('Pop-it restaurado! Pronto para estourar de novo!');
     }
 
     /* DESTRAVAMENTO GLOBAL DO VIP */
@@ -896,9 +1026,14 @@
             <span style="font-size: 52px;">👑</span>
             <h2 style="color: #065F46; font-size: 32px; font-weight: 900; margin-bottom: 8px;">Você é Membro VIP Oficial!</h2>
             <p style="color: #047857; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Todos os conteúdos, joguinhos doces e ferramentas estão liberados.</p>
-            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-tactile primary" style="text-decoration: none;">📁 Abrir Drive de Atividades</a>
-              <a href="https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link" target="_blank" class="btn-tactile" style="background: #0284C7; color:#FFF; border-color:#0369A1; text-decoration: none;">🧩 Abrir Drive Azul TEA</a>
+            
+            <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-tactile primary" style="text-decoration: none; padding: 14px 22px; font-size: 15px;">
+                📁 Drive de Atividades (🎨 Para Colorir, 📱 Wallpapers, 📝 Atividades)
+              </a>
+              <button class="btn-tactile" style="background: #E0F2FE; border-color: #7DD3FC; color: #0369A1; cursor: not-allowed; padding: 14px 22px; font-size: 15px;" onclick="alert('🧩 O Drive Azul TEA está em fase de preparação com materiais visuais e historias sociais exclusivas. Em breve!')">
+                🧩 Drive Azul TEA (⏳ Em Construção)
+              </button>
             </div>
             <button class="btn-tactile" style="color: #EF4444; border-color: #FCA5A5;" onclick="deslogarVip()">Sair do VIP</button>
           `;
@@ -909,7 +1044,7 @@
             <p style="color: #78350F; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Todas as atividades pedagógicas, livros, minijogos exclusivos e controle parental avançado por apenas <strong>R$ 6,00/mês</strong>.</p>
             
             <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-              <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive de Atividades')">🔒 Drive de Atividades (VIP)</button>
+              <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive de Atividades (Para colorir, Wallpapers e Atividades)')">🔒 Drive de Atividades (VIP)</button>
               <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive Azul TEA')">🔒 Drive Azul TEA (VIP)</button>
               <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-tactile vip" style="text-decoration: none;">Quero ser VIP no Kiwify (R$ 6,00) 💳</a>
             </div>
@@ -918,7 +1053,8 @@
               <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #FDE68A; text-align: left;">
                 <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ O que o VIP desbloqueia:</h4>
                 <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
-                  <li><strong>📁 Acesso exclusivo aos Drives de impressão.</strong></li>
+                  <li><strong>📁 Drive de Atividades:</strong> Desenhos para colorir em alta resolução, Wallpapers e Atividades pedagógicas para imprimir.</li>
+                  <li><strong>🧩 Drive Azul TEA:</strong> Materiais adaptados e histórias sociais (Em breve!).</li>
                   <li>🧁 Fábrica de Bolinhos da Vovó Hilda e Cata-Estrelas.</li>
                   <li>Todos os 12 contornos na lousa mágica.</li>
                   <li>Prancha CAA de fala sem limites.</li>
@@ -946,7 +1082,7 @@
       falarTexto(`O ${nomeDrive} é exclusivo do Clube VIP.`);
     }
 
-    /* NOVOS JOGOS VIP DOCES */
+    /* JOGOS VIP DOCES */
     function renderConteudoJogosDocesVip() {
       const boxCup = document.getElementById('boxConteudoCupcake');
       const boxEst = document.getElementById('boxConteudoEstrelas');
@@ -1645,32 +1781,6 @@
       document.getElementById('modalPersonagem').classList.add('show');
     }
     function fecharModalPersonagem() { document.getElementById('modalPersonagem').classList.remove('show'); }
-
-    function renderCartoesCaa() {
-      const c = document.getElementById('caaContainerCards');
-      if (!c) return;
-      c.innerHTML = '';
-      cartoesCaa.forEach(item => {
-        const b = document.createElement('div');
-        b.className = 'game-card';
-        b.style.cssText = 'padding: 12px; text-align: center; cursor: pointer; border-color: #BAE6FD;';
-        b.innerHTML = `<span style="font-size:32px;">${item.emoji}</span><h5 style="margin-top:6px; color:#0369A1;">${item.texto}</h5>`;
-        b.onclick = () => falarTexto(`Eu quero ${item.texto.toLowerCase()}`);
-        c.appendChild(b);
-      });
-    }
-
-    function adicionarCardCaa() {
-      const emoji = document.getElementById('novoCaaEmoji').value.trim() || '⭐';
-      const texto = document.getElementById('novoCaaTexto').value.trim();
-      if (!texto) return alert('Digite o texto do cartão!');
-      if (!isVip && cartoesCaa.length >= 6) { alert('🔒 Plano Grátis permite até 6 cartões. Seja VIP!'); navegar('vip'); return; }
-      cartoesCaa.push({ emoji, texto });
-      localStorage.setItem('xexeu_caa', JSON.stringify(cartoesCaa));
-      document.getElementById('novoCaaTexto').value = '';
-      renderCartoesCaa();
-      falarTexto('Cartão criado!');
-    }
 
     function renderRotinas() {
       const c = document.getElementById('listaRotinasContainer');
