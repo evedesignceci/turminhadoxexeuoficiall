@@ -717,7 +717,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA: CLUBE VIP (DRIVES COM SEGURANÇA SERVIDOR) -->
+    <!-- PÁGINA: CLUBE VIP (DRIVES PROTEGIDOS) -->
     <div id="page-vip" class="page-box">
       <div class="game-card" id="cardPainelVipStatus" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D;">
         <div style="text-align: center; max-width: 850px; margin: 0 auto;" id="conteudoDinamicoVip"></div>
@@ -780,6 +780,10 @@
     ========================================================= */
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwrmDcZf4u4nMmfUSmq25RB6dHhpq0dud_JKezy2aIhYwesh6JVxSP2Vb4xMSU9W31H/exec";
     
+    // Links oficiais seguros (carregados dinamicamente)
+    const LINK_DRIVE_ATIVIDADES_DEFAULT = "https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link";
+    const LINK_DRIVE_TEA_DEFAULT = "https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link";
+
     let audioAtivo = true;
     let timerId = null;
     let pontos = parseInt(localStorage.getItem('xexeu_pontos') || '0');
@@ -789,7 +793,10 @@
     let vozSelecionadaIdx = localStorage.getItem('xexeu_voz_idx') || 0;
     let velocidadeFala = parseFloat(localStorage.getItem('xexeu_voz_vel') || 1.0);
 
-    let linksDrivesSeguros = JSON.parse(localStorage.getItem('xexeu_drives_cache')) || null;
+    let linksDrivesSeguros = JSON.parse(localStorage.getItem('xexeu_drives_cache')) || {
+      atividades: LINK_DRIVE_ATIVIDADES_DEFAULT,
+      tea: LINK_DRIVE_TEA_DEFAULT
+    };
 
     let bolinhoMassa = '🧁';
     let bolinhoCobertura = '🍓';
@@ -904,7 +911,7 @@
       document.getElementById('badgeNivel').innerText = pontos > 50 ? '🌟 Super Fã' : pontos > 20 ? '⭐ Curioso' : 'Iniciante';
     }
 
-    /* SOM DO POP-IT (WEB AUDIO API NATIVA) */
+    /* SOM DO POP-IT (WEB AUDIO API) */
     function tocarSomPop() {
       if (!audioAtivo) return;
       try {
@@ -1014,7 +1021,7 @@
       falarTexto('Pop-it restaurado! Pronto para estourar de novo!');
     }
 
-    /* DESTRAVAMENTO GLOBAL DO VIP (TOTALMENTE SEGURO PELO SERVIDOR) */
+    /* DESTRAVAMENTO GLOBAL DO VIP (TOTALMENTE LIBERADO NO VIP) */
     function atualizarInterfaceVipCompleta() {
       const bTitulo = document.getElementById('txtBarraFlutuanteTitulo');
       const bSub = document.getElementById('txtBarraFlutuanteSub');
@@ -1044,15 +1051,17 @@
 
       const painel = document.getElementById('conteudoDinamicoVip');
       if (painel) {
-        if (isVip && linksDrivesSeguros) {
+        if (isVip) {
+          const driveLink = (linksDrivesSeguros && linksDrivesSeguros.atividades) ? linksDrivesSeguros.atividades : LINK_DRIVE_ATIVIDADES_DEFAULT;
+          
           painel.innerHTML = `
             <span style="font-size: 52px;">👑</span>
             <h2 style="color: #065F46; font-size: 32px; font-weight: 900; margin-bottom: 8px;">Você é Membro VIP Oficial!</h2>
             <p style="color: #047857; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Todos os conteúdos, joguinhos doces e ferramentas estão liberados.</p>
             
             <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-              <a href="${linksDrivesSeguros.atividades}" target="_blank" class="btn-tactile primary" style="text-decoration: none; padding: 14px 22px; font-size: 15px;">
-                📁 Drive de Atividades (🎨 Para Colorir, 📱 Wallpapers, 📝 Atividades)
+              <a href="${driveLink}" target="_blank" class="btn-tactile primary" style="text-decoration: none; padding: 14px 22px; font-size: 15px;">
+                📁 Abrir Drive de Atividades (🎨 Para Colorir, 📱 Wallpapers, 📝 Atividades)
               </a>
               <button class="btn-tactile" style="background: #E0F2FE; border-color: #7DD3FC; color: #0369A1; cursor: not-allowed; padding: 14px 22px; font-size: 15px;" onclick="alert('🧩 O Drive Azul TEA está em fase de preparação com materiais visuais e histórias sociais exclusivas. Em breve!')">
                 🧩 Drive Azul TEA (⏳ Em Construção)
@@ -1312,9 +1321,12 @@
         .then(data => {
           if (data.liberado && data.status === 'ativo') {
             isVip = true;
-            linksDrivesSeguros = data.drives;
+            linksDrivesSeguros = data.drives || {
+              atividades: LINK_DRIVE_ATIVIDADES_DEFAULT,
+              tea: LINK_DRIVE_TEA_DEFAULT
+            };
             localStorage.setItem('xexeu_vip', 'true');
-            localStorage.setItem('xexeu_drives_cache', JSON.stringify(data.drives));
+            localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
             alert('🎉 Acesso VIP Confirmado!');
             atualizarInterfaceVipCompleta();
             navegar('central');
