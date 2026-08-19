@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Turminha do Xexéu — Portal Oficial & Game Hub</title>
+  <title>Turminha do Xexéu — Portal Oficial & Central</title>
   
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,12 +82,13 @@
     nav.main-nav::-webkit-scrollbar { display: none; }
 
     .nav-item-btn {
-      flex: 1; min-width: 120px; padding: 12px 14px; border: none; background: transparent; border-radius: var(--radius-md);
-      font-weight: 700; font-size: 15px; color: var(--text-muted); cursor: pointer; display: flex; align-items: center;
-      justify-content: center; gap: 8px; transition: all 0.2s ease; white-space: nowrap;
+      flex: 1; min-width: 105px; padding: 12px 14px; border: none; background: transparent; border-radius: var(--radius-md);
+      font-weight: 700; font-size: 14.5px; color: var(--text-muted); cursor: pointer; display: flex; align-items: center;
+      justify-content: center; gap: 6px; transition: all 0.2s ease; white-space: nowrap;
     }
     .nav-item-btn:hover { background: #F1F5F9; color: var(--primary); }
     .nav-item-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); }
+    .nav-item-btn.central-item.active { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
     .nav-item-btn.vip-item.active { background: linear-gradient(135deg, #F59E0B, #D97706); }
     .nav-item-btn.tea-item.active { background: var(--tea-blue); }
 
@@ -97,6 +98,17 @@
 
     .game-card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 24px; border: 3px solid #E2E8F0; box-shadow: var(--shadow-md); position: relative; }
     .game-card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
+
+    .central-hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 10px; }
+    .hub-card {
+      background: #FFFFFF; border-radius: 20px; padding: 20px; border: 3px solid #E2E8F0;
+      box-shadow: 0 6px 0 #E2E8F0; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; gap: 8px; text-align: left;
+    }
+    .hub-card:hover { transform: translateY(-4px); box-shadow: 0 10px 0 var(--primary); border-color: var(--primary); }
+    .hub-card-icon { font-size: 40px; }
+    .hub-card-title { font-size: 18px; font-weight: 800; color: var(--text-main); }
+    .hub-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; font-weight: 600; }
+    .hub-card-tag { font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 12px; width: fit-content; }
 
     .hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; }
     @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
@@ -168,20 +180,15 @@
     .breathe-bubble.shrink { transform: scale(0.85); background: linear-gradient(135deg, #38BDF8, #0284C7); }
 
     .cupcake-preview {
-      width: 160px; height: 160px; margin: 16px auto; background: #FFFBEB; border: 3px dashed #F59E0B;
+      width: 150px; height: 150px; margin: 14px auto; background: #FFFBEB; border: 3px dashed #F59E0B;
       border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      font-size: 60px; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.2);
+      font-size: 56px; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.2);
     }
     .star-sky-field {
-      width: 100%; height: 260px; background: linear-gradient(180deg, #1E1B4B 0%, #312E81 100%);
-      border-radius: 16px; position: relative; overflow: hidden; border: 3px solid #818CF8; margin: 16px 0;
+      width: 100%; height: 250px; background: linear-gradient(180deg, #1E1B4B 0%, #312E81 100%);
+      border-radius: 16px; position: relative; overflow: hidden; border: 3px solid #818CF8; margin: 14px 0;
     }
-    .interactive-star {
-      position: absolute; font-size: 32px; cursor: pointer; transition: transform 0.15s;
-      animation: floatStar 3s ease-in-out infinite alternate;
-    }
-    .interactive-star:active { transform: scale(1.4) rotate(20deg); }
-    @keyframes floatStar { from { transform: translateY(0px); } to { transform: translateY(-10px); } }
+    .interactive-star { position: absolute; font-size: 32px; cursor: pointer; transition: transform 0.15s; }
   </style>
 </head>
 <body>
@@ -260,20 +267,80 @@
       </div>
     </header>
 
-    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <!-- NAVEGAÇÃO PRINCIPAL (TODAS AS ABAS VISÍVEIS) -->
     <nav class="main-nav">
-      <button class="nav-item-btn active" onclick="navegar('inicio')">🏠 Início</button>
-      <button class="nav-item-btn" onclick="navegar('jogos')">🎮 Jogos & Lousa</button>
+      <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Central</button>
+      <button class="nav-item-btn" onclick="navegar('inicio')">🏠 Início</button>
+      <button class="nav-item-btn" onclick="navegar('jogos')">🕹️ Jogos</button>
       <button class="nav-item-btn tea-item" onclick="navegar('tea')">🧩 Espaço TEA</button>
-      <button class="nav-item-btn" onclick="navegar('videos')">🎬 Vídeos & Sons</button>
-      <button class="nav-item-btn" onclick="navegar('livros')">📚 Biblioteca</button>
-      <button class="nav-item-btn" onclick="navegar('rotina')">📅 Minha Rotina</button>
+      <button class="nav-item-btn" onclick="navegar('videos')">🎬 Vídeos</button>
+      <button class="nav-item-btn" onclick="navegar('livros')">📚 Livros</button>
+      <button class="nav-item-btn" onclick="navegar('rotina')">📅 Rotina</button>
       <button class="nav-item-btn" onclick="navegar('certificado')">🏆 Certificado</button>
       <button class="nav-item-btn vip-item" onclick="navegar('vip')">⭐ Clube VIP</button>
+      <button class="nav-item-btn" onclick="abrirParentalGate('perfil')">👤 Perfil</button>
     </nav>
 
-    <!-- PÁGINA 1: INÍCIO -->
-    <div id="page-inicio" class="page-box active">
+    <!-- PÁGINA: CENTRAL -->
+    <div id="page-central" class="page-box active">
+      <div class="game-card" style="background: linear-gradient(135deg, #EEF2FF, #E0E7FF); border-color: #818CF8;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <span style="font-size: 13px; font-weight: 800; background: #C7D2FE; color: #3730A3; padding: 4px 12px; border-radius: 20px;">Painel Central do Amiguinho</span>
+            <h2 style="font-size: 26px; color: #1E1B4B; margin-top: 6px;">Olá, <span class="txtNomeDinamico">Evelyn</span>! O que vamos fazer hoje?</h2>
+            <p style="font-size: 14px; color: #4338CA; font-weight: 600;">Escolha uma atividade abaixo para começar a brincar e ganhar pontos!</p>
+          </div>
+          <button class="btn-tactile primary" onclick="falarTexto('Bem-vindo à sua Central da Turminha! Escolha qualquer jogo ou atividade para começar!')">🔊 Ouvir Opções</button>
+        </div>
+      </div>
+
+      <div class="central-hub-grid">
+        <div class="hub-card" onclick="navegar('jogos')">
+          <span class="hub-card-icon">🎨</span>
+          <span class="hub-card-tag" style="background: #EFF6FF; color: var(--primary);">Jogos Educativos</span>
+          <h4 class="hub-card-title">Estúdio de Jogos & Lousa</h4>
+          <p class="hub-card-desc">Lousa mágica com roleta de cores, jogos de contar, memória e quiz da turminha!</p>
+        </div>
+
+        <div class="hub-card" onclick="navegar('tea')" style="border-color: #BAE6FD;">
+          <span class="hub-card-icon">🧩</span>
+          <span class="hub-card-tag" style="background: #E0F2FE; color: var(--tea-blue);">Inclusivo & Calmo</span>
+          <h4 class="hub-card-title">Espaço TEA do Leo</h4>
+          <p class="hub-card-desc">Pranchas de fala (CAA) e treino da calma com respiração guiada visual.</p>
+        </div>
+
+        <div class="hub-card" onclick="irParaJogosVip('cupcake')" style="border-color: #FBCFE8;">
+          <span class="hub-card-icon">🧁</span>
+          <span class="hub-card-tag" style="background: #FDF2F8; color: var(--pink);">Doce & Criativo (VIP)</span>
+          <h4 class="hub-card-title">Confeitaria da Vovó Hilda</h4>
+          <p class="hub-card-desc">Misture massas, coberturas e confeitos mágicos para criar docinhos deliciosos!</p>
+        </div>
+
+        <div class="hub-card" onclick="navegar('livros')">
+          <span class="hub-card-icon">📚</span>
+          <span class="hub-card-tag" style="background: #FEF3C7; color: #92400E;">Histórias Ilustradas</span>
+          <h4 class="hub-card-title">Biblioteca da Turminha</h4>
+          <p class="hub-card-desc">Livros digitais com contos afetuosos, aventuras e aprendizados em família.</p>
+        </div>
+
+        <div class="hub-card" onclick="navegar('rotina')">
+          <span class="hub-card-icon">📅</span>
+          <span class="hub-card-tag" style="background: #D1FAE5; color: var(--green-dark);">Hábitos Saudáveis</span>
+          <h4 class="hub-card-title">Quadro de Rotinas</h4>
+          <p class="hub-card-desc">Organize as tarefas do dia a dia e marque seus hábitos cumpridos.</p>
+        </div>
+
+        <div class="hub-card" onclick="navegar('certificado')">
+          <span class="hub-card-icon">🏆</span>
+          <span class="hub-card-tag" style="background: #FEF9C3; color: #854D0E;">Diploma Oficial</span>
+          <h4 class="hub-card-title">Certificado de Super Fã</h4>
+          <p class="hub-card-desc">Gere seu diploma com nome oficial e baixe a imagem para guardar ou postar!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PÁGINA: INÍCIO -->
+    <div id="page-inicio" class="page-box">
       <div class="hero-grid">
         <div class="banner-hero-box">
           <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994339/BANNER_SITE_TURMINHA_DO_XEXEU.png" alt="Banner Oficial">
@@ -302,7 +369,6 @@
         </div>
       </div>
 
-      <!-- HISTÓRIA DA FAMÍLIA -->
       <div class="game-card" style="background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%); border-color: #FCD34D;">
         <div class="game-card-title" style="color: #92400E;">
           <span>✨ Educando com Alegria e Amor</span>
@@ -319,7 +385,6 @@
         </p>
       </div>
 
-      <!-- REDES SOCIAIS -->
       <div class="social-bar">
         <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="YouTube"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT.png" alt="YouTube"></a>
         <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-btn-round" title="YouTube Music"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT_MUSIC.png" alt="YT Music"></a>
@@ -331,7 +396,6 @@
         <a href="https://br.pinterest.com/turminhaxe_xeu" target="_blank" class="social-btn-round" title="Pinterest"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/PINTEREST.png" alt="Pinterest"></a>
       </div>
 
-      <!-- OS 12 PERSONAGENS -->
       <div class="game-card">
         <div class="game-card-title">
           <span>✨ Conheça Todos os Personagens</span>
@@ -344,7 +408,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 2: JOGOS & LOUSA -->
+    <!-- PÁGINA: JOGOS -->
     <div id="page-jogos" class="page-box">
       <div class="game-card">
         <div class="game-card-title">
@@ -439,17 +503,17 @@
           <div id="boxQuizBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- NOVO JOGO VIP 1: FÁBRICA DE BOLINHOS DA VOVÓ HILDA -->
+        <!-- NOVO JOGO VIP 1: FÁBRICA DE BOLINHOS -->
         <div id="subgame-cupcake" class="minigame-container">
           <div id="boxConteudoCupcake"></div>
         </div>
 
-        <!-- NOVO JOGO VIP 2: CATA-ESTRELINHAS CALMO COM XEXÉU -->
+        <!-- NOVO JOGO VIP 2: CATA-ESTRELINHAS -->
         <div id="subgame-estrelas" class="minigame-container">
           <div id="boxConteudoEstrelas"></div>
         </div>
 
-        <!-- JOGOS COLOCADOS EM BREVE -->
+        <!-- JOGOS EM BREVE -->
         <div id="subgame-labirinto" class="minigame-container">
           <div style="padding: 30px; background: #F8FAFC; border: 2px dashed #CBD5E1; border-radius: 18px;">
             <span style="font-size: 48px;">🌀</span>
@@ -470,7 +534,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 3: ESPAÇO TEA DINÂMICO & REGULAÇÃO SENSORIAL -->
+    <!-- PÁGINA: ESPAÇO TEA -->
     <div id="page-tea" class="page-box">
       <div class="game-card" style="border-color: #BAE6FD; background: #F0F9FF;">
         <div class="game-card-title" style="color: var(--tea-blue);">
@@ -514,7 +578,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 4: VÍDEOS & SONS -->
+    <!-- PÁGINA: VÍDEOS & SONS -->
     <div id="page-videos" class="page-box">
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
         <div class="game-card">
@@ -536,7 +600,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 5: BIBLIOTECA (TODOS OS LIVROS 100% EM BREVE) -->
+    <!-- PÁGINA: BIBLIOTECA -->
     <div id="page-livros" class="page-box">
       <div class="game-card">
         <div class="game-card-title">
@@ -577,7 +641,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 6: ROTINA -->
+    <!-- PÁGINA: ROTINA -->
     <div id="page-rotina" class="page-box">
       <div class="game-card">
         <div class="game-card-title">
@@ -594,7 +658,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 7: CERTIFICADO INTERATIVO GERADO EM ALTA RESOLUÇÃO -->
+    <!-- PÁGINA: CERTIFICADO -->
     <div id="page-certificado" class="page-box">
       <div class="game-card" style="text-align: center;">
         <div class="game-card-title"><span>🏆 Certificado Oficial de Super Fã</span></div>
@@ -615,14 +679,14 @@
       </div>
     </div>
 
-    <!-- PÁGINA 8: CLUBE VIP & SEGURANÇA (DRIVES PROTEGIDOS) -->
+    <!-- PÁGINA: CLUBE VIP -->
     <div id="page-vip" class="page-box">
       <div class="game-card" id="cardPainelVipStatus" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D;">
         <div style="text-align: center; max-width: 850px; margin: 0 auto;" id="conteudoDinamicoVip"></div>
       </div>
     </div>
 
-    <!-- PÁGINA 9: PERFIL & AJUSTES DOS PAIS -->
+    <!-- PÁGINA: PERFIL & AJUSTES DOS PAIS -->
     <div id="page-perfil" class="page-box">
       <div class="game-card">
         <div class="game-card-title">
@@ -688,12 +752,10 @@
     let vozSelecionadaIdx = localStorage.getItem('xexeu_voz_idx') || 0;
     let velocidadeFala = parseFloat(localStorage.getItem('xexeu_voz_vel') || 1.0);
 
-    /* ESTADO DOS MINIJOGOS DOCES */
     let bolinhoMassa = '🧁';
     let bolinhoCobertura = '🍓';
     let bolinhoConfeito = '✨';
 
-    /* OS 12 PERSONAGENS */
     const PERSONAGENS = [
       { id: 'xexeu', familia: 'mascotes', nome: 'Xexéu', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_XEXEU.png', letra: 'X', tag: 'Mascote Oficial', quem: 'Pássaro azul de boina amarela.', gosto: 'Cantar, voar e contar histórias.', frase: 'Educando com alegria!' },
       { id: 'capile', familia: 'mascotes', nome: 'Capilé', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994882/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_CAPILE.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994874/DESENHOS_DA_LOUSA_CAPILE.png', letra: 'C', tag: 'O Companheiro', quem: 'Cachorrinho fiel de orelhas grandes.', gosto: 'Correr e brincar pelo jardim.', frase: 'Sempre pronto para a brincadeira!' },
@@ -740,6 +802,7 @@
       const nomeSalvo = localStorage.getItem('xexeu_nome') || 'Evelyn';
       document.getElementById('inputNomePerfil').value = nomeSalvo;
       document.getElementById('inputNomeCertificado').value = nomeSalvo;
+      document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = nomeSalvo);
     });
 
     function navegar(paginaId) {
@@ -755,6 +818,11 @@
       if (paginaId === 'jogos') trocarJogo('lousa');
       if (paginaId === 'certificado') desenharCertificadoCanvas();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function irParaJogosVip(subjogo) {
+      navegar('jogos');
+      trocarJogo(subjogo);
     }
 
     function falarTexto(texto) {
@@ -793,9 +861,329 @@
       document.getElementById('badgeNivel').innerText = pontos > 50 ? '🌟 Super Fã' : pontos > 20 ? '⭐ Curioso' : 'Iniciante';
     }
 
-    /* =========================================================
-       LOUSA MÁGICA
-    ========================================================= */
+    /* DESTRAVAMENTO GLOBAL DO VIP */
+    function atualizarInterfaceVipCompleta() {
+      const bTitulo = document.getElementById('txtBarraFlutuanteTitulo');
+      const bSub = document.getElementById('txtBarraFlutuanteSub');
+      if (isVip) {
+        bTitulo.innerText = "👑 Membro VIP Ativo";
+        bSub.innerText = "Acesso completo liberado em todo o portal!";
+        bSub.style.color = "#86EFAC";
+      } else {
+        bTitulo.innerText = "Clube VIP por apenas R$ 6,00";
+        bSub.innerText = "Desbloqueie todos os jogos, ferramentas e drives!";
+        bSub.style.color = "#FCD34D";
+      }
+
+      const txt = document.getElementById('txtStatusVipAtual');
+      if (txt) txt.innerHTML = isVip ? 'Plano: <strong style="color:#059669;">👑 VIP Ativo</strong>' : 'Plano: <strong style="color:#D97706;">Grátis (Básico)</strong>';
+
+      const tabCup = document.getElementById('subtab-cupcake');
+      const tabEst = document.getElementById('subtab-estrelas');
+      if (tabCup) {
+        tabCup.innerText = isVip ? "🧁 Fábrica de Bolinhos" : "🔒 Bolinhos VIP";
+        tabCup.style.color = isVip ? "var(--pink)" : "#BE185D";
+      }
+      if (tabEst) {
+        tabEst.innerText = isVip ? "⭐ Cata-Estrelas" : "🔒 Estrelas VIP";
+        tabEst.style.color = isVip ? "var(--secondary-dark)" : "#D97706";
+      }
+
+      const painel = document.getElementById('conteudoDinamicoVip');
+      if (painel) {
+        if (isVip) {
+          painel.innerHTML = `
+            <span style="font-size: 52px;">👑</span>
+            <h2 style="color: #065F46; font-size: 32px; font-weight: 900; margin-bottom: 8px;">Você é Membro VIP Oficial!</h2>
+            <p style="color: #047857; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Todos os conteúdos, joguinhos doces e ferramentas estão liberados.</p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-tactile primary" style="text-decoration: none;">📁 Abrir Drive de Atividades</a>
+              <a href="https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link" target="_blank" class="btn-tactile" style="background: #0284C7; color:#FFF; border-color:#0369A1; text-decoration: none;">🧩 Abrir Drive Azul TEA</a>
+            </div>
+            <button class="btn-tactile" style="color: #EF4444; border-color: #FCA5A5;" onclick="deslogarVip()">Sair do VIP</button>
+          `;
+        } else {
+          painel.innerHTML = `
+            <span style="font-size: 48px;">⭐</span>
+            <h2 style="color: #92400E; font-size: 30px; font-weight: 900; margin-bottom: 8px;">Clube VIP Turminha do Xexéu</h2>
+            <p style="color: #78350F; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Todas as atividades pedagógicas, livros, minijogos exclusivos e controle parental avançado por apenas <strong>R$ 6,00/mês</strong>.</p>
+            
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+              <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive de Atividades')">🔒 Drive de Atividades (VIP)</button>
+              <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive Azul TEA')">🔒 Drive Azul TEA (VIP)</button>
+              <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-tactile vip" style="text-decoration: none;">Quero ser VIP no Kiwify (R$ 6,00) 💳</a>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
+              <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #FDE68A; text-align: left;">
+                <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ O que o VIP desbloqueia:</h4>
+                <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
+                  <li><strong>📁 Acesso exclusivo aos Drives de impressão.</strong></li>
+                  <li>🧁 Fábrica de Bolinhos da Vovó Hilda e Cata-Estrelas.</li>
+                  <li>Todos os 12 contornos na lousa mágica.</li>
+                  <li>Prancha CAA de fala sem limites.</li>
+                  <li>Temporizador de até 30 minutos.</li>
+                </ul>
+              </div>
+              <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #CBD5E1; text-align: left;">
+                <h4 style="font-size: 16px; color: #1E293B; margin-bottom: 10px;">🔑 Já é Assinante? Entre aqui:</h4>
+                <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail cadastrado">
+                <input type="password" id="loginSenhaVip" class="form-input" placeholder="Sua senha de acesso">
+                <button class="btn-tactile primary" style="width: 100%;" onclick="executarLoginVip()">Validar Acesso VIP 🚀</button>
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      renderThumbnailsLousa();
+      renderConteudoJogosDocesVip();
+      renderSonsAcalento();
+    }
+
+    function bloquearAcessoDrive(nomeDrive) {
+      alert(`🔒 O ${nomeDrive} é exclusivo para membros do Clube VIP! Assine por apenas R$ 6,00 para liberar.`);
+      falarTexto(`O ${nomeDrive} é exclusivo do Clube VIP.`);
+    }
+
+    /* NOVOS JOGOS VIP DOCES */
+    function renderConteudoJogosDocesVip() {
+      const boxCup = document.getElementById('boxConteudoCupcake');
+      const boxEst = document.getElementById('boxConteudoEstrelas');
+
+      if (boxCup) {
+        if (isVip) {
+          boxCup.innerHTML = `
+            <div style="background:#FFF1F2; border:3px solid #FECDD3; border-radius:20px; padding:24px;">
+              <span style="font-size:42px;">🧁</span>
+              <h3 style="color:#BE185D; font-size:24px; margin:8px 0;">Fábrica de Bolinhos da Vovó Hilda</h3>
+              <p style="color:#9D174D; font-weight:600; margin-bottom:12px;">"Vamos fazer um bolinho bem fofinho e doce juntos, meu bem?"</p>
+              
+              <div class="cupcake-preview" id="cupcakeVisual">
+                <span id="txtCupcakePreview">🧁</span>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:12px; max-width:500px; margin:0 auto;">
+                <div>
+                  <span style="font-size:13px; font-weight:800; color:#BE185D; display:block; margin-bottom:6px;">1. Escolha a Massa:</span>
+                  <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+                    <button class="btn-tactile" onclick="setBolinhoMassa('🧁', 'Baunilha')">🧁 Baunilha</button>
+                    <button class="btn-tactile" onclick="setBolinhoMassa('🍫', 'Chocolate')">🍫 Chocolate</button>
+                    <button class="btn-tactile" onclick="setBolinhoMassa('🥕', 'Cenoura')">🥕 Cenoura</button>
+                  </div>
+                </div>
+                <div>
+                  <span style="font-size:13px; font-weight:800; color:#BE185D; display:block; margin-bottom:6px;">2. Escolha a Cobertura:</span>
+                  <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+                    <button class="btn-tactile pink" onclick="setBolinhoCobertura('🍓', 'Morango Doce')">🍓 Morango</button>
+                    <button class="btn-tactile" style="background:#FDE047; color:#854D0E;" onclick="setBolinhoCobertura('🍋', 'Creme de Limão')">🍋 Creme</button>
+                    <button class="btn-tactile primary" onclick="setBolinhoCobertura('🫐', 'Mirtilo Fofo')">🫐 Mirtilo</button>
+                  </div>
+                </div>
+                <div>
+                  <span style="font-size:13px; font-weight:800; color:#BE185D; display:block; margin-bottom:6px;">3. Confeitos Mágicos:</span>
+                  <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;">
+                    <button class="btn-tactile" onclick="setBolinhoConfeito('⭐', 'Estrelinhas')">⭐ Estrelas</button>
+                    <button class="btn-tactile" onclick="setBolinhoConfeito('🌈', 'Arco-Íris')">🌈 Granulado</button>
+                    <button class="btn-tactile" onclick="setBolinhoConfeito('💖', 'Coraçõezinhos')">💖 Amor</button>
+                  </div>
+                </div>
+                <button class="btn-tactile green" style="margin-top:10px; font-size:16px;" onclick="finalizarBolinho()">✨ Servir para a Vovó Hilda (+10 Pts)</button>
+              </div>
+            </div>
+          `;
+        } else {
+          boxCup.innerHTML = `
+            <div style="padding: 30px; background: #FFF1F2; border: 2px dashed #EC4899; border-radius: 16px;">
+              <span style="font-size: 40px;">🧁</span>
+              <h3 style="color: #BE185D; font-size: 22px; margin: 8px 0;">Fábrica de Bolinhos da Vovó Hilda</h3>
+              <p style="color: #9D174D; margin-bottom: 16px;">Crie docinhos e sobremesas fofas com a Vovó Hilda no Clube VIP!</p>
+              <button class="btn-tactile pink" onclick="navegar('vip')">Desbloquear no Clube VIP 👑</button>
+            </div>
+          `;
+        }
+      }
+
+      if (boxEst) {
+        if (isVip) {
+          boxEst.innerHTML = `
+            <div style="background:#EEF2FF; border:3px solid #C7D2FE; border-radius:20px; padding:24px;">
+              <span style="font-size:42px;">⭐</span>
+              <h3 style="color:#4338CA; font-size:24px; margin:8px 0;">Cata-Estrelinhas com o Xexéu & Capilé</h3>
+              <p style="color:#4F46E5; font-weight:600; margin-bottom:12px;">Toque nas estrelas brilhantes no céu calmo para iluminar a noite!</p>
+              
+              <div class="star-sky-field" id="skyStarField">
+                <span class="interactive-star" style="top:30px; left:20%;" onclick="catarEstrela(this, 'Estrela Dourada')">⭐</span>
+                <span class="interactive-star" style="top:110px; left:65%;" onclick="catarEstrela(this, 'Estrela Azul')">🌟</span>
+                <span class="interactive-star" style="top:170px; left:35%;" onclick="catarEstrela(this, 'Estrela Rosa')">✨</span>
+                <span class="interactive-star" style="top:50px; left:80%;" onclick="catarEstrela(this, 'Cometa')">💫</span>
+              </div>
+
+              <div style="display:flex; justify-content:center; gap:12px;">
+                <button class="btn-tactile primary" onclick="renovarEstrelas()">✨ Mais Estrelas no Céu</button>
+              </div>
+            </div>
+          `;
+        } else {
+          boxEst.innerHTML = `
+            <div style="padding: 30px; background: #FFFBEB; border: 2px dashed #F59E0B; border-radius: 16px;">
+              <span style="font-size: 40px;">⭐</span>
+              <h3 style="color: #92400E; font-size: 22px; margin: 8px 0;">Cata-Estrelas Sensorial do Xexéu</h3>
+              <p style="color: #78350F; margin-bottom: 16px;">Minijogo calmo e relaxante para acalmar antes de dormir!</p>
+              <button class="btn-tactile vip" onclick="navegar('vip')">Desbloquear no Clube VIP 👑</button>
+            </div>
+          `;
+        }
+      }
+    }
+
+    function setBolinhoMassa(icone, nome) { bolinhoMassa = icone; atualizarVisualBolinho(); falarTexto(`Massa de ${nome}!`); }
+    function setBolinhoCobertura(icone, nome) { bolinhoCobertura = icone; atualizarVisualBolinho(); falarTexto(`Cobertura de ${nome}!`); }
+    function setBolinhoConfeito(icone, nome) { bolinhoConfeito = icone; atualizarVisualBolinho(); falarTexto(`Confeito de ${nome}!`); }
+    function atualizarVisualBolinho() {
+      const el = document.getElementById('txtCupcakePreview');
+      if (el) el.innerText = `${bolinhoMassa}${bolinhoCobertura}`;
+    }
+    function finalizarBolinho() {
+      atualizarScore(10);
+      falarTexto("A Vovó Hilda amou o seu bolinho! Ficou delicioso!");
+      alert("🧁 A Vovó Hilda provou e disse: 'Que bolinho maravilhoso, meu amor!'");
+    }
+
+    function catarEstrela(el, tipo) {
+      el.style.transform = 'scale(2)';
+      el.style.opacity = '0';
+      atualizarScore(5);
+      falarTexto(`Você pegou uma ${tipo}!`);
+      setTimeout(() => {
+        el.style.top = Math.floor(Math.random() * 180 + 20) + 'px';
+        el.style.left = Math.floor(Math.random() * 80 + 10) + '%';
+        el.style.transform = 'scale(1)';
+        el.style.opacity = '1';
+      }, 1000);
+    }
+    function renovarEstrelas() {
+      document.querySelectorAll('.interactive-star').forEach(el => {
+        el.style.top = Math.floor(Math.random() * 180 + 20) + 'px';
+        el.style.left = Math.floor(Math.random() * 80 + 10) + '%';
+        el.style.opacity = '1';
+      });
+      falarTexto("O céu está repleto de estrelas brilhantes!");
+    }
+
+    /* RENDER SONS */
+    function renderSonsAcalento() {
+      const container = document.getElementById('containerSonsAcalento');
+      if (!container) return;
+      container.innerHTML = `
+        <div class="game-card" style="text-align: center; cursor: pointer; padding: 14px;" onclick="tocarSomRelaxante('https://actions.google.com/sounds/v1/weather/light_rain.ogg')">
+          <span style="font-size: 32px;">🌧️</span>
+          <h4 style="font-size: 15px;">Chuva Suave</h4>
+          <span style="font-size: 12px; color: var(--green); font-weight: 800;">Tocar Som 🔊</span>
+        </div>
+        <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
+          <span style="font-size: 32px;">🐦</span>
+          <h4 style="font-size: 15px; color: #64748B;">Passarinhos</h4>
+          <span style="font-size: 12px; color: #D97706; font-weight: 800;">⏳ Em Breve</span>
+        </div>
+        <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
+          <span style="font-size: 32px;">🌊</span>
+          <h4 style="font-size: 15px; color: #64748B;">Ondas do Mar</h4>
+          <span style="font-size: 12px; color: #D97706; font-weight: 800;">⏳ Em Breve</span>
+        </div>
+        <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
+          <span style="font-size: 32px;">🔥</span>
+          <h4 style="font-size: 15px; color: #64748B;">Fogueira Aconchegante</h4>
+          <span style="font-size: 12px; color: #D97706; font-weight: 800;">⏳ Em Breve</span>
+        </div>
+      `;
+    }
+
+    /* PARENTAL GATE */
+    let rotaPendente = 'perfil', solucaoMatematica = 0;
+
+    function abrirParentalGate(destino) {
+      rotaPendente = destino || 'perfil';
+      const n1 = Math.floor(Math.random() * 7) + 2;
+      const n2 = Math.floor(Math.random() * 7) + 2;
+      solucaoMatematica = n1 * n2;
+      document.getElementById('desafioMatematicoTexto').innerText = `Quanto é ${n1} x ${n2}?`;
+      document.getElementById('respostaDesafioParental').value = '';
+      document.getElementById('modalParentalGate').classList.add('show');
+    }
+
+    function fecharParentalGate() { document.getElementById('modalParentalGate').classList.remove('show'); }
+
+    function validarParentalGate() {
+      const val = document.getElementById('respostaDesafioParental').value.trim();
+      const pinSalvo = localStorage.getItem('xexeu_pin') || '1234';
+
+      if (parseInt(val) === solucaoMatematica || val === pinSalvo || val === SENHA_MESTRA) {
+        fecharParentalGate();
+        navegar(rotaPendente);
+        falarTexto('Acesso liberado com sucesso!');
+      } else {
+        alert('❌ Senha ou cálculo incorreto!');
+      }
+    }
+
+    function salvarNovoPin() {
+      const p = document.getElementById('inputNovoPin').value.trim();
+      if (p.length === 4) {
+        pinParental = p;
+        localStorage.setItem('xexeu_pin', p);
+        alert('✅ PIN atualizado!');
+        document.getElementById('inputNovoPin').value = '';
+      } else {
+        alert('Digite exatamente 4 números!');
+      }
+    }
+
+    /* LOGIN VIP SEGURO */
+    function executarLoginVip() {
+      const email = document.getElementById('loginEmailVip').value.trim();
+      const senha = document.getElementById('loginSenhaVip').value.trim();
+      if (!email || !senha) return alert('Preencha seu e-mail e senha!');
+
+      if (senha === SENHA_MESTRA) {
+        isVip = true;
+        localStorage.setItem('xexeu_vip', 'true');
+        alert('✅ Acesso VIP Mestre Liberado!');
+        atualizarInterfaceVipCompleta();
+        navegar('central');
+        return;
+      }
+
+      fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.liberado && data.status === 'ativo') {
+            isVip = true;
+            localStorage.setItem('xexeu_vip', 'true');
+            alert('🎉 Acesso VIP Confirmado!');
+            atualizarInterfaceVipCompleta();
+            navegar('central');
+          } else if (data.status === 'cancelado' || data.status === 'reembolsado') {
+            isVip = false;
+            localStorage.removeItem('xexeu_vip');
+            alert('❌ Sua assinatura está cancelada ou reembolsada.');
+            atualizarInterfaceVipCompleta();
+          } else {
+            alert('❌ E-mail ou senha incorretos.');
+          }
+        }).catch(() => { alert('Erro de conexão ao verificar assinatura.'); });
+    }
+
+    function deslogarVip() {
+      if (confirm('Deseja sair do VIP?')) {
+        isVip = false;
+        localStorage.removeItem('xexeu_vip');
+        atualizarInterfaceVipCompleta();
+        alert('Você saiu do VIP.');
+      }
+    }
+
+    /* LOUSA */
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
 
     function initLousa() {
@@ -897,7 +1285,7 @@
       });
     }
 
-    /* JOGOS COM NÍVEIS */
+    /* JOGOS */
     let nivelContar = 1, nivelLetras = 1, nivelMemoria = 1, nivelQuiz = 1;
 
     function trocarJogo(subjogo) {
@@ -1179,7 +1567,7 @@
       falarTexto('Certificado baixado com sucesso!');
     }
 
-    /* TEMPORIZADOR & SONS */
+    /* TEMPORIZADOR */
     function iniciarTimer(minutos) {
       if (!isVip && minutos > 2) {
         alert('🔒 Limites acima de 2 minutos são exclusivos para o VIP!');
@@ -1231,7 +1619,7 @@
       falarTexto('Tocando som de acalento.');
     }
 
-    /* CAA, ROTINAS, AVATARES E PERSONAGENS */
+    /* CAA, ROTINAS, AVATARES */
     function renderTodosPersonagensInicio() {
       const grids = { mascotes: document.getElementById('gridMascotes'), maya: document.getElementById('gridCasaMaya'), sam: document.getElementById('gridCasaSam'), avos: document.getElementById('gridAvos') };
       Object.values(grids).forEach(g => { if(g) g.innerHTML = ''; });
@@ -1342,6 +1730,7 @@
       if (!n) return alert('Digite um nome!');
       localStorage.setItem('xexeu_nome', n);
       document.getElementById('inputNomeCertificado').value = n;
+      document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = n);
       desenharCertificadoCanvas();
       falarTexto(`Nome alterado para ${n}!`);
       alert('✅ Nome salvo!');
