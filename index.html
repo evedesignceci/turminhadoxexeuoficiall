@@ -573,7 +573,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA 8: CLUBE VIP & SEGURANÇA -->
+    <!-- PÁGINA 8: CLUBE VIP & SEGURANÇA (DRIVES 100% EXCLUSIVOS VIP) -->
     <div id="page-vip" class="page-box">
       <div class="game-card" id="cardPainelVipStatus" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D;">
         <div style="text-align: center; max-width: 850px; margin: 0 auto;" id="conteudoDinamicoVip"></div>
@@ -747,7 +747,7 @@
     }
 
     /* =========================================================
-       DESTRAVAMENTO DO VIP
+       DESTRAVAMENTO GLOBAL DO VIP (DRIVES EXCLUSIVOS)
     ========================================================= */
     function atualizarInterfaceVipCompleta() {
       const bTitulo = document.getElementById('txtBarraFlutuanteTitulo');
@@ -776,6 +776,7 @@
         tabPuz.style.color = isVip ? "var(--primary)" : "#D97706";
       }
 
+      // Painel VIP com Proteção Estrita dos Drives
       const painel = document.getElementById('conteudoDinamicoVip');
       if (painel) {
         if (isVip) {
@@ -794,17 +795,22 @@
             <span style="font-size: 48px;">⭐</span>
             <h2 style="color: #92400E; font-size: 30px; font-weight: 900; margin-bottom: 8px;">Clube VIP Turminha do Xexéu</h2>
             <p style="color: #78350F; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Todas as atividades pedagógicas, livros, minijogos exclusivos e controle parental avançado por apenas <strong>R$ 6,00/mês</strong>.</p>
+            
+            <!-- DRIVES BLOQUEADOS NO MODO GRÁTIS -->
             <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+              <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive de Atividades')">🔒 Drive de Atividades (VIP)</button>
+              <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive Azul TEA')">🔒 Drive Azul TEA (VIP)</button>
               <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-tactile vip" style="text-decoration: none;">Quero ser VIP no Kiwify (R$ 6,00) 💳</a>
             </div>
+
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
               <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #FDE68A; text-align: left;">
-                <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ O que está incluso:</h4>
+                <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ O que o VIP desbloqueia:</h4>
                 <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
-                  <li>Todos os 12 contornos na lousa.</li>
+                  <li><strong>📁 Acesso exclusivo aos Drives de impressão.</strong></li>
+                  <li>Todos os 12 contornos na lousa mágica.</li>
                   <li>Prancha CAA de fala sem limites.</li>
                   <li>Temporizador de até 30 minutos.</li>
-                  <li>Arquivos em alta resolução para imprimir.</li>
                   <li>Voz sintetizada avançada para leitura.</li>
                 </ul>
               </div>
@@ -822,6 +828,11 @@
       renderThumbnailsLousa();
       renderConteudoJogosVip();
       renderSonsAcalento();
+    }
+
+    function bloquearAcessoDrive(nomeDrive) {
+      alert(`🔒 O ${nomeDrive} é exclusivo para membros do Clube VIP! Assine por apenas R$ 6,00 para liberar.`);
+      falarTexto(`O ${nomeDrive} é exclusivo do Clube VIP.`);
     }
 
     /* JOGOS VIP */
@@ -883,7 +894,7 @@
       }
     }
 
-    /* RENDER DOS SONS DE ACALENTO (PASSARINHO EM BREVE) */
+    /* SONS DE ACALENTO (PASSARINHO EM BREVE) */
     function renderSonsAcalento() {
       const container = document.getElementById('containerSonsAcalento');
       if (!container) return;
@@ -911,9 +922,7 @@
       `;
     }
 
-    /* =========================================================
-       PARENTAL GATE
-    ========================================================= */
+    /* PARENTAL GATE */
     let rotaPendente = 'perfil', solucaoMatematica = 0;
 
     function abrirParentalGate(destino) {
@@ -953,9 +962,7 @@
       }
     }
 
-    /* =========================================================
-       LOGIN VIP SEGURO (KIWIFY)
-    ========================================================= */
+    /* LOGIN VIP SEGURO (KIWIFY) */
     function executarLoginVip() {
       const email = document.getElementById('loginEmailVip').value.trim();
       const senha = document.getElementById('loginSenhaVip').value.trim();
@@ -999,9 +1006,7 @@
       }
     }
 
-    /* =========================================================
-       LOUSA MÁGICA COM OS 12 PERSONAGENS, ROLETA E BORRACHA
-    ========================================================= */
+    /* LOUSA MÁGICA */
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
 
     function initLousa() {
@@ -1103,9 +1108,7 @@
       });
     }
 
-    /* =========================================================
-       JOGOS COM NÍVEIS PROGRESSIVOS (12 PERSONAGENS)
-    ========================================================= */
+    /* JOGOS COM NÍVEIS */
     let nivelContar = 1, nivelLetras = 1, nivelMemoria = 1, nivelQuiz = 1;
 
     function trocarJogo(subjogo) {
@@ -1291,9 +1294,7 @@
       });
     }
 
-    /* =========================================================
-       RESPIRAÇÃO GUIADA VISUAL
-    ========================================================= */
+    /* RESPIRAÇÃO GUIADA */
     function iniciarAnimacaoRespiracao() {
       const bubble = document.getElementById('breatheVisualBubble');
       const text = document.getElementById('breatheStatusText');
@@ -1319,9 +1320,7 @@
       }, 11000);
     }
 
-    /* =========================================================
-       SISTEMA DE CERTIFICADO EM CANVAS (ALTA RESOLUÇÃO)
-    ========================================================= */
+    /* CERTIFICADO CANVAS */
     function desenharCertificadoCanvas() {
       const c = document.getElementById('canvasCertificado');
       if (!c) return;
@@ -1391,9 +1390,7 @@
       falarTexto('Certificado baixado com sucesso!');
     }
 
-    /* =========================================================
-       TEMPORIZADOR & SONS
-    ========================================================= */
+    /* TEMPORIZADOR & SONS */
     function iniciarTimer(minutos) {
       if (!isVip && minutos > 2) {
         alert('🔒 Limites acima de 2 minutos são exclusivos para o VIP!');
@@ -1445,9 +1442,7 @@
       falarTexto('Tocando som de acalento.');
     }
 
-    /* =========================================================
-       CAA, ROTINAS, AVATARES E PERSONAGENS
-    ========================================================= */
+    /* CAA, ROTINAS, AVATARES E PERSONAGENS */
     function renderTodosPersonagensInicio() {
       const grids = { mascotes: document.getElementById('gridMascotes'), maya: document.getElementById('gridCasaMaya'), sam: document.getElementById('gridCasaSam'), avos: document.getElementById('gridAvos') };
       Object.values(grids).forEach(g => { if(g) g.innerHTML = ''; });
