@@ -299,7 +299,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
           <div>
             <span style="font-size: 13px; font-weight: 800; background: #C7D2FE; color: #3730A3; padding: 4px 12px; border-radius: 20px;">Painel Central do Amiguinho</span>
-            <h2 style="font-size: 26px; color: #1E1B4B; margin-top: 6px;">Olá, <span class="txtNomeDinamico">Evelyn</span>! O que vamos fazer hoje?</h2>
+            <h2 style="font-size: 26px; color: #1E1B4B; margin-top: 6px;">Olá, <span class="txtNomeDinamico">Amiguinho</span>! O que vamos fazer hoje?</h2>
             <p style="font-size: 14px; color: #4338CA; font-weight: 600;">Escolha uma atividade abaixo para começar a brincar e ganhar pontos!</p>
           </div>
           <button class="btn-tactile primary" onclick="falarTexto('Bem-vindo à sua Central da Turminha! Escolha qualquer jogo ou atividade para começar!')">🔊 Ouvir Opções</button>
@@ -559,7 +559,6 @@
         <p style="font-size: 15px; color: #0369A1; font-weight: 600;">"Olá! Aqui nós nos comunicamos, respiramos e nos expressamos com respeito e segurança."</p>
       </div>
 
-      <!-- TERMÔMETRO EMOCIONAL -->
       <div class="game-card" style="border-color: #C7D2FE; background: #FAFAFE;">
         <div class="game-card-title" style="color: #4338CA;">
           <span>💖 Como Estou me Sentindo Agora?</span>
@@ -578,7 +577,6 @@
       </div>
 
       <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px;">
-        <!-- CAA COM REMOÇÃO -->
         <div class="game-card">
           <div class="game-card-title">
             <span>🗣️ Prancha de Fala (CAA)</span>
@@ -597,7 +595,6 @@
           </div>
         </div>
 
-        <!-- RESPIRAÇÃO GUIADA -->
         <div class="game-card" style="text-align: center;">
           <div class="game-card-title"><span>🌬️ Treino da Calma com o Leo</span></div>
           <p style="font-size: 13px; color: var(--text-muted);">Siga a bolha para desacelerar o coraçãozinho:</p>
@@ -609,7 +606,6 @@
         </div>
       </div>
 
-      <!-- POP-IT SENSORIAL -->
       <div class="game-card" style="text-align: center; border-color: #F0ABFC; background: #FFF5FF;">
         <div class="game-card-title" style="color: #A21CAF;">
           <span>🫧 Pop-It Sensorial da Calma</span>
@@ -721,7 +717,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA: CLUBE VIP -->
+    <!-- PÁGINA: CLUBE VIP (DRIVES COM SEGURANÇA SERVIDOR) -->
     <div id="page-vip" class="page-box">
       <div class="game-card" id="cardPainelVipStatus" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D;">
         <div style="text-align: center; max-width: 850px; margin: 0 auto;" id="conteudoDinamicoVip"></div>
@@ -780,9 +776,8 @@
 
   <script>
     /* =========================================================
-       ESTADO E CONSTANTES DA APLICAÇÃO
+       ESTADO E CONSTANTES DA APLICAÇÃO (100% PROTEGIDO)
     ========================================================= */
-    const SENHA_MESTRA = "65628467";
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwrmDcZf4u4nMmfUSmq25RB6dHhpq0dud_JKezy2aIhYwesh6JVxSP2Vb4xMSU9W31H/exec";
     
     let audioAtivo = true;
@@ -793,6 +788,8 @@
     let vozesDisponiveis = [];
     let vozSelecionadaIdx = localStorage.getItem('xexeu_voz_idx') || 0;
     let velocidadeFala = parseFloat(localStorage.getItem('xexeu_voz_vel') || 1.0);
+
+    let linksDrivesSeguros = JSON.parse(localStorage.getItem('xexeu_drives_cache')) || null;
 
     let bolinhoMassa = '🧁';
     let bolinhoCobertura = '🍓';
@@ -907,6 +904,29 @@
       document.getElementById('badgeNivel').innerText = pontos > 50 ? '🌟 Super Fã' : pontos > 20 ? '⭐ Curioso' : 'Iniciante';
     }
 
+    /* SOM DO POP-IT (WEB AUDIO API NATIVA) */
+    function tocarSomPop() {
+      if (!audioAtivo) return;
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(450, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.08);
+
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.08);
+      } catch (e) {}
+    }
+
     /* ESPAÇO TEA */
     function renderCartoesCaa() {
       const c = document.getElementById('caaContainerCards');
@@ -971,6 +991,9 @@
         bubble.innerHTML = '🫧';
 
         bubble.onclick = () => {
+          tocarSomPop();
+          if (navigator.vibrate) navigator.vibrate(20);
+
           bubble.classList.toggle('popped');
           if (bubble.classList.contains('popped')) {
             bubble.innerHTML = '✨';
@@ -991,7 +1014,7 @@
       falarTexto('Pop-it restaurado! Pronto para estourar de novo!');
     }
 
-    /* DESTRAVAMENTO GLOBAL DO VIP */
+    /* DESTRAVAMENTO GLOBAL DO VIP (TOTALMENTE SEGURO PELO SERVIDOR) */
     function atualizarInterfaceVipCompleta() {
       const bTitulo = document.getElementById('txtBarraFlutuanteTitulo');
       const bSub = document.getElementById('txtBarraFlutuanteSub');
@@ -1021,17 +1044,17 @@
 
       const painel = document.getElementById('conteudoDinamicoVip');
       if (painel) {
-        if (isVip) {
+        if (isVip && linksDrivesSeguros) {
           painel.innerHTML = `
             <span style="font-size: 52px;">👑</span>
             <h2 style="color: #065F46; font-size: 32px; font-weight: 900; margin-bottom: 8px;">Você é Membro VIP Oficial!</h2>
             <p style="color: #047857; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Todos os conteúdos, joguinhos doces e ferramentas estão liberados.</p>
             
             <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-              <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-tactile primary" style="text-decoration: none; padding: 14px 22px; font-size: 15px;">
+              <a href="${linksDrivesSeguros.atividades}" target="_blank" class="btn-tactile primary" style="text-decoration: none; padding: 14px 22px; font-size: 15px;">
                 📁 Drive de Atividades (🎨 Para Colorir, 📱 Wallpapers, 📝 Atividades)
               </a>
-              <button class="btn-tactile" style="background: #E0F2FE; border-color: #7DD3FC; color: #0369A1; cursor: not-allowed; padding: 14px 22px; font-size: 15px;" onclick="alert('🧩 O Drive Azul TEA está em fase de preparação com materiais visuais e historias sociais exclusivas. Em breve!')">
+              <button class="btn-tactile" style="background: #E0F2FE; border-color: #7DD3FC; color: #0369A1; cursor: not-allowed; padding: 14px 22px; font-size: 15px;" onclick="alert('🧩 O Drive Azul TEA está em fase de preparação com materiais visuais e histórias sociais exclusivas. Em breve!')">
                 🧩 Drive Azul TEA (⏳ Em Construção)
               </button>
             </div>
@@ -1254,7 +1277,7 @@
       const val = document.getElementById('respostaDesafioParental').value.trim();
       const pinSalvo = localStorage.getItem('xexeu_pin') || '1234';
 
-      if (parseInt(val) === solucaoMatematica || val === pinSalvo || val === SENHA_MESTRA) {
+      if (parseInt(val) === solucaoMatematica || val === pinSalvo) {
         fecharParentalGate();
         navegar(rotaPendente);
         falarTexto('Acesso liberado com sucesso!');
@@ -1281,39 +1304,43 @@
       const senha = document.getElementById('loginSenhaVip').value.trim();
       if (!email || !senha) return alert('Preencha seu e-mail e senha!');
 
-      if (senha === SENHA_MESTRA) {
-        isVip = true;
-        localStorage.setItem('xexeu_vip', 'true');
-        alert('✅ Acesso VIP Mestre Liberado!');
-        atualizarInterfaceVipCompleta();
-        navegar('central');
-        return;
-      }
+      const btn = document.querySelector('#page-vip button.primary');
+      if (btn) btn.innerText = "Verificando... ⏳";
 
       fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
         .then(res => res.json())
         .then(data => {
           if (data.liberado && data.status === 'ativo') {
             isVip = true;
+            linksDrivesSeguros = data.drives;
             localStorage.setItem('xexeu_vip', 'true');
+            localStorage.setItem('xexeu_drives_cache', JSON.stringify(data.drives));
             alert('🎉 Acesso VIP Confirmado!');
             atualizarInterfaceVipCompleta();
             navegar('central');
           } else if (data.status === 'cancelado' || data.status === 'reembolsado') {
             isVip = false;
+            linksDrivesSeguros = null;
             localStorage.removeItem('xexeu_vip');
+            localStorage.removeItem('xexeu_drives_cache');
             alert('❌ Sua assinatura está cancelada ou reembolsada.');
             atualizarInterfaceVipCompleta();
           } else {
             alert('❌ E-mail ou senha incorretos.');
+            if (btn) btn.innerText = "Validar Acesso VIP 🚀";
           }
-        }).catch(() => { alert('Erro de conexão ao verificar assinatura.'); });
+        }).catch(() => { 
+          alert('Erro de conexão ao verificar assinatura.');
+          if (btn) btn.innerText = "Validar Acesso VIP 🚀";
+        });
     }
 
     function deslogarVip() {
       if (confirm('Deseja sair do VIP?')) {
         isVip = false;
+        linksDrivesSeguros = null;
         localStorage.removeItem('xexeu_vip');
+        localStorage.removeItem('xexeu_drives_cache');
         atualizarInterfaceVipCompleta();
         alert('Você saiu do VIP.');
       }
@@ -1734,7 +1761,7 @@
     function desbloquearTempoComPin() {
       const p = document.getElementById('pinDesbloqueioTempo').value.trim();
       const pinSalvo = localStorage.getItem('xexeu_pin') || '1234';
-      if (p === pinSalvo || p === SENHA_MESTRA) {
+      if (p === pinSalvo) {
         document.getElementById('modalTempoEsgotado').classList.remove('show');
         document.getElementById('pinDesbloqueioTempo').value = '';
         falarTexto('Tempo desbloqueado pelos pais.');
