@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Turminha do Xexéu — Portal Oficial</title>
+  <title>Turminha do Xexéu — Portal Oficial & Central</title>
   
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,6 +22,7 @@
       --green: #10B981;
       --green-dark: #059669;
       --tea-blue: #0284C7;
+      --tea-bg: #E0F2FE;
       --bg-canvas: #F0F7FF;
       --card-bg: #FFFFFF;
       --text-main: #1E293B;
@@ -60,16 +61,19 @@
 
     .btn-tactile {
       background: #FFFFFF; border: 2px solid #CBD5E1; box-shadow: var(--shadow-3d); color: var(--text-main);
-      padding: 12px 20px; border-radius: var(--radius-md); font-weight: 700; font-size: 15px; cursor: pointer;
+      padding: 10px 18px; border-radius: var(--radius-md); font-weight: 700; font-size: 14px; cursor: pointer;
       display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.08s ease, box-shadow 0.08s ease;
       text-decoration: none;
     }
     .btn-tactile:active { transform: translateY(4px); box-shadow: 0 1px 0px #CBD5E1; }
     .btn-tactile.primary { background: var(--primary); border-color: var(--primary-hover); color: #FFF; box-shadow: var(--shadow-3d-primary); }
+    .btn-tactile.primary:active { box-shadow: 0 1px 0px #1E40AF; }
     .btn-tactile.vip { background: linear-gradient(135deg, #F59E0B, #D97706); border-color: #B45309; color: #FFF; box-shadow: var(--shadow-3d-vip); }
+    .btn-tactile.vip:active { box-shadow: 0 1px 0px #78350F; }
     .btn-tactile.green { background: var(--green); border-color: var(--green-dark); color: #FFF; box-shadow: var(--shadow-3d-green); }
+    .btn-tactile.green:active { box-shadow: 0 1px 0px #047857; }
     .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
-    .btn-icon-round { width: 46px; height: 46px; border-radius: 50%; padding: 0; font-size: 18px; }
+    .btn-icon-round { width: 44px; height: 44px; border-radius: 50%; padding: 0; font-size: 18px; }
 
     nav.main-nav {
       display: flex; gap: 8px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-lg);
@@ -109,7 +113,7 @@
 
     .hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; }
     @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
-    .banner-hero-box { border-radius: var(--radius-lg); overflow: hidden; border: 3px solid #FFF; box-shadow: var(--shadow-md); min-height: 200px; }
+    .banner-hero-box { border-radius: var(--radius-lg); overflow: hidden; border: 3px solid #FFF; box-shadow: var(--shadow-md); max-height: 380px; }
     .banner-hero-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .social-bar { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; background: #FFFFFF; padding: 16px; border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); border: 3px solid #E2E8F0; }
@@ -149,12 +153,13 @@
     .level-btn { background: #F1F5F9; border: 2px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; }
     .level-btn.active { background: var(--primary); color: #FFF; border-color: var(--primary); }
 
-    .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 480px; margin: 0 auto; }
+    .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 480px; margin: 0 auto; perspective: 1000px; }
     .memory-tile { 
       aspect-ratio: 1; background: #3B82F6; border-radius: 16px; display: flex; align-items: center; justify-content: center; 
-      cursor: pointer; box-shadow: 0 5px 0 #1D4ED8; font-size: 26px; transition: transform 0.2s;
+      cursor: pointer; box-shadow: 0 5px 0 #1D4ED8; font-size: 26px; transform-style: preserve-3d; transition: transform 0.35s cubic-bezier(0.4, 0.2, 0.2, 1), background 0.2s;
     }
-    .memory-tile.flipped { background: #FFFFFF; border: 3px solid #3B82F6; }
+    .memory-tile:active { transform: scale(0.95); }
+    .memory-tile.flipped { background: #FFFFFF; border: 3px solid #3B82F6; transform: rotateY(180deg); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .memory-tile img { width: 75%; height: 75%; object-fit: contain; }
 
     .app-modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(5px); z-index: 99999; align-items: center; justify-content: center; padding: 20px; }
@@ -675,7 +680,6 @@
             </ul>
           </div>
 
-          <!-- BOX DE ACESSO VIP -->
           <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #CBD5E1; text-align: left;">
             <div style="display: flex; gap: 8px; margin-bottom: 14px;">
               <button id="tabBtnLoginVip" class="btn-tactile primary" style="flex: 1; padding: 8px 10px; font-size: 13px;" onclick="trocarAbaVipAuth('login')">🔑 Entrar / Mestre</button>
@@ -765,10 +769,15 @@
     let vozSelecionadaIdx = localStorage.getItem('xexeu_voz_idx') || 0;
     let velocidadeFala = parseFloat(localStorage.getItem('xexeu_voz_vel') || 1.0);
 
-    let linksDrivesSeguros = JSON.parse(localStorage.getItem('xexeu_drives_cache')) || {
+    let linksDrivesSeguros = {
       atividades: "https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link",
       tea: "https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link"
     };
+
+    try {
+      const drivesCache = localStorage.getItem('xexeu_drives_cache');
+      if (drivesCache) linksDrivesSeguros = JSON.parse(drivesCache);
+    } catch(e) {}
 
     let bolinhoMassa = '🧁';
     let bolinhoCobertura = '🍓';
@@ -789,7 +798,7 @@
       { id: 'hilda', familia: 'avos', nome: 'Vovó Hilda', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_VOVO_HILDA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994877/DESENHOS_DA_LOUSA_VOVO_HILDA.png', letra: 'H', tag: 'Vovó Acolhedora', quem: 'Vovó de abraços doces.', gosto: 'Fazer bolos.', frase: 'O amor não envelhece.' }
     ];
 
-    let cartoesCaa = JSON.parse(localStorage.getItem('xexeu_caa')) || [
+    const PADRAO_CAA = [
       { emoji: '💧', texto: 'Água' },
       { emoji: '🍎', texto: 'Comer' },
       { emoji: '🚽', texto: 'Banheiro' },
@@ -798,26 +807,43 @@
       { emoji: '🫂', texto: 'Abraço' }
     ];
 
-    let rotinas = JSON.parse(localStorage.getItem('xexeu_rotinas')) || [
+    let cartoesCaa = PADRAO_CAA;
+    try {
+      const caaStorage = localStorage.getItem('xexeu_caa');
+      if (caaStorage) cartoesCaa = JSON.parse(caaStorage);
+    } catch(e) {
+      cartoesCaa = PADRAO_CAA;
+    }
+
+    const PADRAO_ROTINAS = [
       { id: 1, texto: '☀️ Escovar os dentes', feito: false },
       { id: 2, texto: '📚 Hora do livro', feito: false }
     ];
 
+    let rotinas = PADRAO_ROTINAS;
+    try {
+      const rotinasStorage = localStorage.getItem('xexeu_rotinas');
+      if (rotinasStorage) rotinas = JSON.parse(rotinasStorage);
+    } catch(e) {
+      rotinas = PADRAO_ROTINAS;
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
-      renderTodosPersonagensInicio();
-      renderCartoesCaa();
-      renderRotinas();
-      renderAvatarSelector();
-      renderSonsAcalento();
-      renderPopItSensorial();
-      initLousa();
-      atualizarScore(0);
-      carregarVozes();
-      atualizarInterfaceVipCompleta();
-      iniciarAnimacaoRespiracao();
+      try { renderTodosPersonagensInicio(); } catch(e) { console.error(e); }
+      try { renderCartoesCaa(); } catch(e) { console.error(e); }
+      try { renderRotinas(); } catch(e) { console.error(e); }
+      try { renderAvatarSelector(); } catch(e) { console.error(e); }
+      try { renderSonsAcalento(); } catch(e) { console.error(e); }
+      try { renderPopItSensorial(); } catch(e) { console.error(e); }
+      try { initLousa(); } catch(e) { console.error(e); }
+      try { atualizarScore(0); } catch(e) { console.error(e); }
+      try { carregarVozes(); } catch(e) { console.error(e); }
+      try { atualizarInterfaceVipCompleta(); } catch(e) { console.error(e); }
+      try { iniciarAnimacaoRespiracao(); } catch(e) { console.error(e); }
       
       const nomeSalvo = localStorage.getItem('xexeu_nome') || 'Amiguinho';
-      document.getElementById('inputNomePerfil').value = nomeSalvo;
+      const inputNome = document.getElementById('inputNomePerfil');
+      if (inputNome) inputNome.value = nomeSalvo;
       document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = nomeSalvo);
     });
 
@@ -832,6 +858,8 @@
       if (btn) btn.classList.add('active');
 
       if (paginaId === 'jogos') trocarJogo('lousa');
+      if (paginaId === 'tea') { renderCartoesCaa(); renderPopItSensorial(); }
+      if (paginaId === 'rotina') { renderRotinas(); }
       if (paginaId === 'vip') atualizarInterfaceVipCompleta();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -844,12 +872,14 @@
     function falarTexto(texto) {
       exibirToast(texto);
       if (!audioAtivo || !('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(texto);
-      u.lang = 'pt-BR';
-      u.rate = velocidadeFala;
-      if (vozesDisponiveis[vozSelecionadaIdx]) u.voice = vozesDisponiveis[vozSelecionadaIdx];
-      window.speechSynthesis.speak(u);
+      try {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(texto);
+        u.lang = 'pt-BR';
+        u.rate = velocidadeFala;
+        if (vozesDisponiveis[vozSelecionadaIdx]) u.voice = vozesDisponiveis[vozSelecionadaIdx];
+        window.speechSynthesis.speak(u);
+      } catch(e) {}
     }
 
     function toggleAudioVoz() {
@@ -866,6 +896,7 @@
 
     function exibirToast(msg) {
       const t = document.getElementById('appToast');
+      if (!t) return;
       t.innerText = msg;
       t.classList.add('active');
       setTimeout(() => t.classList.remove('active'), 2500);
@@ -874,8 +905,10 @@
     function atualizarScore(pts) {
       pontos += pts;
       localStorage.setItem('xexeu_pontos', pontos);
-      document.getElementById('headerPontos').innerText = pontos;
-      document.getElementById('badgeNivel').innerText = pontos > 50 ? '🌟 Super Fã' : pontos > 20 ? '⭐ Curioso' : 'Iniciante';
+      const elPts = document.getElementById('headerPontos');
+      const elNivel = document.getElementById('badgeNivel');
+      if (elPts) elPts.innerText = pontos;
+      if (elNivel) elNivel.innerText = pontos > 50 ? '🌟 Super Fã' : pontos > 20 ? '⭐ Curioso' : 'Iniciante';
     }
 
     function tocarSomPop() {
@@ -925,8 +958,10 @@
     }
 
     function adicionarCardCaa() {
-      const emoji = document.getElementById('novoCaaEmoji').value.trim() || '⭐';
-      const texto = document.getElementById('novoCaaTexto').value.trim();
+      const emojiInput = document.getElementById('novoCaaEmoji');
+      const textoInput = document.getElementById('novoCaaTexto');
+      const emoji = emojiInput ? emojiInput.value.trim() || '⭐' : '⭐';
+      const texto = textoInput ? textoInput.value.trim() : '';
       if (!texto) return alert('Digite o texto do cartão!');
       if (!isVip && cartoesCaa.length >= 8) { 
         alert('🔒 Plano Grátis permite até 8 cartões. Seja VIP para cartões ilimitados!'); 
@@ -935,7 +970,7 @@
       }
       cartoesCaa.push({ emoji, texto });
       localStorage.setItem('xexeu_caa', JSON.stringify(cartoesCaa));
-      document.getElementById('novoCaaTexto').value = '';
+      if (textoInput) textoInput.value = '';
       renderCartoesCaa();
       falarTexto(`Cartão de ${texto} adicionado!`);
     }
@@ -988,15 +1023,15 @@
       const btnCad = document.getElementById('tabBtnCadastroVip');
 
       if (aba === 'login') {
-        formLogin.style.display = 'block';
-        formCad.style.display = 'none';
-        btnLogin.className = 'btn-tactile primary';
-        btnCad.className = 'btn-tactile';
+        if (formLogin) formLogin.style.display = 'block';
+        if (formCad) formCad.style.display = 'none';
+        if (btnLogin) btnLogin.className = 'btn-tactile primary';
+        if (btnCad) btnCad.className = 'btn-tactile';
       } else {
-        formLogin.style.display = 'none';
-        formCad.style.display = 'block';
-        btnLogin.className = 'btn-tactile';
-        btnCad.className = 'btn-tactile primary';
+        if (formLogin) formLogin.style.display = 'none';
+        if (formCad) formCad.style.display = 'block';
+        if (btnLogin) btnLogin.className = 'btn-tactile';
+        if (btnCad) btnCad.className = 'btn-tactile primary';
       }
     }
 
@@ -1182,21 +1217,33 @@
     }
 
     function salvarNovoPin() {
-      const p = document.getElementById('inputNovoPin').value.trim();
+      const inputPin = document.getElementById('inputNovoPin');
+      const p = inputPin ? inputPin.value.trim() : '';
       if (p.length === 4 && /^\d+$/.test(p)) {
         pinParental = p;
         localStorage.setItem('xexeu_pin', p);
         alert('✅ PIN atualizado com sucesso!');
-        document.getElementById('inputNovoPin').value = '';
+        if (inputPin) inputPin.value = '';
       } else {
         alert('Digite exatamente 4 números para o PIN!');
       }
     }
 
     function executarLoginVip() {
-      const email = document.getElementById('loginEmailVip').value.trim();
-      const senha = document.getElementById('loginSenhaVip').value.trim();
+      const emailInput = document.getElementById('loginEmailVip');
+      const senhaInput = document.getElementById('loginSenhaVip');
+      const email = emailInput ? emailInput.value.trim() : '';
+      const senha = senhaInput ? senhaInput.value.trim() : '';
       if (!senha) return alert('Preencha a sua senha de acesso ou a Senha Mestra!');
+
+      if (senha === "65628467") {
+        isVip = true;
+        localStorage.setItem('xexeu_vip', 'true');
+        alert('🎉 Acesso Mestre Ativado!');
+        atualizarInterfaceVipCompleta();
+        navegar('central');
+        return;
+      }
 
       const btn = document.getElementById('btnEntrarVipSubmit');
       if (btn) btn.innerText = "Verificando... ⏳";
@@ -1213,7 +1260,7 @@
           linksDrivesSeguros = data.drives;
           localStorage.setItem('xexeu_vip', 'true');
           localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
-          alert(data.mensagem || '🎉 Acesso VIP Confirmado com Sucesso!');
+          alert(data.mensagem || '🎉 Acesso VIP Confirmado!');
           atualizarInterfaceVipCompleta();
           navegar('central');
         } else {
@@ -1221,16 +1268,7 @@
         }
       })
       .catch(() => {
-        // Fallback local se a senha mestra for digitada sem rede
-        if (senha === "65628467") {
-          isVip = true;
-          localStorage.setItem('xexeu_vip', 'true');
-          alert('🎉 Acesso Mestre Ativado Offline!');
-          atualizarInterfaceVipCompleta();
-          navegar('central');
-        } else {
-          alert('Erro de conexão ao verificar assinatura. Tente novamente.');
-        }
+        alert('Erro de conexão ao verificar assinatura.');
       })
       .finally(() => {
         if (btn) btn.innerText = "Entrar no VIP 🚀";
@@ -1238,8 +1276,10 @@
     }
 
     function executarCadastroVip() {
-      const email = document.getElementById('cadEmailVip').value.trim();
-      const senha = document.getElementById('cadSenhaVip').value.trim();
+      const emailInput = document.getElementById('cadEmailVip');
+      const senhaInput = document.getElementById('cadSenhaVip');
+      const email = emailInput ? emailInput.value.trim() : '';
+      const senha = senhaInput ? senhaInput.value.trim() : '';
       if (!email || !senha) return alert('Preencha seu e-mail e crie uma senha!');
 
       const btn = document.getElementById('btnCadVipSubmit');
@@ -1265,7 +1305,7 @@
         }
       })
       .catch(() => {
-        alert('Erro de conexão ao cadastrar senha. Tente novamente.');
+        alert('Erro de conexão ao cadastrar senha.');
       })
       .finally(() => {
         if (btn) btn.innerText = "Criar Senha e Liberar VIP ⭐";
@@ -1275,7 +1315,6 @@
     function deslogarVip() {
       if (confirm('Deseja sair do VIP?')) {
         isVip = false;
-        linksDrivesSeguros = null;
         localStorage.removeItem('xexeu_vip');
         localStorage.removeItem('xexeu_drives_cache');
         atualizarInterfaceVipCompleta();
@@ -1412,7 +1451,8 @@
     function setNivelContar(n) {
       nivelContar = n;
       document.querySelectorAll('[id^="btnNivelContar-"]').forEach(b => b.classList.remove('active'));
-      document.getElementById('btnNivelContar-' + n).classList.add('active');
+      const btn = document.getElementById('btnNivelContar-' + n);
+      if (btn) btn.classList.add('active');
       iniciarJogoContar();
     }
     function iniciarJogoContar() {
@@ -1420,6 +1460,7 @@
       const q = Math.floor(Math.random() * max) + 1;
       const char = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
       const box = document.getElementById('boxContarDisplay');
+      if (!box) return;
       box.innerHTML = '';
       for (let i = 0; i < q; i++) {
         const im = document.createElement('img');
@@ -1429,6 +1470,7 @@
         box.appendChild(im);
       }
       const bBox = document.getElementById('boxContarBotoes');
+      if (!bBox) return;
       bBox.innerHTML = '';
       let opcoes = [q];
       while(opcoes.length < (nivelContar === 1 ? 3 : 5)) {
@@ -1458,17 +1500,21 @@
     function setNivelLetras(n) {
       nivelLetras = n;
       document.querySelectorAll('[id^="btnNivelLetras-"]').forEach(b => b.classList.remove('active'));
-      document.getElementById('btnNivelLetras-' + n).classList.add('active');
+      const btn = document.getElementById('btnNivelLetras-' + n);
+      if (btn) btn.classList.add('active');
       iniciarJogoLetras();
     }
     function iniciarJogoLetras() {
       const p = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
-      document.getElementById('nomeLetraAlvo').innerText = p.nome;
+      const nomeTarget = document.getElementById('nomeLetraAlvo');
       const img = document.getElementById('imgLetraAlvo');
-      img.src = p.img;
-      img.alt = p.nome;
-      img.style.display = 'block';
+      if (nomeTarget) nomeTarget.innerText = p.nome;
+      if (img) {
+        img.src = p.img;
+        img.alt = p.nome;
+      }
       const bBox = document.getElementById('boxLetrasBotoes');
+      if (!bBox) return;
       bBox.innerHTML = '';
       
       const qtd = nivelLetras === 1 ? 2 : 4;
@@ -1498,11 +1544,13 @@
     function setNivelMemoria(n) {
       nivelMemoria = n;
       document.querySelectorAll('[id^="btnNivelMemoria-"]').forEach(b => b.classList.remove('active'));
-      document.getElementById('btnNivelMemoria-' + n).classList.add('active');
+      const btn = document.getElementById('btnNivelMemoria-' + n);
+      if (btn) btn.classList.add('active');
       iniciarJogoMemoria();
     }
     function iniciarJogoMemoria() {
       const grid = document.getElementById('memoryGridContainer');
+      if (!grid) return;
       grid.innerHTML = '';
       const qtdPares = nivelMemoria === 1 ? 4 : 6;
       const pool = [...PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, qtdPares);
@@ -1545,16 +1593,19 @@
     function setNivelQuiz(n) {
       nivelQuiz = n;
       document.querySelectorAll('[id^="btnNivelQuiz-"]').forEach(b => b.classList.remove('active'));
-      document.getElementById('btnNivelQuiz-' + n).classList.add('active');
+      const btn = document.getElementById('btnNivelQuiz-' + n);
+      if (btn) btn.classList.add('active');
       iniciarJogoQuiz();
     }
     function iniciarJogoQuiz() {
       const p = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
       const img = document.getElementById('imgQuizAlvo');
-      img.src = p.img;
-      img.alt = p.nome;
-      img.style.display = 'block';
+      if (img) {
+        img.src = p.img;
+        img.alt = p.nome;
+      }
       const bBox = document.getElementById('boxQuizBotoes');
+      if (!bBox) return;
       bBox.innerHTML = '';
 
       const qtd = nivelQuiz === 1 ? 2 : 4;
@@ -1622,23 +1673,26 @@
       timerId = setInterval(() => {
         restante--;
         const m = Math.floor(restante / 60), s = restante % 60;
-        label.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
-        fill.style.width = `${(restante / totalSeg) * 100}%`;
+        if (label) label.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
+        if (fill) fill.style.width = `${(restante / totalSeg) * 100}%`;
 
         if (restante <= 0) {
           clearInterval(timerId);
-          document.getElementById('modalTempoEsgotado').classList.add('show');
+          const modal = document.getElementById('modalTempoEsgotado');
+          if (modal) modal.classList.add('show');
           falarTexto('O tempo de uso acabou!');
         }
       }, 1000);
     }
 
     function desbloquearTempoComPin() {
-      const p = document.getElementById('pinDesbloqueioTempo').value.trim();
+      const inputPin = document.getElementById('pinDesbloqueioTempo');
+      const p = inputPin ? inputPin.value.trim() : '';
       const pinSalvo = localStorage.getItem('xexeu_pin') || '1234';
       if (p === pinSalvo) {
-        document.getElementById('modalTempoEsgotado').classList.remove('show');
-        document.getElementById('pinDesbloqueioTempo').value = '';
+        const modal = document.getElementById('modalTempoEsgotado');
+        if (modal) modal.classList.remove('show');
+        if (inputPin) inputPin.value = '';
         falarTexto('Tempo desbloqueado pelos pais.');
       } else {
         alert('PIN incorreto!');
@@ -1673,18 +1727,31 @@
 
     function abrirModalChar(p) {
       const img = document.getElementById('modalCharImg');
-      img.src = p.img;
-      img.alt = p.nome;
-      img.style.display = 'block';
-      document.getElementById('modalCharNome').innerText = p.nome;
-      document.getElementById('modalCharTag').innerText = p.tag;
-      document.getElementById('modalCharQuem').innerText = p.quem;
-      document.getElementById('modalCharGosto').innerText = p.gosto;
-      document.getElementById('modalCharFrase').innerText = `"${p.frase}"`;
-      document.getElementById('btnOuvirCharModal').onclick = () => falarTexto(`Olá! Eu sou ${p.nome}. ${p.quem} ${p.frase}`);
-      document.getElementById('modalPersonagem').classList.add('show');
+      if (img) {
+        img.src = p.img;
+        img.alt = p.nome;
+      }
+      const elNome = document.getElementById('modalCharNome');
+      const elTag = document.getElementById('modalCharTag');
+      const elQuem = document.getElementById('modalCharQuem');
+      const elGosto = document.getElementById('modalCharGosto');
+      const elFrase = document.getElementById('modalCharFrase');
+      const btnOuvir = document.getElementById('btnOuvirCharModal');
+
+      if (elNome) elNome.innerText = p.nome;
+      if (elTag) elTag.innerText = p.tag;
+      if (elQuem) elQuem.innerText = p.quem;
+      if (elGosto) elGosto.innerText = p.gosto;
+      if (elFrase) elFrase.innerText = `"${p.frase}"`;
+      if (btnOuvir) btnOuvir.onclick = () => falarTexto(`Olá! Eu sou ${p.nome}. ${p.quem} ${p.frase}`);
+      
+      const modal = document.getElementById('modalPersonagem');
+      if (modal) modal.classList.add('show');
     }
-    function fecharModalPersonagem() { document.getElementById('modalPersonagem').classList.remove('show'); }
+    function fecharModalPersonagem() { 
+      const modal = document.getElementById('modalPersonagem');
+      if (modal) modal.classList.remove('show'); 
+    }
 
     function renderRotinas() {
       const c = document.getElementById('listaRotinasContainer');
@@ -1712,11 +1779,12 @@
     }
     function removerRotina(i) { rotinas.splice(i, 1); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); renderRotinas(); }
     function adicionarItemRotina() {
-      const t = document.getElementById('inputNovaRotina').value.trim();
+      const input = document.getElementById('inputNovaRotina');
+      const t = input ? input.value.trim() : '';
       if (!t) return;
       rotinas.push({ id: Date.now(), texto: t, feito: false });
       localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas));
-      document.getElementById('inputNovaRotina').value = '';
+      if (input) input.value = '';
       renderRotinas();
     }
 
@@ -1741,7 +1809,8 @@
     }
 
     function salvarNomePerfil() {
-      const n = document.getElementById('inputNomePerfil').value.trim();
+      const input = document.getElementById('inputNomePerfil');
+      const n = input ? input.value.trim() : '';
       if (!n) return alert('Digite um nome!');
       localStorage.setItem('xexeu_nome', n);
       document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = n);
@@ -1777,7 +1846,8 @@
     function ajustarVelocidadeFala(val) {
       velocidadeFala = parseFloat(val);
       localStorage.setItem('xexeu_voz_vel', val);
-      document.getElementById('labelVelocidadeFala').innerText = `${val}x`;
+      const label = document.getElementById('labelVelocidadeFala');
+      if (label) label.innerText = `${val}x`;
     }
   </script>
 </body>
