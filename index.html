@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Turminha do Xexéu — Portal Oficial & Central</title>
+  <title>Turminha do Xexéu — Portal Oficial</title>
   
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,11 +22,11 @@
       --green: #10B981;
       --green-dark: #059669;
       --tea-blue: #0284C7;
-      --tea-bg: #E0F2FE;
       --bg-canvas: #F0F7FF;
       --card-bg: #FFFFFF;
       --text-main: #1E293B;
       --text-muted: #64748B;
+      --border-color: #E2E8F0;
       --radius-xl: 32px;
       --radius-lg: 20px;
       --radius-md: 14px;
@@ -42,14 +42,52 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', 'Nunito', sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background: var(--bg-canvas); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; user-select: none; }
 
-    body.sensory-mode { --bg-canvas: #F1F5F9 !important; --primary: #475569 !important; --secondary: #64748B !important; --card-bg: #FFFFFF !important; }
-    body.sensory-mode * { animation: none !important; transition: none !important; }
+    /* MODO CALMO SENSORY ROBUSTO E TERAPÊUTICO */
+    body.sensory-mode {
+      --bg-canvas: #F4F1EA !important;
+      --card-bg: #FCFAF6 !important;
+      --primary: #4A6B6C !important;
+      --primary-hover: #3B5758 !important;
+      --secondary: #8E7C68 !important;
+      --secondary-dark: #736453 !important;
+      --tea-blue: #5B7A8C !important;
+      --purple: #6E6879 !important;
+      --pink: #8F6B76 !important;
+      --green: #52796F !important;
+      --green-dark: #354F52 !important;
+      --accent: #8C5B5B !important;
+      --text-main: #2B2D2F !important;
+      --text-muted: #5C6066 !important;
+      --border-color: #DCD6CD !important;
+      --shadow-3d: 0 2px 0px #C8C2B7 !important;
+      --shadow-3d-primary: 0 2px 0px #354F52 !important;
+      --shadow-3d-vip: 0 2px 0px #736453 !important;
+      --shadow-3d-green: 0 2px 0px #354F52 !important;
+      --shadow-3d-pink: 0 2px 0px #734F59 !important;
+      --shadow-md: 0 4px 10px rgba(0,0,0,0.04) !important;
+      --shadow-sm: none !important;
+      filter: contrast(0.92) brightness(0.98);
+    }
+    body.sensory-mode * {
+      animation: none !important;
+      transition: none !important;
+      text-shadow: none !important;
+      box-shadow: none !important;
+    }
+    body.sensory-mode .game-card, 
+    body.sensory-mode header.game-header,
+    body.sensory-mode nav.main-nav,
+    body.sensory-mode .hub-card,
+    body.sensory-mode .char-card-item {
+      background-color: var(--card-bg) !important;
+      border-color: var(--border-color) !important;
+    }
 
     .app-shell { width: 100%; max-width: 1400px; margin: 0 auto; padding: 16px 20px 80px; display: flex; flex-direction: column; gap: 20px; }
     
     header.game-header {
-      background: #FFFFFF; padding: 12px 28px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: space-between;
-      box-shadow: var(--shadow-md); border: 3px solid #E2E8F0; gap: 16px;
+      background: var(--card-bg); padding: 12px 28px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: space-between;
+      box-shadow: var(--shadow-md); border: 3px solid var(--border-color); gap: 16px;
     }
     .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; }
     .logo-img { height: 52px; width: auto; object-fit: contain; }
@@ -61,23 +99,20 @@
 
     .btn-tactile {
       background: #FFFFFF; border: 2px solid #CBD5E1; box-shadow: var(--shadow-3d); color: var(--text-main);
-      padding: 10px 18px; border-radius: var(--radius-md); font-weight: 700; font-size: 14px; cursor: pointer;
+      padding: 12px 20px; border-radius: var(--radius-md); font-weight: 700; font-size: 15px; cursor: pointer;
       display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.08s ease, box-shadow 0.08s ease;
       text-decoration: none;
     }
     .btn-tactile:active { transform: translateY(4px); box-shadow: 0 1px 0px #CBD5E1; }
     .btn-tactile.primary { background: var(--primary); border-color: var(--primary-hover); color: #FFF; box-shadow: var(--shadow-3d-primary); }
-    .btn-tactile.primary:active { box-shadow: 0 1px 0px #1E40AF; }
     .btn-tactile.vip { background: linear-gradient(135deg, #F59E0B, #D97706); border-color: #B45309; color: #FFF; box-shadow: var(--shadow-3d-vip); }
-    .btn-tactile.vip:active { box-shadow: 0 1px 0px #78350F; }
     .btn-tactile.green { background: var(--green); border-color: var(--green-dark); color: #FFF; box-shadow: var(--shadow-3d-green); }
-    .btn-tactile.green:active { box-shadow: 0 1px 0px #047857; }
     .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
-    .btn-icon-round { width: 44px; height: 44px; border-radius: 50%; padding: 0; font-size: 18px; }
+    .btn-icon-round { width: 46px; height: 46px; border-radius: 50%; padding: 0; font-size: 18px; }
 
     nav.main-nav {
       display: flex; gap: 8px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-lg);
-      border: 3px solid #E2E8F0; box-shadow: var(--shadow-sm); overflow-x: auto; scrollbar-width: none;
+      border: 3px solid var(--border-color); box-shadow: var(--shadow-sm); overflow-x: auto; scrollbar-width: none;
     }
     nav.main-nav::-webkit-scrollbar { display: none; }
 
@@ -97,13 +132,13 @@
     .page-box.active { display: flex; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-    .game-card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 24px; border: 3px solid #E2E8F0; box-shadow: var(--shadow-md); position: relative; }
+    .game-card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 24px; border: 3px solid var(--border-color); box-shadow: var(--shadow-md); position: relative; }
     .game-card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
 
     .central-hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 10px; }
     .hub-card {
-      background: #FFFFFF; border-radius: 20px; padding: 20px; border: 3px solid #E2E8F0;
-      box-shadow: 0 6px 0 #E2E8F0; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; gap: 8px; text-align: left;
+      background: #FFFFFF; border-radius: 20px; padding: 20px; border: 3px solid var(--border-color);
+      box-shadow: 0 6px 0 var(--border-color); cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; gap: 8px; text-align: left;
     }
     .hub-card:hover { transform: translateY(-4px); box-shadow: 0 10px 0 var(--primary); border-color: var(--primary); }
     .hub-card-icon { font-size: 40px; }
@@ -113,10 +148,10 @@
 
     .hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; }
     @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
-    .banner-hero-box { border-radius: var(--radius-lg); overflow: hidden; border: 3px solid #FFF; box-shadow: var(--shadow-md); max-height: 380px; }
+    .banner-hero-box { border-radius: var(--radius-lg); overflow: hidden; border: 3px solid #FFF; box-shadow: var(--shadow-md); min-height: 200px; }
     .banner-hero-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .social-bar { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; background: #FFFFFF; padding: 16px; border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); border: 3px solid #E2E8F0; }
+    .social-bar { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; background: #FFFFFF; padding: 16px; border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); border: 3px solid var(--border-color); }
     .social-btn-round { width: 52px; height: 52px; border-radius: 50%; background: #F8FAFC; border: 2px solid #CBD5E1; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 0 #CBD5E1; transition: all 0.2s; }
     .social-btn-round:hover { transform: translateY(-4px); box-shadow: 0 8px 0 var(--primary); border-color: var(--primary); }
     .social-btn-round img { width: 28px; height: 28px; object-fit: contain; }
@@ -125,8 +160,8 @@
     .family-group-title { font-size: 19px; font-weight: 800; color: var(--primary-hover); margin-bottom: 12px; }
     .chars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
     .char-card-item {
-      background: #FFFFFF; border: 3px solid #E2E8F0; border-radius: var(--radius-lg); padding: 16px; text-align: center;
-      cursor: pointer; transition: transform 0.2s, border-color 0.2s; box-shadow: 0 4px 0 #E2E8F0; display: flex; flex-direction: column; align-items: center;
+      background: #FFFFFF; border: 3px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; text-align: center;
+      cursor: pointer; transition: transform 0.2s, border-color 0.2s; box-shadow: 0 4px 0 var(--border-color); display: flex; flex-direction: column; align-items: center;
     }
     .char-card-item:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 8px 0 var(--primary); }
     .char-card-item img { width: 95px; height: 95px; object-fit: contain; margin-bottom: 8px; border-radius: 50%; background: #F8FAFC; padding: 4px; display: block; }
@@ -149,17 +184,19 @@
     .game-choice-btn.correct { background: #10B981 !important; border-color: #059669 !important; box-shadow: 0 5px 0 #047857 !important; color: #FFF !important; }
     .game-choice-btn.wrong { background: #EF4444 !important; border-color: #DC2626 !important; box-shadow: 0 5px 0 #991B1B !important; color: #FFF !important; }
 
-    .level-badge-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 16px; }
+    .level-badge-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
     .level-btn { background: #F1F5F9; border: 2px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; }
     .level-btn.active { background: var(--primary); color: #FFF; border-color: var(--primary); }
+    .level-btn.vip-level { border-color: #FCD34D; background: #FFFBEB; color: #92400E; }
+    .level-btn.vip-level.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; border-color: #B45309; }
 
-    .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 480px; margin: 0 auto; perspective: 1000px; }
+    .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 480px; margin: 0 auto; }
+    .memory-grid.grid-8 { grid-template-columns: repeat(4, 1fr); max-width: 520px; }
     .memory-tile { 
       aspect-ratio: 1; background: #3B82F6; border-radius: 16px; display: flex; align-items: center; justify-content: center; 
-      cursor: pointer; box-shadow: 0 5px 0 #1D4ED8; font-size: 26px; transform-style: preserve-3d; transition: transform 0.35s cubic-bezier(0.4, 0.2, 0.2, 1), background 0.2s;
+      cursor: pointer; box-shadow: 0 5px 0 #1D4ED8; font-size: 26px; transition: transform 0.2s;
     }
-    .memory-tile:active { transform: scale(0.95); }
-    .memory-tile.flipped { background: #FFFFFF; border: 3px solid #3B82F6; transform: rotateY(180deg); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .memory-tile.flipped { background: #FFFFFF; border: 3px solid #3B82F6; }
     .memory-tile img { width: 75%; height: 75%; object-fit: contain; }
 
     .app-modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(5px); z-index: 99999; align-items: center; justify-content: center; padding: 20px; }
@@ -174,7 +211,7 @@
     #appToast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: #1E293B; color: #FFF; padding: 12px 24px; border-radius: 50px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.25); z-index: 999999; transition: transform 0.3s; }
     #appToast.active { transform: translateX(-50%) translateY(0); }
 
-    .breathe-box-interactive { background: #FFFFFF; border: 3px solid #BAE6FD; border-radius: 20px; padding: 24px; text-align: center; margin: 16px 0; }
+    .breathe-box-interactive { background: var(--card-bg); border: 3px solid #BAE6FD; border-radius: 20px; padding: 24px; text-align: center; margin: 16px 0; }
     .breathe-bubble {
       width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, #38BDF8, #0284C7);
       margin: 20px auto; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 800; font-size: 18px;
@@ -230,7 +267,7 @@
       <img id="modalCharImg" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" alt="Personagem" style="width: 110px; height: 110px; object-fit: contain; margin: 0 auto 10px; display: block;">
       <h3 id="modalCharNome" style="color: var(--primary); font-size: 24px; font-weight: 800;"></h3>
       <span id="modalCharTag" style="background: #EFF6FF; color: var(--primary); font-weight: 800; font-size: 13px; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 14px;"></span>
-      <div style="background: #F8FAFC; border: 2px solid #E2E8F0; border-radius: 14px; padding: 14px; text-align: left; font-size: 14px; line-height: 1.6; margin-bottom: 14px;">
+      <div style="background: #F8FAFC; border: 2px solid var(--border-color); border-radius: 14px; padding: 14px; text-align: left; font-size: 14px; line-height: 1.6; margin-bottom: 14px;">
         <p><strong>🌟 Quem é:</strong> <span id="modalCharQuem"></span></p>
         <p><strong>💖 Gosta de:</strong> <span id="modalCharGosto"></span></p>
         <p><strong>💬 Frase:</strong> <em id="modalCharFrase"></em></p>
@@ -262,7 +299,7 @@
         <span id="badgeNivel">Iniciante</span>
       </div>
       <div class="top-actions">
-        <button class="btn-tactile btn-icon-round" onclick="toggleModoCalmo()" title="Modo Calmo Sensory">🌿</button>
+        <button class="btn-tactile btn-icon-round" id="btnModoCalmo" onclick="toggleModoCalmo()" title="Modo Calmo Sensory">🌿</button>
         <button class="btn-tactile btn-icon-round" id="btnAudioToggle" onclick="toggleAudioVoz()" title="Voz do Portal">🔊</button>
         <button class="btn-tactile btn-icon-round" onclick="navegar('perfil')" title="Perfil & Ajustes">⚙️</button>
       </div>
@@ -299,14 +336,14 @@
           <span class="hub-card-icon">🎨</span>
           <span class="hub-card-tag" style="background: #EFF6FF; color: var(--primary);">Jogos Educativos</span>
           <h4 class="hub-card-title">Estúdio de Jogos & Lousa</h4>
-          <p class="hub-card-desc">Lousa mágica com roleta de cores, jogos de contar, memória e quiz da turminha!</p>
+          <p class="hub-card-desc">Lousa mágica, contagem numérica, letras, memória e quiz com fases ampliadas!</p>
         </div>
 
         <div class="hub-card" onclick="navegar('tea')" style="border-color: #BAE6FD;">
           <span class="hub-card-icon">🧩</span>
           <span class="hub-card-tag" style="background: #E0F2FE; color: var(--tea-blue);">Inclusivo & Calmo</span>
           <h4 class="hub-card-title">Espaço TEA do Leo</h4>
-          <p class="hub-card-desc">Pranchas de fala editáveis, termômetro emocional e plástico-bolha pop-it sensorial.</p>
+          <p class="hub-card-desc">Pranchas de fala editáveis, termômetro emocional e pop-it sensorial.</p>
         </div>
 
         <div class="hub-card" onclick="irParaJogosVip('cupcake')" style="border-color: #FBCFE8;">
@@ -378,15 +415,15 @@
         </p>
       </div>
 
+      <!-- BARRA SOCIAL (SEM PINTEREST E COM LINK ATUALIZADO DO YT MUSIC) -->
       <div class="social-bar">
         <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="YouTube"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT.png" alt="YouTube"></a>
-        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-btn-round" title="YouTube Music"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT_MUSIC.png" alt="YT Music"></a>
+        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw?si=cvVp-lO2f5suzj6h" target="_blank" class="social-btn-round" title="YouTube Music"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT_MUSIC.png" alt="YT Music"></a>
         <a href="https://www.instagram.com/turminhaxe_xeu/" target="_blank" class="social-btn-round" title="Instagram"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/INDTAGRAM.png" alt="Instagram"></a>
         <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="TikTok"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TIKTOK.png" alt="TikTok"></a>
         <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6?si=QqrYhcP2REaiUA9LFtjT4g" target="_blank" class="social-btn-round" title="Spotify"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/SPOTIFY.png" alt="Spotify"></a>
         <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-btn-round" title="Facebook"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/FACEBOOK.png" alt="Facebook"></a>
         <a href="https://www.threads.net/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="Threads"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/THRENDS.png" alt="Threads"></a>
-        <a href="https://br.pinterest.com/turminhaxe_xeu" target="_blank" class="social-btn-round" title="Pinterest"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/PINTEREST.png" alt="Pinterest"></a>
       </div>
 
       <div class="game-card">
@@ -455,6 +492,7 @@
           <div class="level-badge-container">
             <button class="level-btn active" id="btnNivelContar-1" onclick="setNivelContar(1)">Nível 1 (1 a 5)</button>
             <button class="level-btn" id="btnNivelContar-2" onclick="setNivelContar(2)">Nível 2 (1 a 10)</button>
+            <button class="level-btn vip-level" id="btnNivelContar-3" onclick="setNivelContar(3)">👑 Nível 3 VIP (1 a 20)</button>
           </div>
           <h3 style="font-size: 20px; margin-bottom: 12px;">Quantos amiguinhos estão no jardim?</h3>
           <div id="boxContarDisplay" style="display: flex; justify-content: center; gap: 12px; min-height: 100px; flex-wrap: wrap; margin-bottom: 20px;"></div>
@@ -465,7 +503,8 @@
         <div id="subgame-letras" class="minigame-container">
           <div class="level-badge-container">
             <button class="level-btn active" id="btnNivelLetras-1" onclick="setNivelLetras(1)">Nível Fácil (2 Opções)</button>
-            <button class="level-btn" id="btnNivelLetras-2" onclick="setNivelLetras(2)">Nível Desafio (4 Opções)</button>
+            <button class="level-btn" id="btnNivelLetras-2" onclick="setNivelLetras(2)">Nível Médio (4 Opções)</button>
+            <button class="level-btn vip-level" id="btnNivelLetras-3" onclick="setNivelLetras(3)">👑 Super Desafio VIP (6 Opções)</button>
           </div>
           <h3 style="font-size: 20px; margin-bottom: 8px;">Com qual letra começa o nome dele(a)?</h3>
           <h2 id="nomeLetraAlvo" style="color: var(--purple); font-size: 26px; font-weight: 800; margin-bottom: 10px;">Xexéu</h2>
@@ -477,7 +516,8 @@
         <div id="subgame-memoria" class="minigame-container">
           <div class="level-badge-container">
             <button class="level-btn active" id="btnNivelMemoria-1" onclick="setNivelMemoria(1)">Fácil (4 Pares)</button>
-            <button class="level-btn" id="btnNivelMemoria-2" onclick="setNivelMemoria(2)">Super Memória (6 Pares)</button>
+            <button class="level-btn" id="btnNivelMemoria-2" onclick="setNivelMemoria(2)">Médio (6 Pares)</button>
+            <button class="level-btn vip-level" id="btnNivelMemoria-3" onclick="setNivelMemoria(3)">👑 Mega Memória VIP (8 Pares)</button>
           </div>
           <h3 style="font-size: 20px; margin-bottom: 16px;">Encontre todos os pares!</h3>
           <div class="memory-grid" id="memoryGridContainer"></div>
@@ -487,7 +527,8 @@
         <div id="subgame-quiz" class="minigame-container">
           <div class="level-badge-container">
             <button class="level-btn active" id="btnNivelQuiz-1" onclick="setNivelQuiz(1)">Nível 1 (2 Nomes)</button>
-            <button class="level-btn" id="btnNivelQuiz-2" onclick="setNivelQuiz(2)">Nível 2 (4 Nomes)</button>
+            <button class="level-btn" id="btnNivelQuiz-2" onclick="setNivelQuiz(2)">Nível 2 (3 Nomes)</button>
+            <button class="level-btn vip-level" id="btnNivelQuiz-3" onclick="setNivelQuiz(3)">👑 Quiz Completo VIP (4 Nomes + Família Toda)</button>
           </div>
           <h3 style="font-size: 20px; margin-bottom: 10px;">Quem é este personagem da turminha?</h3>
           <img id="imgQuizAlvo" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" alt="Quiz Personagem" style="width: 120px; height: 120px; object-fit: contain; margin: 0 auto 16px; display: block;">
@@ -545,7 +586,7 @@
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Clique no cartão para falar:</p>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px;" id="caaContainerCards"></div>
           
-          <div style="margin-top: 16px; padding-top: 14px; border-top: 2px solid #E2E8F0;">
+          <div style="margin-top: 16px; padding-top: 14px; border-top: 2px solid var(--border-color);">
             <h5 style="font-size: 14px; margin-bottom: 8px; color: var(--text-main);">➕ Criar Cartão Personalizado</h5>
             <div style="display: flex; gap: 8px;">
               <input type="text" id="novoCaaEmoji" class="form-input" style="width: 65px; margin-bottom: 0; text-align: center;" placeholder="🧸">
@@ -673,6 +714,8 @@
             <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
               <li><strong>📁 Drive de Atividades:</strong> Desenhos para colorir em alta resolução, Wallpapers e Atividades para imprimir.</li>
               <li><strong>🧩 Drive Azul TEA:</strong> Materiais adaptados e histórias sociais (Em breve).</li>
+              <li><strong>🎮 Níveis Avançados:</strong> Fases VIP no Jogo de Contar, Letras, Memória e Quiz.</li>
+              <li><strong>🔊 Sintetizador Avançado:</strong> Troca de timbres de voz e controle fino de velocidade.</li>
               <li>🧁 Confeitaria da Vovó Hilda e Cata-Estrelas.</li>
               <li>Todos os contornos na lousa mágica.</li>
               <li>Prancha CAA de fala sem limites.</li>
@@ -727,12 +770,15 @@
 
       <div class="game-card" style="border-color: #F59E0B;">
         <div class="game-card-title" style="color: #92400E;">
-          <span>⚙️ Segurança & Ajustes de Voz (Pais / VIP)</span>
+          <span>⚙️ Segurança & Ajustes Profundos (Pais / VIP)</span>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
-          <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid #E2E8F0;">
+          <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid var(--border-color);" id="cardVozVipBox">
             <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--primary-hover);">🔊 Sintetizador de Voz (VIP)</h4>
+            <div id="bloqueioVozAviso" style="display: none; background: #FEF3C7; padding: 8px 12px; border-radius: 8px; font-size: 12px; color: #92400E; margin-bottom: 8px; font-weight: 700;">
+              🔒 Alteração de voz e velocidade exclusiva para membros VIP!
+            </div>
             <select id="selectVozVip" class="form-input" style="margin-bottom: 10px;" onchange="mudarVozSelecionada(this.value)">
               <option value="">Voz padrão do navegador</option>
             </select>
@@ -740,13 +786,13 @@
             <input type="range" id="rangeVelocidadeFala" min="0.7" max="1.3" step="0.05" value="1.0" style="width: 100%;" oninput="ajustarVelocidadeFala(this.value)">
           </div>
 
-          <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid #E2E8F0;">
+          <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid var(--border-color);">
             <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--primary-hover);">🔒 PIN dos Pais</h4>
             <input type="password" id="inputNovoPin" class="form-input" placeholder="Novo PIN (4 dígitos)" maxlength="4" style="margin-bottom: 8px;">
             <button class="btn-tactile primary" style="width: 100%;" onclick="salvarNovoPin()">Salvar PIN</button>
           </div>
 
-          <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid #E2E8F0;">
+          <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid var(--border-color);">
             <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--primary-hover);">👑 Status da Assinatura</h4>
             <p style="font-size: 13px; font-weight: 700; margin-bottom: 10px;" id="txtStatusVipAtual">Plano: <strong>Grátis</strong></p>
             <button class="btn-tactile" style="color: #EF4444; border-color: #FCA5A5; width:100%;" onclick="deslogarVip()">Sair do VIP</button>
@@ -876,8 +922,8 @@
         window.speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(texto);
         u.lang = 'pt-BR';
-        u.rate = velocidadeFala;
-        if (vozesDisponiveis[vozSelecionadaIdx]) u.voice = vozesDisponiveis[vozSelecionadaIdx];
+        u.rate = isVip ? velocidadeFala : 1.0;
+        if (isVip && vozesDisponiveis[vozSelecionadaIdx]) u.voice = vozesDisponiveis[vozSelecionadaIdx];
         window.speechSynthesis.speak(u);
       } catch(e) {}
     }
@@ -890,8 +936,10 @@
 
     function toggleModoCalmo() {
       const ativado = document.body.classList.toggle('sensory-mode');
-      exibirToast(ativado ? 'Modo Calmo Ativado' : 'Modo Padrão');
-      falarTexto(ativado ? 'Modo Calmo ativado.' : 'Modo Padrão ativado.');
+      const btn = document.getElementById('btnModoCalmo');
+      if (btn) btn.innerText = ativado ? '🌸' : '🌿';
+      exibirToast(ativado ? 'Modo Calmo Ativado: Ambiente Relaxante e Seguro' : 'Modo Padrão Ativado');
+      falarTexto(ativado ? 'Modo Calmo ativado. Um ambiente tranquilo para você.' : 'Modo Padrão ativado.');
     }
 
     function exibirToast(msg) {
@@ -915,17 +963,19 @@
       if (!audioAtivo) return;
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
+        const osc = audioCtx.createGain ? audioCtx.createOscillator() : null;
         const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(450, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.08);
-        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.08);
+        if (osc && gain) {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(450, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.08);
+          gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
+        }
       } catch (e) {}
     }
 
@@ -1074,6 +1124,13 @@
           `;
         }
       }
+
+      const avisoVoz = document.getElementById('bloqueioVozAviso');
+      const selectVoz = document.getElementById('selectVozVip');
+      const rangeVel = document.getElementById('rangeVelocidadeFala');
+      if (avisoVoz) avisoVoz.style.display = isVip ? 'none' : 'block';
+      if (selectVoz) selectVoz.disabled = !isVip;
+      if (rangeVel) rangeVel.disabled = !isVip;
 
       renderThumbnailsLousa();
       renderConteudoJogosDocesVip();
@@ -1449,6 +1506,11 @@
     }
 
     function setNivelContar(n) {
+      if (n === 3 && !isVip) {
+        alert('🔒 Nível 3 VIP (1 a 20) exclusivo para membros do Clube VIP!');
+        navegar('vip');
+        return;
+      }
       nivelContar = n;
       document.querySelectorAll('[id^="btnNivelContar-"]').forEach(b => b.classList.remove('active'));
       const btn = document.getElementById('btnNivelContar-' + n);
@@ -1456,7 +1518,7 @@
       iniciarJogoContar();
     }
     function iniciarJogoContar() {
-      const max = nivelContar === 1 ? 5 : 10;
+      const max = nivelContar === 1 ? 5 : (nivelContar === 2 ? 10 : 20);
       const q = Math.floor(Math.random() * max) + 1;
       const char = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
       const box = document.getElementById('boxContarDisplay');
@@ -1466,14 +1528,15 @@
         const im = document.createElement('img');
         im.src = char.img;
         im.alt = char.nome;
-        im.style.cssText = 'width:55px; height:55px; object-fit:contain; animation: fadeIn 0.2s; display:inline-block;';
+        im.style.cssText = 'width:48px; height:48px; object-fit:contain; animation: fadeIn 0.2s; display:inline-block;';
         box.appendChild(im);
       }
       const bBox = document.getElementById('boxContarBotoes');
       if (!bBox) return;
       bBox.innerHTML = '';
       let opcoes = [q];
-      while(opcoes.length < (nivelContar === 1 ? 3 : 5)) {
+      const qtdOpcoes = nivelContar === 1 ? 3 : (nivelContar === 2 ? 5 : 6);
+      while(opcoes.length < qtdOpcoes) {
         let r = Math.floor(Math.random() * max) + 1;
         if(!opcoes.includes(r)) opcoes.push(r);
       }
@@ -1498,6 +1561,11 @@
     }
 
     function setNivelLetras(n) {
+      if (n === 3 && !isVip) {
+        alert('🔒 Super Desafio VIP (6 Opções) exclusivo para membros do Clube VIP!');
+        navegar('vip');
+        return;
+      }
       nivelLetras = n;
       document.querySelectorAll('[id^="btnNivelLetras-"]').forEach(b => b.classList.remove('active'));
       const btn = document.getElementById('btnNivelLetras-' + n);
@@ -1505,7 +1573,8 @@
       iniciarJogoLetras();
     }
     function iniciarJogoLetras() {
-      const p = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
+      const poolPersonagens = nivelLetras === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 8);
+      const p = poolPersonagens[Math.floor(Math.random() * poolPersonagens.length)];
       const nomeTarget = document.getElementById('nomeLetraAlvo');
       const img = document.getElementById('imgLetraAlvo');
       if (nomeTarget) nomeTarget.innerText = p.nome;
@@ -1517,7 +1586,7 @@
       if (!bBox) return;
       bBox.innerHTML = '';
       
-      const qtd = nivelLetras === 1 ? 2 : 4;
+      const qtd = nivelLetras === 1 ? 2 : (nivelLetras === 2 ? 4 : 6);
       const poolLetras = ['A', 'B', 'C', 'H', 'I', 'J', 'L', 'M', 'N', 'S', 'T', 'X'].filter(l => l !== p.letra);
       const opcoes = [p.letra, ...poolLetras.sort(() => Math.random() - 0.5).slice(0, qtd - 1)].sort(() => Math.random() - 0.5);
 
@@ -1542,6 +1611,11 @@
     }
 
     function setNivelMemoria(n) {
+      if (n === 3 && !isVip) {
+        alert('🔒 Mega Memória VIP (8 Pares) exclusivo para membros do Clube VIP!');
+        navegar('vip');
+        return;
+      }
       nivelMemoria = n;
       document.querySelectorAll('[id^="btnNivelMemoria-"]').forEach(b => b.classList.remove('active'));
       const btn = document.getElementById('btnNivelMemoria-' + n);
@@ -1552,7 +1626,9 @@
       const grid = document.getElementById('memoryGridContainer');
       if (!grid) return;
       grid.innerHTML = '';
-      const qtdPares = nivelMemoria === 1 ? 4 : 6;
+      const qtdPares = nivelMemoria === 1 ? 4 : (nivelMemoria === 2 ? 6 : 8);
+      grid.className = qtdPares === 8 ? 'memory-grid grid-8' : 'memory-grid';
+      
       const pool = [...PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, qtdPares);
       const cartas = [...pool, ...pool].sort(() => Math.random() - 0.5);
       let sel1 = null, trava = false;
@@ -1591,6 +1667,11 @@
     }
 
     function setNivelQuiz(n) {
+      if (n === 3 && !isVip) {
+        alert('🔒 Quiz Completo VIP com todos os personagens exclusivo para membros do Clube VIP!');
+        navegar('vip');
+        return;
+      }
       nivelQuiz = n;
       document.querySelectorAll('[id^="btnNivelQuiz-"]').forEach(b => b.classList.remove('active'));
       const btn = document.getElementById('btnNivelQuiz-' + n);
@@ -1598,7 +1679,8 @@
       iniciarJogoQuiz();
     }
     function iniciarJogoQuiz() {
-      const p = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
+      const poolQuiz = nivelQuiz === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 6);
+      const p = poolQuiz[Math.floor(Math.random() * poolQuiz.length)];
       const img = document.getElementById('imgQuizAlvo');
       if (img) {
         img.src = p.img;
@@ -1608,8 +1690,8 @@
       if (!bBox) return;
       bBox.innerHTML = '';
 
-      const qtd = nivelQuiz === 1 ? 2 : 4;
-      const outros = PERSONAGENS.filter(x => x.nome !== p.nome).sort(() => Math.random() - 0.5).slice(0, qtd - 1);
+      const qtd = nivelQuiz === 1 ? 2 : (nivelQuiz === 2 ? 3 : 4);
+      const outros = poolQuiz.filter(x => x.nome !== p.nome).sort(() => Math.random() - 0.5).slice(0, qtd - 1);
       const opcoes = [p.nome, ...outros.map(o => o.nome)].sort(() => Math.random() - 0.5);
 
       opcoes.forEach(nome => {
@@ -1759,7 +1841,7 @@
       c.innerHTML = '';
       rotinas.forEach((r, i) => {
         const d = document.createElement('div');
-        d.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:#FFF; border:2px solid #E2E8F0; padding:12px 16px; border-radius:12px;';
+        d.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:#FFF; border:2px solid var(--border-color); padding:12px 16px; border-radius:12px;';
         d.innerHTML = `
           <span style="font-weight:700; ${r.feito ? 'text-decoration:line-through; color:#94A3B8;' : ''}">${r.texto}</span>
           <div style="display:flex; gap:8px;">
@@ -1844,6 +1926,7 @@
       falarTexto('Voz alterada com sucesso!');
     }
     function ajustarVelocidadeFala(val) {
+      if (!isVip) { alert('🔒 Ajuste de velocidade exclusivo para membros VIP!'); return; }
       velocidadeFala = parseFloat(val);
       localStorage.setItem('xexeu_voz_vel', val);
       const label = document.getElementById('labelVelocidadeFala');
