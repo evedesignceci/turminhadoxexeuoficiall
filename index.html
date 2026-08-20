@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Turminha do Xexéu — Portal Oficial & Central</title>
+  <title>Turminha do Xexéu — Portal Oficial</title>
   
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,6 @@
       --green: #10B981;
       --green-dark: #059669;
       --tea-blue: #0284C7;
-      --tea-bg: #E0F2FE;
       --bg-canvas: #F0F7FF;
       --card-bg: #FFFFFF;
       --text-main: #1E293B;
@@ -67,11 +66,8 @@
     }
     .btn-tactile:active { transform: translateY(4px); box-shadow: 0 1px 0px #CBD5E1; }
     .btn-tactile.primary { background: var(--primary); border-color: var(--primary-hover); color: #FFF; box-shadow: var(--shadow-3d-primary); }
-    .btn-tactile.primary:active { box-shadow: 0 1px 0px #1E40AF; }
     .btn-tactile.vip { background: linear-gradient(135deg, #F59E0B, #D97706); border-color: #B45309; color: #FFF; box-shadow: var(--shadow-3d-vip); }
-    .btn-tactile.vip:active { box-shadow: 0 1px 0px #78350F; }
     .btn-tactile.green { background: var(--green); border-color: var(--green-dark); color: #FFF; box-shadow: var(--shadow-3d-green); }
-    .btn-tactile.green:active { box-shadow: 0 1px 0px #047857; }
     .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
     .btn-icon-round { width: 46px; height: 46px; border-radius: 50%; padding: 0; font-size: 18px; }
 
@@ -113,8 +109,8 @@
 
     .hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; }
     @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
-    .banner-hero-box { border-radius: var(--radius-lg); overflow: hidden; border: 3px solid #FFF; box-shadow: var(--shadow-md); max-height: 380px; }
-    .banner-hero-box img { width: 100%; height: 100%; object-fit: cover; }
+    .banner-hero-box { border-radius: var(--radius-lg); overflow: hidden; border: 3px solid #FFF; box-shadow: var(--shadow-md); min-height: 200px; }
+    .banner-hero-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     .social-bar { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; background: #FFFFFF; padding: 16px; border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); border: 3px solid #E2E8F0; }
     .social-btn-round { width: 52px; height: 52px; border-radius: 50%; background: #F8FAFC; border: 2px solid #CBD5E1; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 0 #CBD5E1; transition: all 0.2s; }
@@ -153,33 +149,12 @@
     .level-btn { background: #F1F5F9; border: 2px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; }
     .level-btn.active { background: var(--primary); color: #FFF; border-color: var(--primary); }
 
-    .memory-grid { 
-      display: grid; 
-      grid-template-columns: repeat(4, 1fr); 
-      gap: 12px; 
-      max-width: 480px; 
-      margin: 0 auto; 
-      perspective: 1000px; 
-    }
+    .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 480px; margin: 0 auto; }
     .memory-tile { 
-      aspect-ratio: 1; 
-      background: #3B82F6; 
-      border-radius: 16px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
-      cursor: pointer; 
-      box-shadow: 0 5px 0 #1D4ED8; 
-      transform-style: preserve-3d; 
-      transition: transform 0.35s cubic-bezier(0.4, 0.2, 0.2, 1), background 0.2s;
+      aspect-ratio: 1; background: #3B82F6; border-radius: 16px; display: flex; align-items: center; justify-content: center; 
+      cursor: pointer; box-shadow: 0 5px 0 #1D4ED8; font-size: 26px; transition: transform 0.2s;
     }
-    .memory-tile:active { transform: scale(0.95); }
-    .memory-tile.flipped { 
-      background: #FFFFFF; 
-      border: 3px solid #3B82F6; 
-      transform: rotateY(180deg); 
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
-    }
+    .memory-tile.flipped { background: #FFFFFF; border: 3px solid #3B82F6; }
     .memory-tile img { width: 75%; height: 75%; object-fit: contain; }
 
     .app-modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(5px); z-index: 99999; align-items: center; justify-content: center; padding: 20px; }
@@ -247,7 +222,7 @@
   <div id="modalPersonagem" class="app-modal">
     <div class="modal-content">
       <button class="modal-close-btn" onclick="fecharModalPersonagem()">✕</button>
-      <img id="modalCharImg" src="" style="width: 110px; height: 110px; object-fit: contain; margin-bottom: 10px;">
+      <img id="modalCharImg" src="" style="width: 110px; height: 110px; object-fit: contain; margin-bottom: 10px; display: none;">
       <h3 id="modalCharNome" style="color: var(--primary); font-size: 24px; font-weight: 800;"></h3>
       <span id="modalCharTag" style="background: #EFF6FF; color: var(--primary); font-weight: 800; font-size: 13px; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 14px;"></span>
       <div style="background: #F8FAFC; border: 2px solid #E2E8F0; border-radius: 14px; padding: 14px; text-align: left; font-size: 14px; line-height: 1.6; margin-bottom: 14px;">
@@ -259,7 +234,7 @@
     </div>
   </div>
 
-  <!-- BARRA FLUTUANTE VIP DINÂMICA (SOME AO VIRAR VIP) -->
+  <!-- BARRA FLUTUANTE VIP DINÂMICA (SOME SE FOR VIP) -->
   <div class="vip-floating-bar" id="barraFlutuanteVip" onclick="navegar('vip')">
     <span style="font-size: 22px;">👑</span>
     <div>
@@ -356,7 +331,7 @@
     <div id="page-inicio" class="page-box">
       <div class="hero-grid">
         <div class="banner-hero-box">
-          <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994339/BANNER_SITE_TURMINHA_DO_XEXEU.png" alt="Banner Oficial">
+          <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994339/BANNER_SITE_TURMINHA_DO_XEXEU.png" alt="Banner Turminha do Xexéu">
         </div>
 
         <div class="game-card" style="display: flex; flex-direction: column; justify-content: space-between;">
@@ -489,7 +464,7 @@
           </div>
           <h3 style="font-size: 20px; margin-bottom: 8px;">Com qual letra começa o nome dele(a)?</h3>
           <h2 id="nomeLetraAlvo" style="color: var(--purple); font-size: 26px; font-weight: 800; margin-bottom: 10px;">Xexéu</h2>
-          <img id="imgLetraAlvo" src="" style="width: 120px; height: 120px; object-fit: contain; margin-bottom: 16px;">
+          <img id="imgLetraAlvo" src="" style="width: 120px; height: 120px; object-fit: contain; margin-bottom: 16px; display: none;">
           <div id="boxLetrasBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
@@ -510,16 +485,16 @@
             <button class="level-btn" id="btnNivelQuiz-2" onclick="setNivelQuiz(2)">Nível 2 (4 Nomes)</button>
           </div>
           <h3 style="font-size: 20px; margin-bottom: 10px;">Quem é este personagem da turminha?</h3>
-          <img id="imgQuizAlvo" src="" style="width: 120px; height: 120px; object-fit: contain; margin-bottom: 16px;">
+          <img id="imgQuizAlvo" src="" style="width: 120px; height: 120px; object-fit: contain; margin-bottom: 16px; display: none;">
           <div id="boxQuizBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- VIP: FÁBRICA DE BOLINHOS -->
+        <!-- VIP: BOLINHOS -->
         <div id="subgame-cupcake" class="minigame-container">
           <div id="boxConteudoCupcake"></div>
         </div>
 
-        <!-- VIP: CATA-ESTRELINHAS -->
+        <!-- VIP: ESTRELAS -->
         <div id="subgame-estrelas" class="minigame-container">
           <div id="boxConteudoEstrelas"></div>
         </div>
@@ -676,7 +651,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA: CLUBE VIP COM LOGIN E PRIMEIRO ACESSO -->
+    <!-- PÁGINA: CLUBE VIP -->
     <div id="page-vip" class="page-box">
       <div class="game-card" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D; text-align: center;">
         <span style="font-size: 52px;">⭐</span>
@@ -700,27 +675,27 @@
             </ul>
           </div>
 
-          <!-- BOX DE ACESSO VIP: LOGIN & PRIMEIRO ACESSO -->
+          <!-- BOX DE ACESSO VIP COM ABAS -->
           <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #CBD5E1; text-align: left;">
             <div style="display: flex; gap: 8px; margin-bottom: 14px;">
-              <button id="tabBtnLoginVip" class="btn-tactile primary" style="flex: 1; padding: 8px 12px; font-size: 13px;" onclick="trocarAbaVipAuth('login')">🔑 Já sou VIP</button>
-              <button id="tabBtnCadastroVip" class="btn-tactile" style="flex: 1; padding: 8px 12px; font-size: 13px;" onclick="trocarAbaVipAuth('cadastro')">✨ 1º Acesso (Criar Senha)</button>
+              <button id="tabBtnLoginVip" class="btn-tactile primary" style="flex: 1; padding: 8px 10px; font-size: 13px;" onclick="trocarAbaVipAuth('login')">🔑 Entrar / Mestre</button>
+              <button id="tabBtnCadastroVip" class="btn-tactile" style="flex: 1; padding: 8px 10px; font-size: 13px;" onclick="trocarAbaVipAuth('cadastro')">✨ 1º Acesso</button>
             </div>
 
             <!-- FORM LOGIN -->
             <div id="formVipLogin">
               <h4 style="font-size: 15px; color: #1E293B; margin-bottom: 8px;">Acessar Clube VIP:</h4>
-              <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail cadastrado (ou deixe em branco se for Mestre)">
-              <input type="password" id="loginSenhaVip" class="form-input" placeholder="Sua senha de acesso">
+              <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail cadastrado (ou deixe vazio para Senha Mestra)">
+              <input type="password" id="loginSenhaVip" class="form-input" placeholder="Senha de acesso ou Senha Mestra">
               <button class="btn-tactile primary" id="btnEntrarVipSubmit" style="width: 100%;" onclick="executarLoginVip()">Entrar no VIP 🚀</button>
             </div>
 
             <!-- FORM PRIMEIRO ACESSO -->
             <div id="formVipCadastro" style="display: none;">
-              <h4 style="font-size: 15px; color: #1E293B; margin-bottom: 8px;">Primeiro Acesso após a compra:</h4>
-              <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Digite o mesmo e-mail usado no pagamento do Kiwify e escolha sua senha:</p>
-              <input type="email" id="cadEmailVip" class="form-input" placeholder="Seu e-mail de compra no Kiwify">
-              <input type="password" id="cadSenhaVip" class="form-input" placeholder="Crie sua nova senha">
+              <h4 style="font-size: 15px; color: #1E293B; margin-bottom: 8px;">Primeiro Acesso:</h4>
+              <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Digite o e-mail da compra no Kiwify e escolha sua senha:</p>
+              <input type="email" id="cadEmailVip" class="form-input" placeholder="Seu e-mail do Kiwify">
+              <input type="password" id="cadSenhaVip" class="form-input" placeholder="Crie uma senha de acesso">
               <button class="btn-tactile green" id="btnCadVipSubmit" style="width: 100%;" onclick="executarCadastroVip()">Criar Senha e Liberar VIP ⭐</button>
             </div>
           </div>
@@ -1024,8 +999,6 @@
 
     function atualizarInterfaceVipCompleta() {
       const barVip = document.getElementById('barraFlutuanteVip');
-      
-      // Barra flutuante só aparece se NÃO for VIP
       if (barVip) {
         barVip.style.display = isVip ? 'none' : 'flex';
       }
@@ -1036,7 +1009,7 @@
       const tabCup = document.getElementById('subtab-cupcake');
       const tabEst = document.getElementById('subtab-estrelas');
       if (tabCup) {
-        tabCup.innerText = isVip ? "🧁 Fábrica de Bolinhos" : "🔒 Bolinhos VIP";
+        tabCup.innerText = isVip ? "🧁 Bolinhos da Vovó" : "🔒 Bolinhos VIP";
         tabCup.style.color = isVip ? "var(--pink)" : "#BE185D";
       }
       if (tabEst) {
@@ -1217,11 +1190,11 @@
       }
     }
 
-    // LOGIN
+    // LOGIN / SENHA MESTRA
     function executarLoginVip() {
       const email = document.getElementById('loginEmailVip').value.trim();
       const senha = document.getElementById('loginSenhaVip').value.trim();
-      if (!senha) return alert('Preencha a sua senha de acesso!');
+      if (!senha) return alert('Preencha a sua senha de acesso ou a Senha Mestra!');
 
       const btn = document.getElementById('btnEntrarVipSubmit');
       if (btn) btn.innerText = "Verificando... ⏳";
@@ -1253,7 +1226,7 @@
       });
     }
 
-    // CADASTRO / PRIMEIRO ACESSO
+    // PRIMEIRO ACESSO
     function executarCadastroVip() {
       const email = document.getElementById('cadEmailVip').value.trim();
       const senha = document.getElementById('cadSenhaVip').value.trim();
@@ -1480,7 +1453,9 @@
     function iniciarJogoLetras() {
       const p = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
       document.getElementById('nomeLetraAlvo').innerText = p.nome;
-      document.getElementById('imgLetraAlvo').src = p.img;
+      const img = document.getElementById('imgLetraAlvo');
+      img.src = p.img;
+      img.style.display = 'inline-block';
       const bBox = document.getElementById('boxLetrasBotoes');
       bBox.innerHTML = '';
       
@@ -1563,7 +1538,9 @@
     }
     function iniciarJogoQuiz() {
       const p = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
-      document.getElementById('imgQuizAlvo').src = p.img;
+      const img = document.getElementById('imgQuizAlvo');
+      img.src = p.img;
+      img.style.display = 'inline-block';
       const bBox = document.getElementById('boxQuizBotoes');
       bBox.innerHTML = '';
 
@@ -1682,7 +1659,9 @@
     }
 
     function abrirModalChar(p) {
-      document.getElementById('modalCharImg').src = p.img;
+      const img = document.getElementById('modalCharImg');
+      img.src = p.img;
+      img.style.display = 'inline-block';
       document.getElementById('modalCharNome').innerText = p.nome;
       document.getElementById('modalCharTag').innerText = p.tag;
       document.getElementById('modalCharQuem').innerText = p.quem;
