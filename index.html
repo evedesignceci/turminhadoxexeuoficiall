@@ -125,7 +125,7 @@
       cursor: pointer; transition: transform 0.2s, border-color 0.2s; box-shadow: 0 4px 0 #E2E8F0; display: flex; flex-direction: column; align-items: center;
     }
     .char-card-item:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 8px 0 var(--primary); }
-    .char-card-item img { width: 95px; height: 95px; object-fit: contain; margin-bottom: 8px; border-radius: 50%; background: #F8FAFC; padding: 4px; }
+    .char-card-item img { width: 95px; height: 95px; object-fit: contain; margin-bottom: 8px; border-radius: 50%; background: #F8FAFC; padding: 4px; display: block; }
     .char-card-item h4 { font-size: 17px; font-weight: 800; color: var(--text-main); margin-bottom: 4px; }
     .char-card-item span { font-size: 12px; font-weight: 700; color: var(--primary); background: #EFF6FF; padding: 3px 10px; border-radius: 12px; }
 
@@ -222,7 +222,7 @@
   <div id="modalPersonagem" class="app-modal">
     <div class="modal-content">
       <button class="modal-close-btn" onclick="fecharModalPersonagem()">✕</button>
-      <img id="modalCharImg" src="" style="width: 110px; height: 110px; object-fit: contain; margin-bottom: 10px; display: none;">
+      <img id="modalCharImg" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" alt="Personagem" style="width: 110px; height: 110px; object-fit: contain; margin: 0 auto 10px; display: block;">
       <h3 id="modalCharNome" style="color: var(--primary); font-size: 24px; font-weight: 800;"></h3>
       <span id="modalCharTag" style="background: #EFF6FF; color: var(--primary); font-weight: 800; font-size: 13px; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 14px;"></span>
       <div style="background: #F8FAFC; border: 2px solid #E2E8F0; border-radius: 14px; padding: 14px; text-align: left; font-size: 14px; line-height: 1.6; margin-bottom: 14px;">
@@ -464,7 +464,7 @@
           </div>
           <h3 style="font-size: 20px; margin-bottom: 8px;">Com qual letra começa o nome dele(a)?</h3>
           <h2 id="nomeLetraAlvo" style="color: var(--purple); font-size: 26px; font-weight: 800; margin-bottom: 10px;">Xexéu</h2>
-          <img id="imgLetraAlvo" src="" style="width: 120px; height: 120px; object-fit: contain; margin-bottom: 16px; display: none;">
+          <img id="imgLetraAlvo" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" alt="Letra Alvo" style="width: 120px; height: 120px; object-fit: contain; margin: 0 auto 16px; display: block;">
           <div id="boxLetrasBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
@@ -485,7 +485,7 @@
             <button class="level-btn" id="btnNivelQuiz-2" onclick="setNivelQuiz(2)">Nível 2 (4 Nomes)</button>
           </div>
           <h3 style="font-size: 20px; margin-bottom: 10px;">Quem é este personagem da turminha?</h3>
-          <img id="imgQuizAlvo" src="" style="width: 120px; height: 120px; object-fit: contain; margin-bottom: 16px; display: none;">
+          <img id="imgQuizAlvo" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" alt="Quiz Personagem" style="width: 120px; height: 120px; object-fit: contain; margin: 0 auto 16px; display: block;">
           <div id="boxQuizBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
@@ -675,7 +675,7 @@
             </ul>
           </div>
 
-          <!-- BOX DE ACESSO VIP COM ABAS -->
+          <!-- BOX DE ACESSO VIP -->
           <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #CBD5E1; text-align: left;">
             <div style="display: flex; gap: 8px; margin-bottom: 14px;">
               <button id="tabBtnLoginVip" class="btn-tactile primary" style="flex: 1; padding: 8px 10px; font-size: 13px;" onclick="trocarAbaVipAuth('login')">🔑 Entrar / Mestre</button>
@@ -685,7 +685,7 @@
             <!-- FORM LOGIN -->
             <div id="formVipLogin">
               <h4 style="font-size: 15px; color: #1E293B; margin-bottom: 8px;">Acessar Clube VIP:</h4>
-              <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail cadastrado (ou deixe vazio para Senha Mestra)">
+              <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail (ou deixe vazio para Senha Mestra)">
               <input type="password" id="loginSenhaVip" class="form-input" placeholder="Senha de acesso ou Senha Mestra">
               <button class="btn-tactile primary" id="btnEntrarVipSubmit" style="width: 100%;" onclick="executarLoginVip()">Entrar no VIP 🚀</button>
             </div>
@@ -765,7 +765,10 @@
     let vozSelecionadaIdx = localStorage.getItem('xexeu_voz_idx') || 0;
     let velocidadeFala = parseFloat(localStorage.getItem('xexeu_voz_vel') || 1.0);
 
-    let linksDrivesSeguros = JSON.parse(localStorage.getItem('xexeu_drives_cache')) || null;
+    let linksDrivesSeguros = JSON.parse(localStorage.getItem('xexeu_drives_cache')) || {
+      atividades: "https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link",
+      tea: "https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link"
+    };
 
     let bolinhoMassa = '🧁';
     let bolinhoCobertura = '🍓';
@@ -1190,7 +1193,6 @@
       }
     }
 
-    // LOGIN / SENHA MESTRA
     function executarLoginVip() {
       const email = document.getElementById('loginEmailVip').value.trim();
       const senha = document.getElementById('loginSenhaVip').value.trim();
@@ -1219,14 +1221,22 @@
         }
       })
       .catch(() => {
-        alert('Erro de conexão ao verificar assinatura. Tente novamente em instantes.');
+        // Fallback local se a senha mestra for digitada sem rede
+        if (senha === "65628467") {
+          isVip = true;
+          localStorage.setItem('xexeu_vip', 'true');
+          alert('🎉 Acesso Mestre Ativado Offline!');
+          atualizarInterfaceVipCompleta();
+          navegar('central');
+        } else {
+          alert('Erro de conexão ao verificar assinatura. Tente novamente.');
+        }
       })
       .finally(() => {
         if (btn) btn.innerText = "Entrar no VIP 🚀";
       });
     }
 
-    // PRIMEIRO ACESSO
     function executarCadastroVip() {
       const email = document.getElementById('cadEmailVip').value.trim();
       const senha = document.getElementById('cadSenhaVip').value.trim();
@@ -1255,7 +1265,7 @@
         }
       })
       .catch(() => {
-        alert('Erro de conexão ao cadastrar senha. Tente novamente em instantes.');
+        alert('Erro de conexão ao cadastrar senha. Tente novamente.');
       })
       .finally(() => {
         if (btn) btn.innerText = "Criar Senha e Liberar VIP ⭐";
@@ -1362,7 +1372,7 @@
           b.innerHTML = `🔒 ${p.nome} (VIP)`;
           b.onclick = () => { alert(`⭐ O contorno de ${p.nome} é exclusivo do Clube VIP!`); navegar('vip'); };
         } else {
-          b.innerHTML = `<img src="${p.img}" style="width:22px;height:22px;object-fit:contain;"> ${p.nome}`;
+          b.innerHTML = `<img src="${p.img}" alt="${p.nome}" style="width:22px;height:22px;object-fit:contain;display:inline-block;vertical-align:middle;margin-right:4px;"> ${p.nome}`;
           b.onclick = () => {
             limparCanvasLousa();
             const img = new Image();
@@ -1414,7 +1424,8 @@
       for (let i = 0; i < q; i++) {
         const im = document.createElement('img');
         im.src = char.img;
-        im.style.cssText = 'width:55px; height:55px; object-fit:contain; animation: fadeIn 0.2s;';
+        im.alt = char.nome;
+        im.style.cssText = 'width:55px; height:55px; object-fit:contain; animation: fadeIn 0.2s; display:inline-block;';
         box.appendChild(im);
       }
       const bBox = document.getElementById('boxContarBotoes');
@@ -1455,7 +1466,8 @@
       document.getElementById('nomeLetraAlvo').innerText = p.nome;
       const img = document.getElementById('imgLetraAlvo');
       img.src = p.img;
-      img.style.display = 'inline-block';
+      img.alt = p.nome;
+      img.style.display = 'block';
       const bBox = document.getElementById('boxLetrasBotoes');
       bBox.innerHTML = '';
       
@@ -1504,7 +1516,7 @@
         tile.onclick = () => {
           if (trava || tile.classList.contains('flipped')) return;
           tile.classList.add('flipped');
-          tile.innerHTML = `<img src="${p.img}">`;
+          tile.innerHTML = `<img src="${p.img}" alt="${p.nome}" style="display:block;">`;
 
           if (!sel1) {
             sel1 = { tile, p };
@@ -1540,7 +1552,8 @@
       const p = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
       const img = document.getElementById('imgQuizAlvo');
       img.src = p.img;
-      img.style.display = 'inline-block';
+      img.alt = p.nome;
+      img.style.display = 'block';
       const bBox = document.getElementById('boxQuizBotoes');
       bBox.innerHTML = '';
 
@@ -1652,7 +1665,7 @@
         if (!tg) return;
         const d = document.createElement('div');
         d.className = 'char-card-item';
-        d.innerHTML = `<img src="${p.img}"><h4>${p.nome}</h4><span>${p.tag}</span>`;
+        d.innerHTML = `<img src="${p.img}" alt="${p.nome}"><h4>${p.nome}</h4><span>${p.tag}</span>`;
         d.onclick = () => abrirModalChar(p);
         tg.appendChild(d);
       });
@@ -1661,7 +1674,8 @@
     function abrirModalChar(p) {
       const img = document.getElementById('modalCharImg');
       img.src = p.img;
-      img.style.display = 'inline-block';
+      img.alt = p.nome;
+      img.style.display = 'block';
       document.getElementById('modalCharNome').innerText = p.nome;
       document.getElementById('modalCharTag').innerText = p.tag;
       document.getElementById('modalCharQuem').innerText = p.quem;
@@ -1714,7 +1728,8 @@
       PERSONAGENS.forEach(p => {
         const img = document.createElement('img');
         img.src = p.img;
-        img.style.cssText = `width:54px; height:54px; border-radius:50%; border:3px solid ${p.img === avatarAtual ? '#F59E0B' : '#CBD5E1'}; cursor:pointer; background:#FFF; padding:2px;`;
+        img.alt = p.nome;
+        img.style.cssText = `width:54px; height:54px; border-radius:50%; border:3px solid ${p.img === avatarAtual ? '#F59E0B' : '#CBD5E1'}; cursor:pointer; background:#FFF; padding:2px; display:block;`;
         img.onclick = () => {
           document.querySelectorAll('#avatarGridSelector img').forEach(i => i.style.borderColor = '#CBD5E1');
           img.style.borderColor = '#F59E0B';
