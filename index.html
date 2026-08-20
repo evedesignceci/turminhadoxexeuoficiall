@@ -61,7 +61,7 @@
 
     .btn-tactile {
       background: #FFFFFF; border: 2px solid #CBD5E1; box-shadow: var(--shadow-3d); color: var(--text-main);
-      padding: 10px 18px; border-radius: var(--radius-md); font-weight: 700; font-size: 14px; cursor: pointer;
+      padding: 12px 20px; border-radius: var(--radius-md); font-weight: 700; font-size: 15px; cursor: pointer;
       display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.08s ease, box-shadow 0.08s ease;
       text-decoration: none;
     }
@@ -73,7 +73,7 @@
     .btn-tactile.green { background: var(--green); border-color: var(--green-dark); color: #FFF; box-shadow: var(--shadow-3d-green); }
     .btn-tactile.green:active { box-shadow: 0 1px 0px #047857; }
     .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
-    .btn-icon-round { width: 44px; height: 44px; border-radius: 50%; padding: 0; font-size: 18px; }
+    .btn-icon-round { width: 46px; height: 46px; border-radius: 50%; padding: 0; font-size: 18px; }
 
     nav.main-nav {
       display: flex; gap: 8px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-lg);
@@ -139,7 +139,7 @@
 
     .minigame-container { display: none; text-align: center; }
     .minigame-container.active { display: block; }
-    #paintCanvas { background: #FFF; border: 3px dashed #94A3B8; border-radius: var(--radius-lg); width: 100%; height: 420px; touch-action: none; cursor: crosshair; }
+    #paintCanvas { background: #FFF; border: 3px dashed #94A3B8; border-radius: var(--radius-lg); width: 100%; max-width: 800px; height: 420px; touch-action: none; cursor: crosshair; display: block; margin: 0 auto; }
 
     .game-choice-btn {
       background: #FFFFFF; border: 3px solid #8B5CF6; box-shadow: 0 5px 0 #7C3AED; color: #6D28D9;
@@ -153,7 +153,6 @@
     .level-btn { background: #F1F5F9; border: 2px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; }
     .level-btn.active { background: var(--primary); color: #FFF; border-color: var(--primary); }
 
-    /* JOGO DA MEMÓRIA COM TRANSIÇÃO 3D SUAVE */
     .memory-grid { 
       display: grid; 
       grid-template-columns: repeat(4, 1fr); 
@@ -239,7 +238,7 @@
       <span style="font-size: 44px;">⏰</span>
       <h3 style="color: var(--accent); font-size: 24px; font-weight: 800; margin: 8px 0;">Hora de Fazer uma Pausa!</h3>
       <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">O limite de tempo definido pelos pais foi atingido.</p>
-      <input type="password" id="pinDesbloqueioTempo" class="form-input" placeholder="PIN dos Pais (Padrão: 1234)" style="text-align: center;">
+      <input type="password" id="pinDesbloqueioTempo" class="form-input" placeholder="PIN dos Pais" style="text-align: center;">
       <button class="btn-tactile green" style="width: 100%;" onclick="desbloquearTempoComPin()">Desbloquear Acesso 🔓</button>
     </div>
   </div>
@@ -289,7 +288,7 @@
       </div>
     </header>
 
-    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <!-- NAVEGAÇÃO PRINCIPAL (SEM CERTIFICADO) -->
     <nav class="main-nav">
       <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Central</button>
       <button class="nav-item-btn" onclick="navegar('inicio')">🏠 Início</button>
@@ -298,7 +297,6 @@
       <button class="nav-item-btn" onclick="navegar('videos')">🎬 Vídeos</button>
       <button class="nav-item-btn" onclick="navegar('livros')">📚 Livros</button>
       <button class="nav-item-btn" onclick="navegar('rotina')">📅 Rotina</button>
-      <button class="nav-item-btn" onclick="navegar('certificado')">🏆 Certificado</button>
       <button class="nav-item-btn vip-item" onclick="navegar('vip')">⭐ Clube VIP</button>
       <button class="nav-item-btn" onclick="navegar('perfil')">👤 Perfil & Ajustes</button>
     </nav>
@@ -350,13 +348,6 @@
           <span class="hub-card-tag" style="background: #D1FAE5; color: var(--green-dark);">Hábitos Saudáveis</span>
           <h4 class="hub-card-title">Quadro de Rotinas</h4>
           <p class="hub-card-desc">Organize as tarefas do dia a dia e marque seus hábitos cumpridos.</p>
-        </div>
-
-        <div class="hub-card" onclick="navegar('certificado')">
-          <span class="hub-card-icon">🏆</span>
-          <span class="hub-card-tag" style="background: #FEF9C3; color: #854D0E;">Diploma Oficial</span>
-          <h4 class="hub-card-title">Certificado de Super Fã</h4>
-          <p class="hub-card-desc">Gere seu diploma com nome oficial e baixe a imagem para guardar ou postar!</p>
         </div>
       </div>
     </div>
@@ -446,8 +437,6 @@
           <button class="game-subtab-btn" onclick="trocarJogo('quiz')">❓ Super Quiz</button>
           <button class="game-subtab-btn" id="subtab-cupcake" onclick="trocarJogo('cupcake')" style="border-color: #EC4899; color: #BE185D;">🧁 Fábrica de Bolinhos VIP</button>
           <button class="game-subtab-btn" id="subtab-estrelas" onclick="trocarJogo('estrelas')" style="border-color: #F59E0B; color: #D97706;">⭐ Cata-Estrelas VIP</button>
-          <button class="game-subtab-btn" onclick="trocarJogo('labirinto')" style="border-style:dashed;">⏳ Labirinto (Em Breve)</button>
-          <button class="game-subtab-btn" onclick="trocarJogo('puzzle')" style="border-style:dashed;">⏳ Quebra-Cabeça (Em Breve)</button>
         </div>
 
         <!-- 1. LOUSA -->
@@ -525,33 +514,14 @@
           <div id="boxQuizBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- NOVO JOGO VIP 1: FÁBRICA DE BOLINHOS -->
+        <!-- VIP: FÁBRICA DE BOLINHOS -->
         <div id="subgame-cupcake" class="minigame-container">
           <div id="boxConteudoCupcake"></div>
         </div>
 
-        <!-- NOVO JOGO VIP 2: CATA-ESTRELINHAS -->
+        <!-- VIP: CATA-ESTRELINHAS -->
         <div id="subgame-estrelas" class="minigame-container">
           <div id="boxConteudoEstrelas"></div>
-        </div>
-
-        <!-- JOGOS EM BREVE -->
-        <div id="subgame-labirinto" class="minigame-container">
-          <div style="padding: 30px; background: #F8FAFC; border: 2px dashed #CBD5E1; border-radius: 18px;">
-            <span style="font-size: 48px;">🌀</span>
-            <h3 style="color: #64748B; font-size: 22px; margin: 8px 0;">Labirinto da Turminha</h3>
-            <p style="color: #64748B; margin-bottom: 14px;">Este joguinho de trilhas está passando por novos ajustes visuais fofos!</p>
-            <span style="background: #FEF3C7; color: #92400E; padding: 6px 16px; border-radius: 20px; font-weight: 800; font-size: 13px;">⏳ Em Breve</span>
-          </div>
-        </div>
-
-        <div id="subgame-puzzle" class="minigame-container">
-          <div style="padding: 30px; background: #F8FAFC; border: 2px dashed #CBD5E1; border-radius: 18px;">
-            <span style="font-size: 48px;">🧩</span>
-            <h3 style="color: #64748B; font-size: 22px; margin: 8px 0;">Quebra-Cabeça da Turminha</h3>
-            <p style="color: #64748B; margin-bottom: 14px;">Estamos preparando novas ilustrações fáceis para encaixar peças!</p>
-            <span style="background: #FEF3C7; color: #92400E; padding: 6px 16px; border-radius: 20px; font-weight: 800; font-size: 13px;">⏳ Em Breve</span>
-          </div>
         </div>
       </div>
     </div>
@@ -655,7 +625,7 @@
           <span>📚 Biblioteca da Turminha</span>
           <button class="btn-tactile btn-icon-round" onclick="falarTexto('Nossas histórias infantis ilustradas estão sendo finalizadas para lançamento!')">🔊</button>
         </div>
-        <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">Livros digitais em fase final de diagramação e ilustração:</p>
+        <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">Livros digitais com contos afetuosos e ensinamentos em família:</p>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
           <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
@@ -706,28 +676,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA: CERTIFICADO -->
-    <div id="page-certificado" class="page-box">
-      <div class="game-card" style="text-align: center;">
-        <div class="game-card-title"><span>🏆 Certificado Oficial de Super Fã</span></div>
-        <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 16px;">Gere e baixe seu diploma oficial com a sua pontuação e nome!</p>
-        
-        <div style="max-width: 400px; margin: 0 auto 16px; display: flex; gap: 8px;">
-          <input type="text" id="inputNomeCertificado" class="form-input" placeholder="Nome da Criança" style="margin-bottom: 0;">
-          <button class="btn-tactile primary" onclick="desenharCertificadoCanvas()">Gerar 🎨</button>
-        </div>
-
-        <div style="max-width: 700px; margin: 0 auto; border-radius: 16px; overflow: hidden; border: 3px solid #FCD34D; box-shadow: var(--shadow-md);">
-          <canvas id="canvasCertificado" width="800" height="500" style="width: 100%; height: auto; display: block; background: #FFF;"></canvas>
-        </div>
-
-        <div style="margin-top: 16px;">
-          <button class="btn-tactile green" onclick="baixarCertificadoPNG()">📥 Baixar Certificado em PNG</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- PÁGINA: CLUBE VIP (ESTRUTURA FIXA E VISÍVEL) -->
+    <!-- PÁGINA: CLUBE VIP -->
     <div id="page-vip" class="page-box">
       <div class="game-card" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D; text-align: center;">
         <span style="font-size: 52px;">⭐</span>
@@ -745,7 +694,7 @@
               <li><strong>📁 Drive de Atividades:</strong> Desenhos para colorir em alta resolução, Wallpapers e Atividades para imprimir.</li>
               <li><strong>🧩 Drive Azul TEA:</strong> Materiais adaptados e histórias sociais (Em breve).</li>
               <li>🧁 Confeitaria da Vovó Hilda e Cata-Estrelas.</li>
-              <li>Todos os 12 contornos na lousa mágica.</li>
+              <li>Todos os contornos na lousa mágica.</li>
               <li>Prancha CAA de fala sem limites.</li>
               <li>Temporizador de até 30 minutos.</li>
             </ul>
@@ -813,8 +762,6 @@
 
   <script>
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwrmDcZf4u4nMmfUSmq25RB6dHhpq0dud_JKezy2aIhYwesh6JVxSP2Vb4xMSU9W31H/exec";
-    const LINK_DRIVE_ATIVIDADES_DEFAULT = "https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link";
-    const LINK_DRIVE_TEA_DEFAULT = "https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link";
 
     let audioAtivo = true;
     let timerId = null;
@@ -825,10 +772,7 @@
     let vozSelecionadaIdx = localStorage.getItem('xexeu_voz_idx') || 0;
     let velocidadeFala = parseFloat(localStorage.getItem('xexeu_voz_vel') || 1.0);
 
-    let linksDrivesSeguros = JSON.parse(localStorage.getItem('xexeu_drives_cache')) || {
-      atividades: LINK_DRIVE_ATIVIDADES_DEFAULT,
-      tea: LINK_DRIVE_TEA_DEFAULT
-    };
+    let linksDrivesSeguros = JSON.parse(localStorage.getItem('xexeu_drives_cache')) || null;
 
     let bolinhoMassa = '🧁';
     let bolinhoCobertura = '🍓';
@@ -875,11 +819,9 @@
       carregarVozes();
       atualizarInterfaceVipCompleta();
       iniciarAnimacaoRespiracao();
-      desenharCertificadoCanvas();
       
       const nomeSalvo = localStorage.getItem('xexeu_nome') || 'Amiguinho';
       document.getElementById('inputNomePerfil').value = nomeSalvo;
-      document.getElementById('inputNomeCertificado').value = nomeSalvo;
       document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = nomeSalvo);
     });
 
@@ -894,7 +836,6 @@
       if (btn) btn.classList.add('active');
 
       if (paginaId === 'jogos') trocarJogo('lousa');
-      if (paginaId === 'certificado') desenharCertificadoCanvas();
       if (paginaId === 'vip') atualizarInterfaceVipCompleta();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1045,16 +986,11 @@
     }
 
     function atualizarInterfaceVipCompleta() {
-      const bTitulo = document.getElementById('txtBarraFlutuanteTitulo');
-      const bSub = document.getElementById('txtBarraFlutuanteSub');
-      if (isVip) {
-        bTitulo.innerText = "👑 Membro VIP Ativo";
-        bSub.innerText = "Acesso completo liberado em todo o portal!";
-        bSub.style.color = "#86EFAC";
-      } else {
-        bTitulo.innerText = "Clube VIP por apenas R$ 6,00";
-        bSub.innerText = "Desbloqueie todos os jogos, ferramentas e drives!";
-        bSub.style.color = "#FCD34D";
+      const barVip = document.getElementById('barraFlutuanteVip');
+      
+      // Barra flutuante some se for VIP
+      if (barVip) {
+        barVip.style.display = isVip ? 'none' : 'flex';
       }
 
       const txt = document.getElementById('txtStatusVipAtual');
@@ -1073,19 +1009,18 @@
 
       const boxDrives = document.getElementById('boxBotoesDrivesVip');
       if (boxDrives) {
-        if (isVip) {
-          const driveLink = (linksDrivesSeguros && linksDrivesSeguros.atividades) ? linksDrivesSeguros.atividades : LINK_DRIVE_ATIVIDADES_DEFAULT;
+        if (isVip && linksDrivesSeguros) {
           boxDrives.innerHTML = `
-            <a href="${driveLink}" target="_blank" class="btn-tactile primary" style="padding: 14px 22px; font-size: 15px;">
+            <a href="${linksDrivesSeguros.atividades}" target="_blank" class="btn-tactile primary" style="padding: 14px 22px; font-size: 15px;">
               📁 Abrir Drive de Atividades (🎨 Para Colorir, 📱 Wallpapers, 📝 Atividades)
             </a>
-            <button class="btn-tactile" style="background: #E0F2FE; border-color: #7DD3FC; color: #0369A1; cursor: not-allowed; padding: 14px 22px; font-size: 15px;" onclick="alert('🧩 O Drive Azul TEA está em fase de preparação com materiais visuais e histórias sociais exclusivas. Em breve!')">
+            <button class="btn-tactile" style="background: #E0F2FE; border-color: #7DD3FC; color: #0369A1; cursor: not-allowed; padding: 14px 22px; font-size: 15px;" onclick="alert('🧩 O Drive Azul TEA está em fase de preparação com materiais visuais exclusivos. Em breve!')">
               🧩 Drive Azul TEA (⏳ Em Construção)
             </button>
           `;
         } else {
           boxDrives.innerHTML = `
-            <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive de Atividades (Para colorir, Wallpapers e Atividades)')">🔒 Drive de Atividades (VIP)</button>
+            <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive de Atividades')">🔒 Drive de Atividades (VIP)</button>
             <button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive Azul TEA')">🔒 Drive Azul TEA (VIP)</button>
             <a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-tactile vip">Quero ser VIP no Kiwify (R$ 6,00) 💳</a>
           `;
@@ -1235,7 +1170,7 @@
 
     function salvarNovoPin() {
       const p = document.getElementById('inputNovoPin').value.trim();
-      if (p.length === 4) {
+      if (p.length === 4 && /^\d+$/.test(p)) {
         pinParental = p;
         localStorage.setItem('xexeu_pin', p);
         alert('✅ PIN atualizado com sucesso!');
@@ -1248,43 +1183,43 @@
     function executarLoginVip() {
       const email = document.getElementById('loginEmailVip').value.trim();
       const senha = document.getElementById('loginSenhaVip').value.trim();
-      if (!email || !senha) return alert('Preencha seu e-mail e senha de acesso!');
+      if (!senha) return alert('Preencha a sua senha de acesso!');
 
       const btn = document.getElementById('btnEntrarVipSubmit');
-      if (btn) btn.innerText = "Verificando... ⏳";
+      if (btn) btn.innerText = "Verificando com segurança... ⏳";
 
-      fetch(`${URL_SCRIPT}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`)
-        .then(res => res.text())
-        .then(text => {
-          let data;
-          try { data = JSON.parse(text); } catch(e) { data = { liberado: false }; }
-
-          if (data.liberado && data.status === 'ativo') {
-            isVip = true;
-            linksDrivesSeguros = data.drives || {
-              atividades: LINK_DRIVE_ATIVIDADES_DEFAULT,
-              tea: LINK_DRIVE_TEA_DEFAULT
-            };
-            localStorage.setItem('xexeu_vip', 'true');
-            localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
-            alert('🎉 Acesso VIP Confirmado com Sucesso!');
-            atualizarInterfaceVipCompleta();
-            navegar('central');
-          } else if (data.status === 'cancelado' || data.status === 'reembolsado') {
-            isVip = false;
-            linksDrivesSeguros = null;
-            localStorage.removeItem('xexeu_vip');
-            localStorage.removeItem('xexeu_drives_cache');
-            alert('❌ Sua assinatura está cancelada ou reembolsada.');
-            atualizarInterfaceVipCompleta();
-          } else {
-            alert('❌ E-mail ou senha incorretos.');
-            if (btn) btn.innerText = "Validar Acesso VIP 🚀";
-          }
-        }).catch(() => { 
-          alert('Erro de conexão ao verificar assinatura. Tente novamente em instantes.');
-          if (btn) btn.innerText = "Validar Acesso VIP 🚀";
-        });
+      fetch(URL_SCRIPT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ email: email, senha: senha })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.liberado && data.status === 'ativo') {
+          isVip = true;
+          linksDrivesSeguros = data.drives;
+          localStorage.setItem('xexeu_vip', 'true');
+          localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
+          alert('🎉 Acesso VIP Confirmado com Sucesso!');
+          atualizarInterfaceVipCompleta();
+          navegar('central');
+        } else if (data.status === 'cancelado' || data.status === 'reembolsado') {
+          isVip = false;
+          linksDrivesSeguros = null;
+          localStorage.removeItem('xexeu_vip');
+          localStorage.removeItem('xexeu_drives_cache');
+          alert('❌ Sua assinatura está cancelada ou reembolsada.');
+          atualizarInterfaceVipCompleta();
+        } else {
+          alert('❌ Credenciais incorretas.');
+        }
+      })
+      .catch(() => {
+        alert('Erro de conexão ao verificar assinatura. Tente novamente em instantes.');
+      })
+      .finally(() => {
+        if (btn) btn.innerText = "Validar Acesso VIP 🚀";
+      });
     }
 
     function deslogarVip() {
@@ -1304,12 +1239,16 @@
       canvas = document.getElementById('paintCanvas');
       if (!canvas) return;
       ctx = canvas.getContext('2d');
+      resizeLousa();
 
       const getPos = (e) => {
         const r = canvas.getBoundingClientRect();
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
         const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        return { x: clientX - r.left, y: clientY - r.top };
+        return { 
+          x: (clientX - r.left) * (canvas.width / r.width), 
+          y: (clientY - r.top) * (canvas.height / r.height) 
+        };
       };
 
       const start = (e) => {
@@ -1322,6 +1261,7 @@
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
       };
+
       const move = (e) => {
         if (!desenhando) return;
         const p = getPos(e);
@@ -1329,6 +1269,7 @@
         ctx.stroke();
         if (e.cancelable) e.preventDefault();
       };
+
       const stop = () => { desenhando = false; };
 
       canvas.addEventListener('mousedown', start);
@@ -1342,15 +1283,15 @@
     }
 
     function resizeLousa() {
-      if (!canvas || !canvas.parentElement) return;
-      canvas.width = canvas.parentElement.clientWidth - 48;
-      canvas.height = 400;
+      if (!canvas) return;
+      canvas.width = 800;
+      canvas.height = 450;
     }
 
     function setCorPincel(c) { corAtual = c; }
     function setBorracha() { corAtual = '#FFFFFF'; }
     function setEspessuraPincel(v) { tamanhoPincel = parseInt(v); }
-    function limparCanvasLousa() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+    function limparCanvasLousa() { if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height); }
 
     function salvarObraArte() {
       const a = document.createElement('a');
@@ -1389,7 +1330,7 @@
             img.src = p.lousa;
             img.onload = () => {
               ctx.globalAlpha = 0.35;
-              ctx.drawImage(img, (canvas.width - 260)/2, 20, 260, 260);
+              ctx.drawImage(img, (canvas.width - 280)/2, 20, 280, 280);
               ctx.globalAlpha = 1.0;
             };
             falarTexto(`Colorindo o ${p.nome}!`);
@@ -1404,8 +1345,11 @@
     function trocarJogo(subjogo) {
       document.querySelectorAll('.minigame-container').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.game-subtab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById('subgame-' + subjogo).classList.add('active');
-      const btn = Array.from(document.querySelectorAll('.game-subtab-btn')).find(b => b.getAttribute('onclick')?.includes(subjogo));
+      
+      const target = document.getElementById('subgame-' + subjogo);
+      if (target) target.classList.add('active');
+      
+      const btn = document.getElementById('subtab-' + subjogo) || Array.from(document.querySelectorAll('.game-subtab-btn')).find(b => b.getAttribute('onclick')?.includes(subjogo));
       if (btn) btn.classList.add('active');
 
       if (subjogo === 'lousa') resizeLousa();
@@ -1605,73 +1549,6 @@
       }, 11000);
     }
 
-    function desenharCertificadoCanvas() {
-      const c = document.getElementById('canvasCertificado');
-      if (!c) return;
-      const ctxCert = c.getContext('2d');
-      const nome = document.getElementById('inputNomeCertificado').value.trim() || 'Super Amigo(a)';
-
-      ctxCert.fillStyle = '#FFFDF5';
-      ctxCert.fillRect(0, 0, 800, 500);
-      ctxCert.lineWidth = 12;
-      ctxCert.strokeStyle = '#FCD34D';
-      ctxCert.strokeRect(15, 15, 770, 470);
-      ctxCert.lineWidth = 4;
-      ctxCert.strokeStyle = '#2563EB';
-      ctxCert.strokeRect(25, 25, 750, 450);
-
-      ctxCert.textAlign = 'center';
-      ctxCert.fillStyle = '#1E40AF';
-      ctxCert.font = 'bold 36px Fredoka, sans-serif';
-      ctxCert.fillText('DIPLOMA DE SUPER FÃ OFICIAL', 400, 90);
-
-      ctxCert.fillStyle = '#78350F';
-      ctxCert.font = '600 20px Fredoka, sans-serif';
-      ctxCert.fillText('Certificamos com muito carinho que', 400, 140);
-
-      ctxCert.fillStyle = '#2563EB';
-      ctxCert.font = 'bold 44px Fredoka, sans-serif';
-      ctxCert.fillText(nome.toUpperCase(), 400, 210);
-
-      ctxCert.lineWidth = 2;
-      ctxCert.strokeStyle = '#F59E0B';
-      ctxCert.beginPath();
-      ctxCert.moveTo(180, 225);
-      ctxCert.lineTo(620, 225);
-      ctxCert.stroke();
-
-      ctxCert.fillStyle = '#475569';
-      ctxCert.font = '600 18px Fredoka, sans-serif';
-      ctxCert.fillText('Completou os desafios educativos e é membro oficial da', 400, 270);
-      ctxCert.fillStyle = '#D97706';
-      ctxCert.font = 'bold 24px Fredoka, sans-serif';
-      ctxCert.fillText('Turminha do Xexéu!', 400, 305);
-
-      ctxCert.fillStyle = '#FEF3C7';
-      ctxCert.beginPath();
-      ctxCert.arc(400, 390, 50, 0, Math.PI * 2);
-      ctxCert.fill();
-      ctxCert.lineWidth = 3;
-      ctxCert.strokeStyle = '#F59E0B';
-      ctxCert.stroke();
-
-      ctxCert.fillStyle = '#92400E';
-      ctxCert.font = 'bold 16px Fredoka, sans-serif';
-      ctxCert.fillText('⭐ ' + pontos + ' PTS ⭐', 400, 385);
-      ctxCert.font = '700 13px Fredoka, sans-serif';
-      ctxCert.fillText('SUPER FÃ', 400, 405);
-    }
-
-    function baixarCertificadoPNG() {
-      desenharCertificadoCanvas();
-      const c = document.getElementById('canvasCertificado');
-      const a = document.createElement('a');
-      a.download = 'Certificado-Turminha-do-Xexeu.png';
-      a.href = c.toDataURL('image/png');
-      a.click();
-      falarTexto('Certificado baixado com sucesso!');
-    }
-
     function iniciarTimer(minutos) {
       if (!isVip && minutos > 2) {
         alert('🔒 Limites acima de 2 minutos são exclusivos para o VIP!');
@@ -1806,9 +1683,7 @@
       const n = document.getElementById('inputNomePerfil').value.trim();
       if (!n) return alert('Digite um nome!');
       localStorage.setItem('xexeu_nome', n);
-      document.getElementById('inputNomeCertificado').value = n;
       document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = n);
-      desenharCertificadoCanvas();
       falarTexto(`Nome alterado para ${n}!`);
       alert('✅ Nome salvo com sucesso!');
     }
