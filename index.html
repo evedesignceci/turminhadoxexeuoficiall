@@ -259,12 +259,12 @@
     </div>
   </div>
 
-  <!-- BARRA FLUTUANTE VIP DINÂMICA -->
+  <!-- BARRA FLUTUANTE VIP DINÂMICA (SOME AO VIRAR VIP) -->
   <div class="vip-floating-bar" id="barraFlutuanteVip" onclick="navegar('vip')">
     <span style="font-size: 22px;">👑</span>
     <div>
-      <div style="font-weight: 800; font-size: 14px;" id="txtBarraFlutuanteTitulo">Clube VIP por apenas R$ 6,00</div>
-      <div style="font-size: 12px; color: #FCD34D;" id="txtBarraFlutuanteSub">Desbloqueie todos os jogos, ferramentas e drives!</div>
+      <div style="font-weight: 800; font-size: 14px;">Clube VIP por apenas R$ 6,00</div>
+      <div style="font-size: 12px; color: #FCD34D;">Desbloqueie todos os jogos, ferramentas e drives!</div>
     </div>
     <span style="font-size: 18px;">➔</span>
   </div>
@@ -288,7 +288,7 @@
       </div>
     </header>
 
-    <!-- NAVEGAÇÃO PRINCIPAL (SEM CERTIFICADO) -->
+    <!-- NAVEGAÇÃO PRINCIPAL -->
     <nav class="main-nav">
       <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Central</button>
       <button class="nav-item-btn" onclick="navegar('inicio')">🏠 Início</button>
@@ -435,7 +435,7 @@
           <button class="game-subtab-btn" onclick="trocarJogo('letras')">🔤 Primeira Letra</button>
           <button class="game-subtab-btn" onclick="trocarJogo('memoria')">🧠 Jogo da Memória</button>
           <button class="game-subtab-btn" onclick="trocarJogo('quiz')">❓ Super Quiz</button>
-          <button class="game-subtab-btn" id="subtab-cupcake" onclick="trocarJogo('cupcake')" style="border-color: #EC4899; color: #BE185D;">🧁 Fábrica de Bolinhos VIP</button>
+          <button class="game-subtab-btn" id="subtab-cupcake" onclick="trocarJogo('cupcake')" style="border-color: #EC4899; color: #BE185D;">🧁 Bolinhos VIP</button>
           <button class="game-subtab-btn" id="subtab-estrelas" onclick="trocarJogo('estrelas')" style="border-color: #F59E0B; color: #D97706;">⭐ Cata-Estrelas VIP</button>
         </div>
 
@@ -676,7 +676,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA: CLUBE VIP -->
+    <!-- PÁGINA: CLUBE VIP COM LOGIN E PRIMEIRO ACESSO -->
     <div id="page-vip" class="page-box">
       <div class="game-card" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D; text-align: center;">
         <span style="font-size: 52px;">⭐</span>
@@ -700,11 +700,29 @@
             </ul>
           </div>
 
-          <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #CBD5E1; text-align: left;" id="boxFormularioLoginVip">
-            <h4 style="font-size: 16px; color: #1E293B; margin-bottom: 10px;">🔑 Já é Assinante? Acesse aqui:</h4>
-            <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail cadastrado">
-            <input type="password" id="loginSenhaVip" class="form-input" placeholder="Sua senha de acesso">
-            <button class="btn-tactile primary" id="btnEntrarVipSubmit" style="width: 100%;" onclick="executarLoginVip()">Validar Acesso VIP 🚀</button>
+          <!-- BOX DE ACESSO VIP: LOGIN & PRIMEIRO ACESSO -->
+          <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #CBD5E1; text-align: left;">
+            <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+              <button id="tabBtnLoginVip" class="btn-tactile primary" style="flex: 1; padding: 8px 12px; font-size: 13px;" onclick="trocarAbaVipAuth('login')">🔑 Já sou VIP</button>
+              <button id="tabBtnCadastroVip" class="btn-tactile" style="flex: 1; padding: 8px 12px; font-size: 13px;" onclick="trocarAbaVipAuth('cadastro')">✨ 1º Acesso (Criar Senha)</button>
+            </div>
+
+            <!-- FORM LOGIN -->
+            <div id="formVipLogin">
+              <h4 style="font-size: 15px; color: #1E293B; margin-bottom: 8px;">Acessar Clube VIP:</h4>
+              <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail cadastrado (ou deixe em branco se for Mestre)">
+              <input type="password" id="loginSenhaVip" class="form-input" placeholder="Sua senha de acesso">
+              <button class="btn-tactile primary" id="btnEntrarVipSubmit" style="width: 100%;" onclick="executarLoginVip()">Entrar no VIP 🚀</button>
+            </div>
+
+            <!-- FORM PRIMEIRO ACESSO -->
+            <div id="formVipCadastro" style="display: none;">
+              <h4 style="font-size: 15px; color: #1E293B; margin-bottom: 8px;">Primeiro Acesso após a compra:</h4>
+              <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Digite o mesmo e-mail usado no pagamento do Kiwify e escolha sua senha:</p>
+              <input type="email" id="cadEmailVip" class="form-input" placeholder="Seu e-mail de compra no Kiwify">
+              <input type="password" id="cadSenhaVip" class="form-input" placeholder="Crie sua nova senha">
+              <button class="btn-tactile green" id="btnCadVipSubmit" style="width: 100%;" onclick="executarCadastroVip()">Criar Senha e Liberar VIP ⭐</button>
+            </div>
           </div>
         </div>
       </div>
@@ -985,10 +1003,29 @@
       falarTexto('Pop-it restaurado!');
     }
 
+    function trocarAbaVipAuth(aba) {
+      const formLogin = document.getElementById('formVipLogin');
+      const formCad = document.getElementById('formVipCadastro');
+      const btnLogin = document.getElementById('tabBtnLoginVip');
+      const btnCad = document.getElementById('tabBtnCadastroVip');
+
+      if (aba === 'login') {
+        formLogin.style.display = 'block';
+        formCad.style.display = 'none';
+        btnLogin.className = 'btn-tactile primary';
+        btnCad.className = 'btn-tactile';
+      } else {
+        formLogin.style.display = 'none';
+        formCad.style.display = 'block';
+        btnLogin.className = 'btn-tactile';
+        btnCad.className = 'btn-tactile primary';
+      }
+    }
+
     function atualizarInterfaceVipCompleta() {
       const barVip = document.getElementById('barraFlutuanteVip');
       
-      // Barra flutuante some se for VIP
+      // Barra flutuante só aparece se NÃO for VIP
       if (barVip) {
         barVip.style.display = isVip ? 'none' : 'flex';
       }
@@ -1180,18 +1217,19 @@
       }
     }
 
+    // LOGIN
     function executarLoginVip() {
       const email = document.getElementById('loginEmailVip').value.trim();
       const senha = document.getElementById('loginSenhaVip').value.trim();
       if (!senha) return alert('Preencha a sua senha de acesso!');
 
       const btn = document.getElementById('btnEntrarVipSubmit');
-      if (btn) btn.innerText = "Verificando com segurança... ⏳";
+      if (btn) btn.innerText = "Verificando... ⏳";
 
       fetch(URL_SCRIPT, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ email: email, senha: senha })
+        body: JSON.stringify({ acao: 'login', email: email, senha: senha })
       })
       .then(res => res.json())
       .then(data => {
@@ -1200,25 +1238,54 @@
           linksDrivesSeguros = data.drives;
           localStorage.setItem('xexeu_vip', 'true');
           localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
-          alert('🎉 Acesso VIP Confirmado com Sucesso!');
+          alert(data.mensagem || '🎉 Acesso VIP Confirmado com Sucesso!');
           atualizarInterfaceVipCompleta();
           navegar('central');
-        } else if (data.status === 'cancelado' || data.status === 'reembolsado') {
-          isVip = false;
-          linksDrivesSeguros = null;
-          localStorage.removeItem('xexeu_vip');
-          localStorage.removeItem('xexeu_drives_cache');
-          alert('❌ Sua assinatura está cancelada ou reembolsada.');
-          atualizarInterfaceVipCompleta();
         } else {
-          alert('❌ Credenciais incorretas.');
+          alert('❌ ' + (data.mensagem || 'Credenciais incorretas.'));
         }
       })
       .catch(() => {
         alert('Erro de conexão ao verificar assinatura. Tente novamente em instantes.');
       })
       .finally(() => {
-        if (btn) btn.innerText = "Validar Acesso VIP 🚀";
+        if (btn) btn.innerText = "Entrar no VIP 🚀";
+      });
+    }
+
+    // CADASTRO / PRIMEIRO ACESSO
+    function executarCadastroVip() {
+      const email = document.getElementById('cadEmailVip').value.trim();
+      const senha = document.getElementById('cadSenhaVip').value.trim();
+      if (!email || !senha) return alert('Preencha seu e-mail e crie uma senha!');
+
+      const btn = document.getElementById('btnCadVipSubmit');
+      if (btn) btn.innerText = "Cadastrando... ⏳";
+
+      fetch(URL_SCRIPT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ acao: 'cadastro', email: email, senha: senha })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.liberado && data.status === 'ativo') {
+          isVip = true;
+          linksDrivesSeguros = data.drives;
+          localStorage.setItem('xexeu_vip', 'true');
+          localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
+          alert(data.mensagem || '🎉 Cadastro realizado e VIP ativado!');
+          atualizarInterfaceVipCompleta();
+          navegar('central');
+        } else {
+          alert('❌ ' + (data.mensagem || 'Não foi possível cadastrar a senha.'));
+        }
+      })
+      .catch(() => {
+        alert('Erro de conexão ao cadastrar senha. Tente novamente em instantes.');
+      })
+      .finally(() => {
+        if (btn) btn.innerText = "Criar Senha e Liberar VIP ⭐";
       });
     }
 
