@@ -105,12 +105,6 @@
     .hub-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; font-weight: 600; }
     .hub-card-tag { font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 12px; width: fit-content; }
 
-    .mascote-virtual { position: absolute; right: 20px; bottom: 20px; cursor: pointer; text-align: center; animation: floatIcon 4s infinite; z-index: 10; }
-    .mascote-virtual img { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)); transition: transform 0.2s; }
-    .mascote-virtual img:active { transform: scale(0.85); }
-    .balao-fala { position: absolute; top: -50px; right: 50px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; }
-    .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateY(0) scale(1); }
-
     .hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; }
     @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
     .banner-hero-box { border-radius: var(--radius-lg); overflow: hidden; border: 3px solid #FFF; box-shadow: var(--shadow-md); min-height: 200px; }
@@ -283,29 +277,56 @@
     <!-- PÁGINA: CENTRAL -->
     <div id="page-central" class="page-box active">
       
-      <div class="game-card" style="background: linear-gradient(135deg, #EEF2FF, #E0E7FF); border-color: #818CF8; overflow: hidden;">
-        <!-- MASCOTE VIRTUAL XEXÉU NA HOME -->
-        <div class="mascote-virtual" id="mascoteXexeuHome" onclick="animarMascote()">
-          <div class="balao-fala" id="balaoMascote">Bora brincar, amiguinho!</div>
-          <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" alt="Xexéu">
+      <!-- MINIJOGO: CUIDANDO DO XEXÉU (ESTILO POU) -->
+      <div class="game-card" style="text-align: center; border-color: #8B5CF6; background: #F5F3FF;">
+        <div class="game-card-title" style="color: #6D28D9; justify-content: center; margin-bottom: 8px;">
+          <span>🐣 Cuidando do Xexéu</span>
+        </div>
+        <p style="font-size: 14px; color: #5B21B6; margin-bottom: 20px; font-weight: 600;">O Xexéu precisa de carinho! Dê comidinha, brinque e coloque para dormir.</p>
+
+        <!-- BARRAS DE STATUS -->
+        <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;">
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 120px; box-shadow: var(--shadow-sm);">
+            <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #991B1B;">🍎 Fome</span>
+            <div style="background: #FEE2E2; height: 10px; border-radius: 10px; overflow: hidden;">
+              <div id="barFome" style="background: #EF4444; height: 100%; width: 50%; transition: width 0.4s ease-out;"></div>
+            </div>
+          </div>
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 120px; box-shadow: var(--shadow-sm);">
+            <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #92400E;">⚡ Energia</span>
+            <div style="background: #FEF3C7; height: 10px; border-radius: 10px; overflow: hidden;">
+              <div id="barEnergia" style="background: #F59E0B; height: 100%; width: 80%; transition: width 0.4s ease-out;"></div>
+            </div>
+          </div>
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 120px; box-shadow: var(--shadow-sm);">
+            <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #065F46;">🎈 Alegria</span>
+            <div style="background: #D1FAE5; height: 10px; border-radius: 10px; overflow: hidden;">
+              <div id="barAlegria" style="background: #10B981; height: 100%; width: 100%; transition: width 0.4s ease-out;"></div>
+            </div>
+          </div>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; position: relative; z-index: 2; max-width: 80%;">
-          <div>
-            <span style="font-size: 13px; font-weight: 800; background: #C7D2FE; color: #3730A3; padding: 4px 12px; border-radius: 20px;">Painel Central do Amiguinho</span>
-            <h2 style="font-size: 26px; color: #1E1B4B; margin-top: 6px;">Olá, <span class="txtNomeDinamico">Amiguinho</span>! O que vamos fazer hoje?</h2>
-            <p style="font-size: 14px; color: #4338CA; font-weight: 600;">Escolha uma atividade abaixo para começar a brincar, ou clique em mim!</p>
-          </div>
-          <button class="btn-tactile primary" onclick="falarTexto('Bem-vindo à sua Central da Turminha! Escolha qualquer jogo ou atividade para começar!')">🔊 Ouvir Opções</button>
+        <!-- TELA DO QUARTINHO -->
+        <div style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; max-width: 320px; margin: 0 auto 20px; position: relative; overflow: hidden; height: 260px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
+          <div id="filtroNoite" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.8); display: none; z-index: 1;"></div>
+          <img id="imgXexeuPet" src="https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif" alt="Xexéu Virtual" style="width: 200px; height: 200px; object-fit: contain; z-index: 2; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+        </div>
+
+        <!-- BOTÕES DE AÇÃO -->
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <button class="btn-tactile" style="border-color: #EF4444; color: #B91C1C;" onclick="acaoPet('alimentar')">🍎 Dar Comida</button>
+          <button class="btn-tactile" style="border-color: #F59E0B; color: #B45309;" onclick="acaoPet('brincar')">🎾 Brincar</button>
+          <button class="btn-tactile" style="border-color: #3B82F6; color: #1D4ED8;" onclick="acaoPet('dormir')">🛏️ Dormir/Acordar</button>
         </div>
       </div>
+      <!-- FIM MINIJOGO -->
 
       <div class="central-hub-grid">
         <div class="hub-card" onclick="navegar('jogos')">
           <span class="hub-card-icon">🎨</span>
           <span class="hub-card-tag" style="background: #EFF6FF; color: var(--primary);">Jogos Educativos</span>
           <h4 class="hub-card-title">Estúdio de Jogos & Lousa</h4>
-          <p class="hub-card-desc">Lousa mágica, contagem numérica, letras, memória e quiz com animações incríveis!</p>
+          <p class="hub-card-desc">Lousa mágica, contagem numérica, letras, memória e quiz com fases ampliadas!</p>
         </div>
 
         <div class="hub-card" onclick="navegar('tea')" style="border-color: #BAE6FD;">
@@ -821,6 +842,19 @@
       if (drivesCache) linksDrivesSeguros = JSON.parse(drivesCache);
     } catch(e) {}
 
+    // ESTADOS DO XEXÉU VIRTUAL (POU)
+    const LINKS_ANIMACOES_XEXEU = {
+      normal: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif",
+      comendo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336738/XEXEU_COMENDO_1.gif",
+      dormindo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336364/XEXEU_DORMINDO.gif",
+      brincando: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336534/XEXEU_FELIZ.gif",
+      triste: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336521/XEXEU_TRISTE.gif"
+    };
+
+    let petStatus = { fome: 60, energia: 80, alegria: 90 };
+    let petDormindo = false;
+    let petAcaoAtiva = false;
+
     let bolinhoMassa = '🧁';
     let bolinhoCobertura = '🍓';
     let bolinhoConfeito = '✨';
@@ -865,6 +899,7 @@
       try { atualizarInterfaceVipCompleta(); } catch(e) { console.error(e); }
       try { iniciarAnimacaoRespiracao(); } catch(e) { console.error(e); }
       try { desenharCertificadoCanvas(); } catch(e) { console.error(e); }
+      try { atualizarBarrasPet(); } catch(e) { console.error(e); }
       
       const nomeSalvo = localStorage.getItem('xexeu_nome') || 'Amiguinho';
       const inputNome = document.getElementById('inputNomePerfil');
@@ -876,6 +911,7 @@
 
     // SISTEMA DE CONFETES E PONTOS VISUAIS
     function animacaoConfete() {
+      if(document.body.classList.contains('sensory-mode')) return;
       const colors = ['#2563EB', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899'];
       for (let i = 0; i < 40; i++) {
         const confeti = document.createElement('div');
@@ -889,6 +925,7 @@
     }
 
     function mostrarPontosFlutuantes(pts, x, y) {
+      if(document.body.classList.contains('sensory-mode')) return;
       const p = document.createElement('div');
       p.classList.add('floating-points');
       p.innerText = '+' + pts;
@@ -898,10 +935,10 @@
       setTimeout(() => p.remove(), 1200);
     }
 
-    // ANIMAÇÃO XEXÉU
+    // ANIMAÇÃO MASCOTE (TOQUE)
     function animarMascote() {
       const mascote = document.getElementById('mascoteXexeuHome');
-      if(mascote) {
+      if(mascote && !petDormindo && !petAcaoAtiva) {
         mascote.classList.add('falando');
         tocarSomAcerto();
         const frases = ["Você é incrível!", "Continue assim!", "Amo brincar com você!", "Mais um ponto pra você!", "Uau, que inteligência!"];
@@ -910,6 +947,98 @@
         setTimeout(() => mascote.classList.remove('falando'), 3000);
       }
     }
+
+    // LOGICA DO PET VIRTUAL (POU)
+    function atualizarBarrasPet() {
+      const bFome = document.getElementById('barFome');
+      const bEnergia = document.getElementById('barEnergia');
+      const bAlegria = document.getElementById('barAlegria');
+      if(bFome) bFome.style.width = petStatus.fome + '%';
+      if(bEnergia) bEnergia.style.width = petStatus.energia + '%';
+      if(bAlegria) bAlegria.style.width = petStatus.alegria + '%';
+
+      if(!petDormindo && !petAcaoAtiva) {
+        const img = document.getElementById('imgXexeuPet');
+        if(img) {
+          if (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) {
+            if(img.src !== LINKS_ANIMACOES_XEXEU.triste) img.src = LINKS_ANIMACOES_XEXEU.triste;
+          } else {
+            if(img.src !== LINKS_ANIMACOES_XEXEU.normal) img.src = LINKS_ANIMACOES_XEXEU.normal;
+          }
+        }
+      }
+    }
+
+    function acaoPet(acao) {
+      const img = document.getElementById('imgXexeuPet');
+      const filtro = document.getElementById('filtroNoite');
+      
+      if (petDormindo && acao !== 'dormir') {
+        falarTexto("O Xexéu está dormindo, shhhh!");
+        return;
+      }
+
+      if(img) {
+        img.style.transform = 'scale(1.1)';
+        setTimeout(() => img.style.transform = 'scale(1)', 200);
+      }
+      
+      petAcaoAtiva = true;
+
+      if (acao === 'alimentar') {
+        petStatus.fome = Math.min(100, petStatus.fome + 30);
+        if(img) img.src = LINKS_ANIMACOES_XEXEU.comendo;
+        falarTexto("Nham nham nham!");
+        tocarSomPop();
+        animacaoConfete();
+        atualizarScore(2);
+        setTimeout(() => { petAcaoAtiva = false; if(!petDormindo) atualizarBarrasPet(); }, 3000);
+      } 
+      else if (acao === 'brincar') {
+        if(petStatus.energia < 20) {
+          falarTexto("Estou muito cansado para brincar agora.");
+          petAcaoAtiva = false;
+          return;
+        }
+        petStatus.alegria = Math.min(100, petStatus.alegria + 30);
+        petStatus.energia = Math.max(0, petStatus.energia - 15);
+        if(img) img.src = LINKS_ANIMACOES_XEXEU.brincando;
+        falarTexto("Ihuuuu!");
+        tocarSomAcerto();
+        animacaoConfete();
+        atualizarScore(2);
+        setTimeout(() => { petAcaoAtiva = false; if(!petDormindo) atualizarBarrasPet(); }, 3000);
+      }
+      else if (acao === 'dormir') {
+        petDormindo = !petDormindo;
+        petAcaoAtiva = false;
+        if (petDormindo) {
+          if(img) img.src = LINKS_ANIMACOES_XEXEU.dormindo;
+          if(filtro) filtro.style.display = 'block';
+          falarTexto("Boa noite, Xexéu!");
+          let intervaloDormir = setInterval(() => {
+            if(!petDormindo || petStatus.energia >= 100) { clearInterval(intervaloDormir); }
+            else { petStatus.energia = Math.min(100, petStatus.energia + 10); atualizarBarrasPet(); }
+          }, 1000);
+        } else {
+          if(filtro) filtro.style.display = 'none';
+          falarTexto("Bom dia!");
+          atualizarBarrasPet();
+        }
+      }
+
+      atualizarBarrasPet();
+    }
+
+    // Dreno automático do pet a cada 8 segundos
+    setInterval(() => {
+      if (!petDormindo && !petAcaoAtiva) {
+        petStatus.fome = Math.max(0, petStatus.fome - 2);
+        petStatus.energia = Math.max(0, petStatus.energia - 1);
+        petStatus.alegria = Math.max(0, petStatus.alegria - 2);
+        atualizarBarrasPet();
+      }
+    }, 8000);
 
     function navegar(paginaId) {
       document.querySelectorAll('.page-box').forEach(p => p.classList.remove('active'));
@@ -991,20 +1120,17 @@
       desenharCertificadoCanvas();
     }
 
-    // SONS MELHORADOS (Oscillator)
     function tocarSomPop() {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
+        const osc = audioCtx.createGain ? audioCtx.createOscillator() : null;
         const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(400, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.1);
-        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
-        osc.connect(gain); gain.connect(audioCtx.destination);
-        osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+        if (osc && gain) {
+          osc.type = 'sine'; osc.frequency.setValueAtTime(450, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.08);
+          gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+          osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.08);
+        }
       } catch (e) {}
     }
 
@@ -1012,16 +1138,10 @@
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(400, audioCtx.currentTime);
-        osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.1);
-        osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.2);
-        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
-        osc.connect(gain); gain.connect(audioCtx.destination);
-        osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+        const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+        osc.type = 'sine'; osc.frequency.setValueAtTime(400, audioCtx.currentTime); osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.1); osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.2);
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.3);
       } catch (e) {}
     }
 
@@ -1029,23 +1149,16 @@
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
       try {
         const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(250, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.3);
-        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
-        osc.connect(gain); gain.connect(audioCtx.destination);
-        osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+        const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+        osc.type = 'sawtooth'; osc.frequency.setValueAtTime(250, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.3);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.3);
       } catch (e) {}
     }
 
     function celebrar(evento, pontosGanhos) {
       if(evento) mostrarPontosFlutuantes(pontosGanhos, evento.clientX || window.innerWidth/2, evento.clientY || window.innerHeight/2);
-      animacaoConfete();
-      tocarSomAcerto();
-      atualizarScore(pontosGanhos);
+      animacaoConfete(); tocarSomAcerto(); atualizarScore(pontosGanhos);
     }
 
     function renderCartoesCaa() {
@@ -1071,8 +1184,7 @@
       if (confirm(`Deseja remover o cartão "${nomeCard}"?`)) {
         cartoesCaa.splice(index, 1);
         localStorage.setItem('xexeu_caa', JSON.stringify(cartoesCaa));
-        renderCartoesCaa();
-        falarTexto(`Cartão de ${nomeCard} removido.`);
+        renderCartoesCaa(); falarTexto(`Cartão de ${nomeCard} removido.`);
       }
     }
 
@@ -1082,23 +1194,16 @@
       const emoji = emojiInput ? emojiInput.value.trim() || '⭐' : '⭐';
       const texto = textoInput ? textoInput.value.trim() : '';
       if (!texto) return alert('Digite o texto do cartão!');
-      if (!isVip && cartoesCaa.length >= 8) { 
-        alert('🔒 Plano Grátis permite até 8 cartões. Seja VIP para cartões ilimitados!'); 
-        navegar('vip'); 
-        return; 
-      }
+      if (!isVip && cartoesCaa.length >= 8) { alert('🔒 Plano Grátis permite até 8 cartões. Seja VIP para cartões ilimitados!'); navegar('vip'); return; }
       cartoesCaa.push({ emoji, texto });
       localStorage.setItem('xexeu_caa', JSON.stringify(cartoesCaa));
       if (textoInput) textoInput.value = '';
-      renderCartoesCaa();
-      falarTexto(`Cartão de ${texto} adicionado!`);
-      animacaoConfete();
+      renderCartoesCaa(); falarTexto(`Cartão de ${texto} adicionado!`); animacaoConfete();
     }
 
     function expressarSentimento(sentimento, respostaLeo) {
       falarTexto(`Estou me sentindo ${sentimento}. ${respostaLeo}`);
-      atualizarScore(2);
-      tocarSomPop();
+      atualizarScore(2); tocarSomPop();
     }
 
     function renderPopItSensorial() {
@@ -1118,24 +1223,15 @@
           tocarSomPop();
           if (navigator.vibrate) navigator.vibrate(20);
           bubble.classList.toggle('popped');
-          if (bubble.classList.contains('popped')) {
-            bubble.innerHTML = '✨';
-            atualizarScore(1);
-          } else {
-            bubble.innerHTML = '🫧';
-          }
+          if (bubble.classList.contains('popped')) { bubble.innerHTML = '✨'; atualizarScore(1); } else { bubble.innerHTML = '🫧'; }
         };
         container.appendChild(bubble);
       }
     }
 
     function resetarPopIt() {
-      document.querySelectorAll('.popit-bubble').forEach(b => {
-        b.classList.remove('popped');
-        b.innerHTML = '🫧';
-      });
-      falarTexto('Pop-it restaurado!');
-      animacaoConfete();
+      document.querySelectorAll('.popit-bubble').forEach(b => { b.classList.remove('popped'); b.innerHTML = '🫧'; });
+      falarTexto('Pop-it restaurado!'); animacaoConfete();
     }
 
     function trocarAbaVipAuth(aba) {
@@ -1298,11 +1394,7 @@
       const el = document.getElementById('txtCupcakePreview');
       const box = document.getElementById('cupcakeVisual');
       if (el) el.innerText = `${bolinhoMassa}${bolinhoCobertura}`;
-      if (box) {
-        box.classList.remove('bounce');
-        void box.offsetWidth; 
-        box.classList.add('bounce');
-      }
+      if (box) { box.classList.remove('bounce'); void box.offsetWidth; box.classList.add('bounce'); }
     }
     function finalizarBolinho(e) {
       celebrar(e, 10);
@@ -1311,15 +1403,11 @@
     }
 
     function catarEstrela(e, el, tipo) {
-      el.style.transform = 'scale(2)';
-      el.style.opacity = '0';
-      celebrar(e, 5);
-      falarTexto(`Você pegou uma ${tipo}!`);
+      el.style.transform = 'scale(2)'; el.style.opacity = '0'; celebrar(e, 5); falarTexto(`Você pegou uma ${tipo}!`);
       setTimeout(() => {
         el.style.top = Math.floor(Math.random() * 180 + 20) + 'px';
         el.style.left = Math.floor(Math.random() * 80 + 10) + '%';
-        el.style.transform = 'scale(1)';
-        el.style.opacity = '1';
+        el.style.transform = 'scale(1)'; el.style.opacity = '1';
       }, 1000);
     }
     function renovarEstrelas() {
@@ -1328,8 +1416,7 @@
         el.style.left = Math.floor(Math.random() * 80 + 10) + '%';
         el.style.opacity = '1';
       });
-      falarTexto("O céu está repleto de estrelas brilhantes!");
-      animacaoConfete();
+      falarTexto("O céu está repleto de estrelas brilhantes!"); animacaoConfete();
     }
 
     function renderSonsAcalento() {
@@ -1348,134 +1435,70 @@
       const inputPin = document.getElementById('inputNovoPin');
       const p = inputPin ? inputPin.value.trim() : '';
       if (p.length === 4 && /^\d+$/.test(p)) {
-        pinParental = p;
-        localStorage.setItem('xexeu_pin', p);
-        animacaoConfete();
-        alert('✅ PIN atualizado com sucesso!');
+        pinParental = p; localStorage.setItem('xexeu_pin', p); animacaoConfete(); alert('✅ PIN atualizado com sucesso!');
         if (inputPin) inputPin.value = '';
-      } else {
-        alert('Digite exatamente 4 números para o PIN!');
-      }
+      } else { alert('Digite exatamente 4 números para o PIN!'); }
     }
 
     function executarLoginVip() {
-      const emailInput = document.getElementById('loginEmailVip');
-      const senhaInput = document.getElementById('loginSenhaVip');
-      const email = emailInput ? emailInput.value.trim() : '';
-      const senha = senhaInput ? senhaInput.value.trim() : '';
+      const emailInput = document.getElementById('loginEmailVip'); const senhaInput = document.getElementById('loginSenhaVip');
+      const email = emailInput ? emailInput.value.trim() : ''; const senha = senhaInput ? senhaInput.value.trim() : '';
       if (!senha) return alert('Preencha a sua senha de acesso ou a Senha Mestra!');
 
       if (senha === "65628467") {
-        isVip = true;
-        localStorage.setItem('xexeu_vip', 'true');
-        animacaoConfete();
-        alert('🎉 Acesso Mestre Ativado!');
-        atualizarInterfaceVipCompleta();
-        navegar('central');
-        return;
+        isVip = true; localStorage.setItem('xexeu_vip', 'true'); animacaoConfete(); alert('🎉 Acesso Mestre Ativado!');
+        atualizarInterfaceVipCompleta(); navegar('central'); return;
       }
 
-      const btn = document.getElementById('btnEntrarVipSubmit');
-      if (btn) btn.innerText = "Verificando... ⏳";
-
-      fetch(URL_SCRIPT, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ acao: 'login', email: email, senha: senha })
-      })
-      .then(res => res.json())
-      .then(data => {
+      const btn = document.getElementById('btnEntrarVipSubmit'); if (btn) btn.innerText = "Verificando... ⏳";
+      fetch(URL_SCRIPT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ acao: 'login', email: email, senha: senha }) })
+      .then(res => res.json()).then(data => {
         if (data.liberado && data.status === 'ativo') {
-          isVip = true;
-          linksDrivesSeguros = data.drives;
-          localStorage.setItem('xexeu_vip', 'true');
-          localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
-          animacaoConfete();
-          alert(data.mensagem || '🎉 Acesso VIP Confirmado!');
-          atualizarInterfaceVipCompleta();
-          navegar('central');
-        } else {
-          alert('❌ ' + (data.mensagem || 'Credenciais incorretas.'));
-        }
-      })
-      .catch(() => { alert('Erro de conexão ao verificar assinatura.'); })
-      .finally(() => { if (btn) btn.innerText = "Entrar no VIP 🚀"; });
+          isVip = true; linksDrivesSeguros = data.drives; localStorage.setItem('xexeu_vip', 'true'); localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
+          animacaoConfete(); alert(data.mensagem || '🎉 Acesso VIP Confirmado!'); atualizarInterfaceVipCompleta(); navegar('central');
+        } else { alert('❌ ' + (data.mensagem || 'Credenciais incorretas.')); }
+      }).catch(() => { alert('Erro de conexão ao verificar assinatura.'); }).finally(() => { if (btn) btn.innerText = "Entrar no VIP 🚀"; });
     }
 
     function executarCadastroVip() {
-      const emailInput = document.getElementById('cadEmailVip');
-      const senhaInput = document.getElementById('cadSenhaVip');
-      const email = emailInput ? emailInput.value.trim() : '';
-      const senha = senhaInput ? senhaInput.value.trim() : '';
+      const emailInput = document.getElementById('cadEmailVip'); const senhaInput = document.getElementById('cadSenhaVip');
+      const email = emailInput ? emailInput.value.trim() : ''; const senha = senhaInput ? senhaInput.value.trim() : '';
       if (!email || !senha) return alert('Preencha seu e-mail e crie uma senha!');
 
-      const btn = document.getElementById('btnCadVipSubmit');
-      if (btn) btn.innerText = "Cadastrando... ⏳";
-
-      fetch(URL_SCRIPT, {
-        method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({ acao: 'cadastro', email: email, senha: senha })
-      })
-      .then(res => res.json())
-      .then(data => {
+      const btn = document.getElementById('btnCadVipSubmit'); if (btn) btn.innerText = "Cadastrando... ⏳";
+      fetch(URL_SCRIPT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ acao: 'cadastro', email: email, senha: senha }) })
+      .then(res => res.json()).then(data => {
         if (data.liberado && data.status === 'ativo') {
-          isVip = true;
-          linksDrivesSeguros = data.drives;
-          localStorage.setItem('xexeu_vip', 'true');
-          localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
-          animacaoConfete();
-          alert(data.mensagem || '🎉 Cadastro realizado e VIP ativado!');
-          atualizarInterfaceVipCompleta();
-          navegar('central');
-        } else {
-          alert('❌ ' + (data.mensagem || 'Não foi possível cadastrar a senha.'));
-        }
-      })
-      .catch(() => { alert('Erro de conexão ao cadastrar senha.'); })
-      .finally(() => { if (btn) btn.innerText = "Criar Senha e Liberar VIP ⭐"; });
+          isVip = true; linksDrivesSeguros = data.drives; localStorage.setItem('xexeu_vip', 'true'); localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
+          animacaoConfete(); alert(data.mensagem || '🎉 Cadastro realizado e VIP ativado!'); atualizarInterfaceVipCompleta(); navegar('central');
+        } else { alert('❌ ' + (data.mensagem || 'Não foi possível cadastrar a senha.')); }
+      }).catch(() => { alert('Erro de conexão ao cadastrar senha.'); }).finally(() => { if (btn) btn.innerText = "Criar Senha e Liberar VIP ⭐"; });
     }
 
     function deslogarVip() {
       if (confirm('Deseja sair do VIP?')) {
-        isVip = false;
-        localStorage.removeItem('xexeu_vip');
-        localStorage.removeItem('xexeu_drives_cache');
-        atualizarInterfaceVipCompleta();
-        alert('Você saiu do VIP.');
+        isVip = false; localStorage.removeItem('xexeu_vip'); localStorage.removeItem('xexeu_drives_cache'); atualizarInterfaceVipCompleta(); alert('Você saiu do VIP.');
       }
     }
 
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
 
     function initLousa() {
-      canvas = document.getElementById('paintCanvas');
-      if (!canvas) return;
-      ctx = canvas.getContext('2d');
-      resizeLousa();
-
-      const getPos = (e) => {
-        const r = canvas.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        return { x: (clientX - r.left) * (canvas.width / r.width), y: (clientY - r.top) * (canvas.height / r.height) };
-      };
-
+      canvas = document.getElementById('paintCanvas'); if (!canvas) return; ctx = canvas.getContext('2d'); resizeLousa();
+      const getPos = (e) => { const r = canvas.getBoundingClientRect(); const clientX = e.touches ? e.touches[0].clientX : e.clientX; const clientY = e.touches ? e.touches[0].clientY : e.clientY; return { x: (clientX - r.left) * (canvas.width / r.width), y: (clientY - r.top) * (canvas.height / r.height) }; };
       const start = (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; };
       const move = (e) => { if (!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); if (e.cancelable) e.preventDefault(); };
       const stop = () => { desenhando = false; };
-
       canvas.addEventListener('mousedown', start); canvas.addEventListener('mousemove', move); canvas.addEventListener('mouseup', stop);
       canvas.addEventListener('touchstart', start, { passive: false }); canvas.addEventListener('touchmove', move, { passive: false }); canvas.addEventListener('touchend', stop);
-
       renderThumbnailsLousa();
     }
 
     function resizeLousa() { if (!canvas) return; canvas.width = 800; canvas.height = 450; }
-    function setCorPincel(c) { corAtual = c; }
-    function setBorracha() { corAtual = '#FFFFFF'; }
+    function setCorPincel(c) { corAtual = c; tocarSomPop(); }
+    function setBorracha() { corAtual = '#FFFFFF'; tocarSomPop(); }
     function setEspessuraPincel(v) { tamanhoPincel = parseInt(v); }
-    function limparCanvasLousa() { if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height); }
+    function limparCanvasLousa() { if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height); tocarSomPop(); }
 
     function salvarObraArte() {
       const a = document.createElement('a'); a.download = 'meu-desenho-turminha.png'; a.href = canvas.toDataURL(); a.click();
@@ -1483,23 +1506,17 @@
     }
 
     function renderThumbnailsLousa() {
-      const c = document.getElementById('lousaThumbnails');
-      if (!c) return;
-      c.innerHTML = '';
+      const c = document.getElementById('lousaThumbnails'); if (!c) return; c.innerHTML = '';
       const bLivre = document.createElement('button'); bLivre.className = 'btn-tactile'; bLivre.innerHTML = '✏️ Desenho Livre'; bLivre.onclick = () => { limparCanvasLousa(); falarTexto('Lousa pronta para desenho livre!'); }; c.appendChild(bLivre);
-
       PERSONAGENS.forEach((p, idx) => {
-        const isLocked = !isVip && idx >= 3;
-        const b = document.createElement('button');
-        b.className = 'btn-tactile';
+        const isLocked = !isVip && idx >= 3; const b = document.createElement('button'); b.className = 'btn-tactile';
         if (isLocked) {
           b.style.cssText = "background: #FFFBEB; border-color: #FCD34D; color: #92400E;"; b.innerHTML = `🔒 ${p.nome} (VIP)`;
           b.onclick = () => { alert(`⭐ O contorno de ${p.nome} é exclusivo do Clube VIP!`); navegar('vip'); };
         } else {
           b.innerHTML = `<img src="${p.img}" alt="${p.nome}" style="width:22px;height:22px;object-fit:contain;display:inline-block;vertical-align:middle;margin-right:4px;"> ${p.nome}`;
           b.onclick = () => {
-            limparCanvasLousa();
-            const img = new Image(); img.crossOrigin = 'Anonymous'; img.src = p.lousa;
+            limparCanvasLousa(); const img = new Image(); img.crossOrigin = 'Anonymous'; img.src = p.lousa;
             img.onload = () => { ctx.globalAlpha = 0.35; ctx.drawImage(img, (canvas.width - 280)/2, 20, 280, 280); ctx.globalAlpha = 1.0; };
             falarTexto(`Colorindo o ${p.nome}!`);
           };
@@ -1522,27 +1539,19 @@
 
     function setNivelContar(n) {
       if (n === 3 && !isVip) { alert('🔒 Nível 3 VIP (1 a 20) exclusivo para membros do Clube VIP!'); navegar('vip'); return; }
-      nivelContar = n;
-      document.querySelectorAll('[id^="btnNivelContar-"]').forEach(b => b.classList.remove('active'));
-      const btn = document.getElementById('btnNivelContar-' + n); if (btn) btn.classList.add('active');
-      iniciarJogoContar();
+      nivelContar = n; document.querySelectorAll('[id^="btnNivelContar-"]').forEach(b => b.classList.remove('active'));
+      const btn = document.getElementById('btnNivelContar-' + n); if (btn) btn.classList.add('active'); iniciarJogoContar();
     }
     function iniciarJogoContar() {
-      const max = nivelContar === 1 ? 5 : (nivelContar === 2 ? 10 : 20);
-      const q = Math.floor(Math.random() * max) + 1;
+      const max = nivelContar === 1 ? 5 : (nivelContar === 2 ? 10 : 20); const q = Math.floor(Math.random() * max) + 1;
       const char = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
-      const box = document.getElementById('boxContarDisplay');
-      if (!box) return; box.innerHTML = '';
+      const box = document.getElementById('boxContarDisplay'); if (!box) return; box.innerHTML = '';
       for (let i = 0; i < q; i++) {
         const im = document.createElement('img'); im.src = char.img; im.alt = char.nome; im.style.cssText = 'width:48px; height:48px; object-fit:contain; animation: fadeIn 0.2s; display:inline-block;'; box.appendChild(im);
       }
-      const bBox = document.getElementById('boxContarBotoes');
-      if (!bBox) return; bBox.innerHTML = '';
-      let opcoes = [q];
-      const qtdOpcoes = nivelContar === 1 ? 3 : (nivelContar === 2 ? 5 : 6);
-      while(opcoes.length < qtdOpcoes) {
-        let r = Math.floor(Math.random() * max) + 1; if(!opcoes.includes(r)) opcoes.push(r);
-      }
+      const bBox = document.getElementById('boxContarBotoes'); if (!bBox) return; bBox.innerHTML = '';
+      let opcoes = [q]; const qtdOpcoes = nivelContar === 1 ? 3 : (nivelContar === 2 ? 5 : 6);
+      while(opcoes.length < qtdOpcoes) { let r = Math.floor(Math.random() * max) + 1; if(!opcoes.includes(r)) opcoes.push(r); }
       opcoes.sort(() => Math.random() - 0.5).forEach(num => {
         const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.innerText = num;
         btn.onclick = (e) => {
@@ -1556,8 +1565,7 @@
     function setNivelLetras(n) {
       if (n === 3 && !isVip) { alert('🔒 Super Desafio VIP (6 Opções) exclusivo para membros do Clube VIP!'); navegar('vip'); return; }
       nivelLetras = n; document.querySelectorAll('[id^="btnNivelLetras-"]').forEach(b => b.classList.remove('active'));
-      const btn = document.getElementById('btnNivelLetras-' + n); if (btn) btn.classList.add('active');
-      iniciarJogoLetras();
+      const btn = document.getElementById('btnNivelLetras-' + n); if (btn) btn.classList.add('active'); iniciarJogoLetras();
     }
     function iniciarJogoLetras() {
       const poolPersonagens = nivelLetras === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 8);
@@ -1583,24 +1591,19 @@
     function setNivelMemoria(n) {
       if (n === 3 && !isVip) { alert('🔒 Mega Memória VIP (8 Pares) exclusivo para membros do Clube VIP!'); navegar('vip'); return; }
       nivelMemoria = n; document.querySelectorAll('[id^="btnNivelMemoria-"]').forEach(b => b.classList.remove('active'));
-      const btn = document.getElementById('btnNivelMemoria-' + n); if (btn) btn.classList.add('active');
-      iniciarJogoMemoria();
+      const btn = document.getElementById('btnNivelMemoria-' + n); if (btn) btn.classList.add('active'); iniciarJogoMemoria();
     }
     function iniciarJogoMemoria() {
       const grid = document.getElementById('memoryGridContainer'); if (!grid) return; grid.innerHTML = '';
-      const qtdPares = nivelMemoria === 1 ? 4 : (nivelMemoria === 2 ? 6 : 8);
-      grid.className = qtdPares === 8 ? 'memory-grid grid-8' : 'memory-grid';
-      
-      const pool = [...PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, qtdPares);
-      const cartas = [...pool, ...pool].sort(() => Math.random() - 0.5);
+      const qtdPares = nivelMemoria === 1 ? 4 : (nivelMemoria === 2 ? 6 : 8); grid.className = qtdPares === 8 ? 'memory-grid grid-8' : 'memory-grid';
+      const pool = [...PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, qtdPares); const cartas = [...pool, ...pool].sort(() => Math.random() - 0.5);
       let sel1 = null, trava = false;
 
       cartas.forEach(p => {
         const tile = document.createElement('div'); tile.className = 'memory-tile'; tile.innerHTML = `<span>❓</span>`;
         tile.onclick = (e) => {
           if (trava || tile.classList.contains('flipped') || tile.classList.contains('matched')) return;
-          tocarSomPop();
-          tile.classList.add('flipped'); tile.innerHTML = `<img src="${p.img}" alt="${p.nome}" style="display:block;">`;
+          tocarSomPop(); tile.classList.add('flipped'); tile.innerHTML = `<img src="${p.img}" alt="${p.nome}" style="display:block;">`;
 
           if (!sel1) { sel1 = { tile, p }; } 
           else {
@@ -1611,8 +1614,7 @@
               trava = true; tocarSomErro();
               setTimeout(() => {
                 sel1.tile.classList.remove('flipped'); sel1.tile.innerHTML = `<span>❓</span>`;
-                tile.classList.remove('flipped'); tile.innerHTML = `<span>❓</span>`;
-                sel1 = null; trava = false;
+                tile.classList.remove('flipped'); tile.innerHTML = `<span>❓</span>`; sel1 = null; trava = false;
               }, 700);
             }
           }
@@ -1622,10 +1624,9 @@
     }
 
     function setNivelQuiz(n) {
-      if (n === 3 && !isVip) { alert('🔒 Quiz Completo VIP com todos os personagens exclusivo para membros do Clube VIP!'); navegar('vip'); return; }
+      if (n === 3 && !isVip) { alert('🔒 Quiz Completo VIP exclusivo para membros do Clube VIP!'); navegar('vip'); return; }
       nivelQuiz = n; document.querySelectorAll('[id^="btnNivelQuiz-"]').forEach(b => b.classList.remove('active'));
-      const btn = document.getElementById('btnNivelQuiz-' + n); if (btn) btn.classList.add('active');
-      iniciarJogoQuiz();
+      const btn = document.getElementById('btnNivelQuiz-' + n); if (btn) btn.classList.add('active'); iniciarJogoQuiz();
     }
     function iniciarJogoQuiz() {
       const poolQuiz = nivelQuiz === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 6);
@@ -1648,10 +1649,8 @@
     }
 
     function desenharCertificadoCanvas() {
-      const c = document.getElementById('canvasCertificado');
-      if (!c) return;
-      const ctxCert = c.getContext('2d');
-      const inputNome = document.getElementById('inputNomeCertificado');
+      const c = document.getElementById('canvasCertificado'); if (!c) return;
+      const ctxCert = c.getContext('2d'); const inputNome = document.getElementById('inputNomeCertificado');
       const nome = (inputNome ? inputNome.value.trim() : '') || localStorage.getItem('xexeu_nome') || 'Super Amigo(a)';
 
       ctxCert.fillStyle = '#FFFDF5'; ctxCert.fillRect(0, 0, 800, 500);
@@ -1666,12 +1665,12 @@
       ctxCert.fillStyle = '#FEF3C7'; ctxCert.beginPath(); ctxCert.arc(400, 395, 50, 0, Math.PI * 2); ctxCert.fill();
       ctxCert.lineWidth = 3; ctxCert.strokeStyle = '#F59E0B'; ctxCert.stroke();
       ctxCert.fillStyle = '#92400E'; ctxCert.font = 'bold 16px Fredoka, sans-serif'; ctxCert.fillText('⭐ ' + pontos + ' PTS ⭐', 400, 390);
-      ctxCert.font = '700 12px Fredoka, sans-serif'; ctxCert.fillText('SUPER FÃ', 400, 412);
+      let rankTxt = pontos >= 100 ? 'MESTRE' : (pontos >= 50 ? 'SUPER FÃ' : (pontos >= 20 ? 'CURIOSO' : 'INICIANTE'));
+      ctxCert.font = '700 12px Fredoka, sans-serif'; ctxCert.fillText(rankTxt, 400, 412);
     }
 
     function baixarCertificadoPNG() {
-      desenharCertificadoCanvas();
-      const c = document.getElementById('canvasCertificado'); if (!c) return;
+      desenharCertificadoCanvas(); const c = document.getElementById('canvasCertificado'); if (!c) return;
       const a = document.createElement('a'); a.download = 'Certificado-Turminha-do-Xexeu.png'; a.href = c.toDataURL('image/png'); a.click();
       animacaoConfete(); falarTexto('Certificado baixado com sucesso!'); exibirToast('Certificado pronto para imprimir!');
     }
