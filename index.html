@@ -105,11 +105,15 @@
     .hub-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; font-weight: 600; }
     .hub-card-tag { font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 12px; width: fit-content; }
 
+    /* ESTILOS DO XEXEU VIRTUAL */
     .mascote-virtual { position: absolute; right: 20px; bottom: 20px; cursor: pointer; text-align: center; animation: floatIcon 4s infinite; z-index: 10; }
-    .mascote-virtual img { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)); transition: transform 0.2s; }
+    .mascote-virtual img { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)); transition: transform 0.2s, filter 0.3s; }
+    .mascote-virtual img.sujo { filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)) sepia(0.5) hue-rotate(-30deg) brightness(0.85); }
     .mascote-virtual img:active { transform: scale(0.85); }
     .balao-fala { position: absolute; top: -50px; right: 50px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; }
     .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateY(0) scale(1); }
+    @keyframes discoLights { 0% { background: rgba(236,72,153,0.3); } 33% { background: rgba(16,185,129,0.3); } 66% { background: rgba(59,130,246,0.3); } 100% { background: rgba(245,158,11,0.3); } }
+    .party-mode { animation: discoLights 0.6s infinite alternate !important; display: block !important; }
 
     .hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; }
     @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
@@ -289,45 +293,55 @@
         <div class="game-card-title" style="color: #6D28D9; justify-content: center; margin-bottom: 8px;">
           <span>🐣 Cuidando do Xexéu</span>
         </div>
-        <p style="font-size: 14px; color: #5B21B6; margin-bottom: 20px; font-weight: 600;">O Xexéu precisa de carinho! Dê comidinha, brinque e coloque para dormir.</p>
+        <p style="font-size: 14px; color: #5B21B6; margin-bottom: 20px; font-weight: 600;">O Xexéu precisa de carinho! Cuide dele para ganhar pontos mágicos.</p>
 
-        <!-- BARRAS DE STATUS -->
+        <!-- BARRAS DE STATUS COM HIGIENE -->
         <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;">
-          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 120px; box-shadow: var(--shadow-sm);">
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #991B1B;">🍎 Fome</span>
             <div style="background: #FEE2E2; height: 10px; border-radius: 10px; overflow: hidden;">
               <div id="barFome" style="background: #EF4444; height: 100%; width: 50%; transition: width 0.4s ease-out;"></div>
             </div>
           </div>
-          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 120px; box-shadow: var(--shadow-sm);">
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #92400E;">⚡ Energia</span>
             <div style="background: #FEF3C7; height: 10px; border-radius: 10px; overflow: hidden;">
               <div id="barEnergia" style="background: #F59E0B; height: 100%; width: 80%; transition: width 0.4s ease-out;"></div>
             </div>
           </div>
-          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 120px; box-shadow: var(--shadow-sm);">
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #065F46;">🎈 Alegria</span>
             <div style="background: #D1FAE5; height: 10px; border-radius: 10px; overflow: hidden;">
               <div id="barAlegria" style="background: #10B981; height: 100%; width: 100%; transition: width 0.4s ease-out;"></div>
             </div>
           </div>
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; box-shadow: var(--shadow-sm);">
+            <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #0369A1;">🛁 Limpeza</span>
+            <div style="background: #E0F2FE; height: 10px; border-radius: 10px; overflow: hidden;">
+              <div id="barHigiene" style="background: #0284C7; height: 100%; width: 100%; transition: width 0.4s ease-out;"></div>
+            </div>
+          </div>
         </div>
 
         <!-- TELA DO QUARTINHO -->
-        <div style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; max-width: 320px; margin: 0 auto 20px; position: relative; overflow: hidden; height: 260px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
+        <div style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; max-width: 320px; margin: 0 auto 16px; position: relative; overflow: hidden; height: 260px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
           <div id="filtroNoite" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.8); display: none; z-index: 1;"></div>
-          <!-- O clique/toque no Xexéu agora faz carinho! -->
+          <!-- O clique/toque no Xexéu faz carinho -->
           <div class="mascote-virtual" id="mascoteXexeuHome" onclick="animarMascote(event)" style="position: relative; right: 0; bottom: 0;">
             <div class="balao-fala" id="balaoMascote" style="top: -40px; right: -20px;">Bora brincar!</div>
             <img id="imgXexeuPet" src="https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif" alt="Xexéu Virtual" style="width: 200px; height: 200px; object-fit: contain; z-index: 2; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
           </div>
         </div>
 
-        <!-- BOTÕES DE AÇÃO -->
-        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-          <button class="btn-tactile" style="border-color: #EF4444; color: #B91C1C;" onclick="acaoPet('alimentar')">🍎 Dar Comida</button>
-          <button class="btn-tactile" style="border-color: #F59E0B; color: #B45309;" onclick="acaoPet('brincar')">🎾 Brincar</button>
-          <button class="btn-tactile" style="border-color: #3B82F6; color: #1D4ED8;" onclick="acaoPet('dormir')">🛏️ Dormir/Acordar</button>
+        <!-- BOTÕES DE AÇÃO: GRATUITOS E VIP -->
+        <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+          <button class="btn-tactile" style="border-color: #EF4444; color: #B91C1C; font-size: 13px; padding: 8px 14px;" onclick="acaoPet('alimentar')">🍎 Comida</button>
+          <button class="btn-tactile" style="border-color: #F59E0B; color: #B45309; font-size: 13px; padding: 8px 14px;" onclick="acaoPet('brincar')">🎾 Brincar</button>
+          <button class="btn-tactile" style="border-color: #3B82F6; color: #1D4ED8; font-size: 13px; padding: 8px 14px;" onclick="acaoPet('dormir')">🛏️ Dormir</button>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; padding-top: 12px; border-top: 2px dashed #CBD5E1;">
+          <button class="btn-tactile vip" style="font-size: 13px; padding: 8px 14px; background: linear-gradient(135deg, #0EA5E9, #0369A1); border-color: #0284C7;" onclick="acaoPet('banho')">🛁 Banho de Espuma VIP</button>
+          <button class="btn-tactile vip" style="font-size: 13px; padding: 8px 14px; background: linear-gradient(135deg, #8B5CF6, #EC4899); border-color: #BE185D;" onclick="acaoPet('festa')">🪩 Festa Musical VIP</button>
         </div>
       </div>
       <!-- FIM MINIJOGO -->
@@ -479,9 +493,10 @@
             <button class="btn-tactile" style="background:#F59E0B; color:#FFF;" onclick="setCorPincel('#F59E0B')">Amarelo</button>
             <button class="btn-tactile" style="background:#8B5CF6; color:#FFF;" onclick="setCorPincel('#8B5CF6')">Roxo</button>
 
+            <!-- ROLETA VIP -->
             <label class="btn-tactile" style="background: linear-gradient(135deg, #FF0080, #7928CA, #0070F3); color:#FFF; cursor:pointer;" title="Escolha qualquer cor" onclick="if(!isVip){ event.preventDefault(); alert('🔒 A Roleta de Cores Mágica é exclusiva para membros VIP!'); navegar('vip'); }">
               🌈 Roleta VIP
-              <input type="color" id="roletaCorLousa" value="#2563EB" style="opacity: 0; width: 0; height: 0; position: absolute;" onchange="setCorPincel(this.value)">
+              <input type="color" id="roletaCorLousa" value="#2563EB" style="opacity: 0; width: 0; height: 0; position: absolute;" onchange="if(isVip) setCorPincel(this.value)">
             </label>
 
             <button class="btn-tactile" onclick="setBorracha()">🧽 Borracha</button>
@@ -882,12 +897,12 @@
       comendo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787338974/xexeu_coemndo.mp3",
       brincando: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339401/xexeu_rindo.mp3",
       dormindo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339945/xexeu_dormindo.mp3",
-      triste: "https://res.cloudinary.com/oactqmgs/video/upload/v1787340147/xexeu_triste.mp3",
+      triste: "", // Tristeza sem áudio para não atrapalhar
       rindo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339401/xexeu_rindo.mp3", 
       ola: "https://res.cloudinary.com/oactqmgs/video/upload/v1787341990/ElevenLabs_2026-08-21T19_52_54_xexeu_gen_sp100_s50_sb75_se0_b_m2.mp3"
     };
 
-    let petStatus = { fome: 60, energia: 80, alegria: 90 };
+    let petStatus = { fome: 60, energia: 80, alegria: 90, higiene: 100 };
     let petDormindo = false;
     let petAcaoAtiva = false;
     let audioXexeuAtual = null; 
@@ -976,7 +991,7 @@
       if(mascote && !petDormindo) {
         clearTimeout(timeoutAcaoPet); petAcaoAtiva = true; mascote.classList.add('falando');
         petStatus.alegria = Math.min(100, petStatus.alegria + 15); atualizarBarrasPet();
-        if (img) img.src = LINKS_ANIMACOES_XEXEU.carinho;
+        if (img) { img.src = LINKS_ANIMACOES_XEXEU.carinho; img.classList.remove('sujo'); }
         if (LINKS_AUDIOS_XEXEU.ola) { tocarVozXexeu(LINKS_AUDIOS_XEXEU.ola); } else { tocarSomAcerto(); }
         const frases = ["Que carinho gostoso!", "Hihihi, eu adoro!", "Você é meu melhor amigo!", "Amo você!", "Faz cócegas!"];
         document.getElementById('balaoMascote').innerText = frases[Math.floor(Math.random() * frases.length)];
@@ -985,14 +1000,18 @@
     }
 
     function atualizarBarrasPet() {
-      const bFome = document.getElementById('barFome'); const bEnergia = document.getElementById('barEnergia'); const bAlegria = document.getElementById('barAlegria');
-      if(bFome) bFome.style.width = petStatus.fome + '%'; if(bEnergia) bEnergia.style.width = petStatus.energia + '%'; if(bAlegria) bAlegria.style.width = petStatus.alegria + '%';
-      if(!petDormindo && !petAcaoAtiva) {
-        const img = document.getElementById('imgXexeuPet');
-        if(img) {
+      const bFome = document.getElementById('barFome'); const bEnergia = document.getElementById('barEnergia'); const bAlegria = document.getElementById('barAlegria'); const bHigiene = document.getElementById('barHigiene');
+      if(bFome) bFome.style.width = petStatus.fome + '%'; if(bEnergia) bEnergia.style.width = petStatus.energia + '%'; if(bAlegria) bAlegria.style.width = petStatus.alegria + '%'; if(bHigiene) bHigiene.style.width = petStatus.higiene + '%';
+
+      const img = document.getElementById('imgXexeuPet');
+      if(img) {
+        if(petStatus.higiene < 30) { img.classList.add('sujo'); } else { img.classList.remove('sujo'); }
+        if(!petDormindo && !petAcaoAtiva) {
           if (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) {
-            if(img.src !== LINKS_ANIMACOES_XEXEU.triste) { img.src = LINKS_ANIMACOES_XEXEU.triste; }
-          } else { if(img.src !== LINKS_ANIMACOES_XEXEU.normal) img.src = LINKS_ANIMACOES_XEXEU.normal; }
+            if(img.src !== LINKS_ANIMACOES_XEXEU.triste) { img.src = LINKS_ANIMACOES_XEXEU.triste; tocarVozXexeu(LINKS_AUDIOS_XEXEU.triste); }
+          } else {
+            if(img.src !== LINKS_ANIMACOES_XEXEU.normal) img.src = LINKS_ANIMACOES_XEXEU.normal;
+          }
         }
       }
     }
@@ -1006,30 +1025,58 @@
 
       if (acao === 'alimentar') {
         petStatus.fome = Math.min(100, petStatus.fome + 30);
-        if(img) img.src = LINKS_ANIMACOES_XEXEU.comendo; tocarVozXexeu(LINKS_AUDIOS_XEXEU.comendo); animacaoConfete(); atualizarScore(2);
+        petStatus.higiene = Math.max(0, petStatus.higiene - 10);
+        if(img) img.src = LINKS_ANIMACOES_XEXEU.comendo;
+        tocarVozXexeu(LINKS_AUDIOS_XEXEU.comendo); animacaoConfete(); atualizarScore(2);
         timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
       } 
       else if (acao === 'brincar') {
         if(petStatus.energia < 20) { falarTexto("Estou muito cansado para brincar agora."); petAcaoAtiva = false; return; }
         petStatus.alegria = Math.min(100, petStatus.alegria + 30); petStatus.energia = Math.max(0, petStatus.energia - 15);
-        if(img) img.src = LINKS_ANIMACOES_XEXEU.brincando; tocarVozXexeu(LINKS_AUDIOS_XEXEU.brincando); animacaoConfete(); atualizarScore(2);
+        petStatus.higiene = Math.max(0, petStatus.higiene - 15);
+        if(img) img.src = LINKS_ANIMACOES_XEXEU.brincando;
+        tocarVozXexeu(LINKS_AUDIOS_XEXEU.brincando); animacaoConfete(); atualizarScore(2);
         timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
+      }
+      else if (acao === 'banho') {
+        if(!isVip) { alert("🔒 O Banho Mágico é exclusivo para VIPs!"); navegar('vip'); petAcaoAtiva = false; return; }
+        petStatus.higiene = 100; petStatus.alegria = Math.min(100, petStatus.alegria + 20);
+        if(img) { img.classList.remove('sujo'); img.src = LINKS_ANIMACOES_XEXEU.brincando; }
+        tocarVozXexeu(LINKS_AUDIOS_XEXEU.rindo); falarTexto("Que banho gostoso!"); animacaoConfete(); atualizarScore(5);
+        timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
+      }
+      else if (acao === 'festa') {
+        if(!isVip) { alert("🔒 A Festa Musical é exclusiva para VIPs!"); navegar('vip'); petAcaoAtiva = false; return; }
+        if(petStatus.energia < 30) { falarTexto("Preciso de mais energia para a festa!"); petAcaoAtiva = false; return; }
+        petStatus.alegria = 100; petStatus.energia -= 25; petStatus.higiene = Math.max(0, petStatus.higiene - 20);
+        if(img) img.src = LINKS_ANIMACOES_XEXEU.brincando;
+        if(filtro) filtro.className = 'party-mode';
+        tocarVozXexeu(LINKS_AUDIOS_XEXEU.rindo); falarTexto("Festa da Turminha!"); animacaoConfete(); atualizarScore(10);
+        timeoutAcaoPet = setTimeout(() => { if(filtro) { filtro.className = ''; filtro.style.display = 'none'; } resetarAnimacaoMascote(); }, 4000);
       }
       else if (acao === 'dormir') {
         petDormindo = !petDormindo; petAcaoAtiva = false;
         if (petDormindo) {
-          if(img) img.src = LINKS_ANIMACOES_XEXEU.dormindo; if(filtro) filtro.style.display = 'block';
+          if(img) img.src = LINKS_ANIMACOES_XEXEU.dormindo;
+          if(filtro) { filtro.className = ''; filtro.style.display = 'block'; }
           tocarVozXexeu(LINKS_AUDIOS_XEXEU.dormindo);
           let intervaloDormir = setInterval(() => {
-            if(!petDormindo || petStatus.energia >= 100) { clearInterval(intervaloDormir); } else { petStatus.energia = Math.min(100, petStatus.energia + 10); atualizarBarrasPet(); }
+            if(!petDormindo || petStatus.energia >= 100) { clearInterval(intervaloDormir); }
+            else { petStatus.energia = Math.min(100, petStatus.energia + 10); atualizarBarrasPet(); }
           }, 1000);
-        } else { if(filtro) filtro.style.display = 'none'; falarTexto("Bom dia!"); atualizarBarrasPet(); }
+        } else {
+          if(filtro) filtro.style.display = 'none'; falarTexto("Bom dia!"); atualizarBarrasPet();
+        }
       }
       atualizarBarrasPet();
     }
 
     setInterval(() => {
-      if (!petDormindo && !petAcaoAtiva) { petStatus.fome = Math.max(0, petStatus.fome - 2); petStatus.energia = Math.max(0, petStatus.energia - 1); petStatus.alegria = Math.max(0, petStatus.alegria - 2); atualizarBarrasPet(); }
+      if (!petDormindo && !petAcaoAtiva) {
+        petStatus.fome = Math.max(0, petStatus.fome - 2); petStatus.energia = Math.max(0, petStatus.energia - 1); 
+        petStatus.alegria = Math.max(0, petStatus.alegria - 2); petStatus.higiene = Math.max(0, petStatus.higiene - 1);
+        atualizarBarrasPet();
+      }
     }, 8000);
 
     function navegar(paginaId) {
@@ -1047,7 +1094,8 @@
     function irParaJogosVip(subjogo) { navegar('jogos'); trocarJogo(subjogo); }
 
     function falarTexto(texto) {
-      exibirToast(texto); if (!audioAtivo || !('speechSynthesis' in window)) return;
+      exibirToast(texto);
+      if (!audioAtivo || !('speechSynthesis' in window)) return;
       try { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(texto); u.lang = 'pt-BR'; u.rate = isVip ? velocidadeFala : 1.0; if (isVip && vozesDisponiveis[vozSelecionadaIdx]) u.voice = vozesDisponiveis[vozSelecionadaIdx]; window.speechSynthesis.speak(u); } catch(e) {}
     }
 
@@ -1108,7 +1156,7 @@
       const emojiInput = document.getElementById('novoCaaEmoji'); const textoInput = document.getElementById('novoCaaTexto');
       const emoji = emojiInput ? emojiInput.value.trim() || '⭐' : '⭐'; const texto = textoInput ? textoInput.value.trim() : '';
       if (!texto) return alert('Digite o texto do cartão!');
-      if (!isVip && cartoesCaa.length >= 6) { alert('🔒 O plano Grátis permite até 6 cartões. Assine o VIP para criar cartões ilimitados!'); navegar('vip'); return; }
+      if (!isVip && cartoesCaa.length >= 8) { alert('🔒 O plano Grátis permite até 8 cartões. Assine o VIP para criar cartões ilimitados!'); navegar('vip'); return; }
       cartoesCaa.push({ emoji, texto }); localStorage.setItem('xexeu_caa', JSON.stringify(cartoesCaa)); if (textoInput) textoInput.value = ''; renderCartoesCaa(); falarTexto(`Cartão de ${texto} adicionado!`); animacaoConfete();
     }
 
@@ -1329,8 +1377,9 @@
       nivelSombras = n; document.querySelectorAll('[id^="btnNivelSombras-"]').forEach(b => b.classList.remove('active')); const btn = document.getElementById('btnNivelSombras-' + n); if (btn) btn.classList.add('active'); iniciarJogoSombras();
     }
     function iniciarJogoSombras() {
-      const poolSombras = nivelSombras === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 8); const p = poolSombras[Math.floor(Math.random() * poolSombras.length)];
-      const img = document.getElementById('imgSombraAlvo'); if (img) { img.src = p.img; img.alt = "Sombra"; img.style.filter = "brightness(0) invert(0)"; }
+      const poolSombras = nivelSombras === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 8);
+      const p = poolSombras[Math.floor(Math.random() * poolSombras.length)];
+      const img = document.getElementById('imgSombraAlvo'); if (img) { img.src = p.img; img.alt = "Sombra Misteriosa"; img.style.filter = "brightness(0) invert(0)"; }
       const bBox = document.getElementById('boxSombrasBotoes'); if (!bBox) return; bBox.innerHTML = '';
       const qtd = nivelSombras === 1 ? 3 : (nivelSombras === 2 ? 4 : 6); const outros = poolSombras.filter(x => x.nome !== p.nome).sort(() => Math.random() - 0.5).slice(0, qtd - 1);
       const opcoes = [p, ...outros].sort(() => Math.random() - 0.5);
@@ -1445,7 +1494,7 @@
     function checkRotina(e, i) { rotinas[i].feito = !rotinas[i].feito; if (rotinas[i].feito) { celebrar(e, 5); falarTexto('Muito bem! Tarefa cumprida.'); } localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); renderRotinas(); }
     function removerRotina(i) { rotinas.splice(i, 1); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); renderRotinas(); tocarSomPop(); }
     function adicionarItemRotina() {
-      if (!isVip && rotinas.length >= 3) { alert('🔒 Plano Grátis permite até 3 tarefas. Seja VIP para rotinas ilimitadas!'); navegar('vip'); return; }
+      if (!isVip && rotinas.length >= 3) { alert('🔒 O plano Grátis permite até 3 tarefas na rotina. Assine o VIP para rotinas ilimitadas!'); navegar('vip'); return; }
       const input = document.getElementById('inputNovaRotina'); const t = input ? input.value.trim() : ''; if (!t) return; rotinas.push({ id: Date.now(), texto: t, feito: false }); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); if (input) input.value = ''; renderRotinas(); animacaoConfete();
     }
 
