@@ -106,12 +106,44 @@
     .hub-card-tag { font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 12px; width: fit-content; }
 
     /* ESTILOS DO XEXEU VIRTUAL */
-    .mascote-virtual { position: absolute; right: 20px; bottom: 20px; cursor: pointer; text-align: center; animation: floatIcon 4s infinite; z-index: 10; }
-    .mascote-virtual img { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)); transition: transform 0.2s, filter 0.3s; }
-    .mascote-virtual img.sujo { filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)) sepia(0.5) hue-rotate(-30deg) brightness(0.85); }
+    .mascote-virtual { position: absolute; right: 20px; bottom: 10px; cursor: pointer; text-align: center; animation: floatIcon 4s infinite; z-index: 10; }
+    .mascote-virtual img { width: 160px; height: 160px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)); transition: transform 0.2s, filter 0.3s; }
+    .mascote-virtual img.sujo { filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)) sepia(0.6) hue-rotate(-20deg) brightness(0.75) contrast(1.1); }
     .mascote-virtual img:active { transform: scale(0.85); }
-    .balao-fala { position: absolute; top: -50px; right: 50px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; }
-    .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateY(0) scale(1); }
+    
+    /* BALÃO DE FALA MELHORADO E CENTRALIZADO */
+    .balao-fala { 
+      position: absolute; 
+      top: -45px; 
+      left: 50%; 
+      transform: translateX(-50%) translateY(10px) scale(0.9); 
+      background: #FFF; 
+      border: 3px solid #8B5CF6; 
+      border-radius: 20px; 
+      padding: 10px 14px; 
+      font-size: 14px; 
+      font-weight: 800; 
+      color: #6D28D9; 
+      width: max-content; 
+      max-width: 200px; 
+      box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); 
+      opacity: 0; 
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+      pointer-events: none; 
+      z-index: 20; 
+    }
+    .balao-fala::after {
+      content: '';
+      position: absolute;
+      bottom: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 9px 9px 0;
+      border-style: solid;
+      border-color: #8B5CF6 transparent transparent transparent;
+    }
+    .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+
     @keyframes discoLights { 0% { background: rgba(236,72,153,0.3); } 33% { background: rgba(16,185,129,0.3); } 66% { background: rgba(59,130,246,0.3); } 100% { background: rgba(245,158,11,0.3); } }
     .party-mode { animation: discoLights 0.6s infinite alternate !important; display: block !important; }
 
@@ -204,7 +236,7 @@
     .popit-bubble { aspect-ratio: 1; border-radius: 50%; border: 2px solid #E879F9; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15), 0 4px 6px rgba(0,0,0,0.05); transition: all 0.1s ease; }
     .popit-bubble.popped { transform: scale(0.88); box-shadow: inset 0 4px 0 rgba(0,0,0,0.2); opacity: 0.6; }
     
-    .sombra-misteriosa { filter: brightness(0) invert(0); pointer-events: none; }
+    .sombra-misteriosa { filter: brightness(0) invert(0); pointer-events: none; transition: filter 0.5s; }
   </style>
 </head>
 <body>
@@ -323,13 +355,13 @@
           </div>
         </div>
 
-        <!-- TELA DO QUARTINHO -->
-        <div style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; max-width: 320px; margin: 0 auto 16px; position: relative; overflow: hidden; height: 260px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
+        <!-- TELA DO QUARTINHO (Aumentada e Ajustada) -->
+        <div style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; max-width: 320px; margin: 0 auto 16px; position: relative; overflow: hidden; height: 300px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
           <div id="filtroNoite" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.8); display: none; z-index: 1;"></div>
           <!-- O clique/toque no Xexéu faz carinho -->
           <div class="mascote-virtual" id="mascoteXexeuHome" onclick="animarMascote(event)" style="position: relative; right: 0; bottom: 0;">
-            <div class="balao-fala" id="balaoMascote" style="top: -40px; right: -20px;">Bora brincar!</div>
-            <img id="imgXexeuPet" src="https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif" alt="Xexéu Virtual" style="width: 200px; height: 200px; object-fit: contain; z-index: 2; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+            <div class="balao-fala" id="balaoMascote">Bora brincar!</div>
+            <img id="imgXexeuPet" src="https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif" alt="Xexéu Virtual" style="width: 160px; height: 160px; object-fit: contain; z-index: 2; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
           </div>
         </div>
 
@@ -340,7 +372,7 @@
           <button class="btn-tactile" style="border-color: #3B82F6; color: #1D4ED8; font-size: 13px; padding: 8px 14px;" onclick="acaoPet('dormir')">🛏️ Dormir</button>
         </div>
         <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; padding-top: 12px; border-top: 2px dashed #CBD5E1;">
-          <button class="btn-tactile vip" style="font-size: 13px; padding: 8px 14px; background: linear-gradient(135deg, #0EA5E9, #0369A1); border-color: #0284C7;" onclick="acaoPet('banho')">🛁 Banho de Espuma VIP</button>
+          <button class="btn-tactile vip" style="font-size: 13px; padding: 8px 14px; background: linear-gradient(135deg, #0EA5E9, #0369A1); border-color: #0284C7;" onclick="acaoPet('banho')">🛁 Banho Mágico VIP</button>
           <button class="btn-tactile vip" style="font-size: 13px; padding: 8px 14px; background: linear-gradient(135deg, #8B5CF6, #EC4899); border-color: #BE185D;" onclick="acaoPet('festa')">🪩 Festa Musical VIP</button>
         </div>
       </div>
@@ -351,7 +383,7 @@
           <span class="hub-card-icon">🎨</span>
           <span class="hub-card-tag" style="background: #EFF6FF; color: var(--primary);">Jogos Educativos</span>
           <h4 class="hub-card-title">Estúdio de Jogos & Lousa</h4>
-          <p class="hub-card-desc">Lousa mágica, contagem numérica, letras, sombras, memória e quiz com fases ampliadas!</p>
+          <p class="hub-card-desc">Lousa mágica, letras, sombras misteriosas, memória e quiz com fases ampliadas!</p>
         </div>
 
         <div class="hub-card" onclick="navegar('tea')" style="border-color: #BAE6FD;">
@@ -890,7 +922,8 @@
       dormindo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336364/XEXEU_DORMINDO.gif",
       brincando: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336534/XEXEU_FELIZ.gif",
       triste: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336521/XEXEU_TRISTE.gif",
-      carinho: "https://res.cloudinary.com/oactqmgs/image/upload/v1787341883/XEXEU_COMENDO.png" 
+      carinho: "https://res.cloudinary.com/oactqmgs/image/upload/v1787341883/XEXEU_COMENDO.png",
+      banho: "" // Deixei reservado para quando você criar o do banho!
     };
 
     const LINKS_AUDIOS_XEXEU = {
@@ -1041,7 +1074,11 @@
       else if (acao === 'banho') {
         if(!isVip) { alert("🔒 O Banho Mágico é exclusivo para VIPs!"); navegar('vip'); petAcaoAtiva = false; return; }
         petStatus.higiene = 100; petStatus.alegria = Math.min(100, petStatus.alegria + 20);
-        if(img) { img.classList.remove('sujo'); img.src = LINKS_ANIMACOES_XEXEU.brincando; }
+        if(img) { 
+          img.classList.remove('sujo'); 
+          // Se houver gif de banho usa, senão usa o brincando
+          img.src = LINKS_ANIMACOES_XEXEU.banho || LINKS_ANIMACOES_XEXEU.brincando; 
+        }
         tocarVozXexeu(LINKS_AUDIOS_XEXEU.rindo); falarTexto("Que banho gostoso!"); animacaoConfete(); atualizarScore(5);
         timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
       }
@@ -1065,7 +1102,7 @@
             else { petStatus.energia = Math.min(100, petStatus.energia + 10); atualizarBarrasPet(); }
           }, 1000);
         } else {
-          if(filtro) filtro.style.display = 'none'; falarTexto("Bom dia!"); atualizarBarrasPet();
+          if(filtro) { filtro.className = ''; filtro.style.display = 'none'; } falarTexto("Bom dia!"); atualizarBarrasPet();
         }
       }
       atualizarBarrasPet();
