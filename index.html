@@ -42,7 +42,6 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', 'Nunito', sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background: var(--bg-canvas); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; user-select: none; }
 
-    /* MODO CALMO SENSORY ROBUSTO E TERAPÊUTICO */
     body.sensory-mode {
       --bg-canvas: #F4F1EA !important;
       --card-bg: #FCFAF6 !important;
@@ -314,6 +313,7 @@
       <button class="nav-item-btn" onclick="navegar('videos')">🎬 Vídeos</button>
       <button class="nav-item-btn" onclick="navegar('livros')">📚 Livros</button>
       <button class="nav-item-btn" onclick="navegar('rotina')">📅 Rotina</button>
+      <button class="nav-item-btn" onclick="navegar('certificado')">🏆 Certificado</button>
       <button class="nav-item-btn vip-item" onclick="navegar('vip')">⭐ Clube VIP</button>
       <button class="nav-item-btn" onclick="navegar('perfil')">👤 Perfil & Ajustes</button>
     </nav>
@@ -366,6 +366,13 @@
           <h4 class="hub-card-title">Quadro de Rotinas</h4>
           <p class="hub-card-desc">Organize as tarefas do dia a dia e marque seus hábitos cumpridos.</p>
         </div>
+
+        <div class="hub-card" onclick="navegar('certificado')">
+          <span class="hub-card-icon">🏆</span>
+          <span class="hub-card-tag" style="background: #FEF9C3; color: #854D0E;">Diploma Oficial</span>
+          <h4 class="hub-card-title">Certificado de Super Fã</h4>
+          <p class="hub-card-desc">Gere seu diploma com nome oficial e baixe a imagem para guardar ou imprimir!</p>
+        </div>
       </div>
     </div>
 
@@ -415,7 +422,6 @@
         </p>
       </div>
 
-      <!-- BARRA SOCIAL (SEM PINTEREST E COM LINK ATUALIZADO DO YT MUSIC) -->
       <div class="social-bar">
         <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="YouTube"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT.png" alt="YouTube"></a>
         <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw?si=cvVp-lO2f5suzj6h" target="_blank" class="social-btn-round" title="YouTube Music"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT_MUSIC.png" alt="YT Music"></a>
@@ -697,6 +703,27 @@
       </div>
     </div>
 
+    <!-- PÁGINA: CERTIFICADO -->
+    <div id="page-certificado" class="page-box">
+      <div class="game-card" style="text-align: center;">
+        <div class="game-card-title"><span>🏆 Certificado Oficial de Super Fã</span></div>
+        <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 16px;">Gere seu diploma personalizado com seu nome e pontuação para guardar ou imprimir!</p>
+        
+        <div style="max-width: 440px; margin: 0 auto 16px; display: flex; gap: 8px;">
+          <input type="text" id="inputNomeCertificado" class="form-input" placeholder="Nome da Criança" style="margin-bottom: 0;">
+          <button class="btn-tactile primary" onclick="desenharCertificadoCanvas()">Atualizar 🎨</button>
+        </div>
+
+        <div style="max-width: 760px; margin: 0 auto; border-radius: 16px; overflow: hidden; border: 3px solid #FCD34D; box-shadow: var(--shadow-md); background: #FFF;">
+          <canvas id="canvasCertificado" width="800" height="500" style="width: 100%; height: auto; display: block;"></canvas>
+        </div>
+
+        <div style="margin-top: 18px;">
+          <button class="btn-tactile green" style="font-size: 16px; padding: 14px 28px;" onclick="baixarCertificadoPNG()">📥 Baixar Certificado Oficial (PNG)</button>
+        </div>
+      </div>
+    </div>
+
     <!-- PÁGINA: CLUBE VIP -->
     <div id="page-vip" class="page-box">
       <div class="game-card" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D; text-align: center;">
@@ -886,10 +913,13 @@
       try { carregarVozes(); } catch(e) { console.error(e); }
       try { atualizarInterfaceVipCompleta(); } catch(e) { console.error(e); }
       try { iniciarAnimacaoRespiracao(); } catch(e) { console.error(e); }
+      try { desenharCertificadoCanvas(); } catch(e) { console.error(e); }
       
       const nomeSalvo = localStorage.getItem('xexeu_nome') || 'Amiguinho';
       const inputNome = document.getElementById('inputNomePerfil');
+      const inputNomeCert = document.getElementById('inputNomeCertificado');
       if (inputNome) inputNome.value = nomeSalvo;
+      if (inputNomeCert) inputNomeCert.value = nomeSalvo;
       document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = nomeSalvo);
     });
 
@@ -906,6 +936,7 @@
       if (paginaId === 'jogos') trocarJogo('lousa');
       if (paginaId === 'tea') { renderCartoesCaa(); renderPopItSensorial(); }
       if (paginaId === 'rotina') { renderRotinas(); }
+      if (paginaId === 'certificado') { desenharCertificadoCanvas(); }
       if (paginaId === 'vip') atualizarInterfaceVipCompleta();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -957,6 +988,7 @@
       const elNivel = document.getElementById('badgeNivel');
       if (elPts) elPts.innerText = pontos;
       if (elNivel) elNivel.innerText = pontos > 50 ? '🌟 Super Fã' : pontos > 20 ? '⭐ Curioso' : 'Iniciante';
+      desenharCertificadoCanvas();
     }
 
     function tocarSomPop() {
@@ -1714,6 +1746,86 @@
       });
     }
 
+    function desenharCertificadoCanvas() {
+      const c = document.getElementById('canvasCertificado');
+      if (!c) return;
+      const ctxCert = c.getContext('2d');
+      const inputNome = document.getElementById('inputNomeCertificado');
+      const nome = (inputNome ? inputNome.value.trim() : '') || localStorage.getItem('xexeu_nome') || 'Super Amigo(a)';
+
+      ctxCert.fillStyle = '#FFFDF5';
+      ctxCert.fillRect(0, 0, 800, 500);
+      
+      // Borda Externa Dourada
+      ctxCert.lineWidth = 14;
+      ctxCert.strokeStyle = '#FCD34D';
+      ctxCert.strokeRect(15, 15, 770, 470);
+
+      // Borda Interna Azul
+      ctxCert.lineWidth = 4;
+      ctxCert.strokeStyle = '#2563EB';
+      ctxCert.strokeRect(26, 26, 748, 448);
+
+      // Cabeçalho
+      ctxCert.textAlign = 'center';
+      ctxCert.fillStyle = '#1E40AF';
+      ctxCert.font = 'bold 34px Fredoka, sans-serif';
+      ctxCert.fillText('DIPLOMA DE SUPER FÃ OFICIAL', 400, 95);
+
+      ctxCert.fillStyle = '#78350F';
+      ctxCert.font = '600 20px Fredoka, sans-serif';
+      ctxCert.fillText('Certificamos com muita alegria que o(a) querido(a)', 400, 145);
+
+      // Nome do Aluno / Criança
+      ctxCert.fillStyle = '#2563EB';
+      ctxCert.font = 'bold 44px Fredoka, sans-serif';
+      ctxCert.fillText(nome.toUpperCase(), 400, 215);
+
+      // Linha de Destaque
+      ctxCert.lineWidth = 3;
+      ctxCert.strokeStyle = '#F59E0B';
+      ctxCert.beginPath();
+      ctxCert.moveTo(180, 232);
+      ctxCert.lineTo(620, 232);
+      ctxCert.stroke();
+
+      // Texto de Mérito
+      ctxCert.fillStyle = '#475569';
+      ctxCert.font = '600 18px Fredoka, sans-serif';
+      ctxCert.fillText('completou os desafios educativos e brincadeiras na', 400, 275);
+      
+      ctxCert.fillStyle = '#D97706';
+      ctxCert.font = 'bold 26px Fredoka, sans-serif';
+      ctxCert.fillText('Turminha do Xexéu!', 400, 310);
+
+      // Selo Circular
+      ctxCert.fillStyle = '#FEF3C7';
+      ctxCert.beginPath();
+      ctxCert.arc(400, 395, 50, 0, Math.PI * 2);
+      ctxCert.fill();
+      ctxCert.lineWidth = 3;
+      ctxCert.strokeStyle = '#F59E0B';
+      ctxCert.stroke();
+
+      ctxCert.fillStyle = '#92400E';
+      ctxCert.font = 'bold 16px Fredoka, sans-serif';
+      ctxCert.fillText('⭐ ' + pontos + ' PTS ⭐', 400, 390);
+      ctxCert.font = '700 12px Fredoka, sans-serif';
+      ctxCert.fillText('SUPER FÃ', 400, 412);
+    }
+
+    function baixarCertificadoPNG() {
+      desenharCertificadoCanvas();
+      const c = document.getElementById('canvasCertificado');
+      if (!c) return;
+      const a = document.createElement('a');
+      a.download = 'Certificado-Turminha-do-Xexeu.png';
+      a.href = c.toDataURL('image/png');
+      a.click();
+      falarTexto('Certificado baixado com sucesso!');
+      exibirToast('Certificado pronto para imprimir!');
+    }
+
     function iniciarAnimacaoRespiracao() {
       const bubble = document.getElementById('breatheVisualBubble');
       const text = document.getElementById('breatheStatusText');
@@ -1895,7 +2007,10 @@
       const n = input ? input.value.trim() : '';
       if (!n) return alert('Digite um nome!');
       localStorage.setItem('xexeu_nome', n);
+      const inputCert = document.getElementById('inputNomeCertificado');
+      if (inputCert) inputCert.value = n;
       document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = n);
+      desenharCertificadoCanvas();
       falarTexto(`Nome alterado para ${n}!`);
       alert('✅ Nome salvo com sucesso!');
     }
