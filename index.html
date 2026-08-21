@@ -460,6 +460,7 @@
           <button class="game-subtab-btn" onclick="trocarJogo('sombras')" style="border-color: #8B5CF6; color: #6D28D9;">👤 Sombras Mágicas</button>
           <button class="game-subtab-btn" onclick="trocarJogo('memoria')">🧠 Jogo da Memória</button>
           <button class="game-subtab-btn" onclick="trocarJogo('quiz')">❓ Super Quiz</button>
+          <button class="game-subtab-btn" id="subtab-piano" onclick="trocarJogo('piano')" style="border-color: #10B981; color: #047857;">🎹 Piano da Iza VIP</button>
           <button class="game-subtab-btn" id="subtab-cupcake" onclick="trocarJogo('cupcake')" style="border-color: #EC4899; color: #BE185D;">🧁 Bolinhos VIP</button>
           <button class="game-subtab-btn" id="subtab-estrelas" onclick="trocarJogo('estrelas')" style="border-color: #F59E0B; color: #D97706;">⭐ Cata-Estrelas VIP</button>
         </div>
@@ -478,8 +479,8 @@
             <button class="btn-tactile" style="background:#F59E0B; color:#FFF;" onclick="setCorPincel('#F59E0B')">Amarelo</button>
             <button class="btn-tactile" style="background:#8B5CF6; color:#FFF;" onclick="setCorPincel('#8B5CF6')">Roxo</button>
 
-            <label class="btn-tactile" style="background: linear-gradient(135deg, #FF0080, #7928CA, #0070F3); color:#FFF; cursor:pointer;" title="Escolha qualquer cor">
-              🌈 Roleta de Cores
+            <label class="btn-tactile" style="background: linear-gradient(135deg, #FF0080, #7928CA, #0070F3); color:#FFF; cursor:pointer;" title="Escolha qualquer cor" onclick="if(!isVip){ event.preventDefault(); alert('🔒 A Roleta de Cores Mágica é exclusiva para membros VIP!'); navegar('vip'); }">
+              🌈 Roleta VIP
               <input type="color" id="roletaCorLousa" value="#2563EB" style="opacity: 0; width: 0; height: 0; position: absolute;" onchange="setCorPincel(this.value)">
             </label>
 
@@ -491,7 +492,7 @@
             </div>
 
             <button class="btn-tactile" onclick="limparCanvasLousa()">🗑️ Limpar</button>
-            <button class="btn-tactile green" onclick="salvarObraArte()">📸 Salvar</button>
+            <button class="btn-tactile green" onclick="salvarObraArte()">📸 Salvar Imagem</button>
           </div>
         </div>
 
@@ -555,6 +556,11 @@
           <h3 style="font-size: 20px; margin-bottom: 10px;">Quem é este personagem da turminha?</h3>
           <img id="imgQuizAlvo" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" alt="Quiz Personagem" style="width: 130px; height: 130px; object-fit: contain; margin: 0 auto 16px; display: block; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15)); transition: transform 0.3s;">
           <div id="boxQuizBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
+        </div>
+
+        <!-- VIP: PIANO -->
+        <div id="subgame-piano" class="minigame-container">
+          <div id="boxConteudoPiano"></div>
         </div>
 
         <!-- VIP: BOLINHOS -->
@@ -757,11 +763,12 @@
             <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
               <li><strong>📁 Drive de Atividades:</strong> Desenhos, Wallpapers e Atividades para imprimir.</li>
               <li><strong>🧩 Drive Azul TEA:</strong> Materiais adaptados e histórias sociais (Em breve).</li>
+              <li><strong>🎹 Músicas e Cores:</strong> Piano da Iza VIP e Roleta de Cores ilimitada na Lousa.</li>
               <li><strong>🎮 Níveis Avançados:</strong> Fases VIP no Jogo de Contar, Letras, Sombras, Memória e Quiz.</li>
+              <li><strong>🏆 Certificado:</strong> Download do Certificado em alta qualidade (PNG).</li>
               <li><strong>🔊 Sintetizador Avançado:</strong> Troca de vozes e controle fino de velocidade.</li>
               <li>🧁 Confeitaria da Vovó Hilda e Cata-Estrelas.</li>
-              <li>Todos os contornos na lousa mágica.</li>
-              <li>Prancha CAA de fala sem limites.</li>
+              <li>Prancha CAA de fala e Rotinas sem limites.</li>
               <li>Temporizador livre de até 30 minutos.</li>
             </ul>
           </div>
@@ -883,8 +890,8 @@
     let petStatus = { fome: 60, energia: 80, alegria: 90 };
     let petDormindo = false;
     let petAcaoAtiva = false;
-    let audioXexeuAtual = null; // CONTROLADOR ÚNICO DE ÁUDIO
-    let timeoutAcaoPet = null;  // CONTROLADOR ÚNICO DE ANIMAÇÃO
+    let audioXexeuAtual = null; 
+    let timeoutAcaoPet = null;  
 
     let bolinhoMassa = '🧁'; let bolinhoCobertura = '🍓'; let bolinhoConfeito = '✨';
 
@@ -952,18 +959,10 @@
     function tocarVozXexeu(urlAudio) {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
       if (!urlAudio) return;
-      
-      // MÁGICA DE UX: Para o som anterior na mesma hora!
-      if (audioXexeuAtual) {
-        audioXexeuAtual.pause();
-        audioXexeuAtual.currentTime = 0;
-      }
-      
-      audioXexeuAtual = new Audio(urlAudio);
-      audioXexeuAtual.play().catch(() => {});
+      if (audioXexeuAtual) { audioXexeuAtual.pause(); audioXexeuAtual.currentTime = 0; }
+      audioXexeuAtual = new Audio(urlAudio); audioXexeuAtual.play().catch(() => {});
     }
 
-    // Função para limpar balão de fala e liberar ação
     function resetarAnimacaoMascote() {
       const mascote = document.getElementById('mascoteXexeuHome');
       if (mascote) mascote.classList.remove('falando');
@@ -975,36 +974,25 @@
       const mascote = document.getElementById('mascoteXexeuHome');
       const img = document.getElementById('imgXexeuPet');
       if(mascote && !petDormindo) {
-        clearTimeout(timeoutAcaoPet); // Interrompe animação antiga
-        petAcaoAtiva = true;
-        mascote.classList.add('falando');
-        
-        petStatus.alegria = Math.min(100, petStatus.alegria + 15);
-        atualizarBarrasPet();
-        
+        clearTimeout(timeoutAcaoPet); petAcaoAtiva = true; mascote.classList.add('falando');
+        petStatus.alegria = Math.min(100, petStatus.alegria + 15); atualizarBarrasPet();
         if (img) img.src = LINKS_ANIMACOES_XEXEU.carinho;
         if (LINKS_AUDIOS_XEXEU.ola) { tocarVozXexeu(LINKS_AUDIOS_XEXEU.ola); } else { tocarSomAcerto(); }
-
         const frases = ["Que carinho gostoso!", "Hihihi, eu adoro!", "Você é meu melhor amigo!", "Amo você!", "Faz cócegas!"];
         document.getElementById('balaoMascote').innerText = frases[Math.floor(Math.random() * frases.length)];
-        celebrar(e, 2); 
-        
-        timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
+        celebrar(e, 2); timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
       }
     }
 
     function atualizarBarrasPet() {
       const bFome = document.getElementById('barFome'); const bEnergia = document.getElementById('barEnergia'); const bAlegria = document.getElementById('barAlegria');
       if(bFome) bFome.style.width = petStatus.fome + '%'; if(bEnergia) bEnergia.style.width = petStatus.energia + '%'; if(bAlegria) bAlegria.style.width = petStatus.alegria + '%';
-
       if(!petDormindo && !petAcaoAtiva) {
         const img = document.getElementById('imgXexeuPet');
         if(img) {
           if (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) {
-            if(img.src !== LINKS_ANIMACOES_XEXEU.triste) { img.src = LINKS_ANIMACOES_XEXEU.triste; tocarVozXexeu(LINKS_AUDIOS_XEXEU.triste); }
-          } else {
-            if(img.src !== LINKS_ANIMACOES_XEXEU.normal) img.src = LINKS_ANIMACOES_XEXEU.normal;
-          }
+            if(img.src !== LINKS_ANIMACOES_XEXEU.triste) { img.src = LINKS_ANIMACOES_XEXEU.triste; }
+          } else { if(img.src !== LINKS_ANIMACOES_XEXEU.normal) img.src = LINKS_ANIMACOES_XEXEU.normal; }
         }
       }
     }
@@ -1012,55 +1000,40 @@
     function acaoPet(acao) {
       const img = document.getElementById('imgXexeuPet'); const filtro = document.getElementById('filtroNoite');
       const mascote = document.getElementById('mascoteXexeuHome');
-      
       if (petDormindo && acao !== 'dormir') { falarTexto("O Xexéu está dormindo, shhhh!"); return; }
-      
       if(img) { img.style.transform = 'scale(1.1)'; setTimeout(() => img.style.transform = 'scale(1)', 200); }
-      
-      clearTimeout(timeoutAcaoPet); // Para a ação anterior
-      if (mascote) mascote.classList.remove('falando');
-      petAcaoAtiva = true;
+      clearTimeout(timeoutAcaoPet); if (mascote) mascote.classList.remove('falando'); petAcaoAtiva = true;
 
       if (acao === 'alimentar') {
         petStatus.fome = Math.min(100, petStatus.fome + 30);
-        if(img) img.src = LINKS_ANIMACOES_XEXEU.comendo;
-        tocarVozXexeu(LINKS_AUDIOS_XEXEU.comendo); animacaoConfete(); atualizarScore(2);
+        if(img) img.src = LINKS_ANIMACOES_XEXEU.comendo; tocarVozXexeu(LINKS_AUDIOS_XEXEU.comendo); animacaoConfete(); atualizarScore(2);
         timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
       } 
       else if (acao === 'brincar') {
         if(petStatus.energia < 20) { falarTexto("Estou muito cansado para brincar agora."); petAcaoAtiva = false; return; }
         petStatus.alegria = Math.min(100, petStatus.alegria + 30); petStatus.energia = Math.max(0, petStatus.energia - 15);
-        if(img) img.src = LINKS_ANIMACOES_XEXEU.brincando;
-        tocarVozXexeu(LINKS_AUDIOS_XEXEU.brincando); animacaoConfete(); atualizarScore(2);
+        if(img) img.src = LINKS_ANIMACOES_XEXEU.brincando; tocarVozXexeu(LINKS_AUDIOS_XEXEU.brincando); animacaoConfete(); atualizarScore(2);
         timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
       }
       else if (acao === 'dormir') {
         petDormindo = !petDormindo; petAcaoAtiva = false;
         if (petDormindo) {
-          if(img) img.src = LINKS_ANIMACOES_XEXEU.dormindo;
-          if(filtro) filtro.style.display = 'block';
+          if(img) img.src = LINKS_ANIMACOES_XEXEU.dormindo; if(filtro) filtro.style.display = 'block';
           tocarVozXexeu(LINKS_AUDIOS_XEXEU.dormindo);
           let intervaloDormir = setInterval(() => {
-            if(!petDormindo || petStatus.energia >= 100) { clearInterval(intervaloDormir); }
-            else { petStatus.energia = Math.min(100, petStatus.energia + 10); atualizarBarrasPet(); }
+            if(!petDormindo || petStatus.energia >= 100) { clearInterval(intervaloDormir); } else { petStatus.energia = Math.min(100, petStatus.energia + 10); atualizarBarrasPet(); }
           }, 1000);
-        } else {
-          if(filtro) filtro.style.display = 'none'; falarTexto("Bom dia!"); atualizarBarrasPet();
-        }
+        } else { if(filtro) filtro.style.display = 'none'; falarTexto("Bom dia!"); atualizarBarrasPet(); }
       }
       atualizarBarrasPet();
     }
 
     setInterval(() => {
-      if (!petDormindo && !petAcaoAtiva) {
-        petStatus.fome = Math.max(0, petStatus.fome - 2); petStatus.energia = Math.max(0, petStatus.energia - 1); petStatus.alegria = Math.max(0, petStatus.alegria - 2);
-        atualizarBarrasPet();
-      }
+      if (!petDormindo && !petAcaoAtiva) { petStatus.fome = Math.max(0, petStatus.fome - 2); petStatus.energia = Math.max(0, petStatus.energia - 1); petStatus.alegria = Math.max(0, petStatus.alegria - 2); atualizarBarrasPet(); }
     }, 8000);
 
     function navegar(paginaId) {
-      document.querySelectorAll('.page-box').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-item-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.page-box').forEach(p => p.classList.remove('active')); document.querySelectorAll('.nav-item-btn').forEach(b => b.classList.remove('active'));
       const target = document.getElementById('page-' + paginaId); if (target) target.classList.add('active');
       const btn = Array.from(document.querySelectorAll('.nav-item-btn')).find(b => b.getAttribute('onclick')?.includes(paginaId)); if (btn) btn.classList.add('active');
       if (paginaId === 'jogos') trocarJogo('lousa');
@@ -1074,13 +1047,8 @@
     function irParaJogosVip(subjogo) { navegar('jogos'); trocarJogo(subjogo); }
 
     function falarTexto(texto) {
-      exibirToast(texto);
-      if (!audioAtivo || !('speechSynthesis' in window)) return;
-      try {
-        window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(texto); u.lang = 'pt-BR';
-        u.rate = isVip ? velocidadeFala : 1.0; if (isVip && vozesDisponiveis[vozSelecionadaIdx]) u.voice = vozesDisponiveis[vozSelecionadaIdx];
-        window.speechSynthesis.speak(u);
-      } catch(e) {}
+      exibirToast(texto); if (!audioAtivo || !('speechSynthesis' in window)) return;
+      try { window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(texto); u.lang = 'pt-BR'; u.rate = isVip ? velocidadeFala : 1.0; if (isVip && vozesDisponiveis[vozSelecionadaIdx]) u.voice = vozesDisponiveis[vozSelecionadaIdx]; window.speechSynthesis.speak(u); } catch(e) {}
     }
 
     function toggleAudioVoz() { audioAtivo = !audioAtivo; document.getElementById('btnAudioToggle').innerText = audioAtivo ? '🔊' : '🔇'; exibirToast(audioAtivo ? 'Voz ativada' : 'Voz desativada'); }
@@ -1105,26 +1073,22 @@
 
     function tocarSomPop() {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const osc = audioCtx.createGain ? audioCtx.createOscillator() : null; const gain = audioCtx.createGain();
-        if (osc && gain) { osc.type = 'sine'; osc.frequency.setValueAtTime(450, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.08); gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.08); }
-      } catch (e) {}
+      try { const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const osc = audioCtx.createGain ? audioCtx.createOscillator() : null; const gain = audioCtx.createGain(); if (osc && gain) { osc.type = 'sine'; osc.frequency.setValueAtTime(450, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.08); gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.08); } } catch (e) {}
     }
 
     function tocarSomAcerto() {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
-        osc.type = 'sine'; osc.frequency.setValueAtTime(400, audioCtx.currentTime); osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.1); osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.2); gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.3);
-      } catch (e) {}
+      try { const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.type = 'sine'; osc.frequency.setValueAtTime(400, audioCtx.currentTime); osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.1); osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.2); gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.3); } catch (e) {}
     }
 
     function tocarSomErro() {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
-        osc.type = 'sawtooth'; osc.frequency.setValueAtTime(250, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.3); gain.gain.setValueAtTime(0.2, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.3);
-      } catch (e) {}
+      try { const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.type = 'sawtooth'; osc.frequency.setValueAtTime(250, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.3); gain.gain.setValueAtTime(0.2, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.3); } catch (e) {}
+    }
+
+    function tocarNotaPiano(freq) {
+      if (!audioAtivo) return;
+      try { const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain(); osc.type = 'sine'; osc.frequency.setValueAtTime(freq, audioCtx.currentTime); gain.gain.setValueAtTime(0.5, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.5); animacaoConfete(); atualizarScore(1); } catch(e){}
     }
 
     function celebrar(evento, pontosGanhos) { if(evento) mostrarPontosFlutuantes(pontosGanhos, evento.clientX || window.innerWidth/2, evento.clientY || window.innerHeight/2); animacaoConfete(); tocarSomAcerto(); atualizarScore(pontosGanhos); }
@@ -1144,7 +1108,7 @@
       const emojiInput = document.getElementById('novoCaaEmoji'); const textoInput = document.getElementById('novoCaaTexto');
       const emoji = emojiInput ? emojiInput.value.trim() || '⭐' : '⭐'; const texto = textoInput ? textoInput.value.trim() : '';
       if (!texto) return alert('Digite o texto do cartão!');
-      if (!isVip && cartoesCaa.length >= 8) { alert('🔒 Plano Grátis permite até 8 cartões. Seja VIP para cartões ilimitados!'); navegar('vip'); return; }
+      if (!isVip && cartoesCaa.length >= 6) { alert('🔒 O plano Grátis permite até 6 cartões. Assine o VIP para criar cartões ilimitados!'); navegar('vip'); return; }
       cartoesCaa.push({ emoji, texto }); localStorage.setItem('xexeu_caa', JSON.stringify(cartoesCaa)); if (textoInput) textoInput.value = ''; renderCartoesCaa(); falarTexto(`Cartão de ${texto} adicionado!`); animacaoConfete();
     }
 
@@ -1169,9 +1133,10 @@
     function atualizarInterfaceVipCompleta() {
       const barVip = document.getElementById('barraFlutuanteVip'); if (barVip) { barVip.style.display = isVip ? 'none' : 'flex'; }
       const txt = document.getElementById('txtStatusVipAtual'); if (txt) txt.innerHTML = isVip ? 'Plano: <strong style="color:#059669;">👑 VIP Ativo</strong>' : 'Plano: <strong style="color:#D97706;">Grátis (Básico)</strong>';
-      const tabCup = document.getElementById('subtab-cupcake'); const tabEst = document.getElementById('subtab-estrelas');
+      const tabCup = document.getElementById('subtab-cupcake'); const tabEst = document.getElementById('subtab-estrelas'); const tabPiano = document.getElementById('subtab-piano');
       if (tabCup) { tabCup.innerText = isVip ? "🧁 Bolinhos da Vovó" : "🔒 Bolinhos VIP"; tabCup.style.color = isVip ? "var(--pink)" : "#BE185D"; }
       if (tabEst) { tabEst.innerText = isVip ? "⭐ Cata-Estrelas" : "🔒 Estrelas VIP"; tabEst.style.color = isVip ? "var(--secondary-dark)" : "#D97706"; }
+      if (tabPiano) { tabPiano.innerText = isVip ? "🎹 Piano da Iza" : "🔒 Piano VIP"; tabPiano.style.color = isVip ? "#047857" : "#064E3B"; }
 
       const boxDrives = document.getElementById('boxBotoesDrivesVip');
       if (boxDrives) {
@@ -1190,7 +1155,16 @@
     function bloquearAcessoDrive(nomeDrive) { alert(`🔒 O ${nomeDrive} é exclusivo para membros do Clube VIP! Assine por apenas R$ 6,00 para liberar.`); falarTexto(`O ${nomeDrive} é exclusivo do Clube VIP.`); }
 
     function renderConteudoJogosDocesVip() {
-      const boxCup = document.getElementById('boxConteudoCupcake'); const boxEst = document.getElementById('boxConteudoEstrelas');
+      const boxCup = document.getElementById('boxConteudoCupcake'); const boxEst = document.getElementById('boxConteudoEstrelas'); const boxPiano = document.getElementById('boxConteudoPiano');
+
+      if (boxPiano) {
+        if (isVip) {
+          boxPiano.innerHTML = `<div style="background:#F0FDF4; border:3px solid #6EE7B7; border-radius:20px; padding:24px;"><span style="font-size:42px;">🎹</span><h3 style="color:#047857; font-size:24px; margin:8px 0;">Piano Mágico da Iza</h3><p style="color:#065F46; font-weight:600; margin-bottom:12px;">"Vamos tocar uma música linda juntos!"</p><div style="display:flex; gap:10px; justify-content:center; margin-top:20px;"><button class="btn-tactile pink" style="height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(261.63)">Dó</button><button class="btn-tactile primary" style="height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(293.66)">Ré</button><button class="btn-tactile green" style="height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(329.63)">Mi</button><button class="btn-tactile" style="background:#F59E0B; color:#FFF; height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(349.23)">Fá</button><button class="btn-tactile" style="background:#8B5CF6; color:#FFF; height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(392.00)">Sol</button></div></div>`;
+        } else {
+          boxPiano.innerHTML = `<div style="padding: 30px; background: #F0FDF4; border: 2px dashed #10B981; border-radius: 16px;"><span style="font-size: 40px; display:block; animation: floatIcon 3s infinite;">🎹</span><h3 style="color: #047857; font-size: 22px; margin: 8px 0;">Piano Mágico da Iza</h3><p style="color: #064E3B; margin-bottom: 16px;">Toque músicas e aprenda as notas com a Iza no Clube VIP!</p><button class="btn-tactile green" onclick="navegar('vip')">Desbloquear no Clube VIP 👑</button></div>`;
+        }
+      }
+
       if (boxCup) {
         if (isVip) {
           boxCup.innerHTML = `<div style="background:#FFF1F2; border:3px solid #FECDD3; border-radius:20px; padding:24px;"><span style="font-size:42px;">🧁</span><h3 style="color:#BE185D; font-size:24px; margin:8px 0;">Fábrica de Bolinhos da Vovó Hilda</h3><p style="color:#9D174D; font-weight:600; margin-bottom:12px;">"Vamos fazer um bolinho bem fofinho e doce juntos, meu bem?"</p><div class="cupcake-preview" id="cupcakeVisual"><span id="txtCupcakePreview">🧁</span></div><div style="display:flex; flex-direction:column; gap:12px; max-width:500px; margin:0 auto;"><div><span style="font-size:13px; font-weight:800; color:#BE185D; display:block; margin-bottom:6px;">1. Escolha a Massa:</span><div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;"><button class="btn-tactile" onclick="setBolinhoMassa('🧁', 'Baunilha')">🧁 Baunilha</button><button class="btn-tactile" onclick="setBolinhoMassa('🍫', 'Chocolate')">🍫 Chocolate</button><button class="btn-tactile" onclick="setBolinhoMassa('🥕', 'Cenoura')">🥕 Cenoura</button></div></div><div><span style="font-size:13px; font-weight:800; color:#BE185D; display:block; margin-bottom:6px;">2. Escolha a Cobertura:</span><div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;"><button class="btn-tactile pink" onclick="setBolinhoCobertura('🍓', 'Morango Doce')">🍓 Morango</button><button class="btn-tactile" style="background:#FDE047; color:#854D0E;" onclick="setBolinhoCobertura('🍋', 'Creme de Limão')">🍋 Creme</button><button class="btn-tactile primary" onclick="setBolinhoCobertura('🫐', 'Mirtilo Fofo')">🫐 Mirtilo</button></div></div><div><span style="font-size:13px; font-weight:800; color:#BE185D; display:block; margin-bottom:6px;">3. Confeitos Mágicos:</span><div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;"><button class="btn-tactile" onclick="setBolinhoConfeito('⭐', 'Estrelinhas')">⭐ Estrelas</button><button class="btn-tactile" onclick="setBolinhoConfeito('🌈', 'Arco-Íris')">🌈 Granulado</button><button class="btn-tactile" onclick="setBolinhoConfeito('💖', 'Coraçõezinhos')">💖 Amor</button></div></div><button class="btn-tactile green" style="margin-top:10px; font-size:16px;" onclick="finalizarBolinho(event)">✨ Servir para a Vovó Hilda (+10 Pts)</button></div></div>`;
@@ -1315,9 +1289,8 @@
     }
 
     function setNivelContar(n) {
-      if (n === 3 && !isVip) { alert('🔒 Nível 3 VIP exclusivo!'); navegar('vip'); return; }
-      nivelContar = n; document.querySelectorAll('[id^="btnNivelContar-"]').forEach(b => b.classList.remove('active'));
-      const btn = document.getElementById('btnNivelContar-' + n); if (btn) btn.classList.add('active'); iniciarJogoContar();
+      if (n === 3 && !isVip) { alert('🔒 Nível VIP exclusivo!'); navegar('vip'); return; }
+      nivelContar = n; document.querySelectorAll('[id^="btnNivelContar-"]').forEach(b => b.classList.remove('active')); const btn = document.getElementById('btnNivelContar-' + n); if (btn) btn.classList.add('active'); iniciarJogoContar();
     }
     function iniciarJogoContar() {
       const max = nivelContar === 1 ? 5 : (nivelContar === 2 ? 10 : 20); const q = Math.floor(Math.random() * max) + 1;
@@ -1336,8 +1309,7 @@
 
     function setNivelLetras(n) {
       if (n === 3 && !isVip) { alert('🔒 Desafio VIP exclusivo!'); navegar('vip'); return; }
-      nivelLetras = n; document.querySelectorAll('[id^="btnNivelLetras-"]').forEach(b => b.classList.remove('active'));
-      const btn = document.getElementById('btnNivelLetras-' + n); if (btn) btn.classList.add('active'); iniciarJogoLetras();
+      nivelLetras = n; document.querySelectorAll('[id^="btnNivelLetras-"]').forEach(b => b.classList.remove('active')); const btn = document.getElementById('btnNivelLetras-' + n); if (btn) btn.classList.add('active'); iniciarJogoLetras();
     }
     function iniciarJogoLetras() {
       const poolPersonagens = nivelLetras === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 8); const p = poolPersonagens[Math.floor(Math.random() * poolPersonagens.length)];
@@ -1354,30 +1326,20 @@
 
     function setNivelSombras(n) {
       if (n === 3 && !isVip) { alert('🔒 Nível VIP exclusivo!'); navegar('vip'); return; }
-      nivelSombras = n; document.querySelectorAll('[id^="btnNivelSombras-"]').forEach(b => b.classList.remove('active'));
-      const btn = document.getElementById('btnNivelSombras-' + n); if (btn) btn.classList.add('active'); iniciarJogoSombras();
+      nivelSombras = n; document.querySelectorAll('[id^="btnNivelSombras-"]').forEach(b => b.classList.remove('active')); const btn = document.getElementById('btnNivelSombras-' + n); if (btn) btn.classList.add('active'); iniciarJogoSombras();
     }
     function iniciarJogoSombras() {
-      const poolSombras = nivelSombras === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 8);
-      const p = poolSombras[Math.floor(Math.random() * poolSombras.length)];
-      const img = document.getElementById('imgSombraAlvo'); if (img) { img.src = p.img; img.alt = "Sombra Misteriosa"; img.style.filter = "brightness(0) invert(0)"; }
+      const poolSombras = nivelSombras === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 8); const p = poolSombras[Math.floor(Math.random() * poolSombras.length)];
+      const img = document.getElementById('imgSombraAlvo'); if (img) { img.src = p.img; img.alt = "Sombra"; img.style.filter = "brightness(0) invert(0)"; }
       const bBox = document.getElementById('boxSombrasBotoes'); if (!bBox) return; bBox.innerHTML = '';
-      const qtd = nivelSombras === 1 ? 3 : (nivelSombras === 2 ? 4 : 6);
-      const outros = poolSombras.filter(x => x.nome !== p.nome).sort(() => Math.random() - 0.5).slice(0, qtd - 1);
+      const qtd = nivelSombras === 1 ? 3 : (nivelSombras === 2 ? 4 : 6); const outros = poolSombras.filter(x => x.nome !== p.nome).sort(() => Math.random() - 0.5).slice(0, qtd - 1);
       const opcoes = [p, ...outros].sort(() => Math.random() - 0.5);
       opcoes.forEach(op => {
         const btn = document.createElement('button'); btn.className = 'btn-tactile'; btn.style.padding = '8px';
         btn.innerHTML = `<img src="${op.img}" style="width: 50px; height: 50px; object-fit: contain; display: block; margin: 0 auto 4px;"> <span style="font-size: 13px;">${op.nome}</span>`;
         btn.onclick = (e) => {
-          if (op.nome === p.nome) { 
-            btn.style.borderColor = "var(--green)"; btn.style.background = "#D1FAE5";
-            if(img) img.style.filter = "none"; falarTexto('Você acertou! É o ' + p.nome); celebrar(e, 5); 
-            setTimeout(() => { if(img) img.style.filter = "brightness(0) invert(0)"; iniciarJogoSombras(); }, 1200); 
-          } else { 
-            btn.style.borderColor = "var(--accent)"; btn.style.background = "#FEE2E2"; btn.style.animation = "shakeError 0.4s";
-            falarTexto('Quase lá, tente mais uma vez!'); tocarSomErro(); 
-            setTimeout(() => { btn.style.borderColor = ""; btn.style.background = ""; btn.style.animation = ""; }, 600); 
-          }
+          if (op.nome === p.nome) { btn.style.borderColor = "var(--green)"; btn.style.background = "#D1FAE5"; if(img) img.style.filter = "none"; falarTexto('Você acertou! É o ' + p.nome); celebrar(e, 5); setTimeout(() => { if(img) img.style.filter = "brightness(0) invert(0)"; iniciarJogoSombras(); }, 1200); } 
+          else { btn.style.borderColor = "var(--accent)"; btn.style.background = "#FEE2E2"; btn.style.animation = "shakeError 0.4s"; falarTexto('Quase lá, tente mais uma vez!'); tocarSomErro(); setTimeout(() => { btn.style.borderColor = ""; btn.style.background = ""; btn.style.animation = ""; }, 600); }
         }; bBox.appendChild(btn);
       });
     }
@@ -1424,14 +1386,19 @@
       ctxCert.fillStyle = '#92400E'; ctxCert.font = 'bold 16px Fredoka, sans-serif'; ctxCert.fillText('⭐ ' + pontos + ' PTS ⭐', 400, 390); let rankTxt = pontos >= 100 ? 'MESTRE' : (pontos >= 50 ? 'SUPER FÃ' : (pontos >= 20 ? 'CURIOSO' : 'INICIANTE')); ctxCert.font = '700 12px Fredoka, sans-serif'; ctxCert.fillText(rankTxt, 400, 412);
     }
 
-    function baixarCertificadoPNG() { desenharCertificadoCanvas(); const c = document.getElementById('canvasCertificado'); if (!c) return; const a = document.createElement('a'); a.download = 'Certificado-Turminha-do-Xexeu.png'; a.href = c.toDataURL('image/png'); a.click(); animacaoConfete(); falarTexto('Certificado pronto, Super Fã!'); exibirToast('Certificado pronto para imprimir!'); }
+    function baixarCertificadoPNG() {
+      if(!isVip) { alert('🔒 O download do Certificado Oficial em alta qualidade (PNG) é exclusivo do Clube VIP!'); navegar('vip'); return; }
+      desenharCertificadoCanvas(); const c = document.getElementById('canvasCertificado'); if (!c) return;
+      const a = document.createElement('a'); a.download = 'Certificado-Turminha-do-Xexeu.png'; a.href = c.toDataURL('image/png'); a.click();
+      animacaoConfete(); falarTexto('Seu certificado está pronto, Super Fã!'); exibirToast('Certificado salvo!');
+    }
 
     function iniciarAnimacaoRespiracao() {
       const bubble = document.getElementById('breatheVisualBubble'); const text = document.getElementById('breatheStatusText'); if(!bubble) return;
       setInterval(() => {
         bubble.className = 'breathe-bubble expand'; bubble.innerText = 'Inspire'; if(text) text.innerText = 'Inspire... (1, 2, 3, 4) 🌸';
         setTimeout(() => { bubble.className = 'breathe-bubble hold'; bubble.innerText = 'Segure'; if(text) text.innerText = 'Segure com calma... ✨'; }, 4000);
-        setTimeout(() => { bubble.className = 'breathe-bubble shrink'; bubble.innerText = 'Expire'; if(text) text.innerText = 'Solte o ar pela boquinha bem devagar... 🌬️'; }, 7000);
+        setTimeout(() => { bubble.className = 'breathe-bubble shrink'; bubble.innerText = 'Expire'; if(text) text.innerText = 'Expire... solte o ar. 🌬️'; }, 7000);
       }, 11000);
     }
 
@@ -1477,7 +1444,10 @@
 
     function checkRotina(e, i) { rotinas[i].feito = !rotinas[i].feito; if (rotinas[i].feito) { celebrar(e, 5); falarTexto('Muito bem! Tarefa cumprida.'); } localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); renderRotinas(); }
     function removerRotina(i) { rotinas.splice(i, 1); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); renderRotinas(); tocarSomPop(); }
-    function adicionarItemRotina() { const input = document.getElementById('inputNovaRotina'); const t = input ? input.value.trim() : ''; if (!t) return; rotinas.push({ id: Date.now(), texto: t, feito: false }); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); if (input) input.value = ''; renderRotinas(); animacaoConfete(); }
+    function adicionarItemRotina() {
+      if (!isVip && rotinas.length >= 3) { alert('🔒 Plano Grátis permite até 3 tarefas. Seja VIP para rotinas ilimitadas!'); navegar('vip'); return; }
+      const input = document.getElementById('inputNovaRotina'); const t = input ? input.value.trim() : ''; if (!t) return; rotinas.push({ id: Date.now(), texto: t, feito: false }); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); if (input) input.value = ''; renderRotinas(); animacaoConfete();
+    }
 
     function renderAvatarSelector() {
       const container = document.getElementById('avatarGridSelector'); if (!container) return; container.innerHTML = ''; const avatarAtual = localStorage.getItem('xexeu_avatar') || PERSONAGENS[0].img;
