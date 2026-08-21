@@ -94,7 +94,7 @@
     @keyframes slideUpFade { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
     .game-card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 24px; border: 3px solid var(--border-color); box-shadow: var(--shadow-md); position: relative; }
-    .game-card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
+    .game-card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
     .central-hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 10px; }
     .hub-card { background: #FFFFFF; border-radius: 20px; padding: 20px; border: 3px solid var(--border-color); box-shadow: 0 6px 0 var(--border-color); cursor: pointer; transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; gap: 8px; text-align: left; }
@@ -116,18 +116,18 @@
     .mascote-virtual img { width: 180px; height: 180px; object-fit: contain; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)); transition: transform 0.2s, filter 0.3s; }
     .mascote-virtual img.sujo { filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2)) sepia(0.5) hue-rotate(-20deg) brightness(0.8) contrast(1.1); }
     .mascote-virtual img:active { transform: scale(0.9); }
+    
     .balao-fala { 
-      position: absolute; top: -50px; left: 50%; transform: translateX(-50%) translateY(10px) scale(0.9); 
+      position: absolute; top: -45px; left: 50%; transform: translateX(-50%) translateY(10px) scale(0.9); 
       background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px; padding: 10px 14px; font-size: 15px; 
       font-weight: 800; color: #6D28D9; width: max-content; max-width: 200px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); 
       opacity: 0; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; z-index: 20; 
     }
     .balao-fala::after { content: ''; position: absolute; bottom: -9px; left: 50%; transform: translateX(-50%); border-width: 9px 9px 0; border-style: solid; border-color: #8B5CF6 transparent transparent transparent; }
     .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-    
+
     @keyframes discoLights { 0% { background: rgba(236,72,153,0.4); } 33% { background: rgba(16,185,129,0.4); } 66% { background: rgba(59,130,246,0.4); } 100% { background: rgba(245,158,11,0.4); } }
     .party-mode { animation: discoLights 0.5s infinite alternate !important; display: block !important; }
-    /* Filtro de noite claro e fofo (nada preto) */
     .sleep-mode { background: rgba(139, 92, 246, 0.4) !important; backdrop-filter: blur(2px); display: block !important; }
 
     /* POTE DA CALMA (TEA) */
@@ -144,7 +144,6 @@
     @keyframes swirl { 0% { transform: translate(0, 0) scale(0.5); } 25% { transform: translate(20px, 50px) scale(1); } 50% { transform: translate(-20px, 100px) scale(1.5); } 75% { transform: translate(20px, 150px) scale(1); } 100% { transform: translate(0, 220px) scale(0.5); } }
 
     .hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; }
-    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
     .banner-hero-box { border-radius: var(--radius-lg); overflow: hidden; border: 3px solid #FFF; box-shadow: var(--shadow-md); min-height: 200px; }
     .banner-hero-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -172,7 +171,7 @@
     .minigame-container.active { display: block; }
     #paintCanvas { background: #FFF; border: 3px dashed #94A3B8; border-radius: var(--radius-lg); width: 100%; max-width: 800px; height: 420px; touch-action: none; cursor: crosshair; display: block; margin: 0 auto; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
 
-    .game-choice-btn { background: #FFFFFF; border: 3px solid #8B5CF6; box-shadow: 0 5px 0 #7C3AED; color: #6D28D9; font-size: 24px; font-weight: 800; padding: 16px 28px; border-radius: 16px; cursor: pointer; min-width: 90px; transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.1s, background 0.2s; flex: 0 0 auto; }
+    .game-choice-btn { background: #FFFFFF; border: 3px solid #8B5CF6; box-shadow: 0 5px 0 #7C3AED; color: #6D28D9; font-size: 24px; font-weight: 800; padding: 16px 28px; border-radius: 16px; cursor: pointer; min-width: 90px; transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.1s, background 0.2s; flex: 0 0 auto; margin: 4px; }
     .game-choice-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 0 #7C3AED; }
     .game-choice-btn:active { transform: translateY(4px) !important; box-shadow: 0 1px 0 #7C3AED !important; }
     .game-choice-btn.correct { background: #10B981 !important; border-color: #059669 !important; box-shadow: 0 5px 0 #047857 !important; color: #FFF !important; transform: scale(1.1) translateY(4px) !important; z-index: 10; }
@@ -203,7 +202,6 @@
     .floating-points { position: fixed; font-size: 24px; font-weight: 900; color: var(--green); text-shadow: 0 2px 0 #D1FAE5, 0 -2px 0 #FFF, 2px 0 0 #FFF, -2px 0 0 #FFF; z-index: 999999; pointer-events: none; animation: floatUpText 1.2s ease-out forwards; }
     @keyframes floatUpText { 0% { opacity: 0; transform: translateY(0) scale(0.5); } 20% { opacity: 1; transform: translateY(-20px) scale(1.2); } 100% { opacity: 0; transform: translateY(-60px) scale(1); } }
 
-    /* Sem fundos pretos no modal */
     .app-modal { display: none; position: fixed; inset: 0; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); z-index: 99999; align-items: center; justify-content: center; padding: 20px; }
     .app-modal.show { display: flex; animation: fadeIn 0.2s; }
     .modal-content { background: #FFFFFF; border-radius: var(--radius-xl); padding: 28px; max-width: 480px; width: 100%; border: 4px solid var(--primary); text-align: center; position: relative; animation: slideUpFade 0.3s; box-shadow: var(--shadow-md); }
@@ -224,6 +222,28 @@
     
     .caa-frase-box { min-height: 70px; background: #F8FAFC; border: 3px dashed #CBD5E1; border-radius: 16px; margin-bottom: 16px; padding: 12px; display: flex; gap: 8px; align-items: center; overflow-x: auto; scrollbar-width: none; }
     .caa-item-frase { background:#E0F2FE; border: 2px solid #7DD3FC; padding: 8px 14px; border-radius: 12px; font-weight: 800; color: #0369A1; white-space: nowrap; font-size: 16px; animation: slideUpFade 0.2s ease-out; }
+
+    /* RESPONSIVIDADE (CELULAR) - MELHORANDO O LAYOUT "ESPREMIDO" */
+    @media (max-width: 600px) {
+      .app-shell { padding: 10px 12px 80px; }
+      .game-card { padding: 16px; }
+      .game-card-title { font-size: 18px; flex-direction: column; align-items: flex-start; gap: 8px; }
+      .hub-card { padding: 16px; }
+      .chars-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .char-card-item img { width: 70px; height: 70px; }
+      .char-card-item h4 { font-size: 15px; }
+      .quarto-xexeu { height: 260px; border-radius: 16px; }
+      .mascote-virtual img { width: 140px; height: 140px; }
+      .memory-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .memory-grid.grid-8 { grid-template-columns: repeat(4, 1fr); }
+      .memory-tile { font-size: 20px; border-radius: 12px; }
+      header.game-header { flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 12px 16px; }
+      .logo-img { height: 44px; }
+      #paintCanvas { height: 300px; }
+      .game-choice-btn { font-size: 18px; padding: 12px 20px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 14px; }
+      .central-hub-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -376,25 +396,25 @@
 
         <!-- BARRAS DE STATUS COM HIGIENE -->
         <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;">
-          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; box-shadow: var(--shadow-sm);">
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; flex: 1; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #991B1B;">🍎 Fome</span>
             <div style="background: #FEE2E2; height: 10px; border-radius: 10px; overflow: hidden;">
               <div id="barFome" style="background: #EF4444; height: 100%; width: 50%; transition: width 0.4s ease-out;"></div>
             </div>
           </div>
-          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; box-shadow: var(--shadow-sm);">
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; flex: 1; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #92400E;">⚡ Energia</span>
             <div style="background: #FEF3C7; height: 10px; border-radius: 10px; overflow: hidden;">
               <div id="barEnergia" style="background: #F59E0B; height: 100%; width: 80%; transition: width 0.4s ease-out;"></div>
             </div>
           </div>
-          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; box-shadow: var(--shadow-sm);">
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; flex: 1; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #065F46;">🎈 Alegria</span>
             <div style="background: #D1FAE5; height: 10px; border-radius: 10px; overflow: hidden;">
               <div id="barAlegria" style="background: #10B981; height: 100%; width: 100%; transition: width 0.4s ease-out;"></div>
             </div>
           </div>
-          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; box-shadow: var(--shadow-sm);">
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 100px; flex: 1; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #0369A1;">🛁 Limpeza</span>
             <div style="background: #E0F2FE; height: 10px; border-radius: 10px; overflow: hidden;">
               <div id="barHigiene" style="background: #0284C7; height: 100%; width: 100%; transition: width 0.4s ease-out;"></div>
@@ -402,7 +422,7 @@
           </div>
         </div>
 
-        <!-- TELA DO QUARTINHO (Sem cor escura real, roxo clarinho no fundo) -->
+        <!-- TELA DO QUARTINHO -->
         <div class="quarto-xexeu">
           <div id="filtroNoite" style="position: absolute; inset: 0; display: none; z-index: 1;" class="sleep-mode"></div>
           <!-- O clique/toque no Xexéu faz carinho -->
@@ -528,11 +548,12 @@
             <button class="btn-tactile" style="background:#F59E0B; color:#FFF;" onclick="setCorPincel('#F59E0B')">Amarelo</button>
             <button class="btn-tactile" style="background:#8B5CF6; color:#FFF;" onclick="setCorPincel('#8B5CF6')">Roxo</button>
 
-            <!-- ROLETA VIP -->
-            <label class="btn-tactile" style="background: linear-gradient(135deg, #FF0080, #7928CA, #0070F3); color:#FFF; cursor:pointer;" title="Escolha qualquer cor" onclick="if(!isVip){ event.preventDefault(); alert('🔒 A Roleta de Cores Mágica é exclusiva para membros VIP!'); navegar('vip'); }">
-              🌈 Roleta VIP
-              <input type="color" id="roletaCorLousa" value="#2563EB" style="opacity: 0; width: 0; height: 0; position: absolute;" onchange="if(isVip) setCorPincel(this.value)">
-            </label>
+            <!-- ROLETA VIP COM CÍRCULO CROMÁTICO -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+              <label title="Círculo Cromático Mágico (VIP)" onclick="if(!isVip){ event.preventDefault(); alert('🔒 O Círculo Cromático Mágico é exclusivo para membros VIP!'); navegar('vip'); }" style="cursor:pointer; display: block; position: relative; width: 44px; height: 44px; border-radius: 50%; background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red); box-shadow: var(--shadow-3d); border: 3px solid #FFF; transition: transform 0.1s;">
+                <input type="color" id="roletaCorLousa" value="#2563EB" style="opacity: 0; width: 100%; height: 100%; position: absolute; top:0; left:0; cursor:pointer; border-radius: 50%;" onchange="if(isVip) setCorPincel(this.value)">
+              </label>
+            </div>
 
             <button class="btn-tactile" onclick="setBorracha()">🧽 Borracha</button>
             
@@ -640,7 +661,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA: ESPAÇO TEA -->
+    <!-- PÁGINA: ESPAÇO TEA (ATUALIZADO) -->
     <div id="page-tea" class="page-box">
       <div class="game-card" style="border-color: #BAE6FD; background: #F0F9FF;">
         <div class="game-card-title" style="color: var(--tea-blue);">
@@ -706,28 +727,29 @@
           </div>
         </div>
 
-        <div class="game-card" style="text-align: center; border-color: #F0ABFC; background: #FFF5FF;">
-          <div class="game-card-title" style="justify-content: center; color: #A21CAF;">
-            <span>🫧 Pop-It Sensorial</span>
+        <div class="game-card" style="text-align: center; border-color: #CBD5E1; background: #F8FAFC;">
+          <div class="game-card-title" style="justify-content: center; color: #475569;">
+            <span>✨ Pote da Calma</span>
           </div>
-          <button class="btn-tactile" style="background:#FFF; color:#A21CAF; border-color:#F0ABFC; margin-bottom: 10px;" onclick="resetarPopIt()">✨ Restaurar</button>
-          <div class="popit-board" id="popitGridContainer"></div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Clique no pote para ver a magia cair devagar:</p>
+          <div class="calm-jar" id="calmJarMagic" onclick="agitarPoteCalma()">
+            <div class="glitter-particle" style="left:20%; animation-delay: 0s;"></div>
+            <div class="glitter-particle" style="left:50%; animation-delay: 1s;"></div>
+            <div class="glitter-particle" style="left:80%; animation-delay: 2s;"></div>
+            <div class="glitter-particle" style="left:30%; animation-delay: 3s; width:15px; height:15px;"></div>
+            <div class="glitter-particle" style="left:70%; animation-delay: 4s;"></div>
+            <div class="glitter-particle" style="left:40%; animation-delay: 5s; width:8px; height:8px;"></div>
+          </div>
         </div>
       </div>
 
-      <div class="game-card" style="text-align: center; border-color: #CBD5E1; background: #F8FAFC;">
-        <div class="game-card-title" style="justify-content: center; color: #475569;">
-          <span>✨ Pote da Calma</span>
+      <!-- POP IT (MOVido para baixo, mas antes da tela preta) -->
+      <div class="game-card" style="text-align: center; border-color: #F0ABFC; background: #FFF5FF;">
+        <div class="game-card-title" style="justify-content: center; color: #A21CAF;">
+          <span>🫧 Pop-It Sensorial</span>
         </div>
-        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Clique no pote para ver a magia cair devagar:</p>
-        <div class="calm-jar" id="calmJarMagic" onclick="agitarPoteCalma()">
-          <div class="glitter-particle" style="left:20%; animation-delay: 0s;"></div>
-          <div class="glitter-particle" style="left:50%; animation-delay: 1s;"></div>
-          <div class="glitter-particle" style="left:80%; animation-delay: 2s;"></div>
-          <div class="glitter-particle" style="left:30%; animation-delay: 3s; width:15px; height:15px;"></div>
-          <div class="glitter-particle" style="left:70%; animation-delay: 4s;"></div>
-          <div class="glitter-particle" style="left:40%; animation-delay: 5s; width:8px; height:8px;"></div>
-        </div>
+        <button class="btn-tactile" style="background:#FFF; color:#A21CAF; border-color:#F0ABFC; margin-bottom: 10px;" onclick="resetarPopIt()">✨ Restaurar</button>
+        <div class="popit-board" id="popitGridContainer"></div>
       </div>
 
       <!-- LUZES SENSORIAIS (TELA CLARA COM BOLHAS MÁGICAS) -->
@@ -825,7 +847,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA: CLUBE VIP -->
+    <!-- PÁGINA: CLUBE VIP (MELHORADA E BLINDADA) -->
     <div id="page-vip" class="page-box">
       
       <!-- PAINEL DE VENDAS -->
@@ -994,7 +1016,7 @@
       brincando: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336534/XEXEU_FELIZ.gif",
       triste: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336521/XEXEU_TRISTE.gif",
       carinho: "https://res.cloudinary.com/oactqmgs/image/upload/v1787341883/XEXEU_COMENDO.png",
-      banho: "" // Reservado para a animação do banho
+      banho: "" 
     };
 
     const LINKS_AUDIOS_XEXEU = {
@@ -1048,6 +1070,7 @@
       try { atualizarScore(0); } catch(e) {}
       try { carregarVozes(); } catch(e) {}
       try { atualizarInterfaceVipCompleta(); } catch(e) {}
+      try { iniciarAnimacaoRespiracao(); } catch(e) {}
       try { desenharCertificadoCanvas(); } catch(e) {}
       try { atualizarBarrasPet(); } catch(e) {}
       
@@ -1113,7 +1136,7 @@
         if(petStatus.higiene < 30) { img.classList.add('sujo'); } else { img.classList.remove('sujo'); }
         if(!petDormindo && !petAcaoAtiva) {
           if (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) {
-            if(img.src !== LINKS_ANIMACOES_XEXEU.triste) { img.src = LINKS_ANIMACOES_XEXEU.triste; } // Sem áudio na tristeza pra não atrapalhar
+            if(img.src !== LINKS_ANIMACOES_XEXEU.triste) { img.src = LINKS_ANIMACOES_XEXEU.triste; } 
           } else {
             if(img.src !== LINKS_ANIMACOES_XEXEU.normal) img.src = LINKS_ANIMACOES_XEXEU.normal;
           }
@@ -1126,7 +1149,6 @@
       const mascote = document.getElementById('mascoteXexeuHome');
       
       if (petDormindo && acao !== 'dormir') { falarTexto("O Xexéu está dormindo, shhhh!"); return; }
-      
       if(img) { img.style.transform = 'scale(1.1)'; setTimeout(() => { if(img) img.style.transform = 'scale(1)'; }, 200); }
       
       clearTimeout(timeoutAcaoPet); 
@@ -1229,9 +1251,9 @@
       desenharCertificadoCanvas();
     }
 
-    function tocarSomPopReal() {
+    function tocarSomPop() {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
-      try { let audio = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345640/uma_bolha_estourando.mp3"); audio.volume = 0.6; audio.play().catch(()=>{}); } catch (e) {}
+      try { const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const osc = audioCtx.createGain ? audioCtx.createOscillator() : null; const gain = audioCtx.createGain(); if (osc && gain) { osc.type = 'sine'; osc.frequency.setValueAtTime(450, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.08); gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.08); } } catch (e) {}
     }
 
     function tocarSomAcerto() {
@@ -1398,7 +1420,6 @@
     function aplicarMolduraVip(tipo) {
       if(!isVip && tipo !== 'none') { alert("🔒 Molduras são exclusivas VIP!"); return; }
       molduraVipAtual = tipo; localStorage.setItem('xexeu_moldura', tipo);
-      document.querySelectorAll('.avatar-perfil-display').forEach(img => { img.className = 'avatar-perfil-display'; if(tipo === 'gold') img.classList.add('vip-border-gold'); if(tipo === 'diamond') img.classList.add('vip-border-diamond'); if(tipo === 'rainbow') img.classList.add('vip-border-rainbow'); });
       renderAvatarSelector();
     }
 
@@ -1406,12 +1427,12 @@
       const boxCup = document.getElementById('boxConteudoCupcake'); const boxEst = document.getElementById('boxConteudoEstrelas'); const boxPiano = document.getElementById('boxConteudoPiano'); const boxBateria = document.getElementById('boxConteudoBateria');
 
       if (boxPiano) {
-        if (isVip) { boxPiano.innerHTML = `<div style="background:#F0FDF4; border:3px solid #6EE7B7; border-radius:20px; padding:24px;"><span style="font-size:42px;">🎹</span><h3 style="color:#047857; font-size:24px; margin:8px 0;">Piano Mágico da Iza</h3><p style="color:#065F46; font-weight:600; margin-bottom:12px;">"Vamos tocar uma música linda juntos!"</p><div style="display:flex; gap:10px; justify-content:center; margin-top:20px;"><button class="btn-tactile pink" style="height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(261.63)">Dó</button><button class="btn-tactile primary" style="height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(293.66)">Ré</button><button class="btn-tactile green" style="height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(329.63)">Mi</button><button class="btn-tactile" style="background:#F59E0B; color:#FFF; height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(349.23)">Fá</button><button class="btn-tactile" style="background:#8B5CF6; color:#FFF; height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(392.00)">Sol</button></div></div>`; } 
+        if (isVip) { boxPiano.innerHTML = `<div style="background:#F0FDF4; border:3px solid #6EE7B7; border-radius:20px; padding:24px;"><span style="font-size:42px;">🎹</span><h3 style="color:#047857; font-size:24px; margin:8px 0;">Piano Mágico da Iza</h3><p style="color:#065F46; font-weight:600; margin-bottom:12px;">"Vamos tocar uma música linda juntos!"</p><div style="display:flex; gap:10px; justify-content:center; margin-top:20px; flex-wrap:wrap;"><button class="btn-tactile pink" style="height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(261.63)">Dó</button><button class="btn-tactile primary" style="height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(293.66)">Ré</button><button class="btn-tactile green" style="height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(329.63)">Mi</button><button class="btn-tactile" style="background:#F59E0B; color:#FFF; height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(349.23)">Fá</button><button class="btn-tactile" style="background:#8B5CF6; color:#FFF; height:120px; width:55px; border-radius:12px;" onclick="tocarNotaPiano(392.00)">Sol</button></div></div>`; } 
         else { boxPiano.innerHTML = `<div style="padding: 30px; background: #F0FDF4; border: 2px dashed #10B981; border-radius: 16px;"><span style="font-size: 40px; display:block; animation: floatIcon 3s infinite;">🎹</span><h3 style="color: #047857; font-size: 22px; margin: 8px 0;">Piano Mágico da Iza</h3><p style="color: #064E3B; margin-bottom: 16px;">Toque músicas e aprenda as notas com a Iza no Clube VIP!</p><button class="btn-tactile green" onclick="navegar('vip')">Desbloquear no Clube VIP 👑</button></div>`; }
       }
 
       if (boxBateria) {
-        if (isVip) { boxBateria.innerHTML = `<div style="background:#E0F2FE; border:3px solid #7DD3FC; border-radius:20px; padding:24px;"><span style="font-size:42px;">🥁</span><h3 style="color:#0369A1; font-size:24px; margin:8px 0;">Bateria do Sam</h3><p style="color:#0C4A6E; font-weight:600; margin-bottom:12px;">"Faz o seu próprio ritmo!"</p><div style="display:flex; gap:16px; justify-content:center; margin-top:20px;"><button class="btn-tactile primary" style="height:100px; width:100px; border-radius:50%; font-size: 20px; box-shadow: 0 10px 0 #1D4ED8;" onclick="tocarTambor('bombo')">Bumbo</button><button class="btn-tactile" style="background:#8B5CF6; color:#FFF; height:100px; width:100px; border-radius:50%; font-size: 20px; box-shadow: 0 10px 0 #6D28D9;" onclick="tocarTambor('caixa')">Caixa</button><button class="btn-tactile" style="background:#FDE047; color:#854D0E; height:100px; width:100px; border-radius:50%; font-size: 20px; border-color: #EAB308; box-shadow: 0 10px 0 #CA8A04;" onclick="tocarTambor('prato')">Prato</button></div></div>`; } 
+        if (isVip) { boxBateria.innerHTML = `<div style="background:#E0F2FE; border:3px solid #7DD3FC; border-radius:20px; padding:24px;"><span style="font-size:42px;">🥁</span><h3 style="color:#0369A1; font-size:24px; margin:8px 0;">Bateria do Sam</h3><p style="color:#0C4A6E; font-weight:600; margin-bottom:12px;">"Faz o seu próprio ritmo!"</p><div style="display:flex; gap:16px; justify-content:center; margin-top:20px; flex-wrap:wrap;"><button class="btn-tactile primary" style="height:100px; width:100px; border-radius:50%; font-size: 20px; box-shadow: 0 10px 0 #1D4ED8;" onclick="tocarTambor('bombo')">Bumbo</button><button class="btn-tactile" style="background:#8B5CF6; color:#FFF; height:100px; width:100px; border-radius:50%; font-size: 20px; box-shadow: 0 10px 0 #6D28D9;" onclick="tocarTambor('caixa')">Caixa</button><button class="btn-tactile" style="background:#FDE047; color:#854D0E; height:100px; width:100px; border-radius:50%; font-size: 20px; border-color: #EAB308; box-shadow: 0 10px 0 #CA8A04;" onclick="tocarTambor('prato')">Prato</button></div></div>`; } 
         else { boxBateria.innerHTML = `<div style="padding: 30px; background: #E0F2FE; border: 2px dashed #38BDF8; border-radius: 16px;"><span style="font-size: 40px; display:block; animation: floatIcon 3s infinite;">🥁</span><h3 style="color: #0369A1; font-size: 22px; margin: 8px 0;">Bateria do Sam</h3><p style="color: #0C4A6E; margin-bottom: 16px;">Crie ritmos incríveis no Clube VIP!</p><button class="btn-tactile primary" onclick="navegar('vip')">Desbloquear no Clube VIP 👑</button></div>`; }
       }
 
