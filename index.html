@@ -234,7 +234,7 @@
     </div>
   </div>
 
-  <!-- BARRA FLUTUANTE VIP DINÂMICA -->
+  <!-- BARRA FLUTUANTE VIP DINÂMICA (SOME SE FOR VIP) -->
   <div class="vip-floating-bar" id="barraFlutuanteVip" onclick="navegar('vip')">
     <span style="font-size: 22px;">👑</span>
     <div>
@@ -291,6 +291,7 @@
         </div>
         <p style="font-size: 14px; color: #5B21B6; margin-bottom: 20px; font-weight: 600;">O Xexéu precisa de carinho! Dê comidinha, brinque e coloque para dormir.</p>
 
+        <!-- BARRAS DE STATUS -->
         <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;">
           <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 120px; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #991B1B;">🍎 Fome</span>
@@ -312,20 +313,24 @@
           </div>
         </div>
 
+        <!-- TELA DO QUARTINHO -->
         <div style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; max-width: 320px; margin: 0 auto 20px; position: relative; overflow: hidden; height: 260px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
           <div id="filtroNoite" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.8); display: none; z-index: 1;"></div>
+          <!-- O clique/toque no Xexéu agora faz carinho! -->
           <div class="mascote-virtual" id="mascoteXexeuHome" onclick="animarMascote(event)" style="position: relative; right: 0; bottom: 0;">
             <div class="balao-fala" id="balaoMascote" style="top: -40px; right: -20px;">Bora brincar!</div>
             <img id="imgXexeuPet" src="https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif" alt="Xexéu Virtual" style="width: 200px; height: 200px; object-fit: contain; z-index: 2; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
           </div>
         </div>
 
+        <!-- BOTÕES DE AÇÃO -->
         <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
           <button class="btn-tactile" style="border-color: #EF4444; color: #B91C1C;" onclick="acaoPet('alimentar')">🍎 Dar Comida</button>
           <button class="btn-tactile" style="border-color: #F59E0B; color: #B45309;" onclick="acaoPet('brincar')">🎾 Brincar</button>
           <button class="btn-tactile" style="border-color: #3B82F6; color: #1D4ED8;" onclick="acaoPet('dormir')">🛏️ Dormir/Acordar</button>
         </div>
       </div>
+      <!-- FIM MINIJOGO -->
 
       <div class="central-hub-grid">
         <div class="hub-card" onclick="navegar('jogos')">
@@ -878,6 +883,8 @@
     let petStatus = { fome: 60, energia: 80, alegria: 90 };
     let petDormindo = false;
     let petAcaoAtiva = false;
+    let audioXexeuAtual = null; // CONTROLADOR ÚNICO DE ÁUDIO
+    let timeoutAcaoPet = null;  // CONTROLADOR ÚNICO DE ANIMAÇÃO
 
     let bolinhoMassa = '🧁'; let bolinhoCobertura = '🍓'; let bolinhoConfeito = '✨';
 
@@ -945,15 +952,33 @@
     function tocarVozXexeu(urlAudio) {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
       if (!urlAudio) return;
-      const voz = new Audio(urlAudio); voz.play().catch(() => {});
+      
+      // MÁGICA DE UX: Para o som anterior na mesma hora!
+      if (audioXexeuAtual) {
+        audioXexeuAtual.pause();
+        audioXexeuAtual.currentTime = 0;
+      }
+      
+      audioXexeuAtual = new Audio(urlAudio);
+      audioXexeuAtual.play().catch(() => {});
+    }
+
+    // Função para limpar balão de fala e liberar ação
+    function resetarAnimacaoMascote() {
+      const mascote = document.getElementById('mascoteXexeuHome');
+      if (mascote) mascote.classList.remove('falando');
+      petAcaoAtiva = false;
+      if(!petDormindo) atualizarBarrasPet();
     }
 
     function animarMascote(e) {
       const mascote = document.getElementById('mascoteXexeuHome');
       const img = document.getElementById('imgXexeuPet');
-      if(mascote && !petDormindo && !petAcaoAtiva) {
+      if(mascote && !petDormindo) {
+        clearTimeout(timeoutAcaoPet); // Interrompe animação antiga
         petAcaoAtiva = true;
         mascote.classList.add('falando');
+        
         petStatus.alegria = Math.min(100, petStatus.alegria + 15);
         atualizarBarrasPet();
         
@@ -963,7 +988,8 @@
         const frases = ["Que carinho gostoso!", "Hihihi, eu adoro!", "Você é meu melhor amigo!", "Amo você!", "Faz cócegas!"];
         document.getElementById('balaoMascote').innerText = frases[Math.floor(Math.random() * frases.length)];
         celebrar(e, 2); 
-        setTimeout(() => { mascote.classList.remove('falando'); petAcaoAtiva = false; if(!petDormindo) atualizarBarrasPet(); }, 3000);
+        
+        timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
       }
     }
 
@@ -985,22 +1011,28 @@
 
     function acaoPet(acao) {
       const img = document.getElementById('imgXexeuPet'); const filtro = document.getElementById('filtroNoite');
+      const mascote = document.getElementById('mascoteXexeuHome');
+      
       if (petDormindo && acao !== 'dormir') { falarTexto("O Xexéu está dormindo, shhhh!"); return; }
+      
       if(img) { img.style.transform = 'scale(1.1)'; setTimeout(() => img.style.transform = 'scale(1)', 200); }
+      
+      clearTimeout(timeoutAcaoPet); // Para a ação anterior
+      if (mascote) mascote.classList.remove('falando');
       petAcaoAtiva = true;
 
       if (acao === 'alimentar') {
         petStatus.fome = Math.min(100, petStatus.fome + 30);
         if(img) img.src = LINKS_ANIMACOES_XEXEU.comendo;
         tocarVozXexeu(LINKS_AUDIOS_XEXEU.comendo); animacaoConfete(); atualizarScore(2);
-        setTimeout(() => { petAcaoAtiva = false; if(!petDormindo) atualizarBarrasPet(); }, 3000);
+        timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
       } 
       else if (acao === 'brincar') {
         if(petStatus.energia < 20) { falarTexto("Estou muito cansado para brincar agora."); petAcaoAtiva = false; return; }
         petStatus.alegria = Math.min(100, petStatus.alegria + 30); petStatus.energia = Math.max(0, petStatus.energia - 15);
         if(img) img.src = LINKS_ANIMACOES_XEXEU.brincando;
         tocarVozXexeu(LINKS_AUDIOS_XEXEU.brincando); animacaoConfete(); atualizarScore(2);
-        setTimeout(() => { petAcaoAtiva = false; if(!petDormindo) atualizarBarrasPet(); }, 3000);
+        timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
       }
       else if (acao === 'dormir') {
         petDormindo = !petDormindo; petAcaoAtiva = false;
@@ -1055,7 +1087,7 @@
 
     function toggleModoCalmo() {
       const ativado = document.body.classList.toggle('sensory-mode'); const btn = document.getElementById('btnModoCalmo'); if (btn) btn.innerText = ativado ? '🌸' : '🌿';
-      exibirToast(ativado ? 'Modo Calmo Ativado' : 'Modo Padrão Ativado'); falarTexto(ativado ? 'Modo Calmo ativado. Um ambiente tranquilo.' : 'Modo Padrão ativado.');
+      exibirToast(ativado ? 'Modo Calmo Ativado: Ambiente Relaxante e Seguro' : 'Modo Padrão Ativado'); falarTexto(ativado ? 'Modo Calmo ativado. Um ambiente tranquilo.' : 'Modo Padrão ativado.');
     }
 
     function exibirToast(msg) { const t = document.getElementById('appToast'); if (!t) return; t.innerText = msg; t.classList.add('active'); setTimeout(() => t.classList.remove('active'), 2500); }
@@ -1282,7 +1314,11 @@
       if (subjogo === 'memoria') iniciarJogoMemoria(); if (subjogo === 'quiz') iniciarJogoQuiz(); if (subjogo === 'sombras') iniciarJogoSombras();
     }
 
-    function setNivelContar(n) { if (n === 3 && !isVip) { alert('🔒 Nível VIP exclusivo!'); navegar('vip'); return; } nivelContar = n; document.querySelectorAll('[id^="btnNivelContar-"]').forEach(b => b.classList.remove('active')); const btn = document.getElementById('btnNivelContar-' + n); if (btn) btn.classList.add('active'); iniciarJogoContar(); }
+    function setNivelContar(n) {
+      if (n === 3 && !isVip) { alert('🔒 Nível 3 VIP exclusivo!'); navegar('vip'); return; }
+      nivelContar = n; document.querySelectorAll('[id^="btnNivelContar-"]').forEach(b => b.classList.remove('active'));
+      const btn = document.getElementById('btnNivelContar-' + n); if (btn) btn.classList.add('active'); iniciarJogoContar();
+    }
     function iniciarJogoContar() {
       const max = nivelContar === 1 ? 5 : (nivelContar === 2 ? 10 : 20); const q = Math.floor(Math.random() * max) + 1;
       const char = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
@@ -1298,7 +1334,11 @@
       });
     }
 
-    function setNivelLetras(n) { if (n === 3 && !isVip) { alert('🔒 Desafio VIP exclusivo!'); navegar('vip'); return; } nivelLetras = n; document.querySelectorAll('[id^="btnNivelLetras-"]').forEach(b => b.classList.remove('active')); const btn = document.getElementById('btnNivelLetras-' + n); if (btn) btn.classList.add('active'); iniciarJogoLetras(); }
+    function setNivelLetras(n) {
+      if (n === 3 && !isVip) { alert('🔒 Desafio VIP exclusivo!'); navegar('vip'); return; }
+      nivelLetras = n; document.querySelectorAll('[id^="btnNivelLetras-"]').forEach(b => b.classList.remove('active'));
+      const btn = document.getElementById('btnNivelLetras-' + n); if (btn) btn.classList.add('active'); iniciarJogoLetras();
+    }
     function iniciarJogoLetras() {
       const poolPersonagens = nivelLetras === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 8); const p = poolPersonagens[Math.floor(Math.random() * poolPersonagens.length)];
       const nomeTarget = document.getElementById('nomeLetraAlvo'); const img = document.getElementById('imgLetraAlvo');
@@ -1312,7 +1352,6 @@
       });
     }
 
-    // LÓGICA NOVO JOGO: SOMBRAS MÁGICAS
     function setNivelSombras(n) {
       if (n === 3 && !isVip) { alert('🔒 Nível VIP exclusivo!'); navegar('vip'); return; }
       nivelSombras = n; document.querySelectorAll('[id^="btnNivelSombras-"]').forEach(b => b.classList.remove('active'));
@@ -1321,32 +1360,25 @@
     function iniciarJogoSombras() {
       const poolSombras = nivelSombras === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 8);
       const p = poolSombras[Math.floor(Math.random() * poolSombras.length)];
-      const img = document.getElementById('imgSombraAlvo');
-      if (img) { img.src = p.img; img.alt = "Sombra Misteriosa"; }
-      
+      const img = document.getElementById('imgSombraAlvo'); if (img) { img.src = p.img; img.alt = "Sombra Misteriosa"; img.style.filter = "brightness(0) invert(0)"; }
       const bBox = document.getElementById('boxSombrasBotoes'); if (!bBox) return; bBox.innerHTML = '';
-      
       const qtd = nivelSombras === 1 ? 3 : (nivelSombras === 2 ? 4 : 6);
       const outros = poolSombras.filter(x => x.nome !== p.nome).sort(() => Math.random() - 0.5).slice(0, qtd - 1);
       const opcoes = [p, ...outros].sort(() => Math.random() - 0.5);
-
       opcoes.forEach(op => {
         const btn = document.createElement('button'); btn.className = 'btn-tactile'; btn.style.padding = '8px';
         btn.innerHTML = `<img src="${op.img}" style="width: 50px; height: 50px; object-fit: contain; display: block; margin: 0 auto 4px;"> <span style="font-size: 13px;">${op.nome}</span>`;
         btn.onclick = (e) => {
           if (op.nome === p.nome) { 
             btn.style.borderColor = "var(--green)"; btn.style.background = "#D1FAE5";
-            if(img) img.style.filter = "none"; // Revela o personagem
-            falarTexto('Você acertou! É o ' + p.nome); celebrar(e, 5); 
+            if(img) img.style.filter = "none"; falarTexto('Você acertou! É o ' + p.nome); celebrar(e, 5); 
             setTimeout(() => { if(img) img.style.filter = "brightness(0) invert(0)"; iniciarJogoSombras(); }, 1200); 
           } else { 
-            btn.style.borderColor = "var(--accent)"; btn.style.background = "#FEE2E2";
-            btn.style.animation = "shakeError 0.4s";
+            btn.style.borderColor = "var(--accent)"; btn.style.background = "#FEE2E2"; btn.style.animation = "shakeError 0.4s";
             falarTexto('Quase lá, tente mais uma vez!'); tocarSomErro(); 
             setTimeout(() => { btn.style.borderColor = ""; btn.style.background = ""; btn.style.animation = ""; }, 600); 
           }
-        };
-        bBox.appendChild(btn);
+        }; bBox.appendChild(btn);
       });
     }
 
@@ -1399,7 +1431,7 @@
       setInterval(() => {
         bubble.className = 'breathe-bubble expand'; bubble.innerText = 'Inspire'; if(text) text.innerText = 'Inspire... (1, 2, 3, 4) 🌸';
         setTimeout(() => { bubble.className = 'breathe-bubble hold'; bubble.innerText = 'Segure'; if(text) text.innerText = 'Segure com calma... ✨'; }, 4000);
-        setTimeout(() => { bubble.className = 'breathe-bubble shrink'; bubble.innerText = 'Expire'; if(text) text.innerText = 'Expire... solte o ar. 🌬️'; }, 7000);
+        setTimeout(() => { bubble.className = 'breathe-bubble shrink'; bubble.innerText = 'Expire'; if(text) text.innerText = 'Solte o ar pela boquinha bem devagar... 🌬️'; }, 7000);
       }, 11000);
     }
 
@@ -1418,7 +1450,7 @@
     }
 
     let somAtual = null;
-    function tocarSomRelaxante(url) { if (somAtual) { somAtual.pause(); if (somAtual.src === url) { somAtual = null; falarTexto('Som pausado.'); return; } } somAtual = new Audio(url); somAtual.loop = true; somAtual.play().catch(() => {}); }
+    function tocarSomRelaxante(url) { if (somAtual) { somAtual.pause(); if (somAtual.src === url) { somAtual = null; falarTexto('Som pausado.'); return; } } somAtual = new Audio(url); somAtual.loop = true; somAtual.play().catch(() => {}); falarTexto('Tocando som de acalento.'); }
 
     function renderTodosPersonagensInicio() {
       const grids = { mascotes: document.getElementById('gridMascotes'), maya: document.getElementById('gridCasaMaya'), sam: document.getElementById('gridCasaSam'), avos: document.getElementById('gridAvos') }; Object.values(grids).forEach(g => { if(g) g.innerHTML = ''; });
