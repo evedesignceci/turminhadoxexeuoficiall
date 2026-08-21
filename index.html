@@ -105,7 +105,7 @@
     .hub-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; font-weight: 600; }
     .hub-card-tag { font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 12px; width: fit-content; }
 
-    /* ESTILOS DA CASA DO XEXEU (PET) SEM CORES ESCURAS */
+    /* ESTILOS DA CASA DO XEXEU (PET) CLARO */
     .quarto-xexeu {
       background: linear-gradient(to bottom, #E0F2FE 0%, #BAE6FD 60%, #86EFAC 60%, #4ADE80 100%);
       border: 6px solid #8B5CF6; border-radius: 24px; width: 100%; max-width: 450px; margin: 0 auto 20px;
@@ -128,6 +128,7 @@
 
     @keyframes discoLights { 0% { background: rgba(236,72,153,0.4); } 33% { background: rgba(16,185,129,0.4); } 66% { background: rgba(59,130,246,0.4); } 100% { background: rgba(245,158,11,0.4); } }
     .party-mode { animation: discoLights 0.5s infinite alternate !important; display: block !important; }
+    /* Filtro de noite claro e fofo (NADA PRETO) */
     .sleep-mode { background: rgba(139, 92, 246, 0.4) !important; backdrop-filter: blur(2px); display: block !important; }
 
     /* POTE DA CALMA (TEA) */
@@ -202,6 +203,7 @@
     .floating-points { position: fixed; font-size: 24px; font-weight: 900; color: var(--green); text-shadow: 0 2px 0 #D1FAE5, 0 -2px 0 #FFF, 2px 0 0 #FFF, -2px 0 0 #FFF; z-index: 999999; pointer-events: none; animation: floatUpText 1.2s ease-out forwards; }
     @keyframes floatUpText { 0% { opacity: 0; transform: translateY(0) scale(0.5); } 20% { opacity: 1; transform: translateY(-20px) scale(1.2); } 100% { opacity: 0; transform: translateY(-60px) scale(1); } }
 
+    /* Sem fundos pretos no modal */
     .app-modal { display: none; position: fixed; inset: 0; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(8px); z-index: 99999; align-items: center; justify-content: center; padding: 20px; }
     .app-modal.show { display: flex; animation: fadeIn 0.2s; }
     .modal-content { background: #FFFFFF; border-radius: var(--radius-xl); padding: 28px; max-width: 480px; width: 100%; border: 4px solid var(--primary); text-align: center; position: relative; animation: slideUpFade 0.3s; box-shadow: var(--shadow-md); }
@@ -281,8 +283,8 @@
   <div class="vip-floating-bar" id="barraFlutuanteVip" onclick="navegar('vip')">
     <span style="font-size: 22px;">👑</span>
     <div>
-      <div style="font-weight: 800; font-size: 14px;">Clube VIP por R$ 6,00</div>
-      <div style="font-size: 12px;">Desbloqueie tudo!</div>
+      <div style="font-weight: 800; font-size: 14px;">Clube VIP por apenas R$ 6,00</div>
+      <div style="font-size: 12px; color: #FCD34D;">Desbloqueie todos os jogos, ferramentas e drives!</div>
     </div>
     <span style="font-size: 18px;">➔</span>
   </div>
@@ -422,7 +424,7 @@
           </div>
         </div>
 
-        <!-- TELA DO QUARTINHO -->
+        <!-- TELA DO QUARTINHO (Sem cor escura real, roxo clarinho no fundo) -->
         <div class="quarto-xexeu">
           <div id="filtroNoite" style="position: absolute; inset: 0; display: none; z-index: 1;" class="sleep-mode"></div>
           <!-- O clique/toque no Xexéu faz carinho -->
@@ -661,7 +663,7 @@
       </div>
     </div>
 
-    <!-- PÁGINA: ESPAÇO TEA (ATUALIZADO) -->
+    <!-- PÁGINA: ESPAÇO TEA -->
     <div id="page-tea" class="page-box">
       <div class="game-card" style="border-color: #BAE6FD; background: #F0F9FF;">
         <div class="game-card-title" style="color: var(--tea-blue);">
@@ -743,7 +745,7 @@
         </div>
       </div>
 
-      <!-- POP IT (MOVido para baixo, mas antes da tela preta) -->
+      <!-- POP IT (BOLHAS REDONDINHAS GARANTIDAS) -->
       <div class="game-card" style="text-align: center; border-color: #F0ABFC; background: #FFF5FF;">
         <div class="game-card-title" style="justify-content: center; color: #A21CAF;">
           <span>🫧 Pop-It Sensorial</span>
@@ -752,7 +754,7 @@
         <div class="popit-board" id="popitGridContainer"></div>
       </div>
 
-      <!-- LUZES SENSORIAIS (TELA CLARA COM BOLHAS MÁGICAS) -->
+      <!-- LUZES SENSORIAIS (TELA CLARA COM BOLHAS MÁGICAS E SOM PAUSÁVEL) -->
       <div class="game-card" style="background: #FFFBEB; border-color: #FCD34D;">
         <div class="game-card-title" style="color: #D97706; justify-content: center;">✨ Pintura Mágica Relaxante</div>
         <p style="color: #92400E; font-size: 14px; text-align: center;">Arraste o dedo na lousa de areia para criar bolhas coloridas e macias que desaparecem suavemente.</p>
@@ -1016,7 +1018,7 @@
       brincando: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336534/XEXEU_FELIZ.gif",
       triste: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336521/XEXEU_TRISTE.gif",
       carinho: "https://res.cloudinary.com/oactqmgs/image/upload/v1787341883/XEXEU_COMENDO.png",
-      banho: "" 
+      banho: "" // Aguardando sua animação de banho
     };
 
     const LINKS_AUDIOS_XEXEU = {
@@ -1071,7 +1073,6 @@
       try { carregarVozes(); } catch(e) {}
       try { atualizarInterfaceVipCompleta(); } catch(e) {}
       try { iniciarAnimacaoRespiracao(); } catch(e) {}
-      try { desenharCertificadoCanvas(); } catch(e) {}
       try { atualizarBarrasPet(); } catch(e) {}
       
       const nomeSalvo = localStorage.getItem('xexeu_nome') || 'Amiguinho';
@@ -1080,6 +1081,13 @@
       if (inputNome) inputNome.value = nomeSalvo;
       if (inputNomeCert) inputNomeCert.value = nomeSalvo;
       document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = nomeSalvo);
+
+      // Trava de segurança para o Certificado esperar a fonte carregar
+      if (document.fonts) {
+        document.fonts.ready.then(() => { desenharCertificadoCanvas(); });
+      } else {
+        setTimeout(desenharCertificadoCanvas, 500);
+      }
     });
 
     function animacaoConfete() {
@@ -1118,7 +1126,9 @@
       const img = document.getElementById('imgXexeuPet');
       if(mascote && !petDormindo && !petAcaoAtiva) {
         clearTimeout(timeoutAcaoPet); petAcaoAtiva = true; mascote.classList.add('falando');
-        petStatus.alegria = Math.min(100, petStatus.alegria + 15); atualizarBarrasPet();
+        petStatus.alegria = Math.min(100, petStatus.alegria + 15);
+        atualizarBarrasPet(); // forca atualizar barras agora
+        
         if (img) { img.src = LINKS_ANIMACOES_XEXEU.carinho; img.classList.remove('sujo'); }
         if (LINKS_AUDIOS_XEXEU.ola) { tocarVozXexeu(LINKS_AUDIOS_XEXEU.ola); } else { tocarSomAcerto(); }
         const frases = ["Que carinho gostoso!", "Hihihi, eu adoro!", "Você é meu melhor amigo!", "Amo você!", "Faz cócegas!"];
@@ -1136,7 +1146,7 @@
         if(petStatus.higiene < 30) { img.classList.add('sujo'); } else { img.classList.remove('sujo'); }
         if(!petDormindo && !petAcaoAtiva) {
           if (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) {
-            if(img.src !== LINKS_ANIMACOES_XEXEU.triste) { img.src = LINKS_ANIMACOES_XEXEU.triste; } 
+            if(img.src !== LINKS_ANIMACOES_XEXEU.triste) { img.src = LINKS_ANIMACOES_XEXEU.triste; } // Sem áudio na tristeza pra não atrapalhar
           } else {
             if(img.src !== LINKS_ANIMACOES_XEXEU.normal) img.src = LINKS_ANIMACOES_XEXEU.normal;
           }
@@ -1157,24 +1167,28 @@
 
       if (acao === 'alimentar') {
         petStatus.fome = Math.min(100, petStatus.fome + 30); petStatus.higiene = Math.max(0, petStatus.higiene - 10);
+        atualizarBarrasPet(); // forca DOM update na hora
         if(img) img.src = LINKS_ANIMACOES_XEXEU.comendo; tocarVozXexeu(LINKS_AUDIOS_XEXEU.comendo); animacaoConfete(); atualizarScore(2);
         timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
       } 
       else if (acao === 'bolinho') {
         if(!isVip) { alert("🔒 O Bolinho VIP é exclusivo!"); navegar('vip'); petAcaoAtiva = false; return; }
         petStatus.fome = 100; petStatus.alegria = Math.min(100, petStatus.alegria + 20); petStatus.higiene = Math.max(0, petStatus.higiene - 15);
+        atualizarBarrasPet();
         if(img) img.src = LINKS_ANIMACOES_XEXEU.comendo; tocarVozXexeu(LINKS_AUDIOS_XEXEU.comendo); animacaoConfete(); atualizarScore(5);
         timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
       }
       else if (acao === 'brincar') {
         if(petStatus.energia < 20) { falarTexto("Estou muito cansado para brincar agora."); petAcaoAtiva = false; return; }
         petStatus.alegria = Math.min(100, petStatus.alegria + 30); petStatus.energia = Math.max(0, petStatus.energia - 15); petStatus.higiene = Math.max(0, petStatus.higiene - 15);
+        atualizarBarrasPet();
         if(img) img.src = LINKS_ANIMACOES_XEXEU.brincando; tocarVozXexeu(LINKS_AUDIOS_XEXEU.brincando); animacaoConfete(); atualizarScore(2);
         timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
       }
       else if (acao === 'banho') {
         if(!isVip) { alert("🔒 O Banho Mágico é exclusivo para VIPs!"); navegar('vip'); petAcaoAtiva = false; return; }
         petStatus.higiene = 100; petStatus.alegria = Math.min(100, petStatus.alegria + 20);
+        atualizarBarrasPet();
         if(img) { img.classList.remove('sujo'); img.src = LINKS_ANIMACOES_XEXEU.banho || LINKS_ANIMACOES_XEXEU.brincando; }
         tocarVozXexeu(LINKS_AUDIOS_XEXEU.rindo); falarTexto("Que banho gostoso!"); animacaoConfete(); atualizarScore(5);
         timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
@@ -1183,6 +1197,7 @@
         if(!isVip) { alert("🔒 A Festa Musical é exclusiva para VIPs!"); navegar('vip'); petAcaoAtiva = false; return; }
         if(petStatus.energia < 30) { falarTexto("Preciso de mais energia para a festa!"); petAcaoAtiva = false; return; }
         petStatus.alegria = 100; petStatus.energia -= 25; petStatus.higiene = Math.max(0, petStatus.higiene - 20);
+        atualizarBarrasPet();
         if(img) img.src = LINKS_ANIMACOES_XEXEU.brincando; if(filtro) filtro.className = 'party-mode';
         tocarVozXexeu(LINKS_AUDIOS_XEXEU.rindo); falarTexto("Festa da Turminha!"); animacaoConfete(); atualizarScore(10);
         timeoutAcaoPet = setTimeout(() => { if(filtro) { filtro.className = ''; filtro.style.display = 'none'; } resetarAnimacaoMascote(); }, 4000);
@@ -1200,7 +1215,6 @@
           if(filtro) { filtro.className = ''; filtro.style.display = 'none'; } falarTexto("Bom dia!"); atualizarBarrasPet();
         }
       }
-      atualizarBarrasPet();
     }
 
     setInterval(() => {
@@ -1251,9 +1265,9 @@
       desenharCertificadoCanvas();
     }
 
-    function tocarSomPop() {
+    function tocarSomPopReal() {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
-      try { const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const osc = audioCtx.createGain ? audioCtx.createOscillator() : null; const gain = audioCtx.createGain(); if (osc && gain) { osc.type = 'sine'; osc.frequency.setValueAtTime(450, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.08); gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.08); } } catch (e) {}
+      try { let audio = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345640/uma_bolha_estourando.mp3"); audio.volume = 0.6; audio.play().catch(()=>{}); } catch (e) {}
     }
 
     function tocarSomAcerto() {
@@ -1336,7 +1350,7 @@
         clearInterval(respiracaoLoop); respirando = false; btn.innerText = "▶️ Iniciar Respiração";
         bubble.className = 'breathe-bubble'; bubble.innerText = 'Pronto'; if(text) text.innerText = 'Toque para iniciar... 🌿';
       } else {
-        respirando = true; btn.innerText = "⏸️ Parar"; falarTexto("Vamos respirar juntos.");
+        respirando = true; btn.innerText = "⏸️ Parar Respiração"; falarTexto("Vamos respirar juntos.");
         function ciclo() {
           bubble.className = 'breathe-bubble expand'; bubble.innerText = 'Inspire'; if(text) text.innerText = 'Inspire... (1, 2, 3, 4) 🌸';
           setTimeout(() => { if(!respirando) return; bubble.className = 'breathe-bubble hold'; bubble.innerText = 'Segure'; if(text) text.innerText = 'Segure com calma... ✨'; }, 4000);
@@ -1346,10 +1360,13 @@
       }
     }
 
-    // LUZES SENSORIAIS CANVAS COM SOM REFINADO
+    // LUZES SENSORIAIS CANVAS COM SOM REFINADO (PAUSA AUTOMÁTICA)
     function initSensoryCanvas() {
       const canvas = document.getElementById('sensoryCanvas'); if(!canvas) return; const ctx = canvas.getContext('2d'); let particles = [];
       let lastSoundTime = 0; 
+      let arrastoTimeout = null;
+      let somArrasto = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3");
+      somArrasto.loop = true;
 
       function addParticle(x, y) { particles.push({x, y, r: Math.random()*20 + 15, alpha: 1, color: `hsl(${Math.random()*360}, 100%, 75%)`}); }
       
@@ -1365,10 +1382,10 @@
         const rect = canvas.getBoundingClientRect(); const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left; const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
         addParticle(x * (canvas.width / rect.width), y * (canvas.height / rect.height));
 
-        let agora = Date.now();
-        if (agora - lastSoundTime > 150) { 
-           if(audioAtivo) { let somArrasto = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3"); somArrasto.volume = 0.4; somArrasto.play().catch(()=>{}); }
-           lastSoundTime = agora;
+        if(audioAtivo) { 
+           somArrasto.play().catch(()=>{}); 
+           clearTimeout(arrastoTimeout);
+           arrastoTimeout = setTimeout(() => { somArrasto.pause(); }, 150);
         }
       };
       
@@ -1381,7 +1398,9 @@
       const container = document.getElementById('popitGridContainer'); if (!container) return; container.innerHTML = '';
       const cores = ['#F472B6', '#38BDF8', '#4ADE80', '#FBBF24', '#A78BFA', '#FB7185'];
       for (let i = 0; i < 24; i++) {
-        const bubble = document.createElement('div'); bubble.className = 'popit-bubble'; const cor = cores[i % cores.length]; bubble.style.backgroundColor = cor; bubble.innerHTML = '🫧';
+        const bubble = document.createElement('div'); bubble.className = 'popit-bubble'; 
+        bubble.style.width = '45px'; bubble.style.height = '45px'; bubble.style.margin = 'auto'; // Trava o tamanho redondinho
+        const cor = cores[i % cores.length]; bubble.style.backgroundColor = cor; bubble.innerHTML = '🫧';
         bubble.onclick = () => { tocarSomPopReal(); if (navigator.vibrate) navigator.vibrate(20); bubble.classList.toggle('popped'); if (bubble.classList.contains('popped')) { bubble.innerHTML = '✨'; atualizarScore(1); } else { bubble.innerHTML = '🫧'; } }; container.appendChild(bubble);
       }
     }
@@ -1420,6 +1439,7 @@
     function aplicarMolduraVip(tipo) {
       if(!isVip && tipo !== 'none') { alert("🔒 Molduras são exclusivas VIP!"); return; }
       molduraVipAtual = tipo; localStorage.setItem('xexeu_moldura', tipo);
+      document.querySelectorAll('.avatar-perfil-display').forEach(img => { img.classList.remove('vip-border-gold', 'vip-border-diamond', 'vip-border-rainbow'); if(tipo === 'gold') img.classList.add('vip-border-gold'); if(tipo === 'diamond') img.classList.add('vip-border-diamond'); if(tipo === 'rainbow') img.classList.add('vip-border-rainbow'); });
       renderAvatarSelector();
     }
 
@@ -1432,7 +1452,7 @@
       }
 
       if (boxBateria) {
-        if (isVip) { boxBateria.innerHTML = `<div style="background:#E0F2FE; border:3px solid #7DD3FC; border-radius:20px; padding:24px;"><span style="font-size:42px;">🥁</span><h3 style="color:#0369A1; font-size:24px; margin:8px 0;">Bateria do Sam</h3><p style="color:#0C4A6E; font-weight:600; margin-bottom:12px;">"Faz o seu próprio ritmo!"</p><div style="display:flex; gap:16px; justify-content:center; margin-top:20px; flex-wrap:wrap;"><button class="btn-tactile primary" style="height:100px; width:100px; border-radius:50%; font-size: 20px; box-shadow: 0 10px 0 #1D4ED8;" onclick="tocarTambor('bombo')">Bumbo</button><button class="btn-tactile" style="background:#8B5CF6; color:#FFF; height:100px; width:100px; border-radius:50%; font-size: 20px; box-shadow: 0 10px 0 #6D28D9;" onclick="tocarTambor('caixa')">Caixa</button><button class="btn-tactile" style="background:#FDE047; color:#854D0E; height:100px; width:100px; border-radius:50%; font-size: 20px; border-color: #EAB308; box-shadow: 0 10px 0 #CA8A04;" onclick="tocarTambor('prato')">Prato</button></div></div>`; } 
+        if (isVip) { boxBateria.innerHTML = `<div style="background:#E0F2FE; border:3px solid #7DD3FC; border-radius:20px; padding:24px;"><span style="font-size:42px;">🥁</span><h3 style="color:#0369A1; font-size:24px; margin:8px 0;">Bateria do Sam</h3><p style="color:#0C4A6E; font-weight:600; margin-bottom:12px;">"Faz o seu próprio ritmo!"</p><div style="display:flex; gap:16px; justify-content:center; margin-top:20px; flex-wrap:wrap;"><button class="btn-tactile primary" style="height:100px; width:100px; border-radius:50%; font-size: 20px; box-shadow: 0 10px 0 #1D4ED8;" onclick="alert('⏳ O som real deste instrumento estará disponível em breve!'); animacaoConfete();">Bumbo</button><button class="btn-tactile" style="background:#8B5CF6; color:#FFF; height:100px; width:100px; border-radius:50%; font-size: 20px; box-shadow: 0 10px 0 #6D28D9;" onclick="alert('⏳ O som real deste instrumento estará disponível em breve!'); animacaoConfete();">Caixa</button><button class="btn-tactile" style="background:#FDE047; color:#854D0E; height:100px; width:100px; border-radius:50%; font-size: 20px; border-color: #EAB308; box-shadow: 0 10px 0 #CA8A04;" onclick="alert('⏳ O som de Prato estará disponível em breve!'); animacaoConfete();">Prato</button></div></div>`; } 
         else { boxBateria.innerHTML = `<div style="padding: 30px; background: #E0F2FE; border: 2px dashed #38BDF8; border-radius: 16px;"><span style="font-size: 40px; display:block; animation: floatIcon 3s infinite;">🥁</span><h3 style="color: #0369A1; font-size: 22px; margin: 8px 0;">Bateria do Sam</h3><p style="color: #0C4A6E; margin-bottom: 16px;">Crie ritmos incríveis no Clube VIP!</p><button class="btn-tactile primary" onclick="navegar('vip')">Desbloquear no Clube VIP 👑</button></div>`; }
       }
 
