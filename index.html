@@ -103,10 +103,15 @@
     .vip-floating-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FCD34D, #F59E0B); border: 3px solid #B45309; padding: 14px 24px; border-radius: 50px; display: flex; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 8px 20px rgba(180, 83, 9, 0.4); cursor: pointer; z-index: 1000; color: #78350F; transition: transform 0.2s; width: 90%; max-width: 450px; }
     .vip-floating-bar:hover { transform: translateX(-50%) scale(1.03); }
 
-    .breathe-box-interactive { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 280px; gap: 20px; }
-    .breathe-bubble { width: 110px; height: 110px; background: var(--tea-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; transition: transform 4s ease-in-out, background-color 4s; box-shadow: 0 0 20px rgba(2, 132, 199, 0.3); z-index: 2; }
-    .breathe-bubble.expand { transform: scale(1.6); background: var(--green); box-shadow: 0 0 30px rgba(16, 185, 129, 0.4); }
-    .breathe-bubble.hold { transform: scale(1.6); background: #8B5CF6; box-shadow: 0 0 30px rgba(139, 92, 246, 0.4); }
+    /* TREINO DA CALMA MELHORADO (UX CLARA PARA CRIANÇAS) */
+    .breathe-box-interactive { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 320px; gap: 16px; background: #F8FAFC; border: 3px solid #BAE6FD; border-radius: var(--radius-lg); padding: 20px; }
+    .breathe-instruction-card { background: #FFFFFF; border: 2px solid #38BDF8; padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow-sm); }
+    .breathe-instruction-card span { font-size: 24px; }
+    #breatheStatusText { color: var(--tea-blue); font-size: 18px; font-weight: 800; text-align: center; }
+    
+    .breathe-bubble { width: 120px; height: 120px; background: var(--tea-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; transition: transform 4s ease-in-out, background-color 4s; box-shadow: 0 0 25px rgba(2, 132, 199, 0.3); z-index: 2; font-size: 32px; }
+    .breathe-bubble.expand { transform: scale(1.5); background: var(--green); box-shadow: 0 0 35px rgba(16, 185, 129, 0.4); }
+    .breathe-bubble.hold { transform: scale(1.5); background: #8B5CF6; box-shadow: 0 0 35px rgba(139, 92, 246, 0.4); }
     .breathe-bubble.shrink { transform: scale(1); background: var(--tea-blue); }
 
     .chars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
@@ -529,10 +534,15 @@
             </div>
           </div>
         </div>
+
+        <!-- TREINO DA CALMA REDESENHADO COM UX CLARA -->
         <div class="game-card" style="text-align: center;">
           <div class="game-card-title"><span>🌬️ Treino da Calma</span></div>
           <div class="breathe-box-interactive">
-            <h4 id="breatheStatusText" style="color: var(--tea-blue); font-size: 16px;">Puxe o ar pelo nariz...</h4>
+            <div class="breathe-instruction-card">
+              <span id="breatheIconIndicator">🌬️</span>
+              <h4 id="breatheStatusText">Puxe o ar pelo nariz...</h4>
+            </div>
             <div class="breathe-bubble" id="breatheVisualBubble"></div>
           </div>
         </div>
@@ -1110,13 +1120,21 @@
       });
     }
 
-    /* LOUSA TEA COM EFEITO NEON */
+    /* LOUSA TEA COM EFEITO NEON E SOM ESTÁVEL */
     let canvasTea, ctxTea, desenhandoTea = false;
-    let somSensorial = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3");
-    somSensorial.loop = true; 
-    let somSensorialAtivo = false; 
-    let timeoutParaSomTea; 
     let matizSensorial = 0;
+    let ultimoSomSensorial = 0;
+
+    function tocarSomGizSensorial() {
+      const agora = Date.now();
+      if (agora - ultimoSomSensorial < 120 || !audioAtivo) return; // Limita taxa para evitar sobreposição ou travamento
+      ultimoSomSensorial = agora;
+      try {
+        let gizAudio = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3");
+        gizAudio.volume = volumeEfeitos * 0.6;
+        gizAudio.play().catch(()=>{});
+      } catch(e) {}
+    }
 
     function initLousaSensorial() {
       canvasTea = document.getElementById('lousaSensorialTea'); 
@@ -1137,18 +1155,6 @@
         const cy = e.clientY !== undefined ? e.clientY : (e.touches ? e.touches[0].clientY : 0); 
         return { x: (cx - r.left)*(canvasTea.width/r.width), y: (cy - r.top)*(canvasTea.height/r.height) }; 
       };
-      const gerS = () => { 
-        if (!somSensorialAtivo && audioAtivo) { 
-          somSensorial.volume = volumeEfeitos; 
-          somSensorial.play().catch(()=>{}); 
-          somSensorialAtivo = true; 
-        } 
-        clearTimeout(timeoutParaSomTea); 
-        timeoutParaSomTea = setTimeout(() => { 
-          somSensorial.pause(); 
-          somSensorialAtivo = false; 
-        }, 200); 
-      };
       
       const st = (e) => { 
         desenhandoTea = true; 
@@ -1158,6 +1164,7 @@
         ctxTea.lineWidth = 22; 
         ctxTea.lineCap = 'round'; 
         ctxTea.lineJoin = 'round'; 
+        tocarSomGizSensorial();
         if(e.cancelable) e.preventDefault(); 
       };
       const mv = (e) => { 
@@ -1170,7 +1177,7 @@
         ctxTea.shadowColor = `hsl(${matizSensorial}, 100%, 75%)`; 
         ctxTea.lineTo(p.x, p.y); 
         ctxTea.stroke(); 
-        gerS(); 
+        tocarSomGizSensorial();
         if (e.cancelable) e.preventDefault(); 
       };
       const sp = () => { desenhandoTea = false; };
@@ -1739,11 +1746,29 @@
 
     function iniciarAnimacaoRespiracao() {
       const bubble = document.getElementById('breatheVisualBubble'); 
+      const statusText = document.getElementById('breatheStatusText');
+      const iconIndicator = document.getElementById('breatheIconIndicator');
       if(!bubble) return;
+      
       setInterval(() => {
+        // Fase 1: Puxar o ar (Expande)
         bubble.className = 'breathe-bubble expand';
-        setTimeout(() => { bubble.className = 'breathe-bubble hold'; }, 4000);
-        setTimeout(() => { bubble.className = 'breathe-bubble shrink'; }, 7000);
+        if(statusText) statusText.innerText = "Puxe o ar pelo nariz...";
+        if(iconIndicator) iconIndicator.innerText = "👃";
+
+        // Fase 2: Segurar o ar
+        setTimeout(() => { 
+          bubble.className = 'breathe-bubble hold'; 
+          if(statusText) statusText.innerText = "Segure o ar com calma...";
+          if(iconIndicator) iconIndicator.innerText = "🧘";
+        }, 4000);
+
+        // Fase 3: Soltar o ar (Contrai)
+        setTimeout(() => { 
+          bubble.className = 'breathe-bubble shrink'; 
+          if(statusText) statusText.innerText = "Solte o ar devagar pela boca...";
+          if(iconIndicator) iconIndicator.innerText = "👄";
+        }, 7000);
       }, 11000);
     }
 
