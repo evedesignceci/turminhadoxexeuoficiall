@@ -42,6 +42,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', 'Nunito', sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background: var(--bg-canvas); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; user-select: none; overflow-x: hidden; }
 
+    /* MODO SENSORIAL (TEA) */
     body.sensory-mode {
       --bg-canvas: #F4F1EA !important; --card-bg: #FCFAF6 !important; --primary: #4A6B6C !important;
       --primary-hover: #3B5758 !important; --secondary: #8E7C68 !important; --tea-blue: #5B7A8C !important;
@@ -53,7 +54,8 @@
     body.sensory-mode * { animation: none !important; transition: none !important; box-shadow: none !important; }
     body.sensory-mode .game-card, body.sensory-mode header.game-header, body.sensory-mode nav.main-nav { background-color: var(--card-bg) !important; border-color: var(--border-color) !important; }
 
-    .app-shell { width: 100%; max-width: 1400px; margin: 0 auto; padding: 16px 20px 80px; display: flex; flex-direction: column; gap: 20px; }
+    /* ESTRUTURA PRINCIPAL */
+    .app-shell { width: 100%; max-width: 1400px; margin: 0 auto; padding: 16px 20px 100px; display: flex; flex-direction: column; gap: 20px; }
     
     header.game-header { background: var(--card-bg); padding: 12px 28px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-md); border: 3px solid var(--border-color); gap: 16px; flex-wrap: wrap; }
     .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -64,6 +66,7 @@
     .xp-bar-container { position: absolute; bottom: 0; left: 0; height: 4px; background: #FDE68A; width: 100%; }
     .xp-bar-fill { height: 100%; background: #D97706; width: 0%; transition: width 0.5s ease-out; }
 
+    /* BOTÕES TÁTEIS (UX/UI para Crianças) */
     .btn-tactile {
       background: #FFFFFF; border: 2px solid #CBD5E1; box-shadow: var(--shadow-3d); color: var(--text-main);
       padding: 12px 20px; border-radius: var(--radius-md); font-weight: 700; font-size: 15px; cursor: pointer;
@@ -76,9 +79,10 @@
     .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
     .btn-icon-round { width: 46px; height: 46px; border-radius: 50%; padding: 0; font-size: 18px; }
 
-    nav.main-nav { display: flex; gap: 8px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-lg); border: 3px solid var(--border-color); box-shadow: var(--shadow-sm); overflow-x: auto; scrollbar-width: none; }
+    /* NAVEGAÇÃO SUPERIOR */
+    nav.main-nav { display: flex; gap: 8px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-lg); border: 3px solid var(--border-color); box-shadow: var(--shadow-sm); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     nav.main-nav::-webkit-scrollbar { display: none; }
-    .nav-item-btn { flex: 1; min-width: 105px; padding: 12px 14px; border: none; background: transparent; border-radius: var(--radius-md); font-weight: 700; font-size: 14.5px; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; white-space: nowrap; }
+    .nav-item-btn { flex: 1; min-width: 110px; padding: 12px 14px; border: none; background: transparent; border-radius: var(--radius-md); font-weight: 700; font-size: 14.5px; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; white-space: nowrap; }
     .nav-item-btn:hover { background: #F1F5F9; color: var(--primary); transform: translateY(-2px); }
     .nav-item-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); transform: translateY(0); }
     .nav-item-btn.vip-item { background: #FEF3C7; color: #92400E; border: 1.5px solid #FCD34D; }
@@ -88,13 +92,16 @@
     .page-box.active { display: flex; }
     @keyframes slideUpFade { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
+    /* CARDS GENÉRICOS */
     .game-card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 24px; border: 3px solid var(--border-color); box-shadow: var(--shadow-md); position: relative; }
-    .game-card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
+    .game-card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
+    /* HUB CENTRAL */
     .central-hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 10px; }
     .hub-card { background: #FFFFFF; border-radius: 20px; padding: 20px; border: 3px solid var(--border-color); box-shadow: 0 6px 0 var(--border-color); cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .hub-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 12px 0 var(--primary); border-color: var(--primary); }
     .hub-card-icon { font-size: 44px; display: block; margin-bottom: 4px; animation: floatIcon 3s ease-in-out infinite; }
+    .hub-card-tag { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 800; width: fit-content; }
     @keyframes floatIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
     /* CASA DA TURMINHA - XEXÉU VIRTUAL */
@@ -104,7 +111,7 @@
     .balao-fala { position: absolute; top: -50px; right: 50px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; z-index: 20; }
     .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateY(0) scale(1); }
 
-    /* LAYOUTS MOBILE */
+    /* LAYOUTS RESPONSIVOS */
     .hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; }
     .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     @media (max-width: 900px) { 
@@ -116,13 +123,32 @@
     .social-btn-round:hover { transform: translateY(-4px); box-shadow: 0 8px 0 var(--primary); border-color: var(--primary); }
     .social-btn-round img { width: 28px; height: 28px; object-fit: contain; }
 
-    .chars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    /* COMPONENTES AUSENTES RESTAURADOS (UX/UI Fixes) */
+    .banner-hero-box img { width: 100%; height: auto; border-radius: var(--radius-lg); object-fit: cover; border: 3px solid var(--border-color); display: block; }
+    .family-group-box { margin-top: 20px; background: #F8FAFC; padding: 20px; border-radius: var(--radius-lg); border: 2px dashed #CBD5E1; }
+    .family-group-title { font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 16px; text-align: left; }
+    
+    /* BARRA FLUTUANTE VIP (Restaurada para não quebrar a tela) */
+    .vip-floating-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FCD34D, #F59E0B); border: 3px solid #B45309; padding: 14px 24px; border-radius: 50px; display: flex; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 8px 20px rgba(180, 83, 9, 0.4); cursor: pointer; z-index: 1000; color: #78350F; transition: transform 0.2s; width: 90%; max-width: 450px; }
+    .vip-floating-bar:hover { transform: translateX(-50%) scale(1.03); }
+
+    /* RESPIRAÇÃO TEA (Restaurada) */
+    .breathe-box-interactive { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 220px; }
+    .breathe-bubble { width: 110px; height: 110px; background: var(--tea-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; transition: transform 4s ease-in-out, background-color 4s; box-shadow: 0 0 20px rgba(2, 132, 199, 0.3); }
+    .breathe-bubble.expand { transform: scale(1.6); background: var(--green); box-shadow: 0 0 30px rgba(16, 185, 129, 0.4); }
+    .breathe-bubble.hold { transform: scale(1.6); background: #8B5CF6; box-shadow: 0 0 30px rgba(139, 92, 246, 0.4); }
+    .breathe-bubble.shrink { transform: scale(1); background: var(--tea-blue); }
+
+    /* PERSONAGENS */
+    .chars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
     .char-card-item { background: #FFFFFF; border: 3px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; text-align: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s; box-shadow: 0 4px 0 var(--border-color); }
     .char-card-item:hover { transform: translateY(-6px) scale(1.03); border-color: var(--primary); box-shadow: 0 8px 0 var(--primary); }
-    .char-card-item img { width: 95px; height: 95px; object-fit: contain; margin: 0 auto 8px; border-radius: 50%; background: #F8FAFC; padding: 4px; display: block; transition: transform 0.3s; }
+    .char-card-item img { width: 80px; height: 80px; object-fit: contain; margin: 0 auto 8px; border-radius: 50%; background: #F8FAFC; padding: 4px; display: block; transition: transform 0.3s; }
     .char-card-item:hover img { transform: rotate(5deg) scale(1.1); }
     
-    .game-subnav { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 16px; }
+    /* SUBMENUS DE JOGOS */
+    .game-subnav { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 16px; scrollbar-width: none; }
+    .game-subnav::-webkit-scrollbar { display: none; }
     .game-subtab-btn { background: #F8FAFC; border: 2px solid #CBD5E1; padding: 10px 16px; border-radius: var(--radius-md); font-weight: 700; font-size: 14px; cursor: pointer; color: var(--text-muted); white-space: nowrap; transition: all 0.2s; }
     .game-subtab-btn.active { background: var(--primary); border-color: var(--primary); color: #FFF; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
 
@@ -132,7 +158,8 @@
 
     /* LOUSA & CORES */
     #paintCanvas { background: #FFF; border: 3px dashed #94A3B8; border-radius: var(--radius-lg); width: 100%; max-width: 800px; height: 420px; touch-action: none; cursor: crosshair; display: block; margin: 0 auto; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
-    #lousaThumbnails { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 14px; flex-wrap: nowrap !important; justify-content: flex-start; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+    #lousaThumbnails { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 14px; flex-wrap: nowrap !important; justify-content: flex-start; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    #lousaThumbnails::-webkit-scrollbar { display: none; }
     #lousaThumbnails .btn-tactile { flex-shrink: 0; }
     
     .color-btn { width: 44px; height: 44px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 4px 6px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.2s; flex-shrink: 0; }
@@ -206,14 +233,14 @@
     </div>
   </div>
 
-  <!-- BARRA FLUTUANTE VIP DINÂMICA -->
+  <!-- BARRA FLUTUANTE VIP DINÂMICA (Agora com CSS corrigido!) -->
   <div class="vip-floating-bar" id="barraFlutuanteVip" onclick="navegar('vip')">
-    <span style="font-size: 22px;">👑</span>
-    <div>
-      <div style="font-weight: 800; font-size: 14px;">Clube VIP por apenas R$ 6,00</div>
-      <div style="font-size: 12px; color: #FCD34D;">Desbloqueie todos os jogos, ferramentas e drives!</div>
+    <span style="font-size: 26px;">👑</span>
+    <div style="flex: 1; text-align: center;">
+      <div style="font-weight: 800; font-size: 15px;">Clube VIP por apenas R$ 6,00</div>
+      <div style="font-size: 12px; color: #FFFBEB; font-weight: 600;">Desbloqueie jogos e ferramentas!</div>
     </div>
-    <span style="font-size: 18px;">➔</span>
+    <span style="font-size: 20px; color: #B45309;">➔</span>
   </div>
 
   <div class="app-shell">
@@ -401,20 +428,17 @@
         <!-- 1. LOUSA -->
         <div id="subgame-lousa" class="minigame-container active">
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Escolha um desenho para colorir ou use a lousa livre:</p>
-          <!-- IMAGENS DESAPERTADAS -->
           <div id="lousaThumbnails"></div>
           
           <canvas id="paintCanvas"></canvas>
           
           <div style="display: flex; gap: 12px; justify-content: center; align-items: center; margin-top: 16px; flex-wrap: wrap;">
-            <!-- BOLINHAS DE CORES SEM TEXTO -->
             <button class="color-btn" style="background:#2563EB;" onclick="setCorPincel('#2563EB')"></button>
             <button class="color-btn" style="background:#EF4444;" onclick="setCorPincel('#EF4444')"></button>
             <button class="color-btn" style="background:#10B981;" onclick="setCorPincel('#10B981')"></button>
             <button class="color-btn" style="background:#F59E0B;" onclick="setCorPincel('#F59E0B')"></button>
             <button class="color-btn" style="background:#8B5CF6;" onclick="setCorPincel('#8B5CF6')"></button>
 
-            <!-- ROLETA DINÂMICA -->
             <label class="btn-tactile" style="background: linear-gradient(135deg, #FF0080, #7928CA, #0070F3); color:#FFF; cursor:pointer; display:flex; align-items:center; gap:8px;" title="Escolha qualquer cor">
               <div id="corPreviewRoleta" style="width: 18px; height: 18px; border-radius: 50%; background: #2563EB; border: 2px solid #FFF;"></div>
               <input type="color" id="roletaCorLousa" value="#2563EB" style="opacity: 0; width: 0; height: 0; position: absolute;" 
@@ -433,7 +457,7 @@
           </div>
         </div>
 
-        <!-- NOVO: BANDINHA DA TURMINHA -->
+        <!-- 2. BANDINHA DA TURMINHA -->
         <div id="subgame-banda" class="minigame-container">
           <h3 style="font-size: 20px; margin-bottom: 8px;">Bandinha da Turminha! 🎶</h3>
           <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Escolha um instrumento para tocar:</p>
@@ -446,11 +470,10 @@
           </div>
 
           <div id="painelInstrumento" style="background:#F8FAFC; border:3px solid #CBD5E1; border-radius:20px; padding:30px; display:flex; gap:15px; justify-content:center; flex-wrap:wrap; min-height:180px; align-items:center;">
-            <!-- Renderizado via JS -->
           </div>
         </div>
 
-        <!-- 2. CONTAR -->
+        <!-- 3. CONTAR -->
         <div id="subgame-contar" class="minigame-container">
           <div class="level-badge-container">
             <button class="level-btn active" id="btnNivelContar-1" onclick="setNivelContar(1)">Nível 1 (1 a 5)</button>
@@ -462,7 +485,7 @@
           <div id="boxContarBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- 3. LETRAS (Corrigido texto invertido) -->
+        <!-- 4. LETRAS -->
         <div id="subgame-letras" class="minigame-container">
           <div class="level-badge-container">
             <button class="level-btn active" id="btnNivelLetras-1" onclick="setNivelLetras(1)">Nível Fácil (2 Opções)</button>
@@ -475,7 +498,7 @@
           <div id="boxLetrasBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- SOMBRAS MÁGICAS -->
+        <!-- 5. SOMBRAS -->
         <div id="subgame-sombras" class="minigame-container">
           <div class="level-badge-container">
             <button class="level-btn active" id="btnNivelSombras-1" onclick="setNivelSombras(1)">Nível 1</button>
@@ -489,7 +512,7 @@
           <div id="boxSombrasBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- 4. MEMÓRIA -->
+        <!-- 6. MEMÓRIA -->
         <div id="subgame-memoria" class="minigame-container">
           <div class="level-badge-container">
             <button class="level-btn active" id="btnNivelMemoria-1" onclick="setNivelMemoria(1)">Fácil</button>
@@ -500,7 +523,7 @@
           <div class="memory-grid" id="memoryGridContainer"></div>
         </div>
 
-        <!-- 5. QUIZ -->
+        <!-- 7. QUIZ -->
         <div id="subgame-quiz" class="minigame-container">
           <div class="level-badge-container">
             <button class="level-btn active" id="btnNivelQuiz-1" onclick="setNivelQuiz(1)">Nível 1</button>
@@ -709,7 +732,6 @@
         <div style="display: flex; gap: 10px; flex-wrap: wrap;" id="avatarGridSelector"></div>
       </div>
 
-      <!-- NOVOS CONTROLES DE VOLUME AQUI -->
       <div class="game-card" style="border-color: #3B82F6;">
         <div class="game-card-title" style="color: #1D4ED8;"><span>🎵 Controle de Volume</span></div>
         <div style="display: flex; flex-direction: column; gap: 15px;">
@@ -816,12 +838,10 @@
       } catch(e) { console.log(e); }
     });
 
-    // --- CONTROLES DE VOLUME ---
     function mudarVolEfeitos(val) { volumeEfeitos = parseFloat(val); document.getElementById('lblVolEfeitos').innerText = Math.round(val*100)+'%'; }
     function mudarVolVoz(val) { volumeVoz = parseFloat(val); document.getElementById('lblVolVoz').innerText = Math.round(val*100)+'%'; }
     function toggleAudioVoz() { audioAtivo = !audioAtivo; document.getElementById('btnAudioToggle').innerText = audioAtivo ? '🔊' : '🔇'; }
 
-    // --- SONS E EFEITOS APLICANDO VOLUME ---
     function tocarVozXexeu(urlAudio) {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
       if (audioXexeuAtual) { audioXexeuAtual.pause(); audioXexeuAtual.currentTime = 0; }
@@ -868,14 +888,12 @@
       } catch (e) {}
     }
 
-    // SOM EXCLUSIVO POP-IT TEA
     function tocarSomPopIt() {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
       let popAudio = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345640/uma_bolha_estourando.mp3");
       popAudio.volume = volumeEfeitos; popAudio.play().catch(()=>{});
     }
 
-    // --- XEXÉU VIRTUAL ---
     function animarMascote() {
       if(petDormindo) return;
       clearTimeout(timeoutAcaoPet); petAcaoAtiva = true;
@@ -929,7 +947,6 @@
       } 
     }, 8000);
 
-    // --- NAVEGAÇÃO E PONTUAÇÃO ---
     function navegar(paginaId) {
       document.querySelectorAll('.page-box').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-item-btn').forEach(b => b.classList.remove('active'));
@@ -948,7 +965,6 @@
     function toggleModoCalmo() { document.body.classList.toggle('sensory-mode'); falarTexto(document.body.classList.contains('sensory-mode') ? 'Modo Calmo ativado.' : 'Modo Padrão ativado.'); }
     function exibirToast(msg) { const t = document.getElementById('appToast'); t.innerText = msg; t.classList.add('active'); setTimeout(() => t.classList.remove('active'), 2500); }
 
-    // --- NOVA BANDINHA ---
     function abrirInstrumento(tipo) {
       if ((tipo === 'teclado' || tipo === 'violao') && !isVip) { alert('🔒 Instrumento exclusivo do VIP!'); navegar('vip'); return; }
       document.querySelectorAll('[id^="tabInst-"]').forEach(b => b.classList.remove('active'));
@@ -981,7 +997,6 @@
       } catch(e) {}
     }
 
-    // --- LOUSA MAGICA ---
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
     function initLousa() {
       canvas = document.getElementById('paintCanvas'); if (!canvas) return; ctx = canvas.getContext('2d'); canvas.width = 800; canvas.height = 450;
@@ -1015,7 +1030,6 @@
       });
     }
 
-    // --- LOUSA SENSORIAL (GIGANTE TEA) ---
     let canvasTea, ctxTea, desenhandoTea = false;
     let somSensorial = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3");
     somSensorial.loop = true; let somSensorialAtivo = false; let timeoutParaSomTea; let matizSensorial = 0;
@@ -1036,7 +1050,6 @@
     }
     function limparLousaSensorial() { if (ctxTea) ctxTea.clearRect(0, 0, canvasTea.width, canvasTea.height); }
 
-    // --- LOGICA DOS JOGOS ---
     function trocarJogo(subjogo) {
       document.querySelectorAll('.minigame-container').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.game-subtab-btn').forEach(b => b.classList.remove('active'));
@@ -1053,7 +1066,6 @@
 
     let nivelContar=1, nivelLetras=1, nivelMemoria=1, nivelQuiz=1, nivelSombras=1;
     
-    // Contar
     function setNivelContar(n) { if (n === 3 && !isVip) return navegar('vip'); nivelContar = n; iniciarJogoContar(); }
     function iniciarJogoContar() {
       const q = Math.floor(Math.random() * (nivelContar===1?5:(nivelContar===2?10:20))) + 1; const p = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
@@ -1068,7 +1080,6 @@
       });
     }
 
-    // Letras
     function setNivelLetras(n) { if (n === 3 && !isVip) return navegar('vip'); nivelLetras = n; iniciarJogoLetras(); }
     function iniciarJogoLetras() {
       const p = PERSONAGENS[Math.floor(Math.random() * (nivelLetras===3?PERSONAGENS.length:8))];
@@ -1083,7 +1094,6 @@
       });
     }
 
-    // Sombras
     function setNivelSombras(n) { if (n === 3 && !isVip) return navegar('vip'); nivelSombras = n; iniciarJogoSombras(); }
     function iniciarJogoSombras() {
       const pool = nivelSombras===3?PERSONAGENS:PERSONAGENS.slice(0,8); const p = pool[Math.floor(Math.random()*pool.length)];
@@ -1097,7 +1107,6 @@
       });
     }
 
-    // Memória
     function setNivelMemoria(n) { if (n === 3 && !isVip) return navegar('vip'); nivelMemoria = n; iniciarJogoMemoria(); }
     function iniciarJogoMemoria() {
       const grid = document.getElementById('memoryGridContainer'); grid.innerHTML = '';
@@ -1108,13 +1117,12 @@
         const tile = document.createElement('div'); tile.className = 'memory-tile'; tile.innerHTML = `<span>❓</span>`;
         tile.onclick = () => {
           if (trava||tile.classList.contains('flipped')||tile.classList.contains('matched')) return;
-          tocarSomPop(); tile.classList.add('flipped'); tile.innerHTML = `<img src="${p.img}" style="display:block;">`;
+          tocarSomPop(); tile.classList.add('flipped'); tile.innerHTML = `<img src="${p.img}" style="display:block; width:100%;">`;
           if (!s1) s1={tile, p}; else { if (s1.p.nome===p.nome) { s1.tile.classList.add('matched'); tile.classList.add('matched'); tocarSomAcerto(); atualizarScore(5); s1=null; } else { trava=true; tocarSomErro(); setTimeout(()=>{s1.tile.classList.remove('flipped');s1.tile.innerHTML=`<span>❓</span>`;tile.classList.remove('flipped');tile.innerHTML=`<span>❓</span>`;s1=null;trava=false;}, 700); } }
         }; grid.appendChild(tile);
       });
     }
 
-    // Quiz
     function setNivelQuiz(n) { if (n === 3 && !isVip) return navegar('vip'); nivelQuiz = n; iniciarJogoQuiz(); }
     function iniciarJogoQuiz() {
       const p = PERSONAGENS[Math.floor(Math.random() * (nivelQuiz===3?PERSONAGENS.length:6))];
@@ -1126,7 +1134,6 @@
       });
     }
 
-    // TEA & Popit
     function renderPopItSensorial() {
       const container = document.getElementById('popitGridContainer'); container.innerHTML = '';
       const cores = ['#F472B6', '#38BDF8', '#4ADE80', '#FBBF24', '#A78BFA', '#FB7185'];
@@ -1137,7 +1144,6 @@
     }
     function resetarPopIt() { document.querySelectorAll('.popit-bubble').forEach(b => { b.classList.remove('popped'); b.innerHTML = '🫧'; }); }
 
-    // Misc Inicializações
     function renderTodosPersonagensInicio() {
       const grids = { mascotes: document.getElementById('gridMascotes'), maya: document.getElementById('gridCasaMaya'), sam: document.getElementById('gridCasaSam'), avos: document.getElementById('gridAvos') };
       PERSONAGENS.forEach(p => { const tg = grids[p.familia]; if (!tg) return; const d = document.createElement('div'); d.className = 'char-card-item'; d.innerHTML = `<img src="${p.img}"><h4>${p.nome}</h4><span>${p.tag}</span>`; d.onclick = () => abrirModalChar(p); tg.appendChild(d); });
@@ -1158,6 +1164,36 @@
     function checkRotina(i) { rotinas[i].feito = !rotinas[i].feito; if(rotinas[i].feito) falarTexto('Tarefa cumprida!'); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); renderRotinas(); }
     function removerRotina(i) { rotinas.splice(i, 1); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); renderRotinas(); }
     function adicionarItemRotina() { const input = document.getElementById('inputNovaRotina'); if(!input.value.trim()) return; rotinas.push({ id: Date.now(), texto: input.value.trim(), feito: false }); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); input.value = ''; renderRotinas(); }
+
+    function expressarSentimento(estado, textoVoz) {
+        falarTexto(textoVoz);
+    }
+
+    function adicionarCardCaa() {
+        const emoji = document.getElementById('novoCaaEmoji').value.trim() || '🧸';
+        const texto = document.getElementById('novoCaaTexto').value.trim();
+        if (!texto) return alert("Digite algo para o cartão!");
+        cartoesCaa.push({ emoji, texto });
+        renderCartoesCaa();
+        document.getElementById('novoCaaEmoji').value = '';
+        document.getElementById('novoCaaTexto').value = '';
+    }
+
+    function renderCartoesCaa() {
+        const c = document.getElementById('caaContainerCards');
+        if (!c) return;
+        c.innerHTML = '';
+        cartoesCaa.forEach(card => {
+            const b = document.createElement('button');
+            b.className = 'btn-tactile';
+            b.style.display = 'flex';
+            b.style.flexDirection = 'column';
+            b.style.height = '100px';
+            b.innerHTML = `<span style="font-size:32px;">${card.emoji}</span><span style="font-size:12px;">${card.texto}</span>`;
+            b.onclick = () => falarTexto(card.texto);
+            c.appendChild(b);
+        });
+    }
 
     function renderSonsAcalento() {
       const container = document.getElementById('containerSonsAcalento'); if (!container) return;
