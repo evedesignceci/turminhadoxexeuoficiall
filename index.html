@@ -103,7 +103,7 @@
     .vip-floating-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FCD34D, #F59E0B); border: 3px solid #B45309; padding: 14px 24px; border-radius: 50px; display: flex; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 8px 20px rgba(180, 83, 9, 0.4); cursor: pointer; z-index: 1000; color: #78350F; transition: transform 0.2s; width: 90%; max-width: 450px; }
     .vip-floating-bar:hover { transform: translateX(-50%) scale(1.03); }
 
-    /* TREINO DA CALMA MELHORADO (UX CLARA PARA CRIANÇAS) */
+    /* TREINO DA CALMA */
     .breathe-box-interactive { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 320px; gap: 16px; background: #F8FAFC; border: 3px solid #BAE6FD; border-radius: var(--radius-lg); padding: 20px; }
     .breathe-instruction-card { background: #FFFFFF; border: 2px solid #38BDF8; padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow-sm); }
     .breathe-instruction-card span { font-size: 24px; }
@@ -535,7 +535,7 @@
           </div>
         </div>
 
-        <!-- TREINO DA CALMA REDESENHADO COM UX CLARA -->
+        <!-- TREINO DA CALMA -->
         <div class="game-card" style="text-align: center;">
           <div class="game-card-title"><span>🌬️ Treino da Calma</span></div>
           <div class="breathe-box-interactive">
@@ -956,6 +956,12 @@
       const btn = Array.from(document.querySelectorAll('.nav-item-btn')).find(b => b.getAttribute('onclick')?.includes(paginaId)); 
       if (btn) btn.classList.add('active');
       if (paginaId === 'jogos') trocarJogo('ciclo');
+      
+      // Força o recálculo do canvas da lousa TEA ao entrar na aba
+      if (paginaId === 'tea') {
+        setTimeout(redimensionarLousaTea, 100);
+      }
+      
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1120,14 +1126,14 @@
       });
     }
 
-    /* LOUSA TEA COM EFEITO NEON E SOM ESTÁVEL */
+    /* LOUSA TEA COM EFEITO NEON E CORREÇÃO DE TAMANHO */
     let canvasTea, ctxTea, desenhandoTea = false;
     let matizSensorial = 0;
     let ultimoSomSensorial = 0;
 
     function tocarSomGizSensorial() {
       const agora = Date.now();
-      if (agora - ultimoSomSensorial < 120 || !audioAtivo) return; // Limita taxa para evitar sobreposição ou travamento
+      if (agora - ultimoSomSensorial < 120 || !audioAtivo) return;
       ultimoSomSensorial = agora;
       try {
         let gizAudio = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3");
@@ -1136,24 +1142,31 @@
       } catch(e) {}
     }
 
+    function redimensionarLousaTea() {
+      if (!canvasTea) return;
+      const container = canvasTea.parentElement;
+      if (container) {
+        canvasTea.width = container.clientWidth || window.innerWidth * 0.85;
+        canvasTea.height = container.clientHeight || 400;
+      }
+    }
+
     function initLousaSensorial() {
       canvasTea = document.getElementById('lousaSensorialTea'); 
       if (!canvasTea) return; 
       ctxTea = canvasTea.getContext('2d');
-      const resizeLousaTea = () => { 
-        if (canvasTea.parentElement) {
-          canvasTea.width = canvasTea.parentElement.clientWidth; 
-          canvasTea.height = canvasTea.parentElement.clientHeight; 
-        }
-      };
-      resizeLousaTea(); 
-      window.addEventListener('resize', resizeLousaTea);
+
+      redimensionarLousaTea();
+      window.addEventListener('resize', redimensionarLousaTea);
 
       const getP = (e) => { 
         const r = canvasTea.getBoundingClientRect(); 
-        const cx = e.clientX !== undefined ? e.clientX : (e.touches ? e.touches[0].clientX : 0); 
-        const cy = e.clientY !== undefined ? e.clientY : (e.touches ? e.touches[0].clientY : 0); 
-        return { x: (cx - r.left)*(canvasTea.width/r.width), y: (cy - r.top)*(canvasTea.height/r.height) }; 
+        const cx = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0); 
+        const cy = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0); 
+        return { 
+          x: (cx - r.left) * (canvasTea.width / r.width), 
+          y: (cy - r.top) * (canvasTea.height / r.height) 
+        }; 
       };
       
       const st = (e) => { 
@@ -1167,6 +1180,7 @@
         tocarSomGizSensorial();
         if(e.cancelable) e.preventDefault(); 
       };
+
       const mv = (e) => { 
         if (!desenhandoTea) return; 
         const p = getP(e); 
@@ -1180,17 +1194,25 @@
         tocarSomGizSensorial();
         if (e.cancelable) e.preventDefault(); 
       };
+
       const sp = () => { desenhandoTea = false; };
       
-      canvasTea.addEventListener('mousedown', st); 
-      canvasTea.addEventListener('mousemove', mv); 
-      canvasTea.addEventListener('mouseup', sp); 
+      canvasTea.addEventListener('mousedown', st);
+      canvasTea.addEventListener('mousemove', mv);
+      canvasTea.addEventListener('mouseup', sp);
       canvasTea.addEventListener('mouseleave', sp);
-      canvasTea.addEventListener('touchstart', st, { passive: false }); 
-      canvasTea.addEventListener('touchmove', mv, { passive: false }); 
-      canvasTea.addEventListener('touchend', sp);
+
+      canvasTea.addEventListener('touchstart', st, { passive: false });
+      canvasTea.addEventListener('touchmove', mv, { passive: false });
+      canvasTea.addEventListener('touchend', sp, { passive: false });
+      canvasTea.addEventListener('touchcancel', sp, { passive: false });
     }
-    function limparLousaSensorial() { if (ctxTea) ctxTea.clearRect(0, 0, canvasTea.width, canvasTea.height); }
+
+    function limparLousaSensorial() { 
+      if (ctxTea && canvasTea) {
+        ctxTea.clearRect(0, 0, canvasTea.width, canvasTea.height); 
+      }
+    }
 
     function trocarJogo(subjogo) {
       document.querySelectorAll('.minigame-container').forEach(c => c.classList.remove('active'));
@@ -1751,19 +1773,16 @@
       if(!bubble) return;
       
       setInterval(() => {
-        // Fase 1: Puxar o ar (Expande)
         bubble.className = 'breathe-bubble expand';
         if(statusText) statusText.innerText = "Puxe o ar pelo nariz...";
         if(iconIndicator) iconIndicator.innerText = "👃";
 
-        // Fase 2: Segurar o ar
         setTimeout(() => { 
           bubble.className = 'breathe-bubble hold'; 
           if(statusText) statusText.innerText = "Segure o ar com calma...";
           if(iconIndicator) iconIndicator.innerText = "🧘";
         }, 4000);
 
-        // Fase 3: Soltar o ar (Contrai)
         setTimeout(() => { 
           bubble.className = 'breathe-bubble shrink'; 
           if(statusText) statusText.innerText = "Solte o ar devagar pela boca...";
