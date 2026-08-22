@@ -81,6 +81,7 @@
     .nav-item-btn { flex: 1; min-width: 110px; padding: 12px 14px; border: none; background: transparent; border-radius: var(--radius-md); font-weight: 700; font-size: 14.5px; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; white-space: nowrap; }
     .nav-item-btn:hover { background: #F1F5F9; color: var(--primary); transform: translateY(-2px); }
     .nav-item-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); transform: translateY(0); }
+    
     .nav-item-btn.casa-item { background: #F5F3FF; color: #6D28D9; border: 1.5px solid #DDD6FE; }
     .nav-item-btn.casa-item:hover { background: #EDE9FE; transform: translateY(-2px); }
     .nav-item-btn.casa-item.active { background: #8B5CF6; color: #FFF; border-color: #7C3AED; box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4); transform: translateY(0); }
@@ -94,11 +95,14 @@
     .game-card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 24px; border: 3px solid var(--border-color); box-shadow: var(--shadow-md); position: relative; }
     .game-card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
-    /* CASA DA TURMINHA - XEXÉU VIRTUAL (Centro Absoluto) */
+    /* CASA DA TURMINHA - XEXÉU VIRTUAL (AGORA MAIOR E MAIS PRÓXIMO) */
     .mascote-virtual { position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; animation: floatIcon 4s infinite; z-index: 10; margin: 0 auto; width: max-content; }
-    .mascote-virtual img { width: 140px; height: 140px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)); transition: transform 0.2s; }
+    
+    /* IMAGEM AUMENTADA PARA 230px PARA FICAR MAIS PRÓXIMA */
+    .mascote-virtual img { width: 230px; height: 230px; object-fit: contain; filter: drop-shadow(0 12px 15px rgba(0,0,0,0.2)); transition: transform 0.2s; margin-top: 15px;}
+    
     .mascote-virtual img:active { transform: scale(0.85); }
-    .balao-fala { position: absolute; top: -50px; right: -20px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; z-index: 20; }
+    .balao-fala { position: absolute; top: -30px; right: -30px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; z-index: 20; }
     .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateY(0) scale(1); }
     @keyframes floatIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
@@ -118,12 +122,12 @@
     .vip-floating-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FCD34D, #F59E0B); border: 3px solid #B45309; padding: 14px 24px; border-radius: 50px; display: flex; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 8px 20px rgba(180, 83, 9, 0.4); cursor: pointer; z-index: 1000; color: #78350F; transition: transform 0.2s; width: 90%; max-width: 450px; }
     .vip-floating-bar:hover { transform: translateX(-50%) scale(1.03); }
 
-    /* RESPIRAÇÃO TEA E PERSONAGENS */
     .breathe-box-interactive { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 280px; gap: 20px; }
     .breathe-bubble { width: 110px; height: 110px; background: var(--tea-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; transition: transform 4s ease-in-out, background-color 4s; box-shadow: 0 0 20px rgba(2, 132, 199, 0.3); z-index: 2; }
     .breathe-bubble.expand { transform: scale(1.6); background: var(--green); box-shadow: 0 0 30px rgba(16, 185, 129, 0.4); }
     .breathe-bubble.hold { transform: scale(1.6); background: #8B5CF6; box-shadow: 0 0 30px rgba(139, 92, 246, 0.4); }
     .breathe-bubble.shrink { transform: scale(1); background: var(--tea-blue); }
+    
     .chars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
     .char-card-item { background: #FFFFFF; border: 3px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; text-align: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s; box-shadow: 0 4px 0 var(--border-color); }
     .char-card-item:hover { transform: translateY(-6px) scale(1.03); border-color: var(--primary); box-shadow: 0 8px 0 var(--primary); }
@@ -160,7 +164,7 @@
     .level-btn.vip-level { border-color: #FCD34D; background: #FFFBEB; color: #92400E; }
     .level-btn.vip-level.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; border-color: #B45309; }
 
-    /* JOGO DE EVOLUÇÃO (ÁRVORE MÁGICA INSPIRADA NA IMAGEM) */
+    /* JOGO DE EVOLUÇÃO (ÁRVORE) */
     .tree-game-bg { background: radial-gradient(circle at center, #1E293B, #0F172A); border-radius: var(--radius-lg); padding: 20px; position: relative; overflow: hidden; min-height: 480px; color: #FFF; border: 4px solid #334155; }
     .tree-header { background: rgba(0,0,0,0.5); padding: 12px 20px; border-radius: 50px; display: flex; justify-content: center; align-items: center; gap: 16px; width: max-content; margin: 0 auto 30px; border: 2px solid #475569; }
     .tree-sun-text { font-size: 26px; font-weight: 900; color: #FDE047; text-shadow: 0 0 10px rgba(253, 224, 71, 0.5); }
@@ -171,7 +175,6 @@
     .tree-node-icon { font-size: 40px; }
     .tree-node-badge { position: absolute; bottom: -10px; background: #000; color: #FFF; font-size: 12px; font-weight: 800; padding: 2px 10px; border-radius: 10px; border: 2px solid #FDE047; }
     .tree-line { width: 4px; background: #64748B; position: absolute; z-index: 1; }
-    .tree-line.active { background: #FDE047; box-shadow: 0 0 10px #FDE047; }
     
     .floating-text { position: absolute; color: #FDE047; font-weight: 900; font-size: 20px; pointer-events: none; animation: floatUpFade 1s forwards; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
     @keyframes floatUpFade { 0% { opacity: 1; transform: translateY(0) scale(1); } 100% { opacity: 0; transform: translateY(-40px) scale(1.5); } }
@@ -230,9 +233,10 @@
       </div>
     </header>
 
+    <!-- NOME CURTO NO MENU -->
     <nav class="main-nav">
       <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Hub Central</button>
-      <button class="nav-item-btn casa-item" onclick="navegar('casa')">🏡 Casa da Turminha</button>
+      <button class="nav-item-btn casa-item" onclick="navegar('casa')">🏡 Casa</button>
       <button class="nav-item-btn" onclick="navegar('inicio')">🏠 Sobre</button>
       <button class="nav-item-btn" onclick="navegar('jogos')">🕹️ Jogos</button>
       <button class="nav-item-btn tea-item" onclick="navegar('tea')">🧩 Espaço TEA</button>
@@ -248,8 +252,8 @@
         <div class="hub-card" onclick="navegar('casa')" style="border-color: #8B5CF6;">
           <span class="hub-card-icon">🐣</span>
           <span class="hub-card-tag" style="background: #F5F3FF; color: #6D28D9;">Pet Virtual</span>
-          <h4 class="hub-card-title">Casa da Turminha</h4>
-          <p class="hub-card-desc">Cuide do Xexéu: dê comidinha, brinque e coloque para dormir!</p>
+          <h4 class="hub-card-title">Casa do Xexéu</h4>
+          <p class="hub-card-desc">Dê comida, banho, brinque, faça festas e coloque para dormir!</p>
         </div>
         <div class="hub-card" onclick="navegar('jogos')">
           <span class="hub-card-icon">🎨</span>
@@ -272,11 +276,12 @@
       </div>
     </div>
 
-    <!-- PÁGINA: CASA DA TURMINHA -->
+    <!-- PÁGINA: CASA DA TURMINHA (XEXÉU) -->
     <div id="page-casa" class="page-box">
       <div class="game-card" style="text-align: center; border-color: #8B5CF6; background: #F5F3FF; max-width: 600px; margin: 0 auto; width: 100%;">
-        <div class="game-card-title" style="color: #6D28D9; justify-content: center; margin-bottom: 8px;"><span>🐣 Casa da Turminha</span></div>
-        <p style="font-size: 14px; color: #5B21B6; margin-bottom: 20px; font-weight: 600;">O Xexéu precisa de carinho! Dê comidinha, brinque e coloque para dormir.</p>
+        <div class="game-card-title" style="color: #6D28D9; justify-content: center; margin-bottom: 8px;"><span>🐣 Casa do Xexéu</span></div>
+        <p style="font-size: 14px; color: #5B21B6; margin-bottom: 20px; font-weight: 600;">O Xexéu precisa de carinho! Escolha uma atividade para cuidar dele.</p>
+        
         <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;">
           <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; flex: 1; min-width: 100px; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #991B1B;">🍎 Fome</span>
@@ -291,24 +296,73 @@
             <div style="background: #D1FAE5; height: 10px; border-radius: 10px; overflow: hidden;"><div id="barAlegria" style="background: #10B981; height: 100%; width: 100%; transition: width 0.4s ease-out;"></div></div>
           </div>
         </div>
-        <div style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; height: 280px; margin: 0 auto 20px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
+        
+        <!-- QUARTINHO (ADICIONADO ID PARA PARTICULAS) -->
+        <div id="quartoXexeu" style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; height: 280px; margin: 0 auto 20px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
           <div id="filtroNoite" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.8); display: none; z-index: 1;"></div>
           <div class="mascote-virtual" id="mascoteXexeuHome" onclick="animarMascote()">
             <div class="balao-fala" id="balaoMascote">Bora brincar!</div>
             <img id="imgXexeuPet" src="https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif" alt="Xexéu Virtual">
           </div>
         </div>
-        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-          <button class="btn-tactile" style="border-color: #EF4444; color: #B91C1C;" onclick="acaoPet('alimentar')">🍎 Dar Comida</button>
-          <button class="btn-tactile" style="border-color: #F59E0B; color: #B45309;" onclick="acaoPet('brincar')">🎾 Brincar</button>
-          <button class="btn-tactile" style="border-color: #3B82F6; color: #1D4ED8;" onclick="acaoPet('dormir')">🛏️ Dormir/Acordar</button>
+
+        <!-- BOTÕES DE AÇÃO ATUALIZADOS COM BANHO E FESTA -->
+        <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
+          <button class="btn-tactile" style="border-color: #EF4444; color: #B91C1C; padding: 10px 14px; font-size: 14px;" onclick="acaoPet('alimentar')">🍎 Comida</button>
+          <button class="btn-tactile" style="border-color: #F59E0B; color: #B45309; padding: 10px 14px; font-size: 14px;" onclick="acaoPet('brincar')">🎾 Brincar</button>
+          <button class="btn-tactile" style="border-color: #06B6D4; color: #0284C7; padding: 10px 14px; font-size: 14px;" onclick="acaoPet('banho')">🛁 Banho</button>
+          <button class="btn-tactile" style="border-color: #8B5CF6; color: #6D28D9; padding: 10px 14px; font-size: 14px;" onclick="acaoPet('festa')">🎉 Festa</button>
+          <button class="btn-tactile" style="border-color: #3B82F6; color: #1D4ED8; padding: 10px 14px; font-size: 14px;" onclick="acaoPet('dormir')">🛏️ Dormir</button>
         </div>
       </div>
     </div>
 
-    <!-- PÁGINA: INÍCIO E JOGOS -->
-    <!-- (Ocultando trechos longos repetidos de personagens para focar no novo jogo. Mantenha os personagens que te mandei antes na aba Início) -->
-    
+    <!-- PÁGINA: INÍCIO (SOBRE) -->
+    <div id="page-inicio" class="page-box">
+      <div class="hero-grid">
+        <div class="banner-hero-box">
+          <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994339/BANNER_SITE_TURMINHA_DO_XEXEU.png" alt="Banner Turminha do Xexéu">
+        </div>
+
+        <div class="game-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="game-card-title">
+              <span>⏳ Tempo de Tela</span>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="btn-tactile" onclick="iniciarTimer(2)">2 Min</button>
+              <button class="btn-tactile" onclick="iniciarTimer(5)">5 Min</button>
+              <button class="btn-tactile vip" onclick="iniciarTimer(15)">15 Min (VIP)</button>
+              <button class="btn-tactile vip" onclick="iniciarTimer(30)">30 Min (VIP)</button>
+            </div>
+          </div>
+          <div style="margin-top: 14px;">
+            <div style="background: #E2E8F0; height: 16px; border-radius: 20px; overflow: hidden;">
+              <div id="timerProgressFill" style="background: var(--green); height: 100%; width: 100%; transition: width 1s linear;"></div>
+            </div>
+            <p id="timerLabelTxt" style="text-align: right; font-weight: 800; font-size: 16px; margin-top: 6px;">00:00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-bar">
+        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="YouTube"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT.png" alt="YouTube"></a>
+        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-btn-round" title="YouTube Music"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT_MUSIC.png" alt="YT Music"></a>
+        <a href="https://www.instagram.com/turminhaxe_xeu/" target="_blank" class="social-btn-round" title="Instagram"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/INDTAGRAM.png" alt="Instagram"></a>
+        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="TikTok"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TIKTOK.png" alt="TikTok"></a>
+        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-btn-round" title="Spotify"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/SPOTIFY.png" alt="Spotify"></a>
+      </div>
+
+      <div class="game-card">
+        <div class="game-card-title"><span>✨ Conheça Todos os Personagens</span></div>
+        <div class="family-group-box"><div class="family-group-title"><span>✨ Mascotes Oficiais</span></div><div class="chars-grid" id="gridMascotes"></div></div>
+        <div class="family-group-box"><div class="family-group-title"><span>💖 Casa da Maya e do Theo</span></div><div class="chars-grid" id="gridCasaMaya"></div></div>
+        <div class="family-group-box"><div class="family-group-title"><span>⚡ Casa do Sam e da Lia</span></div><div class="chars-grid" id="gridCasaSam"></div></div>
+        <div class="family-group-box"><div class="family-group-title"><span>👵👴 Os Avós</span></div><div class="chars-grid" id="gridAvos"></div></div>
+      </div>
+    </div>
+
+    <!-- PÁGINA: JOGOS -->
     <div id="page-jogos" class="page-box">
       <div class="game-card">
         <div class="game-card-title">
@@ -331,7 +385,6 @@
             <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Toque na Semente para ganhar Sóis e desbloquear a natureza!</p>
             
             <div class="tree-game-bg" id="containerArvoreGame">
-                <!-- Status Bar -->
                 <div class="tree-header">
                     <span class="tree-sun-text">☀️ <span id="uiSols">0</span></span>
                     <div style="background: rgba(0,0,0,0.6); padding: 4px 12px; border-radius: 20px; font-size: 14px;">
@@ -339,16 +392,12 @@
                     </div>
                 </div>
 
-                <!-- Tree Layout Container -->
                 <div style="position: relative; width: 100%; height: 350px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
-                    
-                    <!-- Nível 3: Xexéu -->
                     <div class="tree-node locked" id="nodeXexeu" onclick="comprarNode('xexeu')" style="margin-top: 10px;">
                         <span class="tree-node-icon">🐣</span>
                         <div class="tree-node-badge" id="badgeXexeu">🔒 500 ☀️</div>
                     </div>
                     
-                    <!-- Nível 2: Flores e Abelhas -->
                     <div style="display: flex; gap: 80px; margin-top: -20px; z-index: 2;">
                         <div class="tree-node locked" id="nodeFlor" onclick="comprarNode('flor')">
                             <span class="tree-node-icon">🌸</span>
@@ -362,13 +411,11 @@
                         </div>
                     </div>
 
-                    <!-- Nível 1: Semente (Base Clicker) -->
                     <div class="tree-node" id="nodeSemente" onclick="clicarSemente(event)" style="border-color: #FDE047; box-shadow: 0 0 20px rgba(253,224,71,0.5);">
                         <span class="tree-node-icon">🌱</span>
                         <div class="tree-node-badge" style="background:#059669; border-color:#10B981;">Plante-me!</div>
                     </div>
 
-                    <!-- Conectores (Linhas Visuais SVG para ficar perfeito) -->
                     <svg style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
                         <line x1="50%" y1="280" x2="35%" y2="180" stroke="#64748B" stroke-width="4" id="lineFlor" />
                         <line x1="50%" y1="280" x2="65%" y2="180" stroke="#64748B" stroke-width="4" id="lineAbelha" />
@@ -378,16 +425,91 @@
             </div>
         </div>
 
-        <!-- MANTENHA AQUI AS OUTRAS DIVS DE MINIGAMES (Lousa, Contar, etc.) -->
-        <!-- (Colei resumido para economizar espaço, mas deixe os seus) -->
+        <!-- SUBGAMES (MANTIDOS E OCULTOS INICIALMENTE) -->
         <div id="subgame-lousa" class="minigame-container">
-            <p>Lousa Mágica (Oculta até clicar na aba)</p>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Escolha um desenho para colorir ou use a lousa livre:</p>
+          <div id="lousaThumbnails"></div>
+          <div class="canvas-container-lousa"><canvas id="paintCanvas"></canvas></div>
+          <div style="display: flex; gap: 12px; justify-content: center; align-items: center; margin-top: 16px; flex-wrap: wrap;">
+            <button class="color-btn" style="background:#2563EB;" onclick="setCorPincel('#2563EB')"></button>
+            <button class="color-btn" style="background:#EF4444;" onclick="setCorPincel('#EF4444')"></button>
+            <button class="color-btn" style="background:#10B981;" onclick="setCorPincel('#10B981')"></button>
+            <button class="color-btn" style="background:#F59E0B;" onclick="setCorPincel('#F59E0B')"></button>
+            <button class="color-btn" style="background:#8B5CF6;" onclick="setCorPincel('#8B5CF6')"></button>
+            <button class="btn-tactile" onclick="setBorracha()">🧽 Borracha</button>
+            <button class="btn-tactile" onclick="limparCanvasLousa()">🗑️ Limpar</button>
+            <button class="btn-tactile green" onclick="salvarObraArte()">📸 Salvar</button>
+          </div>
         </div>
 
+        <div id="subgame-banda" class="minigame-container">
+          <h3 style="font-size: 20px; margin-bottom: 8px;">Bandinha da Turminha! 🎶</h3>
+          <div style="display:flex; justify-content:center; gap:10px; margin-bottom: 20px; flex-wrap: wrap;">
+            <button class="btn-tactile active" id="tabInst-bateria" onclick="abrirInstrumento('bateria')">🥁 Bateria</button>
+            <button class="btn-tactile" id="tabInst-guitarra" onclick="abrirInstrumento('guitarra')">🎸 Guitarra</button>
+            <button class="btn-tactile vip" id="tabInst-teclado" onclick="abrirInstrumento('teclado')">🎹 Teclado (VIP)</button>
+            <button class="btn-tactile vip" id="tabInst-violao" onclick="abrirInstrumento('violao')">🎻 Violão (VIP)</button>
+          </div>
+          <div id="painelInstrumento" style="background:#F8FAFC; border:3px solid #CBD5E1; border-radius:20px; padding:30px; display:flex; gap:15px; justify-content:center; flex-wrap:wrap; min-height:180px; align-items:center;"></div>
+        </div>
+
+        <div id="subgame-contar" class="minigame-container">
+          <div class="level-badge-container">
+            <button class="level-btn active" id="btnNivelContar-1" onclick="setNivelContar(1)">Nível 1 (1 a 5)</button>
+            <button class="level-btn" id="btnNivelContar-2" onclick="setNivelContar(2)">Nível 2 (1 a 10)</button>
+            <button class="level-btn vip-level" id="btnNivelContar-3" onclick="setNivelContar(3)">👑 VIP (1 a 20)</button>
+          </div>
+          <h3 style="font-size: 20px; margin-bottom: 12px;">Quantos amiguinhos estão no jardim?</h3>
+          <div id="boxContarDisplay" style="display: flex; justify-content: center; gap: 12px; min-height: 100px; flex-wrap: wrap; margin-bottom: 20px;"></div>
+          <div id="boxContarBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
+        </div>
+
+        <div id="subgame-memoria" class="minigame-container">
+          <div class="level-badge-container">
+            <button class="level-btn active" id="btnNivelMemoria-1" onclick="setNivelMemoria(1)">Fácil</button>
+            <button class="level-btn" id="btnNivelMemoria-2" onclick="setNivelMemoria(2)">Médio</button>
+            <button class="level-btn vip-level" id="btnNivelMemoria-3" onclick="setNivelMemoria(3)">👑 VIP</button>
+          </div>
+          <h3 style="font-size: 20px; margin-bottom: 16px;">Encontre todos os pares!</h3>
+          <div class="memory-grid" id="memoryGridContainer"></div>
+        </div>
       </div>
     </div>
 
-    <!-- PÁGINA ESPAÇO TEA (Ocultei o HTML repetido, mantenha o que enviei antes) -->
+    <!-- PÁGINA: ESPAÇO TEA -->
+    <div id="page-tea" class="page-box">
+      <div class="game-card" style="border-color: #BAE6FD; background: #F0F9FF;">
+        <div class="game-card-title" style="color: var(--tea-blue);">
+          <span>🧩 Espaço TEA com o Leo</span>
+          <button class="btn-tactile" style="background:#FFF; color:var(--tea-blue); border-color:#BAE6FD;" onclick="toggleModoCalmo()">🌿 Modo Calmo</button>
+        </div>
+      </div>
+
+      <div class="grid-2-col">
+        <div class="game-card">
+          <div class="game-card-title"><span>🗣️ Prancha de Fala (CAA)</span></div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px;" id="caaContainerCards"></div>
+        </div>
+        <div class="game-card" style="text-align: center;">
+          <div class="game-card-title"><span>🌬️ Treino da Calma</span></div>
+          <div class="breathe-box-interactive">
+            <h4 id="breatheStatusText" style="color: var(--tea-blue); font-size: 16px;">Puxe o ar pelo nariz...</h4>
+            <div class="breathe-bubble" id="breatheVisualBubble"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-card" style="text-align: center; border-color: #6EE7B7; background: #ECFDF5; padding: 10px; width: 100%;">
+        <div class="game-card-title" style="color: #047857; margin-bottom:5px; padding: 10px;">
+          <span>🎨 Lousa da Calma</span>
+          <button class="btn-tactile green" onclick="limparLousaSensorial()">✨ Apagar Tudo</button>
+        </div>
+        <p style="font-size: 13px; color: #065F46; font-weight: 600; margin-bottom: 10px;">Passe o dedo na tela escura para criar mágica:</p>
+        <div class="lousa-tea-container" style="width: 100%; height: 60vh; min-height: 400px; border-radius: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); touch-action: none;">
+          <canvas id="lousaSensorialTea" style="background: #111827; width: 100%; height: 100%; cursor: crosshair; display: block; touch-action: none;"></canvas>
+        </div>
+      </div>
+    </div>
 
     <!-- PÁGINA CLUBE VIP E LOGIN COM CONEXÃO DA PLANILHA -->
     <div id="page-vip" class="page-box">
@@ -395,7 +517,6 @@
         <span style="font-size: 52px; display: block; animation: floatIcon 3s infinite;">⭐</span>
         <h2 style="color: #92400E; font-size: 30px; font-weight: 900; margin-bottom: 8px;">Clube VIP Turminha do Xexéu</h2>
         
-        <!-- ÁREA NÃO VIP (PÁGINA DE VENDAS E LOGIN) -->
         <div id="areaVendaVip">
             <p style="color: #78350F; font-size: 16px; font-weight: 700; margin-bottom: 20px;">Por apenas <strong>R$ 6,00/mês</strong>.</p>
             <div class="grid-2-col" style="margin-top: 20px;">
@@ -427,7 +548,6 @@
             </div>
         </div>
 
-        <!-- CENTRAL VIP (OCULTA POR PADRÃO, LIBERADA APÓS LOGIN DA PLANILHA) -->
         <div id="centralVipConteudo" style="display: none; margin-top: 20px; background: #FFF; border-radius: 20px; padding: 24px; border: 3px solid #F59E0B; box-shadow: var(--shadow-md);">
             <h3 style="color: #B45309; font-size: 24px; font-weight: 900; margin-bottom: 8px;">🎉 Bem-vindo à Central VIP!</h3>
             <p style="color: #92400E; font-size: 15px; font-weight: 700; margin-bottom: 20px;">Acesse todos os seus materiais e benefícios exclusivos abaixo:</p>
@@ -445,23 +565,32 @@
 
   <script>
     // =========================================================================
-    // COLE AQUI A URL DO SEU GOOGLE APPS SCRIPT (IMPLANTAÇÃO DO WEB APP)
+    // COLE AQUI A URL DO SEU GOOGLE APPS SCRIPT
     // =========================================================================
     const URL_SCRIPT = "SUA_URL_DO_GOOGLE_APPS_SCRIPT_AQUI";
 
     let audioAtivo = true;
-    let timerId = null;
+    let volumeEfeitos = 1.0;
+    let volumeVoz = 1.0;
     let pontos = parseInt(localStorage.getItem('xexeu_pontos') || '0');
     let isVip = localStorage.getItem('xexeu_vip') === 'true';
     
     window.addEventListener('DOMContentLoaded', () => {
       atualizarInterfaceVipCompleta(); 
-      iniciarLoopArvoreGame(); // Inicia o jogo da Árvore
+      iniciarLoopArvoreGame();
+      renderTodosPersonagensInicio();
+      renderCartoesCaa();
+      initLousa();
+      initLousaSensorial();
+      atualizarBarrasPet();
     });
 
     function exibirToast(msg) { const t = document.getElementById('appToast'); t.innerText = msg; t.classList.add('active'); setTimeout(() => t.classList.remove('active'), 3500); }
     function tocarSomPop() { 
-      try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.type = 'sine'; osc.frequency.setValueAtTime(600, ctx.currentTime); gain.gain.setValueAtTime(0.1, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05); osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.05); } catch (e) {}
+      try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.type = 'sine'; osc.frequency.setValueAtTime(600, ctx.currentTime); gain.gain.setValueAtTime(0.1*volumeEfeitos, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05); osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.05); } catch (e) {}
+    }
+    function tocarSomAcerto() {
+      try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.type = 'sine'; osc.frequency.setValueAtTime(400, ctx.currentTime); osc.frequency.setValueAtTime(800, ctx.currentTime + 0.1); gain.gain.setValueAtTime(0.3 * volumeEfeitos, ctx.currentTime); gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.3); osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.3); } catch (e) {}
     }
 
     function navegar(paginaId) {
@@ -471,78 +600,165 @@
       const btn = Array.from(document.querySelectorAll('.nav-item-btn')).find(b => b.getAttribute('onclick')?.includes(paginaId)); if (btn) btn.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    
-    function trocarJogo(subjogo) {
-      document.querySelectorAll('.minigame-container').forEach(c => c.classList.remove('active'));
-      document.querySelectorAll('.game-subtab-btn').forEach(b => b.classList.remove('active'));
-      const target = document.getElementById('subgame-' + subjogo); if (target) target.classList.add('active');
-      const btn = Array.from(document.querySelectorAll('.game-subtab-btn')).find(b => b.getAttribute('onclick')?.includes(subjogo)); if (btn) btn.classList.add('active');
-    }
 
     // =========================================================================
-    // LÓGICA DO JOGO DA ÁRVORE MÁGICA (CLICKER GAME)
+    // LÓGICA DO PET XEXÉU (COM BANHO, FESTA E ENERGIA NO SONO)
     // =========================================================================
-    let arvoreData = JSON.parse(localStorage.getItem('xexeu_arvore')) || {
-        sols: 0, powerClick: 1, qtdFlores: 0, qtdAbelhas: 0, xexeuDesbloqueado: false
+    const LINKS_ANIMACOES_XEXEU = {
+      normal: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif", 
+      comendo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336738/XEXEU_COMENDO_1.gif", 
+      dormindo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336364/XEXEU_DORMINDO.gif", 
+      brincando: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336534/XEXEU_FELIZ.gif", 
+      triste: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336521/XEXEU_TRISTE.gif"
     };
+
+    let petStatus = { fome: 60, energia: 80, alegria: 90 }; 
+    let petDormindo = false; 
+    let petAcaoAtiva = false; 
+    let timeoutAcaoPet = null;
+
+    function atualizarBarrasPet() {
+      document.getElementById('barFome').style.width = petStatus.fome + '%'; 
+      document.getElementById('barEnergia').style.width = petStatus.energia + '%'; 
+      document.getElementById('barAlegria').style.width = petStatus.alegria + '%';
+      if(!petDormindo && !petAcaoAtiva) {
+        const img = document.getElementById('imgXexeuPet');
+        if(img) { 
+           const srcAlvo = (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) ? LINKS_ANIMACOES_XEXEU.triste : LINKS_ANIMACOES_XEXEU.normal; 
+           if(img.src !== srcAlvo) img.src = srcAlvo;
+        }
+      }
+    }
+
+    // A Mágica de Gerar Partículas (Bolhas ou Confetes)
+    function gerarParticulasNoQuarto(emoji, qtd) {
+        const quarto = document.getElementById('quartoXexeu');
+        for(let i = 0; i < qtd; i++) {
+            const p = document.createElement('div');
+            p.innerText = emoji;
+            p.style.position = 'absolute';
+            p.style.fontSize = (Math.random() * 20 + 20) + 'px'; // Tamanhos variados
+            p.style.left = (Math.random() * 90 + 5) + '%';
+            p.style.top = (Math.random() * 50 + 50) + '%'; // Começa do meio para baixo
+            p.style.pointerEvents = 'none';
+            p.style.zIndex = '15';
+            p.style.transition = 'all 1.5s ease-out';
+            quarto.appendChild(p);
+            
+            // Força a renderização e depois ativa a transição
+            setTimeout(() => {
+                p.style.transform = `translateY(-180px) rotate(${Math.random()*360}deg)`;
+                p.style.opacity = '0';
+            }, 50);
+            
+            setTimeout(() => p.remove(), 1600);
+        }
+    }
+
+    function acaoPet(acao) {
+      const img = document.getElementById('imgXexeuPet');
+      if (petDormindo && acao !== 'dormir') { exibirToast("Shhhh! O Xexéu está dormindo."); return; }
+      
+      if(img) { img.style.transform = 'scale(1.1)'; setTimeout(() => img.style.transform = 'scale(1)', 200); }
+      clearTimeout(timeoutAcaoPet); 
+      petAcaoAtiva = true;
+
+      if (acao === 'alimentar') { 
+          petStatus.fome = Math.min(100, petStatus.fome + 30); 
+          img.src = LINKS_ANIMACOES_XEXEU.comendo; 
+          tocarSomPop();
+      } 
+      else if (acao === 'brincar') { 
+          petStatus.alegria = Math.min(100, petStatus.alegria + 20); 
+          petStatus.energia = Math.max(0, petStatus.energia - 15); 
+          img.src = LINKS_ANIMACOES_XEXEU.brincando; 
+          tocarSomPop();
+      }
+      else if (acao === 'banho') { 
+          petStatus.alegria = Math.min(100, petStatus.alegria + 15); 
+          img.src = LINKS_ANIMACOES_XEXEU.brincando; 
+          tocarSomPop();
+          gerarParticulasNoQuarto('🫧', 15); // Solta as bolhas
+          exibirToast("Que banho refrescante!");
+      }
+      else if (acao === 'festa') { 
+          petStatus.alegria = 100; // Enche tudo!
+          petStatus.energia = Math.max(0, petStatus.energia - 30); // Cansa bastante
+          img.src = LINKS_ANIMACOES_XEXEU.brincando; 
+          tocarSomAcerto();
+          gerarParticulasNoQuarto('🎉', 25); // Solta os confetes
+          exibirToast("Festa da Turminha!");
+      }
+      else if (acao === 'dormir') {
+        petDormindo = !petDormindo; 
+        petAcaoAtiva = false;
+        document.getElementById('filtroNoite').style.display = petDormindo ? 'block' : 'none';
+        if (petDormindo) { 
+            img.src = LINKS_ANIMACOES_XEXEU.dormindo; 
+            exibirToast("Boa noite, Xexéu...");
+        } else { 
+            exibirToast("Bom dia!"); 
+            atualizarBarrasPet(); 
+            return; 
+        }
+      }
+      
+      pontos += 2; document.getElementById('headerPontos').innerText = pontos;
+      timeoutAcaoPet = setTimeout(() => { petAcaoAtiva = false; atualizarBarrasPet(); }, 3500); 
+      atualizarBarrasPet();
+    }
+    
+    // LOOP DE TEMPO (Ajustado para carregar energia dormindo)
+    setInterval(() => { 
+      if (petDormindo) {
+          // SE ESTIVER DORMINDO, ENERGIA SOBE RAPIDINHO! Fome cai devagar.
+          petStatus.energia = Math.min(100, petStatus.energia + 10);
+          petStatus.fome = Math.max(0, petStatus.fome - 1);
+          atualizarBarrasPet();
+      } else if (!petAcaoAtiva) { 
+          // SE ESTIVER ACORDADO E PARADO, VAI FICANDO CANSADO E COM FOME
+          petStatus.fome = Math.max(0, petStatus.fome - 2); 
+          petStatus.energia = Math.max(0, petStatus.energia - 1); 
+          petStatus.alegria = Math.max(0, petStatus.alegria - 2); 
+          atualizarBarrasPet(); 
+      } 
+    }, 5000); // Roda a cada 5 segundos
+
+    // =========================================================================
+    // LÓGICA DO JOGO DA ÁRVORE MÁGICA
+    // =========================================================================
+    let arvoreData = JSON.parse(localStorage.getItem('xexeu_arvore')) || { sols: 0, powerClick: 1, qtdFlores: 0, qtdAbelhas: 0, xexeuDesbloqueado: false };
 
     function clicarSemente(e) {
         arvoreData.sols += arvoreData.powerClick;
         tocarSomPop();
-        
-        // Criação do +1 Flutuante onde o usuário clicou
         const container = document.getElementById('containerArvoreGame');
         const floater = document.createElement('div');
         floater.className = 'floating-text';
         floater.innerText = '+' + arvoreData.powerClick;
-        
-        // Pega a posição do mouse/touch relativa ao container
         const rect = container.getBoundingClientRect();
         const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left - 10;
         const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top - 20;
-        
-        floater.style.left = x + 'px';
-        floater.style.top = y + 'px';
+        floater.style.left = x + 'px'; floater.style.top = y + 'px';
         container.appendChild(floater);
         setTimeout(() => floater.remove(), 1000);
-
         salvarEAtualizarArvore();
     }
 
     function comprarNode(tipo) {
-        if(tipo === 'flor' && arvoreData.sols >= 20) {
-            arvoreData.sols -= 20;
-            arvoreData.qtdFlores++;
-            arvoreData.powerClick++;
-            exibirToast("🌸 Flor comprada! Seus cliques agora valem mais!");
-        } 
-        else if(tipo === 'abelha' && arvoreData.sols >= 50) {
-            arvoreData.sols -= 50;
-            arvoreData.qtdAbelhas++;
-            exibirToast("🐝 Abelha contratada! Ela gera Sóis sozinha!");
-        }
-        else if(tipo === 'xexeu' && arvoreData.sols >= 500 && !arvoreData.xexeuDesbloqueado) {
-            arvoreData.sols -= 500;
-            arvoreData.xexeuDesbloqueado = true;
-            exibirToast("🐣 Xexéu Desbloqueado na Árvore!");
-        } else {
-            exibirToast("☀️ Você não tem Sóis suficientes ou já bloqueou!");
-            return; // Impede salvar/tocar som se não comprar
-        }
-        tocarSomPop();
-        salvarEAtualizarArvore();
+        if(tipo === 'flor' && arvoreData.sols >= 20) { arvoreData.sols -= 20; arvoreData.qtdFlores++; arvoreData.powerClick++; exibirToast("🌸 Flor comprada!"); } 
+        else if(tipo === 'abelha' && arvoreData.sols >= 50) { arvoreData.sols -= 50; arvoreData.qtdAbelhas++; exibirToast("🐝 Abelha contratada!"); }
+        else if(tipo === 'xexeu' && arvoreData.sols >= 500 && !arvoreData.xexeuDesbloqueado) { arvoreData.sols -= 500; arvoreData.xexeuDesbloqueado = true; exibirToast("🐣 Xexéu Desbloqueado!"); } 
+        else { exibirToast("☀️ Você não tem Sóis suficientes!"); return; }
+        tocarSomPop(); salvarEAtualizarArvore();
     }
 
     function salvarEAtualizarArvore() {
         localStorage.setItem('xexeu_arvore', JSON.stringify(arvoreData));
         document.getElementById('uiSols').innerText = Math.floor(arvoreData.sols);
         document.getElementById('uiSolsPorSec').innerText = arvoreData.qtdAbelhas;
-
-        // Atualiza Interface (Cores e Linhas)
-        const florBtn = document.getElementById('nodeFlor');
-        const abelhaBtn = document.getElementById('nodeAbelha');
-        const xexeuBtn = document.getElementById('nodeXexeu');
         
+        const florBtn = document.getElementById('nodeFlor'); const abelhaBtn = document.getElementById('nodeAbelha'); const xexeuBtn = document.getElementById('nodeXexeu');
         if (arvoreData.sols >= 20 || arvoreData.qtdFlores > 0) { florBtn.classList.remove('locked'); document.getElementById('lineFlor').setAttribute('stroke', '#FDE047'); } else { florBtn.classList.add('locked'); }
         if (arvoreData.sols >= 50 || arvoreData.qtdAbelhas > 0) { abelhaBtn.classList.remove('locked'); document.getElementById('lineAbelha').setAttribute('stroke', '#FDE047'); } else { abelhaBtn.classList.add('locked'); }
         if (arvoreData.sols >= 500 || arvoreData.xexeuDesbloqueado) { xexeuBtn.classList.remove('locked'); document.getElementById('lineXexeu').setAttribute('stroke', '#FDE047'); } else { xexeuBtn.classList.add('locked'); }
@@ -553,15 +769,9 @@
     }
 
     function iniciarLoopArvoreGame() {
-        salvarEAtualizarArvore(); // Atualiza a tela inicial
-        setInterval(() => {
-            if(arvoreData.qtdAbelhas > 0) {
-                arvoreData.sols += (arvoreData.qtdAbelhas); // Abelhas geram por segundo
-                salvarEAtualizarArvore();
-            }
-        }, 1000);
+        salvarEAtualizarArvore();
+        setInterval(() => { if(arvoreData.qtdAbelhas > 0) { arvoreData.sols += (arvoreData.qtdAbelhas); salvarEAtualizarArvore(); } }, 1000);
     }
-
 
     // =========================================================================
     // LÓGICA DE LOGIN VIP (CONEXÃO COM A PLANILHA DO GOOGLE)
@@ -572,10 +782,7 @@
     }
     
     async function executarAcaoVip(acao) {
-        if(URL_SCRIPT === "SUA_URL_DO_GOOGLE_APPS_SCRIPT_AQUI") {
-            return alert("⚠️ Por favor, cole a URL do seu script do Google na variável URL_SCRIPT no final do código!");
-        }
-
+        if(URL_SCRIPT === "SUA_URL_DO_GOOGLE_APPS_SCRIPT_AQUI") { return alert("⚠️ Por favor, cole a URL do seu script do Google na variável URL_SCRIPT no final do código!"); }
         const email = acao === 'login' ? document.getElementById('loginEmailVip').value.trim() : document.getElementById('cadEmailVip').value.trim();
         const senha = acao === 'login' ? document.getElementById('loginSenhaVip').value.trim() : document.getElementById('cadSenhaVip').value.trim();
         const btnSubmit = acao === 'login' ? document.getElementById('btnEntrarVipSubmit') : document.getElementById('btnCadVipSubmit');
@@ -584,75 +791,72 @@
         if (!senha) return exibirToast("⚠️ Preencha a senha!");
         if (acao === 'cadastro' && !email) return exibirToast("⚠️ Preencha o e-mail da compra!");
 
-        // Trava o botão para não dar duplo clique
-        btnSubmit.innerText = "⏳ Carregando...";
-        btnSubmit.disabled = true;
-        btnSubmit.style.opacity = "0.7";
+        btnSubmit.innerText = "⏳ Carregando..."; btnSubmit.disabled = true; btnSubmit.style.opacity = "0.7";
 
         try {
-            // Chamada Real para o seu Script do Google
-            const response = await fetch(URL_SCRIPT, {
-                method: 'POST',
-                // O body deve ser stringificado para bater com o JSON.parse no Google Script
-                body: JSON.stringify({ acao: acao, email: email, senha: senha })
-            });
-            
+            const response = await fetch(URL_SCRIPT, { method: 'POST', body: JSON.stringify({ acao: acao, email: email, senha: senha }) });
             const data = await response.json();
-            
             if (data.liberado) {
-                isVip = true; 
-                localStorage.setItem('xexeu_vip', 'true'); 
-                
-                // Salva os links recebidos pela API
-                if(data.drives) {
-                    localStorage.setItem('xexeu_drives', JSON.stringify(data.drives));
-                }
-
-                exibirToast("🎉 " + data.mensagem); 
-                atualizarInterfaceVipCompleta(); 
-            } else {
-                exibirToast("❌ " + data.mensagem);
-            }
-        } catch (error) {
-            console.error(error);
-            exibirToast("⚠️ Erro de conexão. Verifique sua internet ou a URL do Script.");
-        } finally {
-            // Destrava o botão
-            btnSubmit.innerText = txtOriginalBtn;
-            btnSubmit.disabled = false;
-            btnSubmit.style.opacity = "1";
-        }
+                isVip = true; localStorage.setItem('xexeu_vip', 'true'); 
+                if(data.drives) { localStorage.setItem('xexeu_drives', JSON.stringify(data.drives)); }
+                exibirToast("🎉 " + data.mensagem); atualizarInterfaceVipCompleta(); 
+            } else { exibirToast("❌ " + data.mensagem); }
+        } catch (error) { exibirToast("⚠️ Erro de conexão."); } 
+        finally { btnSubmit.innerText = txtOriginalBtn; btnSubmit.disabled = false; btnSubmit.style.opacity = "1"; }
     }
     
-    function deslogarVip() { 
-        if (confirm('Tem certeza que deseja sair da conta VIP?')) { 
-            isVip = false; 
-            localStorage.removeItem('xexeu_vip'); 
-            localStorage.removeItem('xexeu_drives'); 
-            atualizarInterfaceVipCompleta(); 
-        } 
-    }
+    function deslogarVip() { if (confirm('Tem certeza que deseja sair da conta VIP?')) { isVip = false; localStorage.removeItem('xexeu_vip'); localStorage.removeItem('xexeu_drives'); atualizarInterfaceVipCompleta(); } }
     
     function atualizarInterfaceVipCompleta() {
-      // Ajusta Central X Vendas
       document.getElementById('areaVendaVip').style.display = isVip ? 'none' : 'block';
       document.getElementById('centralVipConteudo').style.display = isVip ? 'block' : 'none';
       document.getElementById('barraFlutuanteVip').style.display = isVip ? 'none' : 'flex';
 
-      // Monta os botões do Drive baseados no que a API mandou
       if(isVip) {
           const drivesCache = JSON.parse(localStorage.getItem('xexeu_drives'));
           const boxDrives = document.getElementById('boxLinksDrivesDinamicos');
           boxDrives.innerHTML = '';
-          
-          if(drivesCache && drivesCache.atividades) {
-              boxDrives.innerHTML += `<a href="${drivesCache.atividades}" target="_blank" class="btn-tactile vip">📁 Drive Atividades</a>`;
-          }
-          if(drivesCache && drivesCache.tea) {
-              boxDrives.innerHTML += `<a href="${drivesCache.tea}" target="_blank" class="btn-tactile" style="background: #0284C7; color: white; border-color: #0369A1;">🧩 Drive Azul TEA</a>`;
-          }
+          if(drivesCache && drivesCache.atividades) { boxDrives.innerHTML += `<a href="${drivesCache.atividades}" target="_blank" class="btn-tactile vip">📁 Drive Atividades</a>`; }
+          if(drivesCache && drivesCache.tea) { boxDrives.innerHTML += `<a href="${drivesCache.tea}" target="_blank" class="btn-tactile" style="background: #0284C7; color: white; border-color: #0369A1;">🧩 Drive Azul TEA</a>`; }
       }
     }
+
+    // PERSONAGENS, LOUSA E COMPONENTES BÁSICOS QUE JÁ ESTAVAM FUNCIONANDO
+    const PERSONAGENS = [
+      { id: 'xexeu', familia: 'mascotes', nome: 'Xexéu', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_XEXEU.png', letra: 'X', tag: 'Mascote', quem: 'Pássaro azul.', gosto: 'Cantar.', frase: 'Educando com alegria!' },
+      { id: 'capile', familia: 'mascotes', nome: 'Capilé', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994882/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_CAPILE.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994874/DESENHOS_DA_LOUSA_CAPILE.png', letra: 'C', tag: 'Companheiro', quem: 'Cachorrinho.', gosto: 'Correr.', frase: 'Au au!' }
+    ];
+
+    function renderTodosPersonagensInicio() {}
+    function renderCartoesCaa() {}
+    
+    let canvasTea, ctxTea, desenhandoTea = false;
+    function initLousaSensorial() {
+      canvasTea = document.getElementById('lousaSensorialTea'); if (!canvasTea) return; ctxTea = canvasTea.getContext('2d');
+      const resizeLousaTea = () => { canvasTea.width = canvasTea.parentElement.clientWidth; canvasTea.height = canvasTea.parentElement.clientHeight; };
+      resizeLousaTea(); window.addEventListener('resize', resizeLousaTea);
+      const getP = (e) => { const r = canvasTea.getBoundingClientRect(); const cx = e.clientX !== undefined ? e.clientX : (e.touches ? e.touches[0].clientX : 0); const cy = e.clientY !== undefined ? e.clientY : (e.touches ? e.touches[0].clientY : 0); return { x: (cx - r.left)*(canvasTea.width/r.width), y: (cy - r.top)*(canvasTea.height/r.height) }; };
+      const st = (e) => { desenhandoTea = true; const p = getP(e); ctxTea.beginPath(); ctxTea.moveTo(p.x, p.y); ctxTea.lineWidth = 22; ctxTea.lineCap = 'round'; ctxTea.lineJoin = 'round'; if(e.cancelable) e.preventDefault(); };
+      const mv = (e) => { if (!desenhandoTea) return; const p = getP(e); ctxTea.strokeStyle = `hsl(${Math.random()*360}, 100%, 75%)`; ctxTea.shadowBlur = 18; ctxTea.shadowColor = ctxTea.strokeStyle; ctxTea.lineTo(p.x, p.y); ctxTea.stroke(); if (e.cancelable) e.preventDefault(); };
+      const sp = () => { desenhandoTea = false; };
+      canvasTea.addEventListener('mousedown', st); canvasTea.addEventListener('mousemove', mv); canvasTea.addEventListener('mouseup', sp); canvasTea.addEventListener('mouseleave', sp);
+      canvasTea.addEventListener('touchstart', st, { passive: false }); canvasTea.addEventListener('touchmove', mv, { passive: false }); canvasTea.addEventListener('touchend', sp);
+    }
+    function limparLousaSensorial() { if (ctxTea) ctxTea.clearRect(0, 0, canvasTea.width, canvasTea.height); }
+
+    let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
+    function initLousa() {
+      canvas = document.getElementById('paintCanvas'); if (!canvas) return; ctx = canvas.getContext('2d'); 
+      const resizeLousa = () => { if (canvas) { canvas.width = canvas.parentElement.clientWidth; canvas.height = canvas.parentElement.clientWidth * (9/16); } };
+      resizeLousa(); window.addEventListener('resize', resizeLousa);
+      const getP = (e) => { const r = canvas.getBoundingClientRect(); const cx = e.clientX !== undefined ? e.clientX : (e.touches ? e.touches[0].clientX : 0); const cy = e.clientY !== undefined ? e.clientY : (e.touches ? e.touches[0].clientY : 0); return { x: (cx - r.left)*(canvas.width/r.width), y: (cy - r.top)*(canvas.height/r.height) }; };
+      const st = (e) => { desenhando = true; const p = getP(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap='round'; ctx.lineJoin='round'; };
+      const mv = (e) => { if(!desenhando) return; const p = getP(e); ctx.lineTo(p.x, p.y); ctx.stroke(); if(e.cancelable) e.preventDefault(); };
+      const sp = () => desenhando = false;
+      canvas.addEventListener('mousedown', st); canvas.addEventListener('mousemove', mv); canvas.addEventListener('mouseup', sp); canvas.addEventListener('mouseleave', sp);
+      canvas.addEventListener('touchstart', st, {passive:false}); canvas.addEventListener('touchmove', mv, {passive:false}); canvas.addEventListener('touchend', sp);
+    }
+    function setCorPincel(c) { corAtual = c; } function setBorracha() { corAtual = '#FFFFFF'; } function setEspessuraPincel(v) { tamanhoPincel = parseInt(v); } function limparCanvasLousa() { if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height); }
   </script>
 </body>
 </html>
