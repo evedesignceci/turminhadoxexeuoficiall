@@ -22,7 +22,7 @@
       --green: #10B981;
       --green-dark: #059669;
       --tea-blue: #0284C7;
-      --bg-canvas: #F0F7FF; /* Cores Claras */
+      --bg-canvas: #F0F7FF;
       --card-bg: #FFFFFF;
       --text-main: #1E293B;
       --text-muted: #64748B;
@@ -85,6 +85,11 @@
     .nav-item-btn { flex: 1; min-width: 110px; padding: 12px 14px; border: none; background: transparent; border-radius: var(--radius-md); font-weight: 700; font-size: 14.5px; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; white-space: nowrap; }
     .nav-item-btn:hover { background: #F1F5F9; color: var(--primary); transform: translateY(-2px); }
     .nav-item-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); transform: translateY(0); }
+    
+    .nav-item-btn.casa-item { background: #F5F3FF; color: #6D28D9; border: 1.5px solid #DDD6FE; }
+    .nav-item-btn.casa-item:hover { background: #EDE9FE; transform: translateY(-2px); }
+    .nav-item-btn.casa-item.active { background: #8B5CF6; color: #FFF; border-color: #7C3AED; box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4); transform: translateY(0); }
+
     .nav-item-btn.vip-item { background: #FEF3C7; color: #92400E; border: 1.5px solid #FCD34D; }
     .nav-item-btn.vip-item.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; }
 
@@ -103,11 +108,11 @@
     .hub-card-tag { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 800; width: fit-content; }
     @keyframes floatIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
-    /* CASA DA TURMINHA - XEXÉU VIRTUAL */
-    .mascote-virtual { position: absolute; right: 20px; bottom: 20px; cursor: pointer; text-align: center; animation: floatIcon 4s infinite; z-index: 10; }
+    /* CASA DA TURMINHA - XEXÉU VIRTUAL (CORRIGIDO PARA O CENTRO ABSOLUTO) */
+    .mascote-virtual { position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; animation: floatIcon 4s infinite; z-index: 10; margin: 0 auto; width: max-content; }
     .mascote-virtual img { width: 140px; height: 140px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)); transition: transform 0.2s; }
     .mascote-virtual img:active { transform: scale(0.85); }
-    .balao-fala { position: absolute; top: -50px; right: 50px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; z-index: 20; }
+    .balao-fala { position: absolute; top: -50px; right: -20px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; z-index: 20; }
     .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateY(0) scale(1); }
 
     /* LAYOUTS RESPONSIVOS */
@@ -129,7 +134,6 @@
     .vip-floating-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FCD34D, #F59E0B); border: 3px solid #B45309; padding: 14px 24px; border-radius: 50px; display: flex; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 8px 20px rgba(180, 83, 9, 0.4); cursor: pointer; z-index: 1000; color: #78350F; transition: transform 0.2s; width: 90%; max-width: 450px; }
     .vip-floating-bar:hover { transform: translateX(-50%) scale(1.03); }
 
-    /* RESPIRAÇÃO TEA - UX FIX (Ajuste de altura para não tampar texto) */
     .breathe-box-interactive { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 280px; gap: 20px; }
     .breathe-bubble { width: 110px; height: 110px; background: var(--tea-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; transition: transform 4s ease-in-out, background-color 4s; box-shadow: 0 0 20px rgba(2, 132, 199, 0.3); z-index: 2; }
     .breathe-bubble.expand { transform: scale(1.6); background: var(--green); box-shadow: 0 0 30px rgba(16, 185, 129, 0.4); }
@@ -151,7 +155,7 @@
     .minigame-container.active { display: block; }
     @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
-    /* LOUSA UX FIX (Não esmagada) */
+    /* LOUSA */
     .canvas-container-lousa { width: 100%; max-width: 800px; margin: 0 auto; border: 3px dashed #94A3B8; border-radius: var(--radius-lg); overflow: hidden; background: #FFF; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
     #paintCanvas { width: 100%; aspect-ratio: 16 / 9; max-height: 60vh; touch-action: none; cursor: crosshair; display: block; }
     
@@ -183,7 +187,7 @@
     .memory-tile.matched { animation: popPulse 0.5s ease; border-color: var(--green); box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3); }
     @keyframes popPulse { 0% { transform: rotateY(180deg) scale(1); } 50% { transform: rotateY(180deg) scale(1.15); } 100% { transform: rotateY(180deg) scale(1); } }
 
-    /* NOVO: JOGO DE CURIOSIDADES / FLASHCARD */
+    /* CURIOSIDADES / FLASHCARD */
     .flashcard { width: 100%; max-width: 400px; margin: 0 auto; aspect-ratio: 4/3; perspective: 1000px; cursor: pointer; }
     .flashcard-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; box-shadow: var(--shadow-md); border-radius: var(--radius-lg); }
     .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
@@ -273,7 +277,7 @@
     <!-- NAVEGAÇÃO PRINCIPAL -->
     <nav class="main-nav">
       <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Hub Central</button>
-      <button class="nav-item-btn" onclick="navegar('casa')" style="color: #6D28D9; background: #F5F3FF;">🏡 Casa da Turminha</button>
+      <button class="nav-item-btn casa-item" onclick="navegar('casa')">🏡 Casa da Turminha</button>
       <button class="nav-item-btn" onclick="navegar('inicio')">🏠 Sobre</button>
       <button class="nav-item-btn" onclick="navegar('jogos')">🕹️ Jogos</button>
       <button class="nav-item-btn tea-item" onclick="navegar('tea')">🧩 Espaço TEA</button>
@@ -310,15 +314,15 @@
         </div>
 
         <div class="hub-card" onclick="navegar('vip')" style="border-color: #FBCFE8;">
-          <span class="hub-card-icon">🧁</span>
-          <span class="hub-card-tag" style="background: #FDF2F8; color: var(--pink);">Doce & Criativo (VIP)</span>
-          <h4 class="hub-card-title">Área VIP & Drives</h4>
-          <p class="hub-card-desc">Baixe atividades, ouça as vozes dos personagens e muito mais!</p>
+          <span class="hub-card-icon">👑</span>
+          <span class="hub-card-tag" style="background: #FDF2F8; color: var(--pink);">Área VIP</span>
+          <h4 class="hub-card-title">Central VIP & Drives</h4>
+          <p class="hub-card-desc">Acesse os drives exclusivos, ouça as vozes dos personagens e muito mais!</p>
         </div>
       </div>
     </div>
 
-    <!-- PÁGINA: CASA DA TURMINHA (XEXÉU) -->
+    <!-- PÁGINA: CASA DA TURMINHA (XEXÉU VIRTUAL) -->
     <div id="page-casa" class="page-box">
       <div class="game-card" style="text-align: center; border-color: #8B5CF6; background: #F5F3FF; max-width: 600px; margin: 0 auto; width: 100%;">
         <div class="game-card-title" style="color: #6D28D9; justify-content: center; margin-bottom: 8px;">
@@ -348,12 +352,13 @@
           </div>
         </div>
 
-        <!-- TELA DO QUARTINHO -->
+        <!-- TELA DO QUARTINHO (FLEXBOX PARA GARANTIR CENTRO ABSOLUTO) -->
         <div style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; height: 280px; margin: 0 auto 20px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
           <div id="filtroNoite" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.8); display: none; z-index: 1;"></div>
+          
           <div class="mascote-virtual" id="mascoteXexeuHome" onclick="animarMascote()">
-            <div class="balao-fala" id="balaoMascote" style="top: -40px; right: -20px;">Bora brincar!</div>
-            <img id="imgXexeuPet" src="https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif" alt="Xexéu Virtual" style="width: 200px; height: 200px; object-fit: contain; z-index: 2; position:relative;">
+            <div class="balao-fala" id="balaoMascote">Bora brincar!</div>
+            <img id="imgXexeuPet" src="https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif" alt="Xexéu Virtual">
           </div>
         </div>
 
@@ -481,7 +486,7 @@
           </div>
         </div>
 
-        <!-- OUTROS MINIGAMES: Contar, Letras, Sombras, Memória, Quiz... (mantidos iguais) -->
+        <!-- OUTROS MINIGAMES -->
         <div id="subgame-contar" class="minigame-container">
           <div class="level-badge-container">
             <button class="level-btn active" id="btnNivelContar-1" onclick="setNivelContar(1)">Nível 1 (1 a 5)</button>
@@ -539,7 +544,7 @@
           <div id="boxQuizBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- NOVO JOGO: CURIOSIDADES DINÂMICAS -->
+        <!-- JOGO DE CURIOSIDADES -->
         <div id="subgame-curiosidades" class="minigame-container">
           <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--purple);">Você Sabia? 🤔</h3>
           <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Toque no cartão para ver a resposta e aprender algo novo!</p>
@@ -621,14 +626,13 @@
         <div class="popit-board" id="popitGridContainer"></div>
       </div>
 
-      <!-- LOUSA DA CALMA GIGANTE (Atualizada com Neon e Suporte a Instagram) -->
+      <!-- LOUSA DA CALMA GIGANTE (EVENTOS DE MOUSE CORRIGIDOS) -->
       <div class="game-card" style="text-align: center; border-color: #6EE7B7; background: #ECFDF5; padding: 10px; width: 100%;">
         <div class="game-card-title" style="color: #047857; margin-bottom:5px; padding: 10px;">
           <span>🎨 Lousa da Calma</span>
           <button class="btn-tactile green" onclick="limparLousaSensorial()">✨ Apagar Tudo</button>
         </div>
-        <p style="font-size: 13px; color: #065F46; font-weight: 600; margin-bottom: 10px;">Passe o dedinho para criar cores suaves e ouvir a mágica (Neon):</p>
-        <!-- touch-action: none é vital para o Instagram Browser não travar o dedo -->
+        <p style="font-size: 13px; color: #065F46; font-weight: 600; margin-bottom: 10px;">Passe o dedinho (ou o mouse no notebook) para criar cores suaves e ouvir a mágica:</p>
         <div class="lousa-tea-container" style="width: 100%; height: 60vh; min-height: 400px; border-radius: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); touch-action: none;">
           <canvas id="lousaSensorialTea" style="background: #111827; width: 100%; height: 100%; cursor: crosshair; display: block; touch-action: none;"></canvas>
         </div>
@@ -700,50 +704,62 @@
       </div>
     </div>
 
-    <!-- PÁGINA: CLUBE VIP (ATUALIZADA) -->
+    <!-- PÁGINA: CLUBE VIP COM CENTRAL -->
     <div id="page-vip" class="page-box">
       <div class="game-card" style="background: linear-gradient(135deg, #FFFBEB, #FEF3C7); border-color: #FCD34D; text-align: center; overflow: hidden; position: relative;">
         <span style="font-size: 52px; display: block; animation: floatIcon 3s infinite;">⭐</span>
         <h2 style="color: #92400E; font-size: 30px; font-weight: 900; margin-bottom: 8px;">Clube VIP Turminha do Xexéu</h2>
-        <p style="color: #78350F; font-size: 16px; font-weight: 700; margin-bottom: 20px;">
-          Por apenas <strong>R$ 6,00/mês</strong>.
-        </p>
+        
+        <!-- ÁREA NÃO VIP (PÁGINA DE VENDAS E LOGIN) -->
+        <div id="areaVendaVip">
+            <p style="color: #78350F; font-size: 16px; font-weight: 700; margin-bottom: 20px;">
+            Por apenas <strong>R$ 6,00/mês</strong>.
+            </p>
 
-        <!-- DRIVES AGORA ESTÃO VISÍVEIS AQUI -->
-        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;" id="boxBotoesDrivesVip">
-            <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-tactile vip">📁 Drive de Atividades</a>
-            <a href="https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link" target="_blank" class="btn-tactile" style="background: #0284C7; color: white; border-color: #0369A1;">🧩 Drive Azul TEA</a>
+            <div class="grid-2-col" style="margin-top: 20px;">
+                <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #FDE68A; text-align: left;">
+                    <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ O que o VIP desbloqueia:</h4>
+                    <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
+                    <li><strong>📁 Drives Exclusivos:</strong> Acesso direto às atividades para imprimir.</li>
+                    <li><strong>🎮 Níveis e Bandinha:</strong> Fases e Instrumentos exclusivos.</li>
+                    <li><strong>🔊 Sintetizador Mágico:</strong> Troca de vozes customizada da turminha.</li>
+                    <li><strong>🎨 Lousa:</strong> Todos os contornos liberados.</li>
+                    <li><strong>⏳ Tempo:</strong> Temporizador de até 30min.</li>
+                    </ul>
+                </div>
+
+                <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid var(--border-color); text-align: left;">
+                    <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+                    <button id="tabBtnLoginVip" class="btn-tactile primary" style="flex: 1; padding: 8px 10px; font-size: 13px;" onclick="trocarAbaVipAuth('login')">🔑 Entrar</button>
+                    <button id="tabBtnCadastroVip" class="btn-tactile" style="flex: 1; padding: 8px 10px; font-size: 13px;" onclick="trocarAbaVipAuth('cadastro')">✨ 1º Acesso</button>
+                    </div>
+                    <div id="formVipLogin">
+                    <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail (ou Senha Mestra)">
+                    <input type="password" id="loginSenhaVip" class="form-input" placeholder="Senha de acesso">
+                    <button class="btn-tactile primary" id="btnEntrarVipSubmit" style="width: 100%;" onclick="executarLoginVip()">Entrar no VIP 🚀</button>
+                    </div>
+                    <div id="formVipCadastro" style="display: none;">
+                    <input type="email" id="cadEmailVip" class="form-input" placeholder="Seu e-mail do Kiwify">
+                    <input type="password" id="cadSenhaVip" class="form-input" placeholder="Crie uma senha">
+                    <button class="btn-tactile green" id="btnCadVipSubmit" style="width: 100%;" onclick="executarCadastroVip()">Liberar VIP ⭐</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="grid-2-col" style="margin-top: 20px;">
-          <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #FDE68A; text-align: left;">
-            <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ O que o VIP desbloqueia:</h4>
-            <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
-              <li><strong>📁 Drives:</strong> Acesso direto aos links acima com materiais.</li>
-              <li><strong>🎮 Níveis e Bandinha:</strong> Fases e Instrumentos exclusivos.</li>
-              <li><strong>🔊 Sintetizador Mágico:</strong> Troca de vozes customizada da turminha.</li>
-              <li><strong>🎨 Lousa:</strong> Todos os contornos liberados.</li>
-              <li><strong>⏳ Tempo:</strong> Temporizador de até 30min.</li>
-            </ul>
-          </div>
-
-          <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid var(--border-color); text-align: left;">
-            <div style="display: flex; gap: 8px; margin-bottom: 14px;">
-              <button id="tabBtnLoginVip" class="btn-tactile primary" style="flex: 1; padding: 8px 10px; font-size: 13px;" onclick="trocarAbaVipAuth('login')">🔑 Entrar</button>
-              <button id="tabBtnCadastroVip" class="btn-tactile" style="flex: 1; padding: 8px 10px; font-size: 13px;" onclick="trocarAbaVipAuth('cadastro')">✨ 1º Acesso</button>
+        <!-- CENTRAL VIP (OCULTA POR PADRÃO, LIBERADA APÓS LOGIN) -->
+        <div id="centralVipConteudo" style="display: none; margin-top: 20px; background: #FFF; border-radius: 20px; padding: 24px; border: 3px solid #F59E0B; box-shadow: var(--shadow-md);">
+            <h3 style="color: #B45309; font-size: 24px; font-weight: 900; margin-bottom: 8px;">🎉 Você está na Central VIP!</h3>
+            <p style="color: #92400E; font-size: 15px; font-weight: 700; margin-bottom: 20px;">Acesse todos os seus materiais e benefícios exclusivos abaixo:</p>
+            
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+                <a href="https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link" target="_blank" class="btn-tactile vip">📁 Drive de Atividades</a>
+                <a href="https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link" target="_blank" class="btn-tactile" style="background: #0284C7; color: white; border-color: #0369A1;">🧩 Drive Azul TEA</a>
+                <button class="btn-tactile pink" onclick="navegar('jogos'); trocarJogo('banda')">🥁 Bandinha VIP</button>
+                <button class="btn-tactile green" onclick="navegar('perfil')">🔊 Vozes VIP</button>
             </div>
-            <div id="formVipLogin">
-              <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail (ou Senha Mestra)">
-              <input type="password" id="loginSenhaVip" class="form-input" placeholder="Senha de acesso">
-              <button class="btn-tactile primary" id="btnEntrarVipSubmit" style="width: 100%;" onclick="executarLoginVip()">Entrar no VIP 🚀</button>
-            </div>
-            <div id="formVipCadastro" style="display: none;">
-              <input type="email" id="cadEmailVip" class="form-input" placeholder="Seu e-mail do Kiwify">
-              <input type="password" id="cadSenhaVip" class="form-input" placeholder="Crie uma senha">
-              <button class="btn-tactile green" id="btnCadVipSubmit" style="width: 100%;" onclick="executarCadastroVip()">Liberar VIP ⭐</button>
-            </div>
-          </div>
         </div>
+
       </div>
     </div>
 
@@ -780,7 +796,7 @@
           <!-- AREA DE VOZ DESTACADA -->
           <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid var(--border-color);" id="cardVozVipBox">
             <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--primary-hover);">🔊 Seleção de Voz (VIP)</h4>
-            <div id="bloqueioVozAviso" style="display: none; background: #FEF3C7; padding: 8px; border-radius: 8px; font-size: 12px; color: #92400E; margin-bottom: 8px; font-weight: 700;">🔒 Exclusivo VIP (Desbloqueia mais vozes da Turminha)</div>
+            <div id="bloqueioVozAviso" style="display: none; background: #FEF3C7; padding: 8px; border-radius: 8px; font-size: 12px; color: #92400E; margin-bottom: 8px; font-weight: 700;">🔒 Exclusivo VIP (Desbloqueia mais vozes)</div>
             <select id="selectVozVip" class="form-input" style="margin-bottom: 10px;" onchange="mudarVozSelecionada(this.value)"><option value="">Voz padrão do navegador</option></select>
             <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Velocidade da Fala: <span id="labelVelocidadeFala">1.0x</span></label>
             <input type="range" id="rangeVelocidadeFala" min="0.7" max="1.3" step="0.05" value="1.0" style="width: 100%;" oninput="ajustarVelocidadeFala(this.value)">
@@ -945,7 +961,6 @@
       if(!petDormindo && !petAcaoAtiva) {
         const img = document.getElementById('imgXexeuPet');
         if(img) { 
-           // Deixa triste ou normal, sem resetar freneticamente
            const srcAlvo = (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) ? LINKS_ANIMACOES_XEXEU.triste : LINKS_ANIMACOES_XEXEU.normal; 
            if(img.src !== srcAlvo) img.src = srcAlvo;
         }
@@ -1027,17 +1042,16 @@
       } catch(e) {}
     }
 
-    /* LOUSA PRINCIPAL (Ajuste para pointer events e aspecto responsivo) */
+    /* LOUSA PRINCIPAL */
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
     function initLousa() {
       canvas = document.getElementById('paintCanvas'); if (!canvas) return; ctx = canvas.getContext('2d'); 
-      // Não define fixo na tag mais, usa o tamanho do container
       resizeLousa(); window.addEventListener('resize', resizeLousa);
 
       const getP = (e) => { 
           const r = canvas.getBoundingClientRect(); 
-          const cx = e.touches ? e.touches[0].clientX : e.clientX; 
-          const cy = e.touches ? e.touches[0].clientY : e.clientY; 
+          const cx = e.clientX !== undefined ? e.clientX : (e.touches ? e.touches[0].clientX : 0);
+          const cy = e.clientY !== undefined ? e.clientY : (e.touches ? e.touches[0].clientY : 0); 
           return { x: (cx - r.left)*(canvas.width/r.width), y: (cy - r.top)*(canvas.height/r.height) }; 
       };
       
@@ -1045,15 +1059,13 @@
       const mv = (e) => { if(!desenhando) return; const p = getP(e); ctx.lineTo(p.x, p.y); ctx.stroke(); if(e.cancelable) e.preventDefault(); };
       const sp = () => desenhando = false;
       
-      canvas.addEventListener('pointerdown', st); canvas.addEventListener('pointermove', mv); canvas.addEventListener('pointerup', sp); canvas.addEventListener('pointercancel', sp);
-      // Fallback
+      canvas.addEventListener('mousedown', st); canvas.addEventListener('mousemove', mv); canvas.addEventListener('mouseup', sp); canvas.addEventListener('mouseleave', sp);
       canvas.addEventListener('touchstart', st, {passive:false}); canvas.addEventListener('touchmove', mv, {passive:false}); canvas.addEventListener('touchend', sp);
       renderThumbnailsLousa();
     }
     
     function resizeLousa() { 
         if (canvas) { 
-            // Mantém resolução interna alta para o desenho não ficar pixelado
             canvas.width = canvas.parentElement.clientWidth; 
             canvas.height = canvas.parentElement.clientWidth * (9/16); 
         } 
@@ -1079,7 +1091,7 @@
       });
     }
 
-    /* LOUSA TEA COM EFEITO NEON E POINTER EVENTS (Suporte melhor para Instagram) */
+    /* LOUSA TEA COM EFEITO NEON (MOUSE + TOUCH) */
     let canvasTea, ctxTea, desenhandoTea = false;
     let somSensorial = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3");
     somSensorial.loop = true; let somSensorialAtivo = false; let timeoutParaSomTea; let matizSensorial = 0;
@@ -1091,32 +1103,31 @@
 
       const getP = (e) => { 
           const r = canvasTea.getBoundingClientRect(); 
-          const cx = e.clientX || (e.touches && e.touches[0].clientX); 
-          const cy = e.clientY || (e.touches && e.touches[0].clientY); 
+          const cx = e.clientX !== undefined ? e.clientX : (e.touches ? e.touches[0].clientX : 0);
+          const cy = e.clientY !== undefined ? e.clientY : (e.touches ? e.touches[0].clientY : 0);
           return { x: (cx - r.left)*(canvasTea.width/r.width), y: (cy - r.top)*(canvasTea.height/r.height) }; 
       };
       const gerS = () => { if (!somSensorialAtivo && audioAtivo) { somSensorial.volume = volumeEfeitos; somSensorial.play().catch(()=>{}); somSensorialAtivo = true; } clearTimeout(timeoutParaSomTea); timeoutParaSomTea = setTimeout(() => { somSensorial.pause(); somSensorialAtivo = false; }, 200); };
       
       const st = (e) => { 
           desenhandoTea = true; const p = getP(e); ctxTea.beginPath(); ctxTea.moveTo(p.x, p.y); 
-          ctxTea.lineWidth = 22; // Traço mais grosso e satisfatório
+          ctxTea.lineWidth = 22; 
           ctxTea.lineCap = 'round'; ctxTea.lineJoin = 'round';
-          if(e.cancelable) e.preventDefault(); // Evita rolar a tela
+          if(e.cancelable) e.preventDefault(); 
       };
       
       const mv = (e) => { 
           if (!desenhandoTea) return; const p = getP(e); matizSensorial += 3; if(matizSensorial > 360) matizSensorial = 0; 
           ctxTea.strokeStyle = `hsl(${matizSensorial}, 100%, 75%)`; 
-          ctxTea.shadowBlur = 18; // Efeito neon
+          ctxTea.shadowBlur = 18; 
           ctxTea.shadowColor = `hsl(${matizSensorial}, 100%, 75%)`;
           ctxTea.lineTo(p.x, p.y); ctxTea.stroke(); gerS(); 
           if (e.cancelable) e.preventDefault(); 
       };
       const sp = () => { desenhandoTea = false; };
       
-      // PointerEvents previnem que o Instagram Browser trave o touch
-      canvasTea.addEventListener('pointerdown', st); canvasTea.addEventListener('pointermove', mv); canvasTea.addEventListener('pointerup', sp); canvasTea.addEventListener('pointercancel', sp);
-      // Fallback
+      // Eventos garantidos para Notebook (Mouse) e Celular (Touch)
+      canvasTea.addEventListener('mousedown', st); canvasTea.addEventListener('mousemove', mv); canvasTea.addEventListener('mouseup', sp); canvasTea.addEventListener('mouseleave', sp);
       canvasTea.addEventListener('touchstart', st, { passive: false }); canvasTea.addEventListener('touchmove', mv, { passive: false }); canvasTea.addEventListener('touchend', sp);
     }
     function limparLousaSensorial() { if (ctxTea) ctxTea.clearRect(0, 0, canvasTea.width, canvasTea.height); }
@@ -1205,7 +1216,7 @@
       });
     }
 
-    /* LÓGICA DO JOGO DE CURIOSIDADES (NOVO) */
+    /* JOGO DE CURIOSIDADES */
     const curiosidadesArray = [
         { p: "Por que as estrelas brilham?", r: "Elas são bolas de gás quente muito brilhantes!", e1: "⭐", e2: "🔥" },
         { p: "Os peixes dormem?", r: "Sim! Mas eles dormem de olhos abertos.", e1: "🐟", e2: "😴" },
@@ -1224,7 +1235,7 @@
             document.getElementById('fcEmojiPergunta').innerText = curiosidadesArray[curIdx].e1;
             document.getElementById('fcTextoResposta').innerText = curiosidadesArray[curIdx].r;
             document.getElementById('fcEmojiResposta').innerText = curiosidadesArray[curIdx].e2;
-        }, 300); // Espera o cartão desvirar antes de trocar o texto
+        }, 300); 
     }
     function virarFlashcard() {
         document.getElementById('flashcardCuriosidade').classList.toggle('flipped');
@@ -1376,19 +1387,46 @@
     function mudarVozSelecionada(idx) { if (!isVip) return; vozSelecionadaIdx = idx; localStorage.setItem('xexeu_voz_idx', idx); }
     function ajustarVelocidadeFala(val) { if (!isVip) return; velocidadeFala = parseFloat(val); localStorage.setItem('xexeu_voz_vel', val); document.getElementById('labelVelocidadeFala').innerText = `${val}x`; }
 
-    // LOGIN / VIP
+    // LOGIN / VIP COM CONTROLE DA CENTRAL
     function trocarAbaVipAuth(aba) {
       if (aba === 'login') { document.getElementById('formVipLogin').style.display = 'block'; document.getElementById('formVipCadastro').style.display = 'none'; document.getElementById('tabBtnLoginVip').className = 'btn-tactile primary'; document.getElementById('tabBtnCadastroVip').className = 'btn-tactile'; } 
       else { document.getElementById('formVipLogin').style.display = 'none'; document.getElementById('formVipCadastro').style.display = 'block'; document.getElementById('tabBtnLoginVip').className = 'btn-tactile'; document.getElementById('tabBtnCadastroVip').className = 'btn-tactile primary'; }
     }
-    function executarLoginVip() { const s = document.getElementById('loginSenhaVip').value.trim(); if (s === "65628467") { isVip = true; localStorage.setItem('xexeu_vip', 'true'); alert('🎉 Acesso Mestre Ativado!'); atualizarInterfaceVipCompleta(); navegar('central'); return; } alert('Backend não conectado neste modelo demo.'); }
-    function executarCadastroVip() { alert('Backend não conectado neste modelo demo.'); }
-    function deslogarVip() { if (confirm('Deseja sair do VIP?')) { isVip = false; localStorage.removeItem('xexeu_vip'); atualizarInterfaceVipCompleta(); } }
+    
+    function executarLoginVip() { 
+        const s = document.getElementById('loginSenhaVip').value.trim(); 
+        if (s === "65628467") { 
+            isVip = true; 
+            localStorage.setItem('xexeu_vip', 'true'); 
+            alert('🎉 Acesso VIP Ativado!'); 
+            atualizarInterfaceVipCompleta(); 
+            return; 
+        } 
+        alert('Senha incorreta! Digite a senha mestra para testar.'); 
+    }
+    
+    function executarCadastroVip() { alert('Sistema de pagamentos não conectado nesta demonstração.'); }
+    
+    function deslogarVip() { 
+        if (confirm('Deseja sair do VIP?')) { 
+            isVip = false; 
+            localStorage.removeItem('xexeu_vip'); 
+            atualizarInterfaceVipCompleta(); 
+        } 
+    }
+    
     function atualizarInterfaceVipCompleta() {
+      // Ajusta o painel de Configurações
       document.getElementById('barraFlutuanteVip').style.display = isVip ? 'none' : 'flex';
       document.getElementById('txtStatusVipAtual').innerHTML = isVip ? 'Plano: <strong style="color:#059669;">👑 VIP Ativo</strong>' : 'Plano: <strong style="color:#D97706;">Grátis (Básico)</strong>';
       document.getElementById('bloqueioVozAviso').style.display = isVip ? 'none' : 'block';
-      document.getElementById('selectVozVip').disabled = !isVip; document.getElementById('rangeVelocidadeFala').disabled = !isVip;
+      document.getElementById('selectVozVip').disabled = !isVip; 
+      document.getElementById('rangeVelocidadeFala').disabled = !isVip;
+      
+      // Controla o que aparece na Aba VIP (Vendas vs Central)
+      document.getElementById('areaVendaVip').style.display = isVip ? 'none' : 'block';
+      document.getElementById('centralVipConteudo').style.display = isVip ? 'block' : 'none';
+      
       renderThumbnailsLousa();
     }
   </script>
