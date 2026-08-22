@@ -95,12 +95,9 @@
     .game-card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 24px; border: 3px solid var(--border-color); box-shadow: var(--shadow-md); position: relative; }
     .game-card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
-    /* CASA DA TURMINHA - XEXÉU VIRTUAL (AGORA MAIOR E MAIS PRÓXIMO) */
+    /* CASA DA TURMINHA - XEXÉU VIRTUAL */
     .mascote-virtual { position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; animation: floatIcon 4s infinite; z-index: 10; margin: 0 auto; width: max-content; }
-    
-    /* IMAGEM AUMENTADA PARA 230px PARA FICAR MAIS PRÓXIMA */
     .mascote-virtual img { width: 230px; height: 230px; object-fit: contain; filter: drop-shadow(0 12px 15px rgba(0,0,0,0.2)); transition: transform 0.2s; margin-top: 15px;}
-    
     .mascote-virtual img:active { transform: scale(0.85); }
     .balao-fala { position: absolute; top: -30px; right: -30px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; z-index: 20; }
     .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateY(0) scale(1); }
@@ -152,19 +149,13 @@
     .color-btn { width: 44px; height: 44px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 4px 6px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.2s; flex-shrink: 0; }
     .color-btn:active { transform: scale(0.9); box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 
-    .game-choice-btn { background: #FFFFFF; border: 3px solid #8B5CF6; box-shadow: 0 5px 0 #7C3AED; color: #6D28D9; font-size: 24px; font-weight: 800; padding: 16px 28px; border-radius: 16px; cursor: pointer; min-width: 90px; transition: transform 0.1s; }
-    .game-choice-btn:active { transform: translateY(4px) !important; box-shadow: 0 1px 0 #7C3AED !important; }
-    .game-choice-btn.correct { background: #10B981 !important; border-color: #059669 !important; box-shadow: 0 5px 0 #047857 !important; color: #FFF !important; transform: scale(1.1) translateY(4px) !important; }
-    .game-choice-btn.wrong { background: #EF4444 !important; border-color: #DC2626 !important; box-shadow: 0 5px 0 #991B1B !important; color: #FFF !important; animation: shakeError 0.4s; }
-    @keyframes shakeError { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
-
     .level-badge-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
     .level-btn { background: #F1F5F9; border: 2px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; transition: all 0.2s; }
     .level-btn.active { background: var(--primary); color: #FFF; border-color: var(--primary); transform: scale(1.05); }
     .level-btn.vip-level { border-color: #FCD34D; background: #FFFBEB; color: #92400E; }
     .level-btn.vip-level.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; border-color: #B45309; }
 
-    /* JOGO DE EVOLUÇÃO (ÁRVORE) */
+    /* JOGO DE EVOLUÇÃO (ÁRVORE - AUTOMÁTICO) */
     .tree-game-bg { background: radial-gradient(circle at center, #1E293B, #0F172A); border-radius: var(--radius-lg); padding: 20px; position: relative; overflow: hidden; min-height: 480px; color: #FFF; border: 4px solid #334155; }
     .tree-header { background: rgba(0,0,0,0.5); padding: 12px 20px; border-radius: 50px; display: flex; justify-content: center; align-items: center; gap: 16px; width: max-content; margin: 0 auto 30px; border: 2px solid #475569; }
     .tree-sun-text { font-size: 26px; font-weight: 900; color: #FDE047; text-shadow: 0 0 10px rgba(253, 224, 71, 0.5); }
@@ -186,10 +177,6 @@
     .form-input { width: 100%; padding: 14px 16px; font-size: 16px; border: 2.5px solid #CBD5E1; border-radius: var(--radius-md); font-weight: 700; margin-bottom: 12px; outline: none; background: #FFFFFF; }
     #appToast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: #1E293B; color: #FFF; padding: 12px 24px; border-radius: 50px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.25); z-index: 999999; transition: transform 0.4s; }
     #appToast.active { transform: translateX(-50%) translateY(0); }
-
-    .popit-board { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; max-width: 420px; margin: 14px auto; background: #FDF4FF; border: 3px solid #F0ABFC; padding: 16px; border-radius: 20px; }
-    .popit-bubble { aspect-ratio: 1; border-radius: 50%; border: 2px solid #E879F9; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15), 0 4px 6px rgba(0,0,0,0.05); transition: all 0.1s ease; }
-    .popit-bubble.popped { transform: scale(0.88); box-shadow: inset 0 4px 0 rgba(0,0,0,0.2); opacity: 0.6; }
   </style>
 </head>
 <body>
@@ -233,7 +220,6 @@
       </div>
     </header>
 
-    <!-- NOME CURTO NO MENU -->
     <nav class="main-nav">
       <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Hub Central</button>
       <button class="nav-item-btn casa-item" onclick="navegar('casa')">🏡 Casa</button>
@@ -259,7 +245,7 @@
           <span class="hub-card-icon">🎨</span>
           <span class="hub-card-tag" style="background: #EFF6FF; color: var(--primary);">Jogos Educativos</span>
           <h4 class="hub-card-title">Estúdio de Jogos</h4>
-          <p class="hub-card-desc">Lousa, Árvore Mágica, bandinha, memória, quiz e +!</p>
+          <p class="hub-card-desc">Lousa, Árvore Mágica, bandinha, memória e muito mais!</p>
         </div>
         <div class="hub-card" onclick="navegar('tea')" style="border-color: #BAE6FD;">
           <span class="hub-card-icon">🧩</span>
@@ -271,7 +257,7 @@
           <span class="hub-card-icon">👑</span>
           <span class="hub-card-tag" style="background: #FDF2F8; color: var(--pink);">Área VIP</span>
           <h4 class="hub-card-title">Central VIP & Drives</h4>
-          <p class="hub-card-desc">Acesse os drives exclusivos, ouça as vozes dos personagens e mais!</p>
+          <p class="hub-card-desc">Acesse drives exclusivos, sintetizador de vozes e lousa completa!</p>
         </div>
       </div>
     </div>
@@ -297,7 +283,6 @@
           </div>
         </div>
         
-        <!-- QUARTINHO (ADICIONADO ID PARA PARTICULAS) -->
         <div id="quartoXexeu" style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; height: 280px; margin: 0 auto 20px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
           <div id="filtroNoite" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.8); display: none; z-index: 1;"></div>
           <div class="mascote-virtual" id="mascoteXexeuHome" onclick="animarMascote()">
@@ -306,7 +291,6 @@
           </div>
         </div>
 
-        <!-- BOTÕES DE AÇÃO ATUALIZADOS COM BANHO E FESTA -->
         <div style="display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;">
           <button class="btn-tactile" style="border-color: #EF4444; color: #B91C1C; padding: 10px 14px; font-size: 14px;" onclick="acaoPet('alimentar')">🍎 Comida</button>
           <button class="btn-tactile" style="border-color: #F59E0B; color: #B45309; padding: 10px 14px; font-size: 14px;" onclick="acaoPet('brincar')">🎾 Brincar</button>
@@ -323,12 +307,9 @@
         <div class="banner-hero-box">
           <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994339/BANNER_SITE_TURMINHA_DO_XEXEU.png" alt="Banner Turminha do Xexéu">
         </div>
-
         <div class="game-card" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="game-card-title">
-              <span>⏳ Tempo de Tela</span>
-            </div>
+            <div class="game-card-title"><span>⏳ Tempo de Tela</span></div>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
               <button class="btn-tactile" onclick="iniciarTimer(2)">2 Min</button>
               <button class="btn-tactile" onclick="iniciarTimer(5)">5 Min</button>
@@ -352,7 +333,6 @@
         <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="TikTok"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TIKTOK.png" alt="TikTok"></a>
         <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-btn-round" title="Spotify"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/SPOTIFY.png" alt="Spotify"></a>
       </div>
-
       <div class="game-card">
         <div class="game-card-title"><span>✨ Conheça Todos os Personagens</span></div>
         <div class="family-group-box"><div class="family-group-title"><span>✨ Mascotes Oficiais</span></div><div class="chars-grid" id="gridMascotes"></div></div>
@@ -375,14 +355,13 @@
           <button class="game-subtab-btn" onclick="trocarJogo('lousa')">🎨 Lousa Mágica</button>
           <button class="game-subtab-btn" onclick="trocarJogo('banda')">🥁 Bandinha</button>
           <button class="game-subtab-btn" onclick="trocarJogo('contar')">🔢 Contar</button>
-          <button class="game-subtab-btn" onclick="trocarJogo('memoria')">🧠 Memória</button>
           <button class="game-subtab-btn" onclick="navegar('vip')" style="border-color: #EC4899; color: #BE185D;">👑 VIP</button>
         </div>
 
-        <!-- NOVO MINIGAME: ÁRVORE DE EVOLUÇÃO (CLICKER GAME) -->
+        <!-- NOVO MINIGAME: ÁRVORE DE EVOLUÇÃO (GERAÇÃO AUTOMÁTICA OTIMIZADA) -->
         <div id="subgame-arvore" class="minigame-container active">
             <h3 style="font-size: 22px; margin-bottom: 8px; color: #D97706;">A Árvore da Turminha 🌱</h3>
-            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Toque na Semente para ganhar Sóis e desbloquear a natureza!</p>
+            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">A natureza gera Sóis sozinha! Compre flores e abelhas para ela crescer mais rápido!</p>
             
             <div class="tree-game-bg" id="containerArvoreGame">
                 <div class="tree-header">
@@ -402,18 +381,18 @@
                         <div class="tree-node locked" id="nodeFlor" onclick="comprarNode('flor')">
                             <span class="tree-node-icon">🌸</span>
                             <div class="tree-node-badge" id="badgeFlor">🔒 20 ☀️</div>
-                            <span style="position: absolute; top: -25px; font-size: 11px; background: rgba(0,0,0,0.8); padding: 2px 6px; border-radius: 10px; width: max-content;">+1 por clique</span>
+                            <span style="position: absolute; top: -25px; font-size: 11px; background: rgba(0,0,0,0.8); padding: 2px 6px; border-radius: 10px; width: max-content;">+1 ☀️/clique</span>
                         </div>
                         <div class="tree-node locked" id="nodeAbelha" onclick="comprarNode('abelha')">
                             <span class="tree-node-icon">🐝</span>
                             <div class="tree-node-badge" id="badgeAbelha">🔒 50 ☀️</div>
-                            <span style="position: absolute; top: -25px; font-size: 11px; background: rgba(0,0,0,0.8); padding: 2px 6px; border-radius: 10px; width: max-content;">+1 ☀️/s auto</span>
+                            <span style="position: absolute; top: -25px; font-size: 11px; background: rgba(0,0,0,0.8); padding: 2px 6px; border-radius: 10px; width: max-content;">+2 ☀️/s auto</span>
                         </div>
                     </div>
 
                     <div class="tree-node" id="nodeSemente" onclick="clicarSemente(event)" style="border-color: #FDE047; box-shadow: 0 0 20px rgba(253,224,71,0.5);">
                         <span class="tree-node-icon">🌱</span>
-                        <div class="tree-node-badge" style="background:#059669; border-color:#10B981;">Plante-me!</div>
+                        <div class="tree-node-badge" style="background:#059669; border-color:#10B981;">Toque-me!</div>
                     </div>
 
                     <svg style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;">
@@ -425,7 +404,6 @@
             </div>
         </div>
 
-        <!-- SUBGAMES (MANTIDOS E OCULTOS INICIALMENTE) -->
         <div id="subgame-lousa" class="minigame-container">
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Escolha um desenho para colorir ou use a lousa livre:</p>
           <div id="lousaThumbnails"></div>
@@ -455,23 +433,13 @@
 
         <div id="subgame-contar" class="minigame-container">
           <div class="level-badge-container">
-            <button class="level-btn active" id="btnNivelContar-1" onclick="setNivelContar(1)">Nível 1 (1 a 5)</button>
-            <button class="level-btn" id="btnNivelContar-2" onclick="setNivelContar(2)">Nível 2 (1 a 10)</button>
-            <button class="level-btn vip-level" id="btnNivelContar-3" onclick="setNivelContar(3)">👑 VIP (1 a 20)</button>
+            <button class="level-btn active" id="btnNivelContar-1" onclick="setNivelContar(1)">Nível 1</button>
+            <button class="level-btn" id="btnNivelContar-2" onclick="setNivelContar(2)">Nível 2</button>
+            <button class="level-btn vip-level" id="btnNivelContar-3" onclick="setNivelContar(3)">👑 VIP</button>
           </div>
           <h3 style="font-size: 20px; margin-bottom: 12px;">Quantos amiguinhos estão no jardim?</h3>
           <div id="boxContarDisplay" style="display: flex; justify-content: center; gap: 12px; min-height: 100px; flex-wrap: wrap; margin-bottom: 20px;"></div>
           <div id="boxContarBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
-        </div>
-
-        <div id="subgame-memoria" class="minigame-container">
-          <div class="level-badge-container">
-            <button class="level-btn active" id="btnNivelMemoria-1" onclick="setNivelMemoria(1)">Fácil</button>
-            <button class="level-btn" id="btnNivelMemoria-2" onclick="setNivelMemoria(2)">Médio</button>
-            <button class="level-btn vip-level" id="btnNivelMemoria-3" onclick="setNivelMemoria(3)">👑 VIP</button>
-          </div>
-          <h3 style="font-size: 20px; margin-bottom: 16px;">Encontre todos os pares!</h3>
-          <div class="memory-grid" id="memoryGridContainer"></div>
         </div>
       </div>
     </div>
@@ -489,6 +457,13 @@
         <div class="game-card">
           <div class="game-card-title"><span>🗣️ Prancha de Fala (CAA)</span></div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px;" id="caaContainerCards"></div>
+          <div style="margin-top: 16px; padding-top: 14px; border-top: 2px solid var(--border-color);">
+            <div style="display: flex; gap: 8px;">
+              <input type="text" id="novoCaaEmoji" class="form-input" style="width: 65px; margin-bottom: 0; text-align: center;" placeholder="🧸">
+              <input type="text" id="novoCaaTexto" class="form-input" style="flex: 1; margin-bottom: 0;" placeholder="Ex: Desenhar">
+              <button class="btn-tactile primary" onclick="adicionarCardCaa()">Criar</button>
+            </div>
+          </div>
         </div>
         <div class="game-card" style="text-align: center;">
           <div class="game-card-title"><span>🌬️ Treino da Calma</span></div>
@@ -504,7 +479,6 @@
           <span>🎨 Lousa da Calma</span>
           <button class="btn-tactile green" onclick="limparLousaSensorial()">✨ Apagar Tudo</button>
         </div>
-        <p style="font-size: 13px; color: #065F46; font-weight: 600; margin-bottom: 10px;">Passe o dedo na tela escura para criar mágica:</p>
         <div class="lousa-tea-container" style="width: 100%; height: 60vh; min-height: 400px; border-radius: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); touch-action: none;">
           <canvas id="lousaSensorialTea" style="background: #111827; width: 100%; height: 100%; cursor: crosshair; display: block; touch-action: none;"></canvas>
         </div>
@@ -630,27 +604,24 @@
       }
     }
 
-    // A Mágica de Gerar Partículas (Bolhas ou Confetes)
     function gerarParticulasNoQuarto(emoji, qtd) {
         const quarto = document.getElementById('quartoXexeu');
         for(let i = 0; i < qtd; i++) {
             const p = document.createElement('div');
             p.innerText = emoji;
             p.style.position = 'absolute';
-            p.style.fontSize = (Math.random() * 20 + 20) + 'px'; // Tamanhos variados
+            p.style.fontSize = (Math.random() * 20 + 20) + 'px'; 
             p.style.left = (Math.random() * 90 + 5) + '%';
-            p.style.top = (Math.random() * 50 + 50) + '%'; // Começa do meio para baixo
+            p.style.top = (Math.random() * 50 + 50) + '%'; 
             p.style.pointerEvents = 'none';
             p.style.zIndex = '15';
             p.style.transition = 'all 1.5s ease-out';
             quarto.appendChild(p);
             
-            // Força a renderização e depois ativa a transição
             setTimeout(() => {
                 p.style.transform = `translateY(-180px) rotate(${Math.random()*360}deg)`;
                 p.style.opacity = '0';
             }, 50);
-            
             setTimeout(() => p.remove(), 1600);
         }
     }
@@ -678,15 +649,15 @@
           petStatus.alegria = Math.min(100, petStatus.alegria + 15); 
           img.src = LINKS_ANIMACOES_XEXEU.brincando; 
           tocarSomPop();
-          gerarParticulasNoQuarto('🫧', 15); // Solta as bolhas
+          gerarParticulasNoQuarto('🫧', 15); 
           exibirToast("Que banho refrescante!");
       }
       else if (acao === 'festa') { 
-          petStatus.alegria = 100; // Enche tudo!
-          petStatus.energia = Math.max(0, petStatus.energia - 30); // Cansa bastante
+          petStatus.alegria = 100; 
+          petStatus.energia = Math.max(0, petStatus.energia - 30); 
           img.src = LINKS_ANIMACOES_XEXEU.brincando; 
           tocarSomAcerto();
-          gerarParticulasNoQuarto('🎉', 25); // Solta os confetes
+          gerarParticulasNoQuarto('🎉', 25); 
           exibirToast("Festa da Turminha!");
       }
       else if (acao === 'dormir') {
@@ -708,26 +679,26 @@
       atualizarBarrasPet();
     }
     
-    // LOOP DE TEMPO (Ajustado para carregar energia dormindo)
     setInterval(() => { 
       if (petDormindo) {
-          // SE ESTIVER DORMINDO, ENERGIA SOBE RAPIDINHO! Fome cai devagar.
           petStatus.energia = Math.min(100, petStatus.energia + 10);
           petStatus.fome = Math.max(0, petStatus.fome - 1);
           atualizarBarrasPet();
       } else if (!petAcaoAtiva) { 
-          // SE ESTIVER ACORDADO E PARADO, VAI FICANDO CANSADO E COM FOME
           petStatus.fome = Math.max(0, petStatus.fome - 2); 
           petStatus.energia = Math.max(0, petStatus.energia - 1); 
           petStatus.alegria = Math.max(0, petStatus.alegria - 2); 
           atualizarBarrasPet(); 
       } 
-    }, 5000); // Roda a cada 5 segundos
+    }, 5000); 
 
     // =========================================================================
-    // LÓGICA DO JOGO DA ÁRVORE MÁGICA
+    // LÓGICA DO JOGO DA ÁRVORE MÁGICA - AGORA 100% AUTOMÁTICO DESDE O INÍCIO!
     // =========================================================================
-    let arvoreData = JSON.parse(localStorage.getItem('xexeu_arvore')) || { sols: 0, powerClick: 1, qtdFlores: 0, qtdAbelhas: 0, xexeuDesbloqueado: false };
+    // Modificado para a árvore já gerar 1 Sol/seg por natureza
+    let arvoreData = JSON.parse(localStorage.getItem('xexeu_arvore')) || { 
+        sols: 0, powerClick: 1, autoSolsBase: 1, qtdFlores: 0, qtdAbelhas: 0, xexeuDesbloqueado: false 
+    };
 
     function clicarSemente(e) {
         arvoreData.sols += arvoreData.powerClick;
@@ -756,7 +727,10 @@
     function salvarEAtualizarArvore() {
         localStorage.setItem('xexeu_arvore', JSON.stringify(arvoreData));
         document.getElementById('uiSols').innerText = Math.floor(arvoreData.sols);
-        document.getElementById('uiSolsPorSec').innerText = arvoreData.qtdAbelhas;
+        
+        // Agora calcula a taxa automática (1 base + 2 por cada abelha)
+        let ganhosPorSegundo = arvoreData.autoSolsBase + (arvoreData.qtdAbelhas * 2);
+        document.getElementById('uiSolsPorSec').innerText = ganhosPorSegundo;
         
         const florBtn = document.getElementById('nodeFlor'); const abelhaBtn = document.getElementById('nodeAbelha'); const xexeuBtn = document.getElementById('nodeXexeu');
         if (arvoreData.sols >= 20 || arvoreData.qtdFlores > 0) { florBtn.classList.remove('locked'); document.getElementById('lineFlor').setAttribute('stroke', '#FDE047'); } else { florBtn.classList.add('locked'); }
@@ -770,7 +744,33 @@
 
     function iniciarLoopArvoreGame() {
         salvarEAtualizarArvore();
-        setInterval(() => { if(arvoreData.qtdAbelhas > 0) { arvoreData.sols += (arvoreData.qtdAbelhas); salvarEAtualizarArvore(); } }, 1000);
+        setInterval(() => { 
+            // Gera sóis sempre, independente de cliques, e as abelhas turbinam!
+            let ganhosPorSegundo = arvoreData.autoSolsBase + (arvoreData.qtdAbelhas * 2);
+            arvoreData.sols += ganhosPorSegundo; 
+            salvarEAtualizarArvore(); 
+            
+            // Cria uma pequena animação de solzinho caindo na árvore para mostrar a geração!
+            const container = document.getElementById('containerArvoreGame');
+            if(container.offsetParent !== null) { // Só anima se o jogo estiver aberto na tela
+                const sunAnim = document.createElement('div');
+                sunAnim.innerText = '☀️';
+                sunAnim.style.position = 'absolute';
+                sunAnim.style.left = (Math.random() * 60 + 20) + '%';
+                sunAnim.style.top = '20%';
+                sunAnim.style.fontSize = '18px';
+                sunAnim.style.opacity = '0.7';
+                sunAnim.style.pointerEvents = 'none';
+                sunAnim.style.transition = 'all 1.5s linear';
+                container.appendChild(sunAnim);
+                
+                setTimeout(() => {
+                    sunAnim.style.transform = 'translateY(150px)';
+                    sunAnim.style.opacity = '0';
+                }, 50);
+                setTimeout(() => sunAnim.remove(), 1500);
+            }
+        }, 1000); // 1 segundo exato
     }
 
     // =========================================================================
@@ -821,7 +821,6 @@
       }
     }
 
-    // PERSONAGENS, LOUSA E COMPONENTES BÁSICOS QUE JÁ ESTAVAM FUNCIONANDO
     const PERSONAGENS = [
       { id: 'xexeu', familia: 'mascotes', nome: 'Xexéu', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_XEXEU.png', letra: 'X', tag: 'Mascote', quem: 'Pássaro azul.', gosto: 'Cantar.', frase: 'Educando com alegria!' },
       { id: 'capile', familia: 'mascotes', nome: 'Capilé', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994882/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_CAPILE.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994874/DESENHOS_DA_LOUSA_CAPILE.png', letra: 'C', tag: 'Companheiro', quem: 'Cachorrinho.', gosto: 'Correr.', frase: 'Au au!' }
