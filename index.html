@@ -64,22 +64,22 @@
     .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
     .btn-icon-round { width: 46px; height: 46px; border-radius: 50%; padding: 0; font-size: 18px; }
 
-    /* ANIMAÇÕES DE DESTAQUE (PISCAR/BRILHAR) */
+    /* ANIMAÇÕES DE DESTAQUE (PISCAR/BRILHAR - APENAS LUZ, SEM BALANÇAR) */
     @keyframes piscaFesta {
-      0%, 100% { box-shadow: 0 5px 0 #7C3AED, 0 0 0px transparent; transform: scale(1); }
-      50% { box-shadow: 0 5px 0 #7C3AED, 0 0 20px #EC4899; transform: scale(1.06) rotate(2deg); border-color:#EC4899; }
+      0%, 100% { box-shadow: 0 5px 0 #7C3AED, 0 0 0px transparent; }
+      50% { box-shadow: 0 5px 0 #7C3AED, 0 0 20px #EC4899; border-color:#EC4899; }
     }
     @keyframes piscaBanho {
-      0%, 100% { box-shadow: 0 5px 0 #0284C7, 0 0 0px transparent; transform: scale(1); }
-      50% { box-shadow: 0 5px 0 #0284C7, 0 0 18px #38BDF8; transform: scale(1.06); border-color:#38BDF8; }
+      0%, 100% { box-shadow: 0 5px 0 #0284C7, 0 0 0px transparent; }
+      50% { box-shadow: 0 5px 0 #0284C7, 0 0 18px #38BDF8; border-color:#38BDF8; }
     }
     @keyframes piscaVip {
-      0%, 100% { filter: brightness(1); }
-      50% { filter: brightness(1.25) drop-shadow(0 0 8px #F59E0B); transform: scale(1.04); }
+      0%, 100% { filter: brightness(1) drop-shadow(0 0 0px transparent); }
+      50% { filter: brightness(1.15) drop-shadow(0 0 8px #F59E0B); }
     }
-    .btn-pisca-festa { animation: piscaFesta 1.5s infinite; }
-    .btn-pisca-banho { animation: piscaBanho 1.5s infinite; }
-    .btn-pisca-vip { animation: piscaVip 1.5s infinite; }
+    .btn-pisca-festa { animation: piscaFesta 2s infinite; }
+    .btn-pisca-banho { animation: piscaBanho 2s infinite; }
+    .btn-pisca-vip { animation: piscaVip 2s infinite; }
 
     nav.main-nav { display: flex; gap: 8px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-lg); border: 3px solid var(--border-color); box-shadow: var(--shadow-sm); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     nav.main-nav::-webkit-scrollbar { display: none; }
