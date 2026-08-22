@@ -95,7 +95,6 @@
     .social-btn-round { width: 52px; height: 52px; border-radius: 50%; background: #F8FAFC; border: 2px solid #CBD5E1; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 0 #CBD5E1; transition: all 0.2s; }
     .social-btn-round:hover { transform: translateY(-4px); box-shadow: 0 8px 0 var(--primary); border-color: var(--primary); }
     .social-btn-round img { width: 28px; height: 28px; object-fit: contain; }
-
     .banner-hero-box img { width: 100%; height: auto; border-radius: var(--radius-lg); object-fit: cover; border: 3px solid var(--border-color); display: block; }
     .family-group-box { margin-top: 20px; background: #F8FAFC; padding: 20px; border-radius: var(--radius-lg); border: 2px dashed #CBD5E1; }
     .family-group-title { font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 16px; text-align: left; }
@@ -108,7 +107,7 @@
     .breathe-bubble.expand { transform: scale(1.6); background: var(--green); box-shadow: 0 0 30px rgba(16, 185, 129, 0.4); }
     .breathe-bubble.hold { transform: scale(1.6); background: #8B5CF6; box-shadow: 0 0 30px rgba(139, 92, 246, 0.4); }
     .breathe-bubble.shrink { transform: scale(1); background: var(--tea-blue); }
-
+    
     .chars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
     .char-card-item { background: #FFFFFF; border: 3px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; text-align: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s; box-shadow: 0 4px 0 var(--border-color); }
     .char-card-item:hover { transform: translateY(-6px) scale(1.03); border-color: var(--primary); box-shadow: 0 8px 0 var(--primary); }
@@ -452,7 +451,7 @@
           </div>
           <h3 style="font-size: 20px; margin-bottom: 8px;">Com qual letra começa?</h3>
           <h2 id="nomeLetraAlvo" style="color: var(--purple); font-size: 32px; font-weight: 800; margin-bottom: 10px;">Xexéu</h2>
-          <img id="imgLetraAlvo" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" alt="Letra Alvo" style="width: 120px; height: 120px; object-fit: contain; margin: 0 auto 16px; display: block;">
+          <img id="imgLetraAlvo" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" style="width: 120px; height: 120px; object-fit: contain; margin: 0 auto 16px; display: block;">
           <div id="boxLetrasBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
@@ -489,7 +488,6 @@
           <img id="imgQuizAlvo" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" style="width: 130px; height: 130px; object-fit: contain; margin: 0 auto 16px; display: block;">
           <div id="boxQuizBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
-
       </div>
     </div>
 
@@ -604,7 +602,7 @@
       </div>
     </div>
     
-    <!-- PÁGINA: ROTINA E VÍDEOS (MANTIDOS) -->
+    <!-- PÁGINA: ROTINA E VÍDEOS -->
     <div id="page-rotina" class="page-box">
       <div class="game-card">
         <div class="game-card-title"><span>📅 Minha Rotina Divertida</span></div>
@@ -823,6 +821,9 @@
       if (audioXexeuAtual) { audioXexeuAtual.pause(); audioXexeuAtual.currentTime = 0; }
       audioXexeuAtual = new Audio(urlAudio); audioXexeuAtual.volume = volumeVoz; audioXexeuAtual.play().catch(()=>{});
     }
+
+    let petStatus = { fome: 60, energia: 80, alegria: 90 }; 
+    let petDormindo = false; let petAcaoAtiva = false; let timeoutAcaoPet = null;
 
     function animarMascote() {
       if(petDormindo) return;
