@@ -47,39 +47,13 @@
     .xp-bar-container { position: absolute; bottom: 0; left: 0; height: 4px; background: #FDE68A; width: 100%; }
     .xp-bar-fill { height: 100%; background: #D97706; width: 0%; transition: width 0.5s ease-out; }
 
-    /* BOTÕES TÁTEIS E DINÂMICOS */
-    .btn-tactile { 
-      background: #FFFFFF; border: 2px solid #CBD5E1; box-shadow: var(--shadow-3d); 
-      color: var(--text-main); padding: 12px 20px; border-radius: var(--radius-md); 
-      font-weight: 700; font-size: 15px; cursor: pointer; display: inline-flex; 
-      align-items: center; justify-content: center; gap: 8px; 
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      text-decoration: none; position: relative; overflow: hidden;
-    }
-    .btn-tactile:hover { filter: brightness(1.05); transform: translateY(-2px); }
-    .btn-tactile:active { transform: translateY(4px) scale(0.96) !important; box-shadow: 0 1px 0px #CBD5E1 !important; }
+    .btn-tactile { background: #FFFFFF; border: 2px solid #CBD5E1; box-shadow: var(--shadow-3d); color: var(--text-main); padding: 12px 20px; border-radius: var(--radius-md); font-weight: 700; font-size: 15px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.1s; text-decoration: none; }
+    .btn-tactile:active { transform: translateY(4px); box-shadow: 0 1px 0px #CBD5E1; }
     .btn-tactile.primary { background: var(--primary); border-color: var(--primary-hover); color: #FFF; box-shadow: var(--shadow-3d-primary); }
     .btn-tactile.vip { background: linear-gradient(135deg, #F59E0B, #D97706); border-color: #B45309; color: #FFF; box-shadow: var(--shadow-3d-vip); }
     .btn-tactile.green { background: var(--green); border-color: var(--green-dark); color: #FFF; box-shadow: var(--shadow-3d-green); }
     .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
     .btn-icon-round { width: 46px; height: 46px; border-radius: 50%; padding: 0; font-size: 18px; }
-
-    /* ANIMAÇÕES DE DESTAQUE (PISCAR/BRILHAR - APENAS LUZ, SEM BALANÇAR) */
-    @keyframes piscaFesta {
-      0%, 100% { box-shadow: 0 5px 0 #7C3AED, 0 0 0px transparent; }
-      50% { box-shadow: 0 5px 0 #7C3AED, 0 0 20px #EC4899; border-color:#EC4899; }
-    }
-    @keyframes piscaBanho {
-      0%, 100% { box-shadow: 0 5px 0 #0284C7, 0 0 0px transparent; }
-      50% { box-shadow: 0 5px 0 #0284C7, 0 0 18px #38BDF8; border-color:#38BDF8; }
-    }
-    @keyframes piscaVip {
-      0%, 100% { filter: brightness(1) drop-shadow(0 0 0px transparent); }
-      50% { filter: brightness(1.15) drop-shadow(0 0 8px #F59E0B); }
-    }
-    .btn-pisca-festa { animation: piscaFesta 2s infinite; }
-    .btn-pisca-banho { animation: piscaBanho 2s infinite; }
-    .btn-pisca-vip { animation: piscaVip 2s infinite; }
 
     nav.main-nav { display: flex; gap: 8px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-lg); border: 3px solid var(--border-color); box-shadow: var(--shadow-sm); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     nav.main-nav::-webkit-scrollbar { display: none; }
@@ -177,20 +151,20 @@
     .memory-tile.matched { animation: popPulse 0.5s ease; border-color: var(--green); box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3); }
     @keyframes popPulse { 0% { transform: rotateY(180deg) scale(1); } 50% { transform: rotateY(180deg) scale(1.15); } 100% { transform: rotateY(180deg) scale(1); } }
 
-    /* CICLO DA POLINIZAÇÃO - INTERATIVO */
-    .ciclo-bg { background: linear-gradient(180deg, #E0F2FE 0%, #DCFCE7 100%); border-radius: var(--radius-lg); padding: 20px; position: relative; overflow: hidden; height: 420px; border: 4px solid #86EFAC; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+    /* CICLO DA POLINIZAÇÃO */
+    .ciclo-bg { background: linear-gradient(180deg, #E0F2FE 0%, #DCFCE7 100%); border-radius: var(--radius-lg); padding: 20px; position: relative; overflow: hidden; height: 400px; border: 4px solid #86EFAC; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
     .ciclo-header { background: rgba(255,255,255,0.8); padding: 8px 16px; border-radius: 50px; font-weight: 800; color: #059669; box-shadow: var(--shadow-sm); z-index: 10; border: 2px solid #6EE7B7; }
-    .ciclo-info-box { background: #FFF; border: 3px solid #38BDF8; border-radius: 16px; padding: 12px 20px; font-size: 15px; font-weight: 700; color: #0284C7; z-index: 10; width: 90%; max-width: 400px; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2); transition: all 0.3s; text-align: center; }
+    .ciclo-info-box { background: #FFF; border: 3px solid #38BDF8; border-radius: 16px; padding: 12px 20px; font-size: 15px; font-weight: 700; color: #0284C7; z-index: 10; margin-bottom: 20px; width: 90%; max-width: 400px; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2); transition: all 0.3s; }
     
-    .cena-natureza { position: relative; width: 100%; flex: 1; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 20px; z-index: 2;}
+    .cena-natureza { position: relative; width: 100%; flex: 1; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 20px;}
     .ciclo-chao { position: absolute; bottom: 0; width: 100%; height: 60px; background: #65A30D; border-radius: 0 0 14px 14px; z-index: 1; }
     
-    .ciclo-clima { position: absolute; top: 20px; font-size: 60px; transition: opacity 0.5s, transform 0.5s; z-index: 5; opacity: 0; transform: translateY(-20px); pointer-events: none;}
+    .ciclo-clima { position: absolute; top: 20px; font-size: 60px; transition: opacity 1s, transform 1s; z-index: 5; opacity: 0; transform: translateY(-20px); }
     .ciclo-clima.ativo { opacity: 1; transform: translateY(0); }
     
-    .ciclo-flor { font-size: 70px; z-index: 5; transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1); transform-origin: bottom center; transform: scale(0.8); }
+    .ciclo-flor { font-size: 70px; z-index: 5; transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1); transform-origin: bottom center; }
     
-    .ciclo-abelha { position: absolute; font-size: 50px; top: 30%; right: -60px; z-index: 6; opacity: 0; transition: transform 1.5s ease-in-out, opacity 1s; pointer-events: none;}
+    .ciclo-abelha { position: absolute; font-size: 50px; top: 30%; right: -60px; z-index: 6; opacity: 0; transition: transform 2.5s ease-in-out, opacity 1s; }
     .ciclo-abelha.flying-in { right: 50%; transform: translateX(50%) translateY(40px); opacity: 1; }
     .ciclo-abelha.flying-out { right: 120%; transform: translateY(-40px); opacity: 0; }
 
@@ -240,6 +214,7 @@
     </div>
   </div>
 
+  <!-- BARRA FLUTUANTE VIP -->
   <div class="vip-floating-bar" id="barraFlutuanteVip" onclick="navegar('vip')">
     <span style="font-size: 26px;">👑</span>
     <div style="flex: 1; text-align: center;">
@@ -410,10 +385,10 @@
           <button class="game-subtab-btn" onclick="navegar('vip')" style="border-color: #EC4899; color: #BE185D;">👑 VIP</button>
         </div>
 
-        <!-- JOGO: CICLO DA VIDA INTERATIVO -->
+        <!-- JOGO: CICLO DA VIDA -->
         <div id="subgame-ciclo" class="minigame-container active">
           <h3 style="font-size: 22px; margin-bottom: 8px; color: #059669;">A Mágica da Polinização 🌸</h3>
-          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Regue, dê sol, chame a abelhinha e colha o pólen para reiniciar o ciclo!</p>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Assista à natureza trabalhar sozinha e gerar Pólen para a Turminha!</p>
           
           <div class="ciclo-bg" id="containerCicloGame">
             <div class="ciclo-header">
@@ -421,19 +396,14 @@
             </div>
             
             <div class="cena-natureza">
-              <div class="ciclo-clima" id="cicloClima">☀️</div>
+              <div class="ciclo-clima" id="cicloClima">☀️ 🌧️</div>
               <div class="ciclo-abelha" id="cicloAbelha">🐝</div>
               <div class="ciclo-flor" id="cicloFlor">🌱</div>
               <div class="ciclo-chao"></div>
             </div>
 
-            <div style="z-index: 20; position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 8px;">
-              <div class="ciclo-info-box" id="cicloStatusText" style="margin-bottom: 0;">
-                A sementinha está dormindo na terra...
-              </div>
-              <div id="cicloControles" style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; min-height: 48px;">
-                <!-- Botões dinâmicos do ciclo -->
-              </div>
+            <div class="ciclo-info-box" id="cicloStatusText">
+              A sementinha está dormindo na terra...
             </div>
           </div>
         </div>
@@ -614,9 +584,9 @@
 
               <!-- FORM LOGIN -->
               <div id="formVipLogin">
-                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Digite seu e-mail de compra ou utilize o código mestre no campo de senha:</p>
-                <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail da compra">
-                <input type="password" id="loginSenhaVip" class="form-input" placeholder="Sua senha VIP">
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Digite sua senha (ou utilize o código mestre para liberação total):</p>
+                <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail da compra (opcional para mestre)">
+                <input type="password" id="loginSenhaVip" class="form-input" placeholder="Sua senha ou Código Mestre">
                 <button class="btn-tactile primary" id="btnEntrarVipSubmit" style="width: 100%;" onclick="executarAcaoVip('login')">Entrar no VIP 🚀</button>
               </div>
 
@@ -761,7 +731,7 @@
 
   <script>
     // =========================================================================
-    // COLE AQUI A URL DA SUA IMPLANTAÇÃO WEB (GOOGLE APPS SCRIPT)
+    // URL OFICIAL DA IMPLANTAÇÃO WEB (GOOGLE APPS SCRIPT)
     // =========================================================================
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwrmDcZf4u4nMmfUSmq25RB6dHhpq0dud_JKezy2aIhYwesh6JVxSP2Vb4xMSU9W31H/exec";
 
@@ -775,9 +745,6 @@
     let vozesDisponiveis = [];
     let vozSelecionadaIdx = localStorage.getItem('xexeu_voz_idx') || 0;
     let velocidadeFala = parseFloat(localStorage.getItem('xexeu_voz_vel') || 1.0);
-
-    // VARIÁVEL DE TRAVA GLOBAL DOS JOGOS (ANTI-SPAM)
-    let jogoBloqueado = false; 
 
     // ESTADO DO PET (XEXÉU)
     let petStatus = { fome: 70, energia: 80, alegria: 90 };
@@ -826,7 +793,7 @@
         carregarVozes();
         desenharCertificadoCanvas();
         atualizarBarrasPet();
-        prepararCicloInterativo(); 
+        iniciarLoopCicloVida(); 
 
         const enterLoginHandler = (e) => { if (e.key === 'Enter') executarAcaoVip('login'); };
         const enterCadHandler = (e) => { if (e.key === 'Enter') executarAcaoVip('cadastro'); };
@@ -873,31 +840,6 @@
     }
 
     // =========================================================================
-    // UX: CONFETES NOS ACERTOS
-    // =========================================================================
-    function criarConfeteUX(elemento) {
-      const rect = elemento.getBoundingClientRect();
-      for(let i = 0; i < 15; i++) {
-        let p = document.createElement('div');
-        p.innerText = ['🎉','✨','⭐','🎈', '🌸'][Math.floor(Math.random()*5)];
-        p.style.position = 'fixed';
-        p.style.left = (rect.left + rect.width / 2) + 'px';
-        p.style.top = (rect.top + rect.height / 2) + 'px';
-        p.style.fontSize = (Math.random() * 15 + 15) + 'px';
-        p.style.pointerEvents = 'none';
-        p.style.zIndex = 99999;
-        p.style.transition = 'all 0.8s cubic-bezier(0.25, 1, 0.5, 1)';
-        document.body.appendChild(p);
-        
-        setTimeout(() => {
-          p.style.transform = `translate(${Math.random() * 160 - 80}px, -${Math.random() * 200 + 50}px) rotate(${Math.random() * 360}deg)`;
-          p.style.opacity = '0';
-        }, 20);
-        setTimeout(() => p.remove(), 1000);
-      }
-    }
-
-    // =========================================================================
     // CASA DA TURMINHA (XEXÉU)
     // =========================================================================
     const LINKS_ANIMACOES_XEXEU = {
@@ -926,7 +868,7 @@
     }
 
     function animarMascote() {
-      if(petDormindo || petAcaoAtiva) return;
+      if(petDormindo) return;
       clearTimeout(timeoutAcaoPet); 
       petAcaoAtiva = true;
       document.getElementById('mascoteXexeuHome').classList.add('falando');
@@ -974,7 +916,6 @@
     function acaoPet(acao) {
       const img = document.getElementById('imgXexeuPet');
       if (petDormindo && acao !== 'dormir') { exibirToast("Shhhh! O Xexéu está dormindo."); return; }
-      if (petAcaoAtiva) return;
       if(img) { img.style.transform = 'scale(1.1)'; setTimeout(() => img.style.transform = 'scale(1)', 200); }
       clearTimeout(timeoutAcaoPet); 
       document.getElementById('mascoteXexeuHome').classList.remove('falando'); 
@@ -1266,11 +1207,11 @@
         } 
       }
       if (subjogo === 'banda') abrirInstrumento('bateria'); 
-      if (subjogo === 'contar') setNivelContar(nivelContar); 
-      if (subjogo === 'letras') setNivelLetras(nivelLetras); 
-      if (subjogo === 'memoria') setNivelMemoria(nivelMemoria); 
-      if (subjogo === 'quiz') setNivelQuiz(nivelQuiz); 
-      if (subjogo === 'sombras') setNivelSombras(nivelSombras);
+      if (subjogo === 'contar') iniciarJogoContar(); 
+      if (subjogo === 'letras') iniciarJogoLetras(); 
+      if (subjogo === 'memoria') iniciarJogoMemoria(); 
+      if (subjogo === 'quiz') iniciarJogoQuiz(); 
+      if (subjogo === 'sombras') iniciarJogoSombras();
     }
 
     function setNivelContar(n) { 
@@ -1282,7 +1223,6 @@
       iniciarJogoContar(); 
     }
     function iniciarJogoContar() {
-      jogoBloqueado = false;
       const q = Math.floor(Math.random() * (nivelContar===1?5:(nivelContar===2?10:20))) + 1; 
       const p = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
       const box = document.getElementById('boxContarDisplay'); 
@@ -1305,19 +1245,15 @@
         btn.className = 'game-choice-btn'; 
         btn.innerText = num;
         btn.onclick = () => { 
-          if (jogoBloqueado) return;
           if (num===q) { 
-            jogoBloqueado = true;
             btn.classList.add('correct'); 
             tocarSomAcerto(); 
             atualizarScore(5); 
-            criarConfeteUX(btn);
-            setTimeout(iniciarJogoContar, 1200); 
+            setTimeout(iniciarJogoContar, 800); 
           } else { 
-            jogoBloqueado = true;
             btn.classList.add('wrong'); 
             tocarSomErro(); 
-            setTimeout(()=>{btn.classList.remove('wrong'); jogoBloqueado = false;}, 500); 
+            setTimeout(()=>btn.classList.remove('wrong'), 500); 
           } 
         };
         bBox.appendChild(btn);
@@ -1333,7 +1269,6 @@
       iniciarJogoLetras(); 
     }
     function iniciarJogoLetras() {
-      jogoBloqueado = false;
       const p = PERSONAGENS[Math.floor(Math.random() * (nivelLetras===3?PERSONAGENS.length:8))];
       document.getElementById('nomeLetraAlvo').innerText = p.nome; 
       document.getElementById('imgLetraAlvo').src = p.img;
@@ -1346,19 +1281,15 @@
         btn.className = 'game-choice-btn'; 
         btn.innerText = l;
         btn.onclick = () => { 
-          if (jogoBloqueado) return;
           if (l===p.letra) { 
-            jogoBloqueado = true;
             btn.classList.add('correct'); 
             tocarSomAcerto(); 
             atualizarScore(5); 
-            criarConfeteUX(btn);
-            setTimeout(iniciarJogoLetras, 1200); 
+            setTimeout(iniciarJogoLetras, 800); 
           } else { 
-            jogoBloqueado = true;
             btn.classList.add('wrong'); 
             tocarSomErro(); 
-            setTimeout(()=>{btn.classList.remove('wrong'); jogoBloqueado = false;}, 500); 
+            setTimeout(()=>btn.classList.remove('wrong'), 500); 
           } 
         };
         bBox.appendChild(btn);
@@ -1374,7 +1305,6 @@
       iniciarJogoSombras(); 
     }
     function iniciarJogoSombras() {
-      jogoBloqueado = false;
       const pool = nivelSombras===3?PERSONAGENS:PERSONAGENS.slice(0,8); 
       const p = pool[Math.floor(Math.random()*pool.length)];
       const img = document.getElementById('imgSombraAlvo'); 
@@ -1389,20 +1319,16 @@
         btn.style.padding = '8px'; 
         btn.innerHTML = `<img src="${o.img}" style="width:50px;height:50px;object-fit:contain;display:block;"><span style="font-size:13px;">${o.nome}</span>`;
         btn.onclick = () => { 
-          if (jogoBloqueado) return;
           if (o.nome===p.nome) { 
-            jogoBloqueado = true;
             btn.style.borderColor="var(--green)"; 
             img.style.filter="none"; 
             tocarSomAcerto(); 
             atualizarScore(5); 
-            criarConfeteUX(btn);
             setTimeout(iniciarJogoSombras, 1200); 
           } else { 
-            jogoBloqueado = true;
             btn.style.animation="shakeError 0.4s"; 
             tocarSomErro(); 
-            setTimeout(()=>{btn.style.animation=""; jogoBloqueado = false;}, 600); 
+            setTimeout(()=>btn.style.animation="", 600); 
           } 
         };
         bBox.appendChild(btn);
@@ -1442,7 +1368,6 @@
               tile.classList.add('matched'); 
               tocarSomAcerto(); 
               atualizarScore(5); 
-              criarConfeteUX(tile);
               s1=null; 
             } else { 
               trava=true; 
@@ -1471,7 +1396,6 @@
       iniciarJogoQuiz(); 
     }
     function iniciarJogoQuiz() {
-      jogoBloqueado = false;
       const p = PERSONAGENS[Math.floor(Math.random() * (nivelQuiz===3?PERSONAGENS.length:6))];
       document.getElementById('imgQuizAlvo').src = p.img; 
       const bBox = document.getElementById('boxQuizBotoes'); 
@@ -1482,118 +1406,64 @@
         btn.className = 'game-choice-btn'; 
         btn.innerText = nome;
         btn.onclick = () => { 
-          if (jogoBloqueado) return;
           if (nome===p.nome) { 
-            jogoBloqueado = true;
             btn.classList.add('correct'); 
             tocarSomAcerto(); 
             atualizarScore(5); 
-            criarConfeteUX(btn);
-            setTimeout(iniciarJogoQuiz, 1200); 
+            setTimeout(iniciarJogoQuiz, 800); 
           } else { 
-            jogoBloqueado = true;
             btn.classList.add('wrong'); 
             tocarSomErro(); 
-            setTimeout(()=>{btn.classList.remove('wrong'); jogoBloqueado = false;}, 500); 
+            setTimeout(()=>btn.classList.remove('wrong'), 500); 
           } 
         }; 
         bBox.appendChild(btn);
       });
     }
 
-    /* =========================================================================
-       NOVO JOGO DO CICLO DA VIDA INTERATIVO
-       ========================================================================= */
-    let cicloAtivo = 0; // 0: Semente, 1: Flor, 2: Abelha voando, 3: Colher
-    let btnAguaAtivado = false;
-    let btnSolAtivado = false;
+    /* CICLO DA POLINIZAÇÃO AUTOMÁTICA */
+    let cicloEstado = 0;
     let totalPolen = parseInt(localStorage.getItem('xexeu_polen')) || 0;
 
-    function prepararCicloInterativo() {
+    function iniciarLoopCicloVida() {
       document.getElementById('uiPolen').innerText = totalPolen;
-      renderControlesCiclo();
-    }
+      setInterval(() => {
+        const cena = document.getElementById('containerCicloGame');
+        if(!cena || cena.offsetParent === null) return; 
 
-    function renderControlesCiclo() {
-      const box = document.getElementById('cicloControles');
-      if (!box) return;
-      box.innerHTML = '';
-      const statusText = document.getElementById('cicloStatusText');
+        cicloEstado++;
+        if(cicloEstado > 4) cicloEstado = 1;
 
-      if (cicloAtivo === 0) {
-        statusText.innerText = "A sementinha está dormindo na terra... Dê Água e Sol!";
-        
-        const btnAgua = document.createElement('button');
-        btnAgua.className = 'btn-tactile';
-        btnAgua.style.borderColor = '#38BDF8';
-        btnAgua.style.color = '#0284C7';
-        btnAgua.innerHTML = '💧 Regar';
-        btnAgua.onclick = () => interagirCiclo('agua', btnAgua);
-        if(btnAguaAtivado) { btnAgua.disabled = true; btnAgua.style.opacity = '0.5'; }
-        box.appendChild(btnAgua);
+        const flor = document.getElementById('cicloFlor');
+        const abelha = document.getElementById('cicloAbelha');
+        const clima = document.getElementById('cicloClima');
+        const statusBox = document.getElementById('cicloStatusText');
 
-        const btnSol = document.createElement('button');
-        btnSol.className = 'btn-tactile';
-        btnSol.style.borderColor = '#FCD34D';
-        btnSol.style.color = '#B45309';
-        btnSol.innerHTML = '☀️ Dar Sol';
-        btnSol.onclick = () => interagirCiclo('sol', btnSol);
-        if(btnSolAtivado) { btnSol.disabled = true; btnSol.style.opacity = '0.5'; }
-        box.appendChild(btnSol);
-      } 
-      else if (cicloAtivo === 1) {
-        statusText.innerText = "🌸 A flor desabrochou na natureza! Chame a abelhinha.";
-        const btnAbelha = document.createElement('button');
-        btnAbelha.className = 'btn-tactile btn-pisca-vip';
-        btnAbelha.style.background = '#FEF3C7';
-        btnAbelha.style.borderColor = '#F59E0B';
-        btnAbelha.innerHTML = '🐝 Chamar Abelha';
-        btnAbelha.onclick = () => interagirCiclo('abelha');
-        box.appendChild(btnAbelha);
-      }
-      else if (cicloAtivo === 3) {
-        statusText.innerText = "✨ Polinização feita! A natureza gerou Pólen Mágico!";
-        const btnColher = document.createElement('button');
-        btnColher.className = 'btn-tactile green';
-        btnColher.innerHTML = '✨ Colher Pólen (+5 PTS)';
-        btnColher.onclick = () => interagirCiclo('colher', btnColher);
-        box.appendChild(btnColher);
-      }
-    }
-
-    function interagirCiclo(acao, btnElement) {
-      const flor = document.getElementById('cicloFlor');
-      const clima = document.getElementById('cicloClima');
-      const abelha = document.getElementById('cicloAbelha');
-
-      if (acao === 'agua') {
-        tocarSomPop();
-        btnAguaAtivado = true;
-        btnElement.disabled = true; btnElement.style.opacity = '0.5';
-        clima.innerText = '🌧️'; clima.classList.add('ativo');
-        setTimeout(() => clima.classList.remove('ativo'), 1500);
-      } 
-      else if (acao === 'sol') {
-        tocarSomPop();
-        btnSolAtivado = true;
-        btnElement.disabled = true; btnElement.style.opacity = '0.5';
-        clima.innerText = '☀️'; clima.classList.add('ativo');
-        setTimeout(() => clima.classList.remove('ativo'), 1500);
-      } 
-      else if (acao === 'abelha') {
-        tocarSomPop();
-        cicloAtivo = 2; // Estado de voo
-        abelha.className = 'ciclo-abelha flying-in';
-        document.getElementById('cicloControles').innerHTML = '';
-        document.getElementById('cicloStatusText').innerText = "🐝 A abelhinha está voando até a flor...";
-
-        // Animação de pólen mágico ao chegar na flor
-        setTimeout(() => {
-          document.getElementById('cicloStatusText').innerText = "✨ Polinização mágica em andamento! ✨";
+        if(cicloEstado === 1) {
+          flor.innerText = '🌱'; 
+          flor.style.transform = 'scale(0.8)';
+          abelha.className = 'ciclo-abelha'; 
+          clima.classList.add('ativo');
+          statusBox.innerText = '☀️ O Sol e a Água alimentam a sementinha...';
+          tocarSomPop();
+        } else if(cicloEstado === 2) {
+          clima.classList.remove('ativo');
+          flor.innerText = '🌸'; 
+          flor.style.transform = 'scale(1.5)';
+          statusBox.innerText = '🌸 Que linda! A flor desabrochou na natureza!';
+          tocarSomPop();
+        } else if(cicloEstado === 3) {
+          abelha.className = 'ciclo-abelha flying-in';
+          statusBox.innerText = '🐝 Olha quem vem lá! A abelhinha busca o néctar.';
+        } else if(cicloEstado === 4) {
+          abelha.className = 'ciclo-abelha flying-out';
+          statusBox.innerText = '✨ Polinização! A natureza agradece e gera Pólen Mágico!';
+          totalPolen += 5; 
+          localStorage.setItem('xexeu_polen', totalPolen);
+          document.getElementById('uiPolen').innerText = totalPolen;
           tocarSomAcerto();
           
-          const cena = document.querySelector('.cena-natureza');
-          for(let i=0; i<18; i++){
+          for(let i=0; i<8; i++){
             let star = document.createElement('div');
             star.innerText = '✨'; 
             star.style.position = 'absolute'; 
@@ -1601,55 +1471,16 @@
             star.style.left = '50%'; 
             star.style.bottom = '100px'; 
             star.style.zIndex = '10'; 
-            star.style.transition = 'all 1.5s ease-out';
-            cena.appendChild(star);
+            star.style.transition = 'all 1s ease-out';
+            document.querySelector('.cena-natureza').appendChild(star);
             setTimeout(() => { 
-              star.style.transform = `translate(${Math.random()*160 - 80}px, -${Math.random()*120 + 60}px) scale(1.5)`; 
+              star.style.transform = `translate(${Math.random()*100 - 50}px, -${Math.random()*100 + 50}px) scale(1.5)`; 
               star.style.opacity = '0'; 
             }, 50);
-            setTimeout(() => star.remove(), 1500);
+            setTimeout(() => star.remove(), 1000);
           }
-
-          setTimeout(() => {
-            cicloAtivo = 3;
-            renderControlesCiclo();
-          }, 1600);
-        }, 1500);
-      }
-      else if (acao === 'colher') {
-        tocarSomAcerto();
-        criarConfeteUX(btnElement);
-        totalPolen += 5; 
-        localStorage.setItem('xexeu_polen', totalPolen);
-        document.getElementById('uiPolen').innerText = totalPolen;
-        atualizarScore(5);
-        
-        abelha.className = 'ciclo-abelha flying-out';
-        document.getElementById('cicloControles').innerHTML = '';
-        document.getElementById('cicloStatusText').innerText = "Ciclo concluído! A sementinha vai nascer de novo...";
-        
-        // Reinicia o ciclo após recolher o pólen
-        setTimeout(() => {
-          cicloAtivo = 0;
-          btnAguaAtivado = false;
-          btnSolAtivado = false;
-          flor.innerText = '🌱'; 
-          flor.style.transform = 'scale(0.8)';
-          abelha.className = 'ciclo-abelha'; // Reseta a posição da abelha
-          renderControlesCiclo();
-        }, 2200);
-      }
-
-      // Transforma a semente em flor se regar e der sol
-      if (cicloAtivo === 0 && btnAguaAtivado && btnSolAtivado) {
-        setTimeout(() => {
-          cicloAtivo = 1;
-          flor.innerText = '🌸'; 
-          flor.style.transform = 'scale(1.5)';
-          tocarSomAcerto();
-          renderControlesCiclo();
-        }, 1200);
-      }
+        }
+      }, 4000); 
     }
 
     function renderPopItSensorial() {
