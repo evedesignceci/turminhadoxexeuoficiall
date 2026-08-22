@@ -101,7 +101,7 @@
     .mascote-virtual { position: absolute; right: 20px; bottom: 20px; cursor: pointer; text-align: center; animation: floatIcon 4s infinite; z-index: 10; }
     .mascote-virtual img { width: 140px; height: 140px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)); transition: transform 0.2s; }
     .mascote-virtual img:active { transform: scale(0.85); }
-    .balao-fala { position: absolute; top: -50px; right: 50px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; }
+    .balao-fala { position: absolute; top: -50px; right: 50px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; z-index: 20; }
     .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateY(0) scale(1); }
 
     /* LAYOUTS MOBILE */
@@ -134,7 +134,8 @@
     #paintCanvas { background: #FFF; border: 3px dashed #94A3B8; border-radius: var(--radius-lg); width: 100%; max-width: 800px; height: 420px; touch-action: none; cursor: crosshair; display: block; margin: 0 auto; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
     #lousaThumbnails { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 14px; flex-wrap: nowrap !important; justify-content: flex-start; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
     #lousaThumbnails .btn-tactile { flex-shrink: 0; }
-    .color-btn { width: 44px; height: 44px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 4px 6px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.2s; }
+    
+    .color-btn { width: 44px; height: 44px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 4px 6px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.2s; flex-shrink: 0; }
     .color-btn:active { transform: scale(0.9); box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 
     /* CORREÇÃO DO TEXTO INVERTIDO */
@@ -150,6 +151,8 @@
     .level-badge-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
     .level-btn { background: #F1F5F9; border: 2px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; transition: all 0.2s; }
     .level-btn.active { background: var(--primary); color: #FFF; border-color: var(--primary); transform: scale(1.05); }
+    .level-btn.vip-level { border-color: #FCD34D; background: #FFFBEB; color: #92400E; }
+    .level-btn.vip-level.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; border-color: #B45309; }
 
     .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 480px; margin: 0 auto; }
     .memory-tile { aspect-ratio: 1; background: #3B82F6; border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 0 #1D4ED8; font-size: 26px; transform-style: preserve-3d; transition: transform 0.4s; }
@@ -179,7 +182,7 @@
   <!-- MODAL TEMPO ESGOTADO -->
   <div id="modalTempoEsgotado" class="app-modal">
     <div class="modal-content" style="border-color: var(--accent);">
-      <span style="font-size: 44px; display: block; animation: floatIcon 2s infinite;">⏰</span>
+      <span style="font-size: 44px; display: block;">⏰</span>
       <h3 style="color: var(--accent); font-size: 24px; font-weight: 800; margin: 8px 0;">Hora de Fazer uma Pausa!</h3>
       <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">O limite de tempo definido pelos pais foi atingido.</p>
       <input type="password" id="pinDesbloqueioTempo" class="form-input" placeholder="PIN dos Pais" style="text-align: center;">
@@ -203,6 +206,16 @@
     </div>
   </div>
 
+  <!-- BARRA FLUTUANTE VIP DINÂMICA -->
+  <div class="vip-floating-bar" id="barraFlutuanteVip" onclick="navegar('vip')">
+    <span style="font-size: 22px;">👑</span>
+    <div>
+      <div style="font-weight: 800; font-size: 14px;">Clube VIP por apenas R$ 6,00</div>
+      <div style="font-size: 12px; color: #FCD34D;">Desbloqueie todos os jogos, ferramentas e drives!</div>
+    </div>
+    <span style="font-size: 18px;">➔</span>
+  </div>
+
   <div class="app-shell">
 
     <!-- HEADER DO PORTAL -->
@@ -221,7 +234,6 @@
 
       <div class="top-actions">
         <button class="btn-tactile btn-icon-round" id="btnModoCalmo" onclick="toggleModoCalmo()" title="Modo Calmo Sensory">🌿</button>
-        <button class="btn-tactile btn-icon-round" id="btnAudioToggle" onclick="toggleAudioVoz()" title="Mudo">🔊</button>
         <button class="btn-tactile btn-icon-round" onclick="navegar('perfil')" title="Perfil & Ajustes">⚙️</button>
       </div>
     </header>
@@ -389,7 +401,7 @@
         <!-- 1. LOUSA -->
         <div id="subgame-lousa" class="minigame-container active">
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Escolha um desenho para colorir ou use a lousa livre:</p>
-          <!-- DESAPERTANDO AS IMAGENS -->
+          <!-- IMAGENS DESAPERTADAS -->
           <div id="lousaThumbnails"></div>
           
           <canvas id="paintCanvas"></canvas>
@@ -402,7 +414,7 @@
             <button class="color-btn" style="background:#F59E0B;" onclick="setCorPincel('#F59E0B')"></button>
             <button class="color-btn" style="background:#8B5CF6;" onclick="setCorPincel('#8B5CF6')"></button>
 
-            <!-- ROLETA DINÂMICA NOVA -->
+            <!-- ROLETA DINÂMICA -->
             <label class="btn-tactile" style="background: linear-gradient(135deg, #FF0080, #7928CA, #0070F3); color:#FFF; cursor:pointer; display:flex; align-items:center; gap:8px;" title="Escolha qualquer cor">
               <div id="corPreviewRoleta" style="width: 18px; height: 18px; border-radius: 50%; background: #2563EB; border: 2px solid #FFF;"></div>
               <input type="color" id="roletaCorLousa" value="#2563EB" style="opacity: 0; width: 0; height: 0; position: absolute;" 
@@ -472,7 +484,7 @@
           </div>
           <h3 style="font-size: 20px; margin-bottom: 10px;">De quem é essa sombra mágica?</h3>
           <div style="background: #F8FAFC; border: 4px solid #CBD5E1; border-radius: 20px; display: inline-block; padding: 20px; margin-bottom: 20px;">
-            <img id="imgSombraAlvo" class="sombra-misteriosa" src="" alt="Sombra" style="width: 150px; height: 150px; object-fit: contain; display: block; animation: floatIcon 3s infinite;">
+            <img id="imgSombraAlvo" class="sombra-misteriosa" src="" alt="Sombra" style="width: 150px; height: 150px; object-fit: contain; display: block;">
           </div>
           <div id="boxSombrasBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
@@ -560,13 +572,13 @@
       </div>
 
       <!-- LOUSA DA CALMA GIGANTE -->
-      <div class="game-card" style="text-align: center; border-color: #6EE7B7; background: #ECFDF5; padding: 10px;">
+      <div class="game-card" style="text-align: center; border-color: #6EE7B7; background: #ECFDF5; padding: 10px; width: 100%;">
         <div class="game-card-title" style="color: #047857; margin-bottom:5px; padding: 10px;">
           <span>🎨 Lousa da Calma</span>
           <button class="btn-tactile green" onclick="limparLousaSensorial()">✨ Apagar Tudo</button>
         </div>
         <p style="font-size: 13px; color: #065F46; font-weight: 600; margin-bottom: 10px;">Passe o dedinho para criar cores suaves e ouvir a mágica:</p>
-        <div style="width: 100%; height: 65vh; max-height: 800px; border-radius: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
+        <div style="width: 100%; height: 60vh; min-height: 400px; border-radius: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
           <canvas id="lousaSensorialTea" style="background: #111827; width: 100%; height: 100%; touch-action: none; cursor: crosshair; display: block;"></canvas>
         </div>
       </div>
@@ -691,7 +703,7 @@
         <label style="font-size: 14px; font-weight: 800; display: block; margin-bottom: 6px;">Nome de Exibição:</label>
         <div style="display: flex; gap: 8px; margin-bottom: 20px;">
           <input type="text" id="inputNomePerfil" class="form-input" style="margin-bottom: 0;" placeholder="Seu nome">
-          <button class="btn-tactile green" onclick="salvarNomePerfil()">Salvar Nome</button>
+          <button class="btn-tactile green" onclick="salvarNomePerfil()">Salvar</button>
         </div>
         <h4 style="font-size: 16px; font-weight: 800; margin-bottom: 10px;">Avatar do Perfil:</h4>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;" id="avatarGridSelector"></div>
@@ -706,7 +718,7 @@
             <input type="range" min="0" max="1" step="0.1" value="1" style="width: 100%; cursor: pointer;" oninput="mudarVolEfeitos(this.value)">
           </div>
           <div>
-            <label style="font-size: 14px; font-weight: 700; color: var(--text-main); display: flex; justify-content: space-between;">Volume da Voz: <span id="lblVolVoz">100%</span></label>
+            <label style="font-size: 14px; font-weight: 700; color: var(--text-main); display: flex; justify-content: space-between;">Volume das Vozes: <span id="lblVolVoz">100%</span></label>
             <input type="range" min="0" max="1" step="0.1" value="1" style="width: 100%; cursor: pointer;" oninput="mudarVolVoz(this.value)">
           </div>
         </div>
@@ -786,7 +798,22 @@
     let rotinas = [ { id: 1, texto: '☀️ Escovar os dentes', feito: false } ];
 
     window.addEventListener('DOMContentLoaded', () => {
-      try{ renderTodosPersonagensInicio(); renderCartoesCaa(); renderRotinas(); renderAvatarSelector(); renderPopItSensorial(); initLousa(); initLousaSensorial(); atualizarScore(0); atualizarInterfaceVipCompleta(); iniciarAnimacaoRespiracao(); }catch(e){}
+      try { 
+        renderTodosPersonagensInicio(); 
+        renderCartoesCaa(); 
+        renderRotinas(); 
+        renderAvatarSelector(); 
+        renderPopItSensorial(); 
+        renderSonsAcalento();
+        initLousa(); 
+        initLousaSensorial(); 
+        atualizarScore(0); 
+        atualizarInterfaceVipCompleta(); 
+        iniciarAnimacaoRespiracao(); 
+        carregarVozes();
+        desenharCertificadoCanvas();
+        atualizarBarrasPet();
+      } catch(e) { console.log(e); }
     });
 
     // --- CONTROLES DE VOLUME ---
@@ -832,7 +859,7 @@
       } catch (e) {}
     }
 
-    function tocarSomPop() { // Click Suave
+    function tocarSomPop() { 
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
       try {
         const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain();
@@ -848,6 +875,7 @@
       popAudio.volume = volumeEfeitos; popAudio.play().catch(()=>{});
     }
 
+    // --- XEXÉU VIRTUAL ---
     function animarMascote() {
       if(petDormindo) return;
       clearTimeout(timeoutAcaoPet); petAcaoAtiva = true;
@@ -859,10 +887,17 @@
       document.getElementById('balaoMascote').innerText = frases[Math.floor(Math.random() * frases.length)];
       atualizarBarrasPet(); timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
     }
-    function resetarAnimacaoMascote() { document.getElementById('mascoteXexeuHome').classList.remove('falando'); petAcaoAtiva = false; if(!petDormindo) atualizarBarrasPet(); }
+    
+    function resetarAnimacaoMascote() { 
+      document.getElementById('mascoteXexeuHome').classList.remove('falando'); 
+      petAcaoAtiva = false; 
+      if(!petDormindo) atualizarBarrasPet(); 
+    }
 
     function atualizarBarrasPet() {
-      document.getElementById('barFome').style.width = petStatus.fome + '%'; document.getElementById('barEnergia').style.width = petStatus.energia + '%'; document.getElementById('barAlegria').style.width = petStatus.alegria + '%';
+      document.getElementById('barFome').style.width = petStatus.fome + '%'; 
+      document.getElementById('barEnergia').style.width = petStatus.energia + '%'; 
+      document.getElementById('barAlegria').style.width = petStatus.alegria + '%';
       if(!petDormindo && !petAcaoAtiva) {
         const img = document.getElementById('imgXexeuPet');
         if(img) { img.src = (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) ? LINKS_ANIMACOES_XEXEU.triste : LINKS_ANIMACOES_XEXEU.normal; }
@@ -884,8 +919,17 @@
       }
       atualizarScore(2); timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000); atualizarBarrasPet();
     }
-    setInterval(() => { if (!petDormindo && !petAcaoAtiva) { petStatus.fome = Math.max(0, petStatus.fome - 2); petStatus.energia = Math.max(0, petStatus.energia - 1); petStatus.alegria = Math.max(0, petStatus.alegria - 2); atualizarBarrasPet(); } }, 8000);
+    
+    setInterval(() => { 
+      if (!petDormindo && !petAcaoAtiva) { 
+        petStatus.fome = Math.max(0, petStatus.fome - 2); 
+        petStatus.energia = Math.max(0, petStatus.energia - 1); 
+        petStatus.alegria = Math.max(0, petStatus.alegria - 2); 
+        atualizarBarrasPet(); 
+      } 
+    }, 8000);
 
+    // --- NAVEGAÇÃO E PONTUAÇÃO ---
     function navegar(paginaId) {
       document.querySelectorAll('.page-box').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-item-btn').forEach(b => b.classList.remove('active'));
@@ -895,7 +939,12 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function atualizarScore(pts) { pontos += pts; localStorage.setItem('xexeu_pontos', pontos); document.getElementById('headerPontos').innerText = pontos; desenharCertificadoCanvas(); }
+    function atualizarScore(pts) { 
+      pontos += pts; localStorage.setItem('xexeu_pontos', pontos); 
+      document.getElementById('headerPontos').innerText = pontos; 
+      desenharCertificadoCanvas(); 
+    }
+    
     function toggleModoCalmo() { document.body.classList.toggle('sensory-mode'); falarTexto(document.body.classList.contains('sensory-mode') ? 'Modo Calmo ativado.' : 'Modo Padrão ativado.'); }
     function exibirToast(msg) { const t = document.getElementById('appToast'); t.innerText = msg; t.classList.add('active'); setTimeout(() => t.classList.remove('active'), 2500); }
 
@@ -914,7 +963,8 @@
       };
       
       config[tipo].forEach(nota => {
-        const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.style.padding = '20px'; btn.innerHTML = `<span style="font-size:30px; display:block;">${tipo==='bateria'?'🥁':(tipo==='guitarra'?'🎸':(tipo==='teclado'?'🎹':'🎻'))}</span><span style="font-size:14px;">${nota.n}</span>`;
+        const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.style.padding = '20px'; 
+        btn.innerHTML = `<span style="font-size:30px; display:block;">${tipo==='bateria'?'🥁':(tipo==='guitarra'?'🎸':(tipo==='teclado'?'🎹':'🎻'))}</span><span style="font-size:14px;">${nota.n}</span>`;
         btn.onmousedown = btn.ontouchstart = (e) => { tocarNotaReal(nota.s, nota.f); btn.style.transform = 'scale(0.9)'; };
         btn.onmouseup = btn.ontouchend = () => { btn.style.transform = 'scale(1)'; };
         p.appendChild(btn);
@@ -943,11 +993,13 @@
       canvas.addEventListener('touchstart', st, {passive:false}); canvas.addEventListener('touchmove', mv, {passive:false}); canvas.addEventListener('touchend', sp);
       renderThumbnailsLousa();
     }
+    
     function resizeLousa() { if (canvas) { canvas.width = 800; canvas.height = 450; } }
     function setCorPincel(c) { corAtual = c; tocarSomPop(); }
     function setBorracha() { corAtual = '#FFFFFF'; tocarSomPop(); }
     function setEspessuraPincel(v) { tamanhoPincel = parseInt(v); }
     function limparCanvasLousa() { if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height); tocarSomPop(); }
+    function salvarObraArte() { const a = document.createElement('a'); a.download = 'meu-desenho.png'; a.href = canvas.toDataURL(); a.click(); falarTexto('Desenho salvo!'); }
 
     function renderThumbnailsLousa() {
       const c = document.getElementById('lousaThumbnails'); c.innerHTML = '';
@@ -978,6 +1030,7 @@
       const st = (e) => { desenhandoTea = true; const p = getP(e); ctxTea.beginPath(); ctxTea.moveTo(p.x, p.y); ctxTea.lineWidth = 18; ctxTea.lineCap = 'round'; };
       const mv = (e) => { if (!desenhandoTea) return; const p = getP(e); matizSensorial += 2; if(matizSensorial > 360) matizSensorial = 0; ctxTea.strokeStyle = `hsl(${matizSensorial}, 80%, 80%)`; ctxTea.lineTo(p.x, p.y); ctxTea.stroke(); gerS(); if (e.cancelable) e.preventDefault(); };
       const sp = () => { desenhandoTea = false; };
+      
       canvasTea.addEventListener('mousedown', st); canvasTea.addEventListener('mousemove', mv); canvasTea.addEventListener('mouseup', sp); canvasTea.addEventListener('mouseleave', sp);
       canvasTea.addEventListener('touchstart', st, { passive: false }); canvasTea.addEventListener('touchmove', mv, { passive: false }); canvasTea.addEventListener('touchend', sp);
     }
@@ -989,7 +1042,13 @@
       document.querySelectorAll('.game-subtab-btn').forEach(b => b.classList.remove('active'));
       const target = document.getElementById('subgame-' + subjogo); if (target) target.classList.add('active');
       const btn = Array.from(document.querySelectorAll('.game-subtab-btn')).find(b => b.getAttribute('onclick')?.includes(subjogo)); if (btn) btn.classList.add('active');
-      if (subjogo === 'lousa') resizeLousa(); if (subjogo === 'banda') abrirInstrumento('bateria'); if (subjogo === 'contar') iniciarJogoContar(); if (subjogo === 'letras') iniciarJogoLetras(); if (subjogo === 'memoria') iniciarJogoMemoria(); if (subjogo === 'quiz') iniciarJogoQuiz(); if (subjogo === 'sombras') iniciarJogoSombras();
+      if (subjogo === 'lousa') resizeLousa(); 
+      if (subjogo === 'banda') abrirInstrumento('bateria'); 
+      if (subjogo === 'contar') iniciarJogoContar(); 
+      if (subjogo === 'letras') iniciarJogoLetras(); 
+      if (subjogo === 'memoria') iniciarJogoMemoria(); 
+      if (subjogo === 'quiz') iniciarJogoQuiz(); 
+      if (subjogo === 'sombras') iniciarJogoSombras();
     }
 
     let nivelContar=1, nivelLetras=1, nivelMemoria=1, nivelQuiz=1, nivelSombras=1;
@@ -1078,13 +1137,68 @@
     }
     function resetarPopIt() { document.querySelectorAll('.popit-bubble').forEach(b => { b.classList.remove('popped'); b.innerHTML = '🫧'; }); }
 
-    // Misc
+    // Misc Inicializações
     function renderTodosPersonagensInicio() {
       const grids = { mascotes: document.getElementById('gridMascotes'), maya: document.getElementById('gridCasaMaya'), sam: document.getElementById('gridCasaSam'), avos: document.getElementById('gridAvos') };
       PERSONAGENS.forEach(p => { const tg = grids[p.familia]; if (!tg) return; const d = document.createElement('div'); d.className = 'char-card-item'; d.innerHTML = `<img src="${p.img}"><h4>${p.nome}</h4><span>${p.tag}</span>`; d.onclick = () => abrirModalChar(p); tg.appendChild(d); });
     }
+    
     function abrirModalChar(p) { document.getElementById('modalCharImg').src = p.img; document.getElementById('modalCharNome').innerText = p.nome; document.getElementById('modalCharTag').innerText = p.tag; document.getElementById('modalCharQuem').innerText = p.quem; document.getElementById('modalCharGosto').innerText = p.gosto; document.getElementById('modalCharFrase').innerText = `"${p.frase}"`; document.getElementById('btnOuvirCharModal').onclick = () => falarTexto(`Olá! Eu sou ${p.nome}. ${p.frase}`); document.getElementById('modalPersonagem').classList.add('show'); tocarSomPop(); }
     function fecharModalPersonagem() { document.getElementById('modalPersonagem').classList.remove('show'); }
+
+    function renderRotinas() {
+      const c = document.getElementById('listaRotinasContainer'); c.innerHTML = '';
+      rotinas.forEach((r, i) => {
+        const d = document.createElement('div'); d.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:#FFF; border:2px solid var(--border-color); padding:12px 16px; border-radius:12px;';
+        d.innerHTML = `<span style="font-weight:700; ${r.feito ? 'text-decoration:line-through; color:#94A3B8;' : ''}">${r.texto}</span><div style="display:flex; gap:8px;"><button class="btn-tactile green" style="padding:6px 12px;" onclick="checkRotina(${i})">${r.feito ? 'Desfazer' : '✓ Feito'}</button><button class="btn-tactile" style="padding:6px 10px;" onclick="removerRotina(${i})">✕</button></div>`;
+        c.appendChild(d);
+      });
+    }
+
+    function checkRotina(i) { rotinas[i].feito = !rotinas[i].feito; if(rotinas[i].feito) falarTexto('Tarefa cumprida!'); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); renderRotinas(); }
+    function removerRotina(i) { rotinas.splice(i, 1); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); renderRotinas(); }
+    function adicionarItemRotina() { const input = document.getElementById('inputNovaRotina'); if(!input.value.trim()) return; rotinas.push({ id: Date.now(), texto: input.value.trim(), feito: false }); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); input.value = ''; renderRotinas(); }
+
+    function renderSonsAcalento() {
+      const container = document.getElementById('containerSonsAcalento'); if (!container) return;
+      container.innerHTML = `<div class="game-card" style="text-align: center; cursor: pointer; padding: 14px;" onclick="tocarSomRelaxante('https://actions.google.com/sounds/v1/weather/light_rain.ogg')"><span style="font-size: 32px; display:block; animation:floatIcon 4s infinite;">🌧️</span><h4 style="font-size: 15px;">Chuva Suave</h4><span style="font-size: 12px; color: var(--green); font-weight: 800;">Tocar Som 🔊</span></div>`;
+    }
+    
+    let somAcalentoAtual = null;
+    function tocarSomRelaxante(url) {
+      if (somAcalentoAtual) { somAcalentoAtual.pause(); if (somAcalentoAtual.src === url) { somAcalentoAtual = null; falarTexto('Som pausado.'); return; } }
+      somAcalentoAtual = new Audio(url); somAcalentoAtual.loop = true; somAcalentoAtual.volume = volumeEfeitos; somAcalentoAtual.play().catch(()=>{}); falarTexto('Tocando som de acalento.');
+    }
+
+    function renderAvatarSelector() {
+      const container = document.getElementById('avatarGridSelector'); container.innerHTML = ''; const avatarAtual = localStorage.getItem('xexeu_avatar') || PERSONAGENS[0].img;
+      PERSONAGENS.forEach(p => {
+        const img = document.createElement('img'); img.src = p.img; img.style.cssText = `width:54px; height:54px; border-radius:50%; border:3px solid ${p.img === avatarAtual ? '#F59E0B' : '#CBD5E1'}; cursor:pointer; background:#FFF; padding:2px;`;
+        img.onclick = () => { document.querySelectorAll('#avatarGridSelector img').forEach(i => i.style.borderColor = '#CBD5E1'); img.style.borderColor = '#F59E0B'; localStorage.setItem('xexeu_avatar', p.img); falarTexto(`Avatar de ${p.nome} escolhido!`); };
+        container.appendChild(img);
+      });
+    }
+
+    function salvarNomePerfil() { const input = document.getElementById('inputNomePerfil'); const n = input ? input.value.trim() : ''; if (!n) return alert('Digite um nome!'); localStorage.setItem('xexeu_nome', n); document.getElementById('inputNomeCertificado').value = n; desenharCertificadoCanvas(); falarTexto(`Nome salvo!`); alert('✅ Nome salvo com sucesso!'); }
+
+    function iniciarTimer(minutos) {
+      if (!isVip && minutos > 5) { alert('🔒 Limites acima de 5 minutos são VIP!'); navegar('vip'); return; }
+      clearInterval(timerId); let totalSeg = minutos * 60, restante = totalSeg; const fill = document.getElementById('timerProgressFill'); const label = document.getElementById('timerLabelTxt'); falarTexto(`Tempo definido para ${minutos} minutos.`);
+      timerId = setInterval(() => {
+        restante--; const m = Math.floor(restante / 60), s = restante % 60; label.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`; fill.style.width = `${(restante / totalSeg) * 100}%`;
+        if (restante <= 0) { clearInterval(timerId); document.getElementById('modalTempoEsgotado').classList.add('show'); falarTexto('O tempo acabou!'); }
+      }, 1000);
+    }
+
+    function desbloquearTempoComPin() {
+      const p = document.getElementById('pinDesbloqueioTempo').value.trim(); const pinSalvo = localStorage.getItem('xexeu_pin') || '1234';
+      if (p === pinSalvo) { document.getElementById('modalTempoEsgotado').classList.remove('show'); document.getElementById('pinDesbloqueioTempo').value = ''; falarTexto('Tempo desbloqueado.'); } else { alert('PIN incorreto!'); tocarSomErro(); }
+    }
+
+    function salvarNovoPin() {
+      const p = document.getElementById('inputNovoPin').value.trim();
+      if (p.length === 4 && /^\d+$/.test(p)) { pinParental = p; localStorage.setItem('xexeu_pin', p); alert('✅ PIN atualizado!'); document.getElementById('inputNovoPin').value = ''; } else { alert('Digite exatamente 4 números!'); }
+    }
 
     function desenharCertificadoCanvas() {
       const c = document.getElementById('canvasCertificado'); if (!c) return; const ctxCert = c.getContext('2d'); const nome = document.getElementById('inputNomeCertificado').value || localStorage.getItem('xexeu_nome') || 'Super Amigo(a)';
@@ -1097,6 +1211,36 @@
     }
     function baixarCertificadoPNG() { desenharCertificadoCanvas(); const a = document.createElement('a'); a.download = 'Certificado-Turminha.png'; a.href = document.getElementById('canvasCertificado').toDataURL('image/png'); a.click(); }
 
+    function iniciarAnimacaoRespiracao() {
+      const bubble = document.getElementById('breatheVisualBubble'); const text = document.getElementById('breatheStatusText'); if(!bubble) return;
+      setInterval(() => {
+        bubble.className = 'breathe-bubble expand'; bubble.innerText = 'Inspire'; if(text) text.innerText = 'Inspire... (1, 2, 3, 4) 🌸';
+        setTimeout(() => { bubble.className = 'breathe-bubble hold'; bubble.innerText = 'Segure'; if(text) text.innerText = 'Segure com calma... ✨'; }, 4000);
+        setTimeout(() => { bubble.className = 'breathe-bubble shrink'; bubble.innerText = 'Expire'; if(text) text.innerText = 'Solte o ar pela boquinha... 🌬️'; }, 7000);
+      }, 11000);
+    }
+
+    function carregarVozes() {
+      if ('speechSynthesis' in window) {
+        vozesDisponiveis = window.speechSynthesis.getVoices(); const sel = document.getElementById('selectVozVip');
+        if (sel && vozesDisponiveis.length > 0) {
+          sel.innerHTML = '<option value="">Voz padrão do dispositivo</option>';
+          vozesDisponiveis.forEach((v, idx) => { if (v.lang.includes('pt') || v.lang.includes('PT')) { const opt = document.createElement('option'); opt.value = idx; opt.innerText = `${v.name} (${v.lang})`; if (idx == vozSelecionadaIdx) opt.selected = true; sel.appendChild(opt); } });
+        }
+      }
+    }
+    if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = carregarVozes;
+    function mudarVozSelecionada(idx) { if (!isVip) return; vozSelecionadaIdx = idx; localStorage.setItem('xexeu_voz_idx', idx); }
+    function ajustarVelocidadeFala(val) { if (!isVip) return; velocidadeFala = parseFloat(val); localStorage.setItem('xexeu_voz_vel', val); document.getElementById('labelVelocidadeFala').innerText = `${val}x`; }
+
+    // LOGIN / VIP
+    function trocarAbaVipAuth(aba) {
+      if (aba === 'login') { document.getElementById('formVipLogin').style.display = 'block'; document.getElementById('formVipCadastro').style.display = 'none'; document.getElementById('tabBtnLoginVip').className = 'btn-tactile primary'; document.getElementById('tabBtnCadastroVip').className = 'btn-tactile'; } 
+      else { document.getElementById('formVipLogin').style.display = 'none'; document.getElementById('formVipCadastro').style.display = 'block'; document.getElementById('tabBtnLoginVip').className = 'btn-tactile'; document.getElementById('tabBtnCadastroVip').className = 'btn-tactile primary'; }
+    }
+    function executarLoginVip() { const s = document.getElementById('loginSenhaVip').value.trim(); if (s === "65628467") { isVip = true; localStorage.setItem('xexeu_vip', 'true'); alert('🎉 Acesso Mestre Ativado!'); atualizarInterfaceVipCompleta(); navegar('central'); return; } alert('Backend não conectado neste modelo demo.'); }
+    function executarCadastroVip() { alert('Backend não conectado neste modelo demo.'); }
+    function deslogarVip() { if (confirm('Deseja sair do VIP?')) { isVip = false; localStorage.removeItem('xexeu_vip'); atualizarInterfaceVipCompleta(); } }
     function atualizarInterfaceVipCompleta() {
       document.getElementById('barraFlutuanteVip').style.display = isVip ? 'none' : 'flex';
       document.getElementById('txtStatusVipAtual').innerHTML = isVip ? 'Plano: <strong style="color:#059669;">👑 VIP Ativo</strong>' : 'Plano: <strong style="color:#D97706;">Grátis (Básico)</strong>';
