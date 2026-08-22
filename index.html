@@ -525,34 +525,31 @@
       <!-- ÁREA DE RELAXAMENTO ASMR (OPÇÕES DA MESA NO TEA) -->
       <div class="game-card" style="border-color: #6EE7B7; background: #F0FDF4;">
         <div class="game-card-title" style="color: #047857;">
-          <span>🎧 Relaxamento ASMR — Sons de Mesa</span>
+          <span>🎧 Som ASMR</span>
           <span style="font-size: 13px; background: #DCFCE7; color: #166534; padding: 4px 12px; border-radius: 20px;">Toques Suaves 🌿</span>
         </div>
-        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Ouça sons relaxantes para acalmar a mente e focar nas atividades:</p>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Escolha o som relaxante:</p>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
           <!-- Opção 1: Grátis (47 segundos) -->
           <div style="background: #FFF; border: 2px solid #86EFAC; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
             <span style="font-size: 36px; display: block; margin-bottom: 8px;">🪵</span>
-            <h4 style="font-size: 16px; color: #166534; margin-bottom: 4px;">Textura de Mesa (47s)</h4>
+            <h4 style="font-size: 16px; color: #166534; margin-bottom: 4px;">Som ASMR (47 segundos)</h4>
             <span style="background: #DCFCE7; color: #166534; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 12px;">🌟 Grátis para Todos</span>
             <button class="btn-tactile green" style="width: 100%;" onclick="tocarAsmrMesa('https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3', false)">▶️ Tocar Som</button>
           </div>
 
-          <!-- Opção 2: VIP (2 minutos) -->
+          <!-- Opção 2: VIP (Seletor Interativo de Sons Menores para VIPs) -->
           <div style="background: #FFF; border: 2px solid #FCD34D; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
             <span style="font-size: 36px; display: block; margin-bottom: 8px;">✨</span>
-            <h4 style="font-size: 16px; color: #92400E; margin-bottom: 4px;">Sons de Mesa Imersivos (2 min)</h4>
+            <h4 style="font-size: 16px; color: #92400E; margin-bottom: 4px;">Escolha Som ASMR (VIP)</h4>
             <span style="background: #FEF3C7; color: #B45309; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 12px;">👑 Exclusivo VIP</span>
-            <button class="btn-tactile vip" style="width: 100%;" onclick="tocarAsmrMesa('https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3', true)">👑 Ouvir Som VIP</button>
-          </div>
-
-          <!-- Opção 3: VIP (4 minutos) -->
-          <div style="background: #FFF; border: 2px solid #FCD34D; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
-            <span style="font-size: 36px; display: block; margin-bottom: 8px;">🌙</span>
-            <h4 style="font-size: 16px; color: #92400E; margin-bottom: 4px;">Sons de Mesa Profundos (4 min)</h4>
-            <span style="background: #FEF3C7; color: #B45309; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 12px;">👑 Exclusivo VIP</span>
-            <button class="btn-tactile vip" style="width: 100%;" onclick="tocarAsmrMesa('https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3', true)">👑 Ouvir Som VIP</button>
+            <select class="form-input" style="font-size: 13px; margin-bottom: 10px;" id="seletorAsmrTea" onchange="trocarSomAsmrVip(this.value)">
+              <option value="">Selecione o som ASMR...</option>
+              <option value="https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3">Som ASMR (47 segundos)</option>
+              <option value="https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3">Som ASMR (2 minutos)</option>
+            </select>
+            <button class="btn-tactile vip" style="width: 100%;" onclick="acionarSeletorAsmrTea()">👑 Tocar Selecionado</button>
           </div>
         </div>
       </div>
@@ -615,7 +612,7 @@
               <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ Vantagens do VIP:</h4>
               <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
                 <li><strong>📁 Drives Exclusivos:</strong> Atividades infantis e Caderno TEA para imprimir.</li>
-                <li><strong>🔊 Áudios ASMR de Mesa:</strong> Acesso total às opções completas de 2 e 4 minutos.</li>
+                <li><strong>🔊 Sons ASMR Customizados:</strong> Escolha e altere entre os sons relaxantes.</li>
                 <li><strong>🎨 Lousa Completa:</strong> Acesso a todos os contornos e novos desenhos.</li>
                 <li><strong>🎮 Níveis Avançados:</strong> Fases ilimitadas em todos os jogos educativos.</li>
                 <li><strong>⏳ Mais Tempo de Tela:</strong> Até 30 minutos liberados com PIN de segurança.</li>
@@ -692,34 +689,31 @@
       <!-- ÁREA DE RELAXAMENTO ASMR (TAMBÉM NA ABA VÍDEOS/SONS) -->
       <div class="game-card" style="border-color: #6EE7B7; background: #F0FDF4;">
         <div class="game-card-title" style="color: #047857;">
-          <span>🎧 Relaxamento ASMR — Sons de Mesa</span>
+          <span>🎧 Som ASMR</span>
           <span style="font-size: 13px; background: #DCFCE7; color: #166534; padding: 4px 12px; border-radius: 20px;">Toques Suaves 🌿</span>
         </div>
-        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Escolha seu som relaxante favorito:</p>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Escolha o som relaxante:</p>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
           <!-- Opção 1: Grátis (47 segundos) -->
           <div style="background: #FFF; border: 2px solid #86EFAC; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
             <span style="font-size: 36px; display: block; margin-bottom: 8px;">🪵</span>
-            <h4 style="font-size: 16px; color: #166534; margin-bottom: 4px;">Textura de Mesa (47s)</h4>
+            <h4 style="font-size: 16px; color: #166534; margin-bottom: 4px;">Som ASMR (47 segundos)</h4>
             <span style="background: #DCFCE7; color: #166534; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 12px;">🌟 Grátis para Todos</span>
             <button class="btn-tactile green" style="width: 100%;" onclick="tocarAsmrMesa('https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3', false)">▶️ Tocar Som</button>
           </div>
 
-          <!-- Opção 2: VIP (2 minutos) -->
+          <!-- Opção 2: VIP (Seletor Interativo de Sons Menores para VIPs) -->
           <div style="background: #FFF; border: 2px solid #FCD34D; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
             <span style="font-size: 36px; display: block; margin-bottom: 8px;">✨</span>
-            <h4 style="font-size: 16px; color: #92400E; margin-bottom: 4px;">Sons de Mesa Imersivos (2 min)</h4>
+            <h4 style="font-size: 16px; color: #92400E; margin-bottom: 4px;">Escolha Som ASMR (VIP)</h4>
             <span style="background: #FEF3C7; color: #B45309; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 12px;">👑 Exclusivo VIP</span>
-            <button class="btn-tactile vip" style="width: 100%;" onclick="tocarAsmrMesa('https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3', true)">👑 Ouvir Som VIP</button>
-          </div>
-
-          <!-- Opção 3: VIP (4 minutos) -->
-          <div style="background: #FFF; border: 2px solid #FCD34D; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
-            <span style="font-size: 36px; display: block; margin-bottom: 8px;">🌙</span>
-            <h4 style="font-size: 16px; color: #92400E; margin-bottom: 4px;">Sons de Mesa Profundos (4 min)</h4>
-            <span style="background: #FEF3C7; color: #B45309; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 12px;">👑 Exclusivo VIP</span>
-            <button class="btn-tactile vip" style="width: 100%;" onclick="tocarAsmrMesa('https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3', true)">👑 Ouvir Som VIP</button>
+            <select class="form-input" style="font-size: 13px; margin-bottom: 10px;" id="seletorAsmrVideos" onchange="trocarSomAsmrVip(this.value)">
+              <option value="">Selecione o som ASMR...</option>
+              <option value="https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3">Som ASMR (47 segundos)</option>
+              <option value="https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3">Som ASMR (2 minutos)</option>
+            </select>
+            <button class="btn-tactile vip" style="width: 100%;" onclick="acionarSeletorAsmrVideos()">👑 Tocar Selecionado</button>
           </div>
         </div>
       </div>
@@ -1099,11 +1093,11 @@
       } catch(e) {}
     }
 
-    /* CONTROLE DE ÁUDIO ASMR DA MESA (COM REGRA VIP) */
+    /* CONTROLE DE ÁUDIO ASMR (COM OPÇÃO DE TROCA EXCLUSIVA VIP) */
     let somAsmrMesaAtual = null;
     function tocarAsmrMesa(url, requerVip) {
       if (requerVip && !isVip) {
-        alert('🔒 Este som relaxante de mesa é exclusivo do Clube VIP! Assine para desbloquear.');
+        alert('🔒 Este som relaxante é exclusivo do Clube VIP! Assine para desbloquear.');
         navegar('vip');
         return;
       }
@@ -1121,7 +1115,45 @@
       somAsmrMesaAtual.loop = true;
       somAsmrMesaAtual.volume = volumeEfeitos;
       somAsmrMesaAtual.play().catch(()=>{});
-      falarTexto('Tocando som relaxante de mesa.');
+      falarTexto('Tocando som ASMR.');
+    }
+
+    function trocarSomAsmrVip(url) {
+      if (!isVip) {
+        alert('🔒 A troca de som ASMR é exclusiva do Clube VIP!');
+        navegar('vip');
+        return;
+      }
+      if (!url) return;
+      tocarAsmrMesa(url, true);
+    }
+
+    function acionarSeletorAsmrTea() {
+      if (!isVip) {
+        alert('🔒 A troca de som ASMR é exclusiva do Clube VIP!');
+        navegar('vip');
+        return;
+      }
+      const select = document.getElementById('seletorAsmrTea');
+      if (select && select.value) {
+        trocarSomAsmrVip(select.value);
+      } else {
+        alert('Selecione um som no menu suspenso primeiro!');
+      }
+    }
+
+    function acionarSeletorAsmrVideos() {
+      if (!isVip) {
+        alert('🔒 A troca de som ASMR é exclusiva do Clube VIP!');
+        navegar('vip');
+        return;
+      }
+      const select = document.getElementById('seletorAsmrVideos');
+      if (select && select.value) {
+        trocarSomAsmrVip(select.value);
+      } else {
+        alert('Selecione um som no menu suspenso primeiro!');
+      }
     }
 
     /* LOUSA PRINCIPAL */
