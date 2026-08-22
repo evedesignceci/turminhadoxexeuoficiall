@@ -48,8 +48,6 @@
       --purple: #6E6879 !important; --pink: #8F6B76 !important; --green: #52796F !important;
       --accent: #8C5B5B !important; --text-main: #2B2D2F !important; --text-muted: #5C6066 !important;
       --border-color: #DCD6CD !important; --shadow-3d: 0 2px 0px #C8C2B7 !important;
-      --shadow-3d-primary: 0 2px 0px #354F52 !important; --shadow-3d-vip: 0 2px 0px #736453 !important;
-      --shadow-3d-green: 0 2px 0px #354F52 !important; --shadow-3d-pink: 0 2px 0px #734F59 !important;
       --shadow-md: 0 4px 10px rgba(0,0,0,0.04) !important; filter: contrast(0.92) brightness(0.98);
     }
     body.sensory-mode * { animation: none !important; transition: none !important; box-shadow: none !important; }
@@ -59,7 +57,7 @@
     
     header.game-header { background: var(--card-bg); padding: 12px 28px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-md); border: 3px solid var(--border-color); gap: 16px; flex-wrap: wrap; }
     .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .logo-img { height: 52px; width: auto; object-fit: contain; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .logo-img { height: 52px; width: auto; object-fit: contain; transition: transform 0.3s; }
     .logo-img:hover { transform: scale(1.1) rotate(-5deg); }
 
     .header-quick-stats { display: flex; align-items: center; gap: 12px; background: #FEF3C7; border: 2px solid #FCD34D; padding: 6px 16px; border-radius: 50px; font-weight: 700; color: #92400E; font-size: 15px; position: relative; overflow: hidden; }
@@ -69,8 +67,7 @@
     .btn-tactile {
       background: #FFFFFF; border: 2px solid #CBD5E1; box-shadow: var(--shadow-3d); color: var(--text-main);
       padding: 12px 20px; border-radius: var(--radius-md); font-weight: 700; font-size: 15px; cursor: pointer;
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.1s;
-      text-decoration: none;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.1s; text-decoration: none;
     }
     .btn-tactile:active { transform: translateY(4px); box-shadow: 0 1px 0px #CBD5E1; }
     .btn-tactile.primary { background: var(--primary); border-color: var(--primary-hover); color: #FFF; box-shadow: var(--shadow-3d-primary); }
@@ -81,13 +78,11 @@
 
     nav.main-nav { display: flex; gap: 8px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-lg); border: 3px solid var(--border-color); box-shadow: var(--shadow-sm); overflow-x: auto; scrollbar-width: none; }
     nav.main-nav::-webkit-scrollbar { display: none; }
-    .nav-item-btn { flex: 1; min-width: 105px; padding: 12px 14px; border: none; background: transparent; border-radius: var(--radius-md); font-weight: 700; font-size: 14.5px; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease; white-space: nowrap; }
+    .nav-item-btn { flex: 1; min-width: 105px; padding: 12px 14px; border: none; background: transparent; border-radius: var(--radius-md); font-weight: 700; font-size: 14.5px; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; white-space: nowrap; }
     .nav-item-btn:hover { background: #F1F5F9; color: var(--primary); transform: translateY(-2px); }
     .nav-item-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); transform: translateY(0); }
-    .nav-item-btn.central-item.active { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
     .nav-item-btn.vip-item { background: #FEF3C7; color: #92400E; border: 1.5px solid #FCD34D; }
     .nav-item-btn.vip-item.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; }
-    .nav-item-btn.tea-item.active { background: var(--tea-blue); }
 
     .page-box { display: none; flex-direction: column; gap: 20px; animation: slideUpFade 0.3s ease-out; }
     .page-box.active { display: flex; }
@@ -97,114 +92,84 @@
     .game-card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
 
     .central-hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 10px; }
-    .hub-card { background: #FFFFFF; border-radius: 20px; padding: 20px; border: 3px solid var(--border-color); box-shadow: 0 6px 0 var(--border-color); cursor: pointer; transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .hub-card { background: #FFFFFF; border-radius: 20px; padding: 20px; border: 3px solid var(--border-color); box-shadow: 0 6px 0 var(--border-color); cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; gap: 8px; text-align: left; }
     .hub-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 12px 0 var(--primary); border-color: var(--primary); }
     .hub-card-icon { font-size: 44px; display: block; margin-bottom: 4px; animation: floatIcon 3s ease-in-out infinite; }
     @keyframes floatIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-    .hub-card-title { font-size: 18px; font-weight: 800; color: var(--text-main); }
-    .hub-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; font-weight: 600; }
-    .hub-card-tag { font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 12px; width: fit-content; }
 
+    /* CASA DA TURMINHA - XEXÉU VIRTUAL */
     .mascote-virtual { position: absolute; right: 20px; bottom: 20px; cursor: pointer; text-align: center; animation: floatIcon 4s infinite; z-index: 10; }
-    .mascote-virtual img { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)); transition: transform 0.2s; }
+    .mascote-virtual img { width: 140px; height: 140px; object-fit: contain; filter: drop-shadow(0 8px 10px rgba(0,0,0,0.15)); transition: transform 0.2s; }
     .mascote-virtual img:active { transform: scale(0.85); }
     .balao-fala { position: absolute; top: -50px; right: 50px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px) scale(0.9); transition: all 0.3s; pointer-events: none; }
     .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateY(0) scale(1); }
 
+    /* LAYOUTS MOBILE */
     .hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; }
-    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
-    .banner-hero-box { border-radius: var(--radius-lg); overflow: hidden; border: 3px solid #FFF; box-shadow: var(--shadow-md); min-height: 200px; }
-    .banner-hero-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
+    .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 900px) { 
+      .hero-grid, .grid-2-col { grid-template-columns: 1fr !important; } 
+    }
+    
     .social-bar { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; background: #FFFFFF; padding: 16px; border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); border: 3px solid var(--border-color); }
     .social-btn-round { width: 52px; height: 52px; border-radius: 50%; background: #F8FAFC; border: 2px solid #CBD5E1; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 0 #CBD5E1; transition: all 0.2s; }
     .social-btn-round:hover { transform: translateY(-4px); box-shadow: 0 8px 0 var(--primary); border-color: var(--primary); }
     .social-btn-round img { width: 28px; height: 28px; object-fit: contain; }
 
-    .family-group-box { margin-bottom: 24px; }
-    .family-group-title { font-size: 19px; font-weight: 800; color: var(--primary-hover); margin-bottom: 12px; }
     .chars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
-    .char-card-item { background: #FFFFFF; border: 3px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; text-align: center; cursor: pointer; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.2s; box-shadow: 0 4px 0 var(--border-color); display: flex; flex-direction: column; align-items: center; }
+    .char-card-item { background: #FFFFFF; border: 3px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; text-align: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s; box-shadow: 0 4px 0 var(--border-color); }
     .char-card-item:hover { transform: translateY(-6px) scale(1.03); border-color: var(--primary); box-shadow: 0 8px 0 var(--primary); }
-    .char-card-item img { width: 95px; height: 95px; object-fit: contain; margin-bottom: 8px; border-radius: 50%; background: #F8FAFC; padding: 4px; display: block; transition: transform 0.3s; }
+    .char-card-item img { width: 95px; height: 95px; object-fit: contain; margin: 0 auto 8px; border-radius: 50%; background: #F8FAFC; padding: 4px; display: block; transition: transform 0.3s; }
     .char-card-item:hover img { transform: rotate(5deg) scale(1.1); }
-    .char-card-item h4 { font-size: 17px; font-weight: 800; color: var(--text-main); margin-bottom: 4px; }
-    .char-card-item span { font-size: 12px; font-weight: 700; color: var(--primary); background: #EFF6FF; padding: 3px 10px; border-radius: 12px; }
-
+    
     .game-subnav { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 16px; }
     .game-subtab-btn { background: #F8FAFC; border: 2px solid #CBD5E1; padding: 10px 16px; border-radius: var(--radius-md); font-weight: 700; font-size: 14px; cursor: pointer; color: var(--text-muted); white-space: nowrap; transition: all 0.2s; }
-    .game-subtab-btn:hover { background: #E2E8F0; }
     .game-subtab-btn.active { background: var(--primary); border-color: var(--primary); color: #FFF; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2); }
 
     .minigame-container { display: none; text-align: center; animation: fadeIn 0.3s; }
     .minigame-container.active { display: block; }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+    /* LOUSA & CORES */
     #paintCanvas { background: #FFF; border: 3px dashed #94A3B8; border-radius: var(--radius-lg); width: 100%; max-width: 800px; height: 420px; touch-action: none; cursor: crosshair; display: block; margin: 0 auto; box-shadow: inset 0 0 10px rgba(0,0,0,0.05); }
+    #lousaThumbnails { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 14px; flex-wrap: nowrap !important; justify-content: flex-start; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+    #lousaThumbnails .btn-tactile { flex-shrink: 0; }
+    .color-btn { width: 44px; height: 44px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 4px 6px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.2s; }
+    .color-btn:active { transform: scale(0.9); box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 
-    .game-choice-btn { background: #FFFFFF; border: 3px solid #8B5CF6; box-shadow: 0 5px 0 #7C3AED; color: #6D28D9; font-size: 24px; font-weight: 800; padding: 16px 28px; border-radius: 16px; cursor: pointer; min-width: 90px; transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.1s, background 0.2s; }
-    .game-choice-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 0 #7C3AED; }
+    /* CORREÇÃO DO TEXTO INVERTIDO */
+    @keyframes pulseScaleText { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+    #nomeLetraAlvo { animation: pulseScaleText 2s infinite !important; direction: ltr !important; unicode-bidi: isolate; }
+
+    .game-choice-btn { background: #FFFFFF; border: 3px solid #8B5CF6; box-shadow: 0 5px 0 #7C3AED; color: #6D28D9; font-size: 24px; font-weight: 800; padding: 16px 28px; border-radius: 16px; cursor: pointer; min-width: 90px; transition: transform 0.1s; }
     .game-choice-btn:active { transform: translateY(4px) !important; box-shadow: 0 1px 0 #7C3AED !important; }
-    .game-choice-btn.correct { background: #10B981 !important; border-color: #059669 !important; box-shadow: 0 5px 0 #047857 !important; color: #FFF !important; transform: scale(1.1) translateY(4px) !important; z-index: 10; }
+    .game-choice-btn.correct { background: #10B981 !important; border-color: #059669 !important; box-shadow: 0 5px 0 #047857 !important; color: #FFF !important; transform: scale(1.1) translateY(4px) !important; }
     .game-choice-btn.wrong { background: #EF4444 !important; border-color: #DC2626 !important; box-shadow: 0 5px 0 #991B1B !important; color: #FFF !important; animation: shakeError 0.4s; }
-
     @keyframes shakeError { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
 
     .level-badge-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
     .level-btn { background: #F1F5F9; border: 2px solid #CBD5E1; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; transition: all 0.2s; }
     .level-btn.active { background: var(--primary); color: #FFF; border-color: var(--primary); transform: scale(1.05); }
-    .level-btn.vip-level { border-color: #FCD34D; background: #FFFBEB; color: #92400E; }
-    .level-btn.vip-level.active { background: linear-gradient(135deg, #F59E0B, #D97706); color: #FFF; border-color: #B45309; }
 
     .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 480px; margin: 0 auto; }
-    .memory-grid.grid-8 { grid-template-columns: repeat(4, 1fr); max-width: 520px; }
-    .memory-tile { aspect-ratio: 1; background: #3B82F6; border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 0 #1D4ED8; font-size: 26px; transform-style: preserve-3d; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .memory-tile:hover { transform: translateY(-4px); }
-    .memory-tile:active { transform: scale(0.9); }
+    .memory-tile { aspect-ratio: 1; background: #3B82F6; border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 0 #1D4ED8; font-size: 26px; transform-style: preserve-3d; transition: transform 0.4s; }
     .memory-tile.flipped { background: #FFFFFF; border: 3px solid #3B82F6; transform: rotateY(180deg); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     .memory-tile.matched { animation: popPulse 0.5s ease; border-color: var(--green); box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3); }
-    .memory-tile img { width: 75%; height: 75%; object-fit: contain; }
-
     @keyframes popPulse { 0% { transform: rotateY(180deg) scale(1); } 50% { transform: rotateY(180deg) scale(1.15); } 100% { transform: rotateY(180deg) scale(1); } }
-
-    .confetti { position: fixed; width: 10px; height: 10px; z-index: 999999; pointer-events: none; animation: fall linear forwards; }
-    @keyframes fall { 0% { transform: translateY(-100px) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
-    
-    .floating-points { position: fixed; font-size: 24px; font-weight: 900; color: var(--green); text-shadow: 0 2px 0 #064E3B, 0 -2px 0 #FFF, 2px 0 0 #FFF, -2px 0 0 #FFF; z-index: 999999; pointer-events: none; animation: floatUpText 1.2s ease-out forwards; }
-    @keyframes floatUpText { 0% { opacity: 0; transform: translateY(0) scale(0.5); } 20% { opacity: 1; transform: translateY(-20px) scale(1.2); } 100% { opacity: 0; transform: translateY(-60px) scale(1); } }
 
     .app-modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(5px); z-index: 99999; align-items: center; justify-content: center; padding: 20px; }
     .app-modal.show { display: flex; animation: fadeIn 0.2s; }
-    .modal-content { background: #FFFFFF; border-radius: var(--radius-xl); padding: 28px; max-width: 480px; width: 100%; border: 4px solid var(--primary); text-align: center; position: relative; animation: slideUpFade 0.3s; }
-    .modal-close-btn { position: absolute; top: 14px; right: 14px; background: #F1F5F9; border: none; width: 36px; height: 36px; border-radius: 50%; font-weight: 800; cursor: pointer; transition: background 0.2s; }
-    .modal-close-btn:hover { background: #E2E8F0; color: var(--accent); }
-
-    .form-input { width: 100%; padding: 14px 16px; font-size: 16px; border: 2.5px solid #CBD5E1; border-radius: var(--radius-md); font-weight: 700; margin-bottom: 12px; outline: none; background: #FFFFFF; transition: border-color 0.2s; }
-    .form-input:focus { border-color: var(--primary); }
-
-    .vip-floating-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #1E293B, #0F172A); border: 2px solid #F59E0B; padding: 10px 24px; border-radius: 50px; color: #FFF; display: flex; align-items: center; gap: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); z-index: 999; cursor: pointer; animation: floatIcon 3s ease-in-out infinite; }
-    #appToast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: #1E293B; color: #FFF; padding: 12px 24px; border-radius: 50px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.25); z-index: 999999; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .modal-content { background: #FFFFFF; border-radius: var(--radius-xl); padding: 28px; max-width: 480px; width: 100%; border: 4px solid var(--primary); text-align: center; position: relative; }
+    
+    .form-input { width: 100%; padding: 14px 16px; font-size: 16px; border: 2.5px solid #CBD5E1; border-radius: var(--radius-md); font-weight: 700; margin-bottom: 12px; outline: none; background: #FFFFFF; }
+    #appToast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: #1E293B; color: #FFF; padding: 12px 24px; border-radius: 50px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.25); z-index: 999999; transition: transform 0.4s; }
     #appToast.active { transform: translateX(-50%) translateY(0); }
-
-    .breathe-box-interactive { background: var(--card-bg); border: 3px solid #BAE6FD; border-radius: 20px; padding: 24px; text-align: center; margin: 16px 0; }
-    .breathe-bubble { width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, #38BDF8, #0284C7); margin: 20px auto; display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 800; font-size: 18px; box-shadow: 0 0 30px rgba(56, 189, 248, 0.4); transition: transform 4s ease-in-out, background 4s ease-in-out; }
-    .breathe-bubble.expand { transform: scale(1.35); background: linear-gradient(135deg, #10B981, #059669); }
-    .breathe-bubble.hold { transform: scale(1.35); background: linear-gradient(135deg, #F59E0B, #D97706); }
-    .breathe-bubble.shrink { transform: scale(0.85); background: linear-gradient(135deg, #38BDF8, #0284C7); }
-
-    .cupcake-preview { width: 150px; height: 150px; margin: 14px auto; background: #FFFBEB; border: 3px dashed #F59E0B; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 56px; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.2); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-    .cupcake-preview.bounce { transform: scale(1.2); border-color: var(--pink); background: #FDF2F8; }
-
-    .star-sky-field { width: 100%; height: 250px; background: linear-gradient(180deg, #1E1B4B 0%, #312E81 100%); border-radius: 16px; position: relative; overflow: hidden; border: 3px solid #818CF8; margin: 14px 0; }
-    .interactive-star { position: absolute; font-size: 32px; cursor: pointer; transition: transform 0.15s, opacity 0.3s; filter: drop-shadow(0 0 8px rgba(255,255,255,0.8)); animation: floatIcon 2s alternate infinite; }
 
     .popit-board { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; max-width: 420px; margin: 14px auto; background: #FDF4FF; border: 3px solid #F0ABFC; padding: 16px; border-radius: 20px; }
     .popit-bubble { aspect-ratio: 1; border-radius: 50%; border: 2px solid #E879F9; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15), 0 4px 6px rgba(0,0,0,0.05); transition: all 0.1s ease; }
     .popit-bubble.popped { transform: scale(0.88); box-shadow: inset 0 4px 0 rgba(0,0,0,0.2); opacity: 0.6; }
     
     .sombra-misteriosa { filter: brightness(0) invert(0); pointer-events: none; }
-
-    /* CORREÇÕES PARA LTR NOS NOMES E MENU DESLIZANTE NA LOUSA */
-    #lousaThumbnails { flex-wrap: nowrap !important; overflow-x: auto; justify-content: flex-start !important; padding-bottom: 10px; -webkit-overflow-scrolling: touch; }
-    #nomeLetraAlvo { direction: ltr !important; unicode-bidi: isolate; }
   </style>
 </head>
 <body>
@@ -225,8 +190,8 @@
   <!-- MODAL FICHA PERSONAGEM -->
   <div id="modalPersonagem" class="app-modal">
     <div class="modal-content">
-      <button class="modal-close-btn" onclick="fecharModalPersonagem()">✕</button>
-      <img id="modalCharImg" src="" alt="Personagem" style="width: 110px; height: 110px; object-fit: contain; margin: 0 auto 10px; display: block; animation: floatIcon 3s infinite;">
+      <button onclick="fecharModalPersonagem()" style="position:absolute; top:14px; right:14px; border:none; background:#F1F5F9; border-radius:50%; width:36px; height:36px; font-weight:800; cursor:pointer;">✕</button>
+      <img id="modalCharImg" src="" style="width: 110px; height: 110px; object-fit: contain; margin: 0 auto 10px; display: block;">
       <h3 id="modalCharNome" style="color: var(--primary); font-size: 24px; font-weight: 800;"></h3>
       <span id="modalCharTag" style="background: #EFF6FF; color: var(--primary); font-weight: 800; font-size: 13px; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 14px;"></span>
       <div style="background: #F8FAFC; border: 2px solid var(--border-color); border-radius: 14px; padding: 14px; text-align: left; font-size: 14px; line-height: 1.6; margin-bottom: 14px;">
@@ -236,16 +201,6 @@
       </div>
       <button id="btnOuvirCharModal" class="btn-tactile primary" style="width: 100%;">🔊 Ouvir Personagem</button>
     </div>
-  </div>
-
-  <!-- BARRA FLUTUANTE VIP DINÂMICA -->
-  <div class="vip-floating-bar" id="barraFlutuanteVip" onclick="navegar('vip')">
-    <span style="font-size: 22px;">👑</span>
-    <div>
-      <div style="font-weight: 800; font-size: 14px;">Clube VIP por apenas R$ 6,00</div>
-      <div style="font-size: 12px; color: #FCD34D;">Desbloqueie todos os jogos, ferramentas e drives!</div>
-    </div>
-    <span style="font-size: 18px;">➔</span>
   </div>
 
   <div class="app-shell">
@@ -266,15 +221,16 @@
 
       <div class="top-actions">
         <button class="btn-tactile btn-icon-round" id="btnModoCalmo" onclick="toggleModoCalmo()" title="Modo Calmo Sensory">🌿</button>
-        <button class="btn-tactile btn-icon-round" id="btnAudioToggle" onclick="toggleAudioVoz()" title="Voz do Portal">🔊</button>
+        <button class="btn-tactile btn-icon-round" id="btnAudioToggle" onclick="toggleAudioVoz()" title="Mudo">🔊</button>
         <button class="btn-tactile btn-icon-round" onclick="navegar('perfil')" title="Perfil & Ajustes">⚙️</button>
       </div>
     </header>
 
     <!-- NAVEGAÇÃO PRINCIPAL -->
     <nav class="main-nav">
-      <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Central</button>
-      <button class="nav-item-btn" onclick="navegar('inicio')">🏠 Início</button>
+      <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Hub Central</button>
+      <button class="nav-item-btn" onclick="navegar('casa')" style="color: #6D28D9; background: #F5F3FF;">🏡 Casa da Turminha</button>
+      <button class="nav-item-btn" onclick="navegar('inicio')">🏠 Sobre</button>
       <button class="nav-item-btn" onclick="navegar('jogos')">🕹️ Jogos</button>
       <button class="nav-item-btn tea-item" onclick="navegar('tea')">🧩 Espaço TEA</button>
       <button class="nav-item-btn" onclick="navegar('videos')">🎬 Vídeos</button>
@@ -282,33 +238,65 @@
       <button class="nav-item-btn" onclick="navegar('rotina')">📅 Rotina</button>
       <button class="nav-item-btn" onclick="navegar('certificado')">🏆 Certificado</button>
       <button class="nav-item-btn vip-item" onclick="navegar('vip')">⭐ Clube VIP</button>
-      <button class="nav-item-btn" onclick="navegar('perfil')">👤 Perfil & Ajustes</button>
+      <button class="nav-item-btn" onclick="navegar('perfil')">⚙️ Ajustes</button>
     </nav>
 
-    <!-- PÁGINA: CENTRAL -->
+    <!-- PÁGINA: HUB CENTRAL -->
     <div id="page-central" class="page-box active">
-      
-      <!-- MINIJOGO: CUIDANDO DO XEXÉU (ESTILO POU) -->
-      <div class="game-card" style="text-align: center; border-color: #8B5CF6; background: #F5F3FF;">
+      <div class="central-hub-grid">
+        <div class="hub-card" onclick="navegar('casa')" style="border-color: #8B5CF6;">
+          <span class="hub-card-icon">🐣</span>
+          <span class="hub-card-tag" style="background: #F5F3FF; color: #6D28D9;">Pet Virtual</span>
+          <h4 class="hub-card-title">Casa da Turminha</h4>
+          <p class="hub-card-desc">Cuide do Xexéu: dê comidinha, brinque e coloque para dormir!</p>
+        </div>
+
+        <div class="hub-card" onclick="navegar('jogos')">
+          <span class="hub-card-icon">🎨</span>
+          <span class="hub-card-tag" style="background: #EFF6FF; color: var(--primary);">Jogos Educativos</span>
+          <h4 class="hub-card-title">Estúdio de Jogos</h4>
+          <p class="hub-card-desc">Lousa, bandinha, contar, letras, sombras, memória e quiz!</p>
+        </div>
+
+        <div class="hub-card" onclick="navegar('tea')" style="border-color: #BAE6FD;">
+          <span class="hub-card-icon">🧩</span>
+          <span class="hub-card-tag" style="background: #E0F2FE; color: var(--tea-blue);">Inclusivo & Calmo</span>
+          <h4 class="hub-card-title">Espaço TEA do Leo</h4>
+          <p class="hub-card-desc">Pranchas CAA, emoções, pop-it e lousa sensorial mágica.</p>
+        </div>
+
+        <div class="hub-card" onclick="navegar('vip')" style="border-color: #FBCFE8;">
+          <span class="hub-card-icon">🧁</span>
+          <span class="hub-card-tag" style="background: #FDF2F8; color: var(--pink);">Doce & Criativo (VIP)</span>
+          <h4 class="hub-card-title">Jogos VIP Especiais</h4>
+          <p class="hub-card-desc">Confeitaria da Vovó Hilda e Cata-Estrelas relaxante!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PÁGINA: CASA DA TURMINHA (XEXÉU) -->
+    <div id="page-casa" class="page-box">
+      <div class="game-card" style="text-align: center; border-color: #8B5CF6; background: #F5F3FF; max-width: 600px; margin: 0 auto; width: 100%;">
         <div class="game-card-title" style="color: #6D28D9; justify-content: center; margin-bottom: 8px;">
-          <span>🐣 Cuidando do Xexéu</span>
+          <span>🐣 Casa da Turminha</span>
         </div>
         <p style="font-size: 14px; color: #5B21B6; margin-bottom: 20px; font-weight: 600;">O Xexéu precisa de carinho! Dê comidinha, brinque e coloque para dormir.</p>
 
+        <!-- BARRAS DE STATUS -->
         <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;">
-          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 120px; box-shadow: var(--shadow-sm);">
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; flex: 1; min-width: 100px; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #991B1B;">🍎 Fome</span>
             <div style="background: #FEE2E2; height: 10px; border-radius: 10px; overflow: hidden;">
               <div id="barFome" style="background: #EF4444; height: 100%; width: 50%; transition: width 0.4s ease-out;"></div>
             </div>
           </div>
-          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 120px; box-shadow: var(--shadow-sm);">
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; flex: 1; min-width: 100px; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #92400E;">⚡ Energia</span>
             <div style="background: #FEF3C7; height: 10px; border-radius: 10px; overflow: hidden;">
               <div id="barEnergia" style="background: #F59E0B; height: 100%; width: 80%; transition: width 0.4s ease-out;"></div>
             </div>
           </div>
-          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; min-width: 120px; box-shadow: var(--shadow-sm);">
+          <div style="background: #FFF; padding: 8px 12px; border-radius: 12px; border: 2px solid #CBD5E1; flex: 1; min-width: 100px; box-shadow: var(--shadow-sm);">
             <span style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 4px; color: #065F46;">🎈 Alegria</span>
             <div style="background: #D1FAE5; height: 10px; border-radius: 10px; overflow: hidden;">
               <div id="barAlegria" style="background: #10B981; height: 100%; width: 100%; transition: width 0.4s ease-out;"></div>
@@ -316,68 +304,25 @@
           </div>
         </div>
 
-        <div style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; max-width: 320px; margin: 0 auto 20px; position: relative; overflow: hidden; height: 260px; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
+        <!-- TELA DO QUARTINHO -->
+        <div style="background: #FFF; border: 4px solid #C4B5FD; border-radius: 20px; width: 100%; height: 280px; margin: 0 auto 20px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);">
           <div id="filtroNoite" style="position: absolute; inset: 0; background: rgba(15, 23, 42, 0.8); display: none; z-index: 1;"></div>
-          <div class="mascote-virtual" id="mascoteXexeuHome" onclick="animarMascote(event)" style="position: relative; right: 0; bottom: 0;">
+          <div class="mascote-virtual" id="mascoteXexeuHome" onclick="animarMascote()">
             <div class="balao-fala" id="balaoMascote" style="top: -40px; right: -20px;">Bora brincar!</div>
-            <img id="imgXexeuPet" src="https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif" alt="Xexéu Virtual" style="width: 200px; height: 200px; object-fit: contain; z-index: 2; transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+            <img id="imgXexeuPet" src="https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif" alt="Xexéu Virtual" style="width: 200px; height: 200px; object-fit: contain; z-index: 2; position:relative;">
           </div>
         </div>
 
+        <!-- BOTÕES DE AÇÃO -->
         <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
           <button class="btn-tactile" style="border-color: #EF4444; color: #B91C1C;" onclick="acaoPet('alimentar')">🍎 Dar Comida</button>
           <button class="btn-tactile" style="border-color: #F59E0B; color: #B45309;" onclick="acaoPet('brincar')">🎾 Brincar</button>
           <button class="btn-tactile" style="border-color: #3B82F6; color: #1D4ED8;" onclick="acaoPet('dormir')">🛏️ Dormir/Acordar</button>
         </div>
       </div>
-      <!-- FIM MINIJOGO -->
-
-      <div class="central-hub-grid">
-        <div class="hub-card" onclick="navegar('jogos')">
-          <span class="hub-card-icon">🎨</span>
-          <span class="hub-card-tag" style="background: #EFF6FF; color: var(--primary);">Jogos Educativos</span>
-          <h4 class="hub-card-title">Estúdio de Jogos & Lousa</h4>
-          <p class="hub-card-desc">Lousa mágica, bandinha, contar, letras, sombras, memória e quiz!</p>
-        </div>
-
-        <div class="hub-card" onclick="navegar('tea')" style="border-color: #BAE6FD;">
-          <span class="hub-card-icon">🧩</span>
-          <span class="hub-card-tag" style="background: #E0F2FE; color: var(--tea-blue);">Inclusivo & Calmo</span>
-          <h4 class="hub-card-title">Espaço TEA do Leo</h4>
-          <p class="hub-card-desc">Pranchas CAA, termômetro emocional, pop-it e lousa sensorial.</p>
-        </div>
-
-        <div class="hub-card" onclick="irParaJogosVip('cupcake')" style="border-color: #FBCFE8;">
-          <span class="hub-card-icon">🧁</span>
-          <span class="hub-card-tag" style="background: #FDF2F8; color: var(--pink);">Doce & Criativo (VIP)</span>
-          <h4 class="hub-card-title">Confeitaria da Vovó Hilda</h4>
-          <p class="hub-card-desc">Misture massas, coberturas e confeitos mágicos para criar docinhos!</p>
-        </div>
-
-        <div class="hub-card" onclick="navegar('livros')">
-          <span class="hub-card-icon">📚</span>
-          <span class="hub-card-tag" style="background: #FEF3C7; color: #92400E;">Histórias Ilustradas</span>
-          <h4 class="hub-card-title">Biblioteca da Turminha</h4>
-          <p class="hub-card-desc">Livros digitais com contos afetuosos, aventuras e aprendizados.</p>
-        </div>
-
-        <div class="hub-card" onclick="navegar('rotina')">
-          <span class="hub-card-icon">📅</span>
-          <span class="hub-card-tag" style="background: #D1FAE5; color: var(--green-dark);">Hábitos Saudáveis</span>
-          <h4 class="hub-card-title">Quadro de Rotinas</h4>
-          <p class="hub-card-desc">Organize as tarefas do dia a dia e marque seus hábitos cumpridos.</p>
-        </div>
-
-        <div class="hub-card" onclick="navegar('certificado')">
-          <span class="hub-card-icon">🏆</span>
-          <span class="hub-card-tag" style="background: #FEF9C3; color: #854D0E;">Diploma Oficial</span>
-          <h4 class="hub-card-title">Certificado de Super Fã</h4>
-          <p class="hub-card-desc">Gere seu diploma com nome oficial e baixe para guardar ou imprimir!</p>
-        </div>
-      </div>
     </div>
 
-    <!-- PÁGINA: INÍCIO -->
+    <!-- PÁGINA: INÍCIO (SOBRE) -->
     <div id="page-inicio" class="page-box">
       <div class="hero-grid">
         <div class="banner-hero-box">
@@ -387,57 +332,34 @@
         <div class="game-card" style="display: flex; flex-direction: column; justify-content: space-between;">
           <div>
             <div class="game-card-title">
-              <span>⏳ Controle de Tempo</span>
-              <span style="font-size: 13px; color: var(--text-muted);">Parental</span>
+              <span>⏳ Tempo de Tela</span>
             </div>
-            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 14px;">Defina o tempo de tela da sessão:</p>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-              <button class="btn-tactile" onclick="iniciarTimer(2)">2 Min (Grátis)</button>
+              <button class="btn-tactile" onclick="iniciarTimer(2)">2 Min</button>
               <button class="btn-tactile" onclick="iniciarTimer(5)">5 Min</button>
-              <button class="btn-tactile" onclick="iniciarTimer(15)">15 Min (VIP)</button>
-              <button class="btn-tactile" onclick="iniciarTimer(30)">30 Min (VIP)</button>
+              <button class="btn-tactile vip" onclick="iniciarTimer(15)">15 Min (VIP)</button>
+              <button class="btn-tactile vip" onclick="iniciarTimer(30)">30 Min (VIP)</button>
             </div>
           </div>
           <div style="margin-top: 14px;">
             <div style="background: #E2E8F0; height: 16px; border-radius: 20px; overflow: hidden;">
               <div id="timerProgressFill" style="background: var(--green); height: 100%; width: 100%; transition: width 1s linear;"></div>
             </div>
-            <p id="timerLabelTxt" style="text-align: right; font-weight: 800; font-size: 16px; margin-top: 6px; color: var(--text-main);">00:00</p>
+            <p id="timerLabelTxt" style="text-align: right; font-weight: 800; font-size: 16px; margin-top: 6px;">00:00</p>
           </div>
         </div>
       </div>
 
-      <div class="game-card" style="background: linear-gradient(135deg, #FEF3C7 0%, #FFFBEB 100%); border-color: #FCD34D;">
-        <div class="game-card-title" style="color: #92400E;">
-          <span>✨ Educando com Alegria e Amor</span>
-          <button class="btn-tactile btn-icon-round" onclick="falarTexto('Mais do que um nome divertido, a Turminha do Xexéu é o nosso jeito de honrar as raízes e a história da nossa família. O nome Xexéu é uma homenagem que atravessa gerações. Ele honra a memória de Mariano Xexéu e celebra a vida de seu filho, Pedro Mariano, grande inspiração para o nosso querido Vovô Beto. A Vovó Hilda é inspirada na inesquecível Astrogilda Grispym, representando o amor que não conhece o tempo.')">🔊</button>
-        </div>
-        <p style="font-size: 15px; color: #78350F; line-height: 1.8; font-weight: 600; margin-bottom: 8px;">
-          Mais do que um nome divertido, a <strong>Turminha do Xexéu</strong> é o nosso jeito de honrar as raízes e a história da nossa família.
-        </p>
-        <p style="font-size: 15px; color: #78350F; line-height: 1.8; font-weight: 600; margin-bottom: 8px;">
-          O nome <strong>Xexéu</strong> é uma homenagem que atravessa gerações. Ele honra a memória de <em>Mariano Xexéu</em> e celebra a vida de seu filho, <em>Pedro Mariano</em>, grande inspiração para o nosso querido <strong>Vovô Beto</strong>.
-        </p>
-        <p style="font-size: 15px; color: #78350F; line-height: 1.8; font-weight: 600;">
-          A <strong>Vovó Hilda</strong> é inspirada na inesquecível <em>Astrogilda Grispym</em>, representando o amor que não conhece o tempo.
-        </p>
-      </div>
-
       <div class="social-bar">
         <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="YouTube"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT.png" alt="YouTube"></a>
-        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw?si=cvVp-lO2f5suzj6h" target="_blank" class="social-btn-round" title="YouTube Music"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT_MUSIC.png" alt="YT Music"></a>
+        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-btn-round" title="YouTube Music"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT_MUSIC.png" alt="YT Music"></a>
         <a href="https://www.instagram.com/turminhaxe_xeu/" target="_blank" class="social-btn-round" title="Instagram"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/INDTAGRAM.png" alt="Instagram"></a>
         <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="TikTok"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TIKTOK.png" alt="TikTok"></a>
-        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6?si=QqrYhcP2REaiUA9LFtjT4g" target="_blank" class="social-btn-round" title="Spotify"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/SPOTIFY.png" alt="Spotify"></a>
-        <a href="https://www.facebook.com/profile.php?id=61585431586796" target="_blank" class="social-btn-round" title="Facebook"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/FACEBOOK.png" alt="Facebook"></a>
-        <a href="https://www.threads.net/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="Threads"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/THRENDS.png" alt="Threads"></a>
+        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-btn-round" title="Spotify"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/SPOTIFY.png" alt="Spotify"></a>
       </div>
 
       <div class="game-card">
-        <div class="game-card-title">
-          <span>✨ Conheça Todos os Personagens</span>
-          <button class="btn-tactile btn-icon-round" onclick="falarTexto('Toque nos personagens para conhecer cada um!')">🔊</button>
-        </div>
+        <div class="game-card-title"><span>✨ Conheça Todos os Personagens</span></div>
         <div class="family-group-box"><div class="family-group-title"><span>✨ Mascotes Oficiais</span></div><div class="chars-grid" id="gridMascotes"></div></div>
         <div class="family-group-box"><div class="family-group-title"><span>💖 Casa da Maya e do Theo</span></div><div class="chars-grid" id="gridCasaMaya"></div></div>
         <div class="family-group-box"><div class="family-group-title"><span>⚡ Casa do Sam e da Lia</span></div><div class="chars-grid" id="gridCasaSam"></div></div>
@@ -458,30 +380,30 @@
           <button class="game-subtab-btn" onclick="trocarJogo('banda')">🥁 Bandinha</button>
           <button class="game-subtab-btn" onclick="trocarJogo('contar')">🔢 Contar</button>
           <button class="game-subtab-btn" onclick="trocarJogo('letras')">🔤 Primeira Letra</button>
-          <button class="game-subtab-btn" onclick="trocarJogo('sombras')" style="border-color: #8B5CF6; color: #6D28D9;">👤 Sombras</button>
+          <button class="game-subtab-btn" onclick="trocarJogo('sombras')">👤 Sombras</button>
           <button class="game-subtab-btn" onclick="trocarJogo('memoria')">🧠 Memória</button>
-          <button class="game-subtab-btn" onclick="trocarJogo('quiz')">❓ Super Quiz</button>
-          <button class="game-subtab-btn" id="subtab-cupcake" onclick="trocarJogo('cupcake')" style="border-color: #EC4899; color: #BE185D;">🧁 Bolinhos VIP</button>
-          <button class="game-subtab-btn" id="subtab-estrelas" onclick="trocarJogo('estrelas')" style="border-color: #F59E0B; color: #D97706;">⭐ Cata-Estrelas VIP</button>
+          <button class="game-subtab-btn" onclick="trocarJogo('quiz')">❓ Quiz</button>
+          <button class="game-subtab-btn" onclick="navegar('vip')" style="border-color: #EC4899; color: #BE185D;">🧁 Bolinhos VIP</button>
         </div>
 
         <!-- 1. LOUSA -->
         <div id="subgame-lousa" class="minigame-container active">
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Escolha um desenho para colorir ou use a lousa livre:</p>
-          <div style="display: flex; gap: 8px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap;" id="lousaThumbnails"></div>
+          <!-- DESAPERTANDO AS IMAGENS -->
+          <div id="lousaThumbnails"></div>
           
           <canvas id="paintCanvas"></canvas>
           
-          <div style="display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 14px; flex-wrap: wrap;">
-            <button class="btn-tactile" style="background:#2563EB; color:#FFF;" onclick="setCorPincel('#2563EB')">Azul</button>
-            <button class="btn-tactile" style="background:#EF4444; color:#FFF;" onclick="setCorPincel('#EF4444')">Vermelho</button>
-            <button class="btn-tactile" style="background:#10B981; color:#FFF;" onclick="setCorPincel('#10B981')">Verde</button>
-            <button class="btn-tactile" style="background:#F59E0B; color:#FFF;" onclick="setCorPincel('#F59E0B')">Amarelo</button>
-            <button class="btn-tactile" style="background:#8B5CF6; color:#FFF;" onclick="setCorPincel('#8B5CF6')">Roxo</button>
+          <div style="display: flex; gap: 12px; justify-content: center; align-items: center; margin-top: 16px; flex-wrap: wrap;">
+            <!-- BOLINHAS DE CORES SEM TEXTO -->
+            <button class="color-btn" style="background:#2563EB;" onclick="setCorPincel('#2563EB')"></button>
+            <button class="color-btn" style="background:#EF4444;" onclick="setCorPincel('#EF4444')"></button>
+            <button class="color-btn" style="background:#10B981;" onclick="setCorPincel('#10B981')"></button>
+            <button class="color-btn" style="background:#F59E0B;" onclick="setCorPincel('#F59E0B')"></button>
+            <button class="color-btn" style="background:#8B5CF6;" onclick="setCorPincel('#8B5CF6')"></button>
 
             <!-- ROLETA DINÂMICA NOVA -->
             <label class="btn-tactile" style="background: linear-gradient(135deg, #FF0080, #7928CA, #0070F3); color:#FFF; cursor:pointer; display:flex; align-items:center; gap:8px;" title="Escolha qualquer cor">
-              🌈 Roleta
               <div id="corPreviewRoleta" style="width: 18px; height: 18px; border-radius: 50%; background: #2563EB; border: 2px solid #FFF;"></div>
               <input type="color" id="roletaCorLousa" value="#2563EB" style="opacity: 0; width: 0; height: 0; position: absolute;" 
               onchange="setCorPincel(this.value); document.getElementById('corPreviewRoleta').style.background = this.value;">
@@ -499,15 +421,20 @@
           </div>
         </div>
 
-        <!-- NOVO: BANDINHA -->
+        <!-- NOVO: BANDINHA DA TURMINHA -->
         <div id="subgame-banda" class="minigame-container">
-          <h3 style="font-size: 20px; margin-bottom: 8px;">Vamos fazer barulho! 🥁</h3>
-          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Toque nos instrumentos para criar sua musiquinha.</p>
-          <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <button class="game-choice-btn" style="font-size:40px; padding:20px 30px;" onclick="tocarInstrumento(event, 'bateria')">🥁</button>
-            <button class="game-choice-btn" style="font-size:40px; padding:20px 30px; border-color:#3B82F6;" onclick="tocarInstrumento(event, 'piano')">🎹</button>
-            <button class="game-choice-btn" style="font-size:40px; padding:20px 30px; border-color:#10B981;" onclick="tocarInstrumento(event, 'violao')">🎸</button>
-            <button class="game-choice-btn" style="font-size:40px; padding:20px 30px; border-color:#F59E0B;" onclick="tocarInstrumento(event, 'trompete')">🎺</button>
+          <h3 style="font-size: 20px; margin-bottom: 8px;">Bandinha da Turminha! 🎶</h3>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Escolha um instrumento para tocar:</p>
+          
+          <div style="display:flex; justify-content:center; gap:10px; margin-bottom: 20px; flex-wrap: wrap;">
+            <button class="btn-tactile active" id="tabInst-bateria" onclick="abrirInstrumento('bateria')">🥁 Bateria do Joca</button>
+            <button class="btn-tactile" id="tabInst-guitarra" onclick="abrirInstrumento('guitarra')">🎸 Guitarra da Iza</button>
+            <button class="btn-tactile vip" id="tabInst-teclado" onclick="abrirInstrumento('teclado')">🎹 Teclado da Nina (VIP)</button>
+            <button class="btn-tactile vip" id="tabInst-violao" onclick="abrirInstrumento('violao')">🎻 Violão do Xexéu (VIP)</button>
+          </div>
+
+          <div id="painelInstrumento" style="background:#F8FAFC; border:3px solid #CBD5E1; border-radius:20px; padding:30px; display:flex; gap:15px; justify-content:center; flex-wrap:wrap; min-height:180px; align-items:center;">
+            <!-- Renderizado via JS -->
           </div>
         </div>
 
@@ -523,15 +450,15 @@
           <div id="boxContarBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
 
-        <!-- 3. LETRAS -->
+        <!-- 3. LETRAS (Corrigido texto invertido) -->
         <div id="subgame-letras" class="minigame-container">
           <div class="level-badge-container">
             <button class="level-btn active" id="btnNivelLetras-1" onclick="setNivelLetras(1)">Nível Fácil (2 Opções)</button>
             <button class="level-btn" id="btnNivelLetras-2" onclick="setNivelLetras(2)">Nível Médio (4 Opções)</button>
-            <button class="level-btn vip-level" id="btnNivelLetras-3" onclick="setNivelLetras(3)">👑 Super Desafio VIP (6 Opções)</button>
+            <button class="level-btn vip-level" id="btnNivelLetras-3" onclick="setNivelLetras(3)">👑 Super VIP (6 Opções)</button>
           </div>
           <h3 style="font-size: 20px; margin-bottom: 8px;">Com qual letra começa o nome dele(a)?</h3>
-          <h2 id="nomeLetraAlvo" style="color: var(--purple); font-size: 32px; font-weight: 800; margin-bottom: 10px; animation: popPulse 2s infinite;">Xexéu</h2>
+          <h2 id="nomeLetraAlvo" style="color: var(--purple); font-size: 32px; font-weight: 800; margin-bottom: 10px;">Xexéu</h2>
           <img id="imgLetraAlvo" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" alt="Letra Alvo" style="width: 120px; height: 120px; object-fit: contain; margin: 0 auto 16px; display: block; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">
           <div id="boxLetrasBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
         </div>
@@ -539,9 +466,9 @@
         <!-- SOMBRAS MÁGICAS -->
         <div id="subgame-sombras" class="minigame-container">
           <div class="level-badge-container">
-            <button class="level-btn active" id="btnNivelSombras-1" onclick="setNivelSombras(1)">Nível 1 (3 Sombras)</button>
-            <button class="level-btn" id="btnNivelSombras-2" onclick="setNivelSombras(2)">Nível 2 (4 Sombras)</button>
-            <button class="level-btn vip-level" id="btnNivelSombras-3" onclick="setNivelSombras(3)">👑 Nível 3 VIP (6 Sombras)</button>
+            <button class="level-btn active" id="btnNivelSombras-1" onclick="setNivelSombras(1)">Nível 1</button>
+            <button class="level-btn" id="btnNivelSombras-2" onclick="setNivelSombras(2)">Nível 2</button>
+            <button class="level-btn vip-level" id="btnNivelSombras-3" onclick="setNivelSombras(3)">👑 VIP</button>
           </div>
           <h3 style="font-size: 20px; margin-bottom: 10px;">De quem é essa sombra mágica?</h3>
           <div style="background: #F8FAFC; border: 4px solid #CBD5E1; border-radius: 20px; display: inline-block; padding: 20px; margin-bottom: 20px;">
@@ -553,9 +480,9 @@
         <!-- 4. MEMÓRIA -->
         <div id="subgame-memoria" class="minigame-container">
           <div class="level-badge-container">
-            <button class="level-btn active" id="btnNivelMemoria-1" onclick="setNivelMemoria(1)">Fácil (4 Pares)</button>
-            <button class="level-btn" id="btnNivelMemoria-2" onclick="setNivelMemoria(2)">Médio (6 Pares)</button>
-            <button class="level-btn vip-level" id="btnNivelMemoria-3" onclick="setNivelMemoria(3)">👑 Mega Memória VIP (8 Pares)</button>
+            <button class="level-btn active" id="btnNivelMemoria-1" onclick="setNivelMemoria(1)">Fácil</button>
+            <button class="level-btn" id="btnNivelMemoria-2" onclick="setNivelMemoria(2)">Médio</button>
+            <button class="level-btn vip-level" id="btnNivelMemoria-3" onclick="setNivelMemoria(3)">👑 VIP</button>
           </div>
           <h3 style="font-size: 20px; margin-bottom: 16px;">Encontre todos os pares!</h3>
           <div class="memory-grid" id="memoryGridContainer"></div>
@@ -564,23 +491,13 @@
         <!-- 5. QUIZ -->
         <div id="subgame-quiz" class="minigame-container">
           <div class="level-badge-container">
-            <button class="level-btn active" id="btnNivelQuiz-1" onclick="setNivelQuiz(1)">Nível 1 (2 Nomes)</button>
-            <button class="level-btn" id="btnNivelQuiz-2" onclick="setNivelQuiz(2)">Nível 2 (3 Nomes)</button>
-            <button class="level-btn vip-level" id="btnNivelQuiz-3" onclick="setNivelQuiz(3)">👑 Quiz Completo VIP (4 Nomes + Família Toda)</button>
+            <button class="level-btn active" id="btnNivelQuiz-1" onclick="setNivelQuiz(1)">Nível 1</button>
+            <button class="level-btn" id="btnNivelQuiz-2" onclick="setNivelQuiz(2)">Nível 2</button>
+            <button class="level-btn vip-level" id="btnNivelQuiz-3" onclick="setNivelQuiz(3)">👑 VIP</button>
           </div>
           <h3 style="font-size: 20px; margin-bottom: 10px;">Quem é este personagem da turminha?</h3>
           <img id="imgQuizAlvo" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png" alt="Quiz Personagem" style="width: 130px; height: 130px; object-fit: contain; margin: 0 auto 16px; display: block; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.15)); transition: transform 0.3s;">
           <div id="boxQuizBotoes" style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;"></div>
-        </div>
-
-        <!-- VIP: BOLINHOS -->
-        <div id="subgame-cupcake" class="minigame-container">
-          <div id="boxConteudoCupcake"></div>
-        </div>
-
-        <!-- VIP: ESTRELAS -->
-        <div id="subgame-estrelas" class="minigame-container">
-          <div id="boxConteudoEstrelas"></div>
         </div>
       </div>
     </div>
@@ -592,40 +509,30 @@
           <span>🧩 Espaço TEA com o Leo</span>
           <div style="display: flex; gap: 8px;">
             <button class="btn-tactile" style="background:#FFF; color:var(--tea-blue); border-color:#BAE6FD;" onclick="toggleModoCalmo()">🌿 Modo Calmo</button>
-            <button class="btn-tactile btn-icon-round" onclick="falarTexto('Espaço inclusivo com o Leo. Tudo no seu tempo, com tranquilidade, carinho e acolhimento.')">🔊</button>
           </div>
         </div>
-        <p style="font-size: 15px; color: #0369A1; font-weight: 600;">"Olá! Aqui nós nos comunicamos, respiramos e nos expressamos com respeito e segurança."</p>
+        <p style="font-size: 15px; color: #0369A1; font-weight: 600;">Aqui nós nos comunicamos e nos expressamos com segurança.</p>
       </div>
 
       <div class="game-card" style="border-color: #C7D2FE; background: #FAFAFE;">
         <div class="game-card-title" style="color: #4338CA;">
-          <span>💖 Como Estou me Sentindo Agora?</span>
-          <span style="font-size: 12px; background: #EEF2FF; color: #4338CA; padding: 4px 10px; border-radius: 20px;">Toque para expressar</span>
+          <span>💖 Como Estou me Sentindo?</span>
         </div>
-        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 14px;">Identifique seu sentimento e o Leo te ajudará a acolher cada emoção:</p>
-        
         <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-          <button class="btn-tactile" style="background:#DCFCE7; border-color:#86EFAC; color:#14532D;" onclick="expressarSentimento('Feliz', 'Que alegria estar feliz! Vamos comemorar com a turminha!')">😄 Feliz</button>
-          <button class="btn-tactile" style="background:#E0F2FE; border-color:#7DD3FC; color:#0369A1;" onclick="expressarSentimento('Calmo', 'Muito bem! Sentir paz no coração faz o dia ficar tranquilo.')">😌 Calmo</button>
-          <button class="btn-tactile" style="background:#FEF3C7; border-color:#FDE047; color:#854D0E;" onclick="expressarSentimento('Com Medo', 'Está tudo bem sentir medo. Você está seguro aqui conosco.')">🥺 Assustado</button>
-          <button class="btn-tactile" style="background:#FEE2E2; border-color:#FCA5A5; color:#991B1B;" onclick="expressarSentimento('Bravo', 'Sentir raiva acontece. Vamos respirar fundo para a calma voltar?')">😠 Bravo</button>
-          <button class="btn-tactile" style="background:#F3E8FF; border-color:#D8B4FE; color:#581C87;" onclick="expressarSentimento('Triste', 'Tudo bem ficar triste. Um abraço quentinho da Vovó Hilda vai ajudar.')">😢 Triste</button>
-          <button class="btn-tactile" style="background:#F1F5F9; border-color:#CBD5E1; color:#475569;" onclick="expressarSentimento('Cansado', 'Seu corpinho precisa de uma pausa. Deite um pouquinho e feche os olhinhos.')">🥱 Cansado</button>
+          <button class="btn-tactile" style="background:#DCFCE7; border-color:#86EFAC; color:#14532D;" onclick="expressarSentimento('Feliz', 'Que alegria!')">😄 Feliz</button>
+          <button class="btn-tactile" style="background:#E0F2FE; border-color:#7DD3FC; color:#0369A1;" onclick="expressarSentimento('Calmo', 'Muito bem, paz no coração.')">😌 Calmo</button>
+          <button class="btn-tactile" style="background:#FEF3C7; border-color:#FDE047; color:#854D0E;" onclick="expressarSentimento('Com Medo', 'Tudo bem sentir medo, estou aqui.')">🥺 Assustado</button>
+          <button class="btn-tactile" style="background:#FEE2E2; border-color:#FCA5A5; color:#991B1B;" onclick="expressarSentimento('Bravo', 'Vamos respirar fundo.')">😠 Bravo</button>
+          <button class="btn-tactile" style="background:#F3E8FF; border-color:#D8B4FE; color:#581C87;" onclick="expressarSentimento('Triste', 'Um abraço quentinho vai ajudar.')">😢 Triste</button>
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px;">
+      <div class="grid-2-col">
         <div class="game-card">
-          <div class="game-card-title">
-            <span>🗣️ Prancha de Fala (CAA)</span>
-            <span style="font-size: 12px; color: var(--text-muted);">Toque no cartão ou exclua no ✕</span>
-          </div>
-          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px;">Clique no cartão para falar:</p>
+          <div class="game-card-title"><span>🗣️ Prancha de Fala (CAA)</span></div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px;" id="caaContainerCards"></div>
           
           <div style="margin-top: 16px; padding-top: 14px; border-top: 2px solid var(--border-color);">
-            <h5 style="font-size: 14px; margin-bottom: 8px; color: var(--text-main);">➕ Criar Cartão Personalizado</h5>
             <div style="display: flex; gap: 8px;">
               <input type="text" id="novoCaaEmoji" class="form-input" style="width: 65px; margin-bottom: 0; text-align: center;" placeholder="🧸">
               <input type="text" id="novoCaaTexto" class="form-input" style="flex: 1; margin-bottom: 0;" placeholder="Ex: Desenhar">
@@ -635,12 +542,10 @@
         </div>
 
         <div class="game-card" style="text-align: center;">
-          <div class="game-card-title"><span>🌬️ Treino da Calma com o Leo</span></div>
-          <p style="font-size: 13px; color: var(--text-muted);">Siga a bolha para desacelerar o coraçãozinho:</p>
-          
+          <div class="game-card-title"><span>🌬️ Treino da Calma</span></div>
           <div class="breathe-box-interactive">
             <div class="breathe-bubble" id="breatheVisualBubble">Inspire...</div>
-            <h4 id="breatheStatusText" style="color: var(--tea-blue); font-size: 16px; margin-top: 10px;">Puxe o ar pelo nariz bem devagar 🌿</h4>
+            <h4 id="breatheStatusText" style="color: var(--tea-blue); font-size: 16px; margin-top: 10px;">Puxe o ar pelo nariz...</h4>
           </div>
         </div>
       </div>
@@ -648,26 +553,28 @@
       <div class="game-card" style="text-align: center; border-color: #F0ABFC; background: #FFF5FF;">
         <div class="game-card-title" style="color: #A21CAF;">
           <span>🫧 Pop-It Sensorial da Calma</span>
-          <button class="btn-tactile" style="background:#FFF; color:#A21CAF; border-color:#F0ABFC;" onclick="resetarPopIt()">✨ Restaurar Bolhas</button>
+          <button class="btn-tactile" style="background:#FFF; color:#A21CAF; border-color:#F0ABFC;" onclick="resetarPopIt()">✨ Restaurar</button>
         </div>
-        <p style="font-size: 13px; color: #86198F; font-weight: 600;">Estoure as bolhas coloridas para relaxar as mãozinhas e acalmar os pensamentos:</p>
+        <p style="font-size: 13px; color: #86198F; font-weight: 600;">Estoure as bolhas coloridas para relaxar as mãozinhas!</p>
         <div class="popit-board" id="popitGridContainer"></div>
       </div>
 
-      <!-- NOVA LOUSA SENSORIAL TEA -->
-      <div class="game-card" style="text-align: center; border-color: #6EE7B7; background: #ECFDF5;">
-        <div class="game-card-title" style="color: #047857;">
+      <!-- LOUSA DA CALMA GIGANTE -->
+      <div class="game-card" style="text-align: center; border-color: #6EE7B7; background: #ECFDF5; padding: 10px;">
+        <div class="game-card-title" style="color: #047857; margin-bottom:5px; padding: 10px;">
           <span>🎨 Lousa da Calma</span>
+          <button class="btn-tactile green" onclick="limparLousaSensorial()">✨ Apagar Tudo</button>
         </div>
-        <p style="font-size: 13px; color: #065F46; font-weight: 600;">Passe o dedinho para criar cores suaves e ouvir o som relaxante:</p>
-        <canvas id="lousaSensorialTea" style="background: #111827; border-radius: 20px; width: 100%; max-width: 420px; height: 250px; touch-action: none; cursor: crosshair; margin: 10px auto; display: block; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);"></canvas>
-        <button class="btn-tactile green" style="margin-top: 10px;" onclick="limparLousaSensorial()">✨ Apagar e Recomeçar</button>
+        <p style="font-size: 13px; color: #065F46; font-weight: 600; margin-bottom: 10px;">Passe o dedinho para criar cores suaves e ouvir a mágica:</p>
+        <div style="width: 100%; height: 65vh; max-height: 800px; border-radius: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
+          <canvas id="lousaSensorialTea" style="background: #111827; width: 100%; height: 100%; touch-action: none; cursor: crosshair; display: block;"></canvas>
+        </div>
       </div>
     </div>
 
     <!-- PÁGINA: VÍDEOS & SONS -->
     <div id="page-videos" class="page-box">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div class="grid-2-col">
         <div class="game-card">
           <div class="game-card-title"><span>📺 Episódios no YouTube</span></div>
           <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden; box-shadow: var(--shadow-md);">
@@ -690,38 +597,16 @@
     <!-- PÁGINA: BIBLIOTECA -->
     <div id="page-livros" class="page-box">
       <div class="game-card">
-        <div class="game-card-title">
-          <span>📚 Biblioteca da Turminha</span>
-          <button class="btn-tactile btn-icon-round" onclick="falarTexto('Nossas histórias infantis ilustradas estão sendo finalizadas para lançamento!')">🔊</button>
-        </div>
-        <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 20px;">Livros digitais com contos afetuosos e ensinamentos em família:</p>
-
+        <div class="game-card-title"><span>📚 Biblioteca da Turminha</span></div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-          <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1; transition: transform 0.2s;">
+          <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
             <span style="font-size: 48px; display: block; animation: floatIcon 3s infinite;">📖</span>
             <h4 style="font-size: 18px; margin: 8px 0; color: #1E293B;">O Abraço Doce</h4>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">História sobre afeto e acolhimento com a Vovó Hilda.</p>
             <span style="background: #FEF3C7; color: #92400E; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 12px;">⏳ Em Breve</span>
           </div>
-
-          <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1; transition: transform 0.2s;">
+          <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1;">
             <span style="font-size: 48px; display: block; animation: floatIcon 3s infinite; animation-delay: 0.5s;">🎨</span>
             <h4 style="font-size: 18px; margin: 8px 0; color: #1E293B;">Aventuras do Xexéu</h4>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">O pássaro azul explorando as cores do arco-íris.</p>
-            <span style="background: #FEF3C7; color: #92400E; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 12px;">⏳ Em Breve</span>
-          </div>
-
-          <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1; transition: transform 0.2s;">
-            <span style="font-size: 48px; display: block; animation: floatIcon 3s infinite; animation-delay: 1s;">🦴</span>
-            <h4 style="font-size: 18px; margin: 8px 0; color: #1E293B;">O Segredo do Capilé</h4>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">Uma tarde divertida de pistas e amizade no jardim.</p>
-            <span style="background: #FEF3C7; color: #92400E; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 12px;">⏳ Em Breve</span>
-          </div>
-
-          <div class="game-card" style="text-align: center; background: #F8FAFC; border: 2px dashed #CBD5E1; transition: transform 0.2s;">
-            <span style="font-size: 48px; display: block; animation: floatIcon 3s infinite; animation-delay: 1.5s;">🧩</span>
-            <h4 style="font-size: 18px; margin: 8px 0; color: #1E293B;">O Dia Especial do Leo</h4>
-            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">História social adaptada com foco na sensibilidade e empatia.</p>
             <span style="background: #FEF3C7; color: #92400E; padding: 6px 14px; border-radius: 20px; font-weight: 800; font-size: 12px;">⏳ Em Breve</span>
           </div>
         </div>
@@ -731,16 +616,11 @@
     <!-- PÁGINA: ROTINA -->
     <div id="page-rotina" class="page-box">
       <div class="game-card">
-        <div class="game-card-title">
-          <span>📅 Minha Rotina Divertida</span>
-          <span style="font-size: 13px; color: var(--text-muted);">Marque as tarefas concluídas</span>
-        </div>
-        
+        <div class="game-card-title"><span>📅 Minha Rotina Divertida</span></div>
         <div style="display: flex; gap: 8px; margin-bottom: 16px;">
           <input type="text" id="inputNovaRotina" class="form-input" style="margin-bottom: 0;" placeholder="Ex: Guardar os brinquedos 🧸">
           <button class="btn-tactile green" onclick="adicionarItemRotina()">Adicionar</button>
         </div>
-
         <div id="listaRotinasContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
       </div>
     </div>
@@ -749,19 +629,15 @@
     <div id="page-certificado" class="page-box">
       <div class="game-card" style="text-align: center;">
         <div class="game-card-title"><span>🏆 Certificado Oficial de Super Fã</span></div>
-        <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 16px;">Gere seu diploma personalizado com seu nome e pontuação para guardar ou imprimir!</p>
-        
         <div style="max-width: 440px; margin: 0 auto 16px; display: flex; gap: 8px;">
           <input type="text" id="inputNomeCertificado" class="form-input" placeholder="Nome da Criança" style="margin-bottom: 0;">
           <button class="btn-tactile primary" onclick="desenharCertificadoCanvas()">Atualizar 🎨</button>
         </div>
-
         <div style="max-width: 760px; margin: 0 auto; border-radius: 16px; overflow: hidden; border: 3px solid #FCD34D; box-shadow: var(--shadow-md); background: #FFF;">
           <canvas id="canvasCertificado" width="800" height="500" style="width: 100%; height: auto; display: block;"></canvas>
         </div>
-
         <div style="margin-top: 18px;">
-          <button class="btn-tactile green" style="font-size: 16px; padding: 14px 28px;" onclick="baixarCertificadoPNG()">📥 Baixar Certificado Oficial (PNG)</button>
+          <button class="btn-tactile green" style="font-size: 16px; padding: 14px 28px;" onclick="baixarCertificadoPNG()">📥 Baixar (PNG)</button>
         </div>
       </div>
     </div>
@@ -772,47 +648,36 @@
         <span style="font-size: 52px; display: block; animation: floatIcon 3s infinite;">⭐</span>
         <h2 style="color: #92400E; font-size: 30px; font-weight: 900; margin-bottom: 8px;">Clube VIP Turminha do Xexéu</h2>
         <p style="color: #78350F; font-size: 16px; font-weight: 700; margin-bottom: 20px;">
-          Atividades pedagógicas exclusivas, minijogos doces e controle de tempo expandido por apenas <strong>R$ 6,00/mês</strong>.
+          Por apenas <strong>R$ 6,00/mês</strong>.
         </p>
 
         <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;" id="boxBotoesDrivesVip"></div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 20px;">
-          <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #FDE68A; text-align: left; box-shadow: var(--shadow-sm);">
+        <div class="grid-2-col" style="margin-top: 20px;">
+          <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid #FDE68A; text-align: left;">
             <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ O que o VIP desbloqueia:</h4>
             <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
-              <li><strong>📁 Drive de Atividades:</strong> Desenhos, Wallpapers e Atividades para imprimir.</li>
-              <li><strong>🧩 Drive Azul TEA:</strong> Materiais adaptados e histórias sociais (Em breve).</li>
-              <li><strong>🎮 Níveis Avançados:</strong> Fases VIP no Jogo de Contar, Letras, Sombras, Memória e Quiz.</li>
-              <li><strong>🔊 Sintetizador Avançado:</strong> Troca de vozes e controle fino de velocidade.</li>
-              <li>🧁 Confeitaria da Vovó Hilda e Cata-Estrelas.</li>
-              <li>Todos os contornos na lousa mágica.</li>
-              <li>Prancha CAA de fala sem limites.</li>
-              <li>Temporizador livre de até 30 minutos.</li>
+              <li><strong>📁 Drives:</strong> Atividades, Wallpapers e o futuro Drive Azul TEA.</li>
+              <li><strong>🎮 Níveis e Bandinha:</strong> Fases e Instrumentos exclusivos.</li>
+              <li><strong>🔊 Sintetizador:</strong> Troca de vozes.</li>
+              <li>Todos os contornos na lousa mágica e Temporizador de 30min.</li>
             </ul>
           </div>
 
-          <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid var(--border-color); text-align: left; box-shadow: var(--shadow-sm);">
+          <div style="background: #FFF; border-radius: 16px; padding: 20px; border: 2px solid var(--border-color); text-align: left;">
             <div style="display: flex; gap: 8px; margin-bottom: 14px;">
-              <button id="tabBtnLoginVip" class="btn-tactile primary" style="flex: 1; padding: 8px 10px; font-size: 13px;" onclick="trocarAbaVipAuth('login')">🔑 Entrar / Mestre</button>
+              <button id="tabBtnLoginVip" class="btn-tactile primary" style="flex: 1; padding: 8px 10px; font-size: 13px;" onclick="trocarAbaVipAuth('login')">🔑 Entrar</button>
               <button id="tabBtnCadastroVip" class="btn-tactile" style="flex: 1; padding: 8px 10px; font-size: 13px;" onclick="trocarAbaVipAuth('cadastro')">✨ 1º Acesso</button>
             </div>
-
-            <!-- FORM LOGIN -->
             <div id="formVipLogin">
-              <h4 style="font-size: 15px; color: #1E293B; margin-bottom: 8px;">Acessar Clube VIP:</h4>
-              <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail (ou vazio para Senha Mestra)">
-              <input type="password" id="loginSenhaVip" class="form-input" placeholder="Senha de acesso ou Senha Mestra">
+              <input type="email" id="loginEmailVip" class="form-input" placeholder="Seu e-mail (ou Senha Mestra)">
+              <input type="password" id="loginSenhaVip" class="form-input" placeholder="Senha de acesso">
               <button class="btn-tactile primary" id="btnEntrarVipSubmit" style="width: 100%;" onclick="executarLoginVip()">Entrar no VIP 🚀</button>
             </div>
-
-            <!-- FORM PRIMEIRO ACESSO -->
             <div id="formVipCadastro" style="display: none;">
-              <h4 style="font-size: 15px; color: #1E293B; margin-bottom: 8px;">Primeiro Acesso:</h4>
-              <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">Digite o e-mail da compra no Kiwify e escolha sua senha:</p>
               <input type="email" id="cadEmailVip" class="form-input" placeholder="Seu e-mail do Kiwify">
-              <input type="password" id="cadSenhaVip" class="form-input" placeholder="Crie uma senha de acesso">
-              <button class="btn-tactile green" id="btnCadVipSubmit" style="width: 100%;" onclick="executarCadastroVip()">Criar Senha e Liberar VIP ⭐</button>
+              <input type="password" id="cadSenhaVip" class="form-input" placeholder="Crie uma senha">
+              <button class="btn-tactile green" id="btnCadVipSubmit" style="width: 100%;" onclick="executarCadastroVip()">Liberar VIP ⭐</button>
             </div>
           </div>
         </div>
@@ -822,49 +687,53 @@
     <!-- PÁGINA: PERFIL & AJUSTES -->
     <div id="page-perfil" class="page-box">
       <div class="game-card">
-        <div class="game-card-title">
-          <span>👤 Perfil & Preferências</span>
-          <button class="btn-tactile btn-icon-round" onclick="falarTexto('Configurações de perfil e segurança da família!')">🔊</button>
-        </div>
-
+        <div class="game-card-title"><span>👤 Perfil & Preferências</span></div>
         <label style="font-size: 14px; font-weight: 800; display: block; margin-bottom: 6px;">Nome de Exibição:</label>
         <div style="display: flex; gap: 8px; margin-bottom: 20px;">
           <input type="text" id="inputNomePerfil" class="form-input" style="margin-bottom: 0;" placeholder="Seu nome">
           <button class="btn-tactile green" onclick="salvarNomePerfil()">Salvar Nome</button>
         </div>
-
         <h4 style="font-size: 16px; font-weight: 800; margin-bottom: 10px;">Avatar do Perfil:</h4>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;" id="avatarGridSelector"></div>
       </div>
 
-      <div class="game-card" style="border-color: #F59E0B;">
-        <div class="game-card-title" style="color: #92400E;">
-          <span>⚙️ Segurança & Ajustes Profundos (Pais / VIP)</span>
+      <!-- NOVOS CONTROLES DE VOLUME AQUI -->
+      <div class="game-card" style="border-color: #3B82F6;">
+        <div class="game-card-title" style="color: #1D4ED8;"><span>🎵 Controle de Volume</span></div>
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+          <div>
+            <label style="font-size: 14px; font-weight: 700; color: var(--text-main); display: flex; justify-content: space-between;">Volume dos Efeitos e Instrumentos: <span id="lblVolEfeitos">100%</span></label>
+            <input type="range" min="0" max="1" step="0.1" value="1" style="width: 100%; cursor: pointer;" oninput="mudarVolEfeitos(this.value)">
+          </div>
+          <div>
+            <label style="font-size: 14px; font-weight: 700; color: var(--text-main); display: flex; justify-content: space-between;">Volume da Voz: <span id="lblVolVoz">100%</span></label>
+            <input type="range" min="0" max="1" step="0.1" value="1" style="width: 100%; cursor: pointer;" oninput="mudarVolVoz(this.value)">
+          </div>
         </div>
+      </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+      <div class="game-card" style="border-color: #F59E0B;">
+        <div class="game-card-title" style="color: #92400E;"><span>⚙️ Segurança VIP e Pais</span></div>
+        <div class="grid-2-col">
           <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid var(--border-color);" id="cardVozVipBox">
-            <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--primary-hover);">🔊 Sintetizador de Voz (VIP)</h4>
-            <div id="bloqueioVozAviso" style="display: none; background: #FEF3C7; padding: 8px 12px; border-radius: 8px; font-size: 12px; color: #92400E; margin-bottom: 8px; font-weight: 700;">
-              🔒 Alteração de voz e velocidade exclusiva para membros VIP!
-            </div>
-            <select id="selectVozVip" class="form-input" style="margin-bottom: 10px;" onchange="mudarVozSelecionada(this.value)">
-              <option value="">Voz padrão do navegador</option>
-            </select>
+            <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--primary-hover);">🔊 Sintetizador (VIP)</h4>
+            <div id="bloqueioVozAviso" style="display: none; background: #FEF3C7; padding: 8px; border-radius: 8px; font-size: 12px; color: #92400E; margin-bottom: 8px; font-weight: 700;">🔒 Exclusivo VIP</div>
+            <select id="selectVozVip" class="form-input" style="margin-bottom: 10px;" onchange="mudarVozSelecionada(this.value)"><option value="">Voz padrão do navegador</option></select>
             <label style="font-size: 12px; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 4px;">Velocidade: <span id="labelVelocidadeFala">1.0x</span></label>
             <input type="range" id="rangeVelocidadeFala" min="0.7" max="1.3" step="0.05" value="1.0" style="width: 100%;" oninput="ajustarVelocidadeFala(this.value)">
           </div>
 
-          <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid var(--border-color);">
-            <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--primary-hover);">🔒 PIN dos Pais</h4>
-            <input type="password" id="inputNovoPin" class="form-input" placeholder="Novo PIN (4 dígitos)" maxlength="4" style="margin-bottom: 8px;">
-            <button class="btn-tactile primary" style="width: 100%;" onclick="salvarNovoPin()">Salvar PIN</button>
-          </div>
-
-          <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid var(--border-color);">
-            <h4 style="font-size: 15px; margin-bottom: 8px; color: var(--primary-hover);">👑 Status da Assinatura</h4>
-            <p style="font-size: 13px; font-weight: 700; margin-bottom: 10px;" id="txtStatusVipAtual">Plano: <strong>Grátis</strong></p>
-            <button class="btn-tactile" style="color: #EF4444; border-color: #FCA5A5; width:100%;" onclick="deslogarVip()">Sair do VIP</button>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid var(--border-color);">
+              <h4 style="font-size: 15px; margin-bottom: 8px;">🔒 PIN dos Pais</h4>
+              <input type="password" id="inputNovoPin" class="form-input" placeholder="Novo PIN (4 dígitos)" maxlength="4" style="margin-bottom: 8px;">
+              <button class="btn-tactile primary" style="width: 100%;" onclick="salvarNovoPin()">Salvar PIN</button>
+            </div>
+            <div style="background: #F8FAFC; padding: 16px; border-radius: 14px; border: 2px solid var(--border-color);">
+              <h4 style="font-size: 15px; margin-bottom: 8px;">👑 Status</h4>
+              <p style="font-size: 13px; font-weight: 700; margin-bottom: 10px;" id="txtStatusVipAtual">Plano: <strong>Grátis</strong></p>
+              <button class="btn-tactile" style="color: #EF4444; border-color: #FCA5A5; width:100%;" onclick="deslogarVip()">Sair do VIP</button>
+            </div>
           </div>
         </div>
       </div>
@@ -876,6 +745,8 @@
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbwrmDcZf4u4nMmfUSmq25RB6dHhpq0dud_JKezy2aIhYwesh6JVxSP2Vb4xMSU9W31H/exec";
 
     let audioAtivo = true;
+    let volumeEfeitos = 1.0;
+    let volumeVoz = 1.0;
     let timerId = null;
     let pontos = parseInt(localStorage.getItem('xexeu_pontos') || '0');
     let isVip = localStorage.getItem('xexeu_vip') === 'true';
@@ -885,726 +756,354 @@
     let velocidadeFala = parseFloat(localStorage.getItem('xexeu_voz_vel') || 1.0);
 
     let linksDrivesSeguros = { atividades: "https://drive.google.com/drive/folders/1gi1SjbtPXWuFBxhfMEuRpK2z4BFPXIBP?usp=drive_link", tea: "https://drive.google.com/drive/folders/1JO8RfeGen-CeN6eWiw60OENT5E50R6yu?usp=drive_link" };
-    try { const drivesCache = localStorage.getItem('xexeu_drives_cache'); if (drivesCache) linksDrivesSeguros = JSON.parse(drivesCache); } catch(e) {}
 
-    // ESTADOS E ÁUDIOS DO XEXÉU VIRTUAL (POU)
     const LINKS_ANIMACOES_XEXEU = {
-      normal: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif",
-      comendo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336738/XEXEU_COMENDO_1.gif",
-      dormindo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336364/XEXEU_DORMINDO.gif",
-      brincando: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336534/XEXEU_FELIZ.gif",
-      triste: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336521/XEXEU_TRISTE.gif",
-      carinho: "https://res.cloudinary.com/oactqmgs/image/upload/v1787341883/XEXEU_COMENDO.png" 
+      normal: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif", comendo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336738/XEXEU_COMENDO_1.gif", dormindo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336364/XEXEU_DORMINDO.gif", brincando: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336534/XEXEU_FELIZ.gif", triste: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336521/XEXEU_TRISTE.gif", carinho: "https://res.cloudinary.com/oactqmgs/image/upload/v1787341883/XEXEU_COMENDO.png" 
     };
 
     const LINKS_AUDIOS_XEXEU = {
-      comendo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787338974/xexeu_coemndo.mp3",
-      brincando: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339401/xexeu_rindo.mp3",
-      dormindo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339945/xexeu_dormindo.mp3",
-      rindo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339401/xexeu_rindo.mp3", 
-      ola: "https://res.cloudinary.com/oactqmgs/video/upload/v1787341990/ElevenLabs_2026-08-21T19_52_54_xexeu_gen_sp100_s50_sb75_se0_b_m2.mp3"
+      comendo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787338974/xexeu_coemndo.mp3", brincando: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339401/xexeu_rindo.mp3", dormindo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339945/xexeu_dormindo.mp3", ola: "https://res.cloudinary.com/oactqmgs/video/upload/v1787341990/ElevenLabs_2026-08-21T19_52_54_xexeu_gen_sp100_s50_sb75_se0_b_m2.mp3"
     };
 
-    let petStatus = { fome: 60, energia: 80, alegria: 90 };
-    let petDormindo = false;
-    let petAcaoAtiva = false;
-    let audioXexeuAtual = null; 
-    let timeoutAcaoPet = null;  
-
-    let bolinhoMassa = '🧁'; let bolinhoCobertura = '🍓'; let bolinhoConfeito = '✨';
+    let petStatus = { fome: 60, energia: 80, alegria: 90 }; let petDormindo = false; let petAcaoAtiva = false; let audioXexeuAtual = null; let timeoutAcaoPet = null;
 
     const PERSONAGENS = [
-      { id: 'xexeu', familia: 'mascotes', nome: 'Xexéu', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_XEXEU.png', letra: 'X', tag: 'Mascote Oficial', quem: 'Pássaro azul de boina amarela.', gosto: 'Cantar, voar e contar histórias.', frase: 'Educando com alegria!' },
-      { id: 'capile', familia: 'mascotes', nome: 'Capilé', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994882/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_CAPILE.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994874/DESENHOS_DA_LOUSA_CAPILE.png', letra: 'C', tag: 'O Companheiro', quem: 'Cachorrinho fiel de orelhas grandes.', gosto: 'Correr e brincar pelo jardim.', frase: 'Sempre pronto para a brincadeira!' },
-      { id: 'maya', familia: 'maya', nome: 'Maya', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994884/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_MAYA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994875/DESENHOS_DA_LOUSA_MAYA.png', letra: 'M', tag: 'Mãe & Guia', quem: 'Mãe dedicada e porto seguro da família.', gosto: 'Ler histórias e passeios em família.', frase: 'O amor transforma tudo.' },
-      { id: 'theo', familia: 'maya', nome: 'Theo', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994885/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_THEO.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994877/DESENHOS_DA_LOUSA_THEO.png', letra: 'T', tag: 'Pai Protetor', quem: 'Pai paciente e sempre atencioso.', gosto: 'Ensinar coisas novas e dar abraços.', frase: 'Com calma aprendemos melhor.' },
-      { id: 'nina', familia: 'maya', nome: 'Nina', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994885/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_NINA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_NINA.png', letra: 'N', tag: 'Super Esperta', quem: 'Menina de cabelos cacheados.', gosto: 'Descobrir segredos da natureza.', frase: 'Aprender é super divertido!' },
-      { id: 'iza', familia: 'maya', nome: 'Iza', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994883/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_IZA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994873/DESENHOS_DA_LOUSA_IZA.png', letra: 'I', tag: 'A Vaidosa', quem: 'Menina charmosa de vestido rosa.', gosto: 'Cantar e usar laços bonitos.', frase: 'Ser gentil é lindo!' },
-      { id: 'sam', familia: 'sam', nome: 'Sam', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994885/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_SAM.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_SAM.png', letra: 'S', tag: 'Pai Inventor', quem: 'Paizão ruivo apaixonado por criar.', gosto: 'Montar máquinas e brinquedos.', frase: 'Toda ideia é uma invenção!' },
-      { id: 'lia', familia: 'sam', nome: 'Lia', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994884/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_LIA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994875/DESENHOS_DA_LOUSA_LIA.png', letra: 'L', tag: 'Mãe Alegria', quem: 'Mãe cheia de energia positiva.', gosto: 'Dançar e cozinhar.', frase: 'A alegria é nosso superpoder!' },
-      { id: 'joca', familia: 'sam', nome: 'Joca', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994883/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_JOCA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994874/DESENHOS_DA_LOUSA_JOCA.png', letra: 'J', tag: 'O Divertido', quem: 'Menino engraçado de camiseta verde.', gosto: 'Fazer piadas e correr.', frase: 'O importante é se divertir!' },
-      { id: 'leo', familia: 'sam', nome: 'Leo', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994883/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_LEO.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994875/DESENHOS_DA_LOUSA_LEO.png', letra: 'L', tag: 'Explorador TEA', quem: 'Observador detalhista e guia TEA.', gosto: 'Organizar blocos e rotinas.', frase: 'Tudo no nosso próprio tempo.' },
-      { id: 'beto', familia: 'avos', nome: 'Vovô Beto', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_VOVO_BETO.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_VOVO_BETO.png', letra: 'B', tag: 'Vovô Coruja', quem: 'Vovô de risada boa e óculos.', gosto: 'Passear ao ar livre.', frase: 'A família é a maior riqueza.' },
-      { id: 'hilda', familia: 'avos', nome: 'Vovó Hilda', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_VOVO_HILDA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994877/DESENHOS_DA_LOUSA_VOVO_HILDA.png', letra: 'H', tag: 'Vovó Acolhedora', quem: 'Vovó de abraços doces.', gosto: 'Fazer bolos.', frase: 'O amor não envelhece.' }
+      { id: 'xexeu', familia: 'mascotes', nome: 'Xexéu', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_XEXEU.png', letra: 'X', tag: 'Mascote', quem: 'Pássaro azul.', gosto: 'Cantar.', frase: 'Educando com alegria!' },
+      { id: 'capile', familia: 'mascotes', nome: 'Capilé', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994882/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_CAPILE.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994874/DESENHOS_DA_LOUSA_CAPILE.png', letra: 'C', tag: 'Companheiro', quem: 'Cachorrinho.', gosto: 'Correr.', frase: 'Au au!' },
+      { id: 'maya', familia: 'maya', nome: 'Maya', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994884/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_MAYA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994875/DESENHOS_DA_LOUSA_MAYA.png', letra: 'M', tag: 'Mãe', quem: 'Mãe dedicada.', gosto: 'Ler.', frase: 'Amor transforma.' },
+      { id: 'theo', familia: 'maya', nome: 'Theo', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994885/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_THEO.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994877/DESENHOS_DA_LOUSA_THEO.png', letra: 'T', tag: 'Pai', quem: 'Pai paciente.', gosto: 'Ensinar.', frase: 'Com calma.' },
+      { id: 'nina', familia: 'maya', nome: 'Nina', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994885/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_NINA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_NINA.png', letra: 'N', tag: 'Esperta', quem: 'Menina.', gosto: 'Descobrir.', frase: 'Aprender é legal!' },
+      { id: 'iza', familia: 'maya', nome: 'Iza', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994883/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_IZA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994873/DESENHOS_DA_LOUSA_IZA.png', letra: 'I', tag: 'Vaidosa', quem: 'Menina.', gosto: 'Cantar.', frase: 'Ser gentil é lindo!' },
+      { id: 'sam', familia: 'sam', nome: 'Sam', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994885/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_SAM.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_SAM.png', letra: 'S', tag: 'Pai', quem: 'Inventor.', gosto: 'Montar.', frase: 'Toda ideia é uma invenção!' },
+      { id: 'lia', familia: 'sam', nome: 'Lia', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994884/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_LIA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994875/DESENHOS_DA_LOUSA_LIA.png', letra: 'L', tag: 'Mãe', quem: 'Alegria.', gosto: 'Cozinhar.', frase: 'A alegria é nosso poder!' },
+      { id: 'joca', familia: 'sam', nome: 'Joca', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994883/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_JOCA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994874/DESENHOS_DA_LOUSA_JOCA.png', letra: 'J', tag: 'Divertido', quem: 'Menino.', gosto: 'Piadas.', frase: 'O importante é se divertir!' },
+      { id: 'leo', familia: 'sam', nome: 'Leo', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994883/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_LEO.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994875/DESENHOS_DA_LOUSA_LEO.png', letra: 'L', tag: 'TEA', quem: 'Observador.', gosto: 'Organizar.', frase: 'Tudo no nosso tempo.' },
+      { id: 'beto', familia: 'avos', nome: 'Vovô Beto', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_VOVO_BETO.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_VOVO_BETO.png', letra: 'B', tag: 'Vovô', quem: 'Coruja.', gosto: 'Passear.', frase: 'A família é a maior riqueza.' },
+      { id: 'hilda', familia: 'avos', nome: 'Vovó Hilda', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_VOVO_HILDA.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994877/DESENHOS_DA_LOUSA_VOVO_HILDA.png', letra: 'H', tag: 'Vovó', quem: 'Acolhedora.', gosto: 'Fazer bolos.', frase: 'O amor não envelhece.' }
     ];
 
-    const PADRAO_CAA = [ { emoji: '💧', texto: 'Água' }, { emoji: '🍎', texto: 'Comer' }, { emoji: '🚽', texto: 'Banheiro' }, { emoji: '😴', texto: 'Dormir' }, { emoji: '🧸', texto: 'Brincar' }, { emoji: '🫂', texto: 'Abraço' } ];
-    let cartoesCaa = PADRAO_CAA; try { const caaStorage = localStorage.getItem('xexeu_caa'); if (caaStorage) cartoesCaa = JSON.parse(caaStorage); } catch(e) { cartoesCaa = PADRAO_CAA; }
-
-    const PADRAO_ROTINAS = [ { id: 1, texto: '☀️ Escovar os dentes', feito: false }, { id: 2, texto: '📚 Hora do livro', feito: false } ];
-    let rotinas = PADRAO_ROTINAS; try { const rotinasStorage = localStorage.getItem('xexeu_rotinas'); if (rotinasStorage) rotinas = JSON.parse(rotinasStorage); } catch(e) { rotinas = PADRAO_ROTINAS; }
+    let cartoesCaa = [ { emoji: '💧', texto: 'Água' }, { emoji: '🍎', texto: 'Comer' }, { emoji: '🚽', texto: 'Banheiro' }, { emoji: '😴', texto: 'Dormir' }, { emoji: '🧸', texto: 'Brincar' } ];
+    let rotinas = [ { id: 1, texto: '☀️ Escovar os dentes', feito: false } ];
 
     window.addEventListener('DOMContentLoaded', () => {
-      try { renderTodosPersonagensInicio(); } catch(e) {}
-      try { renderCartoesCaa(); } catch(e) {}
-      try { renderRotinas(); } catch(e) {}
-      try { renderAvatarSelector(); } catch(e) {}
-      try { renderSonsAcalento(); } catch(e) {}
-      try { renderPopItSensorial(); } catch(e) {}
-      try { initLousa(); } catch(e) {}
-      try { initLousaSensorial(); } catch(e) {}
-      try { atualizarScore(0); } catch(e) {}
-      try { carregarVozes(); } catch(e) {}
-      try { atualizarInterfaceVipCompleta(); } catch(e) {}
-      try { iniciarAnimacaoRespiracao(); } catch(e) {}
-      try { desenharCertificadoCanvas(); } catch(e) {}
-      try { atualizarBarrasPet(); } catch(e) {}
-      
-      const nomeSalvo = localStorage.getItem('xexeu_nome') || 'Amiguinho';
-      const inputNome = document.getElementById('inputNomePerfil');
-      const inputNomeCert = document.getElementById('inputNomeCertificado');
-      if (inputNome) inputNome.value = nomeSalvo;
-      if (inputNomeCert) inputNomeCert.value = nomeSalvo;
-      document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = nomeSalvo);
+      try{ renderTodosPersonagensInicio(); renderCartoesCaa(); renderRotinas(); renderAvatarSelector(); renderPopItSensorial(); initLousa(); initLousaSensorial(); atualizarScore(0); atualizarInterfaceVipCompleta(); iniciarAnimacaoRespiracao(); }catch(e){}
     });
 
-    function animacaoConfete() {
-      if(document.body.classList.contains('sensory-mode')) return;
-      const colors = ['#2563EB', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#EC4899'];
-      for (let i = 0; i < 40; i++) {
-        const confeti = document.createElement('div'); confeti.classList.add('confetti');
-        confeti.style.left = Math.random() * 100 + 'vw'; confeti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confeti.style.animationDuration = (Math.random() * 2 + 1) + 's'; document.body.appendChild(confeti);
-        setTimeout(() => confeti.remove(), 3000);
-      }
-    }
+    // --- CONTROLES DE VOLUME ---
+    function mudarVolEfeitos(val) { volumeEfeitos = parseFloat(val); document.getElementById('lblVolEfeitos').innerText = Math.round(val*100)+'%'; }
+    function mudarVolVoz(val) { volumeVoz = parseFloat(val); document.getElementById('lblVolVoz').innerText = Math.round(val*100)+'%'; }
+    function toggleAudioVoz() { audioAtivo = !audioAtivo; document.getElementById('btnAudioToggle').innerText = audioAtivo ? '🔊' : '🔇'; }
 
-    function mostrarPontosFlutuantes(pts, x, y) {
-      if(document.body.classList.contains('sensory-mode')) return;
-      const p = document.createElement('div'); p.classList.add('floating-points'); p.innerText = '+' + pts;
-      p.style.left = x + 'px'; p.style.top = y + 'px'; document.body.appendChild(p); setTimeout(() => p.remove(), 1200);
-    }
-
+    // --- SONS E EFEITOS APLICANDO VOLUME ---
     function tocarVozXexeu(urlAudio) {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
-      if (!urlAudio) return;
-      
-      if (audioXexeuAtual) {
-        audioXexeuAtual.pause();
-        audioXexeuAtual.currentTime = 0;
-      }
-      
-      audioXexeuAtual = new Audio(urlAudio);
-      audioXexeuAtual.play().catch(() => {});
+      if (audioXexeuAtual) { audioXexeuAtual.pause(); audioXexeuAtual.currentTime = 0; }
+      audioXexeuAtual = new Audio(urlAudio); audioXexeuAtual.volume = volumeVoz; audioXexeuAtual.play().catch(()=>{});
     }
-
-    function resetarAnimacaoMascote() {
-      const mascote = document.getElementById('mascoteXexeuHome');
-      if (mascote) mascote.classList.remove('falando');
-      petAcaoAtiva = false;
-      if(!petDormindo) atualizarBarrasPet();
-    }
-
-    function animarMascote(e) {
-      const mascote = document.getElementById('mascoteXexeuHome');
-      const img = document.getElementById('imgXexeuPet');
-      if(mascote && !petDormindo) {
-        clearTimeout(timeoutAcaoPet); 
-        petAcaoAtiva = true;
-        mascote.classList.add('falando');
-        
-        petStatus.alegria = Math.min(100, petStatus.alegria + 15);
-        atualizarBarrasPet();
-        
-        if (img) img.src = LINKS_ANIMACOES_XEXEU.carinho;
-        if (LINKS_AUDIOS_XEXEU.ola) { tocarVozXexeu(LINKS_AUDIOS_XEXEU.ola); } else { tocarSomAcerto(); }
-
-        const frases = ["Que carinho gostoso!", "Hihihi, eu adoro!", "Você é meu melhor amigo!", "Amo você!", "Faz cócegas!"];
-        document.getElementById('balaoMascote').innerText = frases[Math.floor(Math.random() * frases.length)];
-        celebrar(e, 2); 
-        
-        timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
-      }
-    }
-
-    function atualizarBarrasPet() {
-      const bFome = document.getElementById('barFome'); const bEnergia = document.getElementById('barEnergia'); const bAlegria = document.getElementById('barAlegria');
-      if(bFome) bFome.style.width = petStatus.fome + '%'; if(bEnergia) bEnergia.style.width = petStatus.energia + '%'; if(bAlegria) bAlegria.style.width = petStatus.alegria + '%';
-
-      if(!petDormindo && !petAcaoAtiva) {
-        const img = document.getElementById('imgXexeuPet');
-        if(img) {
-          if (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) {
-            // Fica triste visualmente, mas NÃO CHORA mais!
-            if(img.src !== LINKS_ANIMACOES_XEXEU.triste) { 
-               img.src = LINKS_ANIMACOES_XEXEU.triste; 
-            }
-          } else {
-            if(img.src !== LINKS_ANIMACOES_XEXEU.normal) img.src = LINKS_ANIMACOES_XEXEU.normal;
-          }
-        }
-      }
-    }
-
-    function acaoPet(acao) {
-      const img = document.getElementById('imgXexeuPet'); const filtro = document.getElementById('filtroNoite');
-      const mascote = document.getElementById('mascoteXexeuHome');
-      
-      if (petDormindo && acao !== 'dormir') { falarTexto("O Xexéu está dormindo, shhhh!"); return; }
-      
-      if(img) { img.style.transform = 'scale(1.1)'; setTimeout(() => img.style.transform = 'scale(1)', 200); }
-      
-      clearTimeout(timeoutAcaoPet);
-      if (mascote) mascote.classList.remove('falando');
-      petAcaoAtiva = true;
-
-      if (acao === 'alimentar') {
-        petStatus.fome = Math.min(100, petStatus.fome + 30);
-        if(img) img.src = LINKS_ANIMACOES_XEXEU.comendo;
-        tocarVozXexeu(LINKS_AUDIOS_XEXEU.comendo); animacaoConfete(); atualizarScore(2);
-        timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
-      } 
-      else if (acao === 'brincar') {
-        if(petStatus.energia < 20) { falarTexto("Estou muito cansado para brincar agora."); petAcaoAtiva = false; return; }
-        petStatus.alegria = Math.min(100, petStatus.alegria + 30); petStatus.energia = Math.max(0, petStatus.energia - 15);
-        if(img) img.src = LINKS_ANIMACOES_XEXEU.brincando;
-        tocarVozXexeu(LINKS_AUDIOS_XEXEU.brincando); animacaoConfete(); atualizarScore(2);
-        timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
-      }
-      else if (acao === 'dormir') {
-        petDormindo = !petDormindo; petAcaoAtiva = false;
-        if (petDormindo) {
-          if(img) img.src = LINKS_ANIMACOES_XEXEU.dormindo;
-          if(filtro) filtro.style.display = 'block';
-          tocarVozXexeu(LINKS_AUDIOS_XEXEU.dormindo);
-          let intervaloDormir = setInterval(() => {
-            if(!petDormindo || petStatus.energia >= 100) { clearInterval(intervaloDormir); }
-            else { petStatus.energia = Math.min(100, petStatus.energia + 10); atualizarBarrasPet(); }
-          }, 1000);
-        } else {
-          if(filtro) filtro.style.display = 'none'; falarTexto("Bom dia!"); atualizarBarrasPet();
-        }
-      }
-      atualizarBarrasPet();
-    }
-
-    setInterval(() => {
-      if (!petDormindo && !petAcaoAtiva) {
-        petStatus.fome = Math.max(0, petStatus.fome - 2); petStatus.energia = Math.max(0, petStatus.energia - 1); petStatus.alegria = Math.max(0, petStatus.alegria - 2);
-        atualizarBarrasPet();
-      }
-    }, 8000);
-
-    function navegar(paginaId) {
-      document.querySelectorAll('.page-box').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-item-btn').forEach(b => b.classList.remove('active'));
-      const target = document.getElementById('page-' + paginaId); if (target) target.classList.add('active');
-      const btn = Array.from(document.querySelectorAll('.nav-item-btn')).find(b => b.getAttribute('onclick')?.includes(paginaId)); if (btn) btn.classList.add('active');
-      if (paginaId === 'jogos') trocarJogo('lousa');
-      if (paginaId === 'tea') { renderCartoesCaa(); renderPopItSensorial(); }
-      if (paginaId === 'rotina') { renderRotinas(); }
-      if (paginaId === 'certificado') { desenharCertificadoCanvas(); }
-      if (paginaId === 'vip') atualizarInterfaceVipCompleta();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function irParaJogosVip(subjogo) { navegar('jogos'); trocarJogo(subjogo); }
 
     function falarTexto(texto) {
       exibirToast(texto);
       if (!audioAtivo || !('speechSynthesis' in window)) return;
       try {
         window.speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(texto); u.lang = 'pt-BR';
-        u.rate = isVip ? velocidadeFala : 1.0; if (isVip && vozesDisponiveis[vozSelecionadaIdx]) u.voice = vozesDisponiveis[vozSelecionadaIdx];
+        u.volume = volumeVoz; u.rate = isVip ? velocidadeFala : 1.0; 
+        if (isVip && vozesDisponiveis[vozSelecionadaIdx]) u.voice = vozesDisponiveis[vozSelecionadaIdx];
         window.speechSynthesis.speak(u);
       } catch(e) {}
-    }
-
-    function toggleAudioVoz() { audioAtivo = !audioAtivo; document.getElementById('btnAudioToggle').innerText = audioAtivo ? '🔊' : '🔇'; exibirToast(audioAtivo ? 'Voz ativada' : 'Voz desativada'); }
-
-    function toggleModoCalmo() {
-      const ativado = document.body.classList.toggle('sensory-mode'); const btn = document.getElementById('btnModoCalmo'); if (btn) btn.innerText = ativado ? '🌸' : '🌿';
-      exibirToast(ativado ? 'Modo Calmo Ativado: Ambiente Relaxante e Seguro' : 'Modo Padrão Ativado'); falarTexto(ativado ? 'Modo Calmo ativado. Um ambiente tranquilo.' : 'Modo Padrão ativado.');
-    }
-
-    function exibirToast(msg) { const t = document.getElementById('appToast'); if (!t) return; t.innerText = msg; t.classList.add('active'); setTimeout(() => t.classList.remove('active'), 2500); }
-
-    function atualizarScore(pts) {
-      pontos += pts; localStorage.setItem('xexeu_pontos', pontos);
-      const elPts = document.getElementById('headerPontos'); const elNivel = document.getElementById('badgeNivel'); const xpBar = document.getElementById('xpBarFill');
-      if (elPts) elPts.innerText = pontos;
-      let badge = 'Iniciante'; let meta = 20;
-      if(pontos >= 20 && pontos < 50) { badge = '⭐ Curioso'; meta = 50; } else if(pontos >= 50 && pontos < 100) { badge = '🌟 Super Fã'; meta = 100; } else if(pontos >= 100) { badge = '👑 Mestre'; meta = 200; }
-      if (elNivel) elNivel.innerText = badge;
-      if(xpBar) { let porcentagem = Math.min((pontos / meta) * 100, 100); xpBar.style.width = porcentagem + '%'; }
-      desenharCertificadoCanvas();
-    }
-
-    // --- SONS E EFEITOS ---
-    function tocarSomPop() {
-      if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
-      // Novo som do Pop-it
-      let popAudio = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345640/uma_bolha_estourando.mp3");
-      popAudio.play().catch(()=>{});
     }
 
     function tocarSomAcerto() {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
       try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
-        osc.type = 'sine'; osc.frequency.setValueAtTime(400, audioCtx.currentTime); osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.1); osc.frequency.setValueAtTime(800, audioCtx.currentTime + 0.2); gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+        const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain();
+        osc.type = 'sine'; osc.frequency.setValueAtTime(400, ctx.currentTime); osc.frequency.setValueAtTime(800, ctx.currentTime + 0.1); 
+        gain.gain.setValueAtTime(0.3 * volumeEfeitos, ctx.currentTime); gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.3); 
+        osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.3);
       } catch (e) {}
     }
 
     function tocarSomErro() {
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
       try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)(); const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
-        osc.type = 'sawtooth'; osc.frequency.setValueAtTime(250, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.3); gain.gain.setValueAtTime(0.2, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.3); osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+        const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain();
+        osc.type = 'sawtooth'; osc.frequency.setValueAtTime(250, ctx.currentTime); osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.3); 
+        gain.gain.setValueAtTime(0.2 * volumeEfeitos, ctx.currentTime); gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.3); 
+        osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.3);
       } catch (e) {}
     }
 
-    function tocarInstrumento(e, tipo) {
+    function tocarSomPop() { // Click Suave
       if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
       try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        if (tipo === 'bateria') { osc.type = 'sine'; osc.frequency.setValueAtTime(100, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(10, audioCtx.currentTime + 0.3); gain.gain.setValueAtTime(1, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3); }
-        else if (tipo === 'piano') { osc.type = 'triangle'; osc.frequency.setValueAtTime(440, audioCtx.currentTime); gain.gain.setValueAtTime(0.5, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5); }
-        else if (tipo === 'violao') { osc.type = 'sawtooth'; osc.frequency.setValueAtTime(330, audioCtx.currentTime); gain.gain.setValueAtTime(0.4, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.0); }
-        else if (tipo === 'trompete') { osc.type = 'square'; osc.frequency.setValueAtTime(500, audioCtx.currentTime); gain.gain.setValueAtTime(0.3, audioCtx.currentTime); gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + 0.4); }
-        osc.connect(gain); gain.connect(audioCtx.destination); osc.start(); osc.stop(audioCtx.currentTime + 1.0);
-        celebrar(e, 1);
-      } catch(ex) {}
+        const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain();
+        osc.type = 'sine'; osc.frequency.setValueAtTime(600, ctx.currentTime); gain.gain.setValueAtTime(0.1 * volumeEfeitos, ctx.currentTime); 
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05); osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.05);
+      } catch (e) {}
     }
 
-    function celebrar(evento, pontosGanhos) { if(evento) mostrarPontosFlutuantes(pontosGanhos, evento.clientX || window.innerWidth/2, evento.clientY || window.innerHeight/2); animacaoConfete(); tocarSomAcerto(); atualizarScore(pontosGanhos); }
+    // SOM EXCLUSIVO POP-IT TEA
+    function tocarSomPopIt() {
+      if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
+      let popAudio = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345640/uma_bolha_estourando.mp3");
+      popAudio.volume = volumeEfeitos; popAudio.play().catch(()=>{});
+    }
 
-    function renderCartoesCaa() {
-      const c = document.getElementById('caaContainerCards'); if (!c) return; c.innerHTML = '';
-      cartoesCaa.forEach((item, index) => {
-        const b = document.createElement('div'); b.className = 'game-card'; b.style.cssText = 'padding: 12px 8px; text-align: center; cursor: pointer; border-color: #BAE6FD; position: relative;';
-        b.innerHTML = `<button onclick="event.stopPropagation(); removerCardCaa(${index})" style="position: absolute; top: 4px; right: 4px; background: #FEE2E2; border: 1px solid #FCA5A5; color: #991B1B; border-radius: 50%; width: 22px; height: 22px; font-size: 11px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Excluir Cartão">✕</button><span style="font-size:32px;">${item.emoji}</span><h5 style="margin-top:6px; color:#0369A1; font-size:14px;">${item.texto}</h5>`;
-        b.onclick = () => falarTexto(`Eu quero ${item.texto.toLowerCase()}`); c.appendChild(b);
+    function animarMascote() {
+      if(petDormindo) return;
+      clearTimeout(timeoutAcaoPet); petAcaoAtiva = true;
+      document.getElementById('mascoteXexeuHome').classList.add('falando');
+      petStatus.alegria = Math.min(100, petStatus.alegria + 15);
+      document.getElementById('imgXexeuPet').src = LINKS_ANIMACOES_XEXEU.carinho;
+      if (LINKS_AUDIOS_XEXEU.ola) tocarVozXexeu(LINKS_AUDIOS_XEXEU.ola);
+      const frases = ["Que carinho gostoso!", "Hihihi, eu adoro!", "Você é meu melhor amigo!"];
+      document.getElementById('balaoMascote').innerText = frases[Math.floor(Math.random() * frases.length)];
+      atualizarBarrasPet(); timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
+    }
+    function resetarAnimacaoMascote() { document.getElementById('mascoteXexeuHome').classList.remove('falando'); petAcaoAtiva = false; if(!petDormindo) atualizarBarrasPet(); }
+
+    function atualizarBarrasPet() {
+      document.getElementById('barFome').style.width = petStatus.fome + '%'; document.getElementById('barEnergia').style.width = petStatus.energia + '%'; document.getElementById('barAlegria').style.width = petStatus.alegria + '%';
+      if(!petDormindo && !petAcaoAtiva) {
+        const img = document.getElementById('imgXexeuPet');
+        if(img) { img.src = (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) ? LINKS_ANIMACOES_XEXEU.triste : LINKS_ANIMACOES_XEXEU.normal; }
+      }
+    }
+
+    function acaoPet(acao) {
+      const img = document.getElementById('imgXexeuPet');
+      if (petDormindo && acao !== 'dormir') { falarTexto("Shhhh! O Xexéu está dormindo."); return; }
+      if(img) { img.style.transform = 'scale(1.1)'; setTimeout(() => img.style.transform = 'scale(1)', 200); }
+      clearTimeout(timeoutAcaoPet); document.getElementById('mascoteXexeuHome').classList.remove('falando'); petAcaoAtiva = true;
+
+      if (acao === 'alimentar') { petStatus.fome = Math.min(100, petStatus.fome + 30); img.src = LINKS_ANIMACOES_XEXEU.comendo; tocarVozXexeu(LINKS_AUDIOS_XEXEU.comendo); } 
+      else if (acao === 'brincar') { petStatus.alegria = Math.min(100, petStatus.alegria + 30); petStatus.energia = Math.max(0, petStatus.energia - 15); img.src = LINKS_ANIMACOES_XEXEU.brincando; tocarVozXexeu(LINKS_AUDIOS_XEXEU.brincando); }
+      else if (acao === 'dormir') {
+        petDormindo = !petDormindo; petAcaoAtiva = false;
+        document.getElementById('filtroNoite').style.display = petDormindo ? 'block' : 'none';
+        if (petDormindo) { img.src = LINKS_ANIMACOES_XEXEU.dormindo; tocarVozXexeu(LINKS_AUDIOS_XEXEU.dormindo); } else { falarTexto("Bom dia!"); atualizarBarrasPet(); return; }
+      }
+      atualizarScore(2); timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000); atualizarBarrasPet();
+    }
+    setInterval(() => { if (!petDormindo && !petAcaoAtiva) { petStatus.fome = Math.max(0, petStatus.fome - 2); petStatus.energia = Math.max(0, petStatus.energia - 1); petStatus.alegria = Math.max(0, petStatus.alegria - 2); atualizarBarrasPet(); } }, 8000);
+
+    function navegar(paginaId) {
+      document.querySelectorAll('.page-box').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-item-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('page-' + paginaId).classList.add('active');
+      const btn = Array.from(document.querySelectorAll('.nav-item-btn')).find(b => b.getAttribute('onclick')?.includes(paginaId)); if (btn) btn.classList.add('active');
+      if (paginaId === 'jogos') trocarJogo('lousa');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function atualizarScore(pts) { pontos += pts; localStorage.setItem('xexeu_pontos', pontos); document.getElementById('headerPontos').innerText = pontos; desenharCertificadoCanvas(); }
+    function toggleModoCalmo() { document.body.classList.toggle('sensory-mode'); falarTexto(document.body.classList.contains('sensory-mode') ? 'Modo Calmo ativado.' : 'Modo Padrão ativado.'); }
+    function exibirToast(msg) { const t = document.getElementById('appToast'); t.innerText = msg; t.classList.add('active'); setTimeout(() => t.classList.remove('active'), 2500); }
+
+    // --- NOVA BANDINHA ---
+    function abrirInstrumento(tipo) {
+      if ((tipo === 'teclado' || tipo === 'violao') && !isVip) { alert('🔒 Instrumento exclusivo do VIP!'); navegar('vip'); return; }
+      document.querySelectorAll('[id^="tabInst-"]').forEach(b => b.classList.remove('active'));
+      document.getElementById('tabInst-' + tipo).classList.add('active');
+      const p = document.getElementById('painelInstrumento'); p.innerHTML = '';
+      
+      const config = {
+        bateria: [ {n:'Bumbo', s:'sine', f:100}, {n:'Caixa', s:'square', f:200}, {n:'Prato', s:'sawtooth', f:800} ],
+        guitarra: [ {n:'Mi', s:'sawtooth', f:329}, {n:'Lá', s:'sawtooth', f:440}, {n:'Ré', s:'sawtooth', f:587} ],
+        teclado: [ {n:'Dó', s:'triangle', f:261}, {n:'Ré', s:'triangle', f:293}, {n:'Mi', s:'triangle', f:329}, {n:'Fá', s:'triangle', f:349} ],
+        violao: [ {n:'Sol', s:'sawtooth', f:196}, {n:'Dó', s:'sawtooth', f:261}, {n:'Mi', s:'sawtooth', f:329} ]
+      };
+      
+      config[tipo].forEach(nota => {
+        const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.style.padding = '20px'; btn.innerHTML = `<span style="font-size:30px; display:block;">${tipo==='bateria'?'🥁':(tipo==='guitarra'?'🎸':(tipo==='teclado'?'🎹':'🎻'))}</span><span style="font-size:14px;">${nota.n}</span>`;
+        btn.onmousedown = btn.ontouchstart = (e) => { tocarNotaReal(nota.s, nota.f); btn.style.transform = 'scale(0.9)'; };
+        btn.onmouseup = btn.ontouchend = () => { btn.style.transform = 'scale(1)'; };
+        p.appendChild(btn);
       });
     }
 
-    function removerCardCaa(index) { const nomeCard = cartoesCaa[index].texto; if (confirm(`Deseja remover o cartão "${nomeCard}"?`)) { cartoesCaa.splice(index, 1); localStorage.setItem('xexeu_caa', JSON.stringify(cartoesCaa)); renderCartoesCaa(); falarTexto(`Cartão de ${nomeCard} removido.`); } }
-
-    function adicionarCardCaa() {
-      const emojiInput = document.getElementById('novoCaaEmoji'); const textoInput = document.getElementById('novoCaaTexto');
-      const emoji = emojiInput ? emojiInput.value.trim() || '⭐' : '⭐'; const texto = textoInput ? textoInput.value.trim() : '';
-      if (!texto) return alert('Digite o texto do cartão!');
-      if (!isVip && cartoesCaa.length >= 8) { alert('🔒 Plano Grátis permite até 8 cartões. Seja VIP para cartões ilimitados!'); navegar('vip'); return; }
-      cartoesCaa.push({ emoji, texto }); localStorage.setItem('xexeu_caa', JSON.stringify(cartoesCaa)); if (textoInput) textoInput.value = ''; renderCartoesCaa(); falarTexto(`Cartão de ${texto} adicionado!`); animacaoConfete();
+    function tocarNotaReal(tipo, freq) {
+      if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain();
+        osc.type = tipo; osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(0.5 * volumeEfeitos, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.8);
+        osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.8);
+      } catch(e) {}
     }
-
-    function expressarSentimento(sentimento, respostaLeo) { falarTexto(`Estou me sentindo ${sentimento}. ${respostaLeo}`); atualizarScore(2); tocarSomPop(); }
-
-    function renderPopItSensorial() {
-      const container = document.getElementById('popitGridContainer'); if (!container) return; container.innerHTML = '';
-      const cores = ['#F472B6', '#38BDF8', '#4ADE80', '#FBBF24', '#A78BFA', '#FB7185'];
-      for (let i = 0; i < 24; i++) {
-        const bubble = document.createElement('div'); bubble.className = 'popit-bubble'; const cor = cores[i % cores.length]; bubble.style.backgroundColor = cor; bubble.innerHTML = '🫧';
-        bubble.onclick = () => { tocarSomPop(); if (navigator.vibrate) navigator.vibrate(20); bubble.classList.toggle('popped'); if (bubble.classList.contains('popped')) { bubble.innerHTML = '✨'; atualizarScore(1); } else { bubble.innerHTML = '🫧'; } }; container.appendChild(bubble);
-      }
-    }
-
-    function resetarPopIt() { document.querySelectorAll('.popit-bubble').forEach(b => { b.classList.remove('popped'); b.innerHTML = '🫧'; }); falarTexto('Pop-it restaurado!'); animacaoConfete(); }
-
-    function trocarAbaVipAuth(aba) {
-      const formLogin = document.getElementById('formVipLogin'); const formCad = document.getElementById('formVipCadastro'); const btnLogin = document.getElementById('tabBtnLoginVip'); const btnCad = document.getElementById('tabBtnCadastroVip');
-      if (aba === 'login') { if (formLogin) formLogin.style.display = 'block'; if (formCad) formCad.style.display = 'none'; if (btnLogin) btnLogin.className = 'btn-tactile primary'; if (btnCad) btnCad.className = 'btn-tactile'; } else { if (formLogin) formLogin.style.display = 'none'; if (formCad) formCad.style.display = 'block'; if (btnLogin) btnLogin.className = 'btn-tactile'; if (btnCad) btnCad.className = 'btn-tactile primary'; }
-    }
-
-    function atualizarInterfaceVipCompleta() {
-      const barVip = document.getElementById('barraFlutuanteVip'); if (barVip) { barVip.style.display = isVip ? 'none' : 'flex'; }
-      const txt = document.getElementById('txtStatusVipAtual'); if (txt) txt.innerHTML = isVip ? 'Plano: <strong style="color:#059669;">👑 VIP Ativo</strong>' : 'Plano: <strong style="color:#D97706;">Grátis (Básico)</strong>';
-      const tabCup = document.getElementById('subtab-cupcake'); const tabEst = document.getElementById('subtab-estrelas');
-      if (tabCup) { tabCup.innerText = isVip ? "🧁 Bolinhos da Vovó" : "🔒 Bolinhos VIP"; tabCup.style.color = isVip ? "var(--pink)" : "#BE185D"; }
-      if (tabEst) { tabEst.innerText = isVip ? "⭐ Cata-Estrelas" : "🔒 Estrelas VIP"; tabEst.style.color = isVip ? "var(--secondary-dark)" : "#D97706"; }
-
-      const boxDrives = document.getElementById('boxBotoesDrivesVip');
-      if (boxDrives) {
-        if (isVip && linksDrivesSeguros) {
-          boxDrives.innerHTML = `<a href="${linksDrivesSeguros.atividades}" target="_blank" class="btn-tactile primary" style="padding: 14px 22px; font-size: 15px;">📁 Abrir Drive de Atividades (🎨 Para Colorir, 📱 Wallpapers, 📝 Atividades)</a><button class="btn-tactile" style="background: #E0F2FE; border-color: #7DD3FC; color: #0369A1; cursor: not-allowed; padding: 14px 22px; font-size: 15px;" onclick="alert('🧩 O Drive Azul TEA está em fase de preparação com materiais visuais exclusivos. Em breve!')">🧩 Drive Azul TEA (⏳ Em Construção)</button>`;
-        } else {
-          boxDrives.innerHTML = `<button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive de Atividades')">🔒 Drive de Atividades (VIP)</button><button class="btn-tactile" style="background: #FFFBEB; border-color: #FCD34D; color: #92400E;" onclick="bloquearAcessoDrive('Drive Azul TEA')">🔒 Drive Azul TEA (VIP)</button><a href="https://pay.kiwify.com.br/avOqrEg" target="_blank" class="btn-tactile vip">Quero ser VIP no Kiwify (R$ 6,00) 💳</a>`;
-        }
-      }
-
-      const avisoVoz = document.getElementById('bloqueioVozAviso'); const selectVoz = document.getElementById('selectVozVip'); const rangeVel = document.getElementById('rangeVelocidadeFala');
-      if (avisoVoz) avisoVoz.style.display = isVip ? 'none' : 'block'; if (selectVoz) selectVoz.disabled = !isVip; if (rangeVel) rangeVel.disabled = !isVip;
-      renderThumbnailsLousa(); renderConteudoJogosDocesVip(); renderSonsAcalento();
-    }
-
-    function bloquearAcessoDrive(nomeDrive) { alert(`🔒 O ${nomeDrive} é exclusivo para membros do Clube VIP! Assine por apenas R$ 6,00 para liberar.`); falarTexto(`O ${nomeDrive} é exclusivo do Clube VIP.`); }
-
-    function renderConteudoJogosDocesVip() {
-      const boxCup = document.getElementById('boxConteudoCupcake'); const boxEst = document.getElementById('boxConteudoEstrelas');
-      if (boxCup) {
-        if (isVip) {
-          boxCup.innerHTML = `<div style="background:#FFF1F2; border:3px solid #FECDD3; border-radius:20px; padding:24px;"><span style="font-size:42px;">🧁</span><h3 style="color:#BE185D; font-size:24px; margin:8px 0;">Fábrica de Bolinhos da Vovó Hilda</h3><p style="color:#9D174D; font-weight:600; margin-bottom:12px;">"Vamos fazer um bolinho bem fofinho e doce juntos, meu bem?"</p><div class="cupcake-preview" id="cupcakeVisual"><span id="txtCupcakePreview">🧁</span></div><div style="display:flex; flex-direction:column; gap:12px; max-width:500px; margin:0 auto;"><div><span style="font-size:13px; font-weight:800; color:#BE185D; display:block; margin-bottom:6px;">1. Escolha a Massa:</span><div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;"><button class="btn-tactile" onclick="setBolinhoMassa('🧁', 'Baunilha')">🧁 Baunilha</button><button class="btn-tactile" onclick="setBolinhoMassa('🍫', 'Chocolate')">🍫 Chocolate</button><button class="btn-tactile" onclick="setBolinhoMassa('🥕', 'Cenoura')">🥕 Cenoura</button></div></div><div><span style="font-size:13px; font-weight:800; color:#BE185D; display:block; margin-bottom:6px;">2. Escolha a Cobertura:</span><div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;"><button class="btn-tactile pink" onclick="setBolinhoCobertura('🍓', 'Morango Doce')">🍓 Morango</button><button class="btn-tactile" style="background:#FDE047; color:#854D0E;" onclick="setBolinhoCobertura('🍋', 'Creme de Limão')">🍋 Creme</button><button class="btn-tactile primary" onclick="setBolinhoCobertura('🫐', 'Mirtilo Fofo')">🫐 Mirtilo</button></div></div><div><span style="font-size:13px; font-weight:800; color:#BE185D; display:block; margin-bottom:6px;">3. Confeitos Mágicos:</span><div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap;"><button class="btn-tactile" onclick="setBolinhoConfeito('⭐', 'Estrelinhas')">⭐ Estrelas</button><button class="btn-tactile" onclick="setBolinhoConfeito('🌈', 'Arco-Íris')">🌈 Granulado</button><button class="btn-tactile" onclick="setBolinhoConfeito('💖', 'Coraçõezinhos')">💖 Amor</button></div></div><button class="btn-tactile green" style="margin-top:10px; font-size:16px;" onclick="finalizarBolinho(event)">✨ Servir para a Vovó Hilda (+10 Pts)</button></div></div>`;
-        } else {
-          boxCup.innerHTML = `<div style="padding: 30px; background: #FFF1F2; border: 2px dashed #EC4899; border-radius: 16px;"><span style="font-size: 40px; display:block; animation: floatIcon 3s infinite;">🧁</span><h3 style="color: #BE185D; font-size: 22px; margin: 8px 0;">Fábrica de Bolinhos da Vovó Hilda</h3><p style="color: #9D174D; margin-bottom: 16px;">Crie docinhos e sobremesas fofas com a Vovó Hilda no Clube VIP!</p><button class="btn-tactile pink" onclick="navegar('vip')">Desbloquear no Clube VIP 👑</button></div>`;
-        }
-      }
-
-      if (boxEst) {
-        if (isVip) {
-          boxEst.innerHTML = `<div style="background:#EEF2FF; border:3px solid #C7D2FE; border-radius:20px; padding:24px;"><span style="font-size:42px;">⭐</span><h3 style="color:#4338CA; font-size:24px; margin:8px 0;">Cata-Estrelinhas com o Xexéu & Capilé</h3><p style="color:#4F46E5; font-weight:600; margin-bottom:12px;">Toque nas estrelas brilhantes no céu calmo para iluminar a noite!</p><div class="star-sky-field" id="skyStarField"><span class="interactive-star" style="top:30px; left:20%;" onclick="catarEstrela(event, this, 'Estrela Dourada')">⭐</span><span class="interactive-star" style="top:110px; left:65%;" onclick="catarEstrela(event, this, 'Estrela Azul')">🌟</span><span class="interactive-star" style="top:170px; left:35%;" onclick="catarEstrela(event, this, 'Estrela Rosa')">✨</span><span class="interactive-star" style="top:50px; left:80%;" onclick="catarEstrela(event, this, 'Cometa')">💫</span></div><button class="btn-tactile primary" onclick="renovarEstrelas()">✨ Mais Estrelas no Céu</button></div>`;
-        } else {
-          boxEst.innerHTML = `<div style="padding: 30px; background: #FFFBEB; border: 2px dashed #F59E0B; border-radius: 16px;"><span style="font-size: 40px; display:block; animation: floatIcon 3s infinite;">⭐</span><h3 style="color: #92400E; font-size: 22px; margin: 8px 0;">Cata-Estrelas Sensorial do Xexéu</h3><p style="color: #78350F; margin-bottom: 16px;">Minijogo calmo e relaxante para acalmar antes de dormir!</p><button class="btn-tactile vip" onclick="navegar('vip')">Desbloquear no Clube VIP 👑</button></div>`;
-        }
-      }
-    }
-
-    function setBolinhoMassa(icone, nome) { bolinhoMassa = icone; atualizarVisualBolinho(); falarTexto(`Massa de ${nome}!`); tocarSomPop(); }
-    function setBolinhoCobertura(icone, nome) { bolinhoCobertura = icone; atualizarVisualBolinho(); falarTexto(`Cobertura de ${nome}!`); tocarSomPop(); }
-    function setBolinhoConfeito(icone, nome) { bolinhoConfeito = icone; atualizarVisualBolinho(); falarTexto(`Confeito de ${nome}!`); tocarSomPop(); }
-    function atualizarVisualBolinho() { const el = document.getElementById('txtCupcakePreview'); const box = document.getElementById('cupcakeVisual'); if (el) el.innerText = `${bolinhoMassa}${bolinhoCobertura}`; if (box) { box.classList.remove('bounce'); void box.offsetWidth; box.classList.add('bounce'); } }
-    function finalizarBolinho(e) { celebrar(e, 10); falarTexto("A Vovó Hilda amou o seu bolinho!"); setTimeout(() => alert("🧁 A Vovó Hilda provou e disse: 'Que bolinho maravilhoso, meu amor!'"), 500); }
-
-    function catarEstrela(e, el, tipo) { el.style.transform = 'scale(2)'; el.style.opacity = '0'; celebrar(e, 5); falarTexto(`Você pegou uma ${tipo}!`); setTimeout(() => { el.style.top = Math.floor(Math.random() * 180 + 20) + 'px'; el.style.left = Math.floor(Math.random() * 80 + 10) + '%'; el.style.transform = 'scale(1)'; el.style.opacity = '1'; }, 1000); }
-    function renovarEstrelas() { document.querySelectorAll('.interactive-star').forEach(el => { el.style.top = Math.floor(Math.random() * 180 + 20) + 'px'; el.style.left = Math.floor(Math.random() * 80 + 10) + '%'; el.style.opacity = '1'; }); falarTexto("O céu está repleto de estrelas brilhantes!"); animacaoConfete(); }
-
-    function renderSonsAcalento() {
-      const container = document.getElementById('containerSonsAcalento'); if (!container) return;
-      container.innerHTML = `<div class="game-card" style="text-align: center; cursor: pointer; padding: 14px;" onclick="tocarSomRelaxante('https://actions.google.com/sounds/v1/weather/light_rain.ogg')"><span style="font-size: 32px; display:block; animation:floatIcon 4s infinite;">🌧️</span><h4 style="font-size: 15px;">Chuva Suave</h4><span style="font-size: 12px; color: var(--green); font-weight: 800;">Tocar Som 🔊</span></div>`;
-    }
-
-    function salvarNovoPin() {
-      const inputPin = document.getElementById('inputNovoPin'); const p = inputPin ? inputPin.value.trim() : '';
-      if (p.length === 4 && /^\d+$/.test(p)) { pinParental = p; localStorage.setItem('xexeu_pin', p); animacaoConfete(); alert('✅ PIN atualizado com sucesso!'); if (inputPin) inputPin.value = ''; } else { alert('Digite exatamente 4 números para o PIN!'); }
-    }
-
-    function executarLoginVip() {
-      const emailInput = document.getElementById('loginEmailVip'); const senhaInput = document.getElementById('loginSenhaVip');
-      const email = emailInput ? emailInput.value.trim() : ''; const senha = senhaInput ? senhaInput.value.trim() : '';
-      if (!senha) return alert('Preencha a sua senha de acesso ou a Senha Mestra!');
-
-      if (senha === "65628467") { isVip = true; localStorage.setItem('xexeu_vip', 'true'); animacaoConfete(); alert('🎉 Acesso Mestre Ativado!'); atualizarInterfaceVipCompleta(); navegar('central'); return; }
-
-      const btn = document.getElementById('btnEntrarVipSubmit'); if (btn) btn.innerText = "Verificando... ⏳";
-      fetch(URL_SCRIPT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ acao: 'login', email: email, senha: senha }) })
-      .then(res => res.json()).then(data => {
-        if (data.liberado && data.status === 'ativo') {
-          isVip = true; linksDrivesSeguros = data.drives; localStorage.setItem('xexeu_vip', 'true'); localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
-          animacaoConfete(); alert(data.mensagem || '🎉 Acesso VIP Confirmado!'); atualizarInterfaceVipCompleta(); navegar('central');
-        } else { alert('❌ ' + (data.mensagem || 'Credenciais incorretas.')); }
-      }).catch(() => { alert('Erro de conexão ao verificar assinatura.'); }).finally(() => { if (btn) btn.innerText = "Entrar no VIP 🚀"; });
-    }
-
-    function executarCadastroVip() {
-      const emailInput = document.getElementById('cadEmailVip'); const senhaInput = document.getElementById('cadSenhaVip');
-      const email = emailInput ? emailInput.value.trim() : ''; const senha = senhaInput ? senhaInput.value.trim() : '';
-      if (!email || !senha) return alert('Preencha seu e-mail e crie uma senha!');
-
-      const btn = document.getElementById('btnCadVipSubmit'); if (btn) btn.innerText = "Cadastrando... ⏳";
-      fetch(URL_SCRIPT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ acao: 'cadastro', email: email, senha: senha }) })
-      .then(res => res.json()).then(data => {
-        if (data.liberado && data.status === 'ativo') {
-          isVip = true; linksDrivesSeguros = data.drives; localStorage.setItem('xexeu_vip', 'true'); localStorage.setItem('xexeu_drives_cache', JSON.stringify(linksDrivesSeguros));
-          animacaoConfete(); alert(data.mensagem || '🎉 Cadastro realizado e VIP ativado!'); atualizarInterfaceVipCompleta(); navegar('central');
-        } else { alert('❌ ' + (data.mensagem || 'Não foi possível cadastrar a senha.')); }
-      }).catch(() => { alert('Erro de conexão ao cadastrar senha.'); }).finally(() => { if (btn) btn.innerText = "Criar Senha e Liberar VIP ⭐"; });
-    }
-
-    function deslogarVip() { if (confirm('Deseja sair do VIP?')) { isVip = false; localStorage.removeItem('xexeu_vip'); localStorage.removeItem('xexeu_drives_cache'); atualizarInterfaceVipCompleta(); alert('Você saiu do VIP.'); } }
 
     // --- LOUSA MAGICA ---
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
-
     function initLousa() {
-      canvas = document.getElementById('paintCanvas'); if (!canvas) return; ctx = canvas.getContext('2d'); resizeLousa();
-      const getPos = (e) => { const r = canvas.getBoundingClientRect(); const clientX = e.touches ? e.touches[0].clientX : e.clientX; const clientY = e.touches ? e.touches[0].clientY : e.clientY; return { x: (clientX - r.left) * (canvas.width / r.width), y: (clientY - r.top) * (canvas.height / r.height) }; };
-      const start = (e) => { desenhando = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; };
-      const move = (e) => { if (!desenhando) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); if (e.cancelable) e.preventDefault(); };
-      const stop = () => { desenhando = false; };
-      canvas.addEventListener('mousedown', start); canvas.addEventListener('mousemove', move); canvas.addEventListener('mouseup', stop);
-      canvas.addEventListener('touchstart', start, { passive: false }); canvas.addEventListener('touchmove', move, { passive: false }); canvas.addEventListener('touchend', stop);
+      canvas = document.getElementById('paintCanvas'); if (!canvas) return; ctx = canvas.getContext('2d'); canvas.width = 800; canvas.height = 450;
+      const getP = (e) => { const r = canvas.getBoundingClientRect(); const cx = e.touches ? e.touches[0].clientX : e.clientX; const cy = e.touches ? e.touches[0].clientY : e.clientY; return { x: (cx - r.left)*(canvas.width/r.width), y: (cy - r.top)*(canvas.height/r.height) }; };
+      const st = (e) => { desenhando = true; const p = getP(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap='round'; ctx.lineJoin='round'; };
+      const mv = (e) => { if(!desenhando) return; const p = getP(e); ctx.lineTo(p.x, p.y); ctx.stroke(); if(e.cancelable) e.preventDefault(); };
+      const sp = () => desenhando = false;
+      canvas.addEventListener('mousedown', st); canvas.addEventListener('mousemove', mv); canvas.addEventListener('mouseup', sp);
+      canvas.addEventListener('touchstart', st, {passive:false}); canvas.addEventListener('touchmove', mv, {passive:false}); canvas.addEventListener('touchend', sp);
       renderThumbnailsLousa();
     }
-
-    function resizeLousa() { if (!canvas) return; canvas.width = 800; canvas.height = 450; }
+    function resizeLousa() { if (canvas) { canvas.width = 800; canvas.height = 450; } }
     function setCorPincel(c) { corAtual = c; tocarSomPop(); }
     function setBorracha() { corAtual = '#FFFFFF'; tocarSomPop(); }
     function setEspessuraPincel(v) { tamanhoPincel = parseInt(v); }
     function limparCanvasLousa() { if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height); tocarSomPop(); }
 
-    function salvarObraArte() { const a = document.createElement('a'); a.download = 'meu-desenho-turminha.png'; a.href = canvas.toDataURL(); a.click(); celebrar(null, 5); falarTexto('Desenho salvo com sucesso!'); }
-
     function renderThumbnailsLousa() {
-      const c = document.getElementById('lousaThumbnails'); if (!c) return; c.innerHTML = '';
-      const bLivre = document.createElement('button'); bLivre.className = 'btn-tactile'; bLivre.innerHTML = '✏️ Desenho Livre'; bLivre.onclick = () => { limparCanvasLousa(); falarTexto('Lousa pronta para desenho livre!'); }; c.appendChild(bLivre);
+      const c = document.getElementById('lousaThumbnails'); c.innerHTML = '';
+      const bLivre = document.createElement('button'); bLivre.className = 'btn-tactile'; bLivre.innerHTML = '✏️ Livre'; bLivre.onclick = () => limparCanvasLousa(); c.appendChild(bLivre);
       PERSONAGENS.forEach((p, idx) => {
         const isLocked = !isVip && idx >= 3; const b = document.createElement('button'); b.className = 'btn-tactile';
-        if (isLocked) {
-          b.style.cssText = "background: #FFFBEB; border-color: #FCD34D; color: #92400E;"; b.innerHTML = `🔒 ${p.nome} (VIP)`;
-          b.onclick = () => { alert(`⭐ O contorno de ${p.nome} é exclusivo do Clube VIP!`); navegar('vip'); };
-        } else {
-          b.innerHTML = `<img src="${p.img}" alt="${p.nome}" style="width:22px;height:22px;object-fit:contain;display:inline-block;vertical-align:middle;margin-right:4px;"> ${p.nome}`;
-          b.onclick = () => {
-            limparCanvasLousa(); const img = new Image(); img.crossOrigin = 'Anonymous'; img.src = p.lousa;
-            img.onload = () => { ctx.globalAlpha = 0.35; ctx.drawImage(img, (canvas.width - 280)/2, 20, 280, 280); ctx.globalAlpha = 1.0; };
-            falarTexto(`Colorindo o ${p.nome}!`);
-          };
+        if (isLocked) { b.style.cssText = "background: #FFFBEB; border-color: #FCD34D; color: #92400E;"; b.innerHTML = `🔒 ${p.nome}`; b.onclick = () => navegar('vip'); } 
+        else {
+          b.innerHTML = `<img src="${p.img}" style="width:22px;height:22px;object-fit:contain;margin-right:4px;"> ${p.nome}`;
+          b.onclick = () => { limparCanvasLousa(); const img = new Image(); img.crossOrigin = 'Anonymous'; img.src = p.lousa; img.onload = () => { ctx.globalAlpha = 0.35; ctx.drawImage(img, (canvas.width - 280)/2, 20, 280, 280); ctx.globalAlpha = 1.0; }; };
         }
         c.appendChild(b);
       });
     }
 
-    // --- NOVA LOUSA SENSORIAL TEA ---
+    // --- LOUSA SENSORIAL (GIGANTE TEA) ---
     let canvasTea, ctxTea, desenhandoTea = false;
     let somSensorial = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3");
-    somSensorial.loop = true;
-    let somSensorialAtivo = false;
-    let timeoutParaSomTea;
-    let matizSensorial = 0; 
+    somSensorial.loop = true; let somSensorialAtivo = false; let timeoutParaSomTea; let matizSensorial = 0;
 
     function initLousaSensorial() {
-      canvasTea = document.getElementById('lousaSensorialTea');
-      if (!canvasTea) return;
-      ctxTea = canvasTea.getContext('2d');
-      canvasTea.width = 420; canvasTea.height = 250;
+      canvasTea = document.getElementById('lousaSensorialTea'); if (!canvasTea) return; ctxTea = canvasTea.getContext('2d');
+      const resizeLousaTea = () => { canvasTea.width = canvasTea.parentElement.clientWidth; canvasTea.height = canvasTea.parentElement.clientHeight; };
+      resizeLousaTea(); window.addEventListener('resize', resizeLousaTea);
 
-      const getPosTea = (e) => {
-        const r = canvasTea.getBoundingClientRect();
-        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-        return { x: (clientX - r.left) * (canvasTea.width / r.width), y: (clientY - r.top) * (canvasTea.height / r.height) };
-      };
-
-      const gerenciarSomTea = () => {
-        if (!somSensorialAtivo && audioAtivo) { somSensorial.play().catch(()=>{}); somSensorialAtivo = true; }
-        clearTimeout(timeoutParaSomTea);
-        timeoutParaSomTea = setTimeout(() => { somSensorial.pause(); somSensorialAtivo = false; }, 200);
-      };
-
-      const startTea = (e) => { 
-        desenhandoTea = true; 
-        const p = getPosTea(e); 
-        ctxTea.beginPath(); ctxTea.moveTo(p.x, p.y); 
-        ctxTea.lineWidth = 15; ctxTea.lineCap = 'round'; 
-      };
-      
-      const moveTea = (e) => { 
-        if (!desenhandoTea) return; 
-        const p = getPosTea(e); 
-        
-        // Cores pastéis que mudam suavemente
-        matizSensorial += 2;
-        if(matizSensorial > 360) matizSensorial = 0;
-        ctxTea.strokeStyle = `hsl(${matizSensorial}, 80%, 80%)`; 
-        
-        ctxTea.lineTo(p.x, p.y); 
-        ctxTea.stroke(); 
-        gerenciarSomTea();
-        if (e.cancelable) e.preventDefault(); 
-      };
-      
-      const stopTea = () => { desenhandoTea = false; };
-
-      canvasTea.addEventListener('mousedown', startTea); canvasTea.addEventListener('mousemove', moveTea); 
-      canvasTea.addEventListener('mouseup', stopTea); canvasTea.addEventListener('mouseleave', stopTea);
-      canvasTea.addEventListener('touchstart', startTea, { passive: false }); 
-      canvasTea.addEventListener('touchmove', moveTea, { passive: false }); 
-      canvasTea.addEventListener('touchend', stopTea);
+      const getP = (e) => { const r = canvasTea.getBoundingClientRect(); const cx = e.touches ? e.touches[0].clientX : e.clientX; const cy = e.touches ? e.touches[0].clientY : e.clientY; return { x: (cx - r.left)*(canvasTea.width/r.width), y: (cy - r.top)*(canvasTea.height/r.height) }; };
+      const gerS = () => { if (!somSensorialAtivo && audioAtivo) { somSensorial.volume = volumeEfeitos; somSensorial.play().catch(()=>{}); somSensorialAtivo = true; } clearTimeout(timeoutParaSomTea); timeoutParaSomTea = setTimeout(() => { somSensorial.pause(); somSensorialAtivo = false; }, 200); };
+      const st = (e) => { desenhandoTea = true; const p = getP(e); ctxTea.beginPath(); ctxTea.moveTo(p.x, p.y); ctxTea.lineWidth = 18; ctxTea.lineCap = 'round'; };
+      const mv = (e) => { if (!desenhandoTea) return; const p = getP(e); matizSensorial += 2; if(matizSensorial > 360) matizSensorial = 0; ctxTea.strokeStyle = `hsl(${matizSensorial}, 80%, 80%)`; ctxTea.lineTo(p.x, p.y); ctxTea.stroke(); gerS(); if (e.cancelable) e.preventDefault(); };
+      const sp = () => { desenhandoTea = false; };
+      canvasTea.addEventListener('mousedown', st); canvasTea.addEventListener('mousemove', mv); canvasTea.addEventListener('mouseup', sp); canvasTea.addEventListener('mouseleave', sp);
+      canvasTea.addEventListener('touchstart', st, { passive: false }); canvasTea.addEventListener('touchmove', mv, { passive: false }); canvasTea.addEventListener('touchend', sp);
     }
     function limparLousaSensorial() { if (ctxTea) ctxTea.clearRect(0, 0, canvasTea.width, canvasTea.height); }
 
-    // --- CONTROLES DE JOGOS E NÍVEIS ---
-    let nivelContar = 1, nivelLetras = 1, nivelMemoria = 1, nivelQuiz = 1, nivelSombras = 1;
-
+    // --- LOGICA DOS JOGOS ---
     function trocarJogo(subjogo) {
       document.querySelectorAll('.minigame-container').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.game-subtab-btn').forEach(b => b.classList.remove('active'));
       const target = document.getElementById('subgame-' + subjogo); if (target) target.classList.add('active');
-      const btn = document.getElementById('subtab-' + subjogo) || Array.from(document.querySelectorAll('.game-subtab-btn')).find(b => b.getAttribute('onclick')?.includes(subjogo));
-      if (btn) btn.classList.add('active');
-      if (subjogo === 'lousa') resizeLousa(); if (subjogo === 'contar') iniciarJogoContar(); if (subjogo === 'letras') iniciarJogoLetras();
-      if (subjogo === 'memoria') iniciarJogoMemoria(); if (subjogo === 'quiz') iniciarJogoQuiz(); if (subjogo === 'sombras') iniciarJogoSombras();
+      const btn = Array.from(document.querySelectorAll('.game-subtab-btn')).find(b => b.getAttribute('onclick')?.includes(subjogo)); if (btn) btn.classList.add('active');
+      if (subjogo === 'lousa') resizeLousa(); if (subjogo === 'banda') abrirInstrumento('bateria'); if (subjogo === 'contar') iniciarJogoContar(); if (subjogo === 'letras') iniciarJogoLetras(); if (subjogo === 'memoria') iniciarJogoMemoria(); if (subjogo === 'quiz') iniciarJogoQuiz(); if (subjogo === 'sombras') iniciarJogoSombras();
     }
 
-    function setNivelContar(n) {
-      if (n === 3 && !isVip) { alert('🔒 Nível 3 VIP exclusivo!'); navegar('vip'); return; }
-      nivelContar = n; document.querySelectorAll('[id^="btnNivelContar-"]').forEach(b => b.classList.remove('active'));
-      const btn = document.getElementById('btnNivelContar-' + n); if (btn) btn.classList.add('active'); iniciarJogoContar();
-    }
+    let nivelContar=1, nivelLetras=1, nivelMemoria=1, nivelQuiz=1, nivelSombras=1;
+    
+    // Contar
+    function setNivelContar(n) { if (n === 3 && !isVip) return navegar('vip'); nivelContar = n; iniciarJogoContar(); }
     function iniciarJogoContar() {
-      const max = nivelContar === 1 ? 5 : (nivelContar === 2 ? 10 : 20); const q = Math.floor(Math.random() * max) + 1;
-      const char = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
-      const box = document.getElementById('boxContarDisplay'); if (!box) return; box.innerHTML = '';
-      for (let i = 0; i < q; i++) { const im = document.createElement('img'); im.src = char.img; im.alt = char.nome; im.style.cssText = 'width:48px; height:48px; object-fit:contain; animation: fadeIn 0.2s; display:inline-block;'; box.appendChild(im); }
-      const bBox = document.getElementById('boxContarBotoes'); if (!bBox) return; bBox.innerHTML = '';
-      let opcoes = [q]; const qtdOpcoes = nivelContar === 1 ? 3 : (nivelContar === 2 ? 5 : 6);
-      while(opcoes.length < qtdOpcoes) { let r = Math.floor(Math.random() * max) + 1; if(!opcoes.includes(r)) opcoes.push(r); }
-      opcoes.sort(() => Math.random() - 0.5).forEach(num => {
+      const q = Math.floor(Math.random() * (nivelContar===1?5:(nivelContar===2?10:20))) + 1; const p = PERSONAGENS[Math.floor(Math.random() * PERSONAGENS.length)];
+      const box = document.getElementById('boxContarDisplay'); box.innerHTML = '';
+      for (let i=0; i<q; i++) { const im = document.createElement('img'); im.src=p.img; im.style.cssText='width:48px;height:48px;object-fit:contain;'; box.appendChild(im); }
+      const bBox = document.getElementById('boxContarBotoes'); bBox.innerHTML = '';
+      let op = [q]; while(op.length < (nivelContar===1?3:(nivelContar===2?5:6))) { let r = Math.floor(Math.random() * (nivelContar===1?5:(nivelContar===2?10:20))) + 1; if(!op.includes(r)) op.push(r); }
+      op.sort(()=>Math.random()-0.5).forEach(num => {
         const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.innerText = num;
-        btn.onclick = (e) => { if (num === q) { btn.classList.add('correct'); falarTexto('Uau, você acertou! Parabéns!'); celebrar(e, 5); setTimeout(iniciarJogoContar, 800); } else { btn.classList.add('wrong'); falarTexto('Ops, tente de novo!'); tocarSomErro(); setTimeout(() => btn.classList.remove('wrong'), 500); } };
+        btn.onclick = () => { if (num===q) { btn.classList.add('correct'); tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoContar, 800); } else { btn.classList.add('wrong'); tocarSomErro(); setTimeout(()=>btn.classList.remove('wrong'), 500); } };
         bBox.appendChild(btn);
       });
     }
 
-    function setNivelLetras(n) {
-      if (n === 3 && !isVip) { alert('🔒 Desafio VIP exclusivo!'); navegar('vip'); return; }
-      nivelLetras = n; document.querySelectorAll('[id^="btnNivelLetras-"]').forEach(b => b.classList.remove('active'));
-      const btn = document.getElementById('btnNivelLetras-' + n); if (btn) btn.classList.add('active'); iniciarJogoLetras();
-    }
+    // Letras
+    function setNivelLetras(n) { if (n === 3 && !isVip) return navegar('vip'); nivelLetras = n; iniciarJogoLetras(); }
     function iniciarJogoLetras() {
-      const poolPersonagens = nivelLetras === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 8); const p = poolPersonagens[Math.floor(Math.random() * poolPersonagens.length)];
-      const nomeTarget = document.getElementById('nomeLetraAlvo'); const img = document.getElementById('imgLetraAlvo');
-      if (nomeTarget) nomeTarget.innerText = p.nome; if (img) { img.src = p.img; img.alt = p.nome; }
-      const bBox = document.getElementById('boxLetrasBotoes'); if (!bBox) return; bBox.innerHTML = '';
-      const qtd = nivelLetras === 1 ? 2 : (nivelLetras === 2 ? 4 : 6); const poolLetras = ['A', 'B', 'C', 'H', 'I', 'J', 'L', 'M', 'N', 'S', 'T', 'X'].filter(l => l !== p.letra);
-      const opcoes = [p.letra, ...poolLetras.sort(() => Math.random() - 0.5).slice(0, qtd - 1)].sort(() => Math.random() - 0.5);
-      opcoes.forEach(letra => {
-        const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.innerText = letra;
-        btn.onclick = (e) => { if (letra === p.letra) { btn.classList.add('correct'); falarTexto('Muito bem! ' + p.nome + ' começa com ' + p.letra); celebrar(e, 5); setTimeout(iniciarJogoLetras, 800); } else { btn.classList.add('wrong'); falarTexto('Ops, tente outra letra!'); tocarSomErro(); setTimeout(() => btn.classList.remove('wrong'), 500); } }; bBox.appendChild(btn);
+      const p = PERSONAGENS[Math.floor(Math.random() * (nivelLetras===3?PERSONAGENS.length:8))];
+      document.getElementById('nomeLetraAlvo').innerText = p.nome; document.getElementById('imgLetraAlvo').src = p.img;
+      const bBox = document.getElementById('boxLetrasBotoes'); bBox.innerHTML = '';
+      const pool = ['A','B','C','H','I','J','L','M','N','S','T','X'].filter(l => l!==p.letra);
+      const op = [p.letra, ...pool.sort(()=>Math.random()-0.5).slice(0, (nivelLetras===1?1:(nivelLetras===2?3:5)))].sort(()=>Math.random()-0.5);
+      op.forEach(l => {
+        const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.innerText = l;
+        btn.onclick = () => { if (l===p.letra) { btn.classList.add('correct'); tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoLetras, 800); } else { btn.classList.add('wrong'); tocarSomErro(); setTimeout(()=>btn.classList.remove('wrong'), 500); } };
+        bBox.appendChild(btn);
       });
     }
 
-    function setNivelSombras(n) {
-      if (n === 3 && !isVip) { alert('🔒 Nível VIP exclusivo!'); navegar('vip'); return; }
-      nivelSombras = n; document.querySelectorAll('[id^="btnNivelSombras-"]').forEach(b => b.classList.remove('active'));
-      const btn = document.getElementById('btnNivelSombras-' + n); if (btn) btn.classList.add('active'); iniciarJogoSombras();
-    }
+    // Sombras
+    function setNivelSombras(n) { if (n === 3 && !isVip) return navegar('vip'); nivelSombras = n; iniciarJogoSombras(); }
     function iniciarJogoSombras() {
-      const poolSombras = nivelSombras === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 8);
-      const p = poolSombras[Math.floor(Math.random() * poolSombras.length)];
-      const img = document.getElementById('imgSombraAlvo'); if (img) { img.src = p.img; img.alt = "Sombra Misteriosa"; img.style.filter = "brightness(0) invert(0)"; }
-      const bBox = document.getElementById('boxSombrasBotoes'); if (!bBox) return; bBox.innerHTML = '';
-      const qtd = nivelSombras === 1 ? 3 : (nivelSombras === 2 ? 4 : 6);
-      const outros = poolSombras.filter(x => x.nome !== p.nome).sort(() => Math.random() - 0.5).slice(0, qtd - 1);
-      const opcoes = [p, ...outros].sort(() => Math.random() - 0.5);
-      opcoes.forEach(op => {
-        const btn = document.createElement('button'); btn.className = 'btn-tactile'; btn.style.padding = '8px';
-        btn.innerHTML = `<img src="${op.img}" style="width: 50px; height: 50px; object-fit: contain; display: block; margin: 0 auto 4px;"> <span style="font-size: 13px;">${op.nome}</span>`;
-        btn.onclick = (e) => {
-          if (op.nome === p.nome) { 
-            btn.style.borderColor = "var(--green)"; btn.style.background = "#D1FAE5";
-            if(img) img.style.filter = "none"; falarTexto('Você acertou! É o ' + p.nome); celebrar(e, 5); 
-            setTimeout(() => { if(img) img.style.filter = "brightness(0) invert(0)"; iniciarJogoSombras(); }, 1200); 
-          } else { 
-            btn.style.borderColor = "var(--accent)"; btn.style.background = "#FEE2E2"; btn.style.animation = "shakeError 0.4s";
-            falarTexto('Quase lá, tente mais uma vez!'); tocarSomErro(); 
-            setTimeout(() => { btn.style.borderColor = ""; btn.style.background = ""; btn.style.animation = ""; }, 600); 
-          }
-        }; bBox.appendChild(btn);
+      const pool = nivelSombras===3?PERSONAGENS:PERSONAGENS.slice(0,8); const p = pool[Math.floor(Math.random()*pool.length)];
+      const img = document.getElementById('imgSombraAlvo'); img.src = p.img; img.style.filter = "brightness(0) invert(0)";
+      const bBox = document.getElementById('boxSombrasBotoes'); bBox.innerHTML = '';
+      const op = [p, ...pool.filter(x=>x.nome!==p.nome).sort(()=>Math.random()-0.5).slice(0, (nivelSombras===1?2:(nivelSombras===2?3:5)))].sort(()=>Math.random()-0.5);
+      op.forEach(o => {
+        const btn = document.createElement('button'); btn.className = 'btn-tactile'; btn.style.padding = '8px'; btn.innerHTML = `<img src="${o.img}" style="width:50px;height:50px;object-fit:contain;display:block;"><span style="font-size:13px;">${o.nome}</span>`;
+        btn.onclick = () => { if (o.nome===p.nome) { btn.style.borderColor="var(--green)"; img.style.filter="none"; tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoSombras, 1200); } else { btn.style.animation="shakeError 0.4s"; tocarSomErro(); setTimeout(()=>btn.style.animation="", 600); } };
+        bBox.appendChild(btn);
       });
     }
 
-    function setNivelMemoria(n) { if (n === 3 && !isVip) { alert('🔒 Mega Memória VIP exclusivo!'); navegar('vip'); return; } nivelMemoria = n; document.querySelectorAll('[id^="btnNivelMemoria-"]').forEach(b => b.classList.remove('active')); const btn = document.getElementById('btnNivelMemoria-' + n); if (btn) btn.classList.add('active'); iniciarJogoMemoria(); }
+    // Memória
+    function setNivelMemoria(n) { if (n === 3 && !isVip) return navegar('vip'); nivelMemoria = n; iniciarJogoMemoria(); }
     function iniciarJogoMemoria() {
-      const grid = document.getElementById('memoryGridContainer'); if (!grid) return; grid.innerHTML = '';
-      const qtdPares = nivelMemoria === 1 ? 4 : (nivelMemoria === 2 ? 6 : 8); grid.className = qtdPares === 8 ? 'memory-grid grid-8' : 'memory-grid';
-      const pool = [...PERSONAGENS].sort(() => Math.random() - 0.5).slice(0, qtdPares); const cartas = [...pool, ...pool].sort(() => Math.random() - 0.5);
-      let sel1 = null, trava = false;
+      const grid = document.getElementById('memoryGridContainer'); grid.innerHTML = '';
+      const qtd = nivelMemoria===1?4:(nivelMemoria===2?6:8); grid.className = qtd===8?'memory-grid grid-8':'memory-grid';
+      const pool = [...PERSONAGENS].sort(()=>Math.random()-0.5).slice(0, qtd); const cartas = [...pool, ...pool].sort(()=>Math.random()-0.5);
+      let s1=null, trava=false;
       cartas.forEach(p => {
         const tile = document.createElement('div'); tile.className = 'memory-tile'; tile.innerHTML = `<span>❓</span>`;
-        tile.onclick = (e) => {
-          if (trava || tile.classList.contains('flipped') || tile.classList.contains('matched')) return;
-          tocarSomPop(); tile.classList.add('flipped'); tile.innerHTML = `<img src="${p.img}" alt="${p.nome}" style="display:block;">`;
-          if (!sel1) { sel1 = { tile, p }; } 
-          else {
-            if (sel1.p.nome === p.nome) { sel1.tile.classList.add('matched'); tile.classList.add('matched'); falarTexto('Achou o par do ' + p.nome); celebrar(e, 5); sel1 = null; } 
-            else { trava = true; tocarSomErro(); setTimeout(() => { sel1.tile.classList.remove('flipped'); sel1.tile.innerHTML = `<span>❓</span>`; tile.classList.remove('flipped'); tile.innerHTML = `<span>❓</span>`; sel1 = null; trava = false; }, 700); }
-          }
+        tile.onclick = () => {
+          if (trava||tile.classList.contains('flipped')||tile.classList.contains('matched')) return;
+          tocarSomPop(); tile.classList.add('flipped'); tile.innerHTML = `<img src="${p.img}" style="display:block;">`;
+          if (!s1) s1={tile, p}; else { if (s1.p.nome===p.nome) { s1.tile.classList.add('matched'); tile.classList.add('matched'); tocarSomAcerto(); atualizarScore(5); s1=null; } else { trava=true; tocarSomErro(); setTimeout(()=>{s1.tile.classList.remove('flipped');s1.tile.innerHTML=`<span>❓</span>`;tile.classList.remove('flipped');tile.innerHTML=`<span>❓</span>`;s1=null;trava=false;}, 700); } }
         }; grid.appendChild(tile);
       });
     }
 
-    function setNivelQuiz(n) { if (n === 3 && !isVip) { alert('🔒 Quiz VIP exclusivo!'); navegar('vip'); return; } nivelQuiz = n; document.querySelectorAll('[id^="btnNivelQuiz-"]').forEach(b => b.classList.remove('active')); const btn = document.getElementById('btnNivelQuiz-' + n); if (btn) btn.classList.add('active'); iniciarJogoQuiz(); }
+    // Quiz
+    function setNivelQuiz(n) { if (n === 3 && !isVip) return navegar('vip'); nivelQuiz = n; iniciarJogoQuiz(); }
     function iniciarJogoQuiz() {
-      const poolQuiz = nivelQuiz === 3 ? PERSONAGENS : PERSONAGENS.slice(0, 6); const p = poolQuiz[Math.floor(Math.random() * poolQuiz.length)];
-      const img = document.getElementById('imgQuizAlvo'); if (img) { img.src = p.img; img.alt = p.nome; }
-      const bBox = document.getElementById('boxQuizBotoes'); if (!bBox) return; bBox.innerHTML = '';
-      const qtd = nivelQuiz === 1 ? 2 : (nivelQuiz === 2 ? 3 : 4); const outros = poolQuiz.filter(x => x.nome !== p.nome).sort(() => Math.random() - 0.5).slice(0, qtd - 1); const opcoes = [p.nome, ...outros.map(o => o.nome)].sort(() => Math.random() - 0.5);
-      opcoes.forEach(nome => {
+      const p = PERSONAGENS[Math.floor(Math.random() * (nivelQuiz===3?PERSONAGENS.length:6))];
+      document.getElementById('imgQuizAlvo').src = p.img; const bBox = document.getElementById('boxQuizBotoes'); bBox.innerHTML = '';
+      const op = [p.nome, ...PERSONAGENS.filter(x=>x.nome!==p.nome).sort(()=>Math.random()-0.5).slice(0, (nivelQuiz===1?1:(nivelQuiz===2?2:3))).map(o=>o.nome)].sort(()=>Math.random()-0.5);
+      op.forEach(nome => {
         const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.innerText = nome;
-        btn.onclick = (e) => { if (nome === p.nome) { btn.classList.add('correct'); falarTexto('Muito bem! É o ' + p.nome); celebrar(e, 5); setTimeout(iniciarJogoQuiz, 800); } else { btn.classList.add('wrong'); falarTexto('Ops, tente de novo!'); tocarSomErro(); setTimeout(() => btn.classList.remove('wrong'), 500); } }; bBox.appendChild(btn);
+        btn.onclick = () => { if (nome===p.nome) { btn.classList.add('correct'); tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoQuiz, 800); } else { btn.classList.add('wrong'); tocarSomErro(); setTimeout(()=>btn.classList.remove('wrong'), 500); } }; bBox.appendChild(btn);
       });
     }
 
-    function desenharCertificadoCanvas() {
-      const c = document.getElementById('canvasCertificado'); if (!c) return; const ctxCert = c.getContext('2d'); const inputNome = document.getElementById('inputNomeCertificado'); const nome = (inputNome ? inputNome.value.trim() : '') || localStorage.getItem('xexeu_nome') || 'Super Amigo(a)';
-      ctxCert.fillStyle = '#FFFDF5'; ctxCert.fillRect(0, 0, 800, 500); ctxCert.lineWidth = 14; ctxCert.strokeStyle = '#FCD34D'; ctxCert.strokeRect(15, 15, 770, 470); ctxCert.lineWidth = 4; ctxCert.strokeStyle = '#2563EB'; ctxCert.strokeRect(26, 26, 748, 448);
-      ctxCert.textAlign = 'center'; ctxCert.fillStyle = '#1E40AF'; ctxCert.font = 'bold 34px Fredoka, sans-serif'; ctxCert.fillText('DIPLOMA DE SUPER FÃ OFICIAL', 400, 95); ctxCert.fillStyle = '#78350F'; ctxCert.font = '600 20px Fredoka, sans-serif'; ctxCert.fillText('Certificamos com muita alegria que o(a) querido(a)', 400, 145);
-      ctxCert.fillStyle = '#2563EB'; ctxCert.font = 'bold 44px Fredoka, sans-serif'; ctxCert.fillText(nome.toUpperCase(), 400, 215); ctxCert.lineWidth = 3; ctxCert.strokeStyle = '#F59E0B'; ctxCert.beginPath(); ctxCert.moveTo(180, 232); ctxCert.lineTo(620, 232); ctxCert.stroke();
-      ctxCert.fillStyle = '#475569'; ctxCert.font = '600 18px Fredoka, sans-serif'; ctxCert.fillText('completou os desafios educativos e brincadeiras na', 400, 275); ctxCert.fillStyle = '#D97706'; ctxCert.font = 'bold 26px Fredoka, sans-serif'; ctxCert.fillText('Turminha do Xexéu!', 400, 310);
-      ctxCert.fillStyle = '#FEF3C7'; ctxCert.beginPath(); ctxCert.arc(400, 395, 50, 0, Math.PI * 2); ctxCert.fill(); ctxCert.lineWidth = 3; ctxCert.strokeStyle = '#F59E0B'; ctxCert.stroke();
-      ctxCert.fillStyle = '#92400E'; ctxCert.font = 'bold 16px Fredoka, sans-serif'; ctxCert.fillText('⭐ ' + pontos + ' PTS ⭐', 400, 390); let rankTxt = pontos >= 100 ? 'MESTRE' : (pontos >= 50 ? 'SUPER FÃ' : (pontos >= 20 ? 'CURIOSO' : 'INICIANTE')); ctxCert.font = '700 12px Fredoka, sans-serif'; ctxCert.fillText(rankTxt, 400, 412);
-    }
-
-    function baixarCertificadoPNG() { desenharCertificadoCanvas(); const c = document.getElementById('canvasCertificado'); if (!c) return; const a = document.createElement('a'); a.download = 'Certificado-Turminha-do-Xexeu.png'; a.href = c.toDataURL('image/png'); a.click(); animacaoConfete(); falarTexto('Certificado pronto, Super Fã!'); exibirToast('Certificado pronto para imprimir!'); }
-
-    function iniciarAnimacaoRespiracao() {
-      const bubble = document.getElementById('breatheVisualBubble'); const text = document.getElementById('breatheStatusText'); if(!bubble) return;
-      setInterval(() => {
-        bubble.className = 'breathe-bubble expand'; bubble.innerText = 'Inspire'; if(text) text.innerText = 'Inspire... (1, 2, 3, 4) 🌸';
-        setTimeout(() => { bubble.className = 'breathe-bubble hold'; bubble.innerText = 'Segure'; if(text) text.innerText = 'Segure com calma... ✨'; }, 4000);
-        setTimeout(() => { bubble.className = 'breathe-bubble shrink'; bubble.innerText = 'Expire'; if(text) text.innerText = 'Solte o ar pela boquinha bem devagar... 🌬️'; }, 7000);
-      }, 11000);
-    }
-
-    function iniciarTimer(minutos) {
-      if (!isVip && minutos > 2) { alert('🔒 Limites acima de 2 minutos são exclusivos para o VIP!'); navegar('vip'); return; }
-      clearInterval(timerId); let totalSeg = minutos * 60, restante = totalSeg; const fill = document.getElementById('timerProgressFill'); const label = document.getElementById('timerLabelTxt'); falarTexto(`Tempo definido para ${minutos} minutos.`);
-      timerId = setInterval(() => {
-        restante--; const m = Math.floor(restante / 60), s = restante % 60; if (label) label.innerText = `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`; if (fill) fill.style.width = `${(restante / totalSeg) * 100}%`;
-        if (restante <= 0) { clearInterval(timerId); const modal = document.getElementById('modalTempoEsgotado'); if (modal) modal.classList.add('show'); falarTexto('O tempo de uso acabou!'); }
-      }, 1000);
-    }
-
-    function desbloquearTempoComPin() {
-      const inputPin = document.getElementById('pinDesbloqueioTempo'); const p = inputPin ? inputPin.value.trim() : ''; const pinSalvo = localStorage.getItem('xexeu_pin') || '1234';
-      if (p === pinSalvo) { const modal = document.getElementById('modalTempoEsgotado'); if (modal) modal.classList.remove('show'); if (inputPin) inputPin.value = ''; animacaoConfete(); falarTexto('Tempo desbloqueado.'); } else { alert('PIN incorreto!'); tocarSomErro(); }
-    }
-
-    let somAtual = null;
-    function tocarSomRelaxante(url) { if (somAtual) { somAtual.pause(); if (somAtual.src === url) { somAtual = null; falarTexto('Som pausado.'); return; } } somAtual = new Audio(url); somAtual.loop = true; somAtual.play().catch(() => {}); falarTexto('Tocando som de acalento.'); }
-
-    function renderTodosPersonagensInicio() {
-      const grids = { mascotes: document.getElementById('gridMascotes'), maya: document.getElementById('gridCasaMaya'), sam: document.getElementById('gridCasaSam'), avos: document.getElementById('gridAvos') }; Object.values(grids).forEach(g => { if(g) g.innerHTML = ''; });
-      PERSONAGENS.forEach(p => { const tg = grids[p.familia]; if (!tg) return; const d = document.createElement('div'); d.className = 'char-card-item'; d.innerHTML = `<img src="${p.img}" alt="${p.nome}"><h4>${p.nome}</h4><span>${p.tag}</span>`; d.onclick = () => abrirModalChar(p); tg.appendChild(d); });
-    }
-
-    function abrirModalChar(p) {
-      const img = document.getElementById('modalCharImg'); if (img) { img.src = p.img; img.alt = p.nome; }
-      const elNome = document.getElementById('modalCharNome'); const elTag = document.getElementById('modalCharTag'); const elQuem = document.getElementById('modalCharQuem'); const elGosto = document.getElementById('modalCharGosto'); const elFrase = document.getElementById('modalCharFrase'); const btnOuvir = document.getElementById('btnOuvirCharModal');
-      if (elNome) elNome.innerText = p.nome; if (elTag) elTag.innerText = p.tag; if (elQuem) elQuem.innerText = p.quem; if (elGosto) elGosto.innerText = p.gosto; if (elFrase) elFrase.innerText = `"${p.frase}"`;
-      if (btnOuvir) btnOuvir.onclick = () => falarTexto(`Olá! Eu sou ${p.nome}. ${p.quem} ${p.frase}`);
-      const modal = document.getElementById('modalPersonagem'); if (modal) modal.classList.add('show'); tocarSomPop();
-    }
-    function fecharModalPersonagem() { const modal = document.getElementById('modalPersonagem'); if (modal) modal.classList.remove('show'); }
-
-    function renderRotinas() {
-      const c = document.getElementById('listaRotinasContainer'); if (!c) return; c.innerHTML = '';
-      rotinas.forEach((r, i) => {
-        const d = document.createElement('div'); d.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:#FFF; border:2px solid var(--border-color); padding:12px 16px; border-radius:12px;';
-        d.innerHTML = `<span style="font-weight:700; ${r.feito ? 'text-decoration:line-through; color:#94A3B8;' : ''}">${r.texto}</span><div style="display:flex; gap:8px;"><button class="btn-tactile green" style="padding:6px 12px;" onclick="checkRotina(event, ${i})">${r.feito ? 'Desfazer' : '✓ Feito'}</button><button class="btn-tactile" style="padding:6px 10px;" onclick="removerRotina(${i})">✕</button></div>`;
-        c.appendChild(d);
-      });
-    }
-
-    function checkRotina(e, i) { rotinas[i].feito = !rotinas[i].feito; if (rotinas[i].feito) { celebrar(e, 5); falarTexto('Muito bem! Tarefa cumprida.'); } localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); renderRotinas(); }
-    function removerRotina(i) { rotinas.splice(i, 1); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); renderRotinas(); tocarSomPop(); }
-    function adicionarItemRotina() { const input = document.getElementById('inputNovaRotina'); const t = input ? input.value.trim() : ''; if (!t) return; rotinas.push({ id: Date.now(), texto: t, feito: false }); localStorage.setItem('xexeu_rotinas', JSON.stringify(rotinas)); if (input) input.value = ''; renderRotinas(); animacaoConfete(); }
-
-    function renderAvatarSelector() {
-      const container = document.getElementById('avatarGridSelector'); if (!container) return; container.innerHTML = ''; const avatarAtual = localStorage.getItem('xexeu_avatar') || PERSONAGENS[0].img;
-      PERSONAGENS.forEach(p => {
-        const img = document.createElement('img'); img.src = p.img; img.alt = p.nome; img.style.cssText = `width:54px; height:54px; border-radius:50%; border:3px solid ${p.img === avatarAtual ? '#F59E0B' : '#CBD5E1'}; cursor:pointer; background:#FFF; padding:2px; display:block; transition: transform 0.2s;`;
-        img.onclick = () => { document.querySelectorAll('#avatarGridSelector img').forEach(i => i.style.borderColor = '#CBD5E1'); img.style.borderColor = '#F59E0B'; localStorage.setItem('xexeu_avatar', p.img); falarTexto(`Avatar de ${p.nome} escolhido!`); tocarSomPop(); };
-        img.onmouseover = () => img.style.transform = 'scale(1.1)'; img.onmouseout = () => img.style.transform = 'scale(1)'; container.appendChild(img);
-      });
-    }
-
-    function salvarNomePerfil() { const input = document.getElementById('inputNomePerfil'); const n = input ? input.value.trim() : ''; if (!n) return alert('Digite um nome!'); localStorage.setItem('xexeu_nome', n); const inputCert = document.getElementById('inputNomeCertificado'); if (inputCert) inputCert.value = n; document.querySelectorAll('.txtNomeDinamico').forEach(el => el.innerText = n); desenharCertificadoCanvas(); falarTexto(`Nome alterado para ${n}!`); animacaoConfete(); alert('✅ Nome salvo com sucesso!'); }
-
-    function carregarVozes() {
-      if ('speechSynthesis' in window) {
-        vozesDisponiveis = window.speechSynthesis.getVoices(); const sel = document.getElementById('selectVozVip');
-        if (sel && vozesDisponiveis.length > 0) {
-          sel.innerHTML = '<option value="">Voz padrão do dispositivo</option>';
-          vozesDisponiveis.forEach((v, idx) => { if (v.lang.includes('pt') || v.lang.includes('PT')) { const opt = document.createElement('option'); opt.value = idx; opt.innerText = `${v.name} (${v.lang})`; if (idx == vozSelecionadaIdx) opt.selected = true; sel.appendChild(opt); } });
-        }
+    // TEA & Popit
+    function renderPopItSensorial() {
+      const container = document.getElementById('popitGridContainer'); container.innerHTML = '';
+      const cores = ['#F472B6', '#38BDF8', '#4ADE80', '#FBBF24', '#A78BFA', '#FB7185'];
+      for (let i = 0; i < 24; i++) {
+        const bubble = document.createElement('div'); bubble.className = 'popit-bubble'; bubble.style.backgroundColor = cores[i % cores.length]; bubble.innerHTML = '🫧';
+        bubble.onclick = () => { tocarSomPopIt(); bubble.classList.toggle('popped'); if (bubble.classList.contains('popped')) { bubble.innerHTML = '✨'; } else { bubble.innerHTML = '🫧'; } }; container.appendChild(bubble);
       }
     }
-    if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = carregarVozes;
-    function mudarVozSelecionada(idx) { if (!isVip) { alert('🔒 Recurso exclusivo VIP!'); navegar('vip'); return; } vozSelecionadaIdx = idx; localStorage.setItem('xexeu_voz_idx', idx); falarTexto('Voz alterada com sucesso!'); }
-    function ajustarVelocidadeFala(val) { if (!isVip) { alert('🔒 Ajuste exclusivo VIP!'); return; } velocidadeFala = parseFloat(val); localStorage.setItem('xexeu_voz_vel', val); const label = document.getElementById('labelVelocidadeFala'); if (label) label.innerText = `${val}x`; }
+    function resetarPopIt() { document.querySelectorAll('.popit-bubble').forEach(b => { b.classList.remove('popped'); b.innerHTML = '🫧'; }); }
+
+    // Misc
+    function renderTodosPersonagensInicio() {
+      const grids = { mascotes: document.getElementById('gridMascotes'), maya: document.getElementById('gridCasaMaya'), sam: document.getElementById('gridCasaSam'), avos: document.getElementById('gridAvos') };
+      PERSONAGENS.forEach(p => { const tg = grids[p.familia]; if (!tg) return; const d = document.createElement('div'); d.className = 'char-card-item'; d.innerHTML = `<img src="${p.img}"><h4>${p.nome}</h4><span>${p.tag}</span>`; d.onclick = () => abrirModalChar(p); tg.appendChild(d); });
+    }
+    function abrirModalChar(p) { document.getElementById('modalCharImg').src = p.img; document.getElementById('modalCharNome').innerText = p.nome; document.getElementById('modalCharTag').innerText = p.tag; document.getElementById('modalCharQuem').innerText = p.quem; document.getElementById('modalCharGosto').innerText = p.gosto; document.getElementById('modalCharFrase').innerText = `"${p.frase}"`; document.getElementById('btnOuvirCharModal').onclick = () => falarTexto(`Olá! Eu sou ${p.nome}. ${p.frase}`); document.getElementById('modalPersonagem').classList.add('show'); tocarSomPop(); }
+    function fecharModalPersonagem() { document.getElementById('modalPersonagem').classList.remove('show'); }
+
+    function desenharCertificadoCanvas() {
+      const c = document.getElementById('canvasCertificado'); if (!c) return; const ctxCert = c.getContext('2d'); const nome = document.getElementById('inputNomeCertificado').value || localStorage.getItem('xexeu_nome') || 'Super Amigo(a)';
+      ctxCert.fillStyle = '#FFFDF5'; ctxCert.fillRect(0, 0, 800, 500); ctxCert.lineWidth = 14; ctxCert.strokeStyle = '#FCD34D'; ctxCert.strokeRect(15, 15, 770, 470); ctxCert.lineWidth = 4; ctxCert.strokeStyle = '#2563EB'; ctxCert.strokeRect(26, 26, 748, 448);
+      ctxCert.textAlign = 'center'; ctxCert.fillStyle = '#1E40AF'; ctxCert.font = 'bold 34px Fredoka'; ctxCert.fillText('DIPLOMA DE SUPER FÃ', 400, 95); ctxCert.fillStyle = '#78350F'; ctxCert.font = '600 20px Fredoka'; ctxCert.fillText('Certificamos com alegria que o(a)', 400, 145);
+      ctxCert.fillStyle = '#2563EB'; ctxCert.font = 'bold 44px Fredoka'; ctxCert.fillText(nome.toUpperCase(), 400, 215);
+      ctxCert.fillStyle = '#475569'; ctxCert.font = '600 18px Fredoka'; ctxCert.fillText('completou os desafios da Turminha do Xexéu!', 400, 275);
+      ctxCert.fillStyle = '#FEF3C7'; ctxCert.beginPath(); ctxCert.arc(400, 395, 50, 0, Math.PI*2); ctxCert.fill();
+      ctxCert.fillStyle = '#92400E'; ctxCert.font = 'bold 16px Fredoka'; ctxCert.fillText('⭐ ' + pontos + ' PTS ⭐', 400, 390); ctxCert.font = '700 12px Fredoka'; ctxCert.fillText(pontos>=100?'MESTRE':(pontos>=50?'SUPER FÃ':'INICIANTE'), 400, 412);
+    }
+    function baixarCertificadoPNG() { desenharCertificadoCanvas(); const a = document.createElement('a'); a.download = 'Certificado-Turminha.png'; a.href = document.getElementById('canvasCertificado').toDataURL('image/png'); a.click(); }
+
+    function atualizarInterfaceVipCompleta() {
+      document.getElementById('barraFlutuanteVip').style.display = isVip ? 'none' : 'flex';
+      document.getElementById('txtStatusVipAtual').innerHTML = isVip ? 'Plano: <strong style="color:#059669;">👑 VIP Ativo</strong>' : 'Plano: <strong style="color:#D97706;">Grátis (Básico)</strong>';
+      document.getElementById('bloqueioVozAviso').style.display = isVip ? 'none' : 'block';
+      document.getElementById('selectVozVip').disabled = !isVip; document.getElementById('rangeVelocidadeFala').disabled = !isVip;
+      renderThumbnailsLousa();
+    }
   </script>
 </body>
 </html>
