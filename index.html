@@ -156,10 +156,10 @@
     .memory-tile.matched { animation: popPulse 0.5s ease; border-color: var(--green); box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3); }
     @keyframes popPulse { 0% { transform: rotateY(180deg) scale(1); } 50% { transform: rotateY(180deg) scale(1.15); } 100% { transform: rotateY(180deg) scale(1); } }
 
-    /* CICLO DA POLINIZAÇÃO */
+    /* CICLO DA POLINIZAÇÃO - AGORA INTERATIVO */
     .ciclo-bg { background: linear-gradient(180deg, #E0F2FE 0%, #DCFCE7 100%); border-radius: var(--radius-lg); padding: 20px; position: relative; overflow: hidden; height: 400px; border: 4px solid #86EFAC; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
     .ciclo-header { background: rgba(255,255,255,0.8); padding: 8px 16px; border-radius: 50px; font-weight: 800; color: #059669; box-shadow: var(--shadow-sm); z-index: 10; border: 2px solid #6EE7B7; }
-    .ciclo-info-box { background: #FFF; border: 3px solid #38BDF8; border-radius: 16px; padding: 12px 20px; font-size: 15px; font-weight: 700; color: #0284C7; z-index: 10; margin-bottom: 20px; width: 90%; max-width: 400px; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2); transition: all 0.3s; }
+    .ciclo-info-box { background: #FFF; border: 3px solid #38BDF8; border-radius: 16px; padding: 12px 20px; font-size: 15px; font-weight: 700; color: #0284C7; z-index: 10; margin-bottom: 10px; width: 90%; max-width: 400px; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2); transition: all 0.3s; }
     
     .cena-natureza { position: relative; width: 100%; flex: 1; display: flex; justify-content: center; align-items: flex-end; padding-bottom: 20px;}
     .ciclo-chao { position: absolute; bottom: 0; width: 100%; height: 60px; background: #65A30D; border-radius: 0 0 14px 14px; z-index: 1; }
@@ -168,7 +168,9 @@
     .ciclo-clima.ativo { opacity: 1; transform: translateY(0); }
     
     .ciclo-flor { font-size: 70px; z-index: 5; transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1); transform-origin: bottom center; }
-    
+    @keyframes pulseFlor { 0% { transform: scale(1.5); } 50% { transform: scale(1.7); filter: brightness(1.2); } 100% { transform: scale(1.5); } }
+    .ciclo-flor.pulsing { animation: pulseFlor 1s infinite; cursor: pointer; text-shadow: 0 0 15px #FCD34D; }
+
     .ciclo-abelha { position: absolute; font-size: 50px; top: 30%; right: -60px; z-index: 6; opacity: 0; transition: transform 2.5s ease-in-out, opacity 1s; }
     .ciclo-abelha.flying-in { right: 50%; transform: translateX(50%) translateY(40px); opacity: 1; }
     .ciclo-abelha.flying-out { right: 120%; transform: translateY(-40px); opacity: 0; }
@@ -247,7 +249,7 @@
     </header>
 
     <nav class="main-nav">
-      <!-- O Sobre (Inicio) agora é o primeiro -->
+      <!-- O Sobre (Inicio) é o primeiro -->
       <button class="nav-item-btn active" onclick="navegar('inicio')">🏠 Sobre</button>
       <button class="nav-item-btn central-item" onclick="navegar('central')">🎮 Hub Central</button>
       <button class="nav-item-btn casa-item" onclick="navegar('casa')">🏡 Casa</button>
@@ -259,7 +261,6 @@
       <button class="nav-item-btn" onclick="navegar('certificado')">🏆 Certificado</button>
       <button class="nav-item-btn vip-item" onclick="navegar('vip')">⭐ Clube VIP</button>
       <button class="nav-item-btn" onclick="navegar('perfil')">⚙️ Ajustes</button>
-      <!-- NOVO BOTÃO DE CONTATO/RECLAMAÇÕES -->
       <button class="nav-item-btn" onclick="navegar('contato')" style="color: #EF4444;">📞 Ajuda</button>
     </nav>
 
@@ -393,10 +394,10 @@
           <button class="game-subtab-btn vip-item" onclick="navegar('vip')" style="border-color: #EC4899; color: #BE185D;">👑 Central VIP</button>
         </div>
 
-        <!-- JOGO: CICLO DA VIDA -->
+        <!-- JOGO: CICLO DA VIDA (AGORA INTERATIVO) -->
         <div id="subgame-ciclo" class="minigame-container active">
           <h3 style="font-size: 22px; margin-bottom: 8px; color: #059669;">A Mágica da Polinização 🌸</h3>
-          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Assista à natureza trabalhar sozinha e gerar Pólen para a Turminha!</p>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Ajude a natureza a crescer e gerar Pólen para a Turminha!</p>
           
           <div class="ciclo-bg" id="containerCicloGame">
             <div class="ciclo-header">
@@ -406,12 +407,19 @@
             <div class="cena-natureza">
               <div class="ciclo-clima" id="cicloClima">☀️ 🌧️</div>
               <div class="ciclo-abelha" id="cicloAbelha">🐝</div>
-              <div class="ciclo-flor" id="cicloFlor">🌱</div>
+              <!-- A flor ganha clique mágico na fase final -->
+              <div class="ciclo-flor" id="cicloFlor" onclick="interagirCiclo('flor')">🌱</div>
               <div class="ciclo-chao"></div>
             </div>
 
             <div class="ciclo-info-box" id="cicloStatusText">
-              A sementinha está dormindo na terra...
+              Sementinha plantada! Dê Água e Sol para ela crescer.
+            </div>
+            
+            <div style="display:flex; gap:10px; z-index:10; margin-bottom: 10px;">
+               <button class="btn-tactile" style="background:#0284C7; color:#FFF; border-color:#0369A1;" onclick="interagirCiclo('regador')" id="btnCicloRegador">💧 Regar</button>
+               <button class="btn-tactile" style="background:#F59E0B; color:#FFF; border-color:#D97706;" onclick="interagirCiclo('sol')" id="btnCicloSol">☀️ Dar Sol</button>
+               <button class="btn-tactile" style="background:#8B5CF6; color:#FFF; border-color:#7C3AED; display:none;" onclick="interagirCiclo('abelha')" id="btnCicloAbelha">🐝 Chamar Abelha</button>
             </div>
           </div>
         </div>
@@ -432,15 +440,15 @@
           </div>
         </div>
 
-        <!-- NOVO: JOGO BANDINHA COM ITENS EM REPARO -->
+        <!-- JOGO BANDINHA COM ITENS EM REPARO E ESCALAS COMPLETAS -->
         <div id="subgame-banda" class="minigame-container">
           <h3 style="font-size: 20px; margin-bottom: 8px;">Bandinha da Turminha! 🎶</h3>
           <div style="display:flex; justify-content:center; gap:10px; margin-bottom: 20px; flex-wrap: wrap;">
-            <button class="btn-tactile active" id="tabInst-bateria" onclick="abrirInstrumento('bateria')">🥁 Bateria</button>
-            <button class="btn-tactile" id="tabInst-guitarra" onclick="abrirInstrumento('guitarra')">🎸 Guitarra</button>
+            <!-- Guitarra começa ativa -->
+            <button class="btn-tactile active" id="tabInst-guitarra" onclick="abrirInstrumento('guitarra')">🎸 Guitarra</button>
+            <button class="btn-tactile" id="tabInst-bateria" onclick="abrirInstrumento('bateria')">🥁 Bateria</button>
             <button class="btn-tactile vip" id="tabInst-teclado" onclick="abrirInstrumento('teclado')">🎹 Teclado (VIP)</button>
             <button class="btn-tactile vip" id="tabInst-violao" onclick="abrirInstrumento('violao')">🎻 Violão (VIP)</button>
-            <!-- INSTRUMENTOS EM REPARO -->
             <button class="btn-tactile" id="tabInst-flauta" onclick="abrirInstrumento('flauta')">🪈 Flauta</button>
             <button class="btn-tactile" id="tabInst-saxofone" onclick="abrirInstrumento('saxofone')">🎷 Saxofone</button>
           </div>
@@ -529,7 +537,7 @@
         </div>
       </div>
 
-      <!-- ÁREA DE RELAXAMENTO ASMR -->
+      <!-- ÁREA DE RELAXAMENTO ASMR (APENAS AS 3 OPÇÕES EXATAS) -->
       <div class="game-card" style="border-color: #6EE7B7; background: #F0FDF4;">
         <div class="game-card-title" style="color: #047857;">
           <span>🎧 Som ASMR</span>
@@ -560,20 +568,6 @@
             <h4 style="font-size: 15px; color: #92400E; margin-bottom: 4px;">Som ASMR (4 minutos)</h4>
             <span style="background: #FEF3C7; color: #B45309; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 10px; display: inline-block; margin-bottom: 10px;">👑 Exclusivo VIP</span>
             <button class="btn-tactile vip" style="width: 100%; font-size: 13px;" onclick="tocarAsmrMesa('https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3', true)">👑 Tocar</button>
-          </div>
-
-          <!-- Opção 4: VIP (Seletor Interativo de Troca) -->
-          <div style="background: #FFF; border: 2px solid #FCD34D; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
-            <span style="font-size: 32px; display: block; margin-bottom: 6px;">🎛️</span>
-            <h4 style="font-size: 15px; color: #92400E; margin-bottom: 4px;">Escolher Som (VIP)</h4>
-            <span style="background: #FEF3C7; color: #B45309; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 10px; display: inline-block; margin-bottom: 10px;">👑 Troca VIP</span>
-            <select class="form-input" style="font-size: 12px; margin-bottom: 8px; padding: 6px;" id="seletorAsmrTea" onchange="trocarSomAsmrVip(this.value)">
-              <option value="">Trocar som...</option>
-              <option value="https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3">ASMR (47s)</option>
-              <option value="https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3">ASMR (2 min)</option>
-              <option value="https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3">ASMR (4 min)</option>
-            </select>
-            <button class="btn-tactile vip" style="width: 100%; font-size: 13px;" onclick="acionarSeletorAsmrTea()">👑 Aplicar</button>
           </div>
         </div>
       </div>
@@ -612,11 +606,24 @@
         <div class="popit-board" id="popitGridContainer"></div>
       </div>
 
+      <!-- LOUSA SENSORIAL COM BOTÕES DE ASMR -->
       <div class="game-card" style="text-align: center; border-color: #6EE7B7; background: #ECFDF5; padding: 10px; width: 100%;">
-        <div class="game-card-title" style="color: #047857; margin-bottom:5px; padding: 10px;">
+        <div class="game-card-title" style="color: #047857; margin-bottom:5px; padding: 10px; justify-content:center;">
           <span>🎨 Lousa da Calma</span>
-          <button class="btn-tactile green" onclick="limparLousaSensorial()">✨ Apagar Tudo</button>
         </div>
+        
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 8px;">Escolha o som enquanto desenha:</p>
+        <div style="display:flex; justify-content:center; gap:8px; margin-bottom: 14px; flex-wrap: wrap;">
+          <button class="btn-tactile active" id="btnSomLousa-giz" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('giz')">🖍️ Som de Giz</button>
+          <button class="btn-tactile" id="btnSomLousa-asmr1" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr1')">🪵 Fundo 47s</button>
+          <button class="btn-tactile vip" id="btnSomLousa-asmr2" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr2')">✨ Fundo 2m</button>
+          <button class="btn-tactile vip" id="btnSomLousa-asmr3" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr3')">🌙 Fundo 4m</button>
+        </div>
+        
+        <div style="text-align: right; margin-bottom: 10px; padding-right: 10px;">
+           <button class="btn-tactile green" style="padding: 6px 12px; font-size: 13px;" onclick="limparLousaSensorial()">✨ Apagar Tudo</button>
+        </div>
+
         <div class="lousa-tea-container" style="width: 100%; height: 60vh; min-height: 400px; border-radius: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); touch-action: none;">
           <canvas id="lousaSensorialTea" style="background: #111827; width: 100%; height: 100%; cursor: crosshair; display: block; touch-action: none;"></canvas>
         </div>
@@ -710,7 +717,7 @@
         </div>
       </div>
 
-      <!-- ÁREA DE RELAXAMENTO ASMR (TAMBÉM NA ABA VÍDEOS/SONS) -->
+      <!-- ÁREA DE RELAXAMENTO ASMR (APENAS AS 3 OPÇÕES EXATAS) -->
       <div class="game-card" style="border-color: #6EE7B7; background: #F0FDF4;">
         <div class="game-card-title" style="color: #047857;">
           <span>🎧 Som ASMR</span>
@@ -741,20 +748,6 @@
             <h4 style="font-size: 15px; color: #92400E; margin-bottom: 4px;">Som ASMR (4 minutos)</h4>
             <span style="background: #FEF3C7; color: #B45309; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 10px; display: inline-block; margin-bottom: 10px;">👑 Exclusivo VIP</span>
             <button class="btn-tactile vip" style="width: 100%; font-size: 13px;" onclick="tocarAsmrMesa('https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3', true)">👑 Tocar</button>
-          </div>
-
-          <!-- Opção 4: VIP (Seletor Interativo de Troca) -->
-          <div style="background: #FFF; border: 2px solid #FCD34D; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
-            <span style="font-size: 32px; display: block; margin-bottom: 6px;">🎛️</span>
-            <h4 style="font-size: 15px; color: #92400E; margin-bottom: 4px;">Escolher Som (VIP)</h4>
-            <span style="background: #FEF3C7; color: #B45309; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 10px; display: inline-block; margin-bottom: 10px;">👑 Troca VIP</span>
-            <select class="form-input" style="font-size: 12px; margin-bottom: 8px; padding: 6px;" id="seletorAsmrVideos" onchange="trocarSomAsmrVip(this.value)">
-              <option value="">Trocar som...</option>
-              <option value="https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3">ASMR (47s)</option>
-              <option value="https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3">ASMR (2 min)</option>
-              <option value="https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3">ASMR (4 min)</option>
-            </select>
-            <button class="btn-tactile vip" style="width: 100%; font-size: 13px;" onclick="acionarSeletorAsmrVideos()">👑 Aplicar</button>
           </div>
         </div>
       </div>
@@ -929,7 +922,8 @@
         carregarVozes();
         desenharCertificadoCanvas();
         atualizarBarrasPet();
-        iniciarLoopCicloVida(); 
+        
+        resetarCicloInterativo(); 
 
         const enterLoginHandler = (e) => { if (e.key === 'Enter') executarAcaoVip('login'); };
         const enterCadHandler = (e) => { if (e.key === 'Enter') executarAcaoVip('cadastro'); };
@@ -1075,6 +1069,12 @@
     }, 5000); 
 
     function navegar(paginaId) {
+      if(audioLousaBGAqui) { audioLousaBGAqui.pause(); audioLousaBGAqui = null; }
+      somAtualLousaTea = 'giz';
+      document.querySelectorAll('[id^="btnSomLousa-"]').forEach(b => b.classList.remove('active'));
+      const btnGiz = document.getElementById('btnSomLousa-giz');
+      if(btnGiz) btnGiz.classList.add('active');
+
       document.querySelectorAll('.page-box').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-item-btn').forEach(b => b.classList.remove('active'));
       const targetPage = document.getElementById('page-' + paginaId);
@@ -1108,7 +1108,7 @@
     }
 
     // ==========================================
-    // FUNÇÃO: ABRIR INSTRUMENTO (COM REPARO E NOTAS)
+    // FUNÇÃO: ABRIR INSTRUMENTO (COM REPARO E ESCALA COMPLETA)
     // ==========================================
     function abrirInstrumento(tipo) {
       if ((tipo === 'teclado' || tipo === 'violao') && !isVip) { 
@@ -1123,46 +1123,33 @@
       const p = document.getElementById('painelInstrumento'); 
       p.innerHTML = '';
 
-      // TELA DE MANUTENÇÃO (Para os que não tocam)
-      if (tipo === 'flauta' || tipo === 'saxofone') {
+      // TELA DE MANUTENÇÃO PARA A BATERIA, FLAUTA E SAXOFONE
+      if (tipo === 'bateria' || tipo === 'flauta' || tipo === 'saxofone') {
+         const nomeInst = tipo === 'bateria' ? 'Bateria' : (tipo === 'flauta' ? 'Flauta' : 'Saxofone');
          p.innerHTML = `
          <div style="text-align:center; padding: 20px; width: 100%; animation: fadeIn 0.4s;">
            <span style="font-size:46px; display:block; margin-bottom:10px; animation: floatIcon 3s infinite;">🛠️</span>
            <h3 style="color:#64748B; font-size: 18px; margin-bottom: 8px;">Instrumento em Reparo!</h3>
-           <p style="font-size:14px; color:var(--text-muted); font-weight:600;">O Sam levou este instrumento para a oficina para consertar.<br>Volte mais tarde para brincar com ele!</p>
+           <p style="font-size:14px; color:var(--text-muted); font-weight:600;">O Sam levou a ${nomeInst} para a oficina para consertar.<br>Volte mais tarde para brincar!</p>
          </div>`;
          return;
       }
 
-      // NOTAS DOS INSTRUMENTOS QUE FUNCIONAM
       const config = {
-        bateria: [ 
-          {n:'Bumbo', s:'sine', f:100}, 
-          {n:'Caixa', s:'square', f:200}, 
-          {n:'Prato', s:'sawtooth', f:800} 
-        ],
         guitarra: [ 
-          {n:'Mi', s:'sawtooth', f:329}, 
-          {n:'Lá', s:'sawtooth', f:440}, 
-          {n:'Ré', s:'sawtooth', f:587}, 
-          {n:'Sol', s:'sawtooth', f:783} 
+          {n:'Dó', s:'sawtooth', f:261}, {n:'Ré', s:'sawtooth', f:293}, 
+          {n:'Mi', s:'sawtooth', f:329}, {n:'Fá', s:'sawtooth', f:349}, 
+          {n:'Sol', s:'sawtooth', f:392}, {n:'Lá', s:'sawtooth', f:440}, {n:'Si', s:'sawtooth', f:493}
         ],
         teclado: [ 
-          {n:'Dó', s:'triangle', f:261}, 
-          {n:'Ré', s:'triangle', f:293}, 
-          {n:'Mi', s:'triangle', f:329}, 
-          {n:'Fá', s:'triangle', f:349}, 
-          {n:'Sol', s:'triangle', f:392}, 
-          {n:'Lá', s:'triangle', f:440}, 
-          {n:'Si', s:'triangle', f:493} 
+          {n:'Dó', s:'triangle', f:261}, {n:'Ré', s:'triangle', f:293}, 
+          {n:'Mi', s:'triangle', f:329}, {n:'Fá', s:'triangle', f:349}, 
+          {n:'Sol', s:'triangle', f:392}, {n:'Lá', s:'triangle', f:440}, {n:'Si', s:'triangle', f:493}
         ],
         violao: [ 
-          {n:'Mi', s:'triangle', f:164}, 
-          {n:'Lá', s:'triangle', f:220}, 
-          {n:'Ré', s:'triangle', f:293}, 
-          {n:'Sol', s:'triangle', f:392}, 
-          {n:'Si', s:'triangle', f:493}, 
-          {n:'Mi', s:'triangle', f:659} 
+          {n:'Dó', s:'triangle', f:130}, {n:'Ré', s:'triangle', f:146}, 
+          {n:'Mi', s:'triangle', f:164}, {n:'Fá', s:'triangle', f:174}, 
+          {n:'Sol', s:'triangle', f:196}, {n:'Lá', s:'triangle', f:220}, {n:'Si', s:'triangle', f:246}
         ]
       };
 
@@ -1171,7 +1158,7 @@
           const btn = document.createElement('button'); 
           btn.className = 'game-choice-btn'; 
           btn.style.padding = '14px 18px'; 
-          btn.innerHTML = `<span style="font-size:26px; display:block; margin-bottom:6px;">${tipo==='bateria'?'🥁':(tipo==='guitarra'?'🎸':(tipo==='teclado'?'🎹':'🎻'))}</span><span style="font-size:14px;">${nota.n}</span>`;
+          btn.innerHTML = `<span style="font-size:26px; display:block; margin-bottom:6px;">${tipo==='guitarra'?'🎸':(tipo==='teclado'?'🎹':'🎻')}</span><span style="font-size:14px;">${nota.n}</span>`;
           
           btn.onmousedown = btn.ontouchstart = (e) => { 
             tocarNotaReal(nota.s, nota.f); 
@@ -1203,7 +1190,7 @@
       } catch(e) {}
     }
 
-    /* CONTROLE DE ÁUDIO ASMR (COM OPÇÃO DE TROCA EXCLUSIVA VIP) */
+    /* CONTROLE DE ÁUDIO ASMR (PLAY SIMPLES) */
     let somAsmrMesaAtual = null;
     function tocarAsmrMesa(url, requerVip) {
       if (requerVip && !isVip) {
@@ -1226,44 +1213,6 @@
       somAsmrMesaAtual.volume = volumeEfeitos;
       somAsmrMesaAtual.play().catch(()=>{});
       falarTexto('Tocando som ASMR.');
-    }
-
-    function trocarSomAsmrVip(url) {
-      if (!isVip) {
-        alert('🔒 A troca de som ASMR é exclusiva do Clube VIP!');
-        navegar('vip');
-        return;
-      }
-      if (!url) return;
-      tocarAsmrMesa(url, true);
-    }
-
-    function acionarSeletorAsmrTea() {
-      if (!isVip) {
-        alert('🔒 A troca de som ASMR é exclusiva do Clube VIP!');
-        navegar('vip');
-        return;
-      }
-      const select = document.getElementById('seletorAsmrTea');
-      if (select && select.value) {
-        trocarSomAsmrVip(select.value);
-      } else {
-        alert('Selecione um som no menu suspenso primeiro!');
-      }
-    }
-
-    function acionarSeletorAsmrVideos() {
-      if (!isVip) {
-        alert('🔒 A troca de som ASMR é exclusiva do Clube VIP!');
-        navegar('vip');
-        return;
-      }
-      const select = document.getElementById('seletorAsmrVideos');
-      if (select && select.value) {
-        trocarSomAsmrVip(select.value);
-      } else {
-        alert('Selecione um som no menu suspenso primeiro!');
-      }
     }
 
     /* LOUSA PRINCIPAL */
@@ -1363,20 +1312,49 @@
       });
     }
 
-    /* LOUSA TEA COM EFEITO NEON E CORREÇÃO DE TAMANHO */
+    /* LOUSA TEA COM EFEITO NEON E ESCOLHA DE ÁUDIO ASMR EM BOTÕES */
     let canvasTea, ctxTea, desenhandoTea = false;
     let matizSensorial = 0;
-    let ultimoSomSensorial = 0;
+    
+    // Áudio do Giz original (toca apenas quando desenha)
+    let audioGizTea = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3");
+    audioGizTea.loop = true;
+    
+    // Áudio ASMR contínuo para o fundo da lousa
+    let audioLousaBGAqui = null;
+    let somAtualLousaTea = 'giz';
 
-    function tocarSomGizSensorial() {
-      const agora = Date.now();
-      if (agora - ultimoSomSensorial < 120 || !audioAtivo) return;
-      ultimoSomSensorial = agora;
-      try {
-        let gizAudio = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3");
-        gizAudio.volume = volumeEfeitos * 0.6;
-        gizAudio.play().catch(()=>{});
-      } catch(e) {}
+    function mudarSomLousaTea(tipo) {
+      if ((tipo === 'asmr2' || tipo === 'asmr3') && !isVip) {
+        alert('🔒 Este som de fundo é exclusivo do Clube VIP!');
+        return;
+      }
+
+      somAtualLousaTea = tipo;
+
+      document.querySelectorAll('[id^="btnSomLousa-"]').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById('btnSomLousa-' + tipo);
+      if(activeBtn) activeBtn.classList.add('active');
+
+      if(audioLousaBGAqui) {
+        audioLousaBGAqui.pause();
+        audioLousaBGAqui = null;
+      }
+
+      if(tipo !== 'giz') {
+        let url = '';
+        if(tipo === 'asmr1') url = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3";
+        if(tipo === 'asmr2') url = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3";
+        if(tipo === 'asmr3') url = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3";
+        
+        audioLousaBGAqui = new Audio(url);
+        audioLousaBGAqui.loop = true;
+        audioLousaBGAqui.volume = volumeEfeitos * 0.7;
+        audioLousaBGAqui.play().catch(()=>{});
+        falarTexto('Som de fundo ativado na lousa.');
+      } else {
+        falarTexto('Som de giz ativado.');
+      }
     }
 
     function redimensionarLousaTea() {
@@ -1414,7 +1392,11 @@
         ctxTea.lineWidth = 22; 
         ctxTea.lineCap = 'round'; 
         ctxTea.lineJoin = 'round'; 
-        tocarSomGizSensorial();
+        
+        if (somAtualLousaTea === 'giz' && audioAtivo) {
+           audioGizTea.volume = volumeEfeitos * 0.6;
+           audioGizTea.play().catch(()=>{});
+        }
         if(e.cancelable) e.preventDefault(); 
       };
 
@@ -1428,11 +1410,13 @@
         ctxTea.shadowColor = `hsl(${matizSensorial}, 100%, 75%)`; 
         ctxTea.lineTo(p.x, p.y); 
         ctxTea.stroke(); 
-        tocarSomGizSensorial();
         if (e.cancelable) e.preventDefault(); 
       };
 
-      const sp = () => { desenhandoTea = false; };
+      const sp = () => { 
+        desenhandoTea = false; 
+        audioGizTea.pause();
+      };
       
       canvasTea.addEventListener('mousedown', st);
       canvasTea.addEventListener('mousemove', mv);
@@ -1465,7 +1449,7 @@
           canvas.height = canvas.parentElement.clientWidth * (9/16); 
         } 
       }
-      if (subjogo === 'banda') abrirInstrumento('bateria'); 
+      if (subjogo === 'banda') abrirInstrumento('guitarra'); 
       if (subjogo === 'contar') iniciarJogoContar(); 
       if (subjogo === 'letras') iniciarJogoLetras(); 
       if (subjogo === 'memoria') iniciarJogoMemoria(); 
@@ -1680,42 +1664,67 @@
       });
     }
 
-    let cicloEstado = 0;
+    // ==========================================
+    // SISTEMA DO CICLO DA VIDA (TOTALMENTE INTERATIVO)
+    // ==========================================
+    let cicloInterativoEstado = 0; 
+    let cicloAgua = false;
+    let cicloSol = false;
     let totalPolen = parseInt(localStorage.getItem('xexeu_polen')) || 0;
 
-    function iniciarLoopCicloVida() {
-      document.getElementById('uiPolen').innerText = totalPolen;
-      setInterval(() => {
-        const cena = document.getElementById('containerCicloGame');
-        if(!cena || cena.offsetParent === null) return; 
+    function resetarCicloInterativo() {
+       cicloInterativoEstado = 0;
+       cicloAgua = false;
+       cicloSol = false;
+       document.getElementById('uiPolen').innerText = totalPolen;
+       document.getElementById('cicloFlor').innerText = '🌱';
+       document.getElementById('cicloFlor').style.transform = 'scale(0.8)';
+       document.getElementById('cicloFlor').classList.remove('pulsing');
+       document.getElementById('cicloAbelha').className = 'ciclo-abelha';
+       document.getElementById('cicloClima').className = 'ciclo-clima';
+       document.getElementById('cicloStatusText').innerText = 'Sementinha plantada! Dê Água e Sol para ela crescer.';
+       
+       document.getElementById('btnCicloRegador').style.display = 'inline-flex';
+       document.getElementById('btnCicloSol').style.display = 'inline-flex';
+       document.getElementById('btnCicloAbelha').style.display = 'none';
+    }
 
-        cicloEstado++;
-        if(cicloEstado > 4) cicloEstado = 1;
+    function interagirCiclo(acao) {
+       const flor = document.getElementById('cicloFlor');
+       const abelha = document.getElementById('cicloAbelha');
+       const clima = document.getElementById('cicloClima');
+       const statusBox = document.getElementById('cicloStatusText');
 
-        const flor = document.getElementById('cicloFlor');
-        const abelha = document.getElementById('cicloAbelha');
-        const clima = document.getElementById('cicloClima');
-        const statusBox = document.getElementById('cicloStatusText');
-
-        if(cicloEstado === 1) {
-          flor.innerText = '🌱'; 
-          flor.style.transform = 'scale(0.8)';
-          abelha.className = 'ciclo-abelha'; 
+       if (acao === 'regador' && !cicloAgua && cicloInterativoEstado < 2) {
+          cicloAgua = true;
+          clima.innerText = '🌧️';
           clima.classList.add('ativo');
-          statusBox.innerText = '☀️ O Sol e a Água alimentam a sementinha...';
           tocarSomPop();
-        } else if(cicloEstado === 2) {
-          clima.classList.remove('ativo');
-          flor.innerText = '🌸'; 
-          flor.style.transform = 'scale(1.5)';
-          statusBox.innerText = '🌸 Que linda! A flor desabrochou na natureza!';
+          document.getElementById('btnCicloRegador').style.display = 'none';
+          verificarCrescimento();
+       } 
+       else if (acao === 'sol' && !cicloSol && cicloInterativoEstado < 2) {
+          cicloSol = true;
+          clima.innerText = '☀️';
+          clima.classList.add('ativo');
           tocarSomPop();
-        } else if(cicloEstado === 3) {
+          document.getElementById('btnCicloSol').style.display = 'none';
+          verificarCrescimento();
+       }
+       else if (acao === 'abelha' && cicloInterativoEstado === 2) {
+          cicloInterativoEstado = 3;
           abelha.className = 'ciclo-abelha flying-in';
-          statusBox.innerText = '🐝 Olha quem vem lá! A abelhinha busca o néctar.';
-        } else if(cicloEstado === 4) {
+          statusBox.innerText = '🐝 A abelha chegou! Clique na Flor Mágica!';
+          document.getElementById('btnCicloAbelha').style.display = 'none';
+          flor.classList.add('pulsing'); 
+          tocarSomPop();
+       }
+       else if (acao === 'flor' && cicloInterativoEstado === 3) {
+          cicloInterativoEstado = 4;
+          flor.classList.remove('pulsing');
           abelha.className = 'ciclo-abelha flying-out';
           statusBox.innerText = '✨ Polinização! A natureza agradece e gera Pólen Mágico!';
+          
           totalPolen += 5; 
           localStorage.setItem('xexeu_polen', totalPolen);
           document.getElementById('uiPolen').innerText = totalPolen;
@@ -1737,8 +1746,23 @@
             }, 50);
             setTimeout(() => star.remove(), 1000);
           }
-        }
-      }, 4000); 
+          setTimeout(resetarCicloInterativo, 3000);
+       }
+    }
+
+    function verificarCrescimento() {
+       const statusBox = document.getElementById('cicloStatusText');
+       if (cicloAgua && cicloSol) {
+          cicloInterativoEstado = 2;
+          const flor = document.getElementById('cicloFlor');
+          flor.innerText = '🌸'; 
+          flor.style.transform = 'scale(1.5)';
+          statusBox.innerText = '🌸 Que linda! A flor desabrochou! Chame a abelhinha.';
+          document.getElementById('btnCicloAbelha').style.display = 'inline-flex';
+          tocarSomAcerto();
+       } else {
+          statusBox.innerText = 'Falta mais uma coisinha para a flor crescer...';
+       }
     }
 
     function renderPopItSensorial() {
