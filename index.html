@@ -247,9 +247,10 @@
     </header>
 
     <nav class="main-nav">
-      <button class="nav-item-btn central-item active" onclick="navegar('central')">🎮 Hub Central</button>
+      <!-- O Sobre (Inicio) agora é o primeiro -->
+      <button class="nav-item-btn active" onclick="navegar('inicio')">🏠 Sobre</button>
+      <button class="nav-item-btn central-item" onclick="navegar('central')">🎮 Hub Central</button>
       <button class="nav-item-btn casa-item" onclick="navegar('casa')">🏡 Casa</button>
-      <button class="nav-item-btn" onclick="navegar('inicio')">🏠 Sobre</button>
       <button class="nav-item-btn" onclick="navegar('jogos')">🕹️ Jogos</button>
       <button class="nav-item-btn tea-item" onclick="navegar('tea')">🧩 Espaço TEA</button>
       <button class="nav-item-btn" onclick="navegar('videos')">🎬 Vídeos</button>
@@ -258,10 +259,53 @@
       <button class="nav-item-btn" onclick="navegar('certificado')">🏆 Certificado</button>
       <button class="nav-item-btn vip-item" onclick="navegar('vip')">⭐ Clube VIP</button>
       <button class="nav-item-btn" onclick="navegar('perfil')">⚙️ Ajustes</button>
+      <!-- NOVO BOTÃO DE CONTATO/RECLAMAÇÕES -->
+      <button class="nav-item-btn" onclick="navegar('contato')" style="color: #EF4444;">📞 Ajuda</button>
     </nav>
 
+    <!-- PÁGINA: INÍCIO (SOBRE) -->
+    <div id="page-inicio" class="page-box active">
+      <div class="hero-grid">
+        <div class="banner-hero-box">
+          <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994339/BANNER_SITE_TURMINHA_DO_XEXEU.png" alt="Banner Turminha do Xexéu">
+        </div>
+        <div class="game-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div class="game-card-title"><span>⏳ Tempo de Tela</span></div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="btn-tactile" onclick="iniciarTimer(2)">2 Min</button>
+              <button class="btn-tactile" onclick="iniciarTimer(5)">5 Min</button>
+              <button class="btn-tactile vip" onclick="iniciarTimer(15)">15 Min (VIP)</button>
+              <button class="btn-tactile vip" onclick="iniciarTimer(30)">30 Min (VIP)</button>
+            </div>
+          </div>
+          <div style="margin-top: 14px;">
+            <div style="background: #E2E8F0; height: 16px; border-radius: 20px; overflow: hidden;">
+              <div id="timerProgressFill" style="background: var(--green); height: 100%; width: 100%; transition: width 1s linear;"></div>
+            </div>
+            <p id="timerLabelTxt" style="text-align: right; font-weight: 800; font-size: 16px; margin-top: 6px;">00:00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-bar">
+        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="YouTube"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT.png" alt="YouTube"></a>
+        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-btn-round" title="YouTube Music"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT_MUSIC.png" alt="YT Music"></a>
+        <a href="https://www.instagram.com/turminhaxe_xeu/" target="_blank" class="social-btn-round" title="Instagram"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/INDTAGRAM.png" alt="Instagram"></a>
+        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="TikTok"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TIKTOK.png" alt="TikTok"></a>
+        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-btn-round" title="Spotify"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/SPOTIFY.png" alt="Spotify"></a>
+      </div>
+      <div class="game-card">
+        <div class="game-card-title"><span>✨ Conheça Todos os Personagens</span></div>
+        <div class="family-group-box"><div class="family-group-title"><span>✨ Mascotes Oficiais</span></div><div class="chars-grid" id="gridMascotes"></div></div>
+        <div class="family-group-box"><div class="family-group-title"><span>💖 Casa da Maya e do Theo</span></div><div class="chars-grid" id="gridCasaMaya"></div></div>
+        <div class="family-group-box"><div class="family-group-title"><span>⚡ Casa do Sam e da Lia</span></div><div class="chars-grid" id="gridCasaSam"></div></div>
+        <div class="family-group-box"><div class="family-group-title"><span>👵👴 Os Avós</span></div><div class="chars-grid" id="gridAvos"></div></div>
+      </div>
+    </div>
+
     <!-- PÁGINA: HUB CENTRAL -->
-    <div id="page-central" class="page-box active">
+    <div id="page-central" class="page-box">
       <div class="central-hub-grid">
         <div class="hub-card" onclick="navegar('casa')" style="border-color: #8B5CF6;">
           <span class="hub-card-icon">🐣</span>
@@ -329,47 +373,6 @@
       </div>
     </div>
 
-    <!-- PÁGINA: INÍCIO (SOBRE) -->
-    <div id="page-inicio" class="page-box">
-      <div class="hero-grid">
-        <div class="banner-hero-box">
-          <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786994339/BANNER_SITE_TURMINHA_DO_XEXEU.png" alt="Banner Turminha do Xexéu">
-        </div>
-        <div class="game-card" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div class="game-card-title"><span>⏳ Tempo de Tela</span></div>
-            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-              <button class="btn-tactile" onclick="iniciarTimer(2)">2 Min</button>
-              <button class="btn-tactile" onclick="iniciarTimer(5)">5 Min</button>
-              <button class="btn-tactile vip" onclick="iniciarTimer(15)">15 Min (VIP)</button>
-              <button class="btn-tactile vip" onclick="iniciarTimer(30)">30 Min (VIP)</button>
-            </div>
-          </div>
-          <div style="margin-top: 14px;">
-            <div style="background: #E2E8F0; height: 16px; border-radius: 20px; overflow: hidden;">
-              <div id="timerProgressFill" style="background: var(--green); height: 100%; width: 100%; transition: width 1s linear;"></div>
-            </div>
-            <p id="timerLabelTxt" style="text-align: right; font-weight: 800; font-size: 16px; margin-top: 6px;">00:00</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="social-bar">
-        <a href="https://www.youtube.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="YouTube"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT.png" alt="YouTube"></a>
-        <a href="https://music.youtube.com/channel/UC8KOg4IH-h0YNrpKlfIl2Vw" target="_blank" class="social-btn-round" title="YouTube Music"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/YT_MUSIC.png" alt="YT Music"></a>
-        <a href="https://www.instagram.com/turminhaxe_xeu/" target="_blank" class="social-btn-round" title="Instagram"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908273/INDTAGRAM.png" alt="Instagram"></a>
-        <a href="https://www.tiktok.com/@turminhaxe_xeu" target="_blank" class="social-btn-round" title="TikTok"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TIKTOK.png" alt="TikTok"></a>
-        <a href="https://open.spotify.com/intl-pt/artist/6ykKQ3uP6Wl2REylKJAdJ6" target="_blank" class="social-btn-round" title="Spotify"><img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908274/SPOTIFY.png" alt="Spotify"></a>
-      </div>
-      <div class="game-card">
-        <div class="game-card-title"><span>✨ Conheça Todos os Personagens</span></div>
-        <div class="family-group-box"><div class="family-group-title"><span>✨ Mascotes Oficiais</span></div><div class="chars-grid" id="gridMascotes"></div></div>
-        <div class="family-group-box"><div class="family-group-title"><span>💖 Casa da Maya e do Theo</span></div><div class="chars-grid" id="gridCasaMaya"></div></div>
-        <div class="family-group-box"><div class="family-group-title"><span>⚡ Casa do Sam e da Lia</span></div><div class="chars-grid" id="gridCasaSam"></div></div>
-        <div class="family-group-box"><div class="family-group-title"><span>👵👴 Os Avós</span></div><div class="chars-grid" id="gridAvos"></div></div>
-      </div>
-    </div>
-
     <!-- PÁGINA: JOGOS -->
     <div id="page-jogos" class="page-box">
       <div class="game-card">
@@ -429,6 +432,7 @@
           </div>
         </div>
 
+        <!-- NOVO: JOGO BANDINHA COM ITENS EM REPARO -->
         <div id="subgame-banda" class="minigame-container">
           <h3 style="font-size: 20px; margin-bottom: 8px;">Bandinha da Turminha! 🎶</h3>
           <div style="display:flex; justify-content:center; gap:10px; margin-bottom: 20px; flex-wrap: wrap;">
@@ -436,6 +440,9 @@
             <button class="btn-tactile" id="tabInst-guitarra" onclick="abrirInstrumento('guitarra')">🎸 Guitarra</button>
             <button class="btn-tactile vip" id="tabInst-teclado" onclick="abrirInstrumento('teclado')">🎹 Teclado (VIP)</button>
             <button class="btn-tactile vip" id="tabInst-violao" onclick="abrirInstrumento('violao')">🎻 Violão (VIP)</button>
+            <!-- INSTRUMENTOS EM REPARO -->
+            <button class="btn-tactile" id="tabInst-flauta" onclick="abrirInstrumento('flauta')">🪈 Flauta</button>
+            <button class="btn-tactile" id="tabInst-saxofone" onclick="abrirInstrumento('saxofone')">🎷 Saxofone</button>
           </div>
           <div id="painelInstrumento" style="background:#F8FAFC; border:3px solid #CBD5E1; border-radius:20px; padding:30px; display:flex; gap:15px; justify-content:center; flex-wrap:wrap; min-height:180px; align-items:center;"></div>
         </div>
@@ -522,7 +529,7 @@
         </div>
       </div>
 
-      <!-- ÁREA DE RELAXAMENTO ASMR (4 OPÇÕES NO TOTAL) -->
+      <!-- ÁREA DE RELAXAMENTO ASMR -->
       <div class="game-card" style="border-color: #6EE7B7; background: #F0FDF4;">
         <div class="game-card-title" style="color: #047857;">
           <span>🎧 Som ASMR</span>
@@ -785,6 +792,26 @@
         <div style="margin-top: 18px;">
           <button class="btn-tactile green" style="font-size: 16px; padding: 14px 28px;" onclick="baixarCertificadoPNG()">📥 Baixar (PNG)</button>
         </div>
+      </div>
+    </div>
+
+    <!-- PÁGINA: CONTATO / RECLAMAÇÕES -->
+    <div id="page-contato" class="page-box">
+      <div class="game-card" style="border-color: #EF4444; background: #FEF2F2; max-width: 600px; margin: 0 auto; width: 100%;">
+        <div class="game-card-title" style="color: #B91C1C; justify-content: center;">
+          <span>📞 Central de Ajuda aos Pais</span>
+        </div>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px; text-align: center; font-weight: 600;">
+          Encontrou algum problema, tem alguma dúvida sobre o VIP ou quer fazer uma sugestão/reclamação? Fale diretamente com a nossa equipe!
+        </p>
+
+        <input type="text" id="contatoNome" class="form-input" placeholder="Seu Nome (Responsável)">
+        <input type="email" id="contatoEmail" class="form-input" placeholder="Seu E-mail para retorno">
+        <textarea id="contatoMensagem" class="form-input" rows="5" placeholder="Digite sua mensagem, dúvida ou reclamação aqui..." style="resize: vertical;"></textarea>
+
+        <button class="btn-tactile primary" id="btnEnviarContato" style="width: 100%; font-size: 16px; background: #EF4444; border-color: #B91C1C; box-shadow: 0 5px 0px #991B1B;" onclick="enviarReclamacao()">
+          Enviar Mensagem 🚀
+        </button>
       </div>
     </div>
 
@@ -1080,31 +1107,80 @@
       setTimeout(() => t.classList.remove('active'), 2500); 
     }
 
+    // ==========================================
+    // FUNÇÃO: ABRIR INSTRUMENTO (COM REPARO E NOTAS)
+    // ==========================================
     function abrirInstrumento(tipo) {
       if ((tipo === 'teclado' || tipo === 'violao') && !isVip) { 
         alert('🔒 Instrumento exclusivo do Clube VIP! Assine para desbloquear.'); 
         navegar('vip'); 
         return; 
       }
+      
       document.querySelectorAll('[id^="tabInst-"]').forEach(b => b.classList.remove('active'));
       const activeTab = document.getElementById('tabInst-' + tipo);
       if(activeTab) activeTab.classList.add('active');
       const p = document.getElementById('painelInstrumento'); 
       p.innerHTML = '';
+
+      // TELA DE MANUTENÇÃO (Para os que não tocam)
+      if (tipo === 'flauta' || tipo === 'saxofone') {
+         p.innerHTML = `
+         <div style="text-align:center; padding: 20px; width: 100%; animation: fadeIn 0.4s;">
+           <span style="font-size:46px; display:block; margin-bottom:10px; animation: floatIcon 3s infinite;">🛠️</span>
+           <h3 style="color:#64748B; font-size: 18px; margin-bottom: 8px;">Instrumento em Reparo!</h3>
+           <p style="font-size:14px; color:var(--text-muted); font-weight:600;">O Sam levou este instrumento para a oficina para consertar.<br>Volte mais tarde para brincar com ele!</p>
+         </div>`;
+         return;
+      }
+
+      // NOTAS DOS INSTRUMENTOS QUE FUNCIONAM
       const config = {
-        bateria: [ {n:'Bumbo', s:'sine', f:100}, {n:'Caixa', s:'square', f:200}, {n:'Prato', s:'sawtooth', f:800} ],
-        guitarra: [ {n:'Mi', s:'sawtooth', f:329}, {n:'Lá', s:'sawtooth', f:440}, {n:'Ré', s:'sawtooth', f:587} ],
-        teclado: [ {n:'Dó', s:'triangle', f:261}, {n:'Ré', s:'triangle', f:293}, {n:'Mi', s:'triangle', f:329}, {n:'Fá', s:'triangle', f:349} ],
-        violao: [ {n:'Sol', s:'sawtooth', f:196}, {n:'Dó', s:'sawtooth', f:261}, {n:'Mi', s:'sawtooth', f:329} ]
+        bateria: [ 
+          {n:'Bumbo', s:'sine', f:100}, 
+          {n:'Caixa', s:'square', f:200}, 
+          {n:'Prato', s:'sawtooth', f:800} 
+        ],
+        guitarra: [ 
+          {n:'Mi', s:'sawtooth', f:329}, 
+          {n:'Lá', s:'sawtooth', f:440}, 
+          {n:'Ré', s:'sawtooth', f:587}, 
+          {n:'Sol', s:'sawtooth', f:783} 
+        ],
+        teclado: [ 
+          {n:'Dó', s:'triangle', f:261}, 
+          {n:'Ré', s:'triangle', f:293}, 
+          {n:'Mi', s:'triangle', f:329}, 
+          {n:'Fá', s:'triangle', f:349}, 
+          {n:'Sol', s:'triangle', f:392}, 
+          {n:'Lá', s:'triangle', f:440}, 
+          {n:'Si', s:'triangle', f:493} 
+        ],
+        violao: [ 
+          {n:'Mi', s:'triangle', f:164}, 
+          {n:'Lá', s:'triangle', f:220}, 
+          {n:'Ré', s:'triangle', f:293}, 
+          {n:'Sol', s:'triangle', f:392}, 
+          {n:'Si', s:'triangle', f:493}, 
+          {n:'Mi', s:'triangle', f:659} 
+        ]
       };
+
       if(config[tipo]) {
         config[tipo].forEach(nota => {
           const btn = document.createElement('button'); 
           btn.className = 'game-choice-btn'; 
-          btn.style.padding = '20px'; 
-          btn.innerHTML = `<span style="font-size:30px; display:block;">${tipo==='bateria'?'🥁':(tipo==='guitarra'?'🎸':(tipo==='teclado'?'🎹':'🎻'))}</span><span style="font-size:14px;">${nota.n}</span>`;
-          btn.onmousedown = btn.ontouchstart = (e) => { tocarNotaReal(nota.s, nota.f); btn.style.transform = 'scale(0.9)'; };
-          btn.onmouseup = btn.ontouchend = () => { btn.style.transform = 'scale(1)'; };
+          btn.style.padding = '14px 18px'; 
+          btn.innerHTML = `<span style="font-size:26px; display:block; margin-bottom:6px;">${tipo==='bateria'?'🥁':(tipo==='guitarra'?'🎸':(tipo==='teclado'?'🎹':'🎻'))}</span><span style="font-size:14px;">${nota.n}</span>`;
+          
+          btn.onmousedown = btn.ontouchstart = (e) => { 
+            tocarNotaReal(nota.s, nota.f); 
+            btn.style.transform = 'scale(0.9)'; 
+            if(e.cancelable) e.preventDefault();
+          };
+          btn.onmouseup = btn.ontouchend = btn.onmouseleave = () => { 
+            btn.style.transform = 'scale(1)'; 
+          };
           p.appendChild(btn);
         });
       }
@@ -1974,7 +2050,7 @@
     function mudarVozSelecionada(idx) { if (!isVip) return; vozSelecionadaIdx = idx; localStorage.setItem('xexeu_voz_idx', idx); }
     function ajustarVelocidadeFala(val) { if (!isVip) return; velocidadeFala = parseFloat(val); localStorage.setItem('xexeu_voz_vel', val); document.getElementById('labelVelocidadeFala').innerText = `${val}x`; }
 
-    // LOGIN / VIP (CONEXÃO COM APPS SCRIPT)
+    // LOGIN / VIP E RECLAMAÇÕES (CONEXÃO COM APPS SCRIPT)
     function trocarAbaVipAuth(aba) {
       if (aba === 'login') { 
         document.getElementById('formVipLogin').style.display = 'block'; 
@@ -2052,6 +2128,48 @@
         if(drivesCache && drivesCache.tea) { 
           boxDrives.innerHTML += `<a href="${drivesCache.tea}" target="_blank" class="btn-tactile" style="background: #0284C7; color: white; border-color: #0369A1;">🧩 Drive Caderno TEA</a>`; 
         }
+      }
+    }
+
+    // ==========================================
+    // FUNÇÃO: ENVIAR RECLAMAÇÃO / CONTATO
+    // ==========================================
+    async function enviarReclamacao() {
+      const nome = document.getElementById('contatoNome').value.trim();
+      const email = document.getElementById('contatoEmail').value.trim();
+      const mensagem = document.getElementById('contatoMensagem').value.trim();
+      const btn = document.getElementById('btnEnviarContato');
+
+      if (!nome || !email || !mensagem) {
+        return exibirToast("⚠️ Preencha todos os campos para enviar!");
+      }
+
+      btn.innerText = "⏳ Enviando mensagem...";
+      btn.disabled = true;
+      btn.style.opacity = "0.7";
+
+      try {
+        const response = await fetch(URL_SCRIPT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ acao: "reclamacao", nome: nome, email: email, mensagem: mensagem })
+        });
+        const data = await response.json();
+
+        if (data.liberado) {
+          exibirToast("✅ " + data.mensagem);
+          document.getElementById('contatoNome').value = '';
+          document.getElementById('contatoEmail').value = '';
+          document.getElementById('contatoMensagem').value = '';
+        } else {
+          exibirToast("❌ Ocorreu um erro ao enviar.");
+        }
+      } catch (error) {
+        exibirToast("⚠️ Erro de conexão. Verifique sua internet.");
+      } finally {
+        btn.innerText = "Enviar Mensagem 🚀";
+        btn.disabled = false;
+        btn.style.opacity = "1";
       }
     }
   </script>
