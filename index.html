@@ -438,7 +438,7 @@
         <div id="subgame-lousa" class="minigame-container">
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Escolha um desenho para colorir ou use a lousa livre:</p>
           <div id="lousaThumbnails"></div>
-          <div class="canvas-container-lousa"><canvas id="paintCanvas"></canvas></div>
+          <div class="canvas-container-lousa"><canvas id="paintCanvas" style="touch-action: none;"></canvas></div>
           <div style="display: flex; gap: 12px; justify-content: center; align-items: center; margin-top: 16px; flex-wrap: wrap;">
             <button class="color-btn" style="background:#2563EB;" onclick="setCorPincel('#2563EB')"></button>
             <button class="color-btn" style="background:#EF4444;" onclick="setCorPincel('#EF4444')"></button>
@@ -580,28 +580,28 @@
         <div class="popit-board" id="popitGridContainer"></div>
       </div>
 
-      <!-- LOUSA SENSORIAL DA CALMA (TOTALMENTE REFEITA) -->
+      <!-- LOUSA SENSORIAL DA CALMA -->
       <div class="game-card" style="text-align: center; border-color: #6EE7B7; background: #ECFDF5; padding: 10px; width: 100%;">
         <div class="game-card-title" style="color: #047857; margin-bottom:5px; padding: 10px; justify-content:space-between;">
           <span>🎨 Lousa Mágica da Calma</span>
           <div style="display: flex; gap: 8px;">
-            <button class="btn-tactile green" style="padding: 6px 12px; font-size: 13px;" onclick="liberarLousaTEA()">✨ Selecionar Tudo</button>
+            <button class="btn-tactile green" style="padding: 6px 12px; font-size: 13px;" onclick="liberarLousaTEA()">✨ Liberar Tudo</button>
             <button class="btn-tactile" style="padding: 6px 12px; font-size: 13px; color:#EF4444;" onclick="limparLousaSensorial()">🗑️ Limpar</button>
           </div>
         </div>
         
-        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 8px;">Escolha a sua textura de som (toca <b>apenas quando você desenha</b>):</p>
+        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 8px;">Escolha sua textura de som (toca <b>apenas quando você desenha</b>):</p>
         
         <div style="display:flex; justify-content:center; gap:8px; margin-bottom: 14px; flex-wrap: wrap;">
-          <button class="btn-tactile active" id="btnSomLousa-giz" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('giz')">🖍️ Som de Giz</button>
-          <button class="btn-tactile" id="btnSomLousa-madeira" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('madeira')">🪵 Madeira Suave</button>
-          <button class="btn-tactile btn-vip-dyn" data-tipo="chuva" id="btnSomLousa-chuva" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('chuva')">🌙 Chuva Relaxante</button>
-          <button class="btn-tactile btn-vip-dyn" data-tipo="sinos" id="btnSomLousa-sinos" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('sinos')">✨ Sinos ASMR</button>
+          <button class="btn-tactile active" id="btnSomLousa-giz" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('giz')">🖍️ Giz</button>
+          <button class="btn-tactile" id="btnSomLousa-asmr1" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr1')">🪵 ASMR 1</button>
+          <button class="btn-tactile btn-vip-dyn" data-tipo="asmr2" id="btnSomLousa-asmr2" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr2')">✨ ASMR 2</button>
+          <button class="btn-tactile btn-vip-dyn" data-tipo="asmr3" id="btnSomLousa-asmr3" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr3')">🌙 ASMR 3</button>
           <button class="btn-tactile" id="btnSomLousa-mudo" style="padding: 8px 12px; font-size: 13px; color: #64748B;" onclick="mudarSomLousaTea('mudo')">🔇 Sem Som</button>
         </div>
 
         <div class="lousa-tea-container" style="width: 100%; height: 55vh; min-height: 380px; border-radius: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.6); touch-action: none; background: #0F172A;">
-          <canvas id="lousaSensorialTea" style="width: 100%; height: 100%; cursor: crosshair; display: block; touch-action: none;"></canvas>
+          <canvas id="lousaSensorialTea" style="touch-action: none; width: 100%; height: 100%; cursor: crosshair; display: block;"></canvas>
         </div>
       </div>
     </div>
@@ -893,9 +893,8 @@
             const icones = { teclado: '🎹', violao: '🎻', flauta: '🪈', saxofone: '🎷' };
             btn.innerHTML = `${icones[tipo]} ${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`;
           } else if(tipo.includes('asmr')) {
-            btn.innerHTML = tipo === 'asmr2' ? '✨ Fundo 2m' : '🌙 Fundo 4m';
-            if(tipo === 'chuva') btn.innerHTML = '🌙 Chuva Relaxante';
-            if(tipo === 'sinos') btn.innerHTML = '✨ Sinos ASMR';
+            if(tipo === 'asmr2') btn.innerHTML = '✨ ASMR 2';
+            if(tipo === 'asmr3') btn.innerHTML = '🌙 ASMR 3';
           } else if(tipo.includes('tempo')) {
             btn.innerHTML = tipo.replace('tempo', '') + ' Min';
           }
@@ -903,7 +902,7 @@
           btn.className = 'btn-tactile btn-vip-dyn vip-lock';
           if(['teclado','violao','flauta','saxofone'].includes(tipo)) {
             btn.innerHTML = `🔒 ${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`;
-          } else if(tipo.includes('asmr') || tipo==='chuva' || tipo==='sinos') {
+          } else if(tipo.includes('asmr')) {
             btn.innerHTML = `🔒 VIP`;
           } else if(tipo.includes('tempo')) {
             btn.innerHTML = `🔒 ${tipo.replace('tempo', '')} Min`;
@@ -936,10 +935,10 @@
     /* SISTEMA DE ÁUDIO SENSORIAL DINÂMICO (LOUSA TEA) */
     let audioLousaAoDesenhar = new Audio();
     audioLousaAoDesenhar.loop = true;
-    let modoSomLousaTea = 'giz'; // Opções: giz, madeira, chuva, sinos, mudo
+    let modoSomLousaTea = 'giz'; 
 
     function mudarSomLousaTea(tipo) {
-      if ((tipo === 'chuva' || tipo === 'sinos') && !isVip) return abrirModalVip();
+      if ((tipo === 'asmr2' || tipo === 'asmr3') && !isVip) return abrirModalVip();
       
       modoSomLousaTea = tipo;
       document.querySelectorAll('[id^="btnSomLousa-"]').forEach(b => b.classList.remove('active'));
@@ -949,21 +948,21 @@
       if(tipo === 'giz') {
         audioLousaAoDesenhar.src = "https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3";
         audioLousaAoDesenhar.volume = volumeEfeitos * 0.7;
-      } else if(tipo === 'madeira') {
+      } else if(tipo === 'asmr1') {
         audioLousaAoDesenhar.src = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3";
         audioLousaAoDesenhar.volume = volumeEfeitos * 0.8;
-      } else if(tipo === 'chuva') {
-        audioLousaAoDesenhar.src = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3";
-        audioLousaAoDesenhar.volume = volumeEfeitos * 0.5;
-      } else if(tipo === 'sinos') {
+      } else if(tipo === 'asmr2') {
         audioLousaAoDesenhar.src = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3";
         audioLousaAoDesenhar.volume = volumeEfeitos * 0.6;
+      } else if(tipo === 'asmr3') {
+        audioLousaAoDesenhar.src = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3";
+        audioLousaAoDesenhar.volume = volumeEfeitos * 0.5;
       } else if(tipo === 'mudo') {
         audioLousaAoDesenhar.src = '';
       }
     }
 
-    /* LOUSA SENSORIAL COM PINCEL RELAXANTE E ÁUDIO DINÂMICO */
+    /* LOUSA SENSORIAL DA CALMA (COM CORREÇÃO DE SCROLL E TOQUE) */
     let canvasTea, ctxTea, desenhandoTea = false, matizSensorial = 0;
 
     function initLousaSensorial() {
@@ -980,59 +979,67 @@
 
       const getP = (e) => { 
         const r = canvasTea.getBoundingClientRect(); 
-        const cx = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0); 
-        const cy = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0); 
+        let cx = 0, cy = 0;
+        if (e.touches && e.touches.length > 0) {
+            cx = e.touches[0].clientX; cy = e.touches[0].clientY;
+        } else {
+            cx = e.clientX; cy = e.clientY;
+        }
         return { x: (cx - r.left) * (canvasTea.width / r.width), y: (cy - r.top) * (canvasTea.height / r.height) }; 
       };
       
       const st = (e) => { 
+        if (e.cancelable) e.preventDefault(); // Bloqueia a rolagem no celular imediatamente
         desenhandoTea = true; 
         const p = getP(e); 
         ctxTea.beginPath(); 
         ctxTea.moveTo(p.x, p.y); 
         
-        // Estilo do traço relaxante
         ctxTea.lineWidth = 24; 
         ctxTea.lineCap = 'round'; 
         ctxTea.lineJoin = 'round'; 
         ctxTea.globalAlpha = 0.8;
         
+        // Desenha um ponto imediatamente se a criança só der um "toquinho"
+        ctxTea.lineTo(p.x, p.y);
+        ctxTea.stroke();
+
         if (modoSomLousaTea !== 'mudo' && audioLousaAoDesenhar.src) {
            try { audioLousaAoDesenhar.play().catch(()=>{}); } catch(err){}
         }
-        if(e.cancelable) e.preventDefault(); 
       };
 
       const mv = (e) => { 
+        if (e.cancelable) e.preventDefault(); // Impede arrastar a tela enquanto desenha
         if (!desenhandoTea) return; 
         const p = getP(e); 
         
         matizSensorial += 1.5; 
         if(matizSensorial > 360) matizSensorial = 0; 
 
-        // Efeito de neon esfumaçado que muda de cor suavemente
+        // Traço relaxante que muda de cor suavemente (Estilo Neon Mágico)
         ctxTea.strokeStyle = `hsl(${matizSensorial}, 85%, 75%)`; 
         ctxTea.shadowBlur = 25; 
         ctxTea.shadowColor = `hsl(${matizSensorial}, 85%, 75%)`; 
 
         ctxTea.lineTo(p.x, p.y); 
         ctxTea.stroke(); 
-        if (e.cancelable) e.preventDefault(); 
       };
 
-      const sp = () => { 
+      const sp = (e) => { 
         desenhandoTea = false; 
         try { audioLousaAoDesenhar.pause(); } catch(err){} 
       };
       
+      // MOUSE
       canvasTea.addEventListener('mousedown', st); canvasTea.addEventListener('mousemove', mv);
       canvasTea.addEventListener('mouseup', sp); canvasTea.addEventListener('mouseleave', sp);
+      // TOUCH (Celulares e Tablets) - passive:false garante que o preventDefault funcione
       canvasTea.addEventListener('touchstart', st, { passive: false });
       canvasTea.addEventListener('touchmove', mv, { passive: false });
       canvasTea.addEventListener('touchend', sp, { passive: false });
       canvasTea.addEventListener('touchcancel', sp, { passive: false });
       
-      // Carrega o giz por padrão no inicio
       mudarSomLousaTea('giz');
     }
 
@@ -1131,19 +1138,34 @@
 
     function atualizarScore(pts) { pontos += pts; localStorage.setItem('xexeu_pontos', pontos); document.getElementById('headerPontos').innerText = pontos; desenharCertificadoCanvas(); }
 
-    /* LOUSA PRINCIPAL NORMAL */
+    /* LOUSA NORMAL (COM FIX DE SCROLL) */
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
     function initLousa() {
       canvas = document.getElementById('paintCanvas'); if (!canvas) return; ctx = canvas.getContext('2d'); 
       const resizeLousa = () => { if (canvas && canvas.parentElement) { canvas.width = canvas.parentElement.clientWidth; canvas.height = canvas.parentElement.clientWidth * (9/16); } };
       resizeLousa(); window.addEventListener('resize', resizeLousa);
 
-      const getP = (e) => { const r = canvas.getBoundingClientRect(); const cx = e.clientX !== undefined ? e.clientX : (e.touches ? e.touches[0].clientX : 0); const cy = e.clientY !== undefined ? e.clientY : (e.touches ? e.touches[0].clientY : 0); return { x: (cx - r.left)*(canvas.width/r.width), y: (cy - r.top)*(canvas.height/r.height) }; };
-      const st = (e) => { desenhando = true; const p = getP(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap='round'; ctx.lineJoin='round'; };
-      const mv = (e) => { if(!desenhando) return; const p = getP(e); ctx.lineTo(p.x, p.y); ctx.stroke(); if(e.cancelable) e.preventDefault(); };
+      const getP = (e) => { 
+        const r = canvas.getBoundingClientRect(); 
+        let cx = 0, cy = 0;
+        if (e.touches && e.touches.length > 0) { cx = e.touches[0].clientX; cy = e.touches[0].clientY; } else { cx = e.clientX; cy = e.clientY; }
+        return { x: (cx - r.left)*(canvas.width/r.width), y: (cy - r.top)*(canvas.height/r.height) }; 
+      };
+
+      const st = (e) => { 
+        if (e.cancelable) e.preventDefault();
+        desenhando = true; const p = getP(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); 
+        ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap='round'; ctx.lineJoin='round'; 
+        ctx.lineTo(p.x, p.y); ctx.stroke(); // Desenha um ponto ao tocar
+      };
+      const mv = (e) => { 
+        if (e.cancelable) e.preventDefault();
+        if(!desenhando) return; const p = getP(e); ctx.lineTo(p.x, p.y); ctx.stroke(); 
+      };
       const sp = () => desenhando = false;
+      
       canvas.addEventListener('mousedown', st); canvas.addEventListener('mousemove', mv); canvas.addEventListener('mouseup', sp); canvas.addEventListener('mouseleave', sp);
-      canvas.addEventListener('touchstart', st, {passive:false}); canvas.addEventListener('touchmove', mv, {passive:false}); canvas.addEventListener('touchend', sp);
+      canvas.addEventListener('touchstart', st, {passive:false}); canvas.addEventListener('touchmove', mv, {passive:false}); canvas.addEventListener('touchend', sp, {passive:false});
       renderThumbnailsLousa();
     }
     function setCorPincel(c) { corAtual = c; tocarSomPop(); }
