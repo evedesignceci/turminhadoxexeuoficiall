@@ -971,8 +971,12 @@
       ctxTea = canvasTea.getContext('2d');
 
       const redimensionarLousaTea = () => {
+        if (!canvasTea) return;
         const c = canvasTea.parentElement;
-        if (c) { canvasTea.width = c.clientWidth; canvasTea.height = c.clientHeight; }
+        if (c && c.clientWidth > 0) { 
+          canvasTea.width = c.clientWidth; 
+          canvasTea.height = c.clientHeight || 400; 
+        }
       };
       redimensionarLousaTea();
       window.addEventListener('resize', redimensionarLousaTea);
@@ -989,7 +993,7 @@
       };
       
       const st = (e) => { 
-        if (e.cancelable) e.preventDefault(); // Bloqueia a rolagem no celular imediatamente
+        if (e.cancelable) e.preventDefault(); // Bloqueia a rolagem no celular
         desenhandoTea = true; 
         const p = getP(e); 
         ctxTea.beginPath(); 
@@ -1000,8 +1004,11 @@
         ctxTea.lineJoin = 'round'; 
         ctxTea.globalAlpha = 0.8;
         
-        // Desenha um ponto imediatamente se a criança só der um "toquinho"
-        ctxTea.lineTo(p.x, p.y);
+        // Aplica a cor atual e desenha um ponto imediatamente
+        ctxTea.strokeStyle = `hsl(${matizSensorial}, 85%, 75%)`; 
+        ctxTea.shadowBlur = 25; 
+        ctxTea.shadowColor = `hsl(${matizSensorial}, 85%, 75%)`; 
+        ctxTea.lineTo(p.x + 0.1, p.y + 0.1);
         ctxTea.stroke();
 
         if (modoSomLousaTea !== 'mudo' && audioLousaAoDesenhar.src) {
@@ -1031,10 +1038,8 @@
         try { audioLousaAoDesenhar.pause(); } catch(err){} 
       };
       
-      // MOUSE
       canvasTea.addEventListener('mousedown', st); canvasTea.addEventListener('mousemove', mv);
       canvasTea.addEventListener('mouseup', sp); canvasTea.addEventListener('mouseleave', sp);
-      // TOUCH (Celulares e Tablets) - passive:false garante que o preventDefault funcione
       canvasTea.addEventListener('touchstart', st, { passive: false });
       canvasTea.addEventListener('touchmove', mv, { passive: false });
       canvasTea.addEventListener('touchend', sp, { passive: false });
@@ -1133,6 +1138,10 @@
       const targetPage = document.getElementById('page-' + paginaId); if(targetPage) targetPage.classList.add('active');
       const btn = Array.from(document.querySelectorAll('.nav-item-btn')).find(b => b.getAttribute('onclick')?.includes(paginaId)); if (btn) btn.classList.add('active');
       if (paginaId === 'jogos') trocarJogo('ciclo');
+
+      // Corrige bug da lousa carregar invisível
+      setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 100);
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1142,7 +1151,11 @@
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
     function initLousa() {
       canvas = document.getElementById('paintCanvas'); if (!canvas) return; ctx = canvas.getContext('2d'); 
-      const resizeLousa = () => { if (canvas && canvas.parentElement) { canvas.width = canvas.parentElement.clientWidth; canvas.height = canvas.parentElement.clientWidth * (9/16); } };
+      const resizeLousa = () => { 
+        if (canvas && canvas.parentElement && canvas.parentElement.clientWidth > 0) { 
+          canvas.width = canvas.parentElement.clientWidth; canvas.height = canvas.parentElement.clientWidth * (9/16); 
+        } 
+      };
       resizeLousa(); window.addEventListener('resize', resizeLousa);
 
       const getP = (e) => { 
@@ -1156,7 +1169,7 @@
         if (e.cancelable) e.preventDefault();
         desenhando = true; const p = getP(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); 
         ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap='round'; ctx.lineJoin='round'; 
-        ctx.lineTo(p.x, p.y); ctx.stroke(); // Desenha um ponto ao tocar
+        ctx.lineTo(p.x + 0.1, p.y + 0.1); ctx.stroke(); // Desenha um ponto ao tocar
       };
       const mv = (e) => { 
         if (e.cancelable) e.preventDefault();
@@ -1193,7 +1206,7 @@
       const target = document.getElementById('subgame-' + subjogo); if (target) target.classList.add('active');
       const btn = Array.from(document.querySelectorAll('.game-subtab-btn')).find(b => b.getAttribute('onclick')?.includes(subjogo)); if (btn) btn.classList.add('active');
       
-      if (subjogo === 'lousa') { if(canvas && canvas.parentElement) { canvas.width = canvas.parentElement.clientWidth; canvas.height = canvas.parentElement.clientWidth * (9/16); } }
+      if (subjogo === 'lousa') setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 100);
       if (subjogo === 'banda') abrirInstrumento('guitarra'); if (subjogo === 'contar') iniciarJogoContar(); if (subjogo === 'letras') iniciarJogoLetras(); 
       if (subjogo === 'memoria') iniciarJogoMemoria(); if (subjogo === 'quiz') iniciarJogoQuiz(); if (subjogo === 'sombras') iniciarJogoSombras();
     }
@@ -1347,13 +1360,6 @@
         const b = document.createElement('button'); b.className = 'btn-tactile'; b.style.display = 'flex'; b.style.flexDirection = 'column'; b.style.height = '100px';
         b.innerHTML = `<span style="font-size:32px;">${card.emoji}</span><span style="font-size:12px;">${card.texto}</span>`; b.onclick = () => falarTexto(card.texto); c.appendChild(b);
       });
-    }
-
-    let somAcalentoAtual = null;
-    function tocarAsmrMesa(url, requerVip) {
-      if (requerVip && !isVip) return abrirModalVip();
-      if (somAcalentoAtual) { somAcalentoAtual.pause(); if (somAcalentoAtual.src === url) { somAcalentoAtual = null; falarTexto('Som pausado.'); return; } }
-      somAcalentoAtual = new Audio(url); somAcalentoAtual.loop = true; somAcalentoAtual.volume = volumeEfeitos; somAcalentoAtual.play().catch(()=>{}); falarTexto('Tocando som.');
     }
 
     function renderAvatarSelector() {
