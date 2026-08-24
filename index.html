@@ -58,8 +58,10 @@
     .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
     .btn-icon-round { width: 46px; height: 46px; border-radius: 50%; padding: 0; font-size: 18px; }
 
+    /* ESTILOS DE VIP E AMOSTRA GRÁTIS */
     .btn-tactile.vip-lock { background: #F8FAFC; border-color: #CBD5E1; color: #94A3B8; box-shadow: var(--shadow-3d); }
     .btn-tactile.vip-unlocked { background: linear-gradient(135deg, #F59E0B, #D97706); border-color: #B45309; color: #FFF; box-shadow: var(--shadow-3d-vip); }
+    .btn-tactile.asmr-unlocked { background: #FFF; border-color: #10B981; color: #047857; box-shadow: var(--shadow-3d); }
 
     nav.main-nav { display: flex; gap: 8px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-lg); border: 3px solid var(--border-color); box-shadow: var(--shadow-sm); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     nav.main-nav::-webkit-scrollbar { display: none; }
@@ -210,7 +212,7 @@
     </div>
   </div>
 
-  <!-- MODAL VIP DINÂMICO (CHAMADA DE VENDAS SUTIL) -->
+  <!-- MODAL VIP DINÂMICO -->
   <div id="modalVipPrompt" class="app-modal">
     <div class="modal-content" style="border-color: #F59E0B;">
       <button onclick="fecharModalVip()" style="position:absolute; top:14px; right:14px; border:none; background:#F1F5F9; border-radius:50%; width:36px; height:36px; font-weight:800; cursor:pointer;">✕</button>
@@ -590,7 +592,7 @@
           </div>
         </div>
         
-        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 8px;">Escolha sua textura de som (toca <b>apenas quando você desenha</b>):</p>
+        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 8px;">Escolha a textura de som (toca <b>apenas quando desenha</b>):</p>
         
         <div style="display:flex; justify-content:center; gap:8px; margin-bottom: 14px; flex-wrap: wrap;">
           <button class="btn-tactile active" id="btnSomLousa-giz" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('giz')">🖍️ Giz</button>
@@ -602,6 +604,60 @@
 
         <div class="lousa-tea-container" style="width: 100%; height: 55vh; min-height: 380px; border-radius: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.6); touch-action: none; background: #0F172A;">
           <canvas id="lousaSensorialTea" style="touch-action: none; width: 100%; height: 100%; cursor: crosshair; display: block;"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- PÁGINA: VÍDEOS & RELAXAMENTO -->
+    <div id="page-videos" class="page-box">
+      <div class="grid-2-col">
+        <div class="game-card">
+          <div class="game-card-title"><span>📺 Episódios no YouTube</span></div>
+          <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden; box-shadow: var(--shadow-md);">
+            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" style="position:absolute; inset:0; width:100%; height:100%; border:0;" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div class="game-card">
+          <div class="game-card-title" style="color: #1DB954;"><span>🎧 Spotify da Turminha</span></div>
+          <iframe src="https://open.spotify.com/embed/artist/6ykKQ3uP6Wl2REylKJAdJ6?utm_source=generator&theme=0" width="100%" height="280" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="border-radius: 12px; box-shadow: var(--shadow-md);"></iframe>
+        </div>
+      </div>
+
+      <!-- SESSÃO DE RELAXAMENTO (ÁUDIOS DA LOUSA PARA OUVIR) -->
+      <div class="game-card" style="border-color: #6EE7B7; background: #F0FDF4;">
+        <div class="game-card-title" style="color: #047857;">
+          <span>🎧 Sessão de Relaxamento (ASMR)</span>
+          <span style="font-size: 13px; background: #DCFCE7; color: #166534; padding: 4px 12px; border-radius: 20px;">Sons da Lousa 🌿</span>
+        </div>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Feche os olhos e aproveite os sons suaves para relaxar, se concentrar ou dormir.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+          <!-- Opção Grátis -->
+          <div style="background: #FFF; border: 2px solid #CBD5E1; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
+            <span style="font-size: 32px; display: block; margin-bottom: 6px;">🪵</span>
+            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">ASMR 1 (47s)</h4>
+            <button class="btn-tactile" style="width: 100%; border-color:#6EE7B7; color:#047857;" onclick="tocarAsmrMesaVids('https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3', false)">▶️ Ouvir</button>
+          </div>
+
+          <!-- Opções VIP (Dinâmicas) -->
+          <div style="background: #FFF; border: 2px solid #CBD5E1; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
+            <span style="font-size: 32px; display: block; margin-bottom: 6px;">✨</span>
+            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">ASMR 2 (2m)</h4>
+            <button class="btn-tactile btn-vip-dyn-asmr-play" data-url="https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3" style="width: 100%;" onclick="tocarAsmrMesaVids(this.getAttribute('data-url'), true)">🔒 VIP</button>
+          </div>
+
+          <div style="background: #FFF; border: 2px solid #CBD5E1; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
+            <span style="font-size: 32px; display: block; margin-bottom: 6px;">🌙</span>
+            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">ASMR 3 (4m)</h4>
+            <button class="btn-tactile btn-vip-dyn-asmr-play" data-url="https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3" style="width: 100%;" onclick="tocarAsmrMesaVids(this.getAttribute('data-url'), true)">🔒 VIP</button>
+          </div>
+
+          <!-- Em Breve -->
+          <div style="background: #F8FAFC; border: 2px dashed #CBD5E1; border-radius: 16px; padding: 18px; text-align: center; opacity: 0.8;">
+            <span style="font-size: 32px; display: block; margin-bottom: 6px;">😴</span>
+            <h4 style="font-size: 15px; color: var(--text-muted); margin-bottom: 12px;">Respiração Guiada</h4>
+            <span style="background: #E2E8F0; color: #64748B; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 10px;">⏳ Em Breve</span>
+          </div>
         </div>
       </div>
     </div>
@@ -619,7 +675,7 @@
             <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ Vantagens do VIP:</h4>
             <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
               <li><strong>📁 Drives Exclusivos:</strong> Atividades infantis e Caderno TEA para imprimir.</li>
-              <li><strong>🔊 Sons ASMR:</strong> Todos os áudios sensoriais da lousa liberados.</li>
+              <li><strong>🔊 Sons ASMR:</strong> Todos os áudios sensoriais liberados para relaxar.</li>
               <li><strong>🎨 Lousa Mágica:</strong> Acesso a todos os contornos e novos desenhos.</li>
               <li><strong>🎮 Jogos Avançados:</strong> Os últimos níveis liberados (Memória, Letras, Contar).</li>
               <li><strong>🎸 Bandinha Completa:</strong> Teclado, Violão, Flauta e Saxofone para tocar.</li>
@@ -669,21 +725,6 @@
           <button class="btn-tactile green" onclick="adicionarItemRotina()">Adicionar</button>
         </div>
         <div id="listaRotinasContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
-      </div>
-    </div>
-
-    <div id="page-videos" class="page-box">
-      <div class="grid-2-col">
-        <div class="game-card">
-          <div class="game-card-title"><span>📺 Episódios no YouTube</span></div>
-          <div style="position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden; box-shadow: var(--shadow-md);">
-            <iframe src="https://www.youtube-nocookie.com/embed/videosseries?list=PLh42qmbnReoE_pM4lig3DpJaNGWqoT9uJ" style="position:absolute; inset:0; width:100%; height:100%; border:0;" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="game-card">
-          <div class="game-card-title" style="color: #1DB954;"><span>🎧 Spotify da Turminha</span></div>
-          <iframe src="https://open.spotify.com/embed/artist/6ykKQ3uP6Wl2REylKJAdJ6?utm_source=generator&theme=0" width="100%" height="280" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="border-radius: 12px; box-shadow: var(--shadow-md);"></iframe>
-        </div>
       </div>
     </div>
     
@@ -910,6 +951,16 @@
         }
       });
 
+      document.querySelectorAll('.btn-vip-dyn-asmr-play').forEach(btn => {
+        if (isVip) {
+          btn.className = 'btn-tactile btn-vip-dyn-asmr-play asmr-unlocked';
+          btn.innerHTML = '▶️ Ouvir';
+        } else {
+          btn.className = 'btn-tactile btn-vip-dyn-asmr-play vip-lock';
+          btn.innerHTML = '🔒 VIP';
+        }
+      });
+
       document.querySelectorAll('.btn-vip-dyn-lvl').forEach(btn => {
         if (isVip) {
           btn.classList.add('vip-level');
@@ -993,7 +1044,7 @@
       };
       
       const st = (e) => { 
-        if (e.cancelable) e.preventDefault(); // Bloqueia a rolagem no celular
+        if (e.cancelable) e.preventDefault(); // Bloqueia a rolagem no celular imediatamente
         desenhandoTea = true; 
         const p = getP(e); 
         ctxTea.beginPath(); 
@@ -1004,7 +1055,7 @@
         ctxTea.lineJoin = 'round'; 
         ctxTea.globalAlpha = 0.8;
         
-        // Aplica a cor atual e desenha um ponto imediatamente
+        // Aplica a cor atual e desenha um ponto imediatamente ao tocar
         ctxTea.strokeStyle = `hsl(${matizSensorial}, 85%, 75%)`; 
         ctxTea.shadowBlur = 25; 
         ctxTea.shadowColor = `hsl(${matizSensorial}, 85%, 75%)`; 
@@ -1133,14 +1184,16 @@
 
     function navegar(paginaId) {
       if(audioLousaAoDesenhar) { try{audioLousaAoDesenhar.pause();}catch(e){} }
+      if(somAcalentoAtualVids) { try{somAcalentoAtualVids.pause();}catch(e){} }
+
       document.querySelectorAll('.page-box').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-item-btn').forEach(b => b.classList.remove('active'));
       const targetPage = document.getElementById('page-' + paginaId); if(targetPage) targetPage.classList.add('active');
       const btn = Array.from(document.querySelectorAll('.nav-item-btn')).find(b => b.getAttribute('onclick')?.includes(paginaId)); if (btn) btn.classList.add('active');
       if (paginaId === 'jogos') trocarJogo('ciclo');
 
-      // Corrige bug da lousa carregar invisível
-      setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 100);
+      // Garante que o Canvas tem tamanho exato na hora que a aba abre
+      setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 50);
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1206,7 +1259,7 @@
       const target = document.getElementById('subgame-' + subjogo); if (target) target.classList.add('active');
       const btn = Array.from(document.querySelectorAll('.game-subtab-btn')).find(b => b.getAttribute('onclick')?.includes(subjogo)); if (btn) btn.classList.add('active');
       
-      if (subjogo === 'lousa') setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 100);
+      if (subjogo === 'lousa') setTimeout(() => { window.dispatchEvent(new Event('resize')); }, 50);
       if (subjogo === 'banda') abrirInstrumento('guitarra'); if (subjogo === 'contar') iniciarJogoContar(); if (subjogo === 'letras') iniciarJogoLetras(); 
       if (subjogo === 'memoria') iniciarJogoMemoria(); if (subjogo === 'quiz') iniciarJogoQuiz(); if (subjogo === 'sombras') iniciarJogoSombras();
     }
@@ -1360,6 +1413,21 @@
         const b = document.createElement('button'); b.className = 'btn-tactile'; b.style.display = 'flex'; b.style.flexDirection = 'column'; b.style.height = '100px';
         b.innerHTML = `<span style="font-size:32px;">${card.emoji}</span><span style="font-size:12px;">${card.texto}</span>`; b.onclick = () => falarTexto(card.texto); c.appendChild(b);
       });
+    }
+
+    let somAcalentoAtualVids = null;
+    function tocarAsmrMesaVids(url, requerVip) {
+      if (requerVip && !isVip) return abrirModalVip();
+      if (somAcalentoAtualVids) { 
+          somAcalentoAtualVids.pause(); 
+          if (somAcalentoAtualVids.src === url) { 
+              somAcalentoAtualVids = null; falarTexto('Som pausado.'); return; 
+          } 
+      }
+      somAcalentoAtualVids = new Audio(url); 
+      somAcalentoAtualVids.loop = true; somAcalentoAtualVids.volume = volumeEfeitos; 
+      somAcalentoAtualVids.play().catch(()=>{}); 
+      falarTexto('Tocando som relaxante.');
     }
 
     function renderAvatarSelector() {
