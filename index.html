@@ -25,7 +25,7 @@
     body { background: var(--bg-canvas); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; user-select: none; overflow-x: hidden; transition: filter 0.3s; }
 
     /* =========================================
-       MODO SENSORIAL (TEA) GLOBAL - CUIDADO TOTAL
+       MODO SENSORIAL (TEA) GLOBAL
        ========================================= */
     body.sensory-mode {
       --bg-canvas: #F4F1EA !important; --card-bg: #FCFAF6 !important; --primary: #5B7A8C !important;
@@ -37,7 +37,7 @@
     }
     body.sensory-mode * { animation: none !important; transition: none !important; box-shadow: none !important; }
     body.sensory-mode .game-card, body.sensory-mode header.game-header, body.sensory-mode nav.main-nav { background-color: var(--card-bg) !important; border-color: var(--border-color) !important; }
-    body.sensory-mode .vip-floating-bar { display: none !important; } /* Esconde o banner de vendas no modo calmo */
+    body.sensory-mode .vip-floating-bar { display: none !important; } 
 
     .app-shell { width: 100%; max-width: 1400px; margin: 0 auto; padding: 16px 20px 100px; display: flex; flex-direction: column; gap: 20px; }
     
@@ -58,7 +58,6 @@
     .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
     .btn-icon-round { width: 46px; height: 46px; border-radius: 50%; padding: 0; font-size: 18px; }
 
-    /* ESTILOS VIP DINÂMICOS (AMOSTRA GRÁTIS) */
     .btn-tactile.vip-lock { background: #F8FAFC; border-color: #CBD5E1; color: #94A3B8; box-shadow: var(--shadow-3d); }
     .btn-tactile.vip-unlocked { background: linear-gradient(135deg, #F59E0B, #D97706); border-color: #B45309; color: #FFF; box-shadow: var(--shadow-3d-vip); }
 
@@ -87,7 +86,6 @@
     .hub-card-tag { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 800; width: fit-content; }
     @keyframes floatIcon { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
-    /* CASA DA TURMINHA - XEXÉU VIRTUAL */
     .mascote-virtual { position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; animation: floatIcon 4s infinite; z-index: 10; margin: 0 auto; width: max-content; }
     .mascote-virtual img { width: 230px; height: 230px; object-fit: contain; filter: drop-shadow(0 12px 15px rgba(0,0,0,0.2)); transition: transform 0.2s; margin-top: 15px;}
     .mascote-virtual img:active { transform: scale(0.85); }
@@ -112,7 +110,6 @@
 
     .dna-quote-badge { background: #EEF2FF; border-left: 4px solid var(--primary); padding: 8px 12px; border-radius: 0 10px 10px 0; font-size: 13px; font-style: italic; color: #3730A3; margin-top: 6px; }
 
-    /* TREINO DA CALMA */
     .breathe-box-interactive { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 320px; gap: 16px; background: #F8FAFC; border: 3px solid #BAE6FD; border-radius: var(--radius-lg); padding: 20px; }
     .breathe-instruction-card { background: #FFFFFF; border: 2px solid #38BDF8; padding: 10px 20px; border-radius: 30px; display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow-sm); }
     .breathe-instruction-card span { font-size: 24px; }
@@ -165,7 +162,6 @@
     .memory-tile.matched { animation: popPulse 0.5s ease; border-color: var(--green); box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3); }
     @keyframes popPulse { 0% { transform: rotateY(180deg) scale(1); } 50% { transform: rotateY(180deg) scale(1.15); } 100% { transform: rotateY(180deg) scale(1); } }
 
-    /* CICLO DA POLINIZAÇÃO - AGORA INTERATIVO */
     .ciclo-bg { background: linear-gradient(180deg, #E0F2FE 0%, #DCFCE7 100%); border-radius: var(--radius-lg); padding: 20px; position: relative; overflow: hidden; height: 400px; border: 4px solid #86EFAC; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
     .ciclo-header { background: rgba(255,255,255,0.8); padding: 8px 16px; border-radius: 50px; font-weight: 800; color: #059669; box-shadow: var(--shadow-sm); z-index: 10; border: 2px solid #6EE7B7; }
     .ciclo-info-box { background: #FFF; border: 3px solid #38BDF8; border-radius: 16px; padding: 12px 20px; font-size: 15px; font-weight: 700; color: #0284C7; z-index: 10; margin-bottom: 10px; width: 90%; max-width: 400px; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2); transition: all 0.3s; }
@@ -244,7 +240,6 @@
     </div>
   </div>
 
-  <!-- BARRA FLUTUANTE VIP -->
   <div class="vip-floating-bar" id="barraFlutuanteVip" onclick="navegar('vip')">
     <span style="font-size: 26px;">👑</span>
     <div style="flex: 1; text-align: center;">
@@ -412,7 +407,6 @@
           <button class="game-subtab-btn" onclick="trocarJogo('quiz')">❓ Quiz</button>
         </div>
 
-        <!-- JOGO: CICLO DA VIDA -->
         <div id="subgame-ciclo" class="minigame-container active">
           <h3 style="font-size: 22px; margin-bottom: 8px; color: #059669;">A Mágica da Polinização 🌸</h3>
           <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Ajude a natureza a crescer e gerar Pólen para a Turminha!</p>
@@ -441,7 +435,6 @@
           </div>
         </div>
 
-        <!-- LOUSA PRINCIPAL -->
         <div id="subgame-lousa" class="minigame-container">
           <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Escolha um desenho para colorir ou use a lousa livre:</p>
           <div id="lousaThumbnails"></div>
@@ -458,14 +451,11 @@
           </div>
         </div>
 
-        <!-- JOGO BANDINHA (LÓGICA AMOSTRA GRÁTIS) -->
         <div id="subgame-banda" class="minigame-container">
           <h3 style="font-size: 20px; margin-bottom: 8px;">Bandinha da Turminha! 🎶</h3>
           <div style="display:flex; justify-content:center; gap:10px; margin-bottom: 20px; flex-wrap: wrap;" id="menuInstrumentos">
-            <!-- Amostra Grátis -->
             <button class="btn-tactile active" id="tabInst-guitarra" onclick="abrirInstrumento('guitarra')">🎸 Guitarra</button>
             <button class="btn-tactile" id="tabInst-bateria" onclick="abrirInstrumento('bateria')">🥁 Bateria</button>
-            <!-- VIP -->
             <button class="btn-tactile btn-vip-dyn" data-tipo="teclado" id="tabInst-teclado" onclick="abrirInstrumento('teclado')">🎹 Teclado</button>
             <button class="btn-tactile btn-vip-dyn" data-tipo="violao" id="tabInst-violao" onclick="abrirInstrumento('violao')">🎻 Violão</button>
             <button class="btn-tactile btn-vip-dyn" data-tipo="flauta" id="tabInst-flauta" onclick="abrirInstrumento('flauta')">🪈 Flauta</button>
@@ -557,36 +547,6 @@
         </div>
       </div>
 
-      <!-- ÁREA DE RELAXAMENTO ASMR -->
-      <div class="game-card" style="border-color: #6EE7B7; background: #F0FDF4;">
-        <div class="game-card-title" style="color: #047857;">
-          <span>🎧 Sons de Regulação (ASMR)</span>
-        </div>
-        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Sons suaves para ajudar na concentração e calma:</p>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-          <!-- Opção Grátis -->
-          <div style="background: #FFF; border: 2px solid #CBD5E1; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
-            <span style="font-size: 32px; display: block; margin-bottom: 6px;">🪵</span>
-            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">Madeira Suave (47s)</h4>
-            <button class="btn-tactile" style="width: 100%; border-color:#6EE7B7; color:#047857;" onclick="tocarAsmrMesa('https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3', false)">▶️ Ouvir</button>
-          </div>
-
-          <!-- Opções VIP (Dinâmicas) -->
-          <div style="background: #FFF; border: 2px solid #CBD5E1; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
-            <span style="font-size: 32px; display: block; margin-bottom: 6px;">✨</span>
-            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">Sinos dos Ventos (2m)</h4>
-            <button class="btn-tactile btn-vip-asmr" style="width: 100%;" onclick="tocarAsmrMesa('https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3', true)">🔒 VIP</button>
-          </div>
-
-          <div style="background: #FFF; border: 2px solid #CBD5E1; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
-            <span style="font-size: 32px; display: block; margin-bottom: 6px;">🌙</span>
-            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">Chuva Contínua (4m)</h4>
-            <button class="btn-tactile btn-vip-asmr" style="width: 100%;" onclick="tocarAsmrMesa('https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3', true)">🔒 VIP</button>
-          </div>
-        </div>
-      </div>
-
       <div class="grid-2-col">
         <div class="game-card">
           <div class="game-card-title"><span>🗣️ Prancha de Fala (CAA)</span></div>
@@ -620,27 +580,28 @@
         <div class="popit-board" id="popitGridContainer"></div>
       </div>
 
-      <!-- LOUSA SENSORIAL DA CALMA (COM GIZ REALISTA) -->
+      <!-- LOUSA SENSORIAL DA CALMA (TOTALMENTE REFEITA) -->
       <div class="game-card" style="text-align: center; border-color: #6EE7B7; background: #ECFDF5; padding: 10px; width: 100%;">
         <div class="game-card-title" style="color: #047857; margin-bottom:5px; padding: 10px; justify-content:space-between;">
           <span>🎨 Lousa Mágica da Calma</span>
           <div style="display: flex; gap: 8px;">
-            <button class="btn-tactile green" style="padding: 6px 12px; font-size: 13px;" onclick="liberarLousaTEA()">✨ Selecionar/Liberar Tudo</button>
-            <button class="btn-tactile" style="padding: 6px 12px; font-size: 13px; color:#EF4444;" onclick="limparLousaSensorial()">🗑️ Limpar Tudo</button>
+            <button class="btn-tactile green" style="padding: 6px 12px; font-size: 13px;" onclick="liberarLousaTEA()">✨ Selecionar Tudo</button>
+            <button class="btn-tactile" style="padding: 6px 12px; font-size: 13px; color:#EF4444;" onclick="limparLousaSensorial()">🗑️ Limpar</button>
           </div>
         </div>
         
-        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 8px;">O som de giz toca suavemente apenas enquanto você desenha.</p>
+        <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 8px;">Escolha a sua textura de som (toca <b>apenas quando você desenha</b>):</p>
         
         <div style="display:flex; justify-content:center; gap:8px; margin-bottom: 14px; flex-wrap: wrap;">
-          <button class="btn-tactile active" id="btnSomLousa-giz" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('giz')">🖍️ Giz (Ao Desenhar)</button>
-          <button class="btn-tactile" id="btnSomLousa-asmr1" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr1')">🪵 Fundo 47s</button>
-          <button class="btn-tactile btn-vip-dyn" data-tipo="asmr2" id="btnSomLousa-asmr2" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr2')">✨ Fundo 2m</button>
-          <button class="btn-tactile btn-vip-dyn" data-tipo="asmr3" id="btnSomLousa-asmr3" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr3')">🌙 Fundo 4m</button>
+          <button class="btn-tactile active" id="btnSomLousa-giz" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('giz')">🖍️ Som de Giz</button>
+          <button class="btn-tactile" id="btnSomLousa-madeira" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('madeira')">🪵 Madeira Suave</button>
+          <button class="btn-tactile btn-vip-dyn" data-tipo="chuva" id="btnSomLousa-chuva" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('chuva')">🌙 Chuva Relaxante</button>
+          <button class="btn-tactile btn-vip-dyn" data-tipo="sinos" id="btnSomLousa-sinos" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('sinos')">✨ Sinos ASMR</button>
+          <button class="btn-tactile" id="btnSomLousa-mudo" style="padding: 8px 12px; font-size: 13px; color: #64748B;" onclick="mudarSomLousaTea('mudo')">🔇 Sem Som</button>
         </div>
 
-        <div class="lousa-tea-container" style="width: 100%; height: 55vh; min-height: 380px; border-radius: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.6); touch-action: none;">
-          <canvas id="lousaSensorialTea" style="background: #0F172A; width: 100%; height: 100%; cursor: crosshair; display: block; touch-action: none;"></canvas>
+        <div class="lousa-tea-container" style="width: 100%; height: 55vh; min-height: 380px; border-radius: 20px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0,0,0,0.6); touch-action: none; background: #0F172A;">
+          <canvas id="lousaSensorialTea" style="width: 100%; height: 100%; cursor: crosshair; display: block; touch-action: none;"></canvas>
         </div>
       </div>
     </div>
@@ -658,7 +619,7 @@
             <h4 style="font-size: 16px; color: #92400E; margin-bottom: 10px;">✨ Vantagens do VIP:</h4>
             <ul style="margin-left: 20px; font-size: 13.5px; color: #78350F; line-height: 1.8; font-weight: 700;">
               <li><strong>📁 Drives Exclusivos:</strong> Atividades infantis e Caderno TEA para imprimir.</li>
-              <li><strong>🔊 Sons ASMR:</strong> Todos os áudios e temporizadores de foco liberados.</li>
+              <li><strong>🔊 Sons ASMR:</strong> Todos os áudios sensoriais da lousa liberados.</li>
               <li><strong>🎨 Lousa Mágica:</strong> Acesso a todos os contornos e novos desenhos.</li>
               <li><strong>🎮 Jogos Avançados:</strong> Os últimos níveis liberados (Memória, Letras, Contar).</li>
               <li><strong>🎸 Bandinha Completa:</strong> Teclado, Violão, Flauta e Saxofone para tocar.</li>
@@ -838,7 +799,6 @@
 
     let nivelContar = 1, nivelLetras = 1, nivelSombras = 1, nivelMemoria = 1, nivelQuiz = 1;
 
-    // DNA ATUALIZADO DOS PERSONAGENS
     const PERSONAGENS = [
       { id: 'xexeu', familia: 'mascotes', nome: 'Xexéu', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994886/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_XEXEU.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994876/DESENHOS_DA_LOUSA_XEXEU.png', letra: 'X', tag: 'O Desbravador', papel: 'Descobre coisas novas.', personalidade: 'Curioso e aventureiro.', frase: 'Como isso funciona?' },
       { id: 'capile', familia: 'mascotes', nome: 'Capilé', img: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994882/FOTO_DE_PERFIL_JOGOS_E_ECOLHAS_DE_ICONES_DE_PERFIL_ETC_-_CAPILE.png', lousa: 'https://res.cloudinary.com/oactqmgs/image/upload/v1786994874/DESENHOS_DA_LOUSA_CAPILE.png', letra: 'C', tag: 'O Parceiro', papel: 'Companheiro fiel do Joca.', personalidade: 'Brincalhão e leal.', frase: 'Au au!' },
@@ -859,7 +819,6 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       try { 
-        // Lógica de Estado Salvo
         if (localStorage.getItem('xexeu_calm') === 'true') document.body.classList.add('sensory-mode');
 
         renderTodosPersonagensInicio(); 
@@ -904,7 +863,6 @@
     function tocarSomPop() { try { const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.type = 'sine'; osc.frequency.setValueAtTime(600, ctx.currentTime); gain.gain.setValueAtTime(0.1 * volumeEfeitos, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05); osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.05); } catch (e) {} }
     function tocarSomPopIt() { let popAudio = new Audio("https://res.cloudinary.com/oactqmgs/video/upload/v1787345640/uma_bolha_estourando.mp3"); popAudio.volume = volumeEfeitos; popAudio.play().catch(()=>{}); }
 
-    /* MODO CALMO GLOBAL */
     function toggleModoCalmo() { 
       document.body.classList.toggle('sensory-mode'); 
       const ativo = document.body.classList.contains('sensory-mode');
@@ -912,18 +870,13 @@
       falarTexto(ativo ? 'Modo Calmo ativado.' : 'Modo Padrão ativado.'); 
     }
 
-    function exibirToast(msg) { 
-      const t = document.getElementById('appToast'); 
-      t.innerText = msg; t.classList.add('active'); 
-      setTimeout(() => t.classList.remove('active'), 2500); 
-    }
+    function exibirToast(msg) { const t = document.getElementById('appToast'); t.innerText = msg; t.classList.add('active'); setTimeout(() => t.classList.remove('active'), 2500); }
 
     function abrirModalVip() { document.getElementById('modalVipPrompt').classList.add('show'); }
     function fecharModalVip() { document.getElementById('modalVipPrompt').classList.remove('show'); }
 
-    /* INTERFACE VIP DINÂMICA (AMOSTRA GRÁTIS VS VIP) */
+    /* VIP DINAMICO */
     function atualizarInterfaceVipCompleta() {
-      // Menus
       document.getElementById('areaVendaVip').style.display = isVip ? 'none' : 'block';
       document.getElementById('centralVipConteudo').style.display = isVip ? 'block' : 'none';
       document.getElementById('barraFlutuanteVip').style.display = isVip ? 'none' : 'flex';
@@ -932,7 +885,6 @@
       const navVipBtn = document.getElementById('navVipBtn');
       if(navVipBtn) navVipBtn.innerHTML = isVip ? '👑 Central VIP' : '⭐ Clube VIP';
 
-      // Botões Dinâmicos (Instrumentos, Níveis, ASMR, Tempos)
       document.querySelectorAll('.btn-vip-dyn').forEach(btn => {
         const tipo = btn.getAttribute('data-tipo');
         if (isVip) {
@@ -942,6 +894,8 @@
             btn.innerHTML = `${icones[tipo]} ${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`;
           } else if(tipo.includes('asmr')) {
             btn.innerHTML = tipo === 'asmr2' ? '✨ Fundo 2m' : '🌙 Fundo 4m';
+            if(tipo === 'chuva') btn.innerHTML = '🌙 Chuva Relaxante';
+            if(tipo === 'sinos') btn.innerHTML = '✨ Sinos ASMR';
           } else if(tipo.includes('tempo')) {
             btn.innerHTML = tipo.replace('tempo', '') + ' Min';
           }
@@ -949,7 +903,7 @@
           btn.className = 'btn-tactile btn-vip-dyn vip-lock';
           if(['teclado','violao','flauta','saxofone'].includes(tipo)) {
             btn.innerHTML = `🔒 ${tipo.charAt(0).toUpperCase() + tipo.slice(1)}`;
-          } else if(tipo.includes('asmr')) {
+          } else if(tipo.includes('asmr') || tipo==='chuva' || tipo==='sinos') {
             btn.innerHTML = `🔒 VIP`;
           } else if(tipo.includes('tempo')) {
             btn.innerHTML = `🔒 ${tipo.replace('tempo', '')} Min`;
@@ -968,7 +922,6 @@
         }
       });
 
-      // Drives
       if(isVip) {
         const drivesCache = JSON.parse(localStorage.getItem('xexeu_drives') || '{}');
         const boxDrives = document.getElementById('boxLinksDrivesDinamicos');
@@ -980,76 +933,38 @@
       }
     }
 
-    /* SISTEMA DE ÁUDIO GIZ REALISTA (WEB AUDIO API) */
-    let audioCtx = null;
-    let gizNoiseNode = null;
-    let gizGainNode = null;
-
-    function getAudioContext() {
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      return audioCtx;
-    }
-
-    function iniciarSomGizRealista() {
-      if (!audioAtivo || document.body.classList.contains('sensory-mode')) return; // Respeita o modo sensorial!
-      try {
-        const ctx = getAudioContext();
-        if (gizNoiseNode) return;
-        const bufferSize = ctx.sampleRate * 0.5;
-        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-        const data = buffer.getChannelData(0);
-        for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * 0.15;
-        
-        gizNoiseNode = ctx.createBufferSource();
-        gizNoiseNode.buffer = buffer;
-        gizNoiseNode.loop = true;
-
-        const filter = ctx.createBiquadFilter();
-        filter.type = 'bandpass';
-        filter.frequency.value = 1400; 
-        filter.Q.value = 3.0;
-
-        gizGainNode = ctx.createGain();
-        gizGainNode.gain.setValueAtTime(0.08 * volumeEfeitos, ctx.currentTime);
-
-        gizNoiseNode.connect(filter);
-        filter.connect(gizGainNode);
-        gizGainNode.connect(ctx.destination);
-        gizNoiseNode.start();
-      } catch (e) {}
-    }
-
-    function pararSomGizRealista() {
-      if (gizNoiseNode) {
-        try { gizNoiseNode.stop(); gizNoiseNode.disconnect(); } catch(e) {}
-        gizNoiseNode = null; gizGainNode = null;
-      }
-    }
-
-    /* LOUSA SENSORIAL TEA */
-    let canvasTea, ctxTea, desenhandoTea = false, matizSensorial = 0;
-    let somAtualLousaTea = 'giz', audioLousaBGAqui = null;
+    /* SISTEMA DE ÁUDIO SENSORIAL DINÂMICO (LOUSA TEA) */
+    let audioLousaAoDesenhar = new Audio();
+    audioLousaAoDesenhar.loop = true;
+    let modoSomLousaTea = 'giz'; // Opções: giz, madeira, chuva, sinos, mudo
 
     function mudarSomLousaTea(tipo) {
-      if ((tipo === 'asmr2' || tipo === 'asmr3') && !isVip) return abrirModalVip();
-      somAtualLousaTea = tipo;
+      if ((tipo === 'chuva' || tipo === 'sinos') && !isVip) return abrirModalVip();
+      
+      modoSomLousaTea = tipo;
       document.querySelectorAll('[id^="btnSomLousa-"]').forEach(b => b.classList.remove('active'));
       const activeBtn = document.getElementById('btnSomLousa-' + tipo);
       if(activeBtn) activeBtn.classList.add('active');
 
-      if(audioLousaBGAqui) { audioLousaBGAqui.pause(); audioLousaBGAqui = null; }
-
-      if(tipo !== 'giz') {
-        let url = '';
-        if(tipo === 'asmr1') url = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3";
-        if(tipo === 'asmr2') url = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3";
-        if(tipo === 'asmr3') url = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3";
-        audioLousaBGAqui = new Audio(url);
-        audioLousaBGAqui.loop = true; audioLousaBGAqui.volume = volumeEfeitos * 0.7;
-        audioLousaBGAqui.play().catch(()=>{});
+      if(tipo === 'giz') {
+        audioLousaAoDesenhar.src = "https://res.cloudinary.com/oactqmgs/video/upload/v1787345803/passando_o_deodo_na_tela_preta_tea.mp3";
+        audioLousaAoDesenhar.volume = volumeEfeitos * 0.7;
+      } else if(tipo === 'madeira') {
+        audioLousaAoDesenhar.src = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3";
+        audioLousaAoDesenhar.volume = volumeEfeitos * 0.8;
+      } else if(tipo === 'chuva') {
+        audioLousaAoDesenhar.src = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3";
+        audioLousaAoDesenhar.volume = volumeEfeitos * 0.5;
+      } else if(tipo === 'sinos') {
+        audioLousaAoDesenhar.src = "https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3";
+        audioLousaAoDesenhar.volume = volumeEfeitos * 0.6;
+      } else if(tipo === 'mudo') {
+        audioLousaAoDesenhar.src = '';
       }
     }
+
+    /* LOUSA SENSORIAL COM PINCEL RELAXANTE E ÁUDIO DINÂMICO */
+    let canvasTea, ctxTea, desenhandoTea = false, matizSensorial = 0;
 
     function initLousaSensorial() {
       canvasTea = document.getElementById('lousaSensorialTea'); 
@@ -1073,24 +988,42 @@
       const st = (e) => { 
         desenhandoTea = true; 
         const p = getP(e); 
-        ctxTea.beginPath(); ctxTea.moveTo(p.x, p.y); 
-        ctxTea.lineWidth = 22; ctxTea.lineCap = 'round'; ctxTea.lineJoin = 'round'; 
+        ctxTea.beginPath(); 
+        ctxTea.moveTo(p.x, p.y); 
         
-        if (somAtualLousaTea === 'giz') iniciarSomGizRealista();
+        // Estilo do traço relaxante
+        ctxTea.lineWidth = 24; 
+        ctxTea.lineCap = 'round'; 
+        ctxTea.lineJoin = 'round'; 
+        ctxTea.globalAlpha = 0.8;
+        
+        if (modoSomLousaTea !== 'mudo' && audioLousaAoDesenhar.src) {
+           try { audioLousaAoDesenhar.play().catch(()=>{}); } catch(err){}
+        }
         if(e.cancelable) e.preventDefault(); 
       };
 
       const mv = (e) => { 
         if (!desenhandoTea) return; 
         const p = getP(e); 
-        matizSensorial = (matizSensorial + 3) % 360; 
-        ctxTea.strokeStyle = `hsl(${matizSensorial}, 100%, 75%)`; 
-        ctxTea.shadowBlur = 18; ctxTea.shadowColor = `hsl(${matizSensorial}, 100%, 75%)`; 
-        ctxTea.lineTo(p.x, p.y); ctxTea.stroke(); 
+        
+        matizSensorial += 1.5; 
+        if(matizSensorial > 360) matizSensorial = 0; 
+
+        // Efeito de neon esfumaçado que muda de cor suavemente
+        ctxTea.strokeStyle = `hsl(${matizSensorial}, 85%, 75%)`; 
+        ctxTea.shadowBlur = 25; 
+        ctxTea.shadowColor = `hsl(${matizSensorial}, 85%, 75%)`; 
+
+        ctxTea.lineTo(p.x, p.y); 
+        ctxTea.stroke(); 
         if (e.cancelable) e.preventDefault(); 
       };
 
-      const sp = () => { desenhandoTea = false; pararSomGizRealista(); };
+      const sp = () => { 
+        desenhandoTea = false; 
+        try { audioLousaAoDesenhar.pause(); } catch(err){} 
+      };
       
       canvasTea.addEventListener('mousedown', st); canvasTea.addEventListener('mousemove', mv);
       canvasTea.addEventListener('mouseup', sp); canvasTea.addEventListener('mouseleave', sp);
@@ -1098,12 +1031,15 @@
       canvasTea.addEventListener('touchmove', mv, { passive: false });
       canvasTea.addEventListener('touchend', sp, { passive: false });
       canvasTea.addEventListener('touchcancel', sp, { passive: false });
+      
+      // Carrega o giz por padrão no inicio
+      mudarSomLousaTea('giz');
     }
 
     function limparLousaSensorial() { if (ctxTea && canvasTea) ctxTea.clearRect(0, 0, canvasTea.width, canvasTea.height); }
-    function liberarLousaTEA() { exibirToast("🌟 Todos os recursos liberados!"); } // Requisitado pela Evelyn
+    function liberarLousaTEA() { exibirToast("🌟 Todos os recursos liberados!"); }
 
-    /* JOGO BANDINHA (LÓGICA FREEMIUM) */
+    /* JOGO BANDINHA */
     function abrirInstrumento(tipo) {
       const vips = ['teclado', 'violao', 'flauta', 'saxofone'];
       if (vips.includes(tipo) && !isVip) return abrirModalVip();
@@ -1112,8 +1048,7 @@
       const activeTab = document.getElementById('tabInst-' + tipo);
       if(activeTab) activeTab.classList.add('active');
       
-      const p = document.getElementById('painelInstrumento'); 
-      p.innerHTML = '';
+      const p = document.getElementById('painelInstrumento'); p.innerHTML = '';
 
       const config = {
         guitarra: [{n:'Dó', s:'sawtooth', f:261}, {n:'Ré', s:'sawtooth', f:293}, {n:'Mi', s:'sawtooth', f:329}, {n:'Fá', s:'sawtooth', f:349}, {n:'Sol', s:'sawtooth', f:392}, {n:'Lá', s:'sawtooth', f:440}, {n:'Si', s:'sawtooth', f:493}],
@@ -1126,14 +1061,12 @@
 
       if(config[tipo]) {
         config[tipo].forEach(nota => {
-          const btn = document.createElement('button'); 
-          btn.className = 'game-choice-btn'; btn.style.padding = '14px 18px'; 
+          const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.style.padding = '14px 18px'; 
           const icones = {guitarra:'🎸', teclado:'🎹', violao:'🎻', bateria:'🥁', flauta:'🪈', saxofone:'🎷'};
           btn.innerHTML = `<span style="font-size:26px; display:block; margin-bottom:6px;">${icones[tipo]}</span><span style="font-size:14px;">${nota.n}</span>`;
-          
           btn.onmousedown = btn.ontouchstart = (e) => { 
-            tocarNotaReal(nota.s, nota.f); btn.style.transform = 'scale(0.9)'; 
-            if(e.cancelable) e.preventDefault();
+            try{ const ctx = new (window.AudioContext || window.webkitAudioContext)(); const osc = ctx.createOscillator(); const gain = ctx.createGain(); osc.type = nota.s; osc.frequency.setValueAtTime(nota.f, ctx.currentTime); gain.gain.setValueAtTime(0.5 * volumeEfeitos, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.8); osc.connect(gain); gain.connect(ctx.destination); osc.start(); osc.stop(ctx.currentTime + 0.8); } catch(err){}
+            btn.style.transform = 'scale(0.9)'; if(e.cancelable) e.preventDefault();
           };
           btn.onmouseup = btn.ontouchend = btn.onmouseleave = () => { btn.style.transform = 'scale(1)'; };
           p.appendChild(btn);
@@ -1141,82 +1074,26 @@
       }
     }
 
-    function tocarNotaReal(tipo, freq) {
-      if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
-      try { 
-        const ctx = getAudioContext(); 
-        const osc = ctx.createOscillator(); const gain = ctx.createGain(); 
-        osc.type = tipo; osc.frequency.setValueAtTime(freq, ctx.currentTime); 
-        gain.gain.setValueAtTime(0.5 * volumeEfeitos, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.8); 
-        osc.connect(gain); gain.connect(ctx.destination); 
-        osc.start(); osc.stop(ctx.currentTime + 0.8); 
-      } catch(e) {}
-    }
+    const LINKS_ANIMACOES_XEXEU = { normal: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif", comendo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336738/XEXEU_COMENDO_1.gif", dormindo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336364/XEXEU_DORMINDO.gif", brincando: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336534/XEXEU_FELIZ.gif", triste: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336521/XEXEU_TRISTE.gif", carinho: "https://res.cloudinary.com/oactqmgs/image/upload/v1787341883/XEXEU_COMENDO.png" };
+    const LINKS_AUDIOS_XEXEU = { comendo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787338974/xexeu_coemndo.mp3", brincando: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339401/xexeu_rindo.mp3", dormindo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339945/xexeu_dormindo.mp3", ola: "https://res.cloudinary.com/oactqmgs/video/upload/v1787341990/ElevenLabs_2026-08-21T19_52_54_xexeu_gen_sp100_s50_sb75_se0_b_m2.mp3" };
 
-    /* PERSONAGENS E RESTANTE DOS JOGOS (Mantidos e otimizados) */
-    const LINKS_ANIMACOES_XEXEU = {
-      normal: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336231/XEXEU_NORMAL.gif", 
-      comendo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336738/XEXEU_COMENDO_1.gif", 
-      dormindo: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336364/XEXEU_DORMINDO.gif", 
-      brincando: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336534/XEXEU_FELIZ.gif", 
-      triste: "https://res.cloudinary.com/oactqmgs/image/upload/v1787336521/XEXEU_TRISTE.gif", 
-      carinho: "https://res.cloudinary.com/oactqmgs/image/upload/v1787341883/XEXEU_COMENDO.png" 
-    };
+    let audioXexeuAtual = null;
+    function tocarVozXexeu(urlAudio) { if (!audioAtivo || document.body.classList.contains('sensory-mode')) return; if (audioXexeuAtual) { audioXexeuAtual.pause(); audioXexeuAtual.currentTime = 0; } audioXexeuAtual = new Audio(urlAudio); audioXexeuAtual.volume = volumeVoz; audioXexeuAtual.play().catch(()=>{}); }
 
-    const LINKS_AUDIOS_XEXEU = {
-      comendo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787338974/xexeu_coemndo.mp3", 
-      brincando: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339401/xexeu_rindo.mp3", 
-      dormindo: "https://res.cloudinary.com/oactqmgs/video/upload/v1787339945/xexeu_dormindo.mp3", 
-      ola: "https://res.cloudinary.com/oactqmgs/video/upload/v1787341990/ElevenLabs_2026-08-21T19_52_54_xexeu_gen_sp100_s50_sb75_se0_b_m2.mp3"
-    };
-
-    function tocarVozXexeu(urlAudio) {
-      if (!audioAtivo || document.body.classList.contains('sensory-mode')) return;
-      if (audioXexeuAtual) { audioXexeuAtual.pause(); audioXexeuAtual.currentTime = 0; }
-      audioXexeuAtual = new Audio(urlAudio); audioXexeuAtual.volume = volumeVoz; audioXexeuAtual.play().catch(()=>{});
-    }
-
-    function animarMascote() {
-      if(petDormindo) return;
-      clearTimeout(timeoutAcaoPet); petAcaoAtiva = true;
-      document.getElementById('mascoteXexeuHome').classList.add('falando');
-      petStatus.alegria = Math.min(100, petStatus.alegria + 15);
-      document.getElementById('imgXexeuPet').src = LINKS_ANIMACOES_XEXEU.carinho;
-      if (LINKS_AUDIOS_XEXEU.ola) tocarVozXexeu(LINKS_AUDIOS_XEXEU.ola);
-      const frases = ["Que carinho gostoso!", "Hihihi, eu adoro!", "Você é meu melhor amigo!"];
-      document.getElementById('balaoMascote').innerText = frases[Math.floor(Math.random() * frases.length)];
-      atualizarBarrasPet(); timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000);
-    }
-    
-    function resetarAnimacaoMascote() { 
-      document.getElementById('mascoteXexeuHome').classList.remove('falando'); 
-      petAcaoAtiva = false; if(!petDormindo) atualizarBarrasPet(); 
-    }
+    function animarMascote() { if(petDormindo) return; clearTimeout(timeoutAcaoPet); petAcaoAtiva = true; document.getElementById('mascoteXexeuHome').classList.add('falando'); petStatus.alegria = Math.min(100, petStatus.alegria + 15); document.getElementById('imgXexeuPet').src = LINKS_ANIMACOES_XEXEU.carinho; if (LINKS_AUDIOS_XEXEU.ola) tocarVozXexeu(LINKS_AUDIOS_XEXEU.ola); const frases = ["Que carinho gostoso!", "Hihihi, eu adoro!", "Você é meu melhor amigo!"]; document.getElementById('balaoMascote').innerText = frases[Math.floor(Math.random() * frases.length)]; atualizarBarrasPet(); timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3000); }
+    function resetarAnimacaoMascote() { document.getElementById('mascoteXexeuHome').classList.remove('falando'); petAcaoAtiva = false; if(!petDormindo) atualizarBarrasPet(); }
 
     function atualizarBarrasPet() {
-      document.getElementById('barFome').style.width = petStatus.fome + '%'; 
-      document.getElementById('barEnergia').style.width = petStatus.energia + '%'; 
-      document.getElementById('barAlegria').style.width = petStatus.alegria + '%';
-      if(!petDormindo && !petAcaoAtiva) {
-        const img = document.getElementById('imgXexeuPet');
-        if(img) { 
-           const srcAlvo = (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) ? LINKS_ANIMACOES_XEXEU.triste : LINKS_ANIMACOES_XEXEU.normal; 
-           if(img.src !== srcAlvo) img.src = srcAlvo;
-        }
-      }
+      document.getElementById('barFome').style.width = petStatus.fome + '%'; document.getElementById('barEnergia').style.width = petStatus.energia + '%'; document.getElementById('barAlegria').style.width = petStatus.alegria + '%';
+      if(!petDormindo && !petAcaoAtiva) { const img = document.getElementById('imgXexeuPet'); if(img) { const srcAlvo = (petStatus.fome < 30 || petStatus.energia < 30 || petStatus.alegria < 30) ? LINKS_ANIMACOES_XEXEU.triste : LINKS_ANIMACOES_XEXEU.normal; if(img.src !== srcAlvo) img.src = srcAlvo; } }
     }
 
     function gerarParticulasNoQuarto(emoji, qtd) {
-      if (document.body.classList.contains('sensory-mode')) return; // Sem partículas no modo calmo
+      if (document.body.classList.contains('sensory-mode')) return;
       const quarto = document.getElementById('quartoXexeu');
       for(let i = 0; i < qtd; i++) {
-        const p = document.createElement('div');
-        p.innerText = emoji; p.style.position = 'absolute'; p.style.fontSize = (Math.random() * 20 + 20) + 'px'; 
-        p.style.left = (Math.random() * 90 + 5) + '%'; p.style.top = (Math.random() * 50 + 50) + '%'; 
-        p.style.pointerEvents = 'none'; p.style.zIndex = '15'; p.style.transition = 'all 1.5s ease-out';
-        quarto.appendChild(p);
-        setTimeout(() => { p.style.transform = `translateY(-180px) rotate(${Math.random()*360}deg)`; p.style.opacity = '0'; }, 50);
-        setTimeout(() => p.remove(), 1600);
+        const p = document.createElement('div'); p.innerText = emoji; p.style.position = 'absolute'; p.style.fontSize = (Math.random() * 20 + 20) + 'px'; p.style.left = (Math.random() * 90 + 5) + '%'; p.style.top = (Math.random() * 50 + 50) + '%'; p.style.pointerEvents = 'none'; p.style.zIndex = '15'; p.style.transition = 'all 1.5s ease-out'; quarto.appendChild(p);
+        setTimeout(() => { p.style.transform = `translateY(-180px) rotate(${Math.random()*360}deg)`; p.style.opacity = '0'; }, 50); setTimeout(() => p.remove(), 1600);
       }
     }
 
@@ -1231,8 +1108,7 @@
       else if (acao === 'banho') { petStatus.alegria = Math.min(100, petStatus.alegria + 15); img.src = LINKS_ANIMACOES_XEXEU.brincando; tocarSomPop(); gerarParticulasNoQuarto('🫧', 15); exibirToast("Que banho refrescante!"); }
       else if (acao === 'festa') { petStatus.alegria = 100; petStatus.energia = Math.max(0, petStatus.energia - 30); img.src = LINKS_ANIMACOES_XEXEU.brincando; tocarSomAcerto(); gerarParticulasNoQuarto('🎉', 25); exibirToast("Festa da Turminha!"); }
       else if (acao === 'dormir') {
-        petDormindo = !petDormindo; petAcaoAtiva = false;
-        document.getElementById('filtroNoite').style.display = petDormindo ? 'block' : 'none';
+        petDormindo = !petDormindo; petAcaoAtiva = false; document.getElementById('filtroNoite').style.display = petDormindo ? 'block' : 'none';
         if (petDormindo) { img.src = LINKS_ANIMACOES_XEXEU.dormindo; tocarVozXexeu(LINKS_AUDIOS_XEXEU.dormindo); exibirToast("Boa noite, Xexéu..."); } else { exibirToast("Bom dia!"); atualizarBarrasPet(); return; }
       }
       atualizarScore(2); timeoutAcaoPet = setTimeout(resetarAnimacaoMascote, 3500); atualizarBarrasPet();
@@ -1244,28 +1120,16 @@
     }, 5000); 
 
     function navegar(paginaId) {
-      if(audioLousaBGAqui) { audioLousaBGAqui.pause(); audioLousaBGAqui = null; }
-      somAtualLousaTea = 'giz';
-      document.querySelectorAll('[id^="btnSomLousa-"]').forEach(b => b.classList.remove('active'));
-      const btnGiz = document.getElementById('btnSomLousa-giz');
-      if(btnGiz) btnGiz.classList.add('active');
-
+      if(audioLousaAoDesenhar) { try{audioLousaAoDesenhar.pause();}catch(e){} }
       document.querySelectorAll('.page-box').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-item-btn').forEach(b => b.classList.remove('active'));
-      const targetPage = document.getElementById('page-' + paginaId);
-      if(targetPage) targetPage.classList.add('active');
-      const btn = Array.from(document.querySelectorAll('.nav-item-btn')).find(b => b.getAttribute('onclick')?.includes(paginaId)); 
-      if (btn) btn.classList.add('active');
-      
+      const targetPage = document.getElementById('page-' + paginaId); if(targetPage) targetPage.classList.add('active');
+      const btn = Array.from(document.querySelectorAll('.nav-item-btn')).find(b => b.getAttribute('onclick')?.includes(paginaId)); if (btn) btn.classList.add('active');
       if (paginaId === 'jogos') trocarJogo('ciclo');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function atualizarScore(pts) { 
-      pontos += pts; localStorage.setItem('xexeu_pontos', pontos); 
-      document.getElementById('headerPontos').innerText = pontos; 
-      desenharCertificadoCanvas(); 
-    }
+    function atualizarScore(pts) { pontos += pts; localStorage.setItem('xexeu_pontos', pontos); document.getElementById('headerPontos').innerText = pontos; desenharCertificadoCanvas(); }
 
     /* LOUSA PRINCIPAL NORMAL */
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
@@ -1274,17 +1138,10 @@
       const resizeLousa = () => { if (canvas && canvas.parentElement) { canvas.width = canvas.parentElement.clientWidth; canvas.height = canvas.parentElement.clientWidth * (9/16); } };
       resizeLousa(); window.addEventListener('resize', resizeLousa);
 
-      const getP = (e) => { 
-        const r = canvas.getBoundingClientRect(); 
-        const cx = e.clientX !== undefined ? e.clientX : (e.touches ? e.touches[0].clientX : 0); 
-        const cy = e.clientY !== undefined ? e.clientY : (e.touches ? e.touches[0].clientY : 0); 
-        return { x: (cx - r.left)*(canvas.width/r.width), y: (cy - r.top)*(canvas.height/r.height) }; 
-      };
-      
+      const getP = (e) => { const r = canvas.getBoundingClientRect(); const cx = e.clientX !== undefined ? e.clientX : (e.touches ? e.touches[0].clientX : 0); const cy = e.clientY !== undefined ? e.clientY : (e.touches ? e.touches[0].clientY : 0); return { x: (cx - r.left)*(canvas.width/r.width), y: (cy - r.top)*(canvas.height/r.height) }; };
       const st = (e) => { desenhando = true; const p = getP(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap='round'; ctx.lineJoin='round'; };
       const mv = (e) => { if(!desenhando) return; const p = getP(e); ctx.lineTo(p.x, p.y); ctx.stroke(); if(e.cancelable) e.preventDefault(); };
       const sp = () => desenhando = false;
-      
       canvas.addEventListener('mousedown', st); canvas.addEventListener('mousemove', mv); canvas.addEventListener('mouseup', sp); canvas.addEventListener('mouseleave', sp);
       canvas.addEventListener('touchstart', st, {passive:false}); canvas.addEventListener('touchmove', mv, {passive:false}); canvas.addEventListener('touchend', sp);
       renderThumbnailsLousa();
@@ -1297,14 +1154,10 @@
     function renderThumbnailsLousa() {
       const c = document.getElementById('lousaThumbnails'); if (!c) return; c.innerHTML = '';
       const bLivre = document.createElement('button'); bLivre.className = 'btn-tactile'; bLivre.innerHTML = '✏️ Livre'; bLivre.onclick = () => limparCanvasLousa(); c.appendChild(bLivre);
-
       PERSONAGENS.forEach((p, idx) => {
-        const isLocked = !isVip && idx >= 3; 
-        const b = document.createElement('button'); b.className = 'btn-tactile';
-        if (isLocked) { 
-          b.style.cssText = "background: #FFFBEB; border-color: #FCD34D; color: #92400E;"; b.innerHTML = `🔒 ${p.nome}`; 
-          b.onclick = () => { abrirModalVip(); }; 
-        } else {
+        const isLocked = !isVip && idx >= 3; const b = document.createElement('button'); b.className = 'btn-tactile';
+        if (isLocked) { b.style.cssText = "background: #FFFBEB; border-color: #FCD34D; color: #92400E;"; b.innerHTML = `🔒 ${p.nome}`; b.onclick = () => { abrirModalVip(); }; } 
+        else {
           b.innerHTML = `<img src="${p.img}" style="width:22px;height:22px;object-fit:contain;margin-right:4px;"> ${p.nome}`;
           b.onclick = () => { limparCanvasLousa(); const img = new Image(); img.crossOrigin = 'Anonymous'; img.src = p.lousa; img.onload = () => { ctx.globalAlpha = 0.35; ctx.drawImage(img, (canvas.width - 280)/2, 20, 280, 280); ctx.globalAlpha = 1.0; }; };
         }
@@ -1319,12 +1172,8 @@
       const btn = Array.from(document.querySelectorAll('.game-subtab-btn')).find(b => b.getAttribute('onclick')?.includes(subjogo)); if (btn) btn.classList.add('active');
       
       if (subjogo === 'lousa') { if(canvas && canvas.parentElement) { canvas.width = canvas.parentElement.clientWidth; canvas.height = canvas.parentElement.clientWidth * (9/16); } }
-      if (subjogo === 'banda') abrirInstrumento('guitarra'); 
-      if (subjogo === 'contar') iniciarJogoContar(); 
-      if (subjogo === 'letras') iniciarJogoLetras(); 
-      if (subjogo === 'memoria') iniciarJogoMemoria(); 
-      if (subjogo === 'quiz') iniciarJogoQuiz(); 
-      if (subjogo === 'sombras') iniciarJogoSombras();
+      if (subjogo === 'banda') abrirInstrumento('guitarra'); if (subjogo === 'contar') iniciarJogoContar(); if (subjogo === 'letras') iniciarJogoLetras(); 
+      if (subjogo === 'memoria') iniciarJogoMemoria(); if (subjogo === 'quiz') iniciarJogoQuiz(); if (subjogo === 'sombras') iniciarJogoSombras();
     }
 
     function setNivelContar(n) { if (n === 3 && !isVip) return abrirModalVip(); nivelContar = n; document.querySelectorAll('[id^="btnNivelContar-"]').forEach(b => b.classList.remove('active')); document.getElementById('btnNivelContar-' + n)?.classList.add('active'); iniciarJogoContar(); }
@@ -1336,10 +1185,7 @@
       let op = [q]; while(op.length < (nivelContar===1?3:(nivelContar===2?5:6))) { let r = Math.floor(Math.random() * (nivelContar===1?5:(nivelContar===2?10:20))) + 1; if(!op.includes(r)) op.push(r); }
       op.sort(()=>Math.random()-0.5).forEach(num => {
         const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.innerText = num;
-        btn.onclick = () => { 
-          if (num===q) { btn.classList.add('correct'); tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoContar, 800); } 
-          else { btn.classList.add('wrong'); tocarSomErro(); setTimeout(()=>btn.classList.remove('wrong'), 500); } 
-        };
+        btn.onclick = () => { if (num===q) { btn.classList.add('correct'); tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoContar, 800); } else { btn.classList.add('wrong'); tocarSomErro(); setTimeout(()=>btn.classList.remove('wrong'), 500); } };
         bBox.appendChild(btn);
       });
     }
@@ -1353,10 +1199,7 @@
       const op = [p.letra, ...pool.sort(()=>Math.random()-0.5).slice(0, (nivelLetras===1?1:(nivelLetras===2?3:5)))].sort(()=>Math.random()-0.5);
       op.forEach(l => {
         const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.innerText = l;
-        btn.onclick = () => { 
-          if (l===p.letra) { btn.classList.add('correct'); tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoLetras, 800); } 
-          else { btn.classList.add('wrong'); tocarSomErro(); setTimeout(()=>btn.classList.remove('wrong'), 500); } 
-        };
+        btn.onclick = () => { if (l===p.letra) { btn.classList.add('correct'); tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoLetras, 800); } else { btn.classList.add('wrong'); tocarSomErro(); setTimeout(()=>btn.classList.remove('wrong'), 500); } };
         bBox.appendChild(btn);
       });
     }
@@ -1369,10 +1212,7 @@
       const op = [p, ...pool.filter(x=>x.nome!==p.nome).sort(()=>Math.random()-0.5).slice(0, (nivelSombras===1?2:(nivelSombras===2?3:5)))].sort(()=>Math.random()-0.5);
       op.forEach(o => {
         const btn = document.createElement('button'); btn.className = 'btn-tactile'; btn.style.padding = '8px'; btn.innerHTML = `<img src="${o.img}" style="width:50px;height:50px;object-fit:contain;display:block;"><span style="font-size:13px;">${o.nome}</span>`;
-        btn.onclick = () => { 
-          if (o.nome===p.nome) { btn.style.borderColor="var(--green)"; img.style.filter="none"; tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoSombras, 1200); } 
-          else { btn.style.animation="shakeError 0.4s"; tocarSomErro(); setTimeout(()=>btn.style.animation="", 600); } 
-        };
+        btn.onclick = () => { if (o.nome===p.nome) { btn.style.borderColor="var(--green)"; img.style.filter="none"; tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoSombras, 1200); } else { btn.style.animation="shakeError 0.4s"; tocarSomErro(); setTimeout(()=>btn.style.animation="", 600); } };
         bBox.appendChild(btn);
       });
     }
@@ -1388,10 +1228,7 @@
         tile.onclick = () => {
           if (trava||tile.classList.contains('flipped')||tile.classList.contains('matched')) return;
           tocarSomPop(); tile.classList.add('flipped'); tile.innerHTML = `<img src="${p.img}" style="display:block; width:100%;">`;
-          if (!s1) { s1={tile, p}; } else { 
-            if (s1.p.nome===p.nome) { s1.tile.classList.add('matched'); tile.classList.add('matched'); tocarSomAcerto(); atualizarScore(5); s1=null; } 
-            else { trava=true; tocarSomErro(); setTimeout(()=>{ s1.tile.classList.remove('flipped'); s1.tile.innerHTML=`<span>❓</span>`; tile.classList.remove('flipped'); tile.innerHTML=`<span>❓</span>`; s1=null; trava=false; }, 700); } 
-          }
+          if (!s1) { s1={tile, p}; } else { if (s1.p.nome===p.nome) { s1.tile.classList.add('matched'); tile.classList.add('matched'); tocarSomAcerto(); atualizarScore(5); s1=null; } else { trava=true; tocarSomErro(); setTimeout(()=>{ s1.tile.classList.remove('flipped'); s1.tile.innerHTML=`<span>❓</span>`; tile.classList.remove('flipped'); tile.innerHTML=`<span>❓</span>`; s1=null; trava=false; }, 700); } }
         }; 
         grid.appendChild(tile);
       });
@@ -1404,10 +1241,7 @@
       const op = [p.nome, ...PERSONAGENS.filter(x=>x.nome!==p.nome).sort(()=>Math.random()-0.5).slice(0, (nivelQuiz===1?1:(nivelQuiz===2?2:3))).map(o=>o.nome)].sort(()=>Math.random()-0.5);
       op.forEach(nome => {
         const btn = document.createElement('button'); btn.className = 'game-choice-btn'; btn.innerText = nome;
-        btn.onclick = () => { 
-          if (nome===p.nome) { btn.classList.add('correct'); tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoQuiz, 800); } 
-          else { btn.classList.add('wrong'); tocarSomErro(); setTimeout(()=>btn.classList.remove('wrong'), 500); } 
-        }; 
+        btn.onclick = () => { if (nome===p.nome) { btn.classList.add('correct'); tocarSomAcerto(); atualizarScore(5); setTimeout(iniciarJogoQuiz, 800); } else { btn.classList.add('wrong'); tocarSomErro(); setTimeout(()=>btn.classList.remove('wrong'), 500); } }; 
         bBox.appendChild(btn);
       });
     }
