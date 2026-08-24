@@ -58,7 +58,6 @@
     .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
     .btn-icon-round { width: 46px; height: 46px; border-radius: 50%; padding: 0; font-size: 18px; }
 
-    /* ESTILOS DE VIP E AMOSTRA GRÁTIS */
     .btn-tactile.vip-lock { background: #F8FAFC; border-color: #CBD5E1; color: #94A3B8; box-shadow: var(--shadow-3d); }
     .btn-tactile.vip-unlocked { background: linear-gradient(135deg, #F59E0B, #D97706); border-color: #B45309; color: #FFF; box-shadow: var(--shadow-3d-vip); }
     .btn-tactile.asmr-unlocked { background: #FFF; border-color: #10B981; color: #047857; box-shadow: var(--shadow-3d); }
@@ -596,7 +595,7 @@
         
         <div style="display:flex; justify-content:center; gap:8px; margin-bottom: 14px; flex-wrap: wrap;">
           <button class="btn-tactile active" id="btnSomLousa-giz" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('giz')">🖍️ Giz</button>
-          <button class="btn-tactile" id="btnSomLousa-asmr1" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr1')">🪵 ASMR 1</button>
+          <button class="btn-tactile" id="btnSomLousa-asmr1" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr1')">🎧 ASMR 1</button>
           <button class="btn-tactile btn-vip-dyn" data-tipo="asmr2" id="btnSomLousa-asmr2" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr2')">✨ ASMR 2</button>
           <button class="btn-tactile btn-vip-dyn" data-tipo="asmr3" id="btnSomLousa-asmr3" style="padding: 8px 12px; font-size: 13px;" onclick="mudarSomLousaTea('asmr3')">🌙 ASMR 3</button>
           <button class="btn-tactile" id="btnSomLousa-mudo" style="padding: 8px 12px; font-size: 13px; color: #64748B;" onclick="mudarSomLousaTea('mudo')">🔇 Sem Som</button>
@@ -623,40 +622,33 @@
         </div>
       </div>
 
-      <!-- SESSÃO DE RELAXAMENTO (ÁUDIOS DA LOUSA PARA OUVIR) -->
+      <!-- SESSÃO DE RELAXAMENTO CLÁSSICA -->
       <div class="game-card" style="border-color: #6EE7B7; background: #F0FDF4;">
         <div class="game-card-title" style="color: #047857;">
-          <span>🎧 Sessão de Relaxamento (ASMR)</span>
-          <span style="font-size: 13px; background: #DCFCE7; color: #166534; padding: 4px 12px; border-radius: 20px;">Sons da Lousa 🌿</span>
+          <span>🎧 Sessão de Relaxamento</span>
+          <span style="font-size: 13px; background: #DCFCE7; color: #166534; padding: 4px 12px; border-radius: 20px;">Foco e Calma 🌿</span>
         </div>
-        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Feche os olhos e aproveite os sons suaves para relaxar, se concentrar ou dormir.</p>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">Feche os olhos e aproveite os sons contínuos para relaxar ou dormir tranquilamente.</p>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-          <!-- Opção Grátis -->
+          <!-- Opção Grátis (Placeholder preparado) -->
           <div style="background: #FFF; border: 2px solid #CBD5E1; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
-            <span style="font-size: 32px; display: block; margin-bottom: 6px;">🪵</span>
-            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">ASMR 1 (47s)</h4>
-            <button class="btn-tactile" style="width: 100%; border-color:#6EE7B7; color:#047857;" onclick="tocarAsmrMesaVids('https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_47_segundos.mp3', false)">▶️ Ouvir</button>
+            <span style="font-size: 32px; display: block; margin-bottom: 6px;">🌧️</span>
+            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">Chuva Leve</h4>
+            <button class="btn-tactile" style="width: 100%; border-color:#6EE7B7; color:#047857;" onclick="tocarAsmrMesaVids('COLOQUE_O_LINK_AQUI', false)">▶️ Ouvir</button>
           </div>
 
-          <!-- Opções VIP (Dinâmicas) -->
+          <!-- Opções VIP Dinâmicas (Placeholder preparado) -->
           <div style="background: #FFF; border: 2px solid #CBD5E1; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
-            <span style="font-size: 32px; display: block; margin-bottom: 6px;">✨</span>
-            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">ASMR 2 (2m)</h4>
-            <button class="btn-tactile btn-vip-dyn-asmr-play" data-url="https://res.cloudinary.com/oactqmgs/video/upload/v1787438184/op%C3%A7%C3%A3o_da_mesa_2_minutos.mp3" style="width: 100%;" onclick="tocarAsmrMesaVids(this.getAttribute('data-url'), true)">🔒 VIP</button>
+            <span style="font-size: 32px; display: block; margin-bottom: 6px;">📻</span>
+            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">Ruído Branco</h4>
+            <button class="btn-tactile btn-vip-dyn-asmr-play" data-url="COLOQUE_O_LINK_AQUI" style="width: 100%;" onclick="tocarAsmrMesaVids(this.getAttribute('data-url'), true)">🔒 VIP</button>
           </div>
 
           <div style="background: #FFF; border: 2px solid #CBD5E1; border-radius: 16px; padding: 18px; text-align: center; box-shadow: var(--shadow-sm);">
-            <span style="font-size: 32px; display: block; margin-bottom: 6px;">🌙</span>
-            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">ASMR 3 (4m)</h4>
-            <button class="btn-tactile btn-vip-dyn-asmr-play" data-url="https://res.cloudinary.com/oactqmgs/video/upload/v1787438185/Op%C3%A7%C3%A3o_mesa_tea_4_minutos.mp3" style="width: 100%;" onclick="tocarAsmrMesaVids(this.getAttribute('data-url'), true)">🔒 VIP</button>
-          </div>
-
-          <!-- Em Breve -->
-          <div style="background: #F8FAFC; border: 2px dashed #CBD5E1; border-radius: 16px; padding: 18px; text-align: center; opacity: 0.8;">
-            <span style="font-size: 32px; display: block; margin-bottom: 6px;">😴</span>
-            <h4 style="font-size: 15px; color: var(--text-muted); margin-bottom: 12px;">Respiração Guiada</h4>
-            <span style="background: #E2E8F0; color: #64748B; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 10px;">⏳ Em Breve</span>
+            <span style="font-size: 32px; display: block; margin-bottom: 6px;">🌊</span>
+            <h4 style="font-size: 15px; color: var(--text-main); margin-bottom: 12px;">Ondas do Mar</h4>
+            <button class="btn-tactile btn-vip-dyn-asmr-play" data-url="COLOQUE_O_LINK_AQUI" style="width: 100%;" onclick="tocarAsmrMesaVids(this.getAttribute('data-url'), true)">🔒 VIP</button>
           </div>
         </div>
       </div>
@@ -1200,7 +1192,7 @@
 
     function atualizarScore(pts) { pontos += pts; localStorage.setItem('xexeu_pontos', pontos); document.getElementById('headerPontos').innerText = pontos; desenharCertificadoCanvas(); }
 
-    /* LOUSA NORMAL (COM FIX DE SCROLL) */
+    /* LOUSA NORMAL (COM FIX DE SCROLL E PONTO) */
     let canvas, ctx, desenhando = false, corAtual = '#2563EB', tamanhoPincel = 6;
     function initLousa() {
       canvas = document.getElementById('paintCanvas'); if (!canvas) return; ctx = canvas.getContext('2d'); 
@@ -1222,7 +1214,7 @@
         if (e.cancelable) e.preventDefault();
         desenhando = true; const p = getP(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); 
         ctx.strokeStyle = corAtual; ctx.lineWidth = tamanhoPincel; ctx.lineCap='round'; ctx.lineJoin='round'; 
-        ctx.lineTo(p.x + 0.1, p.y + 0.1); ctx.stroke(); // Desenha um ponto ao tocar
+        ctx.lineTo(p.x + 0.1, p.y + 0.1); ctx.stroke(); 
       };
       const mv = (e) => { 
         if (e.cancelable) e.preventDefault();
