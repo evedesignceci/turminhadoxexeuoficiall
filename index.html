@@ -8,35 +8,17 @@
   <link rel="icon" type="image/png" href="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --primary: #2563EB; 
-      --primary-hover: #1D4ED8; 
-      --secondary: #F59E0B; 
-      --secondary-dark: #D97706;
-      --accent: #EF4444; 
-      --purple: #8B5CF6; 
-      --pink: #EC4899; 
-      --green: #10B981; 
-      --green-dark: #059669;
-      --tea-blue: #0284C7; 
-      --bg-canvas: #F0F7FF; 
-      --card-bg: #FFFFFF; 
-      --text-main: #0F172A; 
-      --text-muted: #475569;
-      --border-color: #CBD5E1; 
-      --radius-xl: 32px; 
-      --radius-lg: 20px; 
-      --radius-md: 14px;
-      --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.05); 
-      --shadow-md: 0 10px 25px -3px rgba(37, 99, 235, 0.1);
-      --shadow-3d: 0 5px 0px #CBD5E1; 
-      --shadow-3d-primary: 0 5px 0px #1E40AF; 
-      --shadow-3d-vip: 0 5px 0px #B45309;
-      --shadow-3d-green: 0 5px 0px #047857; 
-      --shadow-3d-pink: 0 5px 0px #BE185D;
+      --primary: #2563EB; --primary-hover: #1D4ED8; --secondary: #F59E0B; --secondary-dark: #D97706;
+      --accent: #EF4444; --purple: #8B5CF6; --pink: #EC4899; --green: #10B981; --green-dark: #059669;
+      --tea-blue: #0284C7; --bg-canvas: #F0F7FF; --card-bg: #FFFFFF; --text-main: #1E293B; --text-muted: #64748B;
+      --border-color: #CBD5E1; --radius-xl: 32px; --radius-lg: 20px; --radius-md: 14px;
+      --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.04); --shadow-md: 0 10px 25px -3px rgba(37, 99, 235, 0.08);
+      --shadow-3d: 0 5px 0px #CBD5E1; --shadow-3d-primary: 0 5px 0px #1E40AF; --shadow-3d-vip: 0 5px 0px #B45309;
+      --shadow-3d-green: 0 5px 0px #047857; --shadow-3d-pink: 0 5px 0px #BE185D;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', 'Nunito', sans-serif; -webkit-tap-highlight-color: transparent; }
@@ -44,82 +26,118 @@
 
     /* MODO SENSORIAL (TEA) */
     body.sensory-mode {
-      --bg-canvas: #F5F2EB !important; 
-      --card-bg: #FAF8F5 !important; 
-      --primary: #4A6B82 !important;
-      --primary-hover: #3D5A6C !important; 
-      --secondary: #8C7355 !important; 
-      --tea-blue: #4A6B82 !important;
-      --purple: #695D75 !important; 
-      --pink: #855C68 !important; 
-      --green: #4D7364 !important;
-      --accent: #874C4C !important; 
-      --text-main: #242628 !important; 
-      --text-muted: #575A5E !important;
-      --border-color: #D6D0C4 !important; 
-      --shadow-3d: 0 2px 0px #C7BFB1 !important;
+      --bg-canvas: #F5F2EB !important; --card-bg: #FAF8F5 !important; --primary: #4A6B82 !important;
+      --primary-hover: #3D5A6C !important; --secondary: #8C7355 !important; --tea-blue: #4A6B82 !important;
+      --purple: #695D75 !important; --pink: #855C68 !important; --green: #4D7364 !important;
+      --accent: #874C4C !important; --text-main: #242628 !important; --text-muted: #575A5E !important;
+      --border-color: #D6D0C4 !important; --shadow-3d: 0 2px 0px #C7BFB1 !important;
       --shadow-md: 0 4px 10px rgba(0,0,0,0.03) !important;
     }
-    body.sensory-mode *, @media (prefers-reduced-motion: reduce) {
-      animation: none !important; 
-      transition: none !important; 
-    }
-    body.sensory-mode .vip-floating-bar { display: none !important; }
+    body.sensory-mode *, @media (prefers-reduced-motion: reduce) { animation: none !important; transition: none !important; }
+    body.sensory-mode .vip-floating-bar { display: none !important; } 
 
-    .app-shell { width: 100%; max-width: 1200px; margin: 0 auto; padding: 16px 20px 80px; display: flex; flex-direction: column; gap: 20px; }
+    .app-shell { width: 100%; max-width: 1400px; margin: 0 auto; padding: 16px 20px 100px; display: flex; flex-direction: column; gap: 20px; }
     
-    header.game-header { background: var(--card-bg); padding: 14px 24px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-md); border: 3px solid var(--border-color); gap: 16px; flex-wrap: wrap; }
-    .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; font-size: 20px; font-weight: 800; color: var(--primary); }
-    .logo-img { height: 48px; width: auto; object-fit: contain; }
+    header.game-header { background: var(--card-bg); padding: 12px 28px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-md); border: 3px solid var(--border-color); gap: 16px; flex-wrap: wrap; }
+    .logo-box { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-img { height: 52px; width: auto; object-fit: contain; transition: transform 0.3s; }
+    .logo-img:hover { transform: scale(1.08) rotate(-3deg); }
 
-    .header-quick-stats { display: flex; align-items: center; gap: 12px; background: #FEF3C7; border: 2px solid #F59E0B; padding: 8px 18px; border-radius: 50px; font-weight: 800; color: #78350F; font-size: 15px; position: relative; overflow: hidden; }
-    .xp-bar-container { position: absolute; bottom: 0; left: 0; height: 5px; background: #FDE68A; width: 100%; }
-    .xp-bar-fill { height: 100%; background: #D97706; width: 40%; }
+    .header-quick-stats { display: flex; align-items: center; gap: 12px; background: #FEF3C7; border: 2px solid #FCD34D; padding: 8px 16px; border-radius: 50px; font-weight: 700; color: #92400E; font-size: 15px; position: relative; overflow: hidden; }
+    .xp-bar-container { position: absolute; bottom: 0; left: 0; height: 4px; background: #FDE68A; width: 100%; }
+    .xp-bar-fill { height: 100%; background: #D97706; width: 45%; transition: width 0.5s ease-out; }
 
     .btn-tactile { min-height: 48px; background: #FFFFFF; border: 2px solid #CBD5E1; box-shadow: var(--shadow-3d); color: var(--text-main); padding: 10px 20px; border-radius: var(--radius-md); font-weight: 700; font-size: 15px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.1s, box-shadow 0.1s; text-decoration: none; }
     .btn-tactile:active { transform: translateY(4px); box-shadow: 0 1px 0px #CBD5E1; }
     .btn-tactile.primary { background: var(--primary); border-color: var(--primary-hover); color: #FFF; box-shadow: var(--shadow-3d-primary); }
+    .btn-tactile.vip { background: linear-gradient(135deg, #F59E0B, #D97706); border-color: #B45309; color: #FFF; box-shadow: var(--shadow-3d-vip); }
     .btn-tactile.green { background: var(--green); border-color: var(--green-dark); color: #FFF; box-shadow: var(--shadow-3d-green); }
+    .btn-tactile.pink { background: var(--pink); border-color: #BE185D; color: #FFF; box-shadow: var(--shadow-3d-pink); }
     .btn-tactile.purple { background: var(--purple); border-color: #7C3AED; color: #FFF; box-shadow: 0 5px 0 #6D28D9; }
+    .btn-icon-round { width: 46px; height: 46px; border-radius: 50%; padding: 0; font-size: 18px; }
 
-    nav.main-nav { display: flex; gap: 10px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-lg); border: 3px solid var(--border-color); box-shadow: var(--shadow-sm); overflow-x: auto; scrollbar-width: none; }
+    nav.main-nav { display: flex; gap: 8px; background: #FFFFFF; padding: 10px; border-radius: var(--radius-lg); border: 3px solid var(--border-color); box-shadow: var(--shadow-sm); overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
     nav.main-nav::-webkit-scrollbar { display: none; }
-    .nav-item-btn { flex: 1; min-width: 120px; min-height: 48px; padding: 10px 16px; border: none; background: transparent; border-radius: var(--radius-md); font-weight: 700; font-size: 15px; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background-color 0.2s, color 0.2s; white-space: nowrap; }
+    .nav-item-btn { flex: 1; min-width: 120px; min-height: 48px; padding: 10px 14px; border: none; background: transparent; border-radius: var(--radius-md); font-weight: 700; font-size: 15px; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; white-space: nowrap; }
     .nav-item-btn:hover { background: #F1F5F9; color: var(--primary); }
-    .nav-item-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
+    .nav-item-btn.active { background: var(--primary); color: #FFFFFF; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3); }
 
     .page-box { display: none; flex-direction: column; gap: 20px; animation: slideUpFade 0.3s ease-out; }
     .page-box.active { display: flex; }
-    @keyframes slideUpFade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideUpFade { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
     .game-card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 24px; border: 3px solid var(--border-color); box-shadow: var(--shadow-md); position: relative; }
-    .game-card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
+    .game-card-title { font-size: 22px; font-weight: 800; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+    .hero-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 20px; }
+    .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 900px) { .hero-grid, .grid-2-col { grid-template-columns: 1fr !important; } }
 
     .central-hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 10px; }
-    .hub-card { background: #FFFFFF; border-radius: 20px; padding: 20px; border: 3px solid var(--border-color); box-shadow: 0 5px 0 var(--border-color); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; display: flex; flex-direction: column; gap: 8px; }
-    .hub-card:hover { transform: translateY(-4px); box-shadow: 0 8px 0 var(--primary); border-color: var(--primary); }
-    .hub-card-icon { font-size: 40px; }
+    .hub-card { background: #FFFFFF; border-radius: 20px; padding: 20px; border: 3px solid var(--border-color); box-shadow: 0 6px 0 var(--border-color); cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+    .hub-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 10px 0 var(--primary); border-color: var(--primary); }
+    .hub-card-icon { font-size: 44px; display: block; margin-bottom: 4px; }
+
+    .mascote-virtual { position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 10; margin: 0 auto; width: max-content; }
+    .mascote-virtual img { width: 220px; height: 220px; object-fit: contain; filter: drop-shadow(0 10px 12px rgba(0,0,0,0.15)); transition: transform 0.2s; }
+    .mascote-virtual:active img { transform: scale(0.9); }
+    .balao-fala { position: absolute; top: -20px; right: -30px; background: #FFF; border: 3px solid #8B5CF6; border-radius: 20px 20px 0 20px; padding: 10px 14px; font-size: 13px; font-weight: 800; color: #6D28D9; width: max-content; max-width: 180px; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.2); opacity: 0; transform: translateY(10px); transition: all 0.3s; pointer-events: none; z-index: 20; }
+    .mascote-virtual.falando .balao-fala { opacity: 1; transform: translateY(0); }
+
+    .chars-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; }
+    .char-card-item { background: #FFFFFF; border: 3px solid var(--border-color); border-radius: var(--radius-lg); padding: 16px; text-align: center; cursor: pointer; transition: transform 0.2s, border-color 0.2s; box-shadow: 0 4px 0 var(--border-color); display: flex; flex-direction: column; justify-content: space-between; }
+    .char-card-item:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 8px 0 var(--primary); }
+    .char-card-item .char-avatar { font-size: 48px; margin-bottom: 8px; }
+
+    .social-bar { display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap; background: #FFFFFF; padding: 16px; border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); border: 3px solid var(--border-color); }
+    .social-btn-round { width: 50px; height: 50px; border-radius: 50%; background: #F8FAFC; border: 2px solid #CBD5E1; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 0 #CBD5E1; font-size: 22px; transition: transform 0.2s; }
+    .social-btn-round:hover { transform: translateY(-3px); border-color: var(--primary); box-shadow: 0 6px 0 var(--primary); }
+
+    .vip-floating-bar { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #FCD34D, #F59E0B); border: 3px solid #B45309; padding: 12px 24px; border-radius: 50px; display: flex; align-items: center; justify-content: space-between; gap: 16px; box-shadow: 0 8px 20px rgba(180, 83, 9, 0.3); cursor: pointer; z-index: 1000; color: #78350F; font-weight: 800; width: 90%; max-width: 440px; transition: transform 0.2s; }
+    .vip-floating-bar:hover { transform: translateX(-50%) scale(1.02); }
 
     /* LOUSA */
     .canvas-container-lousa { width: 100%; max-width: 800px; margin: 0 auto; border: 3px dashed #94A3B8; border-radius: var(--radius-lg); overflow: hidden; background: #FFF; }
     #paintCanvas { width: 100%; height: 350px; touch-action: none; cursor: crosshair; display: block; background: #FFFFFF; }
-    .lousa-controls { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 14px; flex-wrap: wrap; }
-    .color-btn { width: 38px; height: 38px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 2px 5px rgba(0,0,0,0.2); cursor: pointer; }
+    .color-btn { width: 40px; height: 40px; border-radius: 50%; border: 3px solid #FFF; box-shadow: 0 2px 5px rgba(0,0,0,0.15); cursor: pointer; flex-shrink: 0; }
 
-    /* JOGO MEMÓRIA */
-    .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 400px; margin: 16px auto; }
+    /* QUIZ / ESCOLHA */
+    .game-choice-btn { background: #FFFFFF; border: 3px solid #8B5CF6; box-shadow: 0 5px 0 #7C3AED; color: #6D28D9; font-size: 20px; font-weight: 800; padding: 14px 24px; border-radius: 16px; cursor: pointer; min-width: 80px; transition: transform 0.1s; }
+    .game-choice-btn:active { transform: translateY(4px); box-shadow: 0 1px 0 #7C3AED; }
+    .game-choice-btn.correct { background: #10B981 !important; border-color: #059669 !important; box-shadow: 0 5px 0 #047857 !important; color: #FFF !important; }
+    .game-choice-btn.wrong { background: #EF4444 !important; border-color: #DC2626 !important; box-shadow: 0 5px 0 #991B1B !important; color: #FFF !important; }
+
+    /* POP-IT */
+    .popit-board { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; max-width: 400px; margin: 14px auto; background: #FDF4FF; border: 3px solid #F0ABFC; padding: 16px; border-radius: 20px; }
+    .popit-bubble { aspect-ratio: 1; border-radius: 50%; background: #E879F9; border: 2px solid #C026D3; cursor: pointer; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.15); transition: transform 0.1s; }
+    .popit-bubble.popped { transform: scale(0.85); background: #F0ABFC; box-shadow: inset 0 4px 0 rgba(0,0,0,0.2); opacity: 0.6; }
+
+    /* MEMÓRIA */
+    .memory-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 420px; margin: 16px auto; }
     .memory-tile { aspect-ratio: 1; background: var(--primary); border-radius: 16px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 0 #1E40AF; font-size: 28px; color: #FFF; transition: transform 0.2s; }
     .memory-tile.flipped { background: #FFFFFF; border: 3px solid var(--primary); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
 
-    /* RESPIRAÇÃO */
-    .breathe-box-interactive { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px; gap: 16px; background: #F8FAFC; border: 3px solid #BAE6FD; border-radius: var(--radius-lg); }
-    .breathe-bubble { width: 110px; height: 110px; background: var(--tea-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 28px; box-shadow: 0 0 20px rgba(2, 132, 199, 0.3); }
+    /* NATUREZA INTERATIVA */
+    .ciclo-bg { background: linear-gradient(180deg, #E0F2FE 0%, #DCFCE7 100%); border-radius: var(--radius-lg); padding: 20px; position: relative; overflow: hidden; height: 360px; border: 4px solid #86EFAC; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+    .ciclo-header { background: rgba(255,255,255,0.9); padding: 8px 16px; border-radius: 50px; font-weight: 800; color: #059669; border: 2px solid #6EE7B7; z-index: 10; }
+    .cena-natureza { position: relative; width: 100%; flex: 1; display: flex; justify-content: center; align-items: flex-end; }
+    .ciclo-chao { position: absolute; bottom: 0; width: 100%; height: 50px; background: #65A30D; border-radius: 0 0 14px 14px; }
+    .ciclo-flor { font-size: 64px; z-index: 5; transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
+    .ciclo-clima { position: absolute; top: 10px; font-size: 50px; transition: all 0.5s; opacity: 0; }
+    .ciclo-clima.ativo { opacity: 1; transform: translateY(10px); }
+    .ciclo-abelha { position: absolute; font-size: 40px; top: 35%; right: -60px; transition: right 2s ease-in-out; }
+    .ciclo-abelha.ativo { right: 45%; }
 
-    /* MODAL & TOAST */
+    /* RESPIRAÇÃO */
+    .breathe-box-interactive { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 280px; gap: 16px; background: #F8FAFC; border: 3px solid #BAE6FD; border-radius: var(--radius-lg); }
+    .breathe-bubble { width: 100px; height: 100px; background: var(--tea-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 16px; transition: transform 4s ease-in-out, background-color 4s; }
+    .breathe-bubble.expand { transform: scale(1.6); background: var(--green); }
+
+    /* MODAL E TOAST */
     .app-modal { display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
     .app-modal.show { display: flex; }
-    .modal-content { background: #FFFFFF; border-radius: var(--radius-xl); padding: 32px 24px; max-width: 420px; width: 100%; border: 4px solid var(--accent); text-align: center; }
-    .form-input { width: 100%; min-height: 48px; padding: 12px; font-size: 16px; border: 2px solid #CBD5E1; border-radius: var(--radius-md); font-weight: 700; margin: 16px 0; text-align: center; outline: none; }
+    .modal-content { background: #FFFFFF; border-radius: var(--radius-xl); padding: 32px 24px; max-width: 440px; width: 100%; border: 4px solid var(--accent); text-align: center; }
+    .form-input { width: 100%; min-height: 48px; padding: 12px; font-size: 16px; border: 2px solid #CBD5E1; border-radius: var(--radius-md); font-weight: 700; margin: 14px 0; text-align: center; outline: none; }
     #appToast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-120px); background: #0F172A; color: #FFF; padding: 12px 24px; border-radius: 50px; font-weight: 700; box-shadow: 0 8px 24px rgba(0,0,0,0.2); z-index: 99999; transition: transform 0.3s; }
     #appToast.active { transform: translateX(-50%) translateY(0); }
   </style>
@@ -130,16 +148,18 @@
 
   <main class="app-shell">
     
-    <!-- HEADER -->
+    <!-- CABEÇALHO -->
     <header class="game-header">
       <a href="#" class="logo-box">
-        <img class="logo-img" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png" alt="Logo Turminha">
-        <span>Turminha do Xexéu</span>
+        <img class="logo-img" src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png" alt="Logo Turminha do Xexéu">
+        <span style="font-size: 20px; font-weight: 800; color: var(--primary);">Turminha do Xexéu</span>
       </a>
+      
       <div class="header-quick-stats">
-        <span>⭐ Estrelinhas: 12</span>
+        <span>⭐ Nível 1 • 45 XP</span>
         <div class="xp-bar-container"><div class="xp-bar-fill"></div></div>
       </div>
+
       <div style="display: flex; gap: 8px;">
         <button class="btn-tactile green" onclick="toggleModoCalmo()">🍃 Modo Calmo</button>
         <button class="btn-tactile" onclick="abrirModalPausa()">⏰ Pausa</button>
@@ -149,89 +169,209 @@
     <!-- MENU PRINCIPAL -->
     <nav class="main-nav">
       <button class="nav-item-btn active" onclick="navegarPara('hub', this)">🏠 Início</button>
+      <button class="nav-item-btn" onclick="navegarPara('turminha', this)">👥 Turminha</button>
       <button class="nav-item-btn" onclick="navegarPara('lousa', this)">🎨 Lousa Mágica</button>
-      <button class="nav-item-btn" onclick="navegarPara('memoria', this)">🧩 Jogo da Memória</button>
-      <button class="nav-item-btn" onclick="navegarPara('respiracao', this)">🫧 Respiração</button>
+      <button class="nav-item-btn" onclick="navegarPara('jogos', this)">🧩 Mini-Jogos</button>
+      <button class="nav-item-btn" onclick="navegarPara('natureza', this)">🌱 Natureza</button>
+      <button class="nav-item-btn" onclick="navegarPara('sensorial', this)">🫧 Cantinho Calmo</button>
     </nav>
 
-    <!-- ABA: INÍCIO / HUB -->
+    <!-- PÁGINA 1: INÍCIO / HUB -->
     <section id="page-hub" class="page-box active">
+      <div class="hero-grid">
+        <div class="game-card">
+          <h2 class="game-card-title">Explore o Universo da Turminha! 🚀</h2>
+          <div class="central-hub-grid">
+            <div class="hub-card" onclick="navegarPara('lousa')">
+              <span class="hub-card-icon">🎨</span>
+              <strong style="color: var(--primary);">Lousa Mágica</strong>
+              <p style="font-size: 14px; color: var(--text-muted);">Desenhe, pinte e carimbe com a Turminha.</p>
+            </div>
+            <div class="hub-card" onclick="navegarPara('jogos')">
+              <span class="hub-card-icon">🧠</span>
+              <strong style="color: var(--purple);">Mini-Jogos Educativos</strong>
+              <p style="font-size: 14px; color: var(--text-muted);">Desafios de memória, quiz e pop-it sensorial.</p>
+            </div>
+            <div class="hub-card" onclick="navegarPara('natureza')">
+              <span class="hub-card-icon">🌸</span>
+              <strong style="color: var(--green);">Ciclo da Natureza</strong>
+              <p style="font-size: 14px; color: var(--text-muted);">Ajude a plantinha a crescer com água e sol.</p>
+            </div>
+            <div class="hub-card" onclick="navegarPara('sensorial')">
+              <span class="hub-card-icon">🫧</span>
+              <strong style="color: var(--tea-blue);">Respiração Guiada</strong>
+              <p style="font-size: 14px; color: var(--text-muted);">Momento para relaxar e desacelerar.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-card" style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <h3 style="color: var(--purple); font-size: 18px; margin-bottom: 8px;">Toque no Xexéu! 👇</h3>
+          <div class="mascote-virtual" id="mascoteXexeu" onclick="falarMascote()">
+            <div class="balao-fala" id="balaoMascote">Oi, amiguinho! Vamos brincar? 🌟</div>
+            <img src="https://res.cloudinary.com/oactqmgs/image/upload/v1786908275/TURMINHA_LOGO.png" alt="Mascote Xexéu">
+          </div>
+          <div class="dna-quote-badge" style="background: #EEF2FF; border-left: 4px solid var(--primary); padding: 8px 12px; border-radius: 0 10px 10px 0; font-size: 13px; font-style: italic; color: #3730A3; margin-top: 12px;">
+            "Aprender brincando é a maior aventura!"
+          </div>
+        </div>
+      </div>
+
+      <!-- REDES SOCIAIS -->
+      <div class="social-bar">
+        <span style="font-weight: 800; color: var(--text-muted);">Acompanhe a Turminha:</span>
+        <a href="https://instagram.com/turminhaxe_xeu" target="_blank" class="social-btn-round" title="Instagram">📸</a>
+        <a href="https://youtube.com" target="_blank" class="social-btn-round" title="YouTube">▶️</a>
+        <a href="https://facebook.com" target="_blank" class="social-btn-round" title="Facebook">📘</a>
+      </div>
+    </section>
+
+    <!-- PÁGINA 2: PERSONAGENS -->
+    <section id="page-turminha" class="page-box">
       <div class="game-card">
-        <h2 class="game-card-title">Escolha uma Brincadeira! 🎉</h2>
-        <div class="central-hub-grid">
-          <div class="hub-card" onclick="navegarPara('lousa')">
-            <span class="hub-card-icon">🎨</span>
-            <strong>Lousa Mágica</strong>
-            <p style="font-size: 14px; color: var(--text-muted);">Desenhe e pinte livremente com várias cores.</p>
+        <h2 class="game-card-title">Conheça a Turminha do Xexéu 💙</h2>
+        <div class="chars-grid">
+          <div class="char-card-item">
+            <div class="char-avatar">🧢</div>
+            <strong style="color: var(--primary);">Xexéu</strong>
+            <p style="font-size: 13px; color: var(--text-muted);">O mascote azul curioso de boina amarela!</p>
           </div>
-          <div class="hub-card" onclick="navegarPara('memoria')">
-            <span class="hub-card-icon">🧠</span>
-            <strong>Jogo da Memória</strong>
-            <p style="font-size: 14px; color: var(--text-muted);">Encontre os pares e teste sua memória.</p>
+          <div class="char-card-item">
+            <div class="char-avatar">🐶</div>
+            <strong style="color: var(--secondary-dark);">Capilé</strong>
+            <p style="font-size: 13px; color: var(--text-muted);">Cachorrinho fiel de coleira azul celeste.</p>
           </div>
-          <div class="hub-card" onclick="navegarPara('respiracao')">
-            <span class="hub-card-icon">🫧</span>
-            <strong>Cantinho da Calma</strong>
-            <p style="font-size: 14px; color: var(--text-muted);">Exercícios visuais guiados para desacelerar.</p>
+          <div class="char-card-item">
+            <div class="char-avatar">👦</div>
+            <strong style="color: var(--green);">Joca</strong>
+            <p style="font-size: 13px; color: var(--text-muted);">Menino esperto de camiseta verde.</p>
+          </div>
+          <div class="char-card-item">
+            <div class="char-avatar">👧</div>
+            <strong style="color: var(--pink);">Nina</strong>
+            <p style="font-size: 13px; color: var(--text-muted);">Menina criativa de cabelos cacheados.</p>
+          </div>
+          <div class="char-card-item">
+            <div class="char-avatar">👵</div>
+            <strong style="color: var(--purple);">Vovó Hilda</strong>
+            <p style="font-size: 13px; color: var(--text-muted);">Com seus óculos redondos e muito carinho.</p>
+          </div>
+          <div class="char-card-item">
+            <div class="char-avatar">👴</div>
+            <strong style="color: var(--tea-blue);">Vovô Beto</strong>
+            <p style="font-size: 13px; color: var(--text-muted);">De óculos quadrado e histórias incríveis.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABA: LOUSA MÁGICA -->
+    <!-- PÁGINA 3: LOUSA MÁGICA -->
     <section id="page-lousa" class="page-box">
       <div class="game-card">
         <h2 class="game-card-title">Lousa Mágica 🎨</h2>
         <div class="canvas-container-lousa">
           <canvas id="paintCanvas"></canvas>
         </div>
-        <div class="lousa-controls">
+        <div style="display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 14px; flex-wrap: wrap;">
           <button class="color-btn" style="background: #2563EB;" onclick="setCor('#2563EB')"></button>
           <button class="color-btn" style="background: #10B981;" onclick="setCor('#10B981')"></button>
           <button class="color-btn" style="background: #EF4444;" onclick="setCor('#EF4444')"></button>
           <button class="color-btn" style="background: #F59E0B;" onclick="setCor('#F59E0B')"></button>
           <button class="color-btn" style="background: #8B5CF6;" onclick="setCor('#8B5CF6')"></button>
+          <button class="btn-tactile" onclick="setCarimbo('⭐')">⭐ Carimbo</button>
+          <button class="btn-tactile" onclick="setCarimbo('🐾')">🐾 Patinha</button>
           <button class="btn-tactile" onclick="limparLousa()">🗑️ Limpar</button>
         </div>
       </div>
     </section>
 
-    <!-- ABA: JOGO DA MEMÓRIA -->
-    <section id="page-memoria" class="page-box">
+    <!-- PÁGINA 4: MINI-JOGOS -->
+    <section id="page-jogos" class="page-box">
+      <div class="grid-2-col">
+        <!-- JOGO DA MEMÓRIA -->
+        <div class="game-card" style="text-align: center;">
+          <h3 class="game-card-title" style="justify-content: center; color: var(--purple);">Jogo da Memória 🧩</h3>
+          <div class="memory-grid" id="memoryGrid"></div>
+          <button class="btn-tactile primary" style="margin-top: 12px;" onclick="iniciarMemoria()">🔄 Embaralhar</button>
+        </div>
+
+        <!-- QUIZ INTERATIVO -->
+        <div class="game-card" style="text-align: center;">
+          <h3 class="game-card-title" style="justify-content: center; color: var(--primary);">Desafio do Xexéu ❓</h3>
+          <div id="quizContainer">
+            <p id="quizPergunta" style="font-size: 18px; font-weight: 800; margin: 16px 0; color: var(--text-main);">Qual é a cor da boina do Xexéu?</p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;" id="quizOpcoes">
+              <button class="game-choice-btn" onclick="checarQuiz(this, false)">Azul</button>
+              <button class="game-choice-btn" onclick="checarQuiz(this, true)">Amarela</button>
+              <button class="game-choice-btn" onclick="checarQuiz(this, false)">Verde</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- POP-IT SENSORIAL -->
       <div class="game-card" style="text-align: center;">
-        <h2 class="game-card-title" style="justify-content: center;">Jogo da Memória 🧩</h2>
-        <p style="color: var(--text-muted); margin-bottom: 12px;">Encontre as figuras iguais!</p>
-        <div class="memory-grid" id="memoryGrid"></div>
-        <button class="btn-tactile primary" style="margin-top: 16px;" onclick="iniciarMemoria()">🔄 Reiniciar Jogo</button>
+        <h3 class="game-card-title" style="justify-content: center; color: var(--pink);">Pop-It Sensorial 🫧</h3>
+        <p style="color: var(--text-muted); font-size: 14px;">Estoure todas as bolhas para relaxar!</p>
+        <div class="popit-board" id="popitBoard"></div>
+        <button class="btn-tactile pink" onclick="resetPopit()">🔄 Renovar Bolhas</button>
       </div>
     </section>
 
-    <!-- ABA: RESPIRAÇÃO -->
-    <section id="page-respiracao" class="page-box">
+    <!-- PÁGINA 5: NATUREZA -->
+    <section id="page-natureza" class="page-box">
       <div class="game-card">
-        <h2 class="game-card-title">Cantinho da Calma 🫧</h2>
+        <h2 class="game-card-title" style="color: var(--green-dark);">Ciclo da Natureza 🌱</h2>
+        <div class="ciclo-bg">
+          <div class="ciclo-header" id="cicloStatus">Fase 1: Semente na terra</div>
+          <div class="ciclo-clima" id="climaSol">☀️</div>
+          <div class="ciclo-clima" id="climaChuva">🌧️</div>
+          <div class="ciclo-abelha" id="cicloAbelha">🐝</div>
+          <div class="cena-natureza">
+            <div class="ciclo-flor" id="cicloPlanta" onclick="interagirPlanta()">🌱</div>
+            <div class="ciclo-chao"></div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; justify-content: center; margin-top: 16px; flex-wrap: wrap;">
+          <button class="btn-tactile primary" onclick="regarPlanta()">🌧️ Regar com Chuva</button>
+          <button class="btn-tactile vip" onclick="ensolararPlanta()">☀️ Dar Luz do Sol</button>
+          <button class="btn-tactile green" onclick="chamarAbelha()">🐝 Chamar Abelhinha</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PÁGINA 6: CANTINHO CALMO -->
+    <section id="page-sensorial" class="page-box">
+      <div class="game-card">
+        <h2 class="game-card-title" style="color: var(--tea-blue);">Cantinho da Calma 🫧</h2>
         <div class="breathe-box-interactive">
-          <div class="breathe-bubble" id="bubbleAnim">Puxe o Ar</div>
-          <p id="breatheText" style="font-weight: 700; color: var(--tea-blue); font-size: 18px;">Inspire devagar...</p>
+          <div class="breathe-bubble" id="breatheBubble">Inspire</div>
+          <p id="breatheStatusText" style="font-weight: 800; color: var(--tea-blue); font-size: 18px;">Puxe o ar pelo nariz...</p>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- MODAL DE PAUSA -->
+  <!-- BARRA VIP FLUTUANTE -->
+  <div class="vip-floating-bar" onclick="mostrarToast('Área VIP em breve com episódios e livrinhos exclusivos! ⭐')">
+    <span>⭐ Clube Turminha VIP</span>
+    <button class="btn-tactile vip" style="padding: 6px 14px; min-height: auto;">Conhecer</button>
+  </div>
+
+  <!-- MODAL DE PAUSA / PIN -->
   <section id="modalTempoEsgotado" class="app-modal" role="dialog" aria-modal="true">
     <div class="modal-content">
-      <span style="font-size: 48px; display: block;" aria-hidden="true">⏰</span>
-      <h3 style="color: var(--accent); font-size: 22px; font-weight: 800; margin: 12px 0 6px;">Hora de Fazer uma Pausa!</h3>
-      <p style="font-size: 14px; color: var(--text-muted);">Digite o PIN dos Pais para liberar o acesso.</p>
-      <input type="password" id="pinInput" class="form-input" placeholder="PIN (ex: 1234)" maxlength="6">
-      <button type="button" class="btn-tactile primary" style="width: 100%;" onclick="desbloquearComPin()">Liberar</button>
+      <span style="font-size: 48px; display: block;">⏰</span>
+      <h3 style="color: var(--accent); font-size: 22px; font-weight: 800; margin: 10px 0;">Hora de Fazer uma Pausa!</h3>
+      <p style="font-size: 14px; color: var(--text-muted);">Definido pelos pais para descansar os olhinhos.</p>
+      <input type="password" id="pinInput" class="form-input" placeholder="Digite o PIN dos Pais (ex: 1234)" maxlength="6">
+      <button type="button" class="btn-tactile primary" style="width: 100%;" onclick="desbloquearComPin()">Liberar Acesso</button>
     </div>
   </section>
 
   <script>
-    // NAVEGAÇÃO
+    // NAVEGAÇÃO ENTRE ABAS
     function navegarPara(idAba, btnElement) {
       document.querySelectorAll('.page-box').forEach(p => p.classList.remove('active'));
       const target = document.getElementById(`page-${idAba}`);
@@ -247,7 +387,7 @@
       }
 
       if(idAba === 'lousa') redimensionarCanvas();
-      if(idAba === 'memoria') iniciarMemoria();
+      if(idAba === 'jogos') { iniciarMemoria(); criarPopit(); }
     }
 
     // TOAST NOTIFICAÇÃO
@@ -261,7 +401,24 @@
     // MODO SENSORIAL
     function toggleModoCalmo() {
       document.body.classList.toggle('sensory-mode');
-      mostrarToast(document.body.classList.contains('sensory-mode') ? 'Modo Calmo ativado 🍃' : 'Modo Padrão ativado ☀️');
+      mostrarToast(document.body.classList.contains('sensory-mode') ? 'Modo Calmo Ativado 🍃' : 'Modo Padrão Ativado ☀️');
+    }
+
+    // MASCOTE INTERATIVO
+    const falasMascote = [
+      "Oi! Eu sou o Xexéu! 🧢",
+      "Você já desenhou hoje? 🎨",
+      "O Capilé adora ossinhos! 🐶",
+      "A Nina adora contar histórias! 👧",
+      "Vamos brincar juntos! 🌟"
+    ];
+    function falarMascote() {
+      const mascote = document.getElementById('mascoteXexeu');
+      const balao = document.getElementById('balaoMascote');
+      const fala = falasMascote[Math.floor(Math.random() * falasMascote.length)];
+      balao.innerText = fala;
+      mascote.classList.add('falando');
+      setTimeout(() => mascote.classList.remove('falando'), 2200);
     }
 
     // CONTROLE DOS PAIS / MODAL
@@ -273,39 +430,34 @@
       if(pin === '1234' || pin.length >= 4) {
         document.getElementById('modalTempoEsgotado').classList.remove('show');
         document.getElementById('pinInput').value = '';
-        mostrarToast('Acesso liberado! Bons estudos e diversão!');
+        mostrarToast('Acesso liberado com sucesso! 🎉');
       } else {
         mostrarToast('PIN incorreto. Tente novamente.');
       }
     }
 
-    // LOUSA MÁGICA (CANVAS)
+    // LOUSA MÁGICA
     const canvas = document.getElementById('paintCanvas');
     const ctx = canvas.getContext('2d');
     let desenhando = false;
     let corAtual = '#2563EB';
+    let carimboAtual = null;
 
     function redimensionarCanvas() {
       const rect = canvas.getBoundingClientRect();
       canvas.width = rect.width;
       canvas.height = rect.height;
+      limparLousa();
+    }
+    function setCor(c) { corAtual = c; carimboAtual = null; ctx.strokeStyle = c; }
+    function setCarimbo(icone) { carimboAtual = icone; }
+    function limparLousa() {
       ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.lineWidth = 6;
       ctx.lineCap = 'round';
       ctx.strokeStyle = corAtual;
     }
-
-    function setCor(c) {
-      corAtual = c;
-      ctx.strokeStyle = c;
-    }
-
-    function limparLousa() {
-      ctx.fillStyle = "#FFFFFF";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
     function posMouse(e) {
       const r = canvas.getBoundingClientRect();
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -313,62 +465,152 @@
       return { x: clientX - r.left, y: clientY - r.top };
     }
 
-    canvas.addEventListener('mousedown', (e) => { desenhando = true; const p = posMouse(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+    canvas.addEventListener('mousedown', (e) => {
+      const p = posMouse(e);
+      if(carimboAtual) {
+        ctx.font = "32px sans-serif";
+        ctx.fillText(carimboAtual, p.x - 16, p.y + 12);
+        return;
+      }
+      desenhando = true; ctx.beginPath(); ctx.moveTo(p.x, p.y);
+    });
     canvas.addEventListener('mousemove', (e) => { if(!desenhando) return; const p = posMouse(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
-    window.addEventListener('mouseup', () => { desenhando = false; });
+    window.addEventListener('mouseup', () => desenhando = false);
 
-    canvas.addEventListener('touchstart', (e) => { e.preventDefault(); desenhando = true; const p = posMouse(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, {passive: false});
+    canvas.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      const p = posMouse(e);
+      if(carimboAtual) {
+        ctx.font = "32px sans-serif";
+        ctx.fillText(carimboAtual, p.x - 16, p.y + 12);
+        return;
+      }
+      desenhando = true; ctx.beginPath(); ctx.moveTo(p.x, p.y);
+    }, {passive: false});
     canvas.addEventListener('touchmove', (e) => { e.preventDefault(); if(!desenhando) return; const p = posMouse(e); ctx.lineTo(p.x, p.y); ctx.stroke(); }, {passive: false});
-    window.addEventListener('touchend', () => { desenhando = false; });
+    window.addEventListener('touchend', () => desenhando = false);
 
     // JOGO DA MEMÓRIA
-    const emojis = ['🐶', '🌟', '🎨', '🚀', '🐶', '🌟', '🎨', '🚀'];
-    let cartas = [];
+    const emojis = ['🧢', '🐶', '👵', '👴', '🧢', '🐶', '👵', '👴'];
     let selecionadas = [];
-
     function iniciarMemoria() {
       const grid = document.getElementById('memoryGrid');
       grid.innerHTML = '';
-      cartas = [...emojis].sort(() => Math.random() - 0.5);
+      const cartas = [...emojis].sort(() => Math.random() - 0.5);
       selecionadas = [];
 
       cartas.forEach((emoji, index) => {
         const tile = document.createElement('div');
         tile.className = 'memory-tile';
-        tile.dataset.index = index;
         tile.innerText = '❓';
-        tile.onclick = () => virarCarta(tile, emoji, index);
+        tile.onclick = () => {
+          if(selecionadas.length === 2 || tile.classList.contains('flipped')) return;
+          tile.innerText = emoji;
+          tile.classList.add('flipped');
+          selecionadas.push({ tile, emoji });
+
+          if(selecionadas.length === 2) {
+            if(selecionadas[0].emoji === selecionadas[1].emoji) {
+              selecionadas = [];
+              mostrarToast('Parabéns! Encontrou o par! ⭐');
+            } else {
+              setTimeout(() => {
+                selecionadas[0].tile.innerText = '❓';
+                selecionadas[0].tile.classList.remove('flipped');
+                selecionadas[1].tile.innerText = '❓';
+                selecionadas[1].tile.classList.remove('flipped');
+                selecionadas = [];
+              }, 800);
+            }
+          }
+        };
         grid.appendChild(tile);
       });
     }
 
-    function virarCarta(tile, emoji, index) {
-      if(selecionadas.length === 2 || tile.classList.contains('flipped')) return;
-      
-      tile.innerText = emoji;
-      tile.classList.add('flipped');
-      selecionadas.push({ tile, emoji, index });
-
-      if(selecionadas.length === 2) {
-        if(selecionadas[0].emoji === selecionadas[1].emoji) {
-          selecionadas = [];
-          mostrarToast('Parabéns! Você achou um par! 🌟');
-        } else {
-          setTimeout(() => {
-            selecionadas[0].tile.innerText = '❓';
-            selecionadas[0].tile.classList.remove('flipped');
-            selecionadas[1].tile.innerText = '❓';
-            selecionadas[1].tile.classList.remove('flipped');
-            selecionadas = [];
-          }, 900);
-        }
+    // QUIZ
+    function checarQuiz(btn, correto) {
+      if(correto) {
+        btn.classList.add('correct');
+        mostrarToast('Muito bem! Você acertou! 🌟');
+      } else {
+        btn.classList.add('wrong');
+        mostrarToast('Ops, tente outra vez! 😉');
       }
+    }
+
+    // POP-IT
+    function criarPopit() {
+      const board = document.getElementById('popitBoard');
+      board.innerHTML = '';
+      for(let i=0; i<18; i++) {
+        const b = document.createElement('div');
+        b.className = 'popit-bubble';
+        b.onclick = () => b.classList.toggle('popped');
+        board.appendChild(b);
+      }
+    }
+    function resetPopit() {
+      document.querySelectorAll('.popit-bubble').forEach(b => b.classList.remove('popped'));
+      mostrarToast('Pop-it renovado!');
+    }
+
+    // CICLO DA NATUREZA
+    let fasePlanta = 1;
+    function regarPlanta() {
+      const chuva = document.getElementById('climaChuva');
+      chuva.classList.add('ativo');
+      setTimeout(() => chuva.classList.remove('ativo'), 1500);
+      avancarPlanta('🌧️ A chuva refrescou a terra!');
+    }
+    function ensolararPlanta() {
+      const sol = document.getElementById('climaSol');
+      sol.classList.add('ativo');
+      setTimeout(() => sol.classList.remove('ativo'), 1500);
+      avancarPlanta('☀️ O sol aqueceu as folhinhas!');
+    }
+    function chamarAbelha() {
+      const abelha = document.getElementById('cicloAbelha');
+      abelha.classList.add('ativo');
+      setTimeout(() => abelha.classList.remove('ativo'), 2500);
+      mostrarToast('🐝 A abelhinha veio polinizar a flor!');
+    }
+    function avancarPlanta(msg) {
+      const planta = document.getElementById('cicloPlanta');
+      const status = document.getElementById('cicloStatus');
+      fasePlanta = (fasePlanta % 3) + 1;
+      if(fasePlanta === 1) { planta.innerText = '🌱'; status.innerText = 'Fase 1: Pequena Semente'; }
+      if(fasePlanta === 2) { planta.innerText = '🌿'; status.innerText = 'Fase 2: Folhinhas crescendo!'; }
+      if(fasePlanta === 3) { planta.innerText = '🌸'; status.innerText = 'Fase 3: Flor colorida e forte!'; }
+      mostrarToast(msg);
+    }
+    function interagirPlanta() {
+      mostrarToast('A plantinha está cheia de vida! 🌿');
+    }
+
+    // RESPIRAÇÃO GUIADA
+    function animarRespiracao() {
+      const bubble = document.getElementById('breatheBubble');
+      const txt = document.getElementById('breatheStatusText');
+      if(!bubble) return;
+      setInterval(() => {
+        bubble.classList.toggle('expand');
+        if(bubble.classList.contains('expand')) {
+          bubble.innerText = 'Segure';
+          txt.innerText = 'Solte o ar bem devagar... 🌬️';
+        } else {
+          bubble.innerText = 'Inspire';
+          txt.innerText = 'Puxe o ar pelo nariz... 🌸';
+        }
+      }, 4000);
     }
 
     window.addEventListener('resize', redimensionarCanvas);
     window.addEventListener('DOMContentLoaded', () => {
       redimensionarCanvas();
       iniciarMemoria();
+      criarPopit();
+      animarRespiracao();
     });
   </script>
 </body>
